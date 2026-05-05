@@ -1,0 +1,21 @@
+[project]
+name = "mtg-archidekt-pipeline"
+version = "0.1.0"
+description = "Two-stage Archidekt Commander deck extraction and processing pipeline."
+readme = "documents/backbone.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+fetch-archidekt-raw = "scripts.fetch_archidekt_raw:main"
+process-archidekt-raw = "scripts.process_archidekt_raw:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["scripts"]
+
+[tool.uv]
+package = true
