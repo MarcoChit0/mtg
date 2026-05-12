@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import uuid
@@ -390,10 +391,11 @@ def rejected_record(
     deck: Optional[Dict[str, Any]],
     reasons: List[str],
     trace: Optional[Dict[str, Any]] = None,
+    extra: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     fetched_at = raw_record.get("fetched_at") or utc_now_iso()
     deck_id = raw_record.get("deck_id") or (deck or {}).get("id")
-    return {
+    record = {
         "record_type": "rejected_archidekt_deck",
         "snapshot_id": snapshot_id(deck_id, fetched_at),
         "deck_id": deck_id,
@@ -410,12 +412,54 @@ def rejected_record(
             "viewCount": (deck or {}).get("viewCount"),
         },
     }
+    if extra:
+        record.update(extra)
+    return record
 
 
-def existing_ids(out_dir: Path) -> Tuple[Set[str], Set[str], Set[str]]:
+def deck_fingerprint(mainboard: List[Dict[str, Any]]) -> str:
+    """SHA-256 of sorted oracle_uid:quantity pairs — uniquely identifies a card list."""
+    parts = sorted(
+        f"{row['oracle_uid']}:{row['quantity']}"
+        for row in mainboard
+        if row.get("oracle_uid")
+    )
+    return hashlib.sha256("|".join(parts).encode()).hexdigest()
+
+
+def latest_raw_records(path: Path) -> Tuple[int, List[Dict[str, Any]]]:
+    """Return (total_records_read, deduplicated_records).
+
+    For each deck_id, keeps only the record whose deck has the most recent
+    updatedAt (falling back to fetched_at). Records missing a deck_id are
+    passed through unchanged so downstream can reject them properly.
+    """
+    total = 0
+    best: Dict[int, Tuple[str, Dict[str, Any]]] = {}
+    orphans: List[Dict[str, Any]] = []
+    for record in iter_jsonl(path) or []:
+        total += 1
+        deck_id = record.get("deck_id")
+        if not isinstance(deck_id, int):
+            orphans.append(record)
+            continue
+        deck = record.get("response") or {}
+        sort_key = deck.get("updatedAt") or record.get("fetched_at") or ""
+        existing = best.get(deck_id)
+        if existing is None or sort_key > existing[0]:
+            best[deck_id] = (sort_key, record)
+    return total, orphans + [rec for _, rec in best.values()]
+
+
+def existing_ids(
+    out_dir: Path,
+) -> Tuple[Set[str], Set[str], Set[str], Set[int], Set[str], Dict[str, int]]:
     card_ids: Set[str] = set()
     accepted_snapshot_ids: Set[str] = set()
     rejected_snapshot_ids: Set[str] = set()
+    accepted_deck_ids: Set[int] = set()
+    seen_fingerprints: Set[str] = set()
+    fingerprint_to_deck_id: Dict[str, int] = {}
 
     for record in iter_jsonl(out_dir / "cards.jsonl") or []:
         oracle_uid = record.get("oracle_uid")
@@ -426,13 +470,20 @@ def existing_ids(out_dir: Path) -> Tuple[Set[str], Set[str], Set[str]]:
         sid = record.get("snapshot_id")
         if isinstance(sid, str):
             accepted_snapshot_ids.add(sid)
+        deck_id = record.get("deck_id")
+        if isinstance(deck_id, int):
+            accepted_deck_ids.add(deck_id)
+        fp = deck_fingerprint(record.get("mainboard") or [])
+        seen_fingerprints.add(fp)
+        if isinstance(deck_id, int):
+            fingerprint_to_deck_id[fp] = deck_id
 
     for record in iter_jsonl(out_dir / "rejected_decks.jsonl") or []:
         sid = record.get("snapshot_id")
         if isinstance(sid, str):
             rejected_snapshot_ids.add(sid)
 
-    return card_ids, accepted_snapshot_ids, rejected_snapshot_ids
+    return card_ids, accepted_snapshot_ids, rejected_snapshot_ids, accepted_deck_ids, seen_fingerprints, fingerprint_to_deck_id
 
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
@@ -462,9 +513,19 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
     manifest_path = out_dir / "processing_manifest.jsonl"
     rejected_path = out_dir / "rejected_decks.jsonl"
 
-    seen_card_ids, accepted_snapshot_ids, rejected_snapshot_ids = existing_ids(out_dir)
+    (
+        seen_card_ids,
+        accepted_snapshot_ids,
+        rejected_snapshot_ids,
+        accepted_deck_ids,
+        seen_fingerprints,
+        fingerprint_to_deck_id,
+    ) = existing_ids(out_dir)
     run_id = f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:8]}"
     brackets = set(args.brackets)
+
+    # Pre-pass: one record per deck_id (latest updatedAt wins).
+    total_raw, candidate_records = latest_raw_records(raw_details_path)
 
     summary: Dict[str, Any] = {
         "record_type": "archidekt_processing_manifest",
@@ -478,18 +539,25 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             "brackets": list(args.brackets),
             "overwrite": bool(args.overwrite),
         },
-        "raw_records_read": 0,
+        "raw_records_read": total_raw,
+        "duplicate_deck_id_skipped": total_raw - len(candidate_records),
         "accepted_decks": 0,
         "rejected_decks": 0,
-        "skipped_existing_snapshots": 0,
+        "skipped_existing": 0,
         "cards_written": 0,
         "deck_card_rows_written": 0,
         "rejection_reasons": Counter(),
         "errors": [],
     }
 
-    for raw_record in iter_jsonl(raw_details_path) or []:
-        summary["raw_records_read"] += 1
+    for raw_record in candidate_records:
+        deck_id = raw_record.get("deck_id")
+
+        # Already accepted in a previous run — skip entirely.
+        if isinstance(deck_id, int) and deck_id in accepted_deck_ids:
+            summary["skipped_existing"] += 1
+            continue
+
         deck, payload_error = raw_detail_from_record(raw_record)
         if deck is None:
             reasons = [payload_error]
@@ -503,10 +571,11 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             continue
 
         fetched_at = raw_record.get("fetched_at") or utc_now_iso()
-        deck_id = raw_record.get("deck_id", deck.get("id"))
         sid = snapshot_id(deck_id, fetched_at)
-        if sid in accepted_snapshot_ids or sid in rejected_snapshot_ids:
-            summary["skipped_existing_snapshots"] += 1
+
+        # Already rejected in a previous run — skip.
+        if sid in rejected_snapshot_ids:
+            summary["skipped_existing"] += 1
             continue
 
         mainboard, trace = extract_mainboard(deck)
@@ -520,6 +589,23 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             summary["rejection_reasons"].update(reasons)
             continue
 
+        # Deduplicate by card list fingerprint (catches copied decks).
+        fp = deck_fingerprint(mainboard)
+        if fp in seen_fingerprints:
+            reasons = ["duplicate_card_list"]
+            rejected = rejected_record(
+                raw_record, deck, reasons, trace,
+                extra={"duplicate_of_deck_id": fingerprint_to_deck_id.get(fp)},
+            )
+            append_jsonl(rejected_path, rejected)
+            rejected_snapshot_ids.add(sid)
+            summary["rejected_decks"] += 1
+            summary["rejection_reasons"].update(reasons)
+            continue
+
+        seen_fingerprints.add(fp)
+        fingerprint_to_deck_id[fp] = deck_id
+
         for row in mainboard:
             oracle_uid = row.get("oracle_uid")
             if isinstance(oracle_uid, str) and oracle_uid not in seen_card_ids:
@@ -530,6 +616,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         deck_snapshot = deck_snapshot_record(raw_record, deck, mainboard, trace)
         append_jsonl(decks_path, deck_snapshot)
         accepted_snapshot_ids.add(sid)
+        accepted_deck_ids.add(deck_id)
         summary["accepted_decks"] += 1
 
         for row_record in deck_card_records(raw_record, deck, mainboard):

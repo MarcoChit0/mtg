@@ -148,6 +148,10 @@ Parametros:
 - `--dry-run`
   - mostra quais detalhes seriam buscados, sem salvar payloads de deck.
 
+- `--no-progress`
+  - desliga a barra de progresso no stderr;
+  - util quando a saida vai para arquivo ou pipeline.
+
 ### Exemplos
 
 Coletar 50 decks validos:

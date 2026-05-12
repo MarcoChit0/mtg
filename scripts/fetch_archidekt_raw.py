@@ -129,7 +129,63 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--resume", action="store_true", help="Skip deck ids already present in raw_deck_details.jsonl.")
     parser.add_argument("--dry-run", action="store_true", help="Fetch search pages but do not write detail payloads.")
     parser.add_argument("--user-agent", default=DEFAULT_USER_AGENT, help="HTTP User-Agent header.")
+    parser.add_argument("--no-progress", action="store_true", help="Disable the stderr progress bar.")
     return parser.parse_args(argv)
+
+
+def format_duration(seconds: float) -> str:
+    seconds = int(max(seconds, 0))
+    if seconds < 60:
+        return f"{seconds}s"
+    if seconds < 3600:
+        return f"{seconds // 60}m{seconds % 60:02d}s"
+    return f"{seconds // 3600}h{(seconds % 3600) // 60:02d}m"
+
+
+class ProgressReporter:
+    def __init__(self, max_decks: Optional[int], enabled: bool) -> None:
+        self.max_decks = max_decks
+        self.enabled = enabled and sys.stderr.isatty()
+        self.start = time.monotonic()
+        self.last_width = 0
+
+    def render(self, summary: Dict[str, Any]) -> None:
+        if not self.enabled:
+            return
+        saved = int(summary["detail_payloads_saved"])
+        attempted = int(summary["detail_payloads_attempted"])
+        rejected = int(summary["detail_payloads_rejected"])
+        pages = int(summary["search_pages_fetched"])
+        elapsed = max(time.monotonic() - self.start, 1e-9)
+        rate = saved / elapsed
+        if self.max_decks:
+            total = self.max_decks
+            ratio = min(saved / total, 1.0)
+            bar_width = 24
+            filled = int(bar_width * ratio)
+            bar = "#" * filled + "-" * (bar_width - filled)
+            eta = (total - saved) / rate if rate > 0 else 0.0
+            line = (
+                f"[{bar}] {saved}/{total} ({ratio*100:5.1f}%) | "
+                f"attempt={attempted} reject={rejected} pages={pages} | "
+                f"{rate:.2f} decks/s eta={format_duration(eta)}"
+            )
+        else:
+            line = (
+                f"saved={saved} attempt={attempted} reject={rejected} pages={pages} | "
+                f"{rate:.2f} decks/s elapsed={format_duration(elapsed)}"
+            )
+        padded = line.ljust(self.last_width)
+        sys.stderr.write("\r" + padded)
+        sys.stderr.flush()
+        self.last_width = max(self.last_width, len(line))
+
+    def finish(self, summary: Dict[str, Any]) -> None:
+        if not self.enabled:
+            return
+        self.render(summary)
+        sys.stderr.write("\n")
+        sys.stderr.flush()
 
 
 def run(args: argparse.Namespace) -> Dict[str, Any]:
@@ -168,6 +224,9 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         "max_decks_reached": False,
     }
 
+    progress = ProgressReporter(max_decks=args.max_decks, enabled=not args.no_progress)
+    progress.render(summary)
+
     stop_all = False
     for bracket in args.brackets:
         if stop_all:
@@ -185,6 +244,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             fetched_at = utc_now_iso()
             status, payload = fetch_json(search_url, user_agent=args.user_agent)
             summary["search_pages_fetched"] += 1
+            progress.render(summary)
 
             search_record = {
                 "record_type": "archidekt_deck_search_page",
@@ -276,6 +336,8 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
                         {"stage": "detail", "deck_id": deck_id, "status": detail_status, "payload": detail_payload}
                     )
 
+                progress.render(summary)
+
                 if args.sleep_sec:
                     time.sleep(args.sleep_sec)
 
@@ -288,6 +350,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
 
     summary["finished_at"] = utc_now_iso()
     summary["stopped_reason"] = summary["stopped_reason"] or "completed"
+    progress.finish(summary)
     if not args.dry_run:
         append_jsonl(manifest_path, summary)
     return summary
