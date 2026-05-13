@@ -221,7 +221,9 @@ class ProcessArchidektRawTests(unittest.TestCase):
         raw_dir = root / "raw"
         out_dir = root / "processed"
         write_raw_details(raw_dir, raw_decks)
-        args = ["--raw-dir", str(raw_dir), "--out-dir", str(out_dir)]
+        # --skip-y2 keeps the unit tests offline; Phase B is exercised
+        # separately via a smoke test against the real EDHPowerLevel page.
+        args = ["--raw-dir", str(raw_dir), "--out-dir", str(out_dir), "--skip-y2"]
         if overwrite:
             args.append("--overwrite")
         summary = processor.run(processor.parse_args(args))
@@ -245,12 +247,14 @@ class ProcessArchidektRawTests(unittest.TestCase):
         self.addCleanup(tmp.cleanup)
 
         decks = read_jsonl(out_dir / "decks.jsonl")
-        deck_cards = read_jsonl(out_dir / "deck_cards.jsonl")
 
         self.assertEqual(summary["accepted_decks"], 1)
         self.assertEqual(decks[0]["mainboard_count"], 100)
         self.assertEqual(set(decks[0]["commander_oracle_uids"]), {"commander-w", "commander-u"})
-        self.assertEqual(len(deck_cards), 100)
+        # mainboard now lives inline on decks.jsonl (no deck_cards.jsonl)
+        self.assertEqual(len(decks[0]["mainboard"]), 100)
+        self.assertIsNone(decks[0]["edhpowerlevel"])
+        self.assertFalse((out_dir / "deck_cards.jsonl").exists())
 
     def test_processor_accepts_renamed_premier_commander_category(self):
         cards = [
@@ -299,8 +303,7 @@ class ProcessArchidektRawTests(unittest.TestCase):
 
         self.assertEqual(summary["accepted_decks"], 1)
         deck_record = read_jsonl(out_dir / "decks.jsonl")[0]
-        deck_cards = read_jsonl(out_dir / "deck_cards.jsonl")
-        names = {row["oracle_name"] for row in deck_cards}
+        names = {row["oracle_name"] for row in deck_record["mainboard"]}
 
         self.assertEqual(deck_record["mainboard_count"], 100)
         self.assertIn("Token Strategy", names)
@@ -387,7 +390,9 @@ class ProcessArchidektRawTests(unittest.TestCase):
             )
             write_raw_details(raw_dir, [raw_deck])
 
-            args = processor.parse_args(["--raw-dir", str(raw_dir), "--out-dir", str(out_dir)])
+            args = processor.parse_args(
+                ["--raw-dir", str(raw_dir), "--out-dir", str(out_dir), "--skip-y2"]
+            )
             first_summary = processor.run(args)
             second_summary = processor.run(args)
 
@@ -395,6 +400,113 @@ class ProcessArchidektRawTests(unittest.TestCase):
             self.assertEqual(second_summary["skipped_existing_snapshots"], 1)
             self.assertEqual(len(read_jsonl(out_dir / "decks.jsonl")), 1)
             self.assertEqual(len(read_jsonl(out_dir / "cards.jsonl")), 2)
+
+
+edhpl_client = load_module("edhpowerlevel_client", "scripts/edhpowerlevel_client.py")
+
+
+class EDHPowerLevelParserTests(unittest.TestCase):
+    SAMPLE_BODY = """⚡
+Power Level
+8.40 / 10
+⚖️
+Tipping Point
+4
+⏱️
+Efficiency
+6.20 / 10
+💥
+Impact
+512.34
+🎯
+Score
+650 / 1000
+🕹️
+Average Playability
+85.5%
+beta Commander Bracket: 4
+"""
+
+    def test_parses_all_visible_fields(self):
+        parsed = edhpl_client._parse_result(self.SAMPLE_BODY)
+        self.assertEqual(parsed["commander_bracket"], 4)
+        self.assertEqual(parsed["power_level"], "8.40")
+        self.assertEqual(parsed["tipping_point"], "4")
+        self.assertEqual(parsed["efficiency"], "6.20")
+        self.assertEqual(parsed["impact"], "512.34")
+        self.assertEqual(parsed["score"], "650")
+        self.assertEqual(parsed["average_playability"], "85.5")
+
+    def test_decklist_text_builds_mtgo_format(self):
+        mainboard = [
+            {"oracle_name": "Sol Ring", "quantity": 1},
+            {"oracle_name": "Forest", "quantity": 8},
+            {"oracle_name": "Skip", "quantity": 0},  # filtered out
+        ]
+        text = edhpl_client.decklist_text(mainboard)
+        self.assertEqual(text, "1 Sol Ring\n8 Forest")
+
+
+class ProcessY2EnrichmentTests(unittest.TestCase):
+    """Phase B with the Playwright client patched out."""
+
+    def _seed_decks(self, out_dir, n=3):
+        out_dir.mkdir(parents=True, exist_ok=True)
+        with (out_dir / "decks.jsonl").open("w", encoding="utf-8") as handle:
+            for i in range(n):
+                handle.write(json.dumps({
+                    "snapshot_id": f"snap-{i}",
+                    "deck_id": 1000 + i,
+                    "mainboard": [{"oracle_name": "Sol Ring", "quantity": 1}],
+                    "edhpowerlevel": None,
+                }))
+                handle.write("\n")
+
+    def test_phase_b_enriches_decks_and_skips_already_done(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp)
+            self._seed_decks(out_dir, n=3)
+
+            class FakeClient:
+                def __init__(self, *a, **kw):
+                    self.calls = []
+
+                def __enter__(self): return self
+                def __exit__(self, *a): pass
+
+                def analyze(self, decklist):
+                    self.calls.append(decklist)
+                    return {"commander_bracket": 3, "power_level": "5.0"}
+
+            fake_module = type("M", (), {
+                "EDHPowerLevelClient": FakeClient,
+                "decklist_text": lambda mb: "1 Sol Ring",
+            })
+            import sys as _sys
+            _sys.modules["edhpowerlevel_client"] = fake_module
+
+            args = processor.parse_args([
+                "--raw-dir", str(out_dir / "raw"),
+                "--out-dir", str(out_dir),
+                "--y2-only",
+                "--y2-sleep", "0",
+                "--y2-flush-every", "1",
+            ])
+            first = processor.run(args)
+            self.assertEqual(first["y2_succeeded"], 3)
+            self.assertEqual(first["y2_failed"], 0)
+            self.assertEqual(first["y2_phase"]["bracket_distribution"], {3: 3})
+
+            decks = read_jsonl(out_dir / "decks.jsonl")
+            for d in decks:
+                self.assertEqual(d["edhpowerlevel"]["commander_bracket"], 3)
+
+            # Second run: nothing missing, no new attempts.
+            second = processor.run(args)
+            self.assertEqual(second.get("y2_attempted", 0), 0)
+            self.assertEqual(second["y2_phase"]["status"], "complete")
+
+            _sys.modules.pop("edhpowerlevel_client", None)
 
 
 if __name__ == "__main__":

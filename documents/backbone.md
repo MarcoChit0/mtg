@@ -314,6 +314,10 @@ cmc_5_count
 cmc_6_plus_count
 ```
 
+**Observação (decisão de implementação, 2026-05-13):** o CMC usado para calcular todas as features desta seção vem **estritamente de `card.oracleCard.cmc`** (canônico do Archidekt/Scryfall). O Archidekt permite que o usuário sobrescreva o CMC de uma carta por deck via o campo `customCmc` da linha do deck — auditoria mostrou que 2.421 decks (18,7%) usam esse override em pelo menos uma carta, totalizando 10.758 linhas com valores arbitrários (alguns legítimos, como interpretações de X-spells; outros refletindo preferência subjetiva do construtor). Pela mesma razão de §11.1.F (não deixar entrada livre do usuário poluir features estruturais), o pipeline ignora `customCmc` e usa só o oracle canônico. O campo `custom_cmc` continua preservado em cada linha de `mainboard` em `decks.jsonl` para auditoria, mas não vira feature de modelo.
+
+**Observação (poda, 2026-05-13):** `cmc_min` e `cmc_max` foram removidos por baixo sinal — `cmc_min` é 0 em ~todo deck por causa dos basics, e `cmc_max` reflete uma única carta atípica em vez da forma da curva. Os buckets `cmc_0_count` … `cmc_6_plus_count` já capturam os extremos com mais utilidade.
+
 #### E. Tipos de carta
 
 ```text
@@ -328,6 +332,8 @@ noncreature_spell_count
 permanent_count
 nonland_permanent_count
 ```
+
+**Observação (correção de bug, 2026-05-13):** `permanent_count` foi **removido**. A definição original na implementação excluía terrenos da contagem (`not is_land`), produzindo o mesmo valor que `nonland_permanent_count`. Em MTG, terrenos *são* permanentes — a definição correta seria "tudo que não é instant nem sorcery". Em vez de corrigir, a feature foi removida por redundância parcial com as outras contagens de tipo já presentes (terrenos têm `land_count`, não-terrenos permanentes têm `nonland_permanent_count`).
 
 #### F. Categorias do Archidekt
 
@@ -349,6 +355,16 @@ category_lifegain_count
 category_pump_count
 category_auras_equipment_count
 ```
+
+**Observação (decisão de implementação, 2026-05-13):** as features desta seção foram **removidas** do pipeline após auditoria empírica sobre 12.950 decks.
+
+As categorias por carta no Archidekt são strings livres definidas pelo próprio usuário. Diferente de campos canônicos do `oracleCard` (tipos, cores, CMC, salt, EDHREC rank, flags de bracket), elas não passam por nenhuma normalização do site. Isso gera dois problemas que invalidam a feature como sinal:
+
+- **Cobertura zero em ~23% da base**: 2.949 dos 12.950 decks (22,8%) não usam nenhum nome de categoria que bata com o vocabulário funcional padrão (Ramp / Draw / Removal / …). 16,9% dos decks usam apenas buckets de tipo de carta ("Creature", "Artifact", "Land"). Exemplo concreto: o deck `archidekt.com/decks/315586` ("PwLvL 8.0 Braids") tem rampa, draw e wipes, mas o usuário organizou tudo dentro de "Artifact" e "Creature" — todas as `category_*` saíam zero apesar das cartas existirem.
+
+- **Confound de estilo de catalogação**: mesmo entre decks "bem categorizados", convenções variam (`Card Draw` vs `Draw` vs `Advantage` vs `cardadvantage`). Expandir aliases é Sísifo — a auditoria encontrou pelo menos `interaction` (13k usos), `cardadvantage` (12.6k), `burn`, `drain`, `mill`, `stax`, `discard`, `landfall` como funcionais não cobertos. Manter a feature treina o modelo a aprender **estilo do criador**, não composição do deck.
+
+Como as outras seções (D curva, E tipos, G flags de bracket, H combos, K keywords) já capturam composição estrutural do oracle canônico, a perda de informação é limitada. O campo `categories` continua preservado em cada linha de `mainboard` em `decks.jsonl` para análises descritivas que queiram olhar convenções de catalogação diretamente — só não vira feature de modelo.
 
 #### G. Flags específicas de bracket
 
@@ -394,6 +410,8 @@ price_max
 
 Para preço, a ideia é calcular um preço médio por carta usando os preços disponíveis no raw do Archidekt, preferencialmente considerando preços de papel e não-foil.
 
+**Observação (poda, 2026-05-13):** `price_max`, `edhrec_rank_min`, `salt_max` e `high_salt_card_count` foram removidos. Todos refletem uma única carta dominante: `price_max` é o terreno dual/staple mais caro; `edhrec_rank_min` é praticamente sempre top-100 (Sol Ring, Command Tower); `salt_max` é tipicamente uma única carta salgada. Eles não caracterizam o perfil do deck — só sinalizam a presença de uma carta no extremo. `high_salt_card_count` usava um threshold arbitrário (`salt >= 1.0`); `salt_mean`/`salt_median`/`salt_std` já descrevem o perfil de salt com mais robustez. As features mantidas (`price_total`, `price_mean`, `price_median`, `price_std`, `edhrec_rank_mean`/`median`/`std`, `salt_mean`/`median`/`std`) cobrem popularidade, preço e salt como propriedades do deck inteiro.
+
 #### J. Raridade
 
 ```text
@@ -403,6 +421,8 @@ rare_count
 mythic_count
 rare_mythic_count
 ```
+
+**Observação (poda, 2026-05-13):** `rare_mythic_count` foi removido — é literalmente `rare_count + mythic_count`. Combinações lineares de outras features já existentes são redundantes e podem prejudicar modelos lineares.
 
 ### 11.2 Features secundárias
 
@@ -429,6 +449,8 @@ annihilator_count
 cascade_count
 protection_keyword_count
 ```
+
+**Observação (poda, 2026-05-13):** `keyword_count_mean` e `keyword_count_std` foram removidos. O campo `oracleCard.keywords` do Archidekt mistura keywords evergreen (Flying, Trample, …) com keywords flavor/set-específicas ("Allons-y!", "Animal May-Ham", "Aberrant Tinkering" — 583 distintas na base). Médias e desvios sobre essa cardinalidade ruidosa não capturam densidade real de mecânicas evergreen; as contagens absolutas por keyword evergreen (`flying_count`, `trample_count`, …) e `keyword_total_count`/`distinct_keyword_count` permanecem.
 
 #### L. Supertipos e subtipos
 

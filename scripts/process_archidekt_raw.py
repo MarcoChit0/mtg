@@ -1,12 +1,35 @@
 #!/usr/bin/env python3
-"""Process saved Archidekt raw payloads into JSONL modeling tables."""
+"""Process saved Archidekt raw payloads and enrich them with EDHPowerLevel.
+
+The script has two phases:
+
+* **Phase A — ingest**: read ``raw_deck_details.jsonl``, validate decks, and
+  write ``cards.jsonl`` + ``decks.jsonl`` (deduped by ``deck_id``, by card-list
+  fingerprint, and against already-processed snapshots). Each deck record
+  carries an ``edhpowerlevel`` field, initialised to ``None``.
+
+* **Phase B — enrich y2**: walk ``decks.jsonl`` looking for records with
+  ``edhpowerlevel is None``, submit each to https://edhpowerlevel.com/ via a
+  Playwright-driven Chromium, parse the scoring fields out of the page, and
+  rewrite ``decks.jsonl`` with ``edhpowerlevel`` populated. Resume-safe: a
+  sidecar JSONL log captures every attempt so an interrupted run can pick up
+  where it left off.
+
+The script writes ``cards.jsonl``, ``decks.jsonl``,
+``processing_manifest.jsonl``, ``rejected_decks.jsonl``, and (while Phase B is
+running) ``edhpowerlevel_results.jsonl``. There is no ``deck_cards.jsonl``;
+the per-deck-card information lives inline on each deck record under
+``mainboard`` and can be flattened on demand.
+"""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import os
 import re
+import time
 import uuid
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -19,9 +42,9 @@ DEFAULT_OUT_DIR = Path("data/processed/archidekt")
 OUTPUT_FILES = (
     "cards.jsonl",
     "decks.jsonl",
-    "deck_cards.jsonl",
     "processing_manifest.jsonl",
     "rejected_decks.jsonl",
+    "edhpowerlevel_results.jsonl",
 )
 BOARD_EXCLUDED_CATEGORIES = {"maybeboard", "sideboard", "tokensextras", "tokensandextras"}
 BASIC_LAND_NAMES = {"Plains", "Island", "Swamp", "Mountain", "Forest", "Wastes"}
@@ -326,6 +349,7 @@ def deck_snapshot_record(
         "archidekt_updated_at": deck.get("updatedAt"),
         "archidekt_edh_bracket": deck.get("edhBracket"),
         "view_count": deck.get("viewCount"),
+        "owner_id": _deck_owner_id(deck),
         "commander_oracle_uids": commanders,
         "mainboard_count": trace.get("included_quantity"),
         "validation_trace": trace,
@@ -344,33 +368,16 @@ def deck_snapshot_record(
             }
             for row in mainboard
         ],
+        # External label slot — populated by Phase B.
+        "edhpowerlevel": None,
     }
 
 
-def deck_card_records(raw_record: Dict[str, Any], deck: Dict[str, Any], mainboard: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    fetched_at = raw_record.get("fetched_at") or utc_now_iso()
-    deck_id = raw_record.get("deck_id", deck.get("id"))
-    sid = snapshot_id(deck_id, fetched_at)
-    records: List[Dict[str, Any]] = []
-    for row in mainboard:
-        records.append(
-            {
-                "record_type": "processed_archidekt_deck_card",
-                "snapshot_id": sid,
-                "deck_id": deck_id,
-                "fetched_at": fetched_at,
-                "oracle_uid": row.get("oracle_uid"),
-                "oracle_name": row.get("oracle_name"),
-                "quantity": row.get("quantity"),
-                "categories": row.get("categories"),
-                "is_commander": row.get("is_commander"),
-                "deck_row_id": row.get("deck_row_id"),
-                "custom_cmc": row.get("custom_cmc"),
-                "modifier": row.get("modifier"),
-                "notes": row.get("notes"),
-            }
-        )
-    return records
+def _deck_owner_id(deck: Dict[str, Any]) -> Any:
+    owner = deck.get("owner")
+    if isinstance(owner, dict):
+        return owner.get("id") or owner.get("username")
+    return owner
 
 
 def card_record(raw_record: Dict[str, Any], deck: Dict[str, Any], row: Dict[str, Any]) -> Dict[str, Any]:
@@ -487,30 +494,76 @@ def existing_ids(
 
 
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Process raw Archidekt deck payloads.")
+    parser = argparse.ArgumentParser(description="Process raw Archidekt deck payloads and enrich with EDHPowerLevel.")
     parser.add_argument("--raw-dir", type=Path, default=DEFAULT_RAW_DIR, help="Directory containing raw_deck_details.jsonl.")
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT_DIR, help="Processed output directory.")
     parser.add_argument("--min-views", type=int, default=1000, help="Minimum Archidekt view count.")
     parser.add_argument("--brackets", type=int, nargs="+", default=[2, 3, 4], help="Accepted EDH brackets.")
     parser.add_argument("--overwrite", action="store_true", help="Replace existing processed JSONL outputs.")
+
+    # ----- Phase B knobs ----------------------------------------------------
+    parser.add_argument(
+        "--skip-y2",
+        action="store_true",
+        help="Skip the EDHPowerLevel enrichment phase.",
+    )
+    parser.add_argument(
+        "--y2-only",
+        action="store_true",
+        help="Skip Phase A and only run EDHPowerLevel enrichment on existing decks.jsonl.",
+    )
+    parser.add_argument(
+        "--y2-max-decks",
+        type=int,
+        default=None,
+        help="Cap how many decks to query EDHPowerLevel for this run (resume-friendly).",
+    )
+    parser.add_argument(
+        "--y2-sleep",
+        type=float,
+        default=0.5,
+        help="Seconds to wait between EDHPowerLevel analyses (be courteous).",
+    )
+    parser.add_argument(
+        "--y2-headed",
+        action="store_true",
+        help="Run Chromium with a visible window — useful when debugging selectors.",
+    )
+    parser.add_argument(
+        "--y2-analysis-wait",
+        type=float,
+        default=6.0,
+        help="Seconds to wait after clicking Analyze before scraping the result.",
+    )
+    parser.add_argument(
+        "--y2-recycle-every",
+        type=int,
+        default=50,
+        help="Recreate the browser page every N analyses to bound memory.",
+    )
+    parser.add_argument(
+        "--y2-flush-every",
+        type=int,
+        default=25,
+        help="Rewrite decks.jsonl with the latest y2 progress every N analyses.",
+    )
+    parser.add_argument(
+        "--y2-retry-failed",
+        action="store_true",
+        help="Re-query decks whose previous attempt returned an error.",
+    )
     return parser.parse_args(argv)
 
 
-def run(args: argparse.Namespace) -> Dict[str, Any]:
+# ============================================================================
+# Phase A — ingest
+# ============================================================================
+def _phase_a(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
     raw_details_path = args.raw_dir / "raw_deck_details.jsonl"
     out_dir: Path = args.out_dir
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    if args.overwrite:
-        for filename in OUTPUT_FILES:
-            path = out_dir / filename
-            if path.exists():
-                path.unlink()
 
     cards_path = out_dir / "cards.jsonl"
     decks_path = out_dir / "decks.jsonl"
-    deck_cards_path = out_dir / "deck_cards.jsonl"
-    manifest_path = out_dir / "processing_manifest.jsonl"
     rejected_path = out_dir / "rejected_decks.jsonl"
 
     (
@@ -521,41 +574,21 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         seen_fingerprints,
         fingerprint_to_deck_id,
     ) = existing_ids(out_dir)
-    run_id = f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:8]}"
     brackets = set(args.brackets)
 
-    # Pre-pass: one record per deck_id (latest updatedAt wins).
     total_raw, candidate_records = latest_raw_records(raw_details_path)
-
-    summary: Dict[str, Any] = {
-        "record_type": "archidekt_processing_manifest",
-        "run_id": run_id,
-        "started_at": utc_now_iso(),
-        "finished_at": None,
-        "parameters": {
-            "raw_dir": str(args.raw_dir),
-            "out_dir": str(out_dir),
-            "min_views": args.min_views,
-            "brackets": list(args.brackets),
-            "overwrite": bool(args.overwrite),
-        },
-        "raw_records_read": total_raw,
-        "duplicate_deck_id_skipped": total_raw - len(candidate_records),
-        "accepted_decks": 0,
-        "rejected_decks": 0,
-        "skipped_existing": 0,
-        "cards_written": 0,
-        "deck_card_rows_written": 0,
-        "rejection_reasons": Counter(),
-        "errors": [],
-    }
+    summary["raw_records_read"] = total_raw
+    summary["duplicate_deck_id_skipped"] = total_raw - len(candidate_records)
 
     for raw_record in candidate_records:
         deck_id = raw_record.get("deck_id")
 
-        # Already accepted in a previous run — skip entirely.
+        # Already accepted in a previous run — skip entirely. This is the
+        # "same user, same deck_id" dedup the spec calls for: regardless of
+        # whether 1 or 20 cards changed since last fetch, deck_id is the
+        # canonical identity for a deck within a user.
         if isinstance(deck_id, int) and deck_id in accepted_deck_ids:
-            summary["skipped_existing"] += 1
+            summary["skipped_existing_snapshots"] += 1
             continue
 
         deck, payload_error = raw_detail_from_record(raw_record)
@@ -573,9 +606,8 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         fetched_at = raw_record.get("fetched_at") or utc_now_iso()
         sid = snapshot_id(deck_id, fetched_at)
 
-        # Already rejected in a previous run — skip.
         if sid in rejected_snapshot_ids:
-            summary["skipped_existing"] += 1
+            summary["skipped_existing_snapshots"] += 1
             continue
 
         mainboard, trace = extract_mainboard(deck)
@@ -589,7 +621,9 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             summary["rejection_reasons"].update(reasons)
             continue
 
-        # Deduplicate by card list fingerprint (catches copied decks).
+        # Card-list fingerprint dedup: rejects decks with an identical
+        # mainboard from a *different* deck_id (the "different users, same
+        # cards" case in the spec).
         fp = deck_fingerprint(mainboard)
         if fp in seen_fingerprints:
             reasons = ["duplicate_card_list"]
@@ -619,9 +653,219 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         accepted_deck_ids.add(deck_id)
         summary["accepted_decks"] += 1
 
-        for row_record in deck_card_records(raw_record, deck, mainboard):
-            append_jsonl(deck_cards_path, row_record)
-            summary["deck_card_rows_written"] += 1
+
+# ============================================================================
+# Phase B — EDHPowerLevel y2 enrichment
+# ============================================================================
+def _decks_missing_y2(decks_path: Path, retry_failed: bool) -> List[str]:
+    missing: List[str] = []
+    for record in iter_jsonl(decks_path) or []:
+        sid = record.get("snapshot_id")
+        if not isinstance(sid, str):
+            continue
+        y2 = record.get("edhpowerlevel")
+        if y2 is None:
+            missing.append(sid)
+            continue
+        if retry_failed and isinstance(y2, dict) and y2.get("error"):
+            missing.append(sid)
+    return missing
+
+
+def _load_y2_progress(path: Path) -> Dict[str, Dict[str, Any]]:
+    """Return latest result per snapshot from the append-only progress log."""
+    latest: Dict[str, Dict[str, Any]] = {}
+    for record in iter_jsonl(path) or []:
+        sid = record.get("snapshot_id")
+        if isinstance(sid, str):
+            latest[sid] = record
+    return latest
+
+
+def _rewrite_decks_with_y2(
+    decks_path: Path, y2_by_sid: Dict[str, Dict[str, Any]], summary: Dict[str, Any]
+) -> int:
+    """Atomically rewrite decks.jsonl with `edhpowerlevel` populated.
+
+    Returns the number of records that gained a non-error y2. We rewrite
+    rather than update-in-place so partial progress is always readable.
+    """
+    if not y2_by_sid:
+        return 0
+    tmp_path = decks_path.with_suffix(decks_path.suffix + ".tmp")
+    populated = 0
+    with tmp_path.open("w", encoding="utf-8") as out:
+        for record in iter_jsonl(decks_path) or []:
+            sid = record.get("snapshot_id")
+            entry = y2_by_sid.get(sid)
+            if entry is not None:
+                payload = {k: v for k, v in entry.items() if k != "snapshot_id"}
+                record["edhpowerlevel"] = payload
+                if not payload.get("error"):
+                    populated += 1
+            out.write(json.dumps(record, ensure_ascii=False, sort_keys=True))
+            out.write("\n")
+    os.replace(tmp_path, decks_path)
+    summary["y2_decks_in_decks_jsonl"] = populated
+    return populated
+
+
+def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
+    # Imported lazily so Phase A doesn't pull Playwright in when --skip-y2 is
+    # set or when the user only wants to ingest. We probe ``sys.modules``
+    # first so unit tests can inject a fake client without depending on
+    # import path layout; then try the unprefixed name (works when running
+    # the script directly), then the package-qualified name (works under
+    # ``uv run`` where ``scripts`` is the installed package).
+    import sys
+
+    module = sys.modules.get("edhpowerlevel_client")
+    if module is None:
+        try:
+            from edhpowerlevel_client import EDHPowerLevelClient, decklist_text  # type: ignore
+        except ImportError:
+            from scripts.edhpowerlevel_client import EDHPowerLevelClient, decklist_text  # type: ignore
+    else:
+        EDHPowerLevelClient = module.EDHPowerLevelClient  # type: ignore
+        decklist_text = module.decklist_text  # type: ignore
+
+    out_dir: Path = args.out_dir
+    decks_path = out_dir / "decks.jsonl"
+    progress_path = out_dir / "edhpowerlevel_results.jsonl"
+
+    if not decks_path.exists():
+        summary["y2_phase"] = {"status": "skipped", "reason": "no_decks_jsonl"}
+        return
+
+    progress = _load_y2_progress(progress_path)
+    # If progress exists from a prior run, apply it before deciding what's missing.
+    if progress:
+        _rewrite_decks_with_y2(decks_path, progress, summary)
+
+    missing = _decks_missing_y2(decks_path, retry_failed=args.y2_retry_failed)
+    if not missing:
+        summary["y2_phase"] = {
+            "status": "complete",
+            "missing": 0,
+            "processed_this_run": 0,
+        }
+        return
+
+    cap = args.y2_max_decks if args.y2_max_decks else len(missing)
+    targets = set(missing[:cap])
+
+    summary["y2_phase"] = {
+        "status": "running",
+        "missing_initial": len(missing),
+        "targets_this_run": len(targets),
+    }
+    summary["y2_attempted"] = 0
+    summary["y2_succeeded"] = 0
+    summary["y2_failed"] = 0
+    bracket_counts: Counter = Counter()
+
+    pending_writes: Dict[str, Dict[str, Any]] = dict(progress)
+
+    def flush() -> None:
+        if pending_writes:
+            _rewrite_decks_with_y2(decks_path, pending_writes, summary)
+
+    started = time.monotonic()
+    with EDHPowerLevelClient(
+        headless=not args.y2_headed,
+        analysis_wait_sec=args.y2_analysis_wait,
+        context_recycle_every=args.y2_recycle_every,
+    ) as client:
+        # We re-read decks.jsonl line by line to keep memory low even on
+        # tens of thousands of decks. Skip those not in the target set.
+        for record in iter_jsonl(decks_path) or []:
+            sid = record.get("snapshot_id")
+            if sid not in targets:
+                continue
+            mainboard = record.get("mainboard") or []
+            decklist = decklist_text(mainboard)
+            result = client.analyze(decklist)
+            result_with_id = dict(result)
+            result_with_id["snapshot_id"] = sid
+            result_with_id["deck_id"] = record.get("deck_id")
+            result_with_id["queried_at"] = utc_now_iso()
+            append_jsonl(progress_path, result_with_id)
+            pending_writes[sid] = result_with_id
+
+            summary["y2_attempted"] += 1
+            if result.get("error"):
+                summary["y2_failed"] += 1
+            else:
+                summary["y2_succeeded"] += 1
+                if "commander_bracket" in result:
+                    bracket_counts[result["commander_bracket"]] += 1
+
+            if summary["y2_attempted"] % args.y2_flush_every == 0:
+                flush()
+
+            if args.y2_sleep:
+                time.sleep(args.y2_sleep)
+
+    flush()
+    elapsed = time.monotonic() - started
+    summary["y2_phase"]["status"] = "done"
+    summary["y2_phase"]["elapsed_seconds"] = round(elapsed, 2)
+    summary["y2_phase"]["bracket_distribution"] = dict(bracket_counts)
+
+
+# ============================================================================
+# Entrypoint
+# ============================================================================
+def run(args: argparse.Namespace) -> Dict[str, Any]:
+    out_dir: Path = args.out_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = out_dir / "processing_manifest.jsonl"
+
+    if args.overwrite:
+        for filename in OUTPUT_FILES:
+            path = out_dir / filename
+            if path.exists():
+                path.unlink()
+
+    run_id = f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{uuid.uuid4().hex[:8]}"
+    summary: Dict[str, Any] = {
+        "record_type": "archidekt_processing_manifest",
+        "run_id": run_id,
+        "started_at": utc_now_iso(),
+        "finished_at": None,
+        "parameters": {
+            "raw_dir": str(args.raw_dir),
+            "out_dir": str(out_dir),
+            "min_views": args.min_views,
+            "brackets": list(args.brackets),
+            "overwrite": bool(args.overwrite),
+            "skip_y2": bool(args.skip_y2),
+            "y2_only": bool(args.y2_only),
+            "y2_max_decks": args.y2_max_decks,
+        },
+        "raw_records_read": 0,
+        "duplicate_deck_id_skipped": 0,
+        "accepted_decks": 0,
+        "rejected_decks": 0,
+        "skipped_existing_snapshots": 0,
+        "cards_written": 0,
+        "rejection_reasons": Counter(),
+        "errors": [],
+    }
+
+    if not args.y2_only:
+        _phase_a(args, summary)
+
+    if not args.skip_y2:
+        try:
+            _phase_b(args, summary)
+        except ImportError as exc:
+            summary["errors"].append({"phase": "y2", "error": f"import_error: {exc}"})
+            summary.setdefault("y2_phase", {})["status"] = "skipped"
+            summary["y2_phase"]["reason"] = "playwright_not_available"
+        except Exception as exc:
+            summary["errors"].append({"phase": "y2", "error": str(exc), "error_type": type(exc).__name__})
+            summary.setdefault("y2_phase", {})["status"] = "error"
 
     summary["finished_at"] = utc_now_iso()
     summary["rejection_reasons"] = dict(summary["rejection_reasons"])
