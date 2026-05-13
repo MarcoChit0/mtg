@@ -418,6 +418,12 @@ uv sync
 uv run playwright install chromium
 ```
 
+O `process-archidekt-raw` faz uma checagem antes de abrir os workers. Se o Chromium do Playwright nao estiver instalado, ele para antes de iniciar as threads e mostra esse comando. Em Ubuntu/Debian, se o Chromium estiver instalado mas faltarem bibliotecas do sistema, rode tambem:
+
+```bash
+uv run playwright install-deps chromium
+```
+
 ## Etapa 3: construir features para modelagem
 
 Comando basico:

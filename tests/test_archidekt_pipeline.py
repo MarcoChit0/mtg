@@ -677,6 +677,29 @@ class ProcessY2EnrichmentTests(unittest.TestCase):
             self.assertEqual(summary["y2_phase"]["workers"], 3)
             self.assertGreaterEqual(stats["max_active"], 2)
 
+    def test_phase_b_preflights_real_playwright_before_spawning_workers(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp)
+            self._seed_decks(out_dir, n=2)
+
+            original = processor._ensure_playwright_chromium_ready
+            processor._ensure_playwright_chromium_ready = lambda: (_ for _ in ()).throw(RuntimeError("install chromium"))
+            try:
+                args = processor.parse_args([
+                    "--raw-dir", str(out_dir / "raw"),
+                    "--out-dir", str(out_dir),
+                    "--y2-only",
+                    "--workers", "2",
+                ])
+                summary = processor.run(args)
+            finally:
+                processor._ensure_playwright_chromium_ready = original
+
+            self.assertEqual(summary["y2_phase"]["status"], "error")
+            self.assertEqual(summary["y2_phase"]["workers"], 2)
+            self.assertEqual(summary.get("y2_attempted", 0), 0)
+            self.assertIn("install chromium", summary["errors"][0]["error"])
+
 
 if __name__ == "__main__":
     unittest.main()

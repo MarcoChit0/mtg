@@ -724,6 +724,46 @@ def _rewrite_decks_with_y2(
     return populated
 
 
+def _is_real_edhpowerlevel_client(client_cls: Any) -> bool:
+    return getattr(client_cls, "__module__", "") in {
+        "edhpowerlevel_client",
+        "scripts.edhpowerlevel_client",
+    }
+
+
+def _ensure_playwright_chromium_ready() -> None:
+    """Fail before spawning workers when Playwright's Chromium is unavailable."""
+    try:
+        from playwright.sync_api import Error as PlaywrightError, sync_playwright  # type: ignore[import-not-found]
+    except ImportError as exc:
+        raise RuntimeError(
+            "Playwright is not installed in this environment. Run `uv sync` from the project root first."
+        ) from exc
+
+    playwright = sync_playwright().start()
+    try:
+        executable = Path(playwright.chromium.executable_path)
+        if not executable.exists():
+            raise RuntimeError(
+                "Playwright Chromium is not installed. Run this once from the project root:\n"
+                "  uv run playwright install chromium\n"
+                f"Expected executable: {executable}"
+            )
+
+        browser = playwright.chromium.launch(headless=True)
+        browser.close()
+    except PlaywrightError as exc:
+        raise RuntimeError(
+            "Playwright could not launch Chromium. Run this once from the project root:\n"
+            "  uv run playwright install chromium\n"
+            "On Ubuntu/Debian, if the browser is installed but system libraries are missing, run:\n"
+            "  uv run playwright install-deps chromium\n"
+            f"Original Playwright error: {exc}"
+        ) from exc
+    finally:
+        playwright.stop()
+
+
 def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
     # Imported lazily so Phase A doesn't pull Playwright in when --skip-y2 is
     # set or when the user only wants to ingest. We probe ``sys.modules``
@@ -789,6 +829,9 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
         "targets_this_run": len(targets),
         "workers": workers,
     }
+    if _is_real_edhpowerlevel_client(EDHPowerLevelClient):
+        _ensure_playwright_chromium_ready()
+
     summary["y2_attempted"] = 0
     summary["y2_succeeded"] = 0
     summary["y2_failed"] = 0
@@ -803,6 +846,7 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
     state_lock = threading.Lock()
     work_queue: collections.deque = collections.deque(targets_list)
     work_lock = threading.Lock()
+    worker_errors: List[Dict[str, Any]] = []
 
     def maybe_flush_locked() -> None:
         """Trigger a flush if the running counter crossed the threshold.
@@ -816,45 +860,51 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
     def worker_loop() -> None:
         # Each worker spins up its own Playwright driver + Chromium browser.
         # Per-worker memory ≈ 200 MB.
-        with EDHPowerLevelClient(
-            headless=not args.y2_headed,
-            analysis_wait_sec=args.y2_analysis_wait,
-            context_recycle_every=args.y2_recycle_every,
-        ) as client:
-            while True:
-                with work_lock:
-                    if not work_queue:
-                        return
-                    sid = work_queue.popleft()
-                info = targets_data.get(sid)
-                if info is None:
-                    # Should not happen — we only enqueue sids we indexed —
-                    # but if it does, account for it and move on.
+        try:
+            with EDHPowerLevelClient(
+                headless=not args.y2_headed,
+                analysis_wait_sec=args.y2_analysis_wait,
+                context_recycle_every=args.y2_recycle_every,
+            ) as client:
+                while True:
+                    with work_lock:
+                        if not work_queue:
+                            return
+                        sid = work_queue.popleft()
+                    info = targets_data.get(sid)
+                    if info is None:
+                        # Should not happen — we only enqueue sids we indexed —
+                        # but if it does, account for it and move on.
+                        with state_lock:
+                            summary["y2_failed"] += 1
+                        continue
+
+                    decklist = decklist_text(info["mainboard"])
+                    result = client.analyze(decklist)
+                    result_with_id = dict(result)
+                    result_with_id["snapshot_id"] = sid
+                    result_with_id["deck_id"] = info["deck_id"]
+                    result_with_id["queried_at"] = utc_now_iso()
+
                     with state_lock:
-                        summary["y2_failed"] += 1
-                    continue
+                        append_jsonl(progress_path, result_with_id)
+                        pending_writes[sid] = result_with_id
+                        summary["y2_attempted"] += 1
+                        if result.get("error"):
+                            summary["y2_failed"] += 1
+                        else:
+                            summary["y2_succeeded"] += 1
+                            if "commander_bracket" in result:
+                                bracket_counts[result["commander_bracket"]] += 1
+                        maybe_flush_locked()
 
-                decklist = decklist_text(info["mainboard"])
-                result = client.analyze(decklist)
-                result_with_id = dict(result)
-                result_with_id["snapshot_id"] = sid
-                result_with_id["deck_id"] = info["deck_id"]
-                result_with_id["queried_at"] = utc_now_iso()
-
-                with state_lock:
-                    append_jsonl(progress_path, result_with_id)
-                    pending_writes[sid] = result_with_id
-                    summary["y2_attempted"] += 1
-                    if result.get("error"):
-                        summary["y2_failed"] += 1
-                    else:
-                        summary["y2_succeeded"] += 1
-                        if "commander_bracket" in result:
-                            bracket_counts[result["commander_bracket"]] += 1
-                    maybe_flush_locked()
-
-                if args.y2_sleep:
-                    time.sleep(args.y2_sleep)
+                    if args.y2_sleep:
+                        time.sleep(args.y2_sleep)
+        except Exception as exc:
+            with state_lock:
+                worker_errors.append(
+                    {"stage": "y2_worker", "error": str(exc), "error_type": type(exc).__name__}
+                )
 
     started = time.monotonic()
     if workers == 1:
@@ -874,7 +924,11 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
         _rewrite_decks_with_y2(decks_path, pending_writes, summary)
 
     elapsed = time.monotonic() - started
-    summary["y2_phase"]["status"] = "done"
+    if worker_errors:
+        summary["errors"].extend(worker_errors)
+        summary["y2_phase"]["status"] = "error"
+    else:
+        summary["y2_phase"]["status"] = "done"
     summary["y2_phase"]["elapsed_seconds"] = round(elapsed, 2)
     summary["y2_phase"]["bracket_distribution"] = dict(bracket_counts)
 
@@ -944,6 +998,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parse_args(argv)
     summary = run(args)
     print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
+    if summary.get("y2_phase", {}).get("status") == "error":
+        return 1
     return 0
 
 
