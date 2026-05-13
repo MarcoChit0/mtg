@@ -12,6 +12,7 @@ dependencies = [
 fetch-archidekt-raw = "scripts.fetch_archidekt_raw:main"
 process-archidekt-raw = "scripts.process_archidekt_raw:main"
 build-archidekt-features = "scripts.build_features:main"
+restore-archidekt-raw = "scripts.download_archidekt_raw:main"
 
 [build-system]
 requires = ["setuptools>=69"]

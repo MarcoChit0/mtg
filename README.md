@@ -61,6 +61,10 @@ O diretorio `data/` fica no `.gitignore`, pois os dados extraidos podem ficar gr
 
 A pipeline tem tres etapas.
 
+0. `restore-archidekt-raw`
+
+   Baixa o arquivo raw compartilhado no Google Drive e restaura os JSONL em `data/raw/archidekt`.
+
 1. `fetch-archidekt-raw`
 
    Baixa dados do Archidekt e salva apenas raws de decks validos para o escopo do projeto.
@@ -74,6 +78,106 @@ A pipeline tem tres etapas.
    Le `decks.jsonl` + `cards.jsonl` (e opcionalmente o raw, para preco e raridade) e gera as duas representacoes prontas para modelagem: `deck_features.jsonl` (Deck Features descritas na secao 11 do backbone) e `bag_of_cards.jsonl` (Bag of Cards esparso por snapshot).
 
 Os scripts 2 e 3 nao chamam a API do Archidekt. A Fase B do script 2 e a unica chamada de rede fora da Etapa 1.
+
+## Etapa 0: restaurar raws do Google Drive
+
+### Requisitos do Google Drive
+
+Este script nao usa a API autenticada do Google Drive, OAuth, nem login no navegador. Ele baixa o arquivo pelo link publico de compartilhamento do proprio Drive. Para funcionar, o arquivo precisa estar compartilhado assim:
+
+1. No Google Drive, coloque os raws em um arquivo ZIP. O arquivo usado neste projeto e:
+
+```text
+MTG/DATA/Archive.zip
+```
+
+2. Dentro do ZIP devem existir estes tres arquivos, em qualquer pasta ou na raiz do ZIP:
+
+```text
+fetch_manifest.jsonl
+raw_deck_details.jsonl
+raw_deck_search_pages.jsonl
+```
+
+3. Clique com botao direito em `Archive.zip` no Drive, abra **Compartilhar**, e altere o acesso geral para:
+
+```text
+Qualquer pessoa com o link
+```
+
+ou, em ingles:
+
+```text
+Anyone with the link
+```
+
+4. Copie o link do arquivo ZIP. O link deve ter este formato:
+
+```text
+https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing
+```
+
+O script extrai o `<FILE_ID>` automaticamente. Tambem e possivel passar so o id com `--file-id`.
+
+Importante: o caminho `MTG/DATA/Archive.zip` ajuda voce a encontrar o arquivo na sua conta, mas o script nao consegue baixar pelo caminho interno do Drive. Ele precisa do link compartilhavel do arquivo ou do `file_id`.
+
+Como o ZIP e grande, o Google Drive mostra o aviso "Google Drive can't scan this file for viruses". O script ja trata esse aviso e segue o botao "Download anyway" automaticamente. Se o arquivo estiver restrito, o Drive devolve uma pagina de login e o script falha; nesse caso, confira o compartilhamento "Qualquer pessoa com o link".
+
+Espaco em disco recomendado para esta restauracao:
+
+- aproximadamente `618 MB` para `Archive.zip`;
+- aproximadamente `4.3 GB` para `raw_deck_details.jsonl`;
+- mais os dados processados em `data/processed/archidekt`.
+
+Na pratica, deixe pelo menos `6-8 GB` livres para a etapa raw + processada.
+
+Comando basico:
+
+```bash
+uv run restore-archidekt-raw
+```
+
+Por padrao, esse comando baixa o `Archive.zip` compartilhado no Google Drive, extrai os raws e roda `process-archidekt-raw --skip-y2` para gerar os dados processados sem chamar a calculadora externa.
+
+Para usar outro link do Drive:
+
+```bash
+uv run restore-archidekt-raw --drive-url "https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing"
+```
+
+Raw restaurado:
+
+```text
+data/raw/archidekt/fetch_manifest.jsonl
+data/raw/archidekt/raw_deck_details.jsonl
+data/raw/archidekt/raw_deck_search_pages.jsonl
+```
+
+Processado gerado:
+
+```text
+data/processed/archidekt/cards.jsonl
+data/processed/archidekt/decks.jsonl
+data/processed/archidekt/processing_manifest.jsonl
+data/processed/archidekt/rejected_decks.jsonl
+```
+
+Se `data/raw/archidekt/Archive.zip` ja existir, o script reutiliza o arquivo local. Se os JSONL raw ja existirem, eles sao preservados; use `--overwrite` para sobrescrever. Para sobrescrever os processados, use `--process-overwrite`.
+
+Parametros uteis:
+
+- `--drive-url URL` — usa outro link do Google Drive.
+- `--file-id ID` — usa diretamente o id do arquivo do Drive.
+- `--out-dir DIR` — diretorio de destino; padrao `data/raw/archidekt`.
+- `--processed-dir DIR` — diretorio processado; padrao `data/processed/archidekt`.
+- `--archive PATH` — caminho local do zip; padrao `<out-dir>/Archive.zip`.
+- `--force-download` — baixa novamente mesmo se o zip ja existir.
+- `--overwrite` — sobrescreve JSONL ja existentes.
+- `--download-only` — baixa o zip sem extrair.
+- `--skip-process` — restaura apenas os raws, sem processar.
+- `--process-overwrite` — passa `--overwrite` para o processamento.
+- `--process-y2` — tambem roda o enriquecimento do EDHPowerLevel; por padrao ele fica desligado.
+- `--workers N` — workers usados se `--process-y2` estiver ativo.
 
 ## Etapa 1: extrair raws do Archidekt
 
@@ -141,12 +245,16 @@ Parametros:
   - padrao: `data/raw/archidekt`.
 
 - `--sleep-sec`
-  - pausa entre chamadas da API;
+  - pausa por worker apos chamadas de detalhe, e tambem entre paginas de busca;
   - padrao: `0.25`.
 
 - `--max-decks`
   - numero maximo de decks validos a salvar nesta execucao;
   - se omitido, tenta coletar todos os candidatos encontrados acima do limite de views.
+
+- `--workers`
+  - numero de workers paralelos buscando payloads de detalhe do Archidekt;
+  - padrao: `1`.
 
 - `--resume`
   - pula decks ja presentes em `raw_deck_details.jsonl`.
@@ -164,6 +272,12 @@ Coletar 50 decks validos:
 
 ```bash
 uv run fetch-archidekt-raw --max-decks 50 --resume
+```
+
+Coletar com 32 workers de detalhe:
+
+```bash
+uv run fetch-archidekt-raw --max-decks 1000 --resume --workers 32
 ```
 
 Coletar apenas bracket 3:
@@ -247,12 +361,15 @@ Parametros da Fase B (EDHPowerLevel):
 - `--y2-flush-every N` — reescreve `decks.jsonl` com o progresso atual a cada N analises (padrao `25`).
 - `--y2-headed` — abre o Chromium com janela visivel (debug).
 - `--y2-retry-failed` — re-consulta decks cujo y2 anterior tenha sido um erro.
+- `--workers N` — numero de browsers Chromium paralelos consultando o EDHPowerLevel (padrao `1`).
 
 ### Sobre a calculadora externa (Fase B)
 
 O site `https://edhpowerlevel.com/` nao tem API publica: o calculo roda no navegador. Esta etapa usa Playwright + Chromium para abrir a pagina, colar o decklist (formato `<qty> <card name>`), clicar *Analyze* e extrair o `Commander Bracket` recomendado (alem das outras metricas que o site exibe).
 
 Latencia tipica: **~7-8 segundos por deck** (dominado por `--y2-analysis-wait`). Para uma base de 12-13k decks, planeje **~24-30 horas de wall time**. Use `--y2-max-decks` para fracionar a execucao; o progresso fica salvo em `edhpowerlevel_results.jsonl` e em `decks.jsonl` (reescrito a cada `--y2-flush-every` analises).
+
+Com `--workers`, cada worker abre seu proprio Playwright + Chromium. Por exemplo, `--workers 32` tenta manter 32 analises simultaneas, mas tambem consome muita RAM e pode acionar rate-limit ou instabilidade do site.
 
 ### Exemplos
 
@@ -278,6 +395,12 @@ Rodar a Fase B em lotes (por exemplo, 500 decks por vez):
 
 ```bash
 uv run process-archidekt-raw --y2-only --y2-max-decks 500
+```
+
+Rodar a Fase B com 32 browsers em paralelo:
+
+```bash
+uv run process-archidekt-raw --y2-only --workers 32 --y2-sleep 0
 ```
 
 Re-tentar decks que falharam:

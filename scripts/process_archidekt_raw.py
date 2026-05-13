@@ -25,10 +25,12 @@ the per-deck-card information lives inline on each deck record under
 from __future__ import annotations
 
 import argparse
+import collections
 import hashlib
 import json
 import os
 import re
+import threading
 import time
 import uuid
 from collections import Counter, defaultdict
@@ -552,6 +554,18 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         action="store_true",
         help="Re-query decks whose previous attempt returned an error.",
     )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=1,
+        help=(
+            "Number of parallel Chromium workers querying EDHPowerLevel. "
+            "Each worker runs its own Playwright instance + browser (~200 MB "
+            "RAM). Default 1 (sequential). Aggressive concurrency may get "
+            "rate-limited; ~8 is usually a safe ceiling on a single machine."
+        ),
+    )
+    parser.add_argument("--y2-workers", dest="workers", type=int, help=argparse.SUPPRESS)
     return parser.parse_args(argv)
 
 
@@ -752,12 +766,28 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
         return
 
     cap = args.y2_max_decks if args.y2_max_decks else len(missing)
-    targets = set(missing[:cap])
+    targets_list = missing[:cap]
+    targets = set(targets_list)
 
+    # Build a minimal in-memory map (snapshot_id -> deck_id, mainboard) for
+    # the targets only. The full record is too big to keep N copies of in
+    # threads; this slice is just what each worker needs to build a
+    # decklist string.
+    targets_data: Dict[str, Dict[str, Any]] = {}
+    for record in iter_jsonl(decks_path) or []:
+        sid = record.get("snapshot_id")
+        if sid in targets and sid not in targets_data:
+            targets_data[sid] = {
+                "deck_id": record.get("deck_id"),
+                "mainboard": record.get("mainboard") or [],
+            }
+
+    workers = max(int(args.workers or 1), 1)
     summary["y2_phase"] = {
         "status": "running",
         "missing_initial": len(missing),
         "targets_this_run": len(targets),
+        "workers": workers,
     }
     summary["y2_attempted"] = 0
     summary["y2_succeeded"] = 0
@@ -766,47 +796,83 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
 
     pending_writes: Dict[str, Dict[str, Any]] = dict(progress)
 
-    def flush() -> None:
-        if pending_writes:
+    # Single state lock guards every shared mutation. Critical sections are
+    # short (counter increments, dict update, append-only JSONL write); the
+    # browser query itself happens *outside* the lock, so workers don't
+    # serialize on each other's network/render time.
+    state_lock = threading.Lock()
+    work_queue: collections.deque = collections.deque(targets_list)
+    work_lock = threading.Lock()
+
+    def maybe_flush_locked() -> None:
+        """Trigger a flush if the running counter crossed the threshold.
+
+        Caller must hold ``state_lock``. Flushes happen inline; with many
+        workers, raise ``--y2-flush-every`` to keep flushes coarse.
+        """
+        if summary["y2_attempted"] % args.y2_flush_every == 0:
             _rewrite_decks_with_y2(decks_path, pending_writes, summary)
 
+    def worker_loop() -> None:
+        # Each worker spins up its own Playwright driver + Chromium browser.
+        # Per-worker memory ≈ 200 MB.
+        with EDHPowerLevelClient(
+            headless=not args.y2_headed,
+            analysis_wait_sec=args.y2_analysis_wait,
+            context_recycle_every=args.y2_recycle_every,
+        ) as client:
+            while True:
+                with work_lock:
+                    if not work_queue:
+                        return
+                    sid = work_queue.popleft()
+                info = targets_data.get(sid)
+                if info is None:
+                    # Should not happen — we only enqueue sids we indexed —
+                    # but if it does, account for it and move on.
+                    with state_lock:
+                        summary["y2_failed"] += 1
+                    continue
+
+                decklist = decklist_text(info["mainboard"])
+                result = client.analyze(decklist)
+                result_with_id = dict(result)
+                result_with_id["snapshot_id"] = sid
+                result_with_id["deck_id"] = info["deck_id"]
+                result_with_id["queried_at"] = utc_now_iso()
+
+                with state_lock:
+                    append_jsonl(progress_path, result_with_id)
+                    pending_writes[sid] = result_with_id
+                    summary["y2_attempted"] += 1
+                    if result.get("error"):
+                        summary["y2_failed"] += 1
+                    else:
+                        summary["y2_succeeded"] += 1
+                        if "commander_bracket" in result:
+                            bracket_counts[result["commander_bracket"]] += 1
+                    maybe_flush_locked()
+
+                if args.y2_sleep:
+                    time.sleep(args.y2_sleep)
+
     started = time.monotonic()
-    with EDHPowerLevelClient(
-        headless=not args.y2_headed,
-        analysis_wait_sec=args.y2_analysis_wait,
-        context_recycle_every=args.y2_recycle_every,
-    ) as client:
-        # We re-read decks.jsonl line by line to keep memory low even on
-        # tens of thousands of decks. Skip those not in the target set.
-        for record in iter_jsonl(decks_path) or []:
-            sid = record.get("snapshot_id")
-            if sid not in targets:
-                continue
-            mainboard = record.get("mainboard") or []
-            decklist = decklist_text(mainboard)
-            result = client.analyze(decklist)
-            result_with_id = dict(result)
-            result_with_id["snapshot_id"] = sid
-            result_with_id["deck_id"] = record.get("deck_id")
-            result_with_id["queried_at"] = utc_now_iso()
-            append_jsonl(progress_path, result_with_id)
-            pending_writes[sid] = result_with_id
+    if workers == 1:
+        # Run in the main thread — keeps stacks readable and tests simple.
+        worker_loop()
+    else:
+        threads = [
+            threading.Thread(target=worker_loop, name=f"edhpl-worker-{i}", daemon=True)
+            for i in range(workers)
+        ]
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
 
-            summary["y2_attempted"] += 1
-            if result.get("error"):
-                summary["y2_failed"] += 1
-            else:
-                summary["y2_succeeded"] += 1
-                if "commander_bracket" in result:
-                    bracket_counts[result["commander_bracket"]] += 1
+    with state_lock:
+        _rewrite_decks_with_y2(decks_path, pending_writes, summary)
 
-            if summary["y2_attempted"] % args.y2_flush_every == 0:
-                flush()
-
-            if args.y2_sleep:
-                time.sleep(args.y2_sleep)
-
-    flush()
     elapsed = time.monotonic() - started
     summary["y2_phase"]["status"] = "done"
     summary["y2_phase"]["elapsed_seconds"] = round(elapsed, 2)
@@ -842,6 +908,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             "skip_y2": bool(args.skip_y2),
             "y2_only": bool(args.y2_only),
             "y2_max_decks": args.y2_max_decks,
+            "workers": args.workers,
         },
         "raw_records_read": 0,
         "duplicate_deck_id_skipped": 0,

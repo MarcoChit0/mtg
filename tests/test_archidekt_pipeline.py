@@ -1,7 +1,10 @@
 import importlib.util
 import json
+import threading
+import time
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 from unittest.mock import patch
@@ -19,6 +22,7 @@ def load_module(name, path):
 
 fetcher = load_module("fetch_archidekt_raw", "scripts/fetch_archidekt_raw.py")
 processor = load_module("process_archidekt_raw", "scripts/process_archidekt_raw.py")
+raw_restore = load_module("download_archidekt_raw", "scripts/download_archidekt_raw.py")
 
 
 def read_jsonl(path):
@@ -212,6 +216,124 @@ class FetchArchidektRawTests(unittest.TestCase):
             self.assertEqual(summary["detail_payloads_saved"], 1)
             self.assertEqual(summary["detail_payloads_rejected"], 1)
             self.assertEqual(summary["rejection_reasons"]["mainboard_count_not_100"], 1)
+
+    def test_fetcher_fetches_details_with_parallel_workers(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp)
+            lock = threading.Lock()
+            stats = {"active": 0, "max_active": 0}
+
+            def fake_fetch_json(url, user_agent=fetcher.DEFAULT_USER_AGENT, timeout=30.0):
+                if "/api/decks/v3/" in url:
+                    page = int(parse_qs(urlparse(url).query).get("page", ["1"])[0])
+                    if page > 1:
+                        return 200, {"results": []}
+                    return 200, {"results": [{"id": deck_id, "viewCount": 5000} for deck_id in range(401, 407)]}
+
+                with lock:
+                    stats["active"] += 1
+                    stats["max_active"] = max(stats["max_active"], stats["active"])
+                time.sleep(0.02)
+                with lock:
+                    stats["active"] -= 1
+
+                deck_id = int(url.rstrip("/").split("/")[-1])
+                return 200, deck(deck_id, normal_cards(), edhBracket=2)
+
+            args = fetcher.parse_args(
+                ["--out-dir", str(out_dir), "--brackets", "2", "--sleep-sec", "0", "--workers", "3"]
+            )
+            with patch.object(fetcher, "fetch_json", side_effect=fake_fetch_json):
+                summary = fetcher.run(args)
+
+            details = read_jsonl(out_dir / "raw_deck_details.jsonl")
+            self.assertEqual({record["deck_id"] for record in details}, set(range(401, 407)))
+            self.assertGreaterEqual(stats["max_active"], 2)
+            self.assertEqual(summary["parameters"]["workers"], 3)
+            self.assertEqual(summary["detail_payloads_attempted"], 6)
+            self.assertEqual(summary["detail_payloads_saved"], 6)
+
+
+class RestoreArchidektRawTests(unittest.TestCase):
+    def test_extracts_google_drive_file_id(self):
+        url = "https://drive.google.com/file/d/11Ahbt7xHAaQqvEwVdJE2zXzXYNna0IeG/view?usp=drive_link"
+        self.assertEqual(raw_restore.extract_drive_file_id(url), "11Ahbt7xHAaQqvEwVdJE2zXzXYNna0IeG")
+        self.assertEqual(raw_restore.extract_drive_file_id("11Ahbt7xHAaQqvEwVdJE2zXzXYNna0IeG"), "11Ahbt7xHAaQqvEwVdJE2zXzXYNna0IeG")
+
+    def test_parses_drive_virus_warning_download_form(self):
+        body = b'''<!DOCTYPE html><html><body>
+        <form id="download-form" action="https://drive.usercontent.google.com/download" method="get">
+        <input type="hidden" name="id" value="file-123">
+        <input type="hidden" name="export" value="download">
+        <input type="hidden" name="confirm" value="t">
+        <input type="hidden" name="uuid" value="abc-123">
+        </form></body></html>'''
+        url = raw_restore._drive_warning_download_url(body, "file-123")
+        parsed = urlparse(url)
+        query = parse_qs(parsed.query)
+        self.assertEqual(parsed.netloc, "drive.usercontent.google.com")
+        self.assertEqual(query["id"], ["file-123"])
+        self.assertEqual(query["confirm"], ["t"])
+        self.assertEqual(query["uuid"], ["abc-123"])
+
+    def test_extracts_expected_files_from_archive(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            archive_path = root / "Archive.zip"
+            out_dir = root / "raw"
+            with zipfile.ZipFile(archive_path, "w") as archive:
+                archive.writestr("fetch_manifest.jsonl", '{"ok": true}\n')
+                archive.writestr("raw_deck_details.jsonl", '{"deck_id": 1}\n')
+                archive.writestr("raw_deck_search_pages.jsonl", '{"page": 1}\n')
+                archive.writestr("notes.txt", "ignored\n")
+
+            summary = raw_restore.extract_raw_archive(archive_path, out_dir)
+
+            self.assertEqual(
+                {Path(path).name for path in summary["extracted"]},
+                raw_restore.EXPECTED_RAW_FILES,
+            )
+            self.assertFalse((out_dir / "notes.txt").exists())
+            second = raw_restore.extract_raw_archive(archive_path, out_dir)
+            self.assertEqual(len(second["extracted"]), 0)
+            self.assertEqual({Path(path).name for path in second["skipped_existing"]}, raw_restore.EXPECTED_RAW_FILES)
+
+    def test_restore_runs_processing_by_default_without_y2(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            archive_path = root / "Archive.zip"
+            raw_dir = root / "raw"
+            processed_dir = root / "processed"
+            payload = deck(601, normal_cards(), edhBracket=3)
+            raw_record = {
+                "record_type": "archidekt_deck_detail",
+                "run_id": "restore-test",
+                "fetched_at": "2026-05-13T00:00:00+00:00",
+                "deck_id": 601,
+                "detail_url": "https://archidekt.com/api/decks/601/",
+                "status": 200,
+                "response": payload,
+            }
+            with zipfile.ZipFile(archive_path, "w") as archive:
+                archive.writestr("fetch_manifest.jsonl", '{"record_type": "manifest"}\n')
+                archive.writestr("raw_deck_details.jsonl", json.dumps(raw_record) + "\n")
+                archive.writestr("raw_deck_search_pages.jsonl", '{"record_type": "search"}\n')
+
+            args = raw_restore.parse_args([
+                "--archive",
+                str(archive_path),
+                "--out-dir",
+                str(raw_dir),
+                "--processed-dir",
+                str(processed_dir),
+                "--process-overwrite",
+            ])
+            summary = raw_restore.run(args)
+
+            decks = read_jsonl(processed_dir / "decks.jsonl")
+            self.assertEqual(summary["process"]["accepted_decks"], 1)
+            self.assertEqual(decks[0]["deck_id"], 601)
+            self.assertIsNone(decks[0]["edhpowerlevel"])
 
 
 class ProcessArchidektRawTests(unittest.TestCase):
@@ -507,6 +629,53 @@ class ProcessY2EnrichmentTests(unittest.TestCase):
             self.assertEqual(second["y2_phase"]["status"], "complete")
 
             _sys.modules.pop("edhpowerlevel_client", None)
+
+    def test_phase_b_uses_parallel_workers(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp)
+            self._seed_decks(out_dir, n=6)
+            lock = threading.Lock()
+            stats = {"active": 0, "max_active": 0}
+
+            class FakeClient:
+                def __init__(self, *a, **kw):
+                    pass
+
+                def __enter__(self): return self
+                def __exit__(self, *a): pass
+
+                def analyze(self, decklist):
+                    with lock:
+                        stats["active"] += 1
+                        stats["max_active"] = max(stats["max_active"], stats["active"])
+                    time.sleep(0.02)
+                    with lock:
+                        stats["active"] -= 1
+                    return {"commander_bracket": 4, "power_level": "7.0"}
+
+            fake_module = type("M", (), {
+                "EDHPowerLevelClient": FakeClient,
+                "decklist_text": lambda mb: "1 Sol Ring",
+            })
+            import sys as _sys
+            _sys.modules["edhpowerlevel_client"] = fake_module
+
+            try:
+                args = processor.parse_args([
+                    "--raw-dir", str(out_dir / "raw"),
+                    "--out-dir", str(out_dir),
+                    "--y2-only",
+                    "--y2-sleep", "0",
+                    "--workers", "3",
+                    "--y2-flush-every", "10",
+                ])
+                summary = processor.run(args)
+            finally:
+                _sys.modules.pop("edhpowerlevel_client", None)
+
+            self.assertEqual(summary["y2_succeeded"], 6)
+            self.assertEqual(summary["y2_phase"]["workers"], 3)
+            self.assertGreaterEqual(stats["max_active"], 2)
 
 
 if __name__ == "__main__":

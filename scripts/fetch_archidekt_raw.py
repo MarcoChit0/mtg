@@ -8,6 +8,7 @@ specific filtering. Processing happens in scripts/process_archidekt_raw.py.
 from __future__ import annotations
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 import sys
 import time
@@ -126,6 +127,12 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--out-dir", type=Path, default=Path("data/raw/archidekt"), help="Raw output directory.")
     parser.add_argument("--sleep-sec", type=non_negative_float, default=0.25, help="Seconds between API calls.")
     parser.add_argument("--max-decks", type=positive_int, default=None, help="Maximum valid deck details to save this run.")
+    parser.add_argument(
+        "--workers",
+        type=positive_int,
+        default=1,
+        help="Number of parallel workers fetching Archidekt deck detail payloads.",
+    )
     parser.add_argument("--resume", action="store_true", help="Skip deck ids already present in raw_deck_details.jsonl.")
     parser.add_argument("--dry-run", action="store_true", help="Fetch search pages but do not write detail payloads.")
     parser.add_argument("--user-agent", default=DEFAULT_USER_AGENT, help="HTTP User-Agent header.")
@@ -209,6 +216,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             "out_dir": str(out_dir),
             "sleep_sec": args.sleep_sec,
             "max_decks": args.max_decks,
+            "workers": args.workers,
             "resume": bool(args.resume),
             "dry_run": bool(args.dry_run),
         },
@@ -224,8 +232,52 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         "max_decks_reached": False,
     }
 
+    workers = max(int(args.workers or 1), 1)
     progress = ProgressReporter(max_decks=args.max_decks, enabled=not args.no_progress)
     progress.render(summary)
+
+    def fetch_detail_record(deck_id: int) -> Dict[str, Any]:
+        detail_url = build_detail_url(deck_id)
+        detail_fetched_at = utc_now_iso()
+        detail_status, detail_payload = fetch_json(detail_url, user_agent=args.user_agent)
+        detail_record = {
+            "record_type": "archidekt_deck_detail",
+            "run_id": run_id,
+            "fetched_at": detail_fetched_at,
+            "deck_id": deck_id,
+            "detail_url": detail_url,
+            "status": detail_status,
+            "response": detail_payload,
+        }
+
+        result: Dict[str, Any] = {
+            "deck_id": deck_id,
+            "detail_record": detail_record,
+            "status": detail_status,
+            "payload": detail_payload,
+            "rejection_reasons": [],
+            "error": None,
+        }
+        if detail_status == 200 and isinstance(detail_payload, dict):
+            mainboard, trace = extract_mainboard(detail_payload)
+            result["rejection_reasons"] = validate_deck(
+                detail_payload,
+                mainboard,
+                trace,
+                min_views=args.min_views,
+                brackets=set(args.brackets),
+            )
+        else:
+            result["error"] = {
+                "stage": "detail",
+                "deck_id": deck_id,
+                "status": detail_status,
+                "payload": detail_payload,
+            }
+
+        if args.sleep_sec:
+            time.sleep(args.sleep_sec)
+        return result
 
     stop_all = False
     for bracket in args.brackets:
@@ -274,6 +326,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
                 summary["stopped_reason"] = summary["stopped_reason"] or "below_min_views"
                 break
 
+            detail_deck_ids: List[int] = []
             for candidate in results:
                 if args.max_decks is not None and summary["detail_payloads_saved"] >= args.max_decks:
                     summary["stopped_reason"] = "max_decks"
@@ -296,50 +349,72 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
                     continue
 
                 detail_url = build_detail_url(deck_id)
-                summary["detail_payloads_attempted"] += 1
-                detail_fetched_at = utc_now_iso()
 
                 if args.dry_run:
+                    summary["detail_payloads_attempted"] += 1
                     print(detail_url)
                     continue
 
-                detail_status, detail_payload = fetch_json(detail_url, user_agent=args.user_agent)
-                detail_record = {
-                    "record_type": "archidekt_deck_detail",
-                    "run_id": run_id,
-                    "fetched_at": detail_fetched_at,
-                    "deck_id": deck_id,
-                    "detail_url": detail_url,
-                    "status": detail_status,
-                    "response": detail_payload,
-                }
+                detail_deck_ids.append(deck_id)
 
-                if detail_status == 200 and isinstance(detail_payload, dict):
-                    mainboard, trace = extract_mainboard(detail_payload)
-                    rejection_reasons = validate_deck(
-                        detail_payload,
-                        mainboard,
-                        trace,
-                        min_views=args.min_views,
-                        brackets=set(args.brackets),
-                    )
-                    if rejection_reasons:
-                        summary["detail_payloads_rejected"] += 1
-                        for reason in rejection_reasons:
-                            summary["rejection_reasons"][reason] = summary["rejection_reasons"].get(reason, 0) + 1
-                    else:
-                        append_jsonl(deck_details_path, detail_record)
-                        existing_deck_ids.add(deck_id)
-                        summary["detail_payloads_saved"] += 1
-                else:
-                    summary["errors"].append(
-                        {"stage": "detail", "deck_id": deck_id, "status": detail_status, "payload": detail_payload}
-                    )
-
+            if args.dry_run:
                 progress.render(summary)
-
+                if stop_all:
+                    break
+                page += 1
                 if args.sleep_sec:
                     time.sleep(args.sleep_sec)
+                continue
+
+            next_index = 0
+            with ThreadPoolExecutor(max_workers=workers) as executor:
+                futures = {}
+
+                def submit_available() -> None:
+                    nonlocal next_index
+                    while next_index < len(detail_deck_ids) and len(futures) < workers:
+                        if (
+                            args.max_decks is not None
+                            and summary["detail_payloads_saved"] + len(futures) >= args.max_decks
+                        ):
+                            break
+                        deck_id_to_fetch = detail_deck_ids[next_index]
+                        next_index += 1
+                        summary["detail_payloads_attempted"] += 1
+                        futures[executor.submit(fetch_detail_record, deck_id_to_fetch)] = deck_id_to_fetch
+
+                submit_available()
+                while futures:
+                    future = next(as_completed(futures))
+                    deck_id = futures.pop(future)
+                    try:
+                        detail_result = future.result()
+                    except Exception as exc:
+                        summary["errors"].append(
+                            {"stage": "detail", "deck_id": deck_id, "error": str(exc), "error_type": type(exc).__name__}
+                        )
+                        progress.render(summary)
+                        submit_available()
+                        continue
+
+                    if detail_result["error"]:
+                        summary["errors"].append(detail_result["error"])
+                    elif detail_result["rejection_reasons"]:
+                        summary["detail_payloads_rejected"] += 1
+                        for reason in detail_result["rejection_reasons"]:
+                            summary["rejection_reasons"][reason] = summary["rejection_reasons"].get(reason, 0) + 1
+                    else:
+                        append_jsonl(deck_details_path, detail_result["detail_record"])
+                        existing_deck_ids.add(deck_id)
+                        summary["detail_payloads_saved"] += 1
+
+                    if args.max_decks is not None and summary["detail_payloads_saved"] >= args.max_decks:
+                        summary["stopped_reason"] = "max_decks"
+                        summary["max_decks_reached"] = True
+                        stop_all = True
+
+                    progress.render(summary)
+                    submit_available()
 
             if stop_all:
                 break
