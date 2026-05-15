@@ -77,6 +77,17 @@ def decklist_text(mainboard: List[Dict[str, Any]]) -> str:
     return "\n".join(lines)
 
 
+_FINGERPRINT_FIELDS = ("power_level", "score", "impact", "efficiency", "average_playability")
+
+
+def _fingerprint(parsed: Dict[str, Any]) -> tuple:
+    """Compact tuple of the scoring fields used to detect the pre-Analyze
+    default page state (bracket=4 / pl=5.55 / score=447 / impact=516.00 /
+    efficiency=4.82 / playability=51.8). Using five fields makes accidental
+    collision with a real deck's computed result effectively impossible."""
+    return tuple(parsed.get(field) for field in _FINGERPRINT_FIELDS)
+
+
 def _parse_result(body_text: str) -> Dict[str, Any]:
     """Pull numeric fields out of the rendered page text.
 
@@ -110,17 +121,20 @@ def _parse_result(body_text: str) -> Dict[str, Any]:
 
 
 class EDHPowerLevelClient(AbstractContextManager):
-    """Context manager that opens a single Chromium context for reuse.
+    """Context manager that drives the EDHPowerLevel page per deck.
 
-    Parameters mirror the few knobs you'd want to tune from the CLI:
+    Parameters:
 
     - ``headless`` — set False to watch the browser drive the page (debugging).
     - ``page_timeout_ms`` — Playwright per-action timeout (navigation, waits).
-    - ``analysis_wait_sec`` — extra wall-clock wait after clicking Analyze, to
-      let the in-browser scoring run.
-    - ``context_recycle_every`` — recreate the page after this many analyses
-      to bound memory growth; the Highcharts + card art on the result page
-      accumulate over time.
+    - ``analysis_max_wait_sec`` — max wall-clock to poll for the bracket result
+      to appear and stabilize. The poll exits earlier as soon as the result is
+      stable; this is only the upper bound when the backend is slow.
+    - ``analysis_stable_sec`` — how long the bracket must hold the same value
+      before we accept it as final.
+    - ``context_recycle_every`` — kept for back-compat but no longer
+      load-bearing. Each ``analyze`` call now uses a fresh browser context to
+      prevent stale-read bugs caused by reusing the same page between decks.
     """
 
     def __init__(
@@ -128,39 +142,39 @@ class EDHPowerLevelClient(AbstractContextManager):
         *,
         headless: bool = True,
         page_timeout_ms: int = 60_000,
-        analysis_wait_sec: float = 6.0,
+        analysis_wait_sec: float = 8.0,
+        analysis_max_wait_sec: float = 45.0,
+        analysis_stable_sec: float = 3.0,
         context_recycle_every: int = 50,
     ) -> None:
         self.headless = headless
         self.page_timeout_ms = page_timeout_ms
-        self.analysis_wait_sec = analysis_wait_sec
+        # analysis_wait_sec is kept for back-compat; treated as a *minimum*
+        # wait before we start polling for a stable result.
+        self.analysis_min_wait_sec = max(float(analysis_wait_sec), 0.5)
+        self.analysis_max_wait_sec = max(float(analysis_max_wait_sec), self.analysis_min_wait_sec + 1.0)
+        self.analysis_stable_sec = max(float(analysis_stable_sec), 0.5)
         self.context_recycle_every = max(int(context_recycle_every), 1)
 
         self._playwright = None
         self._browser: Optional[Browser] = None
-        self._context: Optional[BrowserContext] = None
-        self._page: Optional[Page] = None
-        self._analyses_on_page = 0
 
     # ------------------------------------------------------------------ lifecycle
     def __enter__(self) -> "EDHPowerLevelClient":
         self._playwright = sync_playwright().start()
         self._browser = self._playwright.chromium.launch(headless=self.headless)
-        self._open_fresh_page()
         return self
 
     def __exit__(self, exc_type, exc, tb) -> None:
         self.close()
 
     def close(self) -> None:
-        for attr in ("_page", "_context", "_browser"):
-            obj = getattr(self, attr, None)
-            if obj is not None:
-                try:
-                    obj.close()
-                except Exception:
-                    pass
-                setattr(self, attr, None)
+        if self._browser is not None:
+            try:
+                self._browser.close()
+            except Exception:
+                pass
+            self._browser = None
         if self._playwright is not None:
             try:
                 self._playwright.stop()
@@ -168,50 +182,42 @@ class EDHPowerLevelClient(AbstractContextManager):
                 pass
             self._playwright = None
 
-    def _open_fresh_page(self) -> None:
-        assert self._browser is not None
-        if self._page is not None:
-            try:
-                self._page.close()
-            except Exception:
-                pass
-        if self._context is not None:
-            try:
-                self._context.close()
-            except Exception:
-                pass
-        self._context = self._browser.new_context()
-        self._context.set_default_timeout(self.page_timeout_ms)
-        self._page = self._context.new_page()
-        self._page.goto(EDHPL_URL, wait_until="networkidle")
-        self._analyses_on_page = 0
-
     # --------------------------------------------------------------------- API
     def analyze(self, decklist: str) -> Dict[str, Any]:
         """Submit ``decklist`` and return the parsed scoring fields.
 
-        On success returns a dict like
-        ``{"commander_bracket": 4, "power_level": "8.40", ...}``. On failure
-        returns ``{"error": "...", "error_type": "..."}`` and leaves the
-        browser in a known-good state for the next call.
+        Uses a fresh browser context per call so a previous deck's rendered
+        result can't be picked up by ``inner_text`` after a slow analysis.
+        Polls for the bracket to appear and remain stable instead of sleeping
+        for a fixed duration.
+
+        On success returns ``{"commander_bracket": 4, "power_level": "8.40",
+        ...}``. On failure returns ``{"error": "...", "error_type": "..."}``.
         """
         if not decklist.strip():
             return {"error": "empty_decklist", "error_type": "ValueError"}
+        if self._browser is None:
+            return {"error": "client_not_started", "error_type": "RuntimeError"}
 
-        if self._page is None or self._analyses_on_page >= self.context_recycle_every:
-            self._open_fresh_page()
-        assert self._page is not None
-
-        page = self._page
         started_at = datetime.now(timezone.utc).isoformat()
+        context: Optional[BrowserContext] = None
+        page: Optional[Page] = None
         try:
-            # The Reset button clears any previous result without a full page
-            # reload, so subsequent analyses don't see stale numbers.
-            if self._analyses_on_page > 0:
-                reset = page.query_selector("button:has-text('Reset')")
-                if reset:
-                    reset.click()
-                    time.sleep(0.3)
+            context = self._browser.new_context()
+            context.set_default_timeout(self.page_timeout_ms)
+            page = context.new_page()
+            page.goto(EDHPL_URL, wait_until="networkidle")
+
+            # Capture the page's default scoring values BEFORE doing anything
+            # else. The site renders a static "preview" (bracket=4, pl=5.55,
+            # score=447, impact=516.00, efficiency=4.82, playability=51.8) when
+            # no decklist has been analyzed yet. If the in-browser scoring is
+            # slow, our polling can lock onto that default state and return
+            # wrong labels. We snapshot the default before filling/clicking so
+            # the polling can reject any reading that matches.
+            default_body = page.inner_text("body")
+            default_parsed = _parse_result(default_body)
+            default_fingerprint = _fingerprint(default_parsed)
 
             textarea = page.wait_for_selector("textarea#decklist", timeout=self.page_timeout_ms)
             textarea.fill(decklist)
@@ -220,18 +226,10 @@ class EDHPowerLevelClient(AbstractContextManager):
                 "button:has-text('Analyze')", timeout=self.page_timeout_ms
             )
             analyze.click()
-            # Scoring is local JS; a fixed sleep is good enough and avoids
-            # racing with the chart-rendering pipeline that fires later.
-            time.sleep(self.analysis_wait_sec)
 
-            body_text = page.inner_text("body")
-            parsed = _parse_result(body_text)
-            self._analyses_on_page += 1
+            parsed, body_text = self._wait_for_stable_result(page, default_fingerprint)
 
             if "commander_bracket" not in parsed:
-                # The page rendered but didn't show a bracket — usually means
-                # the deck was rejected (too few cards, no commander). Keep
-                # the warning text so we can debug downstream.
                 snippet = body_text[:600].replace("\n", " ")
                 return {
                     "error": "no_bracket_in_result",
@@ -240,21 +238,100 @@ class EDHPowerLevelClient(AbstractContextManager):
                     "started_at": started_at,
                 }
 
+            # Defensive: if the polling returned a reading that exactly matches
+            # the pre-Analyze default state, something is wrong upstream.
+            if _fingerprint(parsed) == default_fingerprint:
+                return {
+                    "error": "stuck_on_initial_page_state",
+                    "error_type": "StaleReadError",
+                    "default_fingerprint": list(default_fingerprint),
+                    "started_at": started_at,
+                }
+
             parsed["started_at"] = started_at
             parsed["finished_at"] = datetime.now(timezone.utc).isoformat()
             return parsed
         except (PlaywrightTimeoutError, PlaywrightError) as exc:
-            # On any browser-level error, recycle the page so the next call
-            # starts from a clean slate.
-            try:
-                self._open_fresh_page()
-            except Exception:
-                pass
             return {
                 "error": str(exc),
                 "error_type": type(exc).__name__,
                 "started_at": started_at,
             }
+        finally:
+            if page is not None:
+                try:
+                    page.close()
+                except Exception:
+                    pass
+            if context is not None:
+                try:
+                    context.close()
+                except Exception:
+                    pass
+
+    # -------------------------------------------------------------------- poll
+    def _wait_for_stable_result(
+        self,
+        page: "Page",
+        default_fingerprint: tuple,
+    ) -> tuple[Dict[str, Any], str]:
+        """Poll the DOM until the bracket appears and stays the same.
+
+        The site renders the bracket after the in-browser scoring runs; the
+        Cloud Run card-data backend can be slow under load, so a fixed wait
+        risks reading a stale (empty or previous) page. We instead poll
+        every 250ms, require the bracket value to repeat across consecutive
+        reads spanning ``analysis_stable_sec`` seconds, and bail out at
+        ``analysis_max_wait_sec``.
+
+        ``default_fingerprint`` is ``(power_level, score, impact)`` captured
+        from the page before Analyze was clicked. Any polling read whose
+        triple matches this fingerprint is treated as "not yet calculated"
+        — the streak is reset and we keep waiting.
+        """
+        time.sleep(self.analysis_min_wait_sec)
+        deadline = time.monotonic() + (self.analysis_max_wait_sec - self.analysis_min_wait_sec)
+        poll_interval = 0.25
+        stable_needed = max(int(self.analysis_stable_sec / poll_interval), 2)
+        last_bracket: Optional[int] = None
+        stable_streak = 0
+        last_body = ""
+        last_parsed: Dict[str, Any] = {}
+        saw_non_default = False
+        while True:
+            body_text = page.inner_text("body")
+            parsed = _parse_result(body_text)
+            current = parsed.get("commander_bracket")
+            current_fp = _fingerprint(parsed)
+            is_default_state = current_fp == default_fingerprint
+            if current is not None and isinstance(current, int) and not is_default_state:
+                saw_non_default = True
+                if current == last_bracket:
+                    stable_streak += 1
+                else:
+                    last_bracket = current
+                    stable_streak = 1
+                if stable_streak >= stable_needed:
+                    return parsed, body_text
+            else:
+                # Still showing default state OR bracket unparseable — reset
+                # the streak; we must not accept a default-state reading even
+                # if it happens to be stable.
+                stable_streak = 0
+                last_bracket = None
+            # Only retain the last NON-default body/parsed as fallback. If we
+            # only ever saw default values, return an empty parsed so the
+            # caller raises ``no_bracket_in_result`` instead of returning
+            # bogus default labels.
+            if not is_default_state:
+                last_body = body_text
+                last_parsed = parsed
+            if time.monotonic() >= deadline:
+                if saw_non_default:
+                    return last_parsed, last_body
+                # Calculator never produced real numbers within the deadline.
+                return {}, body_text
+            time.sleep(poll_interval)
 
 
-__all__ = ["EDHPowerLevelClient", "decklist_text", "_parse_result"]
+__all__ = ["EDHPowerLevelClient", "decklist_text", "_parse_result", "_fingerprint"]

@@ -555,6 +555,11 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         help="Re-query decks whose previous attempt returned an error.",
     )
     parser.add_argument(
+        "--y2-refresh-existing",
+        action="store_true",
+        help="Re-query every deck in decks.jsonl even when an EDHPowerLevel label already exists.",
+    )
+    parser.add_argument(
         "--workers",
         type=int,
         default=1,
@@ -671,19 +676,22 @@ def _phase_a(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
 # ============================================================================
 # Phase B — EDHPowerLevel y2 enrichment
 # ============================================================================
-def _decks_missing_y2(decks_path: Path, retry_failed: bool) -> List[str]:
-    missing: List[str] = []
+def _decks_to_query_y2(decks_path: Path, retry_failed: bool, refresh_existing: bool) -> List[str]:
+    targets: List[str] = []
     for record in iter_jsonl(decks_path) or []:
         sid = record.get("snapshot_id")
         if not isinstance(sid, str):
             continue
+        if refresh_existing:
+            targets.append(sid)
+            continue
         y2 = record.get("edhpowerlevel")
         if y2 is None:
-            missing.append(sid)
+            targets.append(sid)
             continue
         if retry_failed and isinstance(y2, dict) and y2.get("error"):
-            missing.append(sid)
-    return missing
+            targets.append(sid)
+    return targets
 
 
 def _load_y2_progress(path: Path) -> Dict[str, Dict[str, Any]]:
@@ -796,17 +804,21 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
     if progress:
         _rewrite_decks_with_y2(decks_path, progress, summary)
 
-    missing = _decks_missing_y2(decks_path, retry_failed=args.y2_retry_failed)
-    if not missing:
+    targets_to_query = _decks_to_query_y2(
+        decks_path,
+        retry_failed=args.y2_retry_failed,
+        refresh_existing=args.y2_refresh_existing,
+    )
+    if not targets_to_query:
         summary["y2_phase"] = {
             "status": "complete",
-            "missing": 0,
+            "targets": 0,
             "processed_this_run": 0,
         }
         return
 
-    cap = args.y2_max_decks if args.y2_max_decks else len(missing)
-    targets_list = missing[:cap]
+    cap = args.y2_max_decks if args.y2_max_decks else len(targets_to_query)
+    targets_list = targets_to_query[:cap]
     targets = set(targets_list)
 
     # Build a minimal in-memory map (snapshot_id -> deck_id, mainboard) for
@@ -825,9 +837,10 @@ def _phase_b(args: argparse.Namespace, summary: Dict[str, Any]) -> None:
     workers = max(int(args.workers or 1), 1)
     summary["y2_phase"] = {
         "status": "running",
-        "missing_initial": len(missing),
+        "targets_initial": len(targets_to_query),
         "targets_this_run": len(targets),
         "workers": workers,
+        "refresh_existing": bool(args.y2_refresh_existing),
     }
     if _is_real_edhpowerlevel_client(EDHPowerLevelClient):
         _ensure_playwright_chromium_ready()
@@ -962,6 +975,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             "skip_y2": bool(args.skip_y2),
             "y2_only": bool(args.y2_only),
             "y2_max_decks": args.y2_max_decks,
+            "y2_refresh_existing": bool(args.y2_refresh_existing),
             "workers": args.workers,
         },
         "raw_records_read": 0,

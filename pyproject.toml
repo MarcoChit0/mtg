@@ -13,6 +13,11 @@ fetch-archidekt-raw = "scripts.fetch_archidekt_raw:main"
 process-archidekt-raw = "scripts.process_archidekt_raw:main"
 build-archidekt-features = "scripts.build_features:main"
 restore-archidekt-raw = "scripts.download_archidekt_raw:main"
+restore-archidekt-processed = "scripts.download_archidekt_processed:main"
+validate-edhpowerlevel-labels = "scripts.validate_edhpowerlevel_labels:main"
+refresh-edhpowerlevel-labels = "scripts.refresh_edhpowerlevel_labels:main"
+sanity-check-phase-a = "scripts.sanity_check_phase_a:main"
+fix-default-state-y2 = "scripts.fix_default_state_y2:main"
 
 [build-system]
 requires = ["setuptools>=69"]

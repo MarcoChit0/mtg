@@ -38,6 +38,7 @@ Isso cria o ambiente virtual local e instala o pacote definido em `pyproject.tom
 |   +-- process_archidekt_raw.py
 |   +-- edhpowerlevel_client.py
 |   +-- build_features.py
+|   +-- download_archidekt_processed.py
 +-- tests/
 |   +-- test_archidekt_pipeline.py
 +-- pyproject.toml
@@ -178,6 +179,76 @@ Parametros uteis:
 - `--process-overwrite` — passa `--overwrite` para o processamento.
 - `--process-y2` — tambem roda o enriquecimento do EDHPowerLevel; por padrao ele fica desligado.
 - `--workers N` — workers usados se `--process-y2` estiver ativo.
+
+## Etapa 0b: restaurar processados do Google Drive
+
+Use esta etapa quando voce ja tem o ZIP processado pronto no Drive:
+
+```text
+MTG/DATA/processed.zip
+```
+
+Assim como na restauracao raw, o script precisa do link compartilhavel do
+arquivo ou do `file_id`; o caminho interno `MTG/DATA/processed.zip` serve para
+encontrar o arquivo no Drive, mas nao e suficiente para baixar sem API
+autenticada.
+
+### Como rodar
+
+Entre na raiz do projeto:
+
+```bash
+cd /Users/macsilva/Desktop/mtg
+```
+
+Se o arquivo `processed.zip` ja estiver na raiz do projeto, rode:
+
+```bash
+uv run restore-archidekt-processed --overwrite
+```
+
+Isso extrai os dados para:
+
+```text
+data/processed/archidekt/
+```
+
+e imprime o relatorio no terminal. Para salvar o relatorio em arquivo:
+
+```bash
+uv run restore-archidekt-processed \
+  --overwrite \
+  --report-path data/processed/archidekt/processed_restore_report.json
+```
+
+Para baixar direto do Google Drive:
+
+```bash
+uv run restore-archidekt-processed \
+  --drive-url "https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing" \
+  --overwrite
+```
+
+Tambem da para exportar o link via ambiente e deixar o comando limpo:
+
+```bash
+export ARCHIDEKT_PROCESSED_DRIVE_URL="https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing"
+uv run restore-archidekt-processed --overwrite
+```
+
+Antes de baixar pelo Drive, confira que o arquivo esta compartilhado como
+`Qualquer pessoa com o link`.
+
+O comando extrai os arquivos esperados para `data/processed/archidekt` e, por
+padrao, imprime um relatorio JSON com:
+
+- quantidade de snapshots e decks unicos;
+- distribuicao de brackets Archidekt e EDHPowerLevel;
+- cobertura de rotulos EDHPowerLevel;
+- distribuicao de identidades de cor e comandantes mais frequentes;
+- checagens de `mainboard_count == 100`, alinhamento de `snapshot_id` entre
+  `decks.jsonl`, `deck_features.jsonl` e `bag_of_cards.jsonl`, e cobertura de
+  cartas referenciadas em `cards.jsonl`.
 
 ## Etapa 1: extrair raws do Archidekt
 

@@ -23,6 +23,9 @@ def load_module(name, path):
 fetcher = load_module("fetch_archidekt_raw", "scripts/fetch_archidekt_raw.py")
 processor = load_module("process_archidekt_raw", "scripts/process_archidekt_raw.py")
 raw_restore = load_module("download_archidekt_raw", "scripts/download_archidekt_raw.py")
+processed_restore = load_module("download_archidekt_processed", "scripts/download_archidekt_processed.py")
+label_validator = load_module("validate_edhpowerlevel_labels", "scripts/validate_edhpowerlevel_labels.py")
+label_refresher = load_module("refresh_edhpowerlevel_labels", "scripts/refresh_edhpowerlevel_labels.py")
 
 
 def read_jsonl(path):
@@ -336,6 +339,152 @@ class RestoreArchidektRawTests(unittest.TestCase):
             self.assertIsNone(decks[0]["edhpowerlevel"])
 
 
+class RestoreArchidektProcessedTests(unittest.TestCase):
+    def test_extracts_expected_processed_files_from_archive(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            archive_path = root / "processed.zip"
+            out_dir = root / "processed"
+            with zipfile.ZipFile(archive_path, "w") as archive:
+                for filename in processed_restore.REQUIRED_PROCESSED_FILES:
+                    archive.writestr(f"archidekt/{filename}", '{"ok": true}\n')
+                archive.writestr("archidekt/bag_of_cards.jsonl", '{"feature": true}\n')
+                archive.writestr("archidekt/ignored.txt", "ignored\n")
+
+            summary = processed_restore.extract_processed_archive(archive_path, out_dir)
+
+            self.assertEqual(
+                {Path(path).name for path in summary["extracted"]},
+                processed_restore.REQUIRED_PROCESSED_FILES | {"bag_of_cards.jsonl"},
+            )
+            self.assertFalse((out_dir / "ignored.txt").exists())
+
+    def test_processed_report_summarizes_decks_and_alignment(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp)
+            deck_one_mainboard = [
+                {
+                    "oracle_uid": "commander-a",
+                    "oracle_name": "Commander A",
+                    "quantity": 1,
+                    "is_commander": True,
+                },
+                {"oracle_uid": "card-a", "oracle_name": "Card A", "quantity": 99, "is_commander": False},
+            ]
+            deck_two_mainboard = [
+                {
+                    "oracle_uid": "commander-b",
+                    "oracle_name": "Commander B",
+                    "quantity": 1,
+                    "is_commander": True,
+                },
+                {"oracle_uid": "card-b", "oracle_name": "Card B", "quantity": 99, "is_commander": False},
+            ]
+            decks = [
+                {
+                    "snapshot_id": "snap-1",
+                    "deck_id": 1,
+                    "mainboard": deck_one_mainboard,
+                    "mainboard_count": 100,
+                    "archidekt_edh_bracket": 2,
+                    "edhpowerlevel": {"commander_bracket": 3, "power_level": "7.5"},
+                    "validation_trace": {"commander_color_identity": ["White", "Blue"]},
+                    "view_count": 1200,
+                    "archidekt_updated_at": "2026-05-01T00:00:00Z",
+                },
+                {
+                    "snapshot_id": "snap-2",
+                    "deck_id": 2,
+                    "mainboard": deck_two_mainboard,
+                    "mainboard_count": 100,
+                    "archidekt_edh_bracket": 4,
+                    "edhpowerlevel": None,
+                    "validation_trace": {"commander_color_identity": ["Black"]},
+                    "view_count": 1800,
+                    "archidekt_updated_at": "2026-05-02T00:00:00Z",
+                },
+            ]
+            for filename in processed_restore.REQUIRED_PROCESSED_FILES:
+                (out_dir / filename).write_text("", encoding="utf-8")
+            with (out_dir / "decks.jsonl").open("w", encoding="utf-8") as handle:
+                for deck_payload in decks:
+                    handle.write(json.dumps(deck_payload) + "\n")
+            with (out_dir / "cards.jsonl").open("w", encoding="utf-8") as handle:
+                for oracle_uid in ["commander-a", "card-a", "commander-b", "card-b"]:
+                    handle.write(json.dumps({"oracle_uid": oracle_uid}) + "\n")
+            for filename in ("deck_features.jsonl", "bag_of_cards.jsonl"):
+                with (out_dir / filename).open("w", encoding="utf-8") as handle:
+                    for deck_payload in decks:
+                        handle.write(json.dumps({"snapshot_id": deck_payload["snapshot_id"]}) + "\n")
+
+            report = processed_restore.build_processed_report(out_dir)
+
+            self.assertEqual(report["status"], "ok")
+            self.assertEqual(report["decks"]["total_snapshots"], 2)
+            self.assertEqual(report["decks"]["archidekt_edh_brackets"], {"2": 1, "4": 1})
+            self.assertEqual(report["decks"]["edhpowerlevel"]["labeled"], 1)
+            self.assertEqual(report["decks"]["edhpowerlevel"]["missing"], 1)
+            self.assertEqual(report["decks"]["color_identities"], {"B": 1, "WU": 1})
+            self.assertTrue(report["checks"]["card_reference_coverage"]["covers_all_references"])
+
+
+class EDHPowerLevelLabelValidationTests(unittest.TestCase):
+    def test_selects_stratified_sample_and_compares_payloads(self):
+        decks = [
+            {"snapshot_id": f"snap-{i}", "edhpowerlevel": {"commander_bracket": (i % 5) + 1}}
+            for i in range(20)
+        ]
+        sample = label_validator.select_stratified_sample(decks, 10)
+        brackets = {deck["edhpowerlevel"]["commander_bracket"] for deck in sample}
+        self.assertEqual(brackets, {1, 2, 3, 4, 5})
+
+        sample_without_first = label_validator.select_stratified_sample(decks, 10, {"snap-0"})
+        self.assertNotIn("snap-0", {deck["snapshot_id"] for deck in sample_without_first})
+
+        payload = {
+            "commander_bracket": 3,
+            "power_level": "7.0",
+            "started_at": "ignore",
+            "snapshot_id": "ignore",
+        }
+        self.assertEqual(
+            label_validator.comparable_payload(payload),
+            {"commander_bracket": 3, "power_level": "7.0"},
+        )
+
+
+class EDHPowerLevelLabelRefreshTests(unittest.TestCase):
+    def test_refresh_target_selection_respects_existing_labels_and_progress(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            decks_path = Path(tmp) / "decks.jsonl"
+            args = label_refresher.parse_args(["--decks-path", str(decks_path), "--refresh-existing"])
+
+            label_refresher.append_jsonl(
+                decks_path,
+                {
+                    "snapshot_id": "snap-labeled",
+                    "deck_id": 1,
+                    "edhpowerlevel": {"commander_bracket": 2},
+                    "mainboard": [],
+                },
+            )
+            label_refresher.append_jsonl(
+                decks_path,
+                {
+                    "snapshot_id": "snap-missing",
+                    "deck_id": 2,
+                    "edhpowerlevel": None,
+                    "mainboard": [],
+                },
+            )
+            progress = {"snap-labeled": {"snapshot_id": "snap-labeled", "commander_bracket": 3}}
+
+            targets, already_done = label_refresher.load_targets(decks_path, args, progress)
+
+            self.assertEqual(already_done, 1)
+            self.assertEqual([target["snapshot_id"] for target in targets], ["snap-missing"])
+
+
 class ProcessArchidektRawTests(unittest.TestCase):
     def run_processor(self, raw_decks, overwrite=True):
         tmp = tempfile.TemporaryDirectory()
@@ -377,6 +526,27 @@ class ProcessArchidektRawTests(unittest.TestCase):
         self.assertEqual(len(decks[0]["mainboard"]), 100)
         self.assertIsNone(decks[0]["edhpowerlevel"])
         self.assertFalse((out_dir / "deck_cards.jsonl").exists())
+
+    def test_y2_refresh_existing_targets_already_labeled_decks(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            decks_path = Path(tmp) / "decks.jsonl"
+            processor.append_jsonl(
+                decks_path,
+                {
+                    "snapshot_id": "snap-labeled",
+                    "edhpowerlevel": {"commander_bracket": 2},
+                },
+            )
+            processor.append_jsonl(decks_path, {"snapshot_id": "snap-missing", "edhpowerlevel": None})
+
+            self.assertEqual(
+                processor._decks_to_query_y2(decks_path, retry_failed=False, refresh_existing=False),
+                ["snap-missing"],
+            )
+            self.assertEqual(
+                processor._decks_to_query_y2(decks_path, retry_failed=False, refresh_existing=True),
+                ["snap-labeled", "snap-missing"],
+            )
 
     def test_processor_accepts_renamed_premier_commander_category(self):
         cards = [
