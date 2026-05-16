@@ -6,6 +6,11 @@ readme = "documents/backbone.md"
 requires-python = ">=3.9"
 dependencies = [
     "playwright>=1.59.0",
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "scikit-learn>=1.5",
+    "scipy>=1.13",
 ]
 
 [project.scripts]
@@ -18,6 +23,7 @@ validate-edhpowerlevel-labels = "scripts.validate_edhpowerlevel_labels:main"
 refresh-edhpowerlevel-labels = "scripts.refresh_edhpowerlevel_labels:main"
 sanity-check-phase-a = "scripts.sanity_check_phase_a:main"
 fix-default-state-y2 = "scripts.fix_default_state_y2:main"
+phase-b-eda-divergence = "scripts.phase_b_eda_divergence:main"
 
 [build-system]
 requires = ["setuptools>=69"]

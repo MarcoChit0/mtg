@@ -17,20 +17,6 @@ Plano sequencial para concluir o projeto descrito em [backbone.md](backbone.md),
 
 Os 815 decks com y2 ∈ {1, 5} ficam fora do treino mas são preservados para análise qualitativa (Fase B).
 
-## Fase A — Sanity check
-
-Amostrar 30 decks (10 por bracket y1, seed fixa) e validar:
-
-- **A.1 Scrapper**: re-fetch dos 30 decks pela API do Archidekt. Se `updatedAt` live > `fetched_at` do snapshot, marcar como "modificado após scrap" e pular. Nos restantes, conferir `edhBracket`, comandantes, cores e tamanho do mainboard contra o salvo.
-- **A.2 Calculadora**: `uv run validate-edhpowerlevel-labels --sample-size 30 --workers 4` e comparar `commander_bracket` contra o salvo.
-- **A.3 Features**: re-rodar `build_deck_features` sobre os registros salvos e diffar todas as 114 features contra `deck_features.jsonl`. Diff deve ser zero (mesmo input + código → mesmo output). Adicional: spot-check manual de `unique_card_count`, `deck_color_count`, `land_count`, contagens por tipo, `game_changer_count`, buckets de curva em 3-5 decks contra a página.
-
-A.1 e A.3 são automatizados em `scripts/sanity_check_phase_a.py` (`uv run sanity-check-phase-a --per-bracket 10`). Saídas:
-- `data/processed/archidekt/sanity_check_phase_a.json`
-- `documents/sample_reports/sanity_check_phase_a.md`
-
-**Critério de passagem**: A.2 com 100% match em `commander_bracket`; A.3 com diff zero contra o salvo; A.1 sem mismatches estruturais nos decks não-modificados (decks pulados por edição posterior são aceitáveis).
-
 ## Fase B — EDA + análise direta da divergência
 
 Independente de modelos. Já produz resultado científico (backbone §13.1, §14).
@@ -92,24 +78,28 @@ Hold-out 80/20 estratificado por (label, fs). Defaults. Reportar macro-F1, accur
 ### E.1 Esquema
 ```text
 outer:  StratifiedKFold(n_splits=5, shuffle=True, random_state=r)
-        r ∈ {1, 2, 3}            # 15 outer evaluations
+        r ∈ {1, 2, 3}            # 15 outer evaluations por (label, fs, algo)
 inner:  StratifiedKFold(n_splits=3, shuffle=True, random_state=r+100)
+                                 # GridSearchCV otimiza hiperparâmetros
 ```
 
-Métrica de seleção: **macro-F1**. Métricas reportadas: macro-F1, accuracy, precision_macro, recall_macro, confusion matrix.
+Métrica de seleção interna: **macro-F1**. Métricas reportadas: macro-F1, accuracy, precision_macro, recall_macro, confusion matrix.
 
-Folds idênticos para todos os algoritmos em cada (label, fs, repeat). Seeds em `experiments/seeds.json`.
+Folds idênticos para todos os algoritmos em cada (label, fs, repeat). Seeds em `experiments/seeds.json`. Biblioteca: **scikit-learn** (`GridSearchCV` com `cv=inner`).
 
-### E.2 Grids
+### E.2 Grids de hiperparâmetros
+Nenhum dos 5 algoritmos tem variante `*CV` com grids embutidos no sklearn (essas só existem para `LogisticRegressionCV`, `RidgeCV`, `LassoCV`, `ElasticNetCV`). Usamos valores comuns do sklearn user guide / Géron / Hastie:
+
 | Algoritmo | Grid |
 |---|---|
-| DT | `max_depth ∈ {None, 8, 16, 32}`, `min_samples_leaf ∈ {1, 5, 20}` |
-| RF | `n_estimators ∈ {200, 500}`, `max_features ∈ {sqrt, log2}`, `max_depth ∈ {None, 20}` |
-| GB | `n_estimators ∈ {100, 300}`, `learning_rate ∈ {0.05, 0.1}`, `max_depth ∈ {3, 5}` |
-| NB | `alpha ∈ {0.01, 0.1, 1.0}` (Multinomial) |
-| LinearSVC | `C ∈ {0.01, 0.1, 1, 10}`, `class_weight ∈ {None, balanced}` |
+| `DecisionTreeClassifier` | `max_depth ∈ {None, 10, 20}`, `min_samples_leaf ∈ {1, 5, 20}`, `criterion ∈ {gini, entropy}` |
+| `RandomForestClassifier` | `n_estimators ∈ {100, 300}`, `max_features ∈ {sqrt, log2}`, `max_depth ∈ {None, 20}` |
+| `GradientBoostingClassifier` | `n_estimators ∈ {100, 300}`, `learning_rate ∈ {0.05, 0.1}`, `max_depth ∈ {3, 5}` |
+| `MultinomialNB` (BC) | `alpha ∈ {0.01, 0.1, 1.0, 10.0}` |
+| `GaussianNB` (DF) | `var_smoothing ∈ np.logspace(-9, -7, 3)` |
+| `LinearSVC` | `C ∈ {0.01, 0.1, 1, 10}`, `class_weight ∈ {None, balanced}` |
 
-`GridSearchCV` no inner; trocar para `RandomizedSearchCV` se inviável.
+`GridSearchCV` no inner; trocar para `RandomizedSearchCV` se algum grid se mostrar inviável (ex: BC + SVM sob ~15k features). `random_state=42` onde aplicável.
 
 ### E.3 GroupKFold por comandante (análise auxiliar)
 Uma rodada extra com `GroupKFold(n_splits=5)` por `commander_signature`, sem repeat. Reportar gap macro-F1 (Stratified − Group) em `documents/grouped_cv_report.md`.
@@ -214,7 +204,7 @@ Hoje **2026-05-14** — 14 dias.
 
 | Fase | Dias |
 |---|---|
-| A | 0,5 |
+| ~~A~~ | concluída |
 | B | 1,5 |
 | C | 1 |
 | D | 1 |
@@ -226,4 +216,4 @@ Hoje **2026-05-14** — 14 dias.
 | J (opcional) | 0,5 |
 | K (artigo) | 3 |
 
-Margem ~1 dia. Se atrasar: J e E.3 são as primeiras candidatas a virarem "trabalho futuro".
+Margem ~1-2 dias. Se atrasar: J e E.3 são as primeiras candidatas a virarem "trabalho futuro".
