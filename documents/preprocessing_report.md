@@ -71,33 +71,6 @@ Na checagem real de Fase C com `bc_min_df=10`, a representação BC materializou
 | Linhas | 12.135 |
 | Colunas/cartas após pruning | 11.114 |
 
-### Configuração usada no spot-checking (Fase D)
-
-O spot-checking usou hold-out estratificado 80/20 com `random_state=42`, sempre prevendo `y1`. Para BC, foram testados `bc_min_df ∈ {5, 10, 20}` e TF-IDF ficou desligado (`use_tfidf=False`). O melhor `bc_min_df` registrado no report da Fase D foi `10`.
-
-Hiperparâmetros dos algoritmos no spot-check:
-
-| Algoritmo | DF | BC | Hiperparâmetros usados |
-|---|---|---|---|
-| Decision Tree | sim | sim | `DecisionTreeClassifier(random_state=42)` |
-| Random Forest | sim | sim | `RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)` |
-| Gradient Boosting | sim | sim | `HistGradientBoostingClassifier(random_state=42)`; em BC houve conversão controlada de sparse para dense |
-| Naive Bayes | sim | sim | DF: `GaussianNB()`; BC: `MultinomialNB()` |
-| Logistic Regression | sim | sim | DF: `LogisticRegression(max_iter=1000, solver='lbfgs', random_state=42, n_jobs=-1)`; BC: `LogisticRegression(max_iter=1000, solver='saga', random_state=42, n_jobs=-1)` |
-| LinearSVC | sim | sim | `LinearSVC(random_state=42, max_iter=5000)` |
-| SVC RBF | sim | não | `SVC(kernel='rbf', gamma='scale', random_state=42, cache_size=1000)` |
-| SVC Poly | sim | não | `SVC(kernel='poly', degree=3, gamma='scale', random_state=42, cache_size=1000)` |
-| KNN | sim | sim | `KNeighborsClassifier()` |
-
-Configuração de pré-processamento por família:
-
-| Representação/modelo | Configuração |
-|---|---|
-| DF + modelos lineares/SVM/KNN | `DeckFeaturePreprocessor(scale=True)` |
-| DF + árvores/ensembles/NB | `DeckFeaturePreprocessor(scale=False)` |
-| BC | `BagOfCardsPreprocessor(min_df=bc_min_df, use_tfidf=False)` |
-| BC + Gradient Boosting | Após Bag of Cards, matriz CSR convertida para dense antes do `HistGradientBoostingClassifier` |
-
 ## Problemas encontrados e correções
 
 | Problema | Impacto | Correção |
