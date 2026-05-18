@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import multiprocessing as mp
+import sys
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -150,6 +151,26 @@ def metric_record(y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, float]:
         "precision_macro": float(precision_score(y_true, y_pred, average="macro", zero_division=0)),
         "recall_macro": float(recall_score(y_true, y_pred, average="macro", zero_division=0)),
     }
+
+
+def run_label(algorithm: str, representation: str, bc_min_df: Optional[int]) -> str:
+    parts = [
+        f"representation={representation}",
+        f"algorithm={algorithm}",
+        f"use_tfidf={representation == 'BC' and bc_uses_tfidf(algorithm)}",
+    ]
+    if bc_min_df is not None:
+        parts.append(f"bc_min_df={bc_min_df}")
+    if representation == "DF":
+        parts.append(f"scale={needs_df_scaling(algorithm)}")
+    if representation == "BC" and algorithm == "gradient_boosting":
+        parts.append("dense_conversion=True")
+    return " | ".join(parts)
+
+
+def print_progress(message: str, quiet: bool) -> None:
+    if not quiet:
+        print(message, file=sys.stderr, flush=True)
 
 
 def run_one(
@@ -508,6 +529,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         default=None,
         help="Optional stratified sample size for smoke tests. Omit for the full Phase-D run.",
     )
+    parser.add_argument("--quiet-progress", action="store_true", help="Hide human-readable progress messages.")
     return parser.parse_args(argv)
 
 
@@ -542,36 +564,53 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
     y_train = y[train_idx]
     y_test = y[test_idx]
 
-    results: List[Dict[str, Any]] = []
+    planned_runs: List[Tuple[str, Optional[int], str]] = []
     for representation in args.representations:
         bc_min_df_values = args.bc_min_df_values if representation == "BC" else [None]
         for bc_min_df in bc_min_df_values:
             for algorithm in algorithms_for_representation(representation, args.algorithms):
-                completed_times = [
-                    float(record["elapsed_seconds"])
-                    for record in results
-                    if record.get("status") == "ok" and record.get("elapsed_seconds") is not None
-                ]
-                timeout_seconds = None
-                if representation == "BC" and algorithm == "gradient_boosting" and completed_times:
-                    timeout_seconds = 10 * max(completed_times)
+                planned_runs.append((representation, bc_min_df, algorithm))
 
-                result = run_one_with_timeout(
-                    timeout_seconds,
-                    algorithm=algorithm,
-                    representation=representation,
-                    bc_min_df=bc_min_df,
-                    features_train=features_train,
-                    features_test=features_test,
-                    bags_train=bags_train,
-                    bags_test=bags_test,
-                    y_train=y_train,
-                    y_test=y_test,
-                    random_state=args.random_state,
-                    n_jobs=args.n_jobs,
-                )
-                print(json.dumps(result, ensure_ascii=False, sort_keys=True))
-                results.append(result)
+    results: List[Dict[str, Any]] = []
+    total_runs = len(planned_runs)
+    for run_idx, (representation, bc_min_df, algorithm) in enumerate(planned_runs, start=1):
+        completed_times = [
+            float(record["elapsed_seconds"])
+            for record in results
+            if record.get("status") == "ok" and record.get("elapsed_seconds") is not None
+        ]
+        timeout_seconds = None
+        if representation == "BC" and algorithm == "gradient_boosting" and completed_times:
+            timeout_seconds = 10 * max(completed_times)
+
+        timeout_text = f" | timeout={timeout_seconds:.1f}s" if timeout_seconds is not None else ""
+        print_progress(
+            f"\n[Phase D {run_idx}/{total_runs}] START {run_label(algorithm, representation, bc_min_df)}"
+            f" | train={len(y_train)} | test={len(y_test)}{timeout_text}",
+            args.quiet_progress,
+        )
+        result = run_one_with_timeout(
+            timeout_seconds,
+            algorithm=algorithm,
+            representation=representation,
+            bc_min_df=bc_min_df,
+            features_train=features_train,
+            features_test=features_test,
+            bags_train=bags_train,
+            bags_test=bags_test,
+            y_train=y_train,
+            y_test=y_test,
+            random_state=args.random_state,
+            n_jobs=args.n_jobs,
+        )
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        results.append(result)
+        f1_text = f" | macro_f1={result['macro_f1']:.4f}" if result.get("macro_f1") is not None else ""
+        print_progress(
+            f"[Phase D {run_idx}/{total_runs}] DONE  {run_label(algorithm, representation, bc_min_df)}"
+            f" | status={result.get('status')} | elapsed={result.get('elapsed_seconds')}s{f1_text}",
+            args.quiet_progress,
+        )
 
     best_bc_min_df = select_best_bc_min_df(results)
     rankings = finalist_ranking_by_representation(results, best_bc_min_df, args.algorithms)

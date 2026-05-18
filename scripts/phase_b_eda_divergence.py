@@ -43,7 +43,7 @@ def configure_paths(data_dir: Path, docs_dir: Path) -> None:
 def load_features() -> pd.DataFrame:
     """Load deck_features.jsonl with y1/y2 unpacked from the nested dict."""
     rows = []
-    with (DATA / "deck_features.jsonl").open() as fh:
+    with (DATA / "deck_features.jsonl").open(encoding="utf-8") as fh:
         for line in fh:
             r = json.loads(line)
             epl = r.get("edhpowerlevel") or {}
@@ -67,7 +67,7 @@ def load_decks_minimal() -> pd.DataFrame:
     table doesn't store names — it stores aggregate counts).
     """
     rows = []
-    with (DATA / "decks.jsonl").open() as fh:
+    with (DATA / "decks.jsonl").open(encoding="utf-8") as fh:
         for line in fh:
             d = json.loads(line)
             commanders = sorted({

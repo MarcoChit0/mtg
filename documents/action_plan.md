@@ -16,6 +16,7 @@ Reports consolidados atuais:
 | B | [eda_report.md](eda_report.md) + [divergence_report.md](divergence_report.md) |
 | C | [preprocessing_report.md](preprocessing_report.md) |
 | D | [spot_check_results.md](spot_check_results.md) após a rodada completa |
+| E | [nested_cv_report.md](nested_cv_report.md) após a rodada completa |
 
 ## 0. Estado atual
 
@@ -112,7 +113,9 @@ Critério de desempate / diversidade: se o ranking puro concentrar muitos algori
 
 Combinações que falharem por timeout/erro no spot-check ficam fora automaticamente. Se um algoritmo falhar em um `bc_min_df`, mas completar no `bc_min_df` escolhido, ele continua elegível para aquela configuração bem-sucedida.
 
-## Fase E — Nested CV
+## Fase E — Nested CV ◐ implementada
+
+Implementada em [scripts/phase_e_nested_cv.py](../scripts/phase_e_nested_cv.py), com entrypoint `phase-e-nested-cv`. A execução completa é sob demanda por custo computacional.
 
 Alvo único: `y1`. **10 modelos** treinados: os 5 algoritmos selecionados (`A_5`) × 2 representações (`DF`, `BC`).
 
@@ -137,7 +140,7 @@ Grids definidos apenas para os algoritmos selecionados em §D.3. Nenhum dos algo
 |---|---|
 | `DecisionTreeClassifier` | `max_depth ∈ {None, 10, 20}`, `min_samples_leaf ∈ {1, 5, 20}`, `criterion ∈ {gini, entropy}` |
 | `RandomForestClassifier` | `n_estimators ∈ {100, 300}`, `max_features ∈ {sqrt, log2}`, `max_depth ∈ {None, 20}` |
-| `GradientBoostingClassifier` | `n_estimators ∈ {100, 300}`, `learning_rate ∈ {0.05, 0.1}`, `max_depth ∈ {3, 5}` |
+| `HistGradientBoostingClassifier` | `max_iter ∈ {100, 300}`, `learning_rate ∈ {0.05, 0.1}`, `max_depth ∈ {3, 5}` |
 | `MultinomialNB` (BC) | `alpha ∈ {0.01, 0.1, 1.0, 10.0}` |
 | `GaussianNB` (DF) | `var_smoothing ∈ np.logspace(-9, -7, 3)` |
 | `LogisticRegression` | `C ∈ {0.01, 0.1, 1, 10}`, `class_weight ∈ {None, balanced}`, `solver='lbfgs'` (DF) / `'saga'` (BC esparso) |
@@ -152,7 +155,7 @@ Uma rodada extra com `GroupKFold(n_splits=5)` por `commander_signature`, sem rep
 - Múltiplos algoritmos: Friedman + Nemenyi sobre os 15 outer scores.
 - Pareado: Wilcoxon signed-rank por fold.
 
-**Saídas**: `experiments/<fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, metrics_per_fold.json}`, `documents/statistical_tests.md`.
+**Saídas**: `experiments/<fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, metrics_per_fold.json}`, `experiments/seeds.json`, `experiments/folds.json`, `experiments/nested_cv_summary.json`, `documents/nested_cv_report.md`, `documents/statistical_tests.md`.
 
 ## Fase F — Melhor modelo por representação
 
@@ -277,7 +280,7 @@ Hoje **2026-05-18** — 10 dias.
 | ~~B~~ | — | ✓ concluída |
 | ~~C~~ | — | ✓ concluída |
 | ~~D~~ | — | ✓ concluída |
-| E | 2-3 | 10 modelos (5 algoritmos × 2 representações) com nested CV |
+| E | 2-3 | ◐ implementada; execução completa da nested CV pendente |
 | F | 0,5 | a fazer |
 | G | 0,5 | descritivo, sem retreino |
 | H | 1,5 | interpretabilidade (2 modelos) |

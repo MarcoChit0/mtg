@@ -80,10 +80,22 @@ Rodar também o spot-check da Fase D:
 uv run run-mtg-pipeline --run-spot-check
 ```
 
+Rodar também a nested CV da Fase E:
+
+```bash
+uv run run-mtg-pipeline --run-nested-cv
+```
+
 Rodar somente a Fase D:
 
 ```bash
 uv run phase-d-spot-check
+```
+
+Rodar somente a Fase E:
+
+```bash
+uv run phase-e-nested-cv
 ```
 
 ## Estado Atual
@@ -92,6 +104,7 @@ uv run phase-d-spot-check
 - Fase B: concluída, reports em `documents/eda_report.md` e `documents/divergence_report.md`
 - Fase C: concluída, report em `documents/preprocessing_report.md`
 - Fase D: concluída, report em `documents/spot_check_results.md`
+- Fase E: implementada, roda sob demanda com `phase-e-nested-cv`
 
 O plano completo do projeto está em `documents/action_plan.md`.
 

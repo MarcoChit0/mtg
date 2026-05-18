@@ -60,6 +60,9 @@ class RunPipelinePlanTests(unittest.TestCase):
         self.assertTrue(by_name["phase_d_spot_check"].implemented)
         self.assertIsNone(by_name["phase_d_spot_check"].command)
         self.assertEqual(by_name["phase_d_spot_check"].reason, "skipped_use_--run-spot-check")
+        self.assertTrue(by_name["phase_e_nested_cv"].implemented)
+        self.assertIsNone(by_name["phase_e_nested_cv"].command)
+        self.assertEqual(by_name["phase_e_nested_cv"].reason, "skipped_use_--run-nested-cv")
 
     def test_raw_drive_plan_keeps_live_y2_opt_in(self):
         args = run_pipeline.parse_args([
@@ -103,6 +106,23 @@ class RunPipelinePlanTests(unittest.TestCase):
             statuses = {stage["name"]: stage["status"] for stage in saved["stages"]}
             self.assertEqual(statuses["build_features"], "dry_run")
             self.assertEqual(statuses["phase_d_spot_check"], "skipped")
+            self.assertEqual(statuses["phase_e_nested_cv"], "skipped")
+
+    def test_nested_cv_stage_is_opt_in(self):
+        args = run_pipeline.parse_args([
+            "--data-source",
+            "processed-drive",
+            "--processed-archive",
+            "processed.zip",
+            "--skip-reports",
+            "--run-nested-cv",
+        ])
+
+        stages = run_pipeline.build_stage_plan(args)
+        by_name = {stage.name: stage for stage in stages}
+
+        self.assertIsNotNone(by_name["phase_e_nested_cv"].command)
+        self.assertIn("scripts/phase_e_nested_cv.py", by_name["phase_e_nested_cv"].command)
 
 
 if __name__ == "__main__":

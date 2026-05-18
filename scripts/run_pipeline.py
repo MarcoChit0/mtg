@@ -31,7 +31,6 @@ DEFAULT_PROCESSED_DRIVE_URL = os.environ.get(
 )
 
 FUTURE_STAGES = (
-    "phase_e_nested_cv",
     "phase_f_best_models",
     "phase_g_model_vs_calculator",
     "phase_h_interpretability",
@@ -229,6 +228,29 @@ def build_stage_plan(args: argparse.Namespace) -> List[Stage]:
             reason="skipped_use_--run-spot-check",
         ))
 
+    if args.run_nested_cv:
+        stages.append(Stage(
+            "phase_e_nested_cv",
+            "Run Phase-E nested cross-validation for the selected 10 models.",
+            python_script(
+                "scripts/phase_e_nested_cv.py",
+                "--processed-dir",
+                str(args.processed_dir),
+                "--docs-dir",
+                str(args.docs_dir),
+                "--experiment-dir",
+                str(args.experiment_dir),
+            ),
+        ))
+    else:
+        stages.append(Stage(
+            "phase_e_nested_cv",
+            "Implemented but not run by default because full nested CV is expensive; use --run-nested-cv.",
+            None,
+            implemented=True,
+            reason="skipped_use_--run-nested-cv",
+        ))
+
     for name in FUTURE_STAGES:
         stages.append(Stage(
             name,
@@ -385,10 +407,12 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--skip-reports", action="store_true", help="Skip Phase-B EDA/divergence report generation.")
     parser.add_argument("--run-tests", action="store_true", help="Run unittest at the end.")
     parser.add_argument("--run-spot-check", action="store_true", help="Run Phase-D spot-checking after Phase C.")
+    parser.add_argument("--run-nested-cv", action="store_true", help="Run Phase-E nested CV after Phase D/C.")
     parser.add_argument("--only", nargs="+", default=[], help="Run only the named stage(s) from the generated plan.")
     parser.add_argument("--list-stages", action="store_true", help="Print the generated plan and exit.")
     parser.add_argument("--dry-run", action="store_true", help="Print and record the plan without executing commands.")
     parser.add_argument("--manifest-path", type=Path, default=DEFAULT_MANIFEST_PATH)
+    parser.add_argument("--experiment-dir", type=Path, default=Path("experiments"))
     return parser.parse_args(argv)
 
 
@@ -416,6 +440,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             "run_live_y2": args.run_live_y2,
             "run_tests": args.run_tests,
             "run_spot_check": args.run_spot_check,
+            "run_nested_cv": args.run_nested_cv,
             "only": args.only,
             "dry_run": args.dry_run,
         },
