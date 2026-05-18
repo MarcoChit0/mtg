@@ -59,9 +59,9 @@ Essa pergunta evita tratar qualquer fonte como verdade absoluta. O projeto não 
 
 Uma premissa importante é que a percepção comunitária pode variar bastante. Dois usuários diferentes podem montar listas muito parecidas, ou até o mesmo deck, e atribuir brackets diferentes, porque cada um interpreta poder, intenção e experiência de mesa de forma própria.
 
-Já a calculadora automatizada tende a ser determinística: se receber exatamente o mesmo deck e os mesmos parâmetros, deve retornar o mesmo label. Isso não significa que ela está correta, apenas que sua percepção é estável e baseada em regras ou heurísticas fixas.
+Já a calculadora automatizada é **parcialmente** determinística: para o mesmo deck no mesmo instante de consulta, ela tende a retornar o mesmo label. Porém, suas regras incorporam sinais temporais — preço médio das cartas e popularidade — que evoluem ao longo do tempo. Por isso, o mesmo deck pode receber brackets diferentes em consultas feitas em momentos distintos (especialmente decks de fronteira entre brackets). Empiricamente, validamos isso na Fase A: 87/90 (96,7%) dos decks reconsultados receberam o mesmo `commander_bracket`, com as discrepâncias concentradas em decks cujo `power_level` está próximo do limite entre dois brackets.
 
-Essa diferença é central para o projeto: o Archidekt representa uma percepção humana/comunitária potencialmente ruidosa; a calculadora representa uma percepção automatizada e consistente, mas também limitada.
+Essa diferença é central para o projeto: o Archidekt representa uma percepção humana/comunitária com variação subjetiva; a calculadora representa uma avaliação automatizada baseada em regras, mais estável que a humana mas ainda sujeita a flutuações por sinais temporais externos (mercado, meta).
 
 ## 4. Objetivo geral
 
@@ -87,17 +87,20 @@ O projeto pretende:
 2. Filtrar decks válidos dentro do escopo definido.
 3. Obter dois rótulos para cada deck:
 
-   * bracket do Archidekt;
-   * bracket calculado por ferramenta externa.
+   * bracket do Archidekt (`y1`, percepção comunitária — usado como **alvo de treino**);
+   * bracket calculado pela calculadora externa (`y2`, avaliação automatizada — usado como **benchmark de comparação**, não como alvo de modelo).
 4. Representar cada deck de duas formas:
 
-   * **Bag of Cards**;
-   * **Deck Features**.
-5. Treinar modelos de aprendizado de máquina para cada combinação de representação e fonte de rótulo.
-6. Avaliar o quanto cada rótulo pode ser aprendido a partir dos dados observáveis do deck.
-7. Estudar a transferência entre famílias de rótulo.
-8. Analisar diretamente a divergência entre os dois brackets.
-9. Interpretar quais características estão associadas a concordância e discordância.
+   * **Bag of Cards (BC)**;
+   * **Deck Features (DF)**.
+5. Fazer **spot-checking** com 7 algoritmos candidatos (DT, RF, GB, NB, LR, LinearSVC, KNN) sobre as duas representações para selecionar os **5 algoritmos** que vão para a etapa de otimização. Em seguida, treinar **10 modelos** (5 algoritmos selecionados × 2 representações BC/DF) prevendo `y1`, com otimização de hiperparâmetros modelo a modelo via nested CV.
+6. Avaliar o quanto a percepção comunitária pode ser aprendida a partir dos dados observáveis do deck.
+7. Comparar as predições dos 10 modelos com `y2` da calculadora — identificar quais modelos têm comportamento mais próximo do da calculadora.
+8. Analisar diretamente a divergência entre `y1` e `y2`, independente de modelos.
+9. Interpretar os **dois melhores modelos** (melhor BC + melhor DF) para entender quais cartas e quais features explicam o bracket comunitário.
+10. (Opcional, se o cronograma permitir) realizar **stacking** dos 10 modelos para prever `y1` e comparar o stacking final com `y2`.
+
+**Decisão metodológica**: a calculadora não é alvo de modelo. Treinar um modelo para prever a saída de outra ferramenta determinística (a calculadora produz o mesmo `y2` para o mesmo input) seria redundante e não responde à pergunta central. Tratamos `y2` como **fonte alternativa de avaliação** contra a qual comparamos os modelos treinados em `y1`.
 
 ## 6. O que o projeto não pretende afirmar
 
@@ -182,15 +185,15 @@ DF = Deck Features
 
 Essas representações são necessárias para que os modelos possam ser treinados, mas elas não são o objetivo final do projeto.
 
-A comparação entre **BC** e **DF** é uma comparação instrumental: ela ajuda a entender se os modelos conseguem aprender melhor a partir da identidade exata das cartas ou a partir de propriedades agregadas do deck.
+A comparação entre **BC** e **DF** é uma comparação instrumental: ela ajuda a entender se a percepção comunitária (`y1`) é melhor capturada pela identidade exata das cartas ou por propriedades agregadas do deck.
 
-A comparação mais importante ocorre depois: quando um modelo é treinado em uma família de rótulo e avaliado contra a outra. É nessa transferência entre famílias de labels que o projeto mede a distância entre duas percepções de poder.
+A comparação mais importante ocorre na §13.7: depois de treinar os 10 modelos em `y1`, as predições out-of-fold de cada modelo são comparadas descritivamente com `y2` (calculadora), sem retreino. É nessa comparação que o projeto identifica quais modelos convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária.
 
 Em outras palavras:
 
 * **BC** e **DF** são formas de representar o deck;
 * **y1** e **y2** são duas percepções de poder;
-* o núcleo do projeto é entender o desalinhamento entre **y1** e **y2**.
+* o núcleo do projeto é entender o desalinhamento entre **y1** e **y2**, usando os modelos treinados em `y1` como sondas comparáveis a `y2`.
 
 ### 10.1 Bag of Cards
 
@@ -226,6 +229,8 @@ Essa abordagem captura diretamente:
 Ela ajuda a responder:
 
 > A divergência entre percepção comunitária e calculadora está associada à presença de cartas específicas?
+
+**Variante TF-IDF**: além da contagem bruta de cartas, será testada uma representação Bag of Cards transformada por TF-IDF (Term Frequency-Inverse Document Frequency). Como Commander é majoritariamente singleton, o TF tende ao binário; a contribuição relevante do TF-IDF vem do IDF, que pondera cartas raras (presentes em poucos decks) com mais peso do que staples ubíquos (Sol Ring, Command Tower etc.). Essa variante será avaliada como hiperparâmetro de pipeline para algoritmos que se beneficiam de features ponderadas (ex: LinearSVC), e descartada para algoritmos cuja suposição é incompatível (ex: `MultinomialNB`, que assume contagens inteiras).
 
 ### 10.2 Deck Features
 
@@ -504,16 +509,17 @@ A estratégia experimental deve sustentar o projeto inteiro e cumprir as exigên
 
 O projeto será formulado como uma tarefa supervisionada de **classificação multiclasse**, com classes 2, 3 e 4. A pergunta científica principal continua sendo a divergência entre percepções de poder, mas essa pergunta será estudada por meio de modelos preditivos treinados sobre duas famílias de labels.
 
-A estratégia experimental tem quatro camadas:
+A estratégia experimental tem cinco camadas:
 
 1. análise exploratória e preparação dos dados;
-2. predição interna de cada família de label;
-3. comparação entre representações;
-4. transferência entre famílias de label.
+2. spot-checking sobre 7 algoritmos candidatos e seleção dos 5 que avançam;
+3. predição de `y1` com 10 modelos (5 algoritmos selecionados × {BC, DF}) via nested CV, e comparação entre representações;
+4. comparação descritiva das predições dos 10 modelos contra `y2` (calculadora);
+5. (opcional) stacking dos 10 modelos para prever `y1`.
 
-A quarta camada é a mais importante para a pergunta central do projeto.
+A quarta camada é a que conecta a modelagem à pergunta central do projeto: ela revela quais modelos, treinados apenas em `y1`, terminam reproduzindo o comportamento da calculadora — e quais divergem dela.
 
-As camadas 2 e 3 garantem que os modelos existem, que conseguem aprender padrões de cada rótulo e que as representações **BC** e **DF** são úteis. A camada de transferência é onde o projeto mede a distância entre a percepção comunitária e a avaliação automatizada.
+As camadas 2 e 3 garantem que os modelos existem, que conseguem aprender `y1` e que as representações **BC** e **DF** carregam sinal.
 
 ### 13.1 Análise exploratória dos dados
 
@@ -580,30 +586,27 @@ usar os mesmos folds para comparar algoritmos e representações
 
 ### 13.3 Algoritmos e spot-checking
 
-Será definido um conjunto diversificado de algoritmos, respeitando a recomendação do trabalho de testar ao menos 5 algoritmos com diferentes vieses indutivos.
+Será definido um conjunto inicial diversificado de algoritmos candidatos, respeitando a recomendação do trabalho de testar ao menos 5 algoritmos com diferentes vieses indutivos. O projeto considera **7 algoritmos candidatos**, todos viáveis tanto em BC quanto em DF:
 
 ```text
-A = {
-  Decision Tree,
-  Random Forest,
-  Gradient Boosting,
-  Naive Bayes,
-  Logistic Regression,
-  KNN,
-  SVM
+A_candidatos = {
+  Decision Tree,                # árvore
+  Random Forest,                # bagging
+  Gradient Boosting,            # boosting
+  Naive Bayes,                  # probabilístico (MultinomialNB em BC, GaussianNB em DF)
+  Logistic Regression,          # linear paramétrico
+  LinearSVC,                    # margem linear
+  KNN                           # distância
 }
 ```
 
-A primeira etapa será tratada como **spot-checking**: testar um conjunto diverso de algoritmos para identificar quais merecem análise mais aprofundada.
+Kernels não-lineares de SVM (RBF, polinomial) foram **excluídos** do conjunto: seu custo computacional em BC esparso de alta dimensão (~15k features × 12k decks) é proibitivo, o que quebraria a simetria de aplicar exatamente o mesmo conjunto de algoritmos às duas representações. Mantemos margem linear via `LinearSVC` e não-linearidade via `GradientBoosting` e `KNN`.
 
-O conjunto deve incluir modelos com diferentes vieses indutivos:
+A primeira etapa será tratada como **spot-checking**: rodar todos os 7 algoritmos × 2 representações = **14 combinações** com defaults em hold-out 80/20 para confirmar viabilidade e medir desempenho inicial.
 
-* árvores;
-* ensembles;
-* modelos probabilísticos;
-* modelos lineares;
-* modelos baseados em distância;
-* modelos de margem.
+**Resultado do spot-checking**: selecionar os **5 melhores algoritmos** (por macro-F1 médio entre as duas representações, ou por critério análogo discutido no relatório) para avançar à nested CV. Os 2 algoritmos não selecionados ficam de fora das etapas seguintes.
+
+A seleção busca manter diversidade de vieses indutivos no conjunto final (árvore, ensemble, probabilístico, linear, margem, distância). Se o ranking puro de desempenho concentrar muitos algoritmos do mesmo viés (ex: três ensembles no topo), o critério pode privilegiar a diversidade — a decisão é documentada no relatório.
 
 ### 13.4 Nested cross-validation
 
@@ -631,96 +634,118 @@ não ajustar hiperparâmetros usando dados do outer test fold
 reportar média e desvio padrão das métricas nos outer folds
 ```
 
-Sempre que possível, os folds devem ser estratificados por classe. Se for necessário controlar vazamento por comandante, deve-se considerar uma variação agrupada por comandante, garantindo que decks com o mesmo comandante não apareçam simultaneamente no treino e no teste externo.
+Sempre que possível, os folds devem ser estratificados por classe.
 
-### 13.5 Predição interna de cada família de label
+Como controle adicional, deve-se rodar uma análise auxiliar com **GroupKFold por comandante**, garantindo que decks com o mesmo comandante (ou combinação de comandantes em decks partner/background) não apareçam simultaneamente no treino e no teste. A motivação é que decks que compartilham comandante também compartilham a própria carta do comandante, identidade de cores e staples canônicos do arquétipo; sem o controle por grupo, o modelo pode aprender "padrões de comandante" em vez de padrões gerais de poder, superestimando sua capacidade de generalizar para comandantes novos.
 
-Para cada algoritmo `alg` em `A`, para cada label `y` em `{y1, y2}`, e para cada representação `est` em `{BC, DF}`, treina-se um modelo:
+A estimativa com `StratifiedKFold` representa o cenário **otimista** (comandantes do treino podem aparecer no teste); a estimativa com `GroupKFold` representa o cenário **conservador** (comandantes do treino são disjuntos dos do teste). O **gap entre as duas** é em si um resultado: gap pequeno indica padrões gerais; gap grande indica dependência de comandante específico.
+
+`GroupKFold` não garante estratificação perfeita por classe, por isso permanece como **análise auxiliar** (relatada para mostrar robustez), não como a métrica principal de seleção.
+
+### 13.5 Predição de `y1` (percepção comunitária)
+
+Para cada um dos **5 algoritmos** `alg` selecionados em §13.3 e para cada representação `est` em `{BC, DF}`, treina-se um modelo prevendo **somente** `y1`:
 
 ```text
-m = alg(est(X), y)
+m = alg(est(X), y1)
 ```
 
-As combinações principais são:
+Total: **10 modelos** (5 × 2). Como todos os 7 algoritmos candidatos são viáveis em ambas as representações, o conjunto final é simétrico — não há combinações excluídas por custo.
+
+A calculadora (`y2`) **não é alvo de modelo**. Treinar para prever a saída de outra ferramenta determinística não responde à pergunta central. `y2` aparece como benchmark de comparação em §13.7.
+
+Essa etapa mede se a percepção comunitária pode ser aprendida a partir dos dados observáveis do deck e qual representação carrega mais sinal preditivo.
+
+### 13.6 Comparação entre representações
+
+Para `y1`, compara-se:
 
 ```text
 BC -> y1
 DF -> y1
-BC -> y2
-DF -> y2
 ```
 
-Essa etapa mede se cada percepção de bracket pode ser aprendida a partir dos dados observáveis do deck.
+Essa comparação ajuda a entender se a percepção comunitária é melhor explicada por:
 
-Ela é necessária para validar a viabilidade dos modelos, mas não é a pergunta principal.
+* identidade específica das cartas (BC);
+* propriedades agregadas do deck (DF).
 
-### 13.6 Comparação entre representações
+Se **Bag of Cards** performar melhor, cartas específicas carregam mais sinal sobre o bracket comunitário do que estatísticas agregadas.
 
-Para cada família de rótulo, o projeto compara:
+Se **Deck Features** performar perto ou melhor, a percepção comunitária é capturável por propriedades estruturais — o que pode aproximá-la da lógica que a calculadora usa.
+
+Essa etapa é instrumental: alimenta a seleção dos dois melhores modelos (um por representação) que receberão interpretabilidade em §17.
+
+### 13.7 Comparação das predições dos modelos com a calculadora
+
+Esta é a camada central que conecta a modelagem à pergunta de pesquisa. Não envolve novo treinamento: reutiliza as **predições out-of-fold** já produzidas em §13.5 e as compara contra `y2`.
+
+Para cada um dos 10 modelos (5 algoritmos selecionados × {BC, DF}), avaliados em todos os folds externos:
 
 ```text
-BC -> y
-DF -> y
+ŷ1 = predição out-of-fold do modelo (alvo de treino: y1)
+y2 = bracket da calculadora (não usado no treino)
 ```
 
-Essa comparação ajuda a entender se cada percepção de poder é melhor explicada por:
-
-* identidade específica das cartas;
-* propriedades agregadas do deck.
-
-Se **Bag of Cards** performar melhor, isso sugere que cartas específicas carregam muito sinal.
-
-Se **Deck Features** performar perto ou melhor, isso sugere que propriedades estruturais do deck explicam bem os brackets.
-
-Essa etapa é útil, mas continua sendo instrumental. Ela não substitui a análise de divergência entre **y1** e **y2**.
-
-### 13.7 Transferência entre famílias de label
-
-Depois da avaliação interna, serão escolhidos 1 ou 2 algoritmos interessantes para estudar transferência entre rótulos.
-
-As comparações são:
+Métricas computadas para cada modelo:
 
 ```text
-treina em y1, avalia em y2
-treina em y2, avalia em y1
+concordância exata entre ŷ1 e y2
+concordância dentro de ±1
+macro-F1 tratando y2 como rótulo de referência
+matriz de confusão ŷ1 × y2
+|Δ| médio entre ŷ1 e y2
+distribuição de ŷ1 - y2
 ```
 
-Para cada representação:
+Interpretação:
+
+* modelos cujas predições têm **alta concordância com y2** capturam padrões estruturais similares aos que a calculadora usa, mesmo sem terem sido treinados nela — sugerem que parte do sinal comunitário é "explicável" pelos mesmos critérios objetivos da calculadora;
+* modelos com **alta performance contra y1 mas baixa concordância com y2** estão aprendendo particularidades da percepção comunitária que a calculadora não capta;
+* a comparação BC vs DF informa quais sinais (cartas específicas vs propriedades agregadas) cada modelo aproveita para "imitar" a calculadora indiretamente.
+
+Essa análise é **descritiva**: não há retreino, não há novos folds, não há novo target de treinamento. O custo computacional é desprezível.
+
+### 13.8 Seleção final dos melhores modelos
+
+A seleção usa a métrica principal (macro-F1, ver §15) calculada nos outer folds da nested CV. Para cada representação:
 
 ```text
-BC/y1 -> y2
-DF/y1 -> y2
-BC/y2 -> y1
-DF/y2 -> y1
+melhor modelo BC = argmax_{alg ∈ A} macro_F1(alg, BC, y1)
+melhor modelo DF = argmax_{alg ∈ A} macro_F1(alg, DF, y1)
 ```
 
-Essa é a camada central da estratégia experimental.
-
-Ela testa se um modelo que aprendeu uma percepção consegue aproximar a outra. Se a transferência falha, isso indica desalinhamento entre percepção comunitária e avaliação automatizada. Se a transferência funciona, isso indica que as duas famílias compartilham uma estrutura comum de avaliação.
-
-A assimetria também é importante:
-
-* se modelos treinados em **y2** predizem mal **y1**, isso pode indicar que a percepção comunitária contém mais variação subjetiva;
-* se modelos treinados em **y1** predizem mal **y2**, isso pode indicar que a calculadora segue uma lógica diferente da percepção média dos usuários;
-* se uma direção funciona melhor que a outra, isso ajuda a caracterizar a distância entre as duas percepções.
-
-### 13.8 Seleção final de modelos
-
-A seleção do melhor modelo deve usar a métrica principal definida na seção de métricas, calculada nos outer folds da nested cross-validation.
+Esses dois modelos recebem interpretabilidade aprofundada (§17). Em caso de empate por macro-F1, o desempate considera desvio padrão (estabilidade) e custo de interpretação.
 
 O artigo deve reportar:
 
 ```text
-média da métrica principal
-desvio padrão da métrica principal
+média e desvio padrão das métricas por (algoritmo, representação) nos outer folds
 métricas complementares
-matrizes de confusão agregadas ou por fold
-melhores hiperparâmetros selecionados
-comparação entre BC e DF
-comparação entre y1 e y2
+matrizes de confusão (por fold e agregada) contra y1
+melhores hiperparâmetros selecionados por fold
+comparação entre BC e DF para y1
+comparação descritiva entre as predições dos modelos e y2 (§13.7)
 ```
 
-A escolha de 1 ou 2 modelos para análise de transferência e interpretação deve considerar desempenho, estabilidade e interpretabilidade.
+### 13.9 Stacking (opcional, se houver tempo até a entrega)
+
+Caso o cronograma permita, treinar um **meta-modelo** que combina as predições dos 10 modelos da §13.5:
+
+```text
+base learners: 10 modelos (5 algoritmos selecionados × 2 representações), todos prevendo y1
+features do meta: predições out-of-fold de cada base learner
+meta-learner: LogisticRegression
+meta-target: y1
+folds: os mesmos outer folds da §13.5 (sem leakage)
+```
+
+Comparações de interesse:
+
+* macro-F1 do stacking vs macro-F1 do melhor modelo individual (ganho do ensemble);
+* concordância do stacking com `y2` vs concordância dos modelos individuais (o stacking se aproxima mais ou menos da calculadora?).
+
+Critério de inclusão no artigo final: ganho consistente em macro-F1 vs o melhor modelo individual, ou insight relevante na comparação com `y2`.
 
 ## 14. Análise direta da divergência
 
@@ -836,37 +861,37 @@ Possíveis interpretações:
 * Se a calculadora classifica abaixo do Archidekt, usuários podem estar percebendo força em sinergias, reputações ou contextos que a calculadora não captura.
 * Se decks com muitos combos têm `delta` alto, a calculadora pode ser mais sensível a combos do que a percepção comunitária.
 * Se decks com alto preço, baixo CMC ou muitos Game Changers têm `delta` alto, pode haver diferença entre otimização estrutural e autoavaliação humana.
-* Se a transferência entre labels é fraca, as duas famílias de rótulo representam percepções distintas.
-* Se a transferência é forte, elas compartilham uma estrutura comum de avaliação.
+* Se as predições dos modelos (treinados em `y1`) têm **baixa concordância com `y2`**, isso sugere que a percepção comunitária aprendível pelos dados estruturais está descolada da lógica da calculadora.
+* Se as predições têm **alta concordância com `y2`**, parte do sinal comunitário capturado pelos modelos coincide com critérios objetivos que a calculadora também usa — apontando para uma estrutura compartilhada apesar da fonte distinta.
 
 ## 17. Interpretação dos modelos
 
-O projeto deve incluir interpretação dos modelos, como exigido no trabalho prático.
+O projeto inclui interpretação dos modelos, como exigido no trabalho prático. A interpretação é feita sobre **dois modelos**:
 
-A interpretação deve ser feita preferencialmente sobre os modelos escolhidos após a avaliação com nested cross-validation.
+* o melhor modelo de **Bag of Cards** prevendo `y1`;
+* o melhor modelo de **Deck Features** prevendo `y1`.
 
-Para **Deck Features**, a interpretação pode analisar:
+O enunciado pede interpretação de **um** modelo; analisamos dois (um por representação) para responder simetricamente "**quais cartas** explicam o bracket comunitário?" e "**quais propriedades estruturais** explicam o bracket comunitário?".
+
+Para **Deck Features**, analisa-se:
 
 ```text
 importância de atributos em árvores ou ensembles
 coeficientes de modelos lineares, quando aplicável
 permutation importance
-features associadas a y1
-features associadas a y2
-features associadas a erros de transferência
-features associadas a delta positivo ou negativo
+features mais associadas a cada bracket previsto
+features associadas a divergência entre ŷ1 do modelo e y2 (calculadora)
 ```
 
-Para **Bag of Cards**, a interpretação pode analisar:
+Para **Bag of Cards**, analisa-se:
 
 ```text
 cartas com maior peso/importância
-cartas associadas a brackets mais altos
-cartas associadas a divergência entre y1 e y2
-pacotes de cartas recorrentes em erros de transferência
+cartas associadas a brackets mais altos vs mais baixos
+cartas associadas a divergência entre ŷ1 do modelo e y2 (calculadora)
 ```
 
-A interpretação deve ser apresentada como hipótese analítica, não como prova causal.
+A interpretação é apresentada como hipótese analítica, não como prova causal.
 
 ## 18. Plano de reporte dos resultados
 
@@ -875,15 +900,17 @@ O artigo deve reportar os resultados de forma clara e reprodutível.
 Devem ser incluídos:
 
 ```text
-tabelas com média e desvio padrão das métricas nos outer folds
-comparação entre algoritmos
-comparação entre BC e DF
-comparação entre y1 e y2
-matrizes de confusão
+tabelas com média e desvio padrão das métricas nos outer folds (10 modelos)
+tabela do spot-checking (7 algoritmos candidatos) com justificativa da seleção dos 5
+comparação entre algoritmos para y1
+comparação entre BC e DF para y1
+matrizes de confusão contra y1
+análise direta de divergência entre y1 e y2 (descritiva, §14)
+comparação descritiva entre as predições dos modelos e y2 (§13.7)
 gráficos de distribuição de delta e abs_delta
-análise de concordância entre y1 e y2
-análise dos melhores modelos
-interpretação das features ou cartas mais relevantes
+análise dos dois melhores modelos (BC + DF)
+interpretação das features e cartas mais relevantes
+(opcional) resultados do stacking, se incluído
 ```
 
 A discussão deve conectar os resultados à pergunta central: a distância entre percepção comunitária e avaliação automatizada.
@@ -925,7 +952,7 @@ O projeto está alinhado às diretrizes do trabalho prático porque:
 * reporta média e desvio padrão das métricas nos outer folds;
 * usa as mesmas divisões internas e externas para comparar algoritmos de forma justa;
 * define seeds e procedimentos reprodutíveis;
-* inclui interpretação de modelos, especialmente na representação Deck Features;
+* inclui interpretação de modelos para ambas as representações (melhor BC e melhor DF), excedendo o requisito de "um modelo" do enunciado;
 * discute limitações e riscos de vazamento ou viés.
 
 ## 21. Limitações conceituais
@@ -947,4 +974,4 @@ O projeto possui limitações importantes:
 
 A formulação atual do projeto é:
 
-> Este projeto estuda a divergência entre duas percepções de poder em decks Commander: o bracket atribuído no Archidekt e o bracket calculado por uma ferramenta externa. Usando dados extraídos do Archidekt, o projeto representa decks de duas formas — Bag of Cards e Deck Features — e treina modelos para entender como cada percepção pode ser aprendida, transferida e comparada. O objetivo não é descobrir o bracket verdadeiro, mas medir e explicar o desalinhamento entre percepção comunitária e avaliação automatizada, ajudando a entender onde expectativas de poder podem divergir antes de uma mesa de Commander.
+> Este projeto estuda a divergência entre duas percepções de poder em decks Commander: o bracket atribuído no Archidekt (`y1`, percepção comunitária) e o bracket calculado por uma ferramenta externa (`y2`, avaliação automatizada). Usando dados extraídos do Archidekt, o projeto representa decks de duas formas — Bag of Cards e Deck Features. Após um spot-checking de 7 algoritmos candidatos, os 5 mais promissores avançam à nested CV, resultando em **10 modelos (5 algoritmos × 2 representações) treinados apenas para prever `y1`**. As predições desses modelos são depois comparadas descritivamente com `y2`, sem retreino, para identificar quais modelos convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária. O objetivo não é descobrir o bracket verdadeiro, nem treinar modelos que imitem a calculadora, mas medir e explicar o desalinhamento entre as duas leituras de poder.
