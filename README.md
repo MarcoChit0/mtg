@@ -4,6 +4,56 @@ Pipeline em Python para coletar decks Commander publicos do Archidekt e transfor
 
 O projeto usa `uv` para gerenciar ambiente, lockfile e comandos.
 
+## Comando principal de reprodutibilidade
+
+O runner principal do projeto e:
+
+```bash
+uv run run-mtg-pipeline
+```
+
+Por padrao ele usa os dados locais ja presentes em `data/processed/archidekt`,
+gera novamente os relatorios implementados e escreve um manifest em:
+
+```text
+experiments/pipeline_run_manifest.json
+```
+
+Para reproduzir a partir de um snapshot processado congelado no Google Drive
+(recomendado quando o ZIP contem `decks.jsonl`, `deck_features.jsonl`,
+`bag_of_cards.jsonl` e os rotulos `edhpowerlevel` ja salvos):
+
+```bash
+uv run run-mtg-pipeline \
+  --data-source processed-drive \
+  --processed-drive-url "https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing"
+```
+
+O runner preserva as features do snapshot processado por padrao, porque
+reconstruir features sem o raw completo pode alterar campos de preco/raridade.
+Use `--rebuild-features` apenas quando o raw correspondente tambem estiver
+disponivel localmente.
+
+Para reproduzir a partir do arquivo raw salvo no Drive:
+
+```bash
+uv run run-mtg-pipeline \
+  --data-source raw-drive \
+  --raw-drive-url "https://drive.google.com/file/d/<FILE_ID>/view?usp=sharing"
+```
+
+Esse modo nao reconsulta o EDHPowerLevel por padrao. Isso e intencional:
+`y2` e temporal. Para optar por uma nova consulta viva da calculadora, use
+`--run-live-y2`.
+
+Comandos uteis:
+
+```bash
+uv run run-mtg-pipeline --list-stages
+uv run run-mtg-pipeline --dry-run
+uv run run-mtg-pipeline --run-tests
+```
+
 ## Requisitos
 
 - Python gerenciado pelo `uv`

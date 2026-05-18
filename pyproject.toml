@@ -24,6 +24,8 @@ refresh-edhpowerlevel-labels = "scripts.refresh_edhpowerlevel_labels:main"
 sanity-check-phase-a = "scripts.sanity_check_phase_a:main"
 fix-default-state-y2 = "scripts.fix_default_state_y2:main"
 phase-b-eda-divergence = "scripts.phase_b_eda_divergence:main"
+phase-c-filter-dataset = "scripts.phase_c_filter_dataset:main"
+run-mtg-pipeline = "scripts.run_pipeline:main"
 
 [build-system]
 requires = ["setuptools>=69"]

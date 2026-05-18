@@ -16,6 +16,7 @@ quantify the divergence between y1 (Archidekt) and y2 (EDHPowerLevel).
 from __future__ import annotations
 
 import json
+import argparse
 from pathlib import Path
 
 import matplotlib
@@ -29,6 +30,14 @@ DATA = Path("data/processed/archidekt")
 DOCS = Path("documents")
 FIG_EDA = DOCS / "figures" / "eda"
 FIG_DIV = DOCS / "figures" / "divergence"
+
+
+def configure_paths(data_dir: Path, docs_dir: Path) -> None:
+    global DATA, DOCS, FIG_EDA, FIG_DIV
+    DATA = data_dir
+    DOCS = docs_dir
+    FIG_EDA = DOCS / "figures" / "eda"
+    FIG_DIV = DOCS / "figures" / "divergence"
 
 
 def load_features() -> pd.DataFrame:
@@ -651,7 +660,17 @@ def divergence(df: pd.DataFrame, decks: pd.DataFrame) -> str:
 
 # ---------- main -------------------------------------------------------------
 
-def main() -> int:
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Generate Phase-B EDA and y1-vs-y2 divergence reports.")
+    parser.add_argument("--data-dir", type=Path, default=DATA, help="Directory containing deck_features.jsonl and decks.jsonl.")
+    parser.add_argument("--docs-dir", type=Path, default=DOCS, help="Directory where reports and figures are written.")
+    return parser.parse_args(argv)
+
+
+def main(argv=None) -> int:
+    args = parse_args(argv)
+    configure_paths(args.data_dir, args.docs_dir)
+
     print("Loading deck_features.jsonl...")
     df = load_features()
     print(f"  {len(df):,} rows / {len(df.columns)} columns")

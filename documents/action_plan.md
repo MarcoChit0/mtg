@@ -29,7 +29,9 @@ Implementada em [scripts/phase_b_eda_divergence.py](../scripts/phase_b_eda_diver
 - Tendência direcional: y2>y1 em 23,5% vs y2<y1 em 15,6% — calculadora classifica mais "alto" que o usuário.
 - 815 decks (6,3%) com y2 ∈ {1, 5} — analisados em subseção dedicada e descartados da modelagem.
 
-## Fase C — Pré-processamento
+## Fase C — Pré-processamento ✓ implementada
+
+Implementada em [scripts/preprocessing.py](../scripts/preprocessing.py) e [scripts/phase_c_filter_dataset.py](../scripts/phase_c_filter_dataset.py). O filtro C.1 foi reexecutado em 2026-05-18 e confirmou **12.135 decks incluídos** e **815 excluídos** (`y2=1`: 393 · `y2=5`: 422).
 
 Alvo único de treino: `y1`. `y2` é mantido apenas para comparação descritiva (Fase G), nunca como feature.
 
