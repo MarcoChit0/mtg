@@ -10,9 +10,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
+from copy import copy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -23,9 +25,12 @@ DEFAULT_RAW_DIR = Path("data/raw/archidekt")
 DEFAULT_PROCESSED_DIR = Path("data/processed/archidekt")
 DEFAULT_DOCS_DIR = Path("documents")
 DEFAULT_MANIFEST_PATH = Path("experiments/pipeline_run_manifest.json")
+DEFAULT_PROCESSED_DRIVE_URL = os.environ.get(
+    "ARCHIDEKT_PROCESSED_DRIVE_URL",
+    "https://drive.google.com/file/d/1gXCxPeFjxgkNmizWCTU62m-s311B05R0/view?usp=sharing",
+)
 
 FUTURE_STAGES = (
-    "phase_d_spot_check",
     "phase_e_nested_cv",
     "phase_f_best_models",
     "phase_g_model_vs_calculator",
@@ -203,6 +208,27 @@ def build_stage_plan(args: argparse.Namespace) -> List[Stage]:
             [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"],
         ))
 
+    if args.run_spot_check:
+        stages.append(Stage(
+            "phase_d_spot_check",
+            "Run Phase-D spot-checking across candidate algorithms.",
+            python_script(
+                "scripts/phase_d_spot_check.py",
+                "--processed-dir",
+                str(args.processed_dir),
+                "--docs-dir",
+                str(args.docs_dir),
+            ),
+        ))
+    else:
+        stages.append(Stage(
+            "phase_d_spot_check",
+            "Implemented but not run by default because it trains multiple models; use --run-spot-check.",
+            None,
+            implemented=True,
+            reason="skipped_use_--run-spot-check",
+        ))
+
     for name in FUTURE_STAGES:
         stages.append(Stage(
             name,
@@ -212,6 +238,21 @@ def build_stage_plan(args: argparse.Namespace) -> List[Stage]:
             reason="not_implemented_yet",
         ))
     return stages
+
+
+def has_local_processed_inputs(args: argparse.Namespace) -> bool:
+    return all(existing_file(path) for path in (
+        args.processed_dir / "decks.jsonl",
+        args.processed_dir / "cards.jsonl",
+    ))
+
+
+def resolve_auto_data_source(args: argparse.Namespace) -> argparse.Namespace:
+    if args.data_source != "auto":
+        return args
+    resolved = copy(args)
+    resolved.data_source = "local" if has_local_processed_inputs(args) else "processed-drive"
+    return resolved
 
 
 def selected_stages(stages: Sequence[Stage], names: Sequence[str]) -> List[Stage]:
@@ -317,9 +358,9 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--data-source",
-        choices=["local", "processed-drive", "raw-drive"],
-        default="local",
-        help="Where to start: existing local data, frozen processed archive, or frozen raw archive.",
+        choices=["auto", "local", "processed-drive", "raw-drive"],
+        default="auto",
+        help="Where to start. auto uses local processed data when present; otherwise it restores the frozen processed snapshot.",
     )
     parser.add_argument("--raw-dir", type=Path, default=DEFAULT_RAW_DIR)
     parser.add_argument("--processed-dir", type=Path, default=DEFAULT_PROCESSED_DIR)
@@ -327,7 +368,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument("--raw-drive-url", default="")
     parser.add_argument("--raw-file-id", default="")
     parser.add_argument("--raw-archive", type=Path, default=None)
-    parser.add_argument("--processed-drive-url", default="")
+    parser.add_argument("--processed-drive-url", default=DEFAULT_PROCESSED_DRIVE_URL)
     parser.add_argument("--processed-file-id", default="")
     parser.add_argument("--processed-archive", type=Path, default=None)
     parser.add_argument("--force-download", action="store_true")
@@ -343,6 +384,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     )
     parser.add_argument("--skip-reports", action="store_true", help="Skip Phase-B EDA/divergence report generation.")
     parser.add_argument("--run-tests", action="store_true", help="Run unittest at the end.")
+    parser.add_argument("--run-spot-check", action="store_true", help="Run Phase-D spot-checking after Phase C.")
     parser.add_argument("--only", nargs="+", default=[], help="Run only the named stage(s) from the generated plan.")
     parser.add_argument("--list-stages", action="store_true", help="Print the generated plan and exit.")
     parser.add_argument("--dry-run", action="store_true", help="Print and record the plan without executing commands.")
@@ -351,6 +393,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 
 
 def run(args: argparse.Namespace) -> Dict[str, Any]:
+    args = resolve_auto_data_source(args)
     all_stages = build_stage_plan(args)
     stages = selected_stages(all_stages, args.only)
     if args.list_stages:
@@ -372,6 +415,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             "rebuild_features": args.rebuild_features,
             "run_live_y2": args.run_live_y2,
             "run_tests": args.run_tests,
+            "run_spot_check": args.run_spot_check,
             "only": args.only,
             "dry_run": args.dry_run,
         },

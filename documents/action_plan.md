@@ -4,6 +4,19 @@ Plano sequencial para concluir o projeto descrito em [backbone.md](backbone.md),
 
 **Pergunta central**: em que medida `y1` (Archidekt) diverge de `y2` (EDHPowerLevel), e quais características do deck explicam essa divergência?
 
+## Convenção de reports por fase
+
+Cada fase concluída deve gerar um report em `documents/` com quatro blocos mínimos: **o que era para ser feito**, **o que foi feito**, **como foi feito** e **problemas encontrados + correções**. Esses reports são insumos diretos para o artigo final e devem ser atualizados quando uma fase for reexecutada.
+
+Reports consolidados atuais:
+
+| Fase | Report |
+|---|---|
+| A | [phase_a_report.md](phase_a_report.md) |
+| B | [eda_report.md](eda_report.md) + [divergence_report.md](divergence_report.md) |
+| C | [preprocessing_report.md](preprocessing_report.md) |
+| D | [spot_check_results.md](spot_check_results.md) após a rodada completa |
+
 ## 0. Estado atual
 
 | Item | Valor |
@@ -29,9 +42,9 @@ Implementada em [scripts/phase_b_eda_divergence.py](../scripts/phase_b_eda_diver
 - Tendência direcional: y2>y1 em 23,5% vs y2<y1 em 15,6% — calculadora classifica mais "alto" que o usuário.
 - 815 decks (6,3%) com y2 ∈ {1, 5} — analisados em subseção dedicada e descartados da modelagem.
 
-## Fase C — Pré-processamento ✓ implementada
+## Fase C — Pré-processamento ✓ concluída
 
-Implementada em [scripts/preprocessing.py](../scripts/preprocessing.py) e [scripts/phase_c_filter_dataset.py](../scripts/phase_c_filter_dataset.py). O filtro C.1 foi reexecutado em 2026-05-18 e confirmou **12.135 decks incluídos** e **815 excluídos** (`y2=1`: 393 · `y2=5`: 422).
+Implementada em [scripts/preprocessing.py](../scripts/preprocessing.py) e [scripts/phase_c_filter_dataset.py](../scripts/phase_c_filter_dataset.py). Report consolidado em [preprocessing_report.md](preprocessing_report.md). O filtro C.1 foi reexecutado em 2026-05-18 e confirmou **12.135 decks incluídos** e **815 excluídos** (`y2=1`: 393 · `y2=5`: 422).
 
 Alvo único de treino: `y1`. `y2` é mantido apenas para comparação descritiva (Fase G), nunca como feature.
 
@@ -46,15 +59,25 @@ Manter y1 e y2 ∈ {2,3,4} (12.135 decks). Descartados salvos em `data/processed
 
 ### C.3 Bag of Cards
 - Matriz esparsa `(n_decks, n_cards)` com quantidade.
-- Pruning: remover cartas com presença < `min_df` no treino. Valor decidido no spot-check (testar 5, 10, 20).
-- **Variante TF-IDF** (backbone §10.1): tratada como hiperparâmetro de pipeline (`use_tfidf ∈ {False, True}`). Habilitada para algoritmos que se beneficiam de ponderação por IDF (`LinearSVC`); desabilitada para `MultinomialNB` (assume contagens inteiras, suposição incompatível com TF-IDF). Como Commander é majoritariamente singleton, o TF é praticamente binário — o ganho vem do IDF (cartas raras pesam mais que staples).
+- Pruning: remover cartas com presença < `bc_min_df` no treino. Valor decidido no spot-check (testar 1, 5, 10, 20).
+- **Variante TF-IDF** (backbone §10.1): fica disponível no pipeline, mas **não é ativada no spot-check da Fase D**. Será tratada depois como hiperparâmetro/variante para algoritmos que se beneficiam de ponderação por IDF (`LinearSVC`, regressão logística). Permanece desabilitada para `MultinomialNB` (assume contagens inteiras, suposição incompatível com TF-IDF).
 
 ### C.4 Antivazamento
 - Toda transformação fit somente no treino do fold.
 - `y2`, `delta`, `abs_delta` e todos os campos `edhpowerlevel.*` (score, power_level, etc.) **nunca** entram em X.
 - `y1` é o único target; não há predição de `y2` no projeto.
 
-## Fase D — Spot-checking
+## Fase D — Spot-checking ✓ concluída
+
+Implementada em [scripts/phase_d_spot_check.py](../scripts/phase_d_spot_check.py). Saídas em [spot_check_results.md](spot_check_results.md), `experiments/spot_check/results.jsonl` e `experiments/spot_check/summary.json`.
+
+Resultado da rodada completa após correção do desenho:
+
+- Hold-out estratificado 80/20: 9.708 treino · 2.427 teste.
+- `bc_min_df` testado para BC: 1, 5, 10, 20; escolhido **bc_min_df=10** pela média de macro-F1 em BC; TF-IDF desativado nesta fase.
+- Seleção final dos 5 algoritmos feita manualmente a partir do spot-check, mantendo o **mesmo conjunto para DF e BC** para facilitar comparação direta entre representações. A diferença de performance entre os candidatos de borda não justificou usar conjuntos diferentes.
+- Kernels não-lineares de SVM (`SVC(kernel='rbf')`, `SVC(kernel='poly')`) são testados **apenas em DF**. Embora o sklearn aceite sparse em alguns caminhos, o custo de kernels não-lineares é pelo menos quadrático em número de amostras e fica proibitivo/instável para BC esparso de alta dimensionalidade.
+- Finalistas para DF e BC: **Gradient Boosting**, **Logistic Regression**, **Random Forest**, **LinearSVC**, **Naive Bayes**.
 
 ### D.1 Algoritmos candidatos
 | Algoritmo | Viés | Classe sklearn | Obs |
@@ -65,25 +88,33 @@ Manter y1 e y2 ∈ {2,3,4} (12.135 decks). Descartados salvos em `data/processed
 | Naive Bayes | probabilístico | `MultinomialNB` (BC) / `GaussianNB` (DF) | — |
 | Logistic Regression | linear paramétrico | `LogisticRegression` | `solver='lbfgs'` (DF) / `'saga'` (BC esparso) |
 | LinearSVC | margem linear | `LinearSVC` | escala bem em BC esparso |
+| SVM RBF | margem não-linear | `SVC(kernel='rbf')` | **somente DF**; exige `StandardScaler`; não usado em BC por custo de kernel em matriz esparsa grande |
+| SVM Poly | margem não-linear | `SVC(kernel='poly')` | **somente DF**; exige `StandardScaler`; não usado em BC por custo de kernel em matriz esparsa grande |
 | KNN | distância (lazy, não-paramétrico) | `KNeighborsClassifier` | em DF aplicar após `StandardScaler`; em BC esparso esperar performance modesta (curse of dimensionality), mantemos como spot-check para confirmar empiricamente |
 
-**7 algoritmos candidatos**, todos viáveis nas duas representações (conjunto simétrico). Cobrem os vieses indutivos do backbone §13.3 (árvore, bagging, boosting, probabilístico, linear paramétrico, margem linear, distância). Kernels não-lineares de SVM (RBF, poly) foram excluídos porque são proibitivos em BC — não-linearidade já está coberta por `GradientBoosting` e `KNN`.
+**9 candidatos para DF** e **7 candidatos para BC**. Cobrem os vieses indutivos do backbone §13.3 (árvore, bagging, boosting, probabilístico, linear paramétrico, margem linear, margem não-linear, distância). BC testa `HistGradientBoostingClassifier` com conversão controlada para matriz densa e limite de tempo de 10x o maior tempo já observado nas runs; se a combinação excede esse limite, ela é interrompida e removida do ranking. BC não recebe `SVC` RBF/poly porque o custo de kernels não-lineares sobre matriz esparsa de alta dimensionalidade é inadequado para este projeto.
 
 ### D.2 Procedimento
-Hold-out 80/20 estratificado por `y1`, para cada representação ∈ {BC, DF}. Defaults dos algoritmos. Reportar macro-F1, accuracy, tempo. Fixar `min_df` do BC nessa fase (testar 5, 10, 20).
+Hold-out 80/20 estratificado por `y1`, para cada representação ∈ {BC, DF}. Defaults dos algoritmos. Reportar macro-F1, accuracy, tempo. Fixar `bc_min_df` do BC nessa fase (testar 1, 5, 10, 20). TF-IDF fica desligado no spot-check.
 
-**Saída**: `documents/spot_check_results.md`. Combinações no spot-check: 7 × 2 = **14 combinações testadas**, todas prevendo `y1`.
+**Saída**: `documents/spot_check_results.md`. Como `bc_min_df ∈ {1,5,10,20}` foi testado para BC, a rodada executa DF uma vez por algoritmo elegível e BC uma vez por algoritmo elegível por `bc_min_df`.
 
 ### D.3 Seleção dos 5 algoritmos finalistas
-O spot-checking é a etapa de filtragem: selecionamos os **5 melhores algoritmos** (por macro-F1 médio entre as duas representações) para avançar à nested CV. Os 2 algoritmos não selecionados ficam fora das fases seguintes.
+O spot-checking é a etapa de filtragem. Embora o ranking tenha sido calculado por representação, a decisão final é usar o **mesmo conjunto de 5 algoritmos** em DF e BC para preservar comparabilidade direta na Fase E:
+
+```text
+A_5 = {gradient_boosting, logistic_regression, random_forest, linear_svc, naive_bayes}
+```
+
+Justificativa: `svc_rbf` teve desempenho em DF muito próximo de `linear_svc`, mas não é viável em BC dentro deste desenho; `naive_bayes` é computacionalmente barato, interpretável e natural para BC. Como a diferença entre os candidatos de borda é pequena, priorizamos simetria e clareza experimental.
 
 Critério de desempate / diversidade: se o ranking puro concentrar muitos algoritmos do mesmo viés (ex: 3 ensembles no topo), pode-se privilegiar diversidade de vieses indutivos. A decisão final é documentada em `documents/spot_check_results.md` com justificativa explícita.
 
-Algoritmos que falharem por timeout/erro no spot-check ficam fora automaticamente.
+Combinações que falharem por timeout/erro no spot-check ficam fora automaticamente. Se um algoritmo falhar em um `bc_min_df`, mas completar no `bc_min_df` escolhido, ele continua elegível para aquela configuração bem-sucedida.
 
 ## Fase E — Nested CV
 
-Alvo único: `y1`. **10 modelos** treinados: os 5 algoritmos selecionados em §D.3 × 2 representações. Como o conjunto candidato é simétrico (todos os 7 algoritmos rodam em ambas as representações), o total é sempre 10 — sem combinações excluídas por custo.
+Alvo único: `y1`. **10 modelos** treinados: os 5 algoritmos selecionados (`A_5`) × 2 representações (`DF`, `BC`).
 
 ### E.1 Esquema
 ```text
@@ -95,12 +126,12 @@ inner:  StratifiedKFold(n_splits=3, shuffle=True, random_state=r+100)
 
 Métrica de seleção interna: **macro-F1**. Métricas reportadas: macro-F1, accuracy, precision_macro, recall_macro, confusion matrix.
 
-Folds idênticos para todos os 10 modelos em cada (fs, repeat). Seeds em `experiments/seeds.json`. Biblioteca: **scikit-learn** (`GridSearchCV` com `cv=inner`).
+Folds idênticos para todos os 10 modelos em cada repeat. Seeds em `experiments/seeds.json`. Biblioteca: **scikit-learn** (`GridSearchCV` com `cv=inner`).
 
 **Predições out-of-fold salvas** para todos os 10 modelos — reutilizadas nas Fases G e K sem retreino.
 
 ### E.2 Grids de hiperparâmetros
-Grids definidos apenas para os 5 algoritmos selecionados em §D.3. Nenhum dos algoritmos candidatos tem variante `*CV` com grids embutidos no sklearn que cubra exatamente o que queremos (`LogisticRegressionCV` existe e oferece grade automática de `Cs`, mas usamos `GridSearchCV` uniformemente para padronização). Valores comuns do sklearn user guide / Géron / Hastie listados abaixo para todos os 7 candidatos — só os 5 selecionados são realmente usados:
+Grids definidos apenas para os algoritmos selecionados em §D.3. Nenhum dos algoritmos candidatos tem variante `*CV` com grids embutidos no sklearn que cubra exatamente o que queremos (`LogisticRegressionCV` existe e oferece grade automática de `Cs`, mas usamos `GridSearchCV` uniformemente para padronização). Valores comuns do sklearn user guide / Géron / Hastie listados abaixo para os candidatos — só os selecionados são realmente usados:
 
 | Algoritmo | Grid |
 |---|---|
@@ -111,9 +142,8 @@ Grids definidos apenas para os 5 algoritmos selecionados em §D.3. Nenhum dos al
 | `GaussianNB` (DF) | `var_smoothing ∈ np.logspace(-9, -7, 3)` |
 | `LogisticRegression` | `C ∈ {0.01, 0.1, 1, 10}`, `class_weight ∈ {None, balanced}`, `solver='lbfgs'` (DF) / `'saga'` (BC esparso) |
 | `LinearSVC` | `C ∈ {0.01, 0.1, 1, 10}`, `class_weight ∈ {None, balanced}` |
-| `KNeighborsClassifier` | `n_neighbors ∈ {5, 15, 31}`, `weights ∈ {uniform, distance}` |
 
-`GridSearchCV` no inner; trocar para `RandomizedSearchCV` se algum grid se mostrar inviável (ex: `KNN × BC` esparso com vocabulário grande pode ficar pesado). `random_state=42` onde aplicável.
+`GridSearchCV` no inner; trocar para `RandomizedSearchCV` se algum grid se mostrar inviável, especialmente para `gradient_boosting × BC`, que exige conversão controlada para matriz densa. `random_state=42` onde aplicável.
 
 ### E.3 GroupKFold por comandante (análise auxiliar)
 Uma rodada extra com `GroupKFold(n_splits=5)` por `commander_signature`, sem repeat. Roda todos os 10 modelos com defaults (sem inner CV) para custo controlado. Reportar **gap macro-F1 (Stratified − Group)** em `documents/grouped_cv_report.md` — gap pequeno indica padrões gerais; gap grande indica dependência do modelo de comandantes específicos vistos no treino (backbone §13.4). O gap em si é resultado de interesse para a discussão.
@@ -129,8 +159,8 @@ Uma rodada extra com `GroupKFold(n_splits=5)` por `commander_signature`, sem rep
 Ranquear os 10 modelos por macro-F1 médio nos outer folds. Selecionar **um modelo por representação**:
 
 ```text
-melhor_BC = argmax_{alg ∈ A_5} macro_F1(alg, BC, y1)   # entre os 5 selecionados
-melhor_DF = argmax_{alg ∈ A_5} macro_F1(alg, DF, y1)   # entre os 5 selecionados
+melhor_BC = argmax_{alg ∈ A_5} macro_F1(alg, BC, y1)
+melhor_DF = argmax_{alg ∈ A_5} macro_F1(alg, DF, y1)
 ```
 
 Desvio padrão como desempate (estabilidade). Decisão registrada manualmente em `documents/best_models.md`. Esses dois modelos receberão interpretabilidade (Fase H).
@@ -215,7 +245,7 @@ experiments/
 └── manifest.json   # SHA-256 dos JSONL de entrada + versões
 ```
 
-Total: 10 subpastas de modelo (5 algoritmos selecionados em §D.3 × 2 representações), todas alvejando `y1`.
+Total: 10 subpastas de modelo (5 algoritmos selecionados × 2 representações), todas alvejando `y1`.
 
 Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 
@@ -225,9 +255,9 @@ Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 |---|---|---|
 | EDA | B | ✓ concluída |
 | Pré-processamento | C | dentro do pipeline de fold (sem leakage) |
-| ≥5 algoritmos diversos | D | 7 candidatos: DT, RF, GB, NB, LR, LinearSVC, KNN — cobrem árvore, bagging, boosting, probabilístico, linear paramétrico, margem linear, distância. **Spot-check seleciona os 5 que vão à nested CV.** |
-| Spot-checking | D | 14 combinações (7 algos × 2 reps, conjunto simétrico) sobre `y1`; serve de filtro para escolher 5 algoritmos |
-| Otimização sem leakage | E | nested CV (3-fold inner, 5-fold outer × 3 repeats) sobre 10 modelos (5 × 2) |
+| ≥5 algoritmos diversos | D | DF testa 9 candidatos: DT, RF, GB, NB, LR, LinearSVC, SVC-RBF, SVC-Poly, KNN. BC testa 7 candidatos: DT, RF, GB, NB, LR, LinearSVC, KNN. |
+| Spot-checking | D | ✓ concluída; hold-out 80/20 sobre `y1`; filtrou o conjunto final `A_5` usado nas duas representações. |
+| Otimização sem leakage | E | nested CV (3-fold inner, 5-fold outer × 3 repeats) sobre 10 modelos (5 algoritmos × 2 representações) |
 | Folds idênticos entre algoritmos | E.1 | seeds fixas, mesma divisão para os 10 modelos |
 | Seeds | E + Apêndice 1 | salvas em `experiments/seeds.json` |
 | Média ± desvio nos outer folds | E, F | 15 outer scores por modelo |
@@ -245,9 +275,9 @@ Hoje **2026-05-18** — 10 dias.
 |---|---|---|
 | ~~A~~ | — | ✓ concluída |
 | ~~B~~ | — | ✓ concluída |
-| C | 1 | a fazer |
-| D | 1 | a fazer |
-| E | 2-3 | 10 modelos (5 selecionados × 2 reps) com nested CV |
+| ~~C~~ | — | ✓ concluída |
+| ~~D~~ | — | ✓ concluída |
+| E | 2-3 | 10 modelos (5 algoritmos × 2 representações) com nested CV |
 | F | 0,5 | a fazer |
 | G | 0,5 | descritivo, sem retreino |
 | H | 1,5 | interpretabilidade (2 modelos) |

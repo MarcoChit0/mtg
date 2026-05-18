@@ -17,7 +17,10 @@ except ImportError:
     from scripts.download_archidekt_raw import download_drive_file, extract_drive_file_id  # type: ignore
 
 
-DEFAULT_DRIVE_URL = os.environ.get("ARCHIDEKT_PROCESSED_DRIVE_URL", "")
+DEFAULT_DRIVE_URL = os.environ.get(
+    "ARCHIDEKT_PROCESSED_DRIVE_URL",
+    "https://drive.google.com/file/d/1gXCxPeFjxgkNmizWCTU62m-s311B05R0/view?usp=sharing",
+)
 DEFAULT_ARCHIVE = Path("processed.zip")
 DEFAULT_OUT_DIR = Path("data/processed/archidekt")
 REQUIRED_PROCESSED_FILES: Set[str] = {

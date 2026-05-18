@@ -1,0 +1,201 @@
+{
+  "best_bc_min_df": 10,
+  "class_counts": {
+    "2": 2321,
+    "3": 6217,
+    "4": 3597
+  },
+  "n_rows": 12135,
+  "n_test": 2427,
+  "n_train": 9708,
+  "parameters": {
+    "algorithms": [
+      "decision_tree",
+      "random_forest",
+      "gradient_boosting",
+      "naive_bayes",
+      "logistic_regression",
+      "linear_svc",
+      "svc_rbf",
+      "svc_poly",
+      "knn"
+    ],
+    "bc_min_df_values": [
+      1,
+      5,
+      10,
+      20
+    ],
+    "max_rows": null,
+    "processed_dir": "data/processed/archidekt",
+    "random_state": 42,
+    "representations": [
+      "DF",
+      "BC"
+    ],
+    "test_size": 0.2
+  },
+  "rankings": {
+    "BC": [
+      {
+        "algorithm": "gradient_boosting",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.6276393861440588,
+        "rank": 1,
+        "reason": "",
+        "representation": "BC",
+        "selected": true
+      },
+      {
+        "algorithm": "logistic_regression",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5890595746182283,
+        "rank": 2,
+        "reason": "",
+        "representation": "BC",
+        "selected": true
+      },
+      {
+        "algorithm": "naive_bayes",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5536464197067863,
+        "rank": 3,
+        "reason": "",
+        "representation": "BC",
+        "selected": true
+      },
+      {
+        "algorithm": "linear_svc",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5465468341323594,
+        "rank": 4,
+        "reason": "",
+        "representation": "BC",
+        "selected": true
+      },
+      {
+        "algorithm": "random_forest",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5379831690449469,
+        "rank": 5,
+        "reason": "",
+        "representation": "BC",
+        "selected": true
+      },
+      {
+        "algorithm": "decision_tree",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.529666483618202,
+        "rank": 6,
+        "reason": "",
+        "representation": "BC",
+        "selected": false
+      },
+      {
+        "algorithm": "knn",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.4414840630192402,
+        "rank": 7,
+        "reason": "",
+        "representation": "BC",
+        "selected": false
+      }
+    ],
+    "DF": [
+      {
+        "algorithm": "gradient_boosting",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.6754688646066015,
+        "rank": 1,
+        "reason": "",
+        "representation": "DF",
+        "selected": true
+      },
+      {
+        "algorithm": "logistic_regression",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.6736469186614862,
+        "rank": 2,
+        "reason": "",
+        "representation": "DF",
+        "selected": true
+      },
+      {
+        "algorithm": "random_forest",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.6651280585315734,
+        "rank": 3,
+        "reason": "",
+        "representation": "DF",
+        "selected": true
+      },
+      {
+        "algorithm": "linear_svc",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.6284981222617775,
+        "rank": 4,
+        "reason": "",
+        "representation": "DF",
+        "selected": true
+      },
+      {
+        "algorithm": "svc_rbf",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.6280308953327198,
+        "rank": 5,
+        "reason": "",
+        "representation": "DF",
+        "selected": true
+      },
+      {
+        "algorithm": "decision_tree",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5959359060105817,
+        "rank": 6,
+        "reason": "",
+        "representation": "DF",
+        "selected": false
+      },
+      {
+        "algorithm": "naive_bayes",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5653535655348344,
+        "rank": 7,
+        "reason": "",
+        "representation": "DF",
+        "selected": false
+      },
+      {
+        "algorithm": "svc_poly",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5395723354372525,
+        "rank": 8,
+        "reason": "",
+        "representation": "DF",
+        "selected": false
+      },
+      {
+        "algorithm": "knn",
+        "eligible_for_nested_cv": true,
+        "macro_f1": 0.5099268197307413,
+        "rank": 9,
+        "reason": "",
+        "representation": "DF",
+        "selected": false
+      }
+    ]
+  },
+  "timeouts": [
+    {
+      "algorithm": "gradient_boosting",
+      "bc_min_df": 1,
+      "elapsed_seconds": 27.939,
+      "error": "stopped after exceeding 26.570s, 10x the largest completed spot-check runtime",
+      "fit_seconds": null,
+      "predict_seconds": null,
+      "representation": "BC",
+      "status": "timeout",
+      "use_tfidf": false
+    }
+  ]
+}
