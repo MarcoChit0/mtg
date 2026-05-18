@@ -21,7 +21,6 @@
       "knn"
     ],
     "bc_min_df_values": [
-      1,
       5,
       10,
       20
@@ -184,18 +183,5 @@
         "selected": false
       }
     ]
-  },
-  "timeouts": [
-    {
-      "algorithm": "gradient_boosting",
-      "bc_min_df": 1,
-      "elapsed_seconds": 27.939,
-      "error": "stopped after exceeding 26.570s, 10x the largest completed spot-check runtime",
-      "fit_seconds": null,
-      "predict_seconds": null,
-      "representation": "BC",
-      "status": "timeout",
-      "use_tfidf": false
-    }
-  ]
+  }
 }

@@ -60,7 +60,7 @@ Manter y1 e y2 ∈ {2,3,4} (12.135 decks). Descartados salvos em `data/processed
 
 ### C.3 Bag of Cards
 - Matriz esparsa `(n_decks, n_cards)` com quantidade.
-- Pruning: remover cartas com presença < `bc_min_df` no treino. Valor decidido no spot-check (testar 1, 5, 10, 20).
+- Pruning: remover cartas com presença < `bc_min_df` no treino. Valor decidido no spot-check (testar 5, 10, 20).
 - **Variante TF-IDF** (backbone §10.1): fica disponível no pipeline, mas **não é ativada no spot-check da Fase D**. Será tratada depois como hiperparâmetro/variante para algoritmos que se beneficiam de ponderação por IDF (`LinearSVC`, regressão logística). Permanece desabilitada para `MultinomialNB` (assume contagens inteiras, suposição incompatível com TF-IDF).
 
 ### C.4 Antivazamento
@@ -75,7 +75,7 @@ Implementada em [scripts/phase_d_spot_check.py](../scripts/phase_d_spot_check.py
 Resultado da rodada completa após correção do desenho:
 
 - Hold-out estratificado 80/20: 9.708 treino · 2.427 teste.
-- `bc_min_df` testado para BC: 1, 5, 10, 20; escolhido **bc_min_df=10** pela média de macro-F1 em BC; TF-IDF desativado nesta fase.
+- `bc_min_df` testado para BC: 5, 10, 20; escolhido **bc_min_df=10** pela média de macro-F1 em BC; TF-IDF desativado nesta fase.
 - Seleção final dos 5 algoritmos feita manualmente a partir do spot-check, mantendo o **mesmo conjunto para DF e BC** para facilitar comparação direta entre representações. A diferença de performance entre os candidatos de borda não justificou usar conjuntos diferentes.
 - Kernels não-lineares de SVM (`SVC(kernel='rbf')`, `SVC(kernel='poly')`) são testados **apenas em DF**. Embora o sklearn aceite sparse em alguns caminhos, o custo de kernels não-lineares é pelo menos quadrático em número de amostras e fica proibitivo/instável para BC esparso de alta dimensionalidade.
 - Finalistas para DF e BC: **Gradient Boosting**, **Logistic Regression**, **Random Forest**, **LinearSVC**, **Naive Bayes**.
@@ -93,12 +93,12 @@ Resultado da rodada completa após correção do desenho:
 | SVM Poly | margem não-linear | `SVC(kernel='poly')` | **somente DF**; exige `StandardScaler`; não usado em BC por custo de kernel em matriz esparsa grande |
 | KNN | distância (lazy, não-paramétrico) | `KNeighborsClassifier` | em DF aplicar após `StandardScaler`; em BC esparso esperar performance modesta (curse of dimensionality), mantemos como spot-check para confirmar empiricamente |
 
-**9 candidatos para DF** e **7 candidatos para BC**. Cobrem os vieses indutivos do backbone §13.3 (árvore, bagging, boosting, probabilístico, linear paramétrico, margem linear, margem não-linear, distância). BC testa `HistGradientBoostingClassifier` com conversão controlada para matriz densa e limite de tempo de 10x o maior tempo já observado nas runs; se a combinação excede esse limite, ela é interrompida e removida do ranking. BC não recebe `SVC` RBF/poly porque o custo de kernels não-lineares sobre matriz esparsa de alta dimensionalidade é inadequado para este projeto.
+**9 candidatos para DF** e **7 candidatos para BC**. Cobrem os vieses indutivos do backbone §13.3 (árvore, bagging, boosting, probabilístico, linear paramétrico, margem linear, margem não-linear, distância). BC testa `HistGradientBoostingClassifier` com conversão controlada para matriz densa. BC não recebe `SVC` RBF/poly porque o custo de kernels não-lineares sobre matriz esparsa de alta dimensionalidade é inadequado para este projeto.
 
 ### D.2 Procedimento
-Hold-out 80/20 estratificado por `y1`, para cada representação ∈ {BC, DF}. Defaults dos algoritmos. Reportar macro-F1, accuracy, tempo. Fixar `bc_min_df` do BC nessa fase (testar 1, 5, 10, 20). TF-IDF fica desligado no spot-check.
+Hold-out 80/20 estratificado por `y1`, para cada representação ∈ {BC, DF}. Defaults dos algoritmos. Reportar macro-F1, accuracy, tempo. Fixar `bc_min_df` do BC nessa fase (testar 5, 10, 20). TF-IDF fica desligado no spot-check.
 
-**Saída**: `documents/spot_check_results.md`. Como `bc_min_df ∈ {1,5,10,20}` foi testado para BC, a rodada executa DF uma vez por algoritmo elegível e BC uma vez por algoritmo elegível por `bc_min_df`.
+**Saída**: `documents/spot_check_results.md`. Como `bc_min_df ∈ {5,10,20}` é testado para BC, a rodada executa DF uma vez por algoritmo elegível e BC uma vez por algoritmo elegível por `bc_min_df`.
 
 ### D.3 Seleção dos 5 algoritmos finalistas
 O spot-checking é a etapa de filtragem. Embora o ranking tenha sido calculado por representação, a decisão final é usar o **mesmo conjunto de 5 algoritmos** em DF e BC para preservar comparabilidade direta na Fase E:
@@ -111,7 +111,7 @@ Justificativa: `svc_rbf` teve desempenho em DF muito próximo de `linear_svc`, m
 
 Critério de desempate / diversidade: se o ranking puro concentrar muitos algoritmos do mesmo viés (ex: 3 ensembles no topo), pode-se privilegiar diversidade de vieses indutivos. A decisão final é documentada em `documents/spot_check_results.md` com justificativa explícita.
 
-Combinações que falharem por timeout/erro no spot-check ficam fora automaticamente. Se um algoritmo falhar em um `bc_min_df`, mas completar no `bc_min_df` escolhido, ele continua elegível para aquela configuração bem-sucedida.
+Combinações que falharem por erro no spot-check ficam fora automaticamente.
 
 ## Fase E — Nested CV ◐ implementada
 

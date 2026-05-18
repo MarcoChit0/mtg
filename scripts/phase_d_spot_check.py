@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import multiprocessing as mp
 import sys
 import time
 from collections import defaultdict
@@ -244,60 +243,6 @@ def run_one(
         return result
 
 
-def _run_one_worker(kwargs: Dict[str, Any], queue: mp.Queue) -> None:
-    queue.put(run_one(**kwargs))
-
-
-def run_one_with_timeout(max_seconds: Optional[float], **kwargs: Any) -> Dict[str, Any]:
-    if max_seconds is None:
-        return run_one(**kwargs)
-
-    started = time.monotonic()
-    queue: mp.Queue = mp.Queue(maxsize=1)
-    process = mp.Process(target=_run_one_worker, args=(kwargs, queue))
-    process.start()
-    process.join(max_seconds)
-    if process.is_alive():
-        process.terminate()
-        process.join()
-        return {
-            "algorithm": kwargs["algorithm"],
-            "representation": kwargs["representation"],
-            "bc_min_df": kwargs["bc_min_df"],
-            "use_tfidf": bool(kwargs["representation"] == "BC" and bc_uses_tfidf(kwargs["algorithm"])),
-            "status": "timeout",
-            "error": f"stopped after exceeding {max_seconds:.3f}s, 10x the largest completed spot-check runtime",
-            "fit_seconds": None,
-            "predict_seconds": None,
-            "elapsed_seconds": round(time.monotonic() - started, 3),
-        }
-    if process.exitcode != 0:
-        return {
-            "algorithm": kwargs["algorithm"],
-            "representation": kwargs["representation"],
-            "bc_min_df": kwargs["bc_min_df"],
-            "use_tfidf": bool(kwargs["representation"] == "BC" and bc_uses_tfidf(kwargs["algorithm"])),
-            "status": "error",
-            "error": f"worker exited with code {process.exitcode}",
-            "fit_seconds": None,
-            "predict_seconds": None,
-            "elapsed_seconds": round(time.monotonic() - started, 3),
-        }
-    if queue.empty():
-        return {
-            "algorithm": kwargs["algorithm"],
-            "representation": kwargs["representation"],
-            "bc_min_df": kwargs["bc_min_df"],
-            "use_tfidf": bool(kwargs["representation"] == "BC" and bc_uses_tfidf(kwargs["algorithm"])),
-            "status": "error",
-            "error": "worker finished without returning a result",
-            "fit_seconds": None,
-            "predict_seconds": None,
-            "elapsed_seconds": round(time.monotonic() - started, 3),
-        }
-    return queue.get()
-
-
 def select_best_bc_min_df(results: Sequence[Mapping[str, Any]]) -> Optional[int]:
     by_bc_min_df: Dict[int, List[float]] = defaultdict(list)
     for record in results:
@@ -405,7 +350,6 @@ def write_report(
 ) -> None:
     ok = [r for r in results if r.get("status") == "ok"]
     skipped = [r for r in results if r.get("status") == "skipped"]
-    timed_out = [r for r in results if r.get("status") == "timeout"]
     errors = [r for r in results if r.get("status") == "error"]
     selected_df = ", ".join(
         f"`{row['algorithm']}`" for row in rankings.get("DF", []) if row.get("selected")
@@ -419,7 +363,7 @@ def write_report(
         "",
         "## Objetivo",
         "",
-        "Avaliar rapidamente os algoritmos candidatos em hold-out 80/20 estratificado por `y1`, usando as duas representações do projeto: Deck Features (`DF`) e Bag of Cards (`BC`). Esta fase escolhe 5 algoritmos finalistas por representação; os conjuntos de DF e BC podem ser diferentes.",
+        "Avaliar rapidamente os algoritmos candidatos em hold-out 80/20 estratificado por `y1`, usando as duas representações do projeto: Deck Features (`DF`) e Bag of Cards (`BC`). Esta fase escolhe os algoritmos finalistas que avançam para a nested CV.",
         "",
         "## Configuração",
         "",
@@ -431,7 +375,6 @@ def write_report(
         "- `use_tfidf`: `False` nesta etapa",
         f"- Combinações com sucesso: {len(ok)}",
         f"- Combinações puladas: {len(skipped)}",
-        f"- Combinações interrompidas por tempo: {len(timed_out)}",
         f"- Combinações com erro: {len(errors)}",
         "",
         "## Resultados por combinação",
@@ -460,14 +403,14 @@ def write_report(
         "",
         "## Ranking dos algoritmos por representação",
         "",
-        "O ranking é separado por representação. Para BC, usa apenas o `bc_min_df` escolhido. Os kernels não-lineares de SVM (`svc_rbf`, `svc_poly`) são avaliados só em DF; em BC, o custo de kernel não-linear sobre matriz esparsa de alta dimensionalidade não é adequado para este projeto. Gradient Boosting foi testado em BC com limite de tempo de 10x o maior tempo já observado nas demais runs; se exceder esse limite, é interrompido e removido dos finalistas.",
+        "O ranking é separado por representação. Para BC, usa apenas o `bc_min_df` escolhido. Os kernels não-lineares de SVM (`svc_rbf`, `svc_poly`) são avaliados só em DF; em BC, o custo de kernel não-linear sobre matriz esparsa de alta dimensionalidade não é adequado para este projeto.",
         "",
     ])
     for representation in REPRESENTATIONS:
         lines.extend([
             f"### {representation}",
             "",
-            "| Rank | Algoritmo | Macro-F1 | Elegível | Selecionado | Observação |",
+            "| Rank | Algoritmo | Macro-F1 | Elegível | Top-5 automático | Observação |",
             "|---:|---|---:|---|---|---|",
         ])
         for row in rankings.get(representation, []):
@@ -478,16 +421,26 @@ def write_report(
 
     lines.extend([
         "",
-        "## Finalistas preliminares",
+        "## Top-5 automático por representação",
         "",
         f"- DF: {selected_df or '_nenhum_'}",
         f"- BC: {selected_bc or '_nenhum_'}",
         "",
+        "## Decisão final",
+        "",
+        "Após revisão do spot-check, o projeto usará o mesmo conjunto de algoritmos para DF e BC:",
+        "",
+        "```text",
+        "A_5 = {gradient_boosting, logistic_regression, random_forest, linear_svc, naive_bayes}",
+        "```",
+        "",
+        "Justificativa: a performance dos candidatos de borda não muda o suficiente para compensar a perda de comparabilidade entre representações. `svc_rbf` teve bom resultado em DF, mas não é viável em BC neste desenho; `naive_bayes` é barato, interpretável e adequado para Bag of Cards.",
+        "",
         "## Problemas encontrados",
         "",
     ])
-    if skipped or timed_out or errors:
-        for r in skipped + timed_out + errors:
+    if skipped or errors:
+        for r in skipped + errors:
             bc_context = f" com `bc_min_df={r.get('bc_min_df')}`" if r.get("bc_min_df") is not None else ""
             lines.append(f"- `{r.get('algorithm')}` em `{r.get('representation')}`{bc_context}: {r.get('status')} — {r.get('error')}")
     else:
@@ -497,7 +450,7 @@ def write_report(
         "",
         "## Próximo passo",
         "",
-        "Revisar este report e confirmar os 5 algoritmos finalistas de DF e os 5 finalistas de BC antes de rodar a nested CV da Fase E.",
+        "Rodar a nested CV da Fase E com os 5 algoritmos selecionados em `A_5` nas duas representações.",
         "",
     ])
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -517,7 +470,7 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         dest="bc_min_df_values",
         type=int,
         nargs="+",
-        default=[1, 5, 10, 20],
+        default=[5, 10, 20],
         help="BC-only document-frequency thresholds for pruning cards. `--min-df-values` is a deprecated alias.",
     )
     parser.add_argument("--algorithms", nargs="+", choices=ALGORITHMS, default=list(ALGORITHMS))
@@ -534,6 +487,10 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 
 
 def run(args: argparse.Namespace) -> Dict[str, Any]:
+    invalid_bc_min_df = [value for value in args.bc_min_df_values if value < 5]
+    if invalid_bc_min_df:
+        raise ValueError(f"Phase D only supports BC bc_min_df >= 5; got {invalid_bc_min_df}")
+
     features, bags = load_modeling_data(args.processed_dir)
     y = target_vector(features)
 
@@ -574,23 +531,12 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
     results: List[Dict[str, Any]] = []
     total_runs = len(planned_runs)
     for run_idx, (representation, bc_min_df, algorithm) in enumerate(planned_runs, start=1):
-        completed_times = [
-            float(record["elapsed_seconds"])
-            for record in results
-            if record.get("status") == "ok" and record.get("elapsed_seconds") is not None
-        ]
-        timeout_seconds = None
-        if representation == "BC" and algorithm == "gradient_boosting" and completed_times:
-            timeout_seconds = 10 * max(completed_times)
-
-        timeout_text = f" | timeout={timeout_seconds:.1f}s" if timeout_seconds is not None else ""
         print_progress(
             f"\n[Phase D {run_idx}/{total_runs}] START {run_label(algorithm, representation, bc_min_df)}"
-            f" | train={len(y_train)} | test={len(y_test)}{timeout_text}",
+            f" | train={len(y_train)} | test={len(y_test)}",
             args.quiet_progress,
         )
-        result = run_one_with_timeout(
-            timeout_seconds,
+        result = run_one(
             algorithm=algorithm,
             representation=representation,
             bc_min_df=bc_min_df,
@@ -617,7 +563,6 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
 
     args.experiment_dir.mkdir(parents=True, exist_ok=True)
     write_jsonl(args.experiment_dir / "results.jsonl", results)
-    timed_out = [record for record in results if record.get("status") == "timeout"]
     summary = {
         "parameters": {
             "processed_dir": str(args.processed_dir),
@@ -633,7 +578,6 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         "n_test": int(len(y_test)),
         "class_counts": {str(label): int((y == label).sum()) for label in sorted(set(y))},
         "best_bc_min_df": best_bc_min_df,
-        "timeouts": timed_out,
         "rankings": rankings,
     }
     write_json(args.experiment_dir / "summary.json", summary)

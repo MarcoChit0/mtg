@@ -8,7 +8,7 @@ O comando principal é:
 uv run run-mtg-pipeline
 ```
 
-Em uma máquina limpa, esse comando restaura automaticamente o snapshot processado salvo no Google Drive, gera os relatórios implementados até a Fase C e escreve o manifest em:
+Em uma máquina limpa, esse comando restaura automaticamente o snapshot processado salvo no Google Drive, gera os relatórios implementados até a Fase D e escreve o manifest em:
 
 ```text
 experiments/pipeline_run_manifest.json
@@ -74,16 +74,10 @@ Rodar testes:
 uv run run-mtg-pipeline --run-tests
 ```
 
-Rodar também o spot-check da Fase D:
+Pular o spot-check da Fase D:
 
 ```bash
-uv run run-mtg-pipeline --run-spot-check
-```
-
-Rodar também a nested CV da Fase E:
-
-```bash
-uv run run-mtg-pipeline --run-nested-cv
+uv run run-mtg-pipeline --skip-spot-check
 ```
 
 Rodar somente a Fase D:
@@ -104,7 +98,7 @@ uv run phase-e-nested-cv
 - Fase B: concluída, reports em `documents/eda_report.md` e `documents/divergence_report.md`
 - Fase C: concluída, report em `documents/preprocessing_report.md`
 - Fase D: concluída, report em `documents/spot_check_results.md`
-- Fase E: implementada, roda sob demanda com `phase-e-nested-cv`
+- Fase E: script implementado, ainda fora da pipeline principal
 
 O plano completo do projeto está em `documents/action_plan.md`.
 
