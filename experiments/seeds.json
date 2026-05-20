@@ -1,0 +1,10 @@
+{
+  "estimator_seed_formula": "random_state + repeat_seed * 100 + outer_fold",
+  "inner_seed_formula": "repeat_seed + 100",
+  "outer_repeat_seeds": [
+    1,
+    2,
+    3
+  ],
+  "random_state": 42
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r1_f1",
+    "inner_best_macro_f1": 0.5833574725370717,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 1,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r1_f2",
+    "inner_best_macro_f1": 0.5770635122464652,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 2,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r1_f3",
+    "inner_best_macro_f1": 0.5824922530840686,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 3,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r1_f4",
+    "inner_best_macro_f1": 0.5770558939697713,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 4,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r1_f5",
+    "inner_best_macro_f1": 0.5799786052051868,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 5,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r2_f1",
+    "inner_best_macro_f1": 0.5918695410434297,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 1,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r2_f2",
+    "inner_best_macro_f1": 0.5677925632304096,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 2,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r2_f3",
+    "inner_best_macro_f1": 0.5845343465610714,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 3,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r2_f4",
+    "inner_best_macro_f1": 0.5884981122486787,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 4,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r2_f5",
+    "inner_best_macro_f1": 0.5703718691605824,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 5,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r3_f1",
+    "inner_best_macro_f1": 0.5851055346177163,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 1,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r3_f2",
+    "inner_best_macro_f1": 0.5675260121071779,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 2,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r3_f3",
+    "inner_best_macro_f1": 0.583778932154172,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 3,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r3_f4",
+    "inner_best_macro_f1": 0.5843381170432981,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 4,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__var_smoothing": 1e-09
+    },
+    "fold_id": "r3_f5",
+    "inner_best_macro_f1": 0.5818916059806271,
+    "model_id": "df_naive_bayes",
+    "outer_fold": 5,
+    "repeat_seed": 3
+  }
+]

@@ -29,11 +29,13 @@ REQUIRED_PROCESSED_FILES: Set[str] = {
     "edhpowerlevel_results.jsonl",
     "processing_manifest.jsonl",
     "rejected_decks.jsonl",
+    # Phase B (EDA) and Phase C (modeling filter) both read deck_features.jsonl;
+    # phases D/E read bag_of_cards.jsonl too. They are required, not optional.
+    "deck_features.jsonl",
+    "bag_of_cards.jsonl",
 }
 OPTIONAL_PROCESSED_FILES: Set[str] = {
     "README.md",
-    "bag_of_cards.jsonl",
-    "deck_features.jsonl",
     "feature_manifest.jsonl",
 }
 ALLOWED_PROCESSED_FILES = REQUIRED_PROCESSED_FILES | OPTIONAL_PROCESSED_FILES

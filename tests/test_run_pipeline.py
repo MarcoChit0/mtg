@@ -1,127 +1,173 @@
 import contextlib
 import io
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from scripts import run_pipeline
 
 
-class RunPipelinePlanTests(unittest.TestCase):
-    def test_auto_uses_processed_drive_when_local_data_is_missing(self):
+class RunPipelineCliTests(unittest.TestCase):
+    def write_initialized_inputs(self, processed: Path) -> None:
+        processed.mkdir(parents=True)
+        for name in ["decks.jsonl", "cards.jsonl", "deck_features.jsonl", "bag_of_cards.jsonl"]:
+            (processed / name).write_text("{}\n", encoding="utf-8")
+        (processed / "modeling_snapshot_ids.json").write_text("[]\n", encoding="utf-8")
+
+    def test_no_command_defaults_to_init(self):
+        args = run_pipeline.parse_args(["--dry-run", "--experiments-manifest-url", "manifest.json"])
+
+        self.assertEqual(args.command, "init")
+        self.assertTrue(args.dry_run)
+
+    def test_init_dry_run_has_only_init_stages(self):
+        args = run_pipeline.parse_args([
+            "init",
+            "--dry-run",
+            "--experiments-manifest-url",
+            "manifest.json",
+        ])
+
+        stages = run_pipeline.build_stage_plan(args)
+        stage_names = [stage.name for stage in stages]
+
+        self.assertIn("restore_processed", stage_names)
+        self.assertIn("phase_b_eda_divergence", stage_names)
+        self.assertIn("phase_c_preprocessing", stage_names)
+        self.assertIn("restore_public_experiments", stage_names)
+        self.assertNotIn("phase_d_spot_check", stage_names)
+        self.assertNotIn("phase_e_nested_cv", stage_names)
+
+    def test_spot_checking_requires_init(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
             args = run_pipeline.parse_args([
+                "spot-checking",
                 "--processed-dir",
-                str(root / "processed"),
-                "--skip-reports",
+                str(Path(tmp) / "processed"),
+                "--dry-run",
             ])
 
-            resolved = run_pipeline.resolve_auto_data_source(args)
-            stages = run_pipeline.build_stage_plan(resolved)
+            with self.assertRaisesRegex(FileNotFoundError, "run-mtg-pipeline init"):
+                run_pipeline.run(args)
 
-            self.assertEqual(resolved.data_source, "processed-drive")
-            self.assertEqual(stages[0].name, "restore_processed")
-
-    def test_auto_uses_local_when_processed_data_exists(self):
+    def test_spot_checking_dry_run_publishes_bundle_by_default(self):
         with tempfile.TemporaryDirectory() as tmp:
             processed = Path(tmp) / "processed"
-            processed.mkdir()
-            (processed / "decks.jsonl").write_text("{}\n", encoding="utf-8")
-            (processed / "cards.jsonl").write_text("{}\n", encoding="utf-8")
-
+            self.write_initialized_inputs(processed)
             args = run_pipeline.parse_args([
+                "spot-checking",
                 "--processed-dir",
                 str(processed),
-                "--skip-reports",
+                "--dry-run",
             ])
 
-            resolved = run_pipeline.resolve_auto_data_source(args)
+            with contextlib.redirect_stdout(io.StringIO()):
+                manifest = run_pipeline.run(args)
 
-            self.assertEqual(resolved.data_source, "local")
+            self.assertEqual(manifest["status"], "ok")
+            self.assertEqual(
+                [stage["name"] for stage in manifest["stages"]],
+                ["phase_d_spot_check", "check_drive_write", "upload_spot_check_bundle"],
+            )
+            self.assertEqual(manifest["stages"][0]["status"], "dry_run")
 
-    def test_processed_drive_plan_preserves_frozen_features_by_default(self):
-        args = run_pipeline.parse_args([
-            "--data-source",
-            "processed-drive",
-            "--processed-archive",
-            "processed.zip",
-            "--skip-reports",
-        ])
+    def test_spot_checking_run_local_skips_bundle_publish(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            processed = Path(tmp) / "processed"
+            self.write_initialized_inputs(processed)
+            args = run_pipeline.parse_args([
+                "spot-checking",
+                "--processed-dir",
+                str(processed),
+                "--run-local",
+                "--dry-run",
+            ])
 
-        stages = run_pipeline.build_stage_plan(args)
-        by_name = {stage.name: stage for stage in stages}
+            stages = run_pipeline.build_stage_plan(args)
 
-        self.assertIsNotNone(by_name["restore_processed"].command)
-        self.assertIsNone(by_name["build_features"].command)
-        self.assertEqual(by_name["build_features"].reason, "skipped_preserve_processed_snapshot")
-        self.assertIsNotNone(by_name["phase_c_preprocessing"].command)
-        self.assertIsNotNone(by_name["phase_d_spot_check"].command)
-        self.assertIn("scripts/phase_d_spot_check.py", by_name["phase_d_spot_check"].command)
-        self.assertFalse(by_name["phase_e_nested_cv"].implemented)
-        self.assertIsNone(by_name["phase_e_nested_cv"].command)
-        self.assertEqual(by_name["phase_e_nested_cv"].reason, "not_implemented_yet")
+            self.assertEqual([stage.name for stage in stages], ["phase_d_spot_check"])
 
-    def test_raw_drive_plan_keeps_live_y2_opt_in(self):
-        args = run_pipeline.parse_args([
-            "--data-source",
-            "raw-drive",
-            "--raw-archive",
-            "data/raw/archidekt/Archive.zip",
-            "--skip-reports",
-        ])
-
-        stages = run_pipeline.build_stage_plan(args)
-        process = next(stage for stage in stages if stage.name == "process_raw")
-
-        self.assertIn("--skip-y2", process.command)
-
-    def test_manifest_records_skipped_future_stages_in_dry_run(self):
+    def test_train_dry_run_builds_check_write_and_phase_e(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             processed = root / "processed"
-            processed.mkdir()
-            (processed / "decks.jsonl").write_text("{}\n", encoding="utf-8")
-            (processed / "cards.jsonl").write_text("{}\n", encoding="utf-8")
             manifest_path = root / "manifest.json"
-
+            self.write_initialized_inputs(processed)
             args = run_pipeline.parse_args([
-                "--data-source",
-                "local",
+                "train",
                 "--processed-dir",
                 str(processed),
-                "--skip-reports",
-                "--dry-run",
                 "--manifest-path",
                 str(manifest_path),
+                "--model",
+                "random_forest",
+                "--feature",
+                "df",
+                "--dry-run",
             ])
+
             with contextlib.redirect_stdout(io.StringIO()):
                 manifest = run_pipeline.run(args)
-            saved = json.loads(manifest_path.read_text(encoding="utf-8"))
 
-            self.assertEqual(manifest["status"], "ok")
-            self.assertEqual(saved["status"], "ok")
-            statuses = {stage["name"]: stage["status"] for stage in saved["stages"]}
-            self.assertEqual(statuses["build_features"], "dry_run")
-            self.assertEqual(statuses["phase_d_spot_check"], "dry_run")
-            self.assertEqual(statuses["phase_e_nested_cv"], "pending")
+            names = [stage["name"] for stage in manifest["stages"]]
+            self.assertEqual(names, ["check_drive_write", "phase_e_nested_cv", "publish_experiments_manifest"])
+            phase_e_command = manifest["stages"][1]["command"]
+            self.assertIn("--model", phase_e_command)
+            self.assertIn("random_forest", phase_e_command)
+            self.assertIn("--feature", phase_e_command)
+            self.assertIn("df", phase_e_command)
 
-    def test_spot_check_can_be_skipped(self):
-        args = run_pipeline.parse_args([
-            "--data-source",
-            "processed-drive",
-            "--processed-archive",
-            "processed.zip",
-            "--skip-reports",
-            "--skip-spot-check",
-        ])
+    def test_train_run_local_skips_write_check(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            processed = Path(tmp) / "processed"
+            self.write_initialized_inputs(processed)
+            args = run_pipeline.parse_args([
+                "train",
+                "--processed-dir",
+                str(processed),
+                "--model",
+                "random_forest",
+                "--feature",
+                "df",
+                "--run-local",
+                "--dry-run",
+            ])
 
-        stages = run_pipeline.build_stage_plan(args)
-        by_name = {stage.name: stage for stage in stages}
+            stages = run_pipeline.build_stage_plan(args)
 
-        self.assertIsNone(by_name["phase_d_spot_check"].command)
-        self.assertEqual(by_name["phase_d_spot_check"].reason, "skipped_by_--skip-spot-check")
+            self.assertEqual([stage.name for stage in stages], ["phase_e_nested_cv"])
+
+    def test_train_without_write_permission_fails_before_training(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            processed = root / "processed"
+            self.write_initialized_inputs(processed)
+            args = run_pipeline.parse_args([
+                "train",
+                "--processed-dir",
+                str(processed),
+                "--manifest-path",
+                str(root / "manifest.json"),
+                "--model",
+                "random_forest",
+                "--feature",
+                "df",
+                "--rclone-bin",
+                "false",
+            ])
+
+            failed = subprocess.CompletedProcess(args=["rclone"], returncode=1)
+            with mock.patch.object(run_pipeline.subprocess, "run", return_value=failed):
+                with self.assertRaisesRegex(RuntimeError, "Sem permissão de escrita"):
+                    with contextlib.redirect_stdout(io.StringIO()):
+                        run_pipeline.run(args)
+
+            saved = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+            self.assertEqual(saved["status"], "failed")
+            self.assertEqual(saved["stages"], [])
 
 
 if __name__ == "__main__":

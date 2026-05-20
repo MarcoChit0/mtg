@@ -93,12 +93,13 @@ O projeto pretende:
 
    * **Bag of Cards (BC)**;
    * **Deck Features (DF)**.
-5. Fazer **spot-checking** com 7 algoritmos candidatos (DT, RF, GB, NB, LR, LinearSVC, KNN) sobre as duas representações para selecionar os **5 algoritmos** que vão para a etapa de otimização. Em seguida, treinar **10 modelos** (5 algoritmos selecionados × 2 representações BC/DF) prevendo `y1`, com otimização de hiperparâmetros modelo a modelo via nested CV.
+5. Fazer **spot-checking** com 7 algoritmos candidatos (DT, RF, GB, NB, LR, LinearSVC, KNN), todos viáveis nas duas representações, com **N=5 repetições** (seeds `{1, 2, 3, 4, 5}`) para reportar média ± desvio padrão. Selecionar os **top-5 por representação** (BC e DF independentes). A união `A_uniao = A_BC ∪ A_DF` (5 a 7 algoritmos distintos) é o conjunto da Fase E, no qual **cada algoritmo da união é treinado em ambas as representações**, gerando `|A_uniao| × 2` modelos (10 a 14). A otimização de hiperparâmetros é feita modelo a modelo via nested CV, com grids limitados a até 192 configurações por algoritmo para evitar explosão combinatorial.
 6. Avaliar o quanto a percepção comunitária pode ser aprendida a partir dos dados observáveis do deck.
-7. Comparar as predições dos 10 modelos com `y2` da calculadora — identificar quais modelos têm comportamento mais próximo do da calculadora.
+7. Comparar as predições dos modelos com `y2` da calculadora — identificar quais modelos têm comportamento mais próximo do da calculadora.
 8. Analisar diretamente a divergência entre `y1` e `y2`, independente de modelos.
 9. Interpretar os **dois melhores modelos** (melhor BC + melhor DF) para entender quais cartas e quais features explicam o bracket comunitário.
-10. (Opcional, se o cronograma permitir) realizar **stacking** dos 10 modelos para prever `y1` e comparar o stacking final com `y2`.
+10. **Ensemble por votação** (hard voting) dos top-3/top-5 BC, top-3/top-5 DF, top-3 BC + top-3 DF e de todos os modelos individuais (`voting_all`), a partir das predições out-of-fold (sem retreino).
+11. (Opcional, se o cronograma permitir) realizar **stacking** dos modelos individuais para prever `y1` e comparar o stacking final com `y2`.
 
 **Decisão metodológica**: a calculadora não é alvo de modelo. Treinar um modelo para prever a saída de outra ferramenta determinística (a calculadora produz o mesmo `y2` para o mesmo input) seria redundante e não responde à pergunta central. Tratamos `y2` como **fonte alternativa de avaliação** contra a qual comparamos os modelos treinados em `y1`.
 
@@ -187,7 +188,7 @@ Essas representações são necessárias para que os modelos possam ser treinado
 
 A comparação entre **BC** e **DF** é uma comparação instrumental: ela ajuda a entender se a percepção comunitária (`y1`) é melhor capturada pela identidade exata das cartas ou por propriedades agregadas do deck.
 
-A comparação mais importante ocorre na §13.7: depois de treinar os 10 modelos em `y1`, as predições out-of-fold de cada modelo são comparadas descritivamente com `y2` (calculadora), sem retreino. É nessa comparação que o projeto identifica quais modelos convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária.
+A comparação mais importante ocorre na §13.7: depois de treinar os modelos individuais (10 a 14) em `y1`, as predições out-of-fold de cada modelo são comparadas descritivamente com `y2` (calculadora), sem retreino. É nessa comparação que o projeto identifica quais modelos convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária.
 
 Em outras palavras:
 
@@ -509,13 +510,14 @@ A estratégia experimental deve sustentar o projeto inteiro e cumprir as exigên
 
 O projeto será formulado como uma tarefa supervisionada de **classificação multiclasse**, com classes 2, 3 e 4. A pergunta científica principal continua sendo a divergência entre percepções de poder, mas essa pergunta será estudada por meio de modelos preditivos treinados sobre duas famílias de labels.
 
-A estratégia experimental tem cinco camadas:
+A estratégia experimental tem seis camadas:
 
 1. análise exploratória e preparação dos dados;
-2. spot-checking sobre 7 algoritmos candidatos e seleção dos 5 que avançam;
-3. predição de `y1` com 10 modelos (5 algoritmos selecionados × {BC, DF}) via nested CV, e comparação entre representações;
-4. comparação descritiva das predições dos 10 modelos contra `y2` (calculadora);
-5. (opcional) stacking dos 10 modelos para prever `y1`.
+2. spot-checking N=5 sobre 7 algoritmos candidatos (todos viáveis em BC e DF) e seleção dos top-5 por representação;
+3. predição de `y1` com `|A_uniao| × 2` modelos (cada algoritmo da união treinado em ambas as representações, totalizando 10 a 14) via nested CV com grids ≤192 configs, e comparação entre representações;
+4. votação majoritária (hard voting) de subconjuntos dos modelos individuais a partir das predições OOF, sem retreino;
+5. comparação descritiva das predições dos modelos individuais (e dos ensembles de votação) contra `y2` (calculadora);
+6. (opcional) stacking dos modelos individuais para prever `y1`.
 
 A quarta camada é a que conecta a modelagem à pergunta central do projeto: ela revela quais modelos, treinados apenas em `y1`, terminam reproduzindo o comportamento da calculadora — e quais divergem dela.
 
@@ -600,13 +602,13 @@ A_candidatos = {
 }
 ```
 
-Kernels não-lineares de SVM (RBF, polinomial) foram **excluídos** do conjunto: seu custo computacional em BC esparso de alta dimensão (~15k features × 12k decks) é proibitivo, o que quebraria a simetria de aplicar exatamente o mesmo conjunto de algoritmos às duas representações. Mantemos margem linear via `LinearSVC` e não-linearidade via `GradientBoosting` e `KNN`.
+Kernels não-lineares de SVM (RBF, polinomial) foram **excluídos** do conjunto: seu custo computacional em BC esparso de alta dimensão (~15k features × 12k decks) é proibitivo, o que quebraria a simetria de aplicar exatamente o mesmo conjunto de algoritmos às duas representações. A regra do projeto, fixada com a professora em 2026-05-19, é manter no pool só algoritmos que rodam em ambas as representações. Mantemos margem linear via `LinearSVC` e não-linearidade via `GradientBoosting` e `KNN`.
 
-A primeira etapa será tratada como **spot-checking**: rodar todos os 7 algoritmos × 2 representações = **14 combinações** com defaults em hold-out 80/20 para confirmar viabilidade e medir desempenho inicial.
+A primeira etapa será tratada como **spot-checking**: rodar todos os 7 algoritmos × 2 representações = **14 combinações** com defaults em hold-out 80/20. Cada combinação é avaliada com **N=5 repetições** usando seeds `{1, 2, 3, 4, 5}` para gerar 5 hold-outs estratificados distintos. Reportamos média e desvio padrão de macro-F1 (e demais métricas) por combinação.
 
-**Resultado do spot-checking**: selecionar os **5 melhores algoritmos** (por macro-F1 médio entre as duas representações, ou por critério análogo discutido no relatório) para avançar à nested CV. Os 2 algoritmos não selecionados ficam de fora das etapas seguintes.
+**Resultado do spot-checking**: selecionar os **top-5 algoritmos por representação** (BC e DF independentes) por macro-F1 média. A união `A_uniao = A_DF ∪ A_BC` (5 a 7 algoritmos distintos) define o conjunto de algoritmos que vai para a Fase E. Em Fase E, **cada algoritmo da união é treinado em ambas as representações** — não apenas naquela em que entrou no top-5. Isso gera `|A_uniao| × 2` modelos (10 a 14) e mantém a comparação BC vs DF justa para cada algoritmo selecionado.
 
-A seleção busca manter diversidade de vieses indutivos no conjunto final (árvore, ensemble, probabilístico, linear, margem, distância). Se o ranking puro de desempenho concentrar muitos algoritmos do mesmo viés (ex: três ensembles no topo), o critério pode privilegiar a diversidade — a decisão é documentada no relatório.
+A seleção é primariamente por desempenho médio; desvio padrão (estabilidade) e diversidade de vieses indutivos servem de desempate quando o ranking concentrar muitos algoritmos da mesma família (ex: três ensembles no topo). A decisão é documentada no relatório.
 
 ### 13.4 Nested cross-validation
 
@@ -644,17 +646,36 @@ A estimativa com `StratifiedKFold` representa o cenário **otimista** (comandant
 
 ### 13.5 Predição de `y1` (percepção comunitária)
 
-Para cada um dos **5 algoritmos** `alg` selecionados em §13.3 e para cada representação `est` em `{BC, DF}`, treina-se um modelo prevendo **somente** `y1`:
+A Fase D entrega duas listas `A_DF` e `A_BC` (top-5 de cada representação). A união `A_uniao = A_DF ∪ A_BC` é o conjunto de algoritmos da Fase E. Para cada par `(alg, est)` com `alg ∈ A_uniao` e `est ∈ {BC, DF}`, treina-se um modelo prevendo **somente** `y1`:
 
 ```text
-m = alg(est(X), y1)
+m = alg(est(X), y1)   para todo (alg, est) ∈ A_uniao × {BC, DF}
 ```
 
-Total: **10 modelos** (5 × 2). Como todos os 7 algoritmos candidatos são viáveis em ambas as representações, o conjunto final é simétrico — não há combinações excluídas por custo.
+Total: `|A_uniao| × 2` modelos (10 a 14 dependendo do tamanho da união). Treinamos cada algoritmo selecionado em ambas as representações para preservar a comparação BC vs DF necessária à Fase F.
+
+Para conter o custo computacional, cada algoritmo recebe um grid de hiperparâmetros com no máximo **192 configurações** (guarda-corpo de ordem de grandeza atualizado em 2026-05-20). Random Forest, por exemplo, sai de 864 configurações no desenho original para 192.
 
 A calculadora (`y2`) **não é alvo de modelo**. Treinar para prever a saída de outra ferramenta determinística não responde à pergunta central. `y2` aparece como benchmark de comparação em §13.7.
 
 Essa etapa mede se a percepção comunitária pode ser aprendida a partir dos dados observáveis do deck e qual representação carrega mais sinal preditivo.
+
+### 13.5.1 Ensembles por votação (hard voting, sem retreino)
+
+A pedido da professora (2026-05-19), avaliamos seis ensembles construídos por **votação majoritária** das predições out-of-fold dos modelos da §13.5. Como todas as predições OOF compartilham o mesmo conjunto de folds e seeds, a votação é exata por linha e por fold — não há novo treinamento.
+
+```text
+voting_top3_BC        top-3 modelos BC por macro-F1 média da §13.5
+voting_top5_BC        top-5 modelos BC
+voting_top3_DF        top-3 modelos DF
+voting_top5_DF        top-5 modelos DF
+voting_top3_BC_DF     top-3 BC + top-3 DF (6 modelos)
+voting_all            todos os modelos individuais da §13.5 (10 a 14)
+```
+
+Para cada ensemble e cada outer fold, agregamos as predições dos membros, computamos a moda por linha (empates resolvidos pela classe com maior macro-F1 médio entre os membros que a previram), e reportamos macro-F1, accuracy, precision_macro, recall_macro e a matriz de confusão. Reportamos média e desvio padrão sobre os 15 outer folds, do mesmo jeito que para os modelos individuais.
+
+As predições OOF dos 6 ensembles também são preservadas e entram no leque de comparações da §13.7 (vs `y2`) e no relatório da §17 (interpretação).
 
 ### 13.6 Comparação entre representações
 
@@ -678,9 +699,9 @@ Essa etapa é instrumental: alimenta a seleção dos dois melhores modelos (um p
 
 ### 13.7 Comparação das predições dos modelos com a calculadora
 
-Esta é a camada central que conecta a modelagem à pergunta de pesquisa. Não envolve novo treinamento: reutiliza as **predições out-of-fold** já produzidas em §13.5 e as compara contra `y2`.
+Esta é a camada central que conecta a modelagem à pergunta de pesquisa. Não envolve novo treinamento: reutiliza as **predições out-of-fold** já produzidas em §13.5 (modelos individuais) e §13.5.1 (ensembles de votação) e as compara contra `y2`.
 
-Para cada um dos 10 modelos (5 algoritmos selecionados × {BC, DF}), avaliados em todos os folds externos:
+Para cada modelo individual (10 a 14 dependendo de `|A_uniao|`) e cada um dos 6 ensembles de votação, avaliados em todos os folds externos:
 
 ```text
 ŷ1 = predição out-of-fold do modelo (alvo de treino: y1)
@@ -711,11 +732,11 @@ Essa análise é **descritiva**: não há retreino, não há novos folds, não h
 A seleção usa a métrica principal (macro-F1, ver §15) calculada nos outer folds da nested CV. Para cada representação:
 
 ```text
-melhor modelo BC = argmax_{alg ∈ A} macro_F1(alg, BC, y1)
-melhor modelo DF = argmax_{alg ∈ A} macro_F1(alg, DF, y1)
+melhor modelo BC = argmax_{alg ∈ A_uniao} macro_F1(alg, BC, y1)
+melhor modelo DF = argmax_{alg ∈ A_uniao} macro_F1(alg, DF, y1)
 ```
 
-Esses dois modelos recebem interpretabilidade aprofundada (§17). Em caso de empate por macro-F1, o desempate considera desvio padrão (estabilidade) e custo de interpretação.
+Esses dois modelos recebem interpretabilidade aprofundada (§17). Em caso de empate por macro-F1, o desempate considera desvio padrão (estabilidade) e custo de interpretação. Os ensembles de votação (§13.5.1) também são ranqueados e comparados, mas a interpretabilidade segue sendo feita sobre dois modelos individuais por simplicidade.
 
 O artigo deve reportar:
 
@@ -725,15 +746,16 @@ métricas complementares
 matrizes de confusão (por fold e agregada) contra y1
 melhores hiperparâmetros selecionados por fold
 comparação entre BC e DF para y1
+métricas dos 6 ensembles de votação (§13.5.1) lado a lado com os 10 individuais
 comparação descritiva entre as predições dos modelos e y2 (§13.7)
 ```
 
 ### 13.9 Stacking (opcional, se houver tempo até a entrega)
 
-Caso o cronograma permita, treinar um **meta-modelo** que combina as predições dos 10 modelos da §13.5:
+Caso o cronograma permita, treinar um **meta-modelo** que combina as predições dos modelos individuais da §13.5:
 
 ```text
-base learners: 10 modelos (5 algoritmos selecionados × 2 representações), todos prevendo y1
+base learners: |A_uniao| × 2 modelos individuais (algoritmos da união × {BC, DF}), todos prevendo y1
 features do meta: predições out-of-fold de cada base learner
 meta-learner: LogisticRegression
 meta-target: y1
@@ -900,13 +922,15 @@ O artigo deve reportar os resultados de forma clara e reprodutível.
 Devem ser incluídos:
 
 ```text
-tabelas com média e desvio padrão das métricas nos outer folds (10 modelos)
-tabela do spot-checking (7 algoritmos candidatos) com justificativa da seleção dos 5
+tabelas com média e desvio padrão das métricas nos outer folds (10 a 14 modelos individuais, conforme |A_uniao|)
+tabela do spot-checking (7 algoritmos candidatos, N=5 repetições, média ± dp) com justificativa do top-5 por representação e da união
 comparação entre algoritmos para y1
 comparação entre BC e DF para y1
 matrizes de confusão contra y1
+métricas dos 6 ensembles de votação (top-3/top-5 BC, top-3/top-5 DF, top-3 BC + top-3 DF, voting_all)
+ganho/perda dos ensembles vs melhores modelos individuais por representação
 análise direta de divergência entre y1 e y2 (descritiva, §14)
-comparação descritiva entre as predições dos modelos e y2 (§13.7)
+comparação descritiva entre as predições dos modelos (individuais + ensembles) e y2 (§13.7)
 gráficos de distribuição de delta e abs_delta
 análise dos dois melhores modelos (BC + DF)
 interpretação das features e cartas mais relevantes
@@ -947,12 +971,13 @@ O projeto está alinhado às diretrizes do trabalho prático porque:
 * prevê análise exploratória dos dados;
 * prevê pré-processamento adequado para cada representação;
 * compara ao menos 5 algoritmos com diferentes vieses indutivos;
-* usa spot-checking como etapa inicial de seleção de algoritmos;
-* usa nested cross-validation para seleção de hiperparâmetros e estimativa final de desempenho;
-* reporta média e desvio padrão das métricas nos outer folds;
-* usa as mesmas divisões internas e externas para comparar algoritmos de forma justa;
+* usa spot-checking N=5 (seeds 1..5, média ± dp) como etapa inicial de seleção de algoritmos;
+* usa nested cross-validation para seleção de hiperparâmetros e estimativa final de desempenho, com grids limitados a ≤192 configs por algoritmo para evitar explosão combinatorial;
+* reporta média e desvio padrão das métricas nos outer folds, tanto para os modelos individuais (10 a 14) quanto para os 6 ensembles de votação;
+* usa as mesmas divisões internas e externas para comparar algoritmos e ensembles de forma justa;
 * define seeds e procedimentos reprodutíveis;
 * inclui interpretação de modelos para ambas as representações (melhor BC e melhor DF), excedendo o requisito de "um modelo" do enunciado;
+* inclui ensembles por votação majoritária a partir das predições OOF, sem retreino;
 * discute limitações e riscos de vazamento ou viés.
 
 ## 21. Limitações conceituais
@@ -974,4 +999,4 @@ O projeto possui limitações importantes:
 
 A formulação atual do projeto é:
 
-> Este projeto estuda a divergência entre duas percepções de poder em decks Commander: o bracket atribuído no Archidekt (`y1`, percepção comunitária) e o bracket calculado por uma ferramenta externa (`y2`, avaliação automatizada). Usando dados extraídos do Archidekt, o projeto representa decks de duas formas — Bag of Cards e Deck Features. Após um spot-checking de 7 algoritmos candidatos, os 5 mais promissores avançam à nested CV, resultando em **10 modelos (5 algoritmos × 2 representações) treinados apenas para prever `y1`**. As predições desses modelos são depois comparadas descritivamente com `y2`, sem retreino, para identificar quais modelos convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária. O objetivo não é descobrir o bracket verdadeiro, nem treinar modelos que imitem a calculadora, mas medir e explicar o desalinhamento entre as duas leituras de poder.
+> Este projeto estuda a divergência entre duas percepções de poder em decks Commander: o bracket atribuído no Archidekt (`y1`, percepção comunitária) e o bracket calculado por uma ferramenta externa (`y2`, avaliação automatizada). Usando dados extraídos do Archidekt, o projeto representa decks de duas formas — Bag of Cards e Deck Features. Após um spot-checking de 7 algoritmos candidatos (todos viáveis em BC e DF) com N=5 repetições (seeds 1..5) e média ± desvio padrão, selecionamos o top-5 de cada representação. A união `A_uniao = A_DF ∪ A_BC` (5 a 7 algoritmos) alimenta a nested CV: cada algoritmo da união é treinado nas duas representações, gerando **10 a 14 modelos individuais treinados apenas para prever `y1`**, com grids ≤192 configurações por algoritmo. A partir das predições out-of-fold construímos seis ensembles por votação majoritária (top-3/top-5 por representação, top-3 BC + top-3 DF e `voting_all` com todos os individuais) sem retreino. As predições dos modelos individuais e dos ensembles são comparadas descritivamente com `y2`, para identificar quais convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária. O objetivo não é descobrir o bracket verdadeiro, nem treinar modelos que imitem a calculadora, mas medir e explicar o desalinhamento entre as duas leituras de poder.

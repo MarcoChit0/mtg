@@ -1,0 +1,609 @@
+{
+  "aggregate": {
+    "accuracy_mean": 0.6131025957972807,
+    "accuracy_std": 0.012435273967301184,
+    "confusion_matrix_sum": [
+      [
+        4197,
+        2582,
+        184
+      ],
+      [
+        4130,
+        10832,
+        3689
+      ],
+      [
+        629,
+        2871,
+        7291
+      ]
+    ],
+    "labels": [
+      2,
+      3,
+      4
+    ],
+    "macro_f1_mean": 0.6034949126172732,
+    "macro_f1_std": 0.011599034354896776,
+    "precision_macro_mean": 0.5963512384040626,
+    "precision_macro_std": 0.011268996379965326,
+    "recall_macro_mean": 0.6197197487323933,
+    "recall_macro_std": 0.014203489788358777
+  },
+  "algorithm": "logistic_regression",
+  "folds": [
+    {
+      "accuracy": 0.6098063452822414,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          320,
+          132,
+          13
+        ],
+        [
+          327,
+          657,
+          259
+        ],
+        [
+          68,
+          148,
+          503
+        ]
+      ],
+      "elapsed_seconds": 79.912,
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5908357225356646,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6061617606763202,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5992528883540004,
+      "recall_macro": 0.638771577491697,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6081582200247219,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          247,
+          203,
+          14
+        ],
+        [
+          255,
+          740,
+          249
+        ],
+        [
+          33,
+          197,
+          489
+        ]
+      ],
+      "elapsed_seconds": 81.318,
+      "fold_id": "r1_f2",
+      "inner_best_macro_f1": 0.599916739829342,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5933845681821842,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5870236691516689,
+      "recall_macro": 0.6024313857732887,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6131025957972805,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          273,
+          180,
+          11
+        ],
+        [
+          268,
+          737,
+          239
+        ],
+        [
+          42,
+          199,
+          478
+        ]
+      ],
+      "elapsed_seconds": 81.971,
+      "fold_id": "r1_f3",
+      "inner_best_macro_f1": 0.5967171270166384,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.602247835278844,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.5950850844338368,
+      "recall_macro": 0.6152060126967317,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6106304079110012,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          279,
+          173,
+          12
+        ],
+        [
+          271,
+          723,
+          249
+        ],
+        [
+          29,
+          211,
+          480
+        ]
+      ],
+      "elapsed_seconds": 80.155,
+      "fold_id": "r1_f4",
+      "inner_best_macro_f1": 0.5904322756464667,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6024661813280067,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5942516984972106,
+      "recall_macro": 0.6165390169624225,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.61516275236918,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          280,
+          166,
+          18
+        ],
+        [
+          260,
+          741,
+          242
+        ],
+        [
+          45,
+          203,
+          472
+        ]
+      ],
+      "elapsed_seconds": 63.937,
+      "fold_id": "r1_f5",
+      "inner_best_macro_f1": 0.5937233757585759,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6046045830806519,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.5970029297898151,
+      "recall_macro": 0.6183807354390205,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6143386897404203,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          275,
+          181,
+          9
+        ],
+        [
+          257,
+          730,
+          256
+        ],
+        [
+          38,
+          195,
+          486
+        ]
+      ],
+      "elapsed_seconds": 81.214,
+      "fold_id": "r2_f1",
+      "inner_best_macro_f1": 0.6013961495673111,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6047221790968965,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5965431523940675,
+      "recall_macro": 0.6182084902446587,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6250515039142975,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          265,
+          177,
+          22
+        ],
+        [
+          242,
+          764,
+          238
+        ],
+        [
+          31,
+          200,
+          488
+        ]
+      ],
+      "elapsed_seconds": 80.754,
+      "fold_id": "r2_f2",
+      "inner_best_macro_f1": 0.5898332908028608,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6116387718190711,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.6048531845018021,
+      "recall_macro": 0.6213296815618684,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6159868149979398,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          276,
+          177,
+          11
+        ],
+        [
+          257,
+          745,
+          242
+        ],
+        [
+          51,
+          194,
+          474
+        ]
+      ],
+      "elapsed_seconds": 66.79,
+      "fold_id": "r2_f3",
+      "inner_best_macro_f1": 0.5873902703989672,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6045583830687785,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.5973866538923636,
+      "recall_macro": 0.6176503803873993,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.5953852492789452,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          254,
+          203,
+          7
+        ],
+        [
+          280,
+          708,
+          255
+        ],
+        [
+          37,
+          200,
+          483
+        ]
+      ],
+      "elapsed_seconds": 79.892,
+      "fold_id": "r2_f4",
+      "inner_best_macro_f1": 0.5967871181516199,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5839120777924477,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5768064997475194,
+      "recall_macro": 0.595945609589949,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6069221260815822,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          327,
+          126,
+          11
+        ],
+        [
+          356,
+          644,
+          243
+        ],
+        [
+          52,
+          166,
+          502
+        ]
+      ],
+      "elapsed_seconds": 78.819,
+      "fold_id": "r2_f5",
+      "inner_best_macro_f1": 0.5894859503288705,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6055893936774627,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.5989844370796752,
+      "recall_macro": 0.6400216563971522,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.588380716934487,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          316,
+          138,
+          11
+        ],
+        [
+          353,
+          620,
+          270
+        ],
+        [
+          53,
+          174,
+          492
+        ]
+      ],
+      "elapsed_seconds": 77.948,
+      "fold_id": "r3_f1",
+      "inner_best_macro_f1": 0.5943794920165758,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5873556927178333,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5797968078702234,
+      "recall_macro": 0.6208822873427859,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6176349402554594,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          252,
+          198,
+          14
+        ],
+        [
+          258,
+          764,
+          222
+        ],
+        [
+          32,
+          204,
+          483
+        ]
+      ],
+      "elapsed_seconds": 65.174,
+      "fold_id": "r3_f2",
+      "inner_best_macro_f1": 0.5898638147073908,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6022617580642374,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5973141841600987,
+      "recall_macro": 0.6096725667951904,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6407086938607334,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          289,
+          170,
+          5
+        ],
+        [
+          236,
+          767,
+          241
+        ],
+        [
+          35,
+          185,
+          499
+        ]
+      ],
+      "elapsed_seconds": 80.6,
+      "fold_id": "r3_f3",
+      "inner_best_macro_f1": 0.5842610007472301,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6314995874742289,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.6231569331006758,
+      "recall_macro": 0.6444745948683105,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6271116604861969,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          285,
+          166,
+          13
+        ],
+        [
+          266,
+          743,
+          234
+        ],
+        [
+          41,
+          185,
+          494
+        ]
+      ],
+      "elapsed_seconds": 81.526,
+      "fold_id": "r3_f4",
+      "inner_best_macro_f1": 0.59392207928064,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6172932697403667,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.6090815449819106,
+      "recall_macro": 0.6326942114667168,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6081582200247219,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          259,
+          192,
+          13
+        ],
+        [
+          244,
+          749,
+          250
+        ],
+        [
+          42,
+          210,
+          468
+        ]
+      ],
+      "elapsed_seconds": 81.195,
+      "fold_id": "r3_f5",
+      "inner_best_macro_f1": 0.592826545479979,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5947276472617683,
+      "model_id": "bc_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.5887289081060693,
+      "recall_macro": 0.6035880239687076,
+      "repeat_seed": 3,
+      "representation": "BC"
+    }
+  ],
+  "model_id": "bc_logistic_regression",
+  "representation": "BC"
+}

@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-05-19T18:25:27.449561+00:00",
+  "models": [
+    {
+      "drive_file_id": "1tQ1vDAFLrNejSdw6krdWggTmosYJRoV8",
+      "filename": "mock_knn.zip",
+      "model_id": "mock_knn",
+      "size_bytes": 1726
+    }
+  ],
+  "schema_version": 1
+}

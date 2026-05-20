@@ -1,0 +1,182 @@
+[
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r1_f1",
+    "inner_best_macro_f1": 0.685809549352948,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 1,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r1_f2",
+    "inner_best_macro_f1": 0.688849879446367,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 2,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 3,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r1_f3",
+    "inner_best_macro_f1": 0.6865286229878351,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 3,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r1_f4",
+    "inner_best_macro_f1": 0.6893175917853402,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 4,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r1_f5",
+    "inner_best_macro_f1": 0.6930331051792672,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 5,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r2_f1",
+    "inner_best_macro_f1": 0.6885600805071957,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 1,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r2_f2",
+    "inner_best_macro_f1": 0.688632608195657,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 2,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r2_f3",
+    "inner_best_macro_f1": 0.6872247269364483,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 3,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 3,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r2_f4",
+    "inner_best_macro_f1": 0.6918947683728459,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 4,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 3,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r2_f5",
+    "inner_best_macro_f1": 0.6859258360138561,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 5,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 3,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r3_f1",
+    "inner_best_macro_f1": 0.6889193850506906,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 1,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 3,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r3_f2",
+    "inner_best_macro_f1": 0.6853140720178499,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 2,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 3,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r3_f3",
+    "inner_best_macro_f1": 0.6792672661070259,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 3,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r3_f4",
+    "inner_best_macro_f1": 0.6893382248064825,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 4,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 5,
+      "clf__max_iter": 100
+    },
+    "fold_id": "r3_f5",
+    "inner_best_macro_f1": 0.6933829343541894,
+    "model_id": "df_gradient_boosting",
+    "outer_fold": 5,
+    "repeat_seed": 3
+  }
+]

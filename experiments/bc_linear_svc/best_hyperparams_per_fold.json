@@ -1,0 +1,167 @@
+[
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f1",
+    "inner_best_macro_f1": 0.5773940526518223,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 1,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f2",
+    "inner_best_macro_f1": 0.5870561521440628,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 2,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f3",
+    "inner_best_macro_f1": 0.5859058306565588,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 3,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f4",
+    "inner_best_macro_f1": 0.5774438884414196,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 4,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f5",
+    "inner_best_macro_f1": 0.5816920105216883,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 5,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f1",
+    "inner_best_macro_f1": 0.5921894169154837,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 1,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f2",
+    "inner_best_macro_f1": 0.5836514929943489,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 2,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f3",
+    "inner_best_macro_f1": 0.5811370263737591,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 3,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f4",
+    "inner_best_macro_f1": 0.5833824362311367,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 4,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f5",
+    "inner_best_macro_f1": 0.5731187897809703,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 5,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f1",
+    "inner_best_macro_f1": 0.5833989059229429,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 1,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f2",
+    "inner_best_macro_f1": 0.5818301277249328,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 2,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f3",
+    "inner_best_macro_f1": 0.5725171929509801,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 3,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f4",
+    "inner_best_macro_f1": 0.5844789193095724,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 4,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f5",
+    "inner_best_macro_f1": 0.5792857315330545,
+    "model_id": "bc_linear_svc",
+    "outer_fold": 5,
+    "repeat_seed": 3
+  }
+]

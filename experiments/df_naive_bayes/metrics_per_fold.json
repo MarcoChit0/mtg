@@ -1,0 +1,609 @@
+{
+  "aggregate": {
+    "accuracy_mean": 0.5748935585771185,
+    "accuracy_std": 0.009096027605919824,
+    "confusion_matrix_sum": [
+      [
+        5754,
+        864,
+        345
+      ],
+      [
+        6904,
+        8984,
+        2763
+      ],
+      [
+        1040,
+        3560,
+        6191
+      ]
+    ],
+    "labels": [
+      2,
+      3,
+      4
+    ],
+    "macro_f1_mean": 0.577940713266924,
+    "macro_f1_std": 0.00864663303481251,
+    "precision_macro_mean": 0.5856413369224255,
+    "precision_macro_std": 0.009144476224429455,
+    "recall_macro_mean": 0.6272615871196289,
+    "recall_macro_std": 0.00826865761618485
+  },
+  "algorithm": "naive_bayes",
+  "folds": [
+    {
+      "accuracy": 0.5871446229913473,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          377,
+          63,
+          25
+        ],
+        [
+          445,
+          615,
+          183
+        ],
+        [
+          78,
+          208,
+          433
+        ]
+      ],
+      "elapsed_seconds": 2.776,
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5833574725370717,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5889605615222447,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5961756115592003,
+      "recall_macro": 0.6359162390387761,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5665430572723527,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          385,
+          47,
+          32
+        ],
+        [
+          453,
+          573,
+          218
+        ],
+        [
+          74,
+          228,
+          417
+        ]
+      ],
+      "elapsed_seconds": 2.769,
+      "fold_id": "r1_f2",
+      "inner_best_macro_f1": 0.5770635122464652,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5697085907383164,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5743480254245602,
+      "recall_macro": 0.6234414984581821,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5735475896168108,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          383,
+          56,
+          25
+        ],
+        [
+          475,
+          592,
+          177
+        ],
+        [
+          56,
+          246,
+          417
+        ]
+      ],
+      "elapsed_seconds": 2.757,
+      "fold_id": "r1_f3",
+      "inner_best_macro_f1": 0.5824922530840686,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5776616857650386,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.5849655993434576,
+      "recall_macro": 0.6270958208146887,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5698393077873919,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          391,
+          50,
+          23
+        ],
+        [
+          477,
+          597,
+          169
+        ],
+        [
+          72,
+          253,
+          395
+        ]
+      ],
+      "elapsed_seconds": 2.759,
+      "fold_id": "r1_f4",
+      "inner_best_macro_f1": 0.5770558939697713,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5728601854159904,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5840679658962308,
+      "recall_macro": 0.6238577155955857,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5822002472187886,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          390,
+          60,
+          14
+        ],
+        [
+          442,
+          621,
+          180
+        ],
+        [
+          74,
+          244,
+          402
+        ]
+      ],
+      "elapsed_seconds": 2.763,
+      "fold_id": "r1_f5",
+      "inner_best_macro_f1": 0.5799786052051868,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.58438784790528,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.5921038572685312,
+      "recall_macro": 0.6328161073660006,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5826122785331685,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          391,
+          53,
+          21
+        ],
+        [
+          445,
+          591,
+          207
+        ],
+        [
+          59,
+          228,
+          432
+        ]
+      ],
+      "elapsed_seconds": 2.756,
+      "fold_id": "r2_f1",
+      "inner_best_macro_f1": 0.5918695410434297,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5868020733151956,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5897230855011081,
+      "recall_macro": 0.6390524326370296,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5789039967037495,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          386,
+          52,
+          26
+        ],
+        [
+          483,
+          604,
+          157
+        ],
+        [
+          71,
+          233,
+          415
+        ]
+      ],
+      "elapsed_seconds": 2.752,
+      "fold_id": "r2_f2",
+      "inner_best_macro_f1": 0.5677925632304096,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5821387458883494,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5946777680328562,
+      "recall_macro": 0.63153921358932,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5801400906468892,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          370,
+          76,
+          18
+        ],
+        [
+          440,
+          631,
+          173
+        ],
+        [
+          71,
+          241,
+          407
+        ]
+      ],
+      "elapsed_seconds": 2.763,
+      "fold_id": "r2_f3",
+      "inner_best_macro_f1": 0.5845343465610714,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5813290583162861,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.5887303731864529,
+      "recall_macro": 0.6235708325128072,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5669550885867326,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          370,
+          74,
+          20
+        ],
+        [
+          434,
+          602,
+          207
+        ],
+        [
+          62,
+          254,
+          404
+        ]
+      ],
+      "elapsed_seconds": 2.764,
+      "fold_id": "r2_f4",
+      "inner_best_macro_f1": 0.5884981122486787,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5695130625373129,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5716057086090757,
+      "recall_macro": 0.6142790174145072,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5574783683559951,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          388,
+          53,
+          23
+        ],
+        [
+          504,
+          562,
+          177
+        ],
+        [
+          77,
+          240,
+          403
+        ]
+      ],
+      "elapsed_seconds": 2.761,
+      "fold_id": "r2_f5",
+      "inner_best_macro_f1": 0.5703718691605824,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5621636940427939,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.575349259892488,
+      "recall_macro": 0.6160203525438496,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5665430572723527,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          375,
+          70,
+          20
+        ],
+        [
+          442,
+          598,
+          203
+        ],
+        [
+          59,
+          258,
+          402
+        ]
+      ],
+      "elapsed_seconds": 2.76,
+      "fold_id": "r3_f1",
+      "inner_best_macro_f1": 0.5851055346177163,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5696348600025255,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5723568429046224,
+      "recall_macro": 0.6155518716137331,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5747836835599506,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          387,
+          50,
+          27
+        ],
+        [
+          503,
+          578,
+          163
+        ],
+        [
+          73,
+          216,
+          430
+        ]
+      ],
+      "elapsed_seconds": 2.758,
+      "fold_id": "r3_f2",
+      "inner_best_macro_f1": 0.5675260121071779,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.57943561135048,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5934172230660092,
+      "recall_macro": 0.6322449334668382,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5912649361351463,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          392,
+          51,
+          21
+        ],
+        [
+          431,
+          638,
+          175
+        ],
+        [
+          57,
+          257,
+          405
+        ]
+      ],
+      "elapsed_seconds": 2.75,
+      "fold_id": "r3_f3",
+      "inner_best_macro_f1": 0.583778932154172,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5932060329320604,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.5979166739953027,
+      "recall_macro": 0.6403238863732944,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5772558714462299,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          384,
+          55,
+          25
+        ],
+        [
+          476,
+          598,
+          169
+        ],
+        [
+          72,
+          229,
+          419
+        ]
+      ],
+      "elapsed_seconds": 2.746,
+      "fold_id": "r3_f4",
+      "inner_best_macro_f1": 0.5843381170432981,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5805413200594941,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5911817855630787,
+      "recall_macro": 0.6302082594842742,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.5681911825298722,
+      "algorithm": "naive_bayes",
+      "confusion_matrix": [
+        [
+          385,
+          54,
+          25
+        ],
+        [
+          454,
+          584,
+          205
+        ],
+        [
+          85,
+          225,
+          410
+        ]
+      ],
+      "elapsed_seconds": 2.744,
+      "fold_id": "r3_f5",
+      "inner_best_macro_f1": 0.5818916059806271,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5707673692124917,
+      "model_id": "df_naive_bayes",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.578000273593408,
+      "recall_macro": 0.6230056258855465,
+      "repeat_seed": 3,
+      "representation": "DF"
+    }
+  ],
+  "model_id": "df_naive_bayes",
+  "representation": "DF"
+}

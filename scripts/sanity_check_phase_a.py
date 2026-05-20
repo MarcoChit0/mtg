@@ -182,7 +182,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--per-bracket", type=int, default=10, help="Decks per y1 bracket (3 brackets x 10 = 30).")
     parser.add_argument("--seed", type=int, default=20260514)
     parser.add_argument("--sleep", type=float, default=0.3)
-    parser.add_argument("--report", type=Path, default=Path("documents/sample_reports/sanity_check_phase_a.md"))
+    parser.add_argument("--report", type=Path, default=Path("documents/reports/results/sample_reports/sanity_check_phase_a.md"))
     parser.add_argument("--json-report", type=Path, default=Path("data/processed/archidekt/sanity_check_phase_a.json"))
     args = parser.parse_args(argv)
 

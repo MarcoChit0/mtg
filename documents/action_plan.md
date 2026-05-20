@@ -6,17 +6,18 @@ Plano sequencial para concluir o projeto descrito em [backbone.md](backbone.md),
 
 ## Convenção de reports por fase
 
-Cada fase concluída deve gerar um report em `documents/` com quatro blocos mínimos: **o que era para ser feito**, **o que foi feito**, **como foi feito** e **problemas encontrados + correções**. Esses reports são insumos diretos para o artigo final e devem ser atualizados quando uma fase for reexecutada.
+Cada fase tem **dois reports separados** por público-alvo, ambos em `documents/reports/`:
 
-Reports consolidados atuais:
+- **`results/`** — snapshot da rodada atual (tabelas, métricas, distribuições). Auto-gerado a cada execução do script da fase; descartável e regerável.
+- **`implementation/`** — narrativa de implementação (objetivo, o que foi construído, como, decisões + porquês, problemas + correções, pontos de extensão). Escrito à mão; vive enquanto o projeto vive; é o que um colaborador novo ou agente LLM lê antes de mexer no código.
 
-| Fase | Report |
-|---|---|
-| A | [phase_a_report.md](phase_a_report.md) |
-| B | [eda_report.md](eda_report.md) + [divergence_report.md](divergence_report.md) |
-| C | [preprocessing_report.md](preprocessing_report.md) |
-| D | [spot_check_results.md](spot_check_results.md) após a rodada completa |
-| E | [nested_cv_report.md](nested_cv_report.md) após a rodada completa |
+| Fase | Results (auto-gerado) | Implementation (à mão) |
+|---|---|---|
+| A | [reports/results/phase_a_data_collection.md](reports/results/phase_a_data_collection.md) | [reports/implementation/phase_a_data_collection.md](reports/implementation/phase_a_data_collection.md) |
+| B | [reports/results/phase_b_eda.md](reports/results/phase_b_eda.md) + [reports/results/phase_b_divergence.md](reports/results/phase_b_divergence.md) | [reports/implementation/phase_b_eda_divergence.md](reports/implementation/phase_b_eda_divergence.md) |
+| C | [reports/results/phase_c_preprocessing.md](reports/results/phase_c_preprocessing.md) | [reports/implementation/phase_c_preprocessing.md](reports/implementation/phase_c_preprocessing.md) |
+| D | [reports/results/phase_d_spot_checking.md](reports/results/phase_d_spot_checking.md) | [reports/implementation/phase_d_spot_checking.md](reports/implementation/phase_d_spot_checking.md) |
+| E | [reports/results/phase_e_nested_cv.md](reports/results/phase_e_nested_cv.md) + [reports/results/phase_e_voting.md](reports/results/phase_e_voting.md) + [reports/results/phase_e_statistical_tests.md](reports/results/phase_e_statistical_tests.md) | [reports/implementation/phase_e_nested_cv.md](reports/implementation/phase_e_nested_cv.md) |
 
 ## 0. Estado atual
 
@@ -35,7 +36,7 @@ Os 815 decks com y2 ∈ {1, 5} ficam fora do treino mas são preservados para an
 
 ## Fase B — EDA + análise direta da divergência ✓ concluída
 
-Implementada em [scripts/phase_b_eda_divergence.py](../scripts/phase_b_eda_divergence.py). Saídas em [documents/eda_report.md](eda_report.md), [documents/divergence_report.md](divergence_report.md) e `documents/figures/{eda,divergence}/`. Achados principais:
+Implementada em [scripts/phase_b_eda_divergence.py](../scripts/phase_b_eda_divergence.py). Saídas em [reports/results/phase_b_eda.md](reports/results/phase_b_eda.md), [reports/results/phase_b_divergence.md](reports/results/phase_b_divergence.md) e `documents/reports/results/figures/{eda,divergence}/`. Achados principais:
 
 - Base modelável (y1, y2 ∈ {2,3,4}): **12.135 decks**.
 - Concordância exata y1=y2: **60,9%** · dentro de ±1: **97,7%** · dentro de ±2: **100%**.
@@ -45,7 +46,7 @@ Implementada em [scripts/phase_b_eda_divergence.py](../scripts/phase_b_eda_diver
 
 ## Fase C — Pré-processamento ✓ concluída
 
-Implementada em [scripts/preprocessing.py](../scripts/preprocessing.py) e [scripts/phase_c_filter_dataset.py](../scripts/phase_c_filter_dataset.py). Report consolidado em [preprocessing_report.md](preprocessing_report.md). O filtro C.1 foi reexecutado em 2026-05-18 e confirmou **12.135 decks incluídos** e **815 excluídos** (`y2=1`: 393 · `y2=5`: 422).
+Implementada em [scripts/preprocessing.py](../scripts/preprocessing.py) e [scripts/phase_c_filter_dataset.py](../scripts/phase_c_filter_dataset.py). O results report [reports/results/phase_c_preprocessing.md](reports/results/phase_c_preprocessing.md) **é regerado automaticamente** a cada `uv run run-mtg-pipeline init`. A narrativa de implementação (decisões + porquês + armadilhas) vive em [reports/implementation/phase_c_preprocessing.md](reports/implementation/phase_c_preprocessing.md). Última rodada confirmou **12.135 decks incluídos** e **815 excluídos** (`y2=1`: 393 · `y2=5`: 422).
 
 Alvo único de treino: `y1`. `y2` é mantido apenas para comparação descritiva (Fase G), nunca como feature.
 
@@ -68,123 +69,176 @@ Manter y1 e y2 ∈ {2,3,4} (12.135 decks). Descartados salvos em `data/processed
 - `y2`, `delta`, `abs_delta` e todos os campos `edhpowerlevel.*` (score, power_level, etc.) **nunca** entram em X.
 - `y1` é o único target; não há predição de `y2` no projeto.
 
-## Fase D — Spot-checking ✓ concluída
+## Fase D — Spot-checking ✓ concluída (feedback da professora, 2026-05-19)
 
-Implementada em [scripts/phase_d_spot_check.py](../scripts/phase_d_spot_check.py). Saídas em [spot_check_results.md](spot_check_results.md), `experiments/spot_check/results.jsonl` e `experiments/spot_check/summary.json`.
+Implementada em [scripts/phase_d_spot_check.py](../scripts/phase_d_spot_check.py). Saídas em [reports/results/phase_d_spot_checking.md](reports/results/phase_d_spot_checking.md), `experiments/spot_check/results.jsonl` e `experiments/spot_check/summary.json`. Narrativa de implementação em [reports/implementation/phase_d_spot_checking.md](reports/implementation/phase_d_spot_checking.md).
 
-Resultado da rodada completa após correção do desenho:
+Mudanças vs. desenho anterior (orientação direta da professora):
 
-- Hold-out estratificado 80/20: 9.708 treino · 2.427 teste.
-- `bc_min_df` testado para BC: 5, 10, 20; escolhido **bc_min_df=10** pela média de macro-F1 em BC; TF-IDF desativado nesta fase.
-- Seleção final dos 5 algoritmos feita manualmente a partir do spot-check, mantendo o **mesmo conjunto para DF e BC** para facilitar comparação direta entre representações. A diferença de performance entre os candidatos de borda não justificou usar conjuntos diferentes.
-- Kernels não-lineares de SVM (`SVC(kernel='rbf')`, `SVC(kernel='poly')`) são testados **apenas em DF**. Embora o sklearn aceite sparse em alguns caminhos, o custo de kernels não-lineares é pelo menos quadrático em número de amostras e fica proibitivo/instável para BC esparso de alta dimensionalidade.
-- Finalistas para DF e BC: **Gradient Boosting**, **Logistic Regression**, **Random Forest**, **LinearSVC**, **Naive Bayes**.
+- **Pool de 7 candidatos viáveis em ambas as representações**: Decision Tree, Random Forest, Gradient Boosting, Naive Bayes, Logistic Regression, LinearSVC, KNN. `SVC(kernel='rbf')` e `SVC(kernel='poly')` foram removidos do pool — a regra é usar apenas algoritmos que rodam tanto em BC quanto em DF, e kernels não-lineares não escalam para BC esparso de alta dimensionalidade.
+- **N=5 repetições por combinação** com seeds `{1, 2, 3, 4, 5}` (hold-outs estratificados 80/20 distintos). Reportamos média e desvio padrão de macro-F1 (e demais métricas) por (algoritmo, representação, `bc_min_df`).
+- **Top-5 por representação**: ranqueamos por macro-F1 média e selecionamos os **5 melhores em BC** e os **5 melhores em DF** independentemente. A união (`A_uniao = A_BC ∪ A_DF`) define os algoritmos que vão para a Fase E — pode incluir até os 7 candidatos. **Em Fase E, cada algoritmo da união é treinado em ambas as representações** (BC e DF), gerando `|A_uniao| × 2` modelos: 10 se a união tiver 5, 12 se tiver 6, 14 se tiver 7.
+- `bc_min_df` testado em {5, 10, 20}; escolhido pelo melhor macro-F1 médio agregando sobre algoritmos × seeds em BC. TF-IDF desativado nesta fase.
 
-### D.1 Algoritmos candidatos
+### D.1 Algoritmos candidatos (pool comum)
 | Algoritmo | Viés | Classe sklearn | Obs |
 |---|---|---|---|
 | Decision Tree | árvore | `DecisionTreeClassifier` | — |
 | Random Forest | bagging | `RandomForestClassifier` | — |
-| Gradient Boosting | boosting | `GradientBoostingClassifier` / `HistGradientBoostingClassifier` | `HistGB` recomendado para BC pelo custo |
+| Gradient Boosting | boosting | `HistGradientBoostingClassifier` | BC converte CSR para dense de forma controlada |
 | Naive Bayes | probabilístico | `MultinomialNB` (BC) / `GaussianNB` (DF) | — |
 | Logistic Regression | linear paramétrico | `LogisticRegression` | `solver='lbfgs'` (DF) / `'saga'` (BC esparso) |
 | LinearSVC | margem linear | `LinearSVC` | escala bem em BC esparso |
-| SVM RBF | margem não-linear | `SVC(kernel='rbf')` | **somente DF**; exige `StandardScaler`; não usado em BC por custo de kernel em matriz esparsa grande |
-| SVM Poly | margem não-linear | `SVC(kernel='poly')` | **somente DF**; exige `StandardScaler`; não usado em BC por custo de kernel em matriz esparsa grande |
-| KNN | distância (lazy, não-paramétrico) | `KNeighborsClassifier` | em DF aplicar após `StandardScaler`; em BC esparso esperar performance modesta (curse of dimensionality), mantemos como spot-check para confirmar empiricamente |
+| KNN | distância | `KNeighborsClassifier` | em DF requer `StandardScaler`; em BC esparso é mantido como sonda empírica |
 
-**9 candidatos para DF** e **7 candidatos para BC**. Cobrem os vieses indutivos do backbone §13.3 (árvore, bagging, boosting, probabilístico, linear paramétrico, margem linear, margem não-linear, distância). BC testa `HistGradientBoostingClassifier` com conversão controlada para matriz densa. BC não recebe `SVC` RBF/poly porque o custo de kernels não-lineares sobre matriz esparsa de alta dimensionalidade é inadequado para este projeto.
+**7 candidatos para DF e 7 candidatos para BC** — pool simétrico, conforme a restrição da professora. Cobrem os vieses indutivos do backbone §13.3 (árvore, bagging, boosting, probabilístico, linear paramétrico, margem linear, distância). Kernels não-lineares (`SVC` RBF/poly) ficam **fora do projeto** porque não atendem ao critério de viabilidade dupla.
 
 ### D.2 Procedimento
-Hold-out 80/20 estratificado por `y1`, para cada representação ∈ {BC, DF}. Defaults dos algoritmos. Reportar macro-F1, accuracy, tempo. Fixar `bc_min_df` do BC nessa fase (testar 5, 10, 20). TF-IDF fica desligado no spot-check.
+Para cada combinação `(algoritmo, representação, bc_min_df)`:
 
-**Saída**: `documents/spot_check_results.md`. Como `bc_min_df ∈ {5,10,20}` é testado para BC, a rodada executa DF uma vez por algoritmo elegível e BC uma vez por algoritmo elegível por `bc_min_df`.
+1. Repetir 5 vezes (`random_state ∈ {1, 2, 3, 4, 5}`):
+   - hold-out estratificado 80/20 por `y1` usando a seed;
+   - fit de pré-processamento somente no treino do fold;
+   - treino com defaults do sklearn (exceto pequenos ajustes de convergência/solver);
+   - avaliar no teste: macro-F1, accuracy, precision_macro, recall_macro, tempo.
+2. Agregar média e desvio padrão das 5 rodadas.
+3. Repetir para `bc_min_df ∈ {5, 10, 20}` em BC; DF tem `bc_min_df=None`.
 
-### D.3 Seleção dos 5 algoritmos finalistas
-O spot-checking é a etapa de filtragem. Embora o ranking tenha sido calculado por representação, a decisão final é usar o **mesmo conjunto de 5 algoritmos** em DF e BC para preservar comparabilidade direta na Fase E:
+`use_tfidf=False` em toda a Fase D.
+
+**Saída**: `documents/reports/results/phase_d_spot_checking.md` com tabela de média±dp por combinação, ranking por representação e top-5 de cada representação. `experiments/spot_check/results.jsonl` contém uma linha por (algoritmo, representação, `bc_min_df`, seed). `experiments/spot_check/summary.json` registra o `best_bc_min_df`, os rankings agregados e as listas `top5_DF` e `top5_BC` consumidas pela Fase E.
+
+### D.3 Seleção dos modelos para a Fase E
+O spot-checking é a etapa de filtragem. A decisão é por representação, mas o que importa para a Fase E é a união:
 
 ```text
-A_5 = {gradient_boosting, logistic_regression, random_forest, linear_svc, naive_bayes}
+A_DF = top-5 algoritmos por macro-F1 média no spot-check em DF
+A_BC = top-5 algoritmos por macro-F1 média no spot-check em BC
+A_uniao = A_DF ∪ A_BC   # 5 a 7 algoritmos distintos
 ```
 
-Justificativa: `svc_rbf` teve desempenho em DF muito próximo de `linear_svc`, mas não é viável em BC dentro deste desenho; `naive_bayes` é computacionalmente barato, interpretável e natural para BC. Como a diferença entre os candidatos de borda é pequena, priorizamos simetria e clareza experimental.
+Em Fase E treinamos **|A_uniao| × 2 modelos** — cada algoritmo da união em ambas as representações (BC e DF):
 
-Critério de desempate / diversidade: se o ranking puro concentrar muitos algoritmos do mesmo viés (ex: 3 ensembles no topo), pode-se privilegiar diversidade de vieses indutivos. A decisão final é documentada em `documents/spot_check_results.md` com justificativa explícita.
+```text
+modelos_E = {(alg, rep) : alg ∈ A_uniao, rep ∈ {BC, DF}}
+```
+
+Assim:
+
+- 5 algoritmos na união → 10 modelos
+- 6 algoritmos na união → 12 modelos
+- 7 algoritmos na união → 14 modelos
+
+Mesmo que um algoritmo só apareça no top-5 de uma representação, ele entra na Fase E em ambas — a comparação BC vs DF para cada algoritmo é parte do que a Fase F precisa para decidir o melhor de cada lado. O top-5 por representação serve para garantir que algoritmos competitivos em pelo menos uma representação avancem; uma vez selecionados, ambos os lados são treinados.
+
+Critério de desempate: desvio padrão menor (estabilidade) e diversidade de vieses indutivos quando o ranking puro concentrar muitos algoritmos da mesma família (ex: 3 ensembles no topo). A decisão final é registrada em `documents/reports/results/phase_d_spot_checking.md` com justificativa explícita.
 
 Combinações que falharem por erro no spot-check ficam fora automaticamente.
 
-## Fase E — Nested CV ◐ implementada
+## Fase E — Nested CV ◐ implementada; execução completa pendente
 
-Implementada em [scripts/phase_e_nested_cv.py](../scripts/phase_e_nested_cv.py), com entrypoint `phase-e-nested-cv`. A execução completa é sob demanda por custo computacional.
+Implementada em [scripts/phase_e_nested_cv.py](../scripts/phase_e_nested_cv.py), com entrypoint `phase-e-nested-cv`. A execução completa é sob demanda por custo computacional. Também é possível reexecutar apenas um algoritmo/modelo, por exemplo `uv run phase-e-nested-cv --model random_forest` para DF+BC ou `uv run phase-e-nested-cv --model random_forest --feature df` para uma representação específica. A execução salva checkpoints por outer fold em `experiments/<modelo>/checkpoints/<assinatura>/` e retoma automaticamente execuções interrompidas; usar `--force-rerun` para ignorar checkpoints e recalcular.
 
-Alvo único: `y1`. **10 modelos** treinados: os 5 algoritmos selecionados (`A_5`) × 2 representações (`DF`, `BC`).
+Alvo único: `y1`. **10 a 14 modelos** a treinar (cada algoritmo da união `A_uniao = A_DF ∪ A_BC` em ambas as representações), conforme §D.3. Para a seleção atual da Fase D, `|A_uniao|=6`, então a rodada completa da Fase E deve produzir **12 modelos**. As listas são lidas de `experiments/spot_check/summary.json`.
+
+Restrição de custo (orientação da professora, atualizada em 2026-05-20): o limite é um guarda-corpo de ordem de grandeza, não o teto rígido anterior de 128 configs. Para esta versão, adotamos **≤192 configurações por grid**: grande o suficiente para cobrir hiperparâmetros importantes, pequeno o bastante para manter a nested CV viável. Isso ainda evita a explosão combinatorial do Random Forest do desenho anterior (864 configs) e mantém o orçamento de execução previsível.
 
 ### E.1 Esquema
 ```text
 outer:  StratifiedKFold(n_splits=5, shuffle=True, random_state=r)
         r ∈ {1, 2, 3}            # 15 outer evaluations por (fs, algo)
 inner:  StratifiedKFold(n_splits=3, shuffle=True, random_state=r+100)
-                                 # GridSearchCV otimiza hiperparâmetros
+                                 # busca em grid controlada pelo script otimiza hiperparâmetros
 ```
 
 Métrica de seleção interna: **macro-F1**. Métricas reportadas: macro-F1, accuracy, precision_macro, recall_macro, confusion matrix.
 
-Folds idênticos para todos os 10 modelos em cada repeat. Seeds em `experiments/seeds.json`. Biblioteca: **scikit-learn** (`GridSearchCV` com `cv=inner`).
+Folds idênticos para todos os modelos individuais (10 a 14) em cada repeat. Seeds em `experiments/seeds.json`. Biblioteca: **scikit-learn** para estimadores, folds e métricas; a busca em grid do inner CV é controlada pelo script para permitir barra de progresso por configuração e checkpoint por outer fold.
 
-**Predições out-of-fold salvas** para todos os 10 modelos — reutilizadas nas Fases G e K sem retreino.
+**Predições out-of-fold salvas** para todos os modelos — reutilizadas nas Fases E.5, G e K sem retreino.
 
 ### E.2 Grids de hiperparâmetros
-Grids definidos apenas para os algoritmos selecionados em §D.3. Nenhum dos algoritmos candidatos tem variante `*CV` com grids embutidos no sklearn que cubra exatamente o que queremos (`LogisticRegressionCV` existe e oferece grade automática de `Cs`, mas usamos `GridSearchCV` uniformemente para padronização). Valores comuns do sklearn user guide / Géron / Hastie listados abaixo para os candidatos — só os selecionados são realmente usados:
+Grids definidos para todos os 7 candidatos da Fase D (apenas os que aparecem em `A_uniao` são executados). Todos respeitam o teto prático de **≤192 configurações**. Nenhum dos candidatos tem variante `*CV` com grids embutidos no sklearn que cubra exatamente o que queremos (`LogisticRegressionCV` existe e oferece grade automática de `Cs`, mas usamos uma busca em grid uniforme no script para padronização, progresso e checkpoint). Valores baseados no sklearn user guide / Géron / Hastie, com auditoria de literatura em 2026-05-20:
 
-| Algoritmo | Grid |
-|---|---|
-| `DecisionTreeClassifier` | `max_depth ∈ {None, 10, 20}`, `min_samples_leaf ∈ {1, 5, 20}`, `criterion ∈ {gini, entropy}` |
-| `RandomForestClassifier` | `n_estimators ∈ {100, 300}`, `max_features ∈ {sqrt, log2}`, `max_depth ∈ {None, 20}` |
-| `HistGradientBoostingClassifier` | `max_iter ∈ {100, 300}`, `learning_rate ∈ {0.05, 0.1}`, `max_depth ∈ {3, 5}` |
-| `MultinomialNB` (BC) | `alpha ∈ {0.01, 0.1, 1.0, 10.0}` |
-| `GaussianNB` (DF) | `var_smoothing ∈ np.logspace(-9, -7, 3)` |
-| `LogisticRegression` | `C ∈ {0.01, 0.1, 1, 10}`, `class_weight ∈ {None, balanced}`, `solver='lbfgs'` (DF) / `'saga'` (BC esparso) |
-| `LinearSVC` | `C ∈ {0.01, 0.1, 1, 10}`, `class_weight ∈ {None, balanced}` |
+| Algoritmo | Grid | Total |
+|---|---|---:|
+| `DecisionTreeClassifier` | `max_depth ∈ {None, 5, 10, 20, 40}`, `min_samples_leaf ∈ {1, 2, 5, 10}`, `ccp_alpha ∈ {0.0, 5e-3}`, `criterion ∈ {gini, entropy}`, `class_weight ∈ {None, balanced}` | 160 |
+| `RandomForestClassifier` | `n_estimators ∈ {100, 250, 500, 1000}`, `max_depth ∈ {10, 20, 40, None}`, `max_features ∈ {sqrt, log2}`, `min_samples_leaf ∈ {1, 2, 4}`, `class_weight ∈ {None, balanced}` | 192 |
+| `HistGradientBoostingClassifier` | `max_iter ∈ {100, 200, 300, 500}`, `learning_rate ∈ {0.01, 0.05, 0.1}`, `max_leaf_nodes ∈ {15, 31, 63}`, `l2_regularization ∈ {0.0, 0.1}`, `class_weight ∈ {None, balanced}` | 144 |
+| `MultinomialNB` (BC) | `alpha ∈ np.logspace(-4, 2, 48)`, `fit_prior ∈ {True, False}` | 96 |
+| `GaussianNB` (DF) | `var_smoothing ∈ np.logspace(-12, -3, 96)` | 96 |
+| `LogisticRegression` | `solver='saga'`, `penalty='elasticnet'` (estimador), `C ∈ 16 valores log-espaçados de 1e-4 a 3000`, `class_weight ∈ {None, balanced}`, `l1_ratio ∈ {0.0, 0.5, 1.0}` | 96 |
+| `LinearSVC` | `dual='auto'`, `loss='squared_hinge'`, `C ∈ 24 valores log-espaçados de 1e-4 a 5000`, `class_weight ∈ {None, balanced}`, `penalty ∈ {l1, l2}` | 96 |
+| `KNeighborsClassifier` | (fora da união atual — não treinado) | — |
 
-`GridSearchCV` no inner; trocar para `RandomizedSearchCV` se algum grid se mostrar inviável, especialmente para `gradient_boosting × BC`, que exige conversão controlada para matriz densa. `random_state=42` onde aplicável.
+Todos os grids dos 6 algoritmos da união caem em **[92, 192] configurações**. NB ganha resolução em `alpha`/`var_smoothing` para chegar ao floor; os lineares ganham malha fina de `C` (16 valores em LR, 24 em LinearSVC) e cobrem L1/L2/elastic-net. Busca em grid no inner; trocar para busca aleatória/halving se algum grid se mostrar inviável. `random_state=42` onde aplicável. As principais decisões pós-auditoria de literatura (2026-05-20) foram:
+
+- **`DecisionTree`**: `ccp_alpha` em vez de `min_samples_split` (Breiman/Hastie *Elements of Statistical Learning* §9.2 + sklearn user guide §1.10.4 — cost-complexity pruning é o regularizador canônico).
+- **`HistGradientBoosting`**: `max_leaf_nodes` em vez de `max_depth` (LightGBM paper, Ke et al. 2017; sklearn user guide explicitamente recomenda `max_leaf_nodes` como knob principal para HistGB).
+- **Estimadores com suporte recebem `class_weight ∈ {None, balanced}`** porque a métrica principal é macro-F1 e a base é imbalanceada (y1=2 com 21% vs y1=3 com 52%).
+- **`LogisticRegression`** usa `solver='saga'` + `penalty='elasticnet'` no estimador, com `l1_ratio ∈ {0.0, 0.5, 1.0}` cobrindo o espectro completo L2 → elastic → L1 num único grid simétrico para BC e DF (Zou & Hastie 2005 sobre ElasticNet em problemas com features correlacionadas — relevante para cartas de combo em BC).
+- **`LinearSVC`** usa `dual='auto'` + `loss='squared_hinge'`, com `penalty ∈ {l1, l2}` simétrico em BC e DF (LIBLINEAR / Fan et al. 2008).
+- **`fit_intercept`** foi **removido** dos grids lineares — Hastie et al. §4.4 e LIBLINEAR docs convergem em "intercept=True é a escolha universal"; o orçamento foi reciclado em resolução mais fina de `C`.
+- **`KNN`** ficou fora da união (rank 7 em ambas as representações no spot-check) — não treinado na Fase E.
 
 ### E.3 GroupKFold por comandante (análise auxiliar)
-Uma rodada extra com `GroupKFold(n_splits=5)` por `commander_signature`, sem repeat. Roda todos os 10 modelos com defaults (sem inner CV) para custo controlado. Reportar **gap macro-F1 (Stratified − Group)** em `documents/grouped_cv_report.md` — gap pequeno indica padrões gerais; gap grande indica dependência do modelo de comandantes específicos vistos no treino (backbone §13.4). O gap em si é resultado de interesse para a discussão.
+Uma rodada extra com `GroupKFold(n_splits=5)` por `commander_signature`, sem repeat. Roda todos os modelos individuais (10 a 14) com defaults (sem inner CV) para custo controlado. Reportar **gap macro-F1 (Stratified − Group)** em `documents/reports/grouped_cv_report.md` — gap pequeno indica padrões gerais; gap grande indica dependência do modelo de comandantes específicos vistos no treino (backbone §13.4). O gap em si é resultado de interesse para a discussão.
 
 ### E.4 Testes estatísticos
 - Múltiplos algoritmos: Friedman + Nemenyi sobre os 15 outer scores.
 - Pareado: Wilcoxon signed-rank por fold.
 
-**Saídas**: `experiments/<fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, metrics_per_fold.json}`, `experiments/seeds.json`, `experiments/folds.json`, `experiments/nested_cv_summary.json`, `documents/nested_cv_report.md`, `documents/statistical_tests.md`.
+### E.5 Ensembles por votação (sem retreino)
+Solicitado pela professora: avaliar o desempenho de combinações dos melhores modelos via votação majoritária (hard vote) sobre as predições out-of-fold já produzidas em E.1–E.3. Como todas as predições OOF compartilham o mesmo conjunto de folds, a votação é exata por linha e por fold — não há retreino.
+
+Definem-se 6 ensembles:
+
+| Nome | Membros | Tamanho |
+|---|---|---:|
+| `voting_top3_BC` | top-3 modelos BC ranqueados por macro-F1 média na Fase E | 3 |
+| `voting_top5_BC` | top-5 modelos BC | 5 |
+| `voting_top3_DF` | top-3 modelos DF | 3 |
+| `voting_top5_DF` | top-5 modelos DF | 5 |
+| `voting_top3_BC_DF` | top-3 BC + top-3 DF | 6 |
+| `voting_all` | todos os modelos da Fase E (10 a 14) | 10–14 |
+
+Regras:
+
+- Hard voting (maioria simples). Empates são desfeitos pela classe com maior macro-F1 médio entre os membros que a previram.
+- Para cada outer fold, agregamos as predições OOF dos membros e computamos macro-F1, accuracy, precision_macro, recall_macro e a matriz de confusão.
+- Reportar média ± desvio padrão dos 15 outer folds (mesmas seeds/repeats da Fase E), idêntico aos modelos individuais.
+- As predições OOF dos 6 ensembles também são salvas para reutilização nas Fases G e H (sem retreino).
+
+**Saídas**: `experiments/<fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, cv_results_per_fold.jsonl, metrics_per_fold.json, checkpoint_state.json, checkpoints/...}`, `experiments/voting/{voting_<nome>/metrics_per_fold.json, predictions_per_fold.jsonl}`, `experiments/voting/voting_summary.json`, `experiments/archives/<fs>_<algo>.zip` quando upload via Drive estiver habilitado. O remote padrão de escrita é `mtg-experiments:`, que cada colaborador deve configurar no `rclone` como raiz da pasta compartilhada `MTG/Experiments` usando o folder ID `183wMYdR0EzGJ3Dghq-JH7iZ8fL2G-Nfm`. O download público usa `experiments_manifest.json` no Drive (`file_id=1MU0AilsDnG11M9pySkDUebLKkJ4a_5kR`) e não exige `rclone`. A interface principal é `uv run run-mtg-pipeline init`, `spot-checking` e `train`. Também são salvos `experiments/seeds.json`, `experiments/folds.json`, `experiments/nested_cv_summary.json`, `documents/reports/results/phase_e_nested_cv.md`, `documents/reports/results/phase_e_statistical_tests.md`, `documents/reports/results/phase_e_voting.md`. A narrativa de implementação da Fase E vive em [reports/implementation/phase_e_nested_cv.md](reports/implementation/phase_e_nested_cv.md).
 
 ## Fase F — Melhor modelo por representação
 
-Ranquear os 10 modelos por macro-F1 médio nos outer folds. Selecionar **um modelo por representação**:
+Ranquear os modelos individuais (10 a 14, dependendo de `|A_uniao|`) + 6 ensembles de votação por macro-F1 médio nos outer folds. Selecionar **um modelo por representação** (entre os modelos individuais):
 
 ```text
-melhor_BC = argmax_{alg ∈ A_5} macro_F1(alg, BC, y1)
-melhor_DF = argmax_{alg ∈ A_5} macro_F1(alg, DF, y1)
+melhor_BC = argmax_{alg ∈ A_uniao} macro_F1(alg, BC, y1)
+melhor_DF = argmax_{alg ∈ A_uniao} macro_F1(alg, DF, y1)
 ```
 
-Desvio padrão como desempate (estabilidade). Decisão registrada manualmente em `documents/best_models.md`. Esses dois modelos receberão interpretabilidade (Fase H).
+Desvio padrão como desempate (estabilidade). Decisão registrada manualmente em `documents/reports/best_models.md`. Esses dois modelos receberão interpretabilidade (Fase H).
 
-Comparações no relatório: BC vs DF para `y1`; tabela de macro-F1 dos 10 modelos.
+Comparações no relatório: BC vs DF para `y1`; tabela de macro-F1 dos modelos individuais; tabela de macro-F1 dos 6 ensembles; ganho/perda da votação vs melhor modelo individual em cada representação.
 
 ## Fase G — Comparação das predições dos modelos com a calculadora
 
-**Descritivo, sem retreino**. Reutiliza as predições out-of-fold dos 10 modelos da Fase E e compara contra `y2`:
+**Descritivo, sem retreino**. Reutiliza as predições out-of-fold dos modelos individuais (10 a 14, dependendo de `|A_uniao|`) + dos 6 ensembles de votação (E.5) e compara contra `y2`:
 
 ```text
-para cada um dos 10 modelos:
+para cada modelo individual e cada ensemble de votação:
   ŷ1 = predição out-of-fold (treinado em y1)
   comparar ŷ1 vs y2 por: concordância exata, ±1, macro-F1 contra y2,
                           |Δ| médio, matriz de confusão ŷ1 × y2
 ```
 
 **Saída**:
-- Tabela completa com os 10 modelos (linha por modelo, colunas com cada métrica de concordância com `y2`).
-- Discussão narra 2-3 modelos de destaque (ex: o que mais concorda com y2, o que menos concorda, e o que tem maior gap entre `macro-F1(y1)` e `concordância(y2)`).
-- `documents/model_vs_calculator.md` + figuras `documents/figures/model_vs_calc/`.
+- Tabela completa com os modelos individuais + 6 ensembles (linha por modelo, colunas com cada métrica de concordância com `y2`).
+- Discussão narra 2-3 modelos de destaque (ex: o que mais concorda com y2, o que menos concorda, e o que tem maior gap entre `macro-F1(y1)` e `concordância(y2)`), incluindo se algum ensemble se aproxima/distancia mais da calculadora que os modelos individuais.
+- `documents/reports/model_vs_calculator.md` + figuras `documents/reports/figures/model_vs_calc/`.
 
 Subset analysis: para cada modelo, performance no subset `y1 == y2` vs `y1 ≠ y2`.
 
@@ -201,7 +255,7 @@ Para **Bag of Cards**:
 - Top-20 cartas mais importantes por classe prevista.
 - Cartas associadas a divergência entre `ŷ1` e `y2`.
 
-**Saída**: `documents/interpretability.md`.
+**Saída**: `documents/reports/interpretability.md`.
 
 ## Fase I — Artigo
 
@@ -214,28 +268,28 @@ Seções extras condicionais:
 - 4.x **Generalização fora da distribuição** — só se Fase J rodar.
 - 4.y **Stacking** — só se Fase K rodar.
 
-Se usar IA generativa: `documents/ai_usage.md` com prompts e limitações.
+Se usar IA generativa: `documents/reports/ai_usage.md` com prompts e limitações.
 
 ## Fase J — Out-of-distribution (opcional)
 
 Coletar decks com 500 ≤ views < 1000. Aplicar melhores modelos **sem retreinar**. Comparar macro-F1 dentro vs fora.
 
-**Saída**: `documents/ood_report.md`. Se executada, adicionar seção 4.x no artigo (Fase I).
+**Saída**: `documents/reports/ood_report.md`. Se executada, adicionar seção 4.x no artigo (Fase I).
 
 ## Fase K — Stacking (opcional, se houver tempo)
 
-Movida para o final do plano por ser estritamente complementar — não é exigida pelo enunciado e seu valor depende de termos os 16 modelos individuais bem caracterizados e a comparação contra `y2` já fechada. Só faz sentido depois de F, G e H.
+Movida para o final do plano por ser estritamente complementar — não é exigida pelo enunciado e seu valor depende de termos os modelos individuais (10 a 14) e os 6 ensembles de votação bem caracterizados e a comparação contra `y2` já fechada. Só faz sentido depois de F, G e H. Em particular, voting (E.5) é entregue como parte obrigatória do projeto; stacking continua opcional como passo extra.
 
-Base learners: os 10 modelos da Fase E (todos prevendo y1).
+Base learners: os modelos individuais da Fase E (10 a 14, todos prevendo y1).
 Meta-learner: `LogisticRegression`.
 Meta-target: y1.
 Folds: os mesmos outer folds da Fase E (sem leakage).
 
 Avaliar:
-- macro-F1 do stacking vs macro-F1 do melhor modelo individual (ganho do ensemble);
-- concordância do stacking com `y2` vs concordância média dos modelos individuais.
+- macro-F1 do stacking vs macro-F1 do melhor modelo individual vs melhor ensemble de votação (ganho do meta-learner);
+- concordância do stacking com `y2` vs concordância média dos modelos individuais e dos ensembles.
 
-**Saída**: `documents/stacking_results.md`. Se executada, adicionar seção 4.y no artigo (Fase I).
+**Saída**: `documents/reports/stacking_results.md`. Se executada, adicionar seção 4.y no artigo (Fase I).
 
 ## Apêndice 1 — Reprodutibilidade
 
@@ -244,11 +298,13 @@ experiments/
 ├── seeds.json
 ├── folds/{outer_r{1,2,3}.json, inner_r{1,2,3}.json, group_kfold.json}
 ├── <fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, metrics_per_fold.json}
+├── spot_check/{results.jsonl, summary.json}
+├── voting/{voting_summary.json, voting_<nome>/{predictions_per_fold.jsonl, metrics_per_fold.json}}
 ├── stacking/{predictions.jsonl, metrics.json}   # se Fase K rodar
 └── manifest.json   # SHA-256 dos JSONL de entrada + versões
 ```
 
-Total: 10 subpastas de modelo (5 algoritmos selecionados × 2 representações), todas alvejando `y1`.
+Total: `|A_uniao| × 2` subpastas de modelo individuais (10 se a união tiver 5 algoritmos, 12 se 6, 14 se 7), 6 subpastas de votação e os agregados de spot-check. Todos alvejam `y1`.
 
 Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 
@@ -258,12 +314,13 @@ Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 |---|---|---|
 | EDA | B | ✓ concluída |
 | Pré-processamento | C | dentro do pipeline de fold (sem leakage) |
-| ≥5 algoritmos diversos | D | DF testa 9 candidatos: DT, RF, GB, NB, LR, LinearSVC, SVC-RBF, SVC-Poly, KNN. BC testa 7 candidatos: DT, RF, GB, NB, LR, LinearSVC, KNN. |
-| Spot-checking | D | ✓ concluída; hold-out 80/20 sobre `y1`; filtrou o conjunto final `A_5` usado nas duas representações. |
-| Otimização sem leakage | E | nested CV (3-fold inner, 5-fold outer × 3 repeats) sobre 10 modelos (5 algoritmos × 2 representações) |
-| Folds idênticos entre algoritmos | E.1 | seeds fixas, mesma divisão para os 10 modelos |
-| Seeds | E + Apêndice 1 | salvas em `experiments/seeds.json` |
-| Média ± desvio nos outer folds | E, F | 15 outer scores por modelo |
+| ≥5 algoritmos diversos | D | Pool comum de 7 candidatos para BC e DF: DT, RF, GB, NB, LR, LinearSVC, KNN. SVC RBF/Poly foram retirados por não serem viáveis em BC. |
+| Spot-checking | D | re-desenhada: N=5 repetições com seeds {1..5}, média ± dp; top-5 selecionado por representação; união forma `A_DF ∪ A_BC` para a Fase E. |
+| Otimização sem leakage | E | nested CV (3-fold inner, 5-fold outer × 3 repeats) sobre os `|A_uniao| × 2` modelos (cada algoritmo da união em ambas as representações); grids limitados a ≤192 configs por algoritmo. |
+| Folds idênticos entre algoritmos | E.1 | seeds fixas, mesma divisão para todos os modelos individuais e os 6 ensembles de votação |
+| Seeds | E + Apêndice 1 | salvas em `experiments/seeds.json` (modelos) e `experiments/spot_check/summary.json` (spot-check N=5) |
+| Média ± desvio nos outer folds | E, E.5, F | 15 outer scores por modelo individual e por ensemble |
+| Ensemble por votação | E.5 | 6 ensembles (top-3/top-5 BC, top-3/top-5 DF, top-3+top-3, todos os modelos individuais) a partir das predições OOF, sem retreino |
 | Interpretação de um modelo | H | excedido: 2 modelos (melhor BC + melhor DF) |
 | Artigo científico | I | template Moodle, ≤20 pág; seções extras se J/K rodarem |
 | Reprodutibilidade | Apêndice 1 | código + dados + seeds + folds + predições |
@@ -272,15 +329,16 @@ Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 
 Prazos: código + artigo **2026-05-28 23:59** · peer review **2026-06-02 a 2026-06-09** · apresentação **2026-06-16**.
 
-Hoje **2026-05-18** — 10 dias.
+Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 
 | Fase | Dias | Status |
 |---|---|---|
 | ~~A~~ | — | ✓ concluída |
 | ~~B~~ | — | ✓ concluída |
 | ~~C~~ | — | ✓ concluída |
-| ~~D~~ | — | ✓ concluída |
-| E | 2-3 | ◐ implementada; execução completa da nested CV pendente |
+| D | — | ✓ concluída com N=5 e top-5 por representação |
+| E | 2-3 | ◐ grids reduzidos; execução completa da nested CV pendente |
+| E.5 (voting) | 0,2 | ensembles pós-OOF, sem retreino |
 | F | 0,5 | a fazer |
 | G | 0,5 | descritivo, sem retreino |
 | H | 1,5 | interpretabilidade (2 modelos) |
@@ -288,6 +346,6 @@ Hoje **2026-05-18** — 10 dias.
 | J (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |
 | K (opcional) | 1 | stacking — vira seção extra do artigo se feito |
 
-Soma do caminho obrigatório (C+D+E+F+G+H+I): **9,5-10,5 dias**. Com 10 dias disponíveis, margem é apertada mas viável (spot-check em §D.3 já filtra para 5 algoritmos, reduzindo o custo da nested CV). Mitigações em ordem de prioridade: (1) não rodar Fase K (stacking, opcional); (2) não rodar Fase J (OOD, opcional); (3) cortar E.3 (GroupKFold auxiliar); (4) usar `RandomizedSearchCV` em vez de `GridSearchCV` no inner CV para acelerar Fase E; (5) reduzir grids dos algoritmos caros se algum dos 5 selecionados for KNN×BC.
+Soma do caminho obrigatório restante (E+E.5+F+G+H+I): **7,7-8,7 dias**. Com 8 dias disponíveis, a margem é apertada — os grids ≤192 da Fase E e a seleção top-5 por representação cortam o custo total da nested CV. Mitigações em ordem de prioridade: (1) não rodar Fase K (stacking, opcional); (2) não rodar Fase J (OOD, opcional); (3) cortar E.3 (GroupKFold auxiliar); (4) reduzir grids dos algoritmos caros; (5) cortar `voting_all` se o cálculo das predições agregadas estourar tempo (mantemos `voting_top3_*` e `voting_top5_*`).
 
 Caso o cronograma comporte, J e K rodam **depois** do artigo (Fase I) e geram seções extras incluídas em revisão final.

@@ -1,0 +1,182 @@
+[
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r1_f1",
+    "inner_best_macro_f1": 0.6136070293514247,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 1,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r1_f2",
+    "inner_best_macro_f1": 0.6138971780117614,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 2,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r1_f3",
+    "inner_best_macro_f1": 0.6143037798197784,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 3,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r1_f4",
+    "inner_best_macro_f1": 0.6258783383314435,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 4,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r1_f5",
+    "inner_best_macro_f1": 0.6129970716622734,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 5,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r2_f1",
+    "inner_best_macro_f1": 0.6092610473900094,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 1,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r2_f2",
+    "inner_best_macro_f1": 0.6127832962045766,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 2,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r2_f3",
+    "inner_best_macro_f1": 0.6103782591660739,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 3,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r2_f4",
+    "inner_best_macro_f1": 0.6162025947620183,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 4,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r2_f5",
+    "inner_best_macro_f1": 0.6106591385419812,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 5,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r3_f1",
+    "inner_best_macro_f1": 0.6164402765676852,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 1,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r3_f2",
+    "inner_best_macro_f1": 0.6176667341479657,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 2,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r3_f3",
+    "inner_best_macro_f1": 0.6055694627539027,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 3,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 5,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r3_f4",
+    "inner_best_macro_f1": 0.6210979642170935,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 4,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__learning_rate": 0.1,
+      "clf__max_depth": 3,
+      "clf__max_iter": 300
+    },
+    "fold_id": "r3_f5",
+    "inner_best_macro_f1": 0.6171524044710336,
+    "model_id": "bc_gradient_boosting",
+    "outer_fold": 5,
+    "repeat_seed": 3
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r1_f1",
+    "inner_best_macro_f1": 0.5093531760491211,
+    "model_id": "bc_random_forest",
+    "outer_fold": 1,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r1_f2",
+    "inner_best_macro_f1": 0.5160491197899919,
+    "model_id": "bc_random_forest",
+    "outer_fold": 2,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r1_f3",
+    "inner_best_macro_f1": 0.5142580625263513,
+    "model_id": "bc_random_forest",
+    "outer_fold": 3,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r1_f4",
+    "inner_best_macro_f1": 0.5168850866949776,
+    "model_id": "bc_random_forest",
+    "outer_fold": 4,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r1_f5",
+    "inner_best_macro_f1": 0.5146508052185372,
+    "model_id": "bc_random_forest",
+    "outer_fold": 5,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r2_f1",
+    "inner_best_macro_f1": 0.5182704290464036,
+    "model_id": "bc_random_forest",
+    "outer_fold": 1,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r2_f2",
+    "inner_best_macro_f1": 0.5161548816637453,
+    "model_id": "bc_random_forest",
+    "outer_fold": 2,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r2_f3",
+    "inner_best_macro_f1": 0.5100547857657528,
+    "model_id": "bc_random_forest",
+    "outer_fold": 3,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r2_f4",
+    "inner_best_macro_f1": 0.5197035965320413,
+    "model_id": "bc_random_forest",
+    "outer_fold": 4,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r2_f5",
+    "inner_best_macro_f1": 0.5199873982922708,
+    "model_id": "bc_random_forest",
+    "outer_fold": 5,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r3_f1",
+    "inner_best_macro_f1": 0.516360303647002,
+    "model_id": "bc_random_forest",
+    "outer_fold": 1,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r3_f2",
+    "inner_best_macro_f1": 0.5212368889473553,
+    "model_id": "bc_random_forest",
+    "outer_fold": 2,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r3_f3",
+    "inner_best_macro_f1": 0.5074272087076976,
+    "model_id": "bc_random_forest",
+    "outer_fold": 3,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 300
+    },
+    "fold_id": "r3_f4",
+    "inner_best_macro_f1": 0.5223660991323333,
+    "model_id": "bc_random_forest",
+    "outer_fold": 4,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__max_features": "sqrt",
+      "clf__n_estimators": 100
+    },
+    "fold_id": "r3_f5",
+    "inner_best_macro_f1": 0.5217878125692307,
+    "model_id": "bc_random_forest",
+    "outer_fold": 5,
+    "repeat_seed": 3
+  }
+]

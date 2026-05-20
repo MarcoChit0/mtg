@@ -4,10 +4,10 @@
 Reads ``data/processed/archidekt/deck_features.jsonl`` (12,950 decks, 114
 features + y1 + edhpowerlevel) and produces:
 
-  - ``documents/eda_report.md``
-  - ``documents/divergence_report.md``
-  - ``documents/figures/eda/*.png``
-  - ``documents/figures/divergence/*.png``
+  - ``documents/reports/results/phase_b_eda.md``
+  - ``documents/reports/results/phase_b_divergence.md``
+  - ``documents/reports/results/figures/eda/*.png``
+  - ``documents/reports/results/figures/divergence/*.png``
 
 Both reports are independent of any modeling: they describe the data and
 quantify the divergence between y1 (Archidekt) and y2 (EDHPowerLevel).
@@ -27,7 +27,9 @@ import pandas as pd
 
 
 DATA = Path("data/processed/archidekt")
-DOCS = Path("documents")
+DOCS = Path("documents/reports/results")
+EDA_REPORT_FILENAME = "phase_b_eda.md"
+DIVERGENCE_REPORT_FILENAME = "phase_b_divergence.md"
 FIG_EDA = DOCS / "figures" / "eda"
 FIG_DIV = DOCS / "figures" / "divergence"
 
@@ -679,15 +681,16 @@ def main(argv=None) -> int:
     decks = load_decks_minimal()
     print(f"  {len(decks):,} rows")
 
+    DOCS.mkdir(parents=True, exist_ok=True)
     print("Generating EDA report + figures...")
     eda_md = eda(df, decks)
-    (DOCS / "eda_report.md").write_text(eda_md, encoding="utf-8")
-    print(f"  → {DOCS / 'eda_report.md'}")
+    (DOCS / EDA_REPORT_FILENAME).write_text(eda_md, encoding="utf-8")
+    print(f"  → {DOCS / EDA_REPORT_FILENAME}")
 
     print("Generating divergence report + figures...")
     div_md = divergence(df, decks)
-    (DOCS / "divergence_report.md").write_text(div_md, encoding="utf-8")
-    print(f"  → {DOCS / 'divergence_report.md'}")
+    (DOCS / DIVERGENCE_REPORT_FILENAME).write_text(div_md, encoding="utf-8")
+    print(f"  → {DOCS / DIVERGENCE_REPORT_FILENAME}")
 
     return 0
 

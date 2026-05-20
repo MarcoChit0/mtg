@@ -1,0 +1,609 @@
+{
+  "aggregate": {
+    "accuracy_mean": 0.6599093531108365,
+    "accuracy_std": 0.008754089874965393,
+    "confusion_matrix_sum": [
+      [
+        5156,
+        1715,
+        92
+      ],
+      [
+        4160,
+        11332,
+        3159
+      ],
+      [
+        558,
+        2697,
+        7536
+      ]
+    ],
+    "labels": [
+      2,
+      3,
+      4
+    ],
+    "macro_f1_mean": 0.6566264344806674,
+    "macro_f1_std": 0.00861384656916465,
+    "precision_macro_mean": 0.6470581142222056,
+    "precision_macro_std": 0.008162463063154171,
+    "recall_macro_mean": 0.6821441965292244,
+    "recall_macro_std": 0.009046028196897423
+  },
+  "algorithm": "linear_svc",
+  "folds": [
+    {
+      "accuracy": 0.6679027606098064,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          340,
+          119,
+          6
+        ],
+        [
+          268,
+          765,
+          210
+        ],
+        [
+          53,
+          150,
+          516
+        ]
+      ],
+      "elapsed_seconds": 15.29,
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.6491585063608926,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6623593428422148,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.6530451524325157,
+      "recall_macro": 0.6880975725066047,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6555418211784095,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          338,
+          116,
+          10
+        ],
+        [
+          268,
+          745,
+          231
+        ],
+        [
+          26,
+          185,
+          508
+        ]
+      ],
+      "elapsed_seconds": 15.647,
+      "fold_id": "r1_f2",
+      "inner_best_macro_f1": 0.6532629185088338,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.653180478548332,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.6417616234909315,
+      "recall_macro": 0.6779532435594294,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6530696332921302,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          347,
+          111,
+          6
+        ],
+        [
+          307,
+          729,
+          208
+        ],
+        [
+          37,
+          173,
+          509
+        ]
+      ],
+      "elapsed_seconds": 15.984,
+      "fold_id": "r1_f3",
+      "inner_best_macro_f1": 0.6492589976431098,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6509399974623594,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.6419421506506757,
+      "recall_macro": 0.6805951222173886,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6567779151215493,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          343,
+          117,
+          4
+        ],
+        [
+          282,
+          766,
+          195
+        ],
+        [
+          42,
+          193,
+          485
+        ]
+      ],
+      "elapsed_seconds": 15.18,
+      "fold_id": "r1_f4",
+      "inner_best_macro_f1": 0.6520745198135582,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6526852183347996,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.645067705608923,
+      "recall_macro": 0.6763620848912274,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6584260403790688,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          334,
+          125,
+          5
+        ],
+        [
+          266,
+          768,
+          209
+        ],
+        [
+          30,
+          194,
+          496
+        ]
+      ],
+      "elapsed_seconds": 15.975,
+      "fold_id": "r1_f5",
+      "inner_best_macro_f1": 0.6550326835039564,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6545123507312898,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.6450940060616519,
+      "recall_macro": 0.6755254970619632,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6530696332921302,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          350,
+          107,
+          8
+        ],
+        [
+          288,
+          729,
+          226
+        ],
+        [
+          40,
+          173,
+          506
+        ]
+      ],
+      "elapsed_seconds": 15.305,
+      "fold_id": "r2_f1",
+      "inner_best_macro_f1": 0.6575522700817452,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6511579098968295,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.6408351649578834,
+      "recall_macro": 0.6809758999227434,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6633704161516275,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          346,
+          107,
+          11
+        ],
+        [
+          267,
+          754,
+          223
+        ],
+        [
+          27,
+          182,
+          510
+        ]
+      ],
+      "elapsed_seconds": 15.386,
+      "fold_id": "r2_f2",
+      "inner_best_macro_f1": 0.6524563674191876,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6611294109207897,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.6496745133970454,
+      "recall_macro": 0.687039159281675,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6518335393489906,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          341,
+          120,
+          3
+        ],
+        [
+          280,
+          757,
+          207
+        ],
+        [
+          41,
+          194,
+          484
+        ]
+      ],
+      "elapsed_seconds": 16.136,
+      "fold_id": "r2_f3",
+      "inner_best_macro_f1": 0.6548928578726955,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.648248916591068,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.6397760466653807,
+      "recall_macro": 0.6721972853836666,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6600741656365884,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          338,
+          124,
+          2
+        ],
+        [
+          264,
+          765,
+          214
+        ],
+        [
+          43,
+          178,
+          499
+        ]
+      ],
+      "elapsed_seconds": 15.989,
+      "fold_id": "r2_f4",
+      "inner_best_macro_f1": 0.6567773617823499,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6557887353726277,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.6462988515254159,
+      "recall_macro": 0.678983443939959,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.673259167696745,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          353,
+          103,
+          8
+        ],
+        [
+          278,
+          772,
+          193
+        ],
+        [
+          35,
+          176,
+          509
+        ]
+      ],
+      "elapsed_seconds": 16.274,
+      "fold_id": "r2_f5",
+      "inner_best_macro_f1": 0.6475190369447859,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6699090099603944,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.6604899910698547,
+      "recall_macro": 0.6962661145068835,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6493613514627111,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          340,
+          119,
+          6
+        ],
+        [
+          296,
+          735,
+          212
+        ],
+        [
+          41,
+          177,
+          501
+        ]
+      ],
+      "elapsed_seconds": 16.327,
+      "fold_id": "r3_f1",
+      "inner_best_macro_f1": 0.6564257815738678,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6462285641060422,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.637305622320449,
+      "recall_macro": 0.6730984172930418,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6753193242686444,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          340,
+          117,
+          7
+        ],
+        [
+          255,
+          783,
+          206
+        ],
+        [
+          25,
+          178,
+          516
+        ]
+      ],
+      "elapsed_seconds": 15.818,
+      "fold_id": "r3_f2",
+      "inner_best_macro_f1": 0.6471746891426235,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6714773533447785,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.6608503701010955,
+      "recall_macro": 0.6932810879910812,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.673259167696745,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          358,
+          102,
+          4
+        ],
+        [
+          269,
+          767,
+          208
+        ],
+        [
+          38,
+          172,
+          509
+        ]
+      ],
+      "elapsed_seconds": 15.455,
+      "fold_id": "r3_f3",
+      "inner_best_macro_f1": 0.647921218489198,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6708229282799302,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.6603671167417065,
+      "recall_macro": 0.6986796289993674,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6571899464359291,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          350,
+          108,
+          6
+        ],
+        [
+          302,
+          734,
+          207
+        ],
+        [
+          40,
+          169,
+          511
+        ]
+      ],
+      "elapsed_seconds": 15.427,
+      "fold_id": "r3_f4",
+      "inner_best_macro_f1": 0.6550318838819053,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6548597221546907,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.645865099822918,
+      "recall_macro": 0.6848464684480858,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6501854140914709,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          338,
+          120,
+          6
+        ],
+        [
+          270,
+          763,
+          210
+        ],
+        [
+          40,
+          203,
+          477
+        ]
+      ],
+      "elapsed_seconds": 16.393,
+      "fold_id": "r3_f5",
+      "inner_best_macro_f1": 0.652579036198957,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6460965786638629,
+      "model_id": "df_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.6374982984866349,
+      "recall_macro": 0.6682619219352511,
+      "repeat_seed": 3,
+      "representation": "DF"
+    }
+  ],
+  "model_id": "df_linear_svc",
+  "representation": "DF"
+}

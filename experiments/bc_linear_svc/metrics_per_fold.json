@@ -1,0 +1,609 @@
+{
+  "aggregate": {
+    "accuracy_mean": 0.6131300645515727,
+    "accuracy_std": 0.008333496735167702,
+    "confusion_matrix_sum": [
+      [
+        3447,
+        3308,
+        208
+      ],
+      [
+        3353,
+        11707,
+        3591
+      ],
+      [
+        525,
+        3099,
+        7167
+      ]
+    ],
+    "labels": [
+      2,
+      3,
+      4
+    ],
+    "macro_f1_mean": 0.5926656500094076,
+    "macro_f1_std": 0.009045194328118594,
+    "precision_macro_mean": 0.5901590028226422,
+    "precision_macro_std": 0.008914801222610078,
+    "recall_macro_mean": 0.5956337411896279,
+    "recall_macro_std": 0.009369349596791848
+  },
+  "algorithm": "linear_svc",
+  "folds": [
+    {
+      "accuracy": 0.6279357231149567,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          231,
+          223,
+          11
+        ],
+        [
+          206,
+          809,
+          228
+        ],
+        [
+          41,
+          194,
+          484
+        ]
+      ],
+      "elapsed_seconds": 131.207,
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5773940526518223,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6055138956428792,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.6041886703374364,
+      "recall_macro": 0.6069253622550478,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6048619695096827,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          207,
+          238,
+          19
+        ],
+        [
+          229,
+          772,
+          243
+        ],
+        [
+          29,
+          201,
+          489
+        ]
+      ],
+      "elapsed_seconds": 110.983,
+      "fold_id": "r1_f2",
+      "inner_best_macro_f1": 0.5870561521440628,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5799557221137673,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5779275975030135,
+      "recall_macro": 0.582270244478984,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6126905644829007,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          232,
+          220,
+          12
+        ],
+        [
+          224,
+          784,
+          236
+        ],
+        [
+          40,
+          208,
+          471
+        ]
+      ],
+      "elapsed_seconds": 115.091,
+      "fold_id": "r1_f3",
+      "inner_best_macro_f1": 0.5859058306565588,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5922821035167173,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.5898943723615485,
+      "recall_macro": 0.59510052517266,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6085702513391018,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          238,
+          212,
+          14
+        ],
+        [
+          234,
+          772,
+          237
+        ],
+        [
+          25,
+          228,
+          467
+        ]
+      ],
+      "elapsed_seconds": 108.763,
+      "fold_id": "r1_f4",
+      "inner_best_macro_f1": 0.5774438884414196,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5912503869306149,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5887515877014357,
+      "recall_macro": 0.5942067275337034,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6093943139678616,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          239,
+          208,
+          17
+        ],
+        [
+          231,
+          772,
+          240
+        ],
+        [
+          42,
+          210,
+          468
+        ]
+      ],
+      "elapsed_seconds": 82.555,
+      "fold_id": "r1_f5",
+      "inner_best_macro_f1": 0.5816920105216883,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5907041479631122,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.5870178707258765,
+      "recall_macro": 0.5953880813012641,
+      "repeat_seed": 1,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6106304079110012,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          233,
+          221,
+          11
+        ],
+        [
+          229,
+          768,
+          246
+        ],
+        [
+          36,
+          202,
+          481
+        ]
+      ],
+      "elapsed_seconds": 133.252,
+      "fold_id": "r2_f1",
+      "inner_best_macro_f1": 0.5921894169154837,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5917417528874482,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5881564251997512,
+      "recall_macro": 0.5959733286269611,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.61516275236918,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          230,
+          214,
+          20
+        ],
+        [
+          217,
+          783,
+          244
+        ],
+        [
+          29,
+          210,
+          480
+        ]
+      ],
+      "elapsed_seconds": 117.861,
+      "fold_id": "r2_f2",
+      "inner_best_macro_f1": 0.5836514929943489,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5948235033627882,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5923567973304724,
+      "recall_macro": 0.5975682524755985,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6106304079110012,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          233,
+          217,
+          14
+        ],
+        [
+          221,
+          781,
+          242
+        ],
+        [
+          44,
+          207,
+          468
+        ]
+      ],
+      "elapsed_seconds": 98.596,
+      "fold_id": "r2_f3",
+      "inner_best_macro_f1": 0.5811370263737591,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5902891615427345,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.5874710352685893,
+      "recall_macro": 0.5936242368722128,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6011536876802637,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          222,
+          233,
+          9
+        ],
+        [
+          239,
+          755,
+          249
+        ],
+        [
+          39,
+          199,
+          482
+        ]
+      ],
+      "elapsed_seconds": 119.385,
+      "fold_id": "r2_f4",
+      "inner_best_macro_f1": 0.5833824362311367,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5807513541401809,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5771362128767352,
+      "recall_macro": 0.585098056138642,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6217552533992583,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          235,
+          213,
+          16
+        ],
+        [
+          221,
+          790,
+          232
+        ],
+        [
+          33,
+          203,
+          484
+        ]
+      ],
+      "elapsed_seconds": 98.979,
+      "fold_id": "r2_f5",
+      "inner_best_macro_f1": 0.5731187897809703,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6016691301191859,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.5989442753490363,
+      "recall_macro": 0.6047489568659846,
+      "repeat_seed": 2,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6098063452822414,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          223,
+          223,
+          19
+        ],
+        [
+          214,
+          781,
+          248
+        ],
+        [
+          27,
+          216,
+          476
+        ]
+      ],
+      "elapsed_seconds": 122.087,
+      "fold_id": "r3_f1",
+      "inner_best_macro_f1": 0.5833989059229429,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5884782856299349,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.5871378041039274,
+      "recall_macro": 0.5899730248655887,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6089822826534816,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          211,
+          242,
+          11
+        ],
+        [
+          223,
+          789,
+          232
+        ],
+        [
+          31,
+          210,
+          478
+        ]
+      ],
+      "elapsed_seconds": 91.42,
+      "fold_id": "r3_f2",
+      "inner_best_macro_f1": 0.5818301277249328,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5843836109990085,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.5841697131440786,
+      "recall_macro": 0.5845993305072796,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6316440049443758,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          238,
+          220,
+          6
+        ],
+        [
+          210,
+          796,
+          238
+        ],
+        [
+          31,
+          189,
+          499
+        ]
+      ],
+      "elapsed_seconds": 132.195,
+      "fold_id": "r3_f3",
+      "inner_best_macro_f1": 0.5725171929509801,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6124865975730192,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.609683667976248,
+      "recall_macro": 0.6156072962025309,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6163988463123198,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          248,
+          201,
+          15
+        ],
+        [
+          239,
+          771,
+          233
+        ],
+        [
+          35,
+          208,
+          477
+        ]
+      ],
+      "elapsed_seconds": 125.769,
+      "fold_id": "r3_f4",
+      "inner_best_macro_f1": 0.5844789193095724,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.5998837881326242,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.5954722168106154,
+      "recall_macro": 0.6057520967995487,
+      "repeat_seed": 3,
+      "representation": "BC"
+    },
+    {
+      "accuracy": 0.6073341573959621,
+      "algorithm": "linear_svc",
+      "confusion_matrix": [
+        [
+          227,
+          223,
+          14
+        ],
+        [
+          216,
+          784,
+          243
+        ],
+        [
+          43,
+          214,
+          463
+        ]
+      ],
+      "elapsed_seconds": 111.021,
+      "fold_id": "r3_f5",
+      "inner_best_macro_f1": 0.5792857315330545,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.585771309587099,
+      "model_id": "bc_linear_svc",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.5840767956508697,
+      "recall_macro": 0.5876705977484128,
+      "repeat_seed": 3,
+      "representation": "BC"
+    }
+  ],
+  "model_id": "bc_linear_svc",
+  "representation": "BC"
+}

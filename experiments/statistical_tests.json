@@ -1,0 +1,596 @@
+{
+  "average_ranks": {
+    "bc_gradient_boosting": 5.0,
+    "bc_linear_svc": 6.933333333333334,
+    "bc_logistic_regression": 6.066666666666666,
+    "bc_naive_bayes": 9.0,
+    "bc_random_forest": 10.0,
+    "df_gradient_boosting": 1.0,
+    "df_linear_svc": 3.6666666666666665,
+    "df_logistic_regression": 2.3333333333333335,
+    "df_naive_bayes": 8.0,
+    "df_random_forest": 3.0
+  },
+  "folds": [
+    "r1_f1",
+    "r1_f2",
+    "r1_f3",
+    "r1_f4",
+    "r1_f5",
+    "r2_f1",
+    "r2_f2",
+    "r2_f3",
+    "r2_f4",
+    "r2_f5",
+    "r3_f1",
+    "r3_f2",
+    "r3_f3",
+    "r3_f4",
+    "r3_f5"
+  ],
+  "friedman": {
+    "p_value": 2.8923521025280405e-24,
+    "statistic": 132.97818181818184
+  },
+  "models": [
+    "bc_gradient_boosting",
+    "bc_linear_svc",
+    "bc_logistic_regression",
+    "bc_naive_bayes",
+    "bc_random_forest",
+    "df_gradient_boosting",
+    "df_linear_svc",
+    "df_logistic_regression",
+    "df_naive_bayes",
+    "df_random_forest"
+  ],
+  "nemenyi": {
+    "alpha": 0.05,
+    "critical_difference": 3.497583793498487,
+    "pairs": [
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "bc_linear_svc",
+        "rank_diff": 1.9333333333333336,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "bc_logistic_regression",
+        "rank_diff": 1.0666666666666664,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "bc_naive_bayes",
+        "rank_diff": 4.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "bc_random_forest",
+        "rank_diff": 5.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "df_gradient_boosting",
+        "rank_diff": 4.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "df_linear_svc",
+        "rank_diff": 1.3333333333333335,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 2.6666666666666665,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 3.0,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "df_random_forest",
+        "rank_diff": 2.0,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "bc_logistic_regression",
+        "rank_diff": 0.8666666666666671,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "bc_naive_bayes",
+        "rank_diff": 2.0666666666666664,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "bc_random_forest",
+        "rank_diff": 3.0666666666666664,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "df_gradient_boosting",
+        "rank_diff": 5.933333333333334,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "df_linear_svc",
+        "rank_diff": 3.266666666666667,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 4.6,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 1.0666666666666664,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_linear_svc",
+        "model_b": "df_random_forest",
+        "rank_diff": 3.9333333333333336,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_logistic_regression",
+        "model_b": "bc_naive_bayes",
+        "rank_diff": 2.9333333333333336,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_logistic_regression",
+        "model_b": "bc_random_forest",
+        "rank_diff": 3.9333333333333336,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_logistic_regression",
+        "model_b": "df_gradient_boosting",
+        "rank_diff": 5.066666666666666,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_logistic_regression",
+        "model_b": "df_linear_svc",
+        "rank_diff": 2.4,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_logistic_regression",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 3.733333333333333,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_logistic_regression",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 1.9333333333333336,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_logistic_regression",
+        "model_b": "df_random_forest",
+        "rank_diff": 3.0666666666666664,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_naive_bayes",
+        "model_b": "bc_random_forest",
+        "rank_diff": 1.0,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_naive_bayes",
+        "model_b": "df_gradient_boosting",
+        "rank_diff": 8.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_naive_bayes",
+        "model_b": "df_linear_svc",
+        "rank_diff": 5.333333333333334,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_naive_bayes",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 6.666666666666666,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_naive_bayes",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 1.0,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_naive_bayes",
+        "model_b": "df_random_forest",
+        "rank_diff": 6.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_random_forest",
+        "model_b": "df_gradient_boosting",
+        "rank_diff": 9.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_random_forest",
+        "model_b": "df_linear_svc",
+        "rank_diff": 6.333333333333334,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_random_forest",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 7.666666666666666,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "bc_random_forest",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 2.0,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_random_forest",
+        "model_b": "df_random_forest",
+        "rank_diff": 7.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "df_gradient_boosting",
+        "model_b": "df_linear_svc",
+        "rank_diff": 2.6666666666666665,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_gradient_boosting",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 1.3333333333333335,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_gradient_boosting",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 7.0,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "df_gradient_boosting",
+        "model_b": "df_random_forest",
+        "rank_diff": 2.0,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_linear_svc",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 1.333333333333333,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_linear_svc",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 4.333333333333334,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "df_linear_svc",
+        "model_b": "df_random_forest",
+        "rank_diff": 0.6666666666666665,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_logistic_regression",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 5.666666666666666,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "df_logistic_regression",
+        "model_b": "df_random_forest",
+        "rank_diff": 0.6666666666666665,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_naive_bayes",
+        "model_b": "df_random_forest",
+        "rank_diff": 5.0,
+        "significant_alpha_0_05": true
+      }
+    ]
+  },
+  "status": "ok",
+  "wilcoxon_pairs": [
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "bc_linear_svc",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "bc_logistic_regression",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "bc_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "bc_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "df_gradient_boosting",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "df_linear_svc",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "df_logistic_regression",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_gradient_boosting",
+      "model_b": "df_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "bc_logistic_regression",
+      "p_value": 0.00018310546875,
+      "statistic": 2.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "bc_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "bc_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "df_gradient_boosting",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "df_linear_svc",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "df_logistic_regression",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_linear_svc",
+      "model_b": "df_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_logistic_regression",
+      "model_b": "bc_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_logistic_regression",
+      "model_b": "bc_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_logistic_regression",
+      "model_b": "df_gradient_boosting",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_logistic_regression",
+      "model_b": "df_linear_svc",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_logistic_regression",
+      "model_b": "df_logistic_regression",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_logistic_regression",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_logistic_regression",
+      "model_b": "df_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_naive_bayes",
+      "model_b": "bc_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_naive_bayes",
+      "model_b": "df_gradient_boosting",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_naive_bayes",
+      "model_b": "df_linear_svc",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_naive_bayes",
+      "model_b": "df_logistic_regression",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_naive_bayes",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_naive_bayes",
+      "model_b": "df_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_random_forest",
+      "model_b": "df_gradient_boosting",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_random_forest",
+      "model_b": "df_linear_svc",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_random_forest",
+      "model_b": "df_logistic_regression",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_random_forest",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "bc_random_forest",
+      "model_b": "df_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "df_gradient_boosting",
+      "model_b": "df_linear_svc",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "df_gradient_boosting",
+      "model_b": "df_logistic_regression",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "df_gradient_boosting",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "df_gradient_boosting",
+      "model_b": "df_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "df_linear_svc",
+      "model_b": "df_logistic_regression",
+      "p_value": 0.00030517578125,
+      "statistic": 3.0
+    },
+    {
+      "model_a": "df_linear_svc",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "df_linear_svc",
+      "model_b": "df_random_forest",
+      "p_value": 0.05535888671875,
+      "statistic": 26.0
+    },
+    {
+      "model_a": "df_logistic_regression",
+      "model_b": "df_naive_bayes",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    },
+    {
+      "model_a": "df_logistic_regression",
+      "model_b": "df_random_forest",
+      "p_value": 0.00836181640625,
+      "statistic": 15.0
+    },
+    {
+      "model_a": "df_naive_bayes",
+      "model_b": "df_random_forest",
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
+    }
+  ]
+}

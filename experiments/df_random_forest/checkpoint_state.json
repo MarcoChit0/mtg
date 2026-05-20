@@ -1,0 +1,80 @@
+{
+  "checkpoint_dir": "experiments/df_random_forest/checkpoints/d2ba2c05088b0184",
+  "completed_fold_ids": [],
+  "completed_folds": 0,
+  "schema_version": 1,
+  "signature": {
+    "algorithm": "random_forest",
+    "bc_min_df": 10,
+    "fold_ids": [
+      "r1_f1",
+      "r1_f2",
+      "r1_f3",
+      "r1_f4",
+      "r1_f5",
+      "r2_f1",
+      "r2_f2",
+      "r2_f3",
+      "r2_f4",
+      "r2_f5",
+      "r3_f1",
+      "r3_f2",
+      "r3_f3",
+      "r3_f4",
+      "r3_f5"
+    ],
+    "grid": {
+      "clf__bootstrap": [
+        true
+      ],
+      "clf__criterion": [
+        "gini",
+        "entropy"
+      ],
+      "clf__max_depth": [
+        10,
+        20,
+        40,
+        null
+      ],
+      "clf__max_features": [
+        "sqrt",
+        "log2",
+        null
+      ],
+      "clf__min_samples_leaf": [
+        1,
+        2,
+        4
+      ],
+      "clf__min_samples_split": [
+        2,
+        4,
+        8
+      ],
+      "clf__n_estimators": [
+        100,
+        250,
+        500,
+        1000
+      ]
+    },
+    "inner_splits": 3,
+    "max_grid_values": null,
+    "max_rows": null,
+    "model_id": "df_random_forest",
+    "outer_splits": 5,
+    "random_state": 42,
+    "repeats": [
+      1,
+      2,
+      3
+    ],
+    "representation": "DF",
+    "schema_version": 1,
+    "use_tfidf": false
+  },
+  "signature_id": "d2ba2c05088b0184",
+  "total_folds": 15,
+  "updated_at": "2026-05-19T17:19:05.485115+00:00"
+}

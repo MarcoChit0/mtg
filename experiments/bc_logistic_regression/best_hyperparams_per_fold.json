@@ -1,0 +1,167 @@
+[
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f1",
+    "inner_best_macro_f1": 0.5908357225356646,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 1,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f2",
+    "inner_best_macro_f1": 0.599916739829342,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 2,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f3",
+    "inner_best_macro_f1": 0.5967171270166384,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 3,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f4",
+    "inner_best_macro_f1": 0.5904322756464667,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 4,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r1_f5",
+    "inner_best_macro_f1": 0.5937233757585759,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 5,
+    "repeat_seed": 1
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f1",
+    "inner_best_macro_f1": 0.6013961495673111,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 1,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f2",
+    "inner_best_macro_f1": 0.5898332908028608,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 2,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f3",
+    "inner_best_macro_f1": 0.5873902703989672,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 3,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f4",
+    "inner_best_macro_f1": 0.5967871181516199,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 4,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r2_f5",
+    "inner_best_macro_f1": 0.5894859503288705,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 5,
+    "repeat_seed": 2
+  },
+  {
+    "best_params": {
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f1",
+    "inner_best_macro_f1": 0.5943794920165758,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 1,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f2",
+    "inner_best_macro_f1": 0.5898638147073908,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 2,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f3",
+    "inner_best_macro_f1": 0.5842610007472301,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 3,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f4",
+    "inner_best_macro_f1": 0.59392207928064,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 4,
+    "repeat_seed": 3
+  },
+  {
+    "best_params": {
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced"
+    },
+    "fold_id": "r3_f5",
+    "inner_best_macro_f1": 0.592826545479979,
+    "model_id": "bc_logistic_regression",
+    "outer_fold": 5,
+    "repeat_seed": 3
+  }
+]
