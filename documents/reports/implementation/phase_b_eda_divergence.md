@@ -57,7 +57,7 @@ EDA é demorada (carrega 12k linhas + matplotlib). O script imprime progresso ("
 
 - **Adicionar nova seção na EDA**: criar uma função `seção_x(df, decks) -> str` que retorna markdown, e concatenar dentro de `eda()`. Salvar figuras via `save_fig(FIG_EDA / "x.png", fig)` para manter coerência de path.
 - **Modificar bin edges/buckets**: cuidado para não mudar o significado das comparações entre rodadas. O artigo cita números específicos — re-bucketing força revisão narrativa.
-- **NÃO acrescentar predições aqui**: a Fase B é estritamente descritiva. Predições out-of-fold pertencem à Fase E.5 → G. Misturar atrasa entendimento.
+- **NÃO acrescentar predições aqui**: a Fase B é estritamente descritiva. Predições out-of-fold pertencem às Fases E/F → H. Misturar atrasa entendimento.
 - **Memória**: o DataFrame de 12k decks × 114 features cabe em ~100 MB. Se a base crescer ordens de magnitude, mudar para `pd.read_json(..., lines=True, chunksize=...)`.
 
 ## Problemas encontrados

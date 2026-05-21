@@ -114,6 +114,9 @@ class PhaseENestedCVTests(unittest.TestCase):
             self.assertTrue((experiments / "folds.json").exists())
             self.assertTrue((docs / "phase_e_nested_cv.md").exists())
             self.assertTrue((docs / "phase_e_statistical_tests.md").exists())
+            self.assertFalse((docs / "phase_e_voting.md").exists())
+            self.assertFalse((experiments / "voting").exists())
+            self.assertNotIn("voting", summary)
 
             with mock.patch.object(
                 phase_e_nested_cv,
@@ -236,8 +239,7 @@ class PhaseENestedCVTests(unittest.TestCase):
         logistic_grid = phase_e_nested_cv.full_param_grid("logistic_regression", "BC")
         linear_svc_grid = phase_e_nested_cv.full_param_grid("linear_svc", "BC")
 
-        # LR sweeps the full L2 → ElasticNet → L1 spectrum via l1_ratio with
-        # penalty='elasticnet' set on the estimator.
+        # LR sweeps the full L2 → ElasticNet → L1 spectrum via l1_ratio.
         self.assertEqual(logistic_grid["clf__l1_ratio"], [0.0, 0.5, 1.0])
         self.assertNotIn("clf__fit_intercept", logistic_grid)
         self.assertEqual(phase_e_nested_cv.grid_size(logistic_grid), 96)

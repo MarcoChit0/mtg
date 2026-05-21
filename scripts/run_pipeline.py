@@ -610,7 +610,7 @@ def add_train_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--skip-voting",
         action="store_true",
-        help="Skip the post-training voting ensembles (E.5).",
+        help="Compatibility flag; Phase E no longer computes voting automatically.",
     )
     parser.add_argument("--quiet-progress", action="store_true")
 

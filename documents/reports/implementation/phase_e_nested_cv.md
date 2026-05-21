@@ -1,18 +1,18 @@
-# Implementação — Fase E: Nested CV + Voting + Testes Estatísticos
+# Implementação — Fase E: Nested CV
 
-> Implementation report. **Público**: colaborador novo ou agente LLM que vai mexer em nested CV, grids, voting, testes estatísticos ou na integração com o Google Drive. Resultados (métricas por modelo, métricas por ensemble, Friedman/Nemenyi/Wilcoxon) vivem em [../results/phase_e_nested_cv.md](../results/phase_e_nested_cv.md), [../results/phase_e_voting.md](../results/phase_e_voting.md) e [../results/phase_e_statistical_tests.md](../results/phase_e_statistical_tests.md).
+> Implementation report. **Público**: colaborador novo ou agente LLM que vai mexer em nested CV, grids, checkpoints ou integração com o Google Drive. Resultados da implementação atual vivem em [../results/phase_e_nested_cv.md](../results/phase_e_nested_cv.md) e [../results/phase_e_statistical_tests.md](../results/phase_e_statistical_tests.md). A separação conceitual posterior em Fase F (verificação) e Fase G (voting) está documentada no [action_plan.md](../../action_plan.md), mas não foi implementada neste momento.
 
 ## Objetivo
 
-Treinar todos os modelos individuais selecionados na Fase D (`|union| × 2`, hoje 10 a 14) com nested cross-validation, computar ensembles por votação majoritária a partir das predições out-of-fold, rodar testes estatísticos pareados, e (se colaborador) publicar artefatos no Drive compartilhado para que outros colaboradores e usuários externos reproduzam.
+Fase E treina todos os modelos individuais selecionados na Fase D (`|union| × 2`, hoje 10 a 14) com nested cross-validation. Ela publica artefatos no Drive compartilhado quando o colaborador não usa `--run-local`.
 
 ## O que foi construído
 
 | Componente | Arquivo | Responsabilidade |
 |---|---|---|
-| Driver principal | [scripts/phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py) (~1800 linhas) | Nested CV, grid search com progresso, checkpoints, voting, testes estatísticos, uploads Drive |
+| Driver Fase E | [scripts/phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py) | Nested CV, grid search com progresso, checkpoints, testes estatísticos, uploads Drive por modelo |
 | Integração Drive | [scripts/sync_experiments_drive.py](../../../scripts/sync_experiments_drive.py) | Upload por modelo, bundles (spot_check/voting/shared), publish manifest, download público |
-| Driver de pipeline | [scripts/run_pipeline.py](../../../scripts/run_pipeline.py) | Compõe stages `train` (check-write → train → publish-manifest) com defaults razoáveis |
+| Driver de pipeline | [scripts/run_pipeline.py](../../../scripts/run_pipeline.py) | Compõe stages `train` (check-write → train → publish-manifest) |
 | Pré-processadores | [scripts/preprocessing.py](../../../scripts/preprocessing.py) | `DeckFeaturePreprocessor` e `BagOfCardsPreprocessor` usados como steps de `Pipeline` (ver Fase C) |
 
 ## Saídas locais geradas por rodada
@@ -23,16 +23,13 @@ Treinar todos os modelos individuais selecionados na Fase D (`|union| × 2`, hoj
 | `experiments/folds.json` | Índices outer/inner por repeat (deterministicamente derivados de y + seeds) |
 | `experiments/<modelo>/metrics_per_fold.json` | Métricas por fold + agregadas (mean/std) + matriz de confusão |
 | `experiments/<modelo>/best_hyperparams_per_fold.json` | Vencedor da grid search inner em cada outer fold |
-| `experiments/<modelo>/predictions_per_fold.jsonl` | OOF predictions por linha (consumido pelo voting + Fase G) |
+| `experiments/<modelo>/predictions_per_fold.jsonl` | OOF predictions por linha (consumido pelas fases posteriores) |
 | `experiments/<modelo>/cv_results_per_fold.jsonl` | Toda a grid search (todas as configurações × scores) |
 | `experiments/<modelo>/checkpoint_state.json` | Estado de retomada |
 | `experiments/<modelo>/checkpoints/<sig>/<fold>.json` | Checkpoint por outer fold; signature = sha256 da config |
-| `experiments/voting/voting_<nome>/{metrics,predictions}_per_fold.{json,jsonl}` | 6 ensembles |
-| `experiments/voting/voting_summary.json` | Resumo dos ensembles |
 | `experiments/nested_cv_summary.json` | Sumário consolidado da rodada |
 | `experiments/statistical_tests.json` | Friedman/Nemenyi/Wilcoxon pareado |
 | `documents/reports/results/phase_e_nested_cv.md` | Auto-gerado: tabela de modelos |
-| `documents/reports/results/phase_e_voting.md` | Auto-gerado: tabela de ensembles |
 | `documents/reports/results/phase_e_statistical_tests.md` | Auto-gerado: ranks médios + significância |
 
 ## Como foi construído (decisões + porquês)
@@ -75,7 +72,7 @@ Guarda-corpo de custo atualizado em 2026-05-20: 192 configurações por algoritm
 | GradientBoosting | max_iter ∈ {100,200,300,500}, lr ∈ {0.01,0.05,0.1}, max_leaf_nodes ∈ {15,31,63}, l2 ∈ {0,0.1}, class_weight ∈ {None,balanced} | 144 |
 | MultinomialNB | alpha ∈ 48 valores × fit_prior ∈ {True,False} | 96 |
 | GaussianNB | var_smoothing ∈ 96 valores | 96 |
-| LogReg | C ∈ 16 valores log-espaçados (1e-4 → 3e3) × class_weight ∈ {None, balanced} × l1_ratio ∈ {0, 0.5, 1} — estimador usa `penalty='elasticnet'` + `solver='saga'` | 96 |
+| LogReg | C ∈ 16 valores log-espaçados (1e-4 → 3e3) × class_weight ∈ {None, balanced} × l1_ratio ∈ {0, 0.5, 1} — estimador usa `solver='saga'`; em sklearn <1.8 também define `penalty='elasticnet'` para compatibilidade | 96 |
 | LinearSVC | C ∈ 24 valores log-espaçados (1e-4 → 5e3) × class_weight ∈ {None, balanced} × penalty ∈ {l1, l2} — estimador usa `dual='auto'` + `loss='squared_hinge'` | 96 |
 | KNN | (fora da união, não é treinado) | — |
 
@@ -89,13 +86,13 @@ Cada grid foi revisado contra a referência canônica do algoritmo. Mudanças ap
 |---|---|---|
 | `DecisionTree` | `min_samples_split` → `ccp_alpha` (cost-complexity pruning) | Breiman/Hastie *ESL* §9.2; sklearn user guide §1.10.4 (pruning é o regularizador canônico do CART) |
 | `HistGradientBoosting` | `max_depth` → `max_leaf_nodes` | LightGBM paper (Ke et al. 2017); sklearn user guide diz explicitamente "max_leaf_nodes is the main complexity parameter" |
-| `LogisticRegression` | `penalty='elasticnet'` no estimador + `l1_ratio ∈ {0, 0.5, 1}` no grid | Zou & Hastie 2005 (ElasticNet domina L1 puro quando há features correlacionadas — relevante para BC com cartas de combo) |
+| `LogisticRegression` | `l1_ratio ∈ {0, 0.5, 1}` no grid (`penalty='elasticnet'` só em sklearn <1.8) | Zou & Hastie 2005 (ElasticNet domina L1 puro quando há features correlacionadas — relevante para BC com cartas de combo) |
 | LR e LinearSVC | `fit_intercept` removido do grid | Hastie *ESL* §4.4 e LIBLINEAR (Fan et al. 2008) convergem em "intercept=True é a escolha universal" |
 | Todos com suporte | `class_weight ∈ {None, balanced}` | Resposta direta ao imbalance de y1 (52% / 21% / 27%) com macro-F1 como métrica |
 
 #### Bug histórico corrigido em 2026-05-20
 
-A versão anterior da LR tinha `l1_ratio` no grid sem `penalty='elasticnet'` no estimador. Sklearn ignora silenciosamente `l1_ratio` quando `penalty != 'elasticnet'`, então das 144 configs originais apenas 48 eram distintas. O fix simultâneo (penalty='elasticnet' no estimador + remoção de `fit_intercept`) trouxe o grid para 96 configs **todas distintas**.
+A versão anterior da LR tinha `l1_ratio` no grid sem ativar ElasticNet no estimador em versões antigas do sklearn. Nessas versões, sklearn ignora silenciosamente `l1_ratio` quando `penalty != 'elasticnet'`, então das 144 configs originais apenas 48 eram distintas. O fix simultâneo (compatibilidade ElasticNet + remoção de `fit_intercept`) trouxe o grid para 96 configs **todas distintas**. Em sklearn 1.8+, `penalty` foi depreciado; o script deixa `penalty` no default e usa `l1_ratio` diretamente para evitar `FutureWarning`.
 
 ### Por que cap em 192 e não busca aleatória/halving
 
@@ -119,7 +116,7 @@ else:
 
 **Sem `--from-spot-check`**: cartesiano direto, usado por testes e quando o usuário força um modelo específico.
 
-**Com `--from-spot-check`** (default no `train` do `run_pipeline`): cada algoritmo da união é treinado em ambas as representações. Isso preserva a comparação BC vs DF justa por algoritmo — mesmo um algoritmo que só foi top-5 em uma das duas representações é treinado nas duas pra Fase F poder ranquear.
+**Com `--from-spot-check`** (default no `train` do `run_pipeline`): cada algoritmo da união é treinado em ambas as representações. Isso preserva a comparação BC vs DF justa por algoritmo — mesmo um algoritmo que só foi top-5 em uma das duas representações é treinado nas duas para as fases posteriores poderem ranquear.
 
 ### Checkpoints por outer fold
 
@@ -127,7 +124,7 @@ Cada outer fold gera um arquivo `checkpoints/<sig>/<fold_id>.json` com metrics, 
 
 `--force-rerun` ignora checkpoints existentes mesmo com signature batendo (útil para auditar não-determinismo cross-machine).
 
-### Voting (E.5) — hard vote determinístico
+### Voting — código legado, sem execução automática
 
 6 ensembles fixos em `VOTING_SPECS`:
 
@@ -140,9 +137,9 @@ voting_top3_BC_DF: 3 BC + 3 DF
 voting_all       : todos os modelos individuais
 ```
 
-`hard_vote(predictions)`: `Counter` → classe com `max(count)`; em empate, **menor classe vence** (`min(labels)`). Tie-break determinístico cross-machine, cross-thread. Empate ponderado por macro-F1 está documentado no [`backbone.md`](../../backbone.md) como ideal mas não implementado — exigiria persistir per-class F1 por membro, que não fazemos hoje. O comportamento atual é uma simplificação consciente.
+`hard_vote(predictions)`: `Counter` → classe com `max(count)`; em empate, vence a classe cuja coalizão de modelos votantes tem maior macro-F1 média. Empate residual usa o menor rótulo numérico (`min(labels)`) para manter determinismo cross-machine/cross-thread.
 
-Voting **não retrina**: usa as predictions_per_fold.jsonl persistidas. Aposentar voting → re-rodar Phase E → recomputar voting é uma operação só do final do script (`run_voting_ensembles()`).
+Voting **não retreina**: usa as `predictions_per_fold.jsonl` persistidas. No plano atualizado, essa lógica deve sair da Fase E e virar uma etapa posterior à verificação dos modelos; por enquanto não há script separado implementado para isso e a Fase E não dispara voting automaticamente.
 
 ### Testes estatísticos
 
@@ -158,7 +155,7 @@ Quando `train` roda sem `--run-local`:
 
 1. **Pre-flight**: `check_drive_write` no início falha cedo se o colaborador não tem permissão.
 2. **Upload por modelo**: ao terminar cada modelo, `enqueue_drive_upload()` submete pra `ThreadPoolExecutor(max_workers=1)` — uploads acontecem em paralelo com o próximo treino, mas serializados entre si (evita rate limit no Drive).
-3. **Upload de bundles**: ao final, `enqueue_bundle_drive_upload()` para `voting` e `shared` (= seeds.json + folds.json).
+3. **Upload de bundle shared**: ao final da Fase E, `enqueue_bundle_drive_upload()` sobe `shared` (= seeds.json + folds.json).
 4. **Publish manifest**: `run_pipeline` adiciona uma stage final que detecta bundles locais e re-publica `experiments_manifest.json` (schema v2).
 
 Falha de upload **não invalida** o run: `collect_drive_uploads()` registra o erro em `summary["problems"]` mas o run termina com `status: "ok"` e métricas locais válidas.
@@ -178,9 +175,9 @@ Dado mesmo `deck_features.jsonl` + mesmas seeds + mesmas versões de sklearn (pi
 
 - **Adicionar algoritmo**: atualizar `SELECTED_ALGORITHMS`, `estimator_for`, `pipeline_for`, `needs_df_scaling`, `full_param_grid`. Adicionar test em `test_all_grids_fit_within_max_configs` (passa automaticamente se o grid couber em 192). Atualizar também `ALGORITHMS` em Phase D pra que apareça no spot-check.
 - **Mudar grids**: vai invalidar checkpoints antigos (signature muda). Considere isso no orçamento de re-run.
-- **Mudar tie-break do voting**: requer recálculo dos arquivos de voting, mas não retreina modelos individuais.
-- **NÃO mover voting pra antes de todos os modelos terminarem**: voting requer OOF predictions completas. Se algum modelo está em retomada, voting não roda corretamente — `select_voting_members` filtra modelos sem aggregate.
-- **NÃO subir voting/shared antes do manifest**: a ordem é: modelos → voting/shared → publish-manifest. O `lsjson` na publicação varre tudo no remote — se você inverte, modelos novos podem ser referenciados pelo manifest velho.
+- **Mudar tie-break do voting**: requer recálculo dos ensembles, mas não retreina modelos individuais.
+- **NÃO rodar voting antes da verificação**: o plano atualizado coloca completude, GroupKFold por comandante e testes estatísticos antes de qualquer votação.
+- **NÃO subir bundles antes do manifest final**: o `lsjson` na publicação varre tudo no remote — se você inverte, modelos novos podem ser referenciados pelo manifest velho.
 - **NÃO trocar `MAX_GRID_CONFIGS` sem rever cada grid**: `test_all_grids_fit_within_max_configs` ainda passa mas você pode estar regredindo na variância de hiperparâmetros explorados.
 - **Cuidado com `--max-grid-values`**: corta cada hiperparâmetro pros primeiros N valores. Útil pra smoke test (`--max-grid-values 1`); fatal pra rodada de produção. Tests usam isso explicitamente.
 

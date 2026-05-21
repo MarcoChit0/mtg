@@ -652,7 +652,7 @@ A Fase D entrega duas listas `A_DF` e `A_BC` (top-5 de cada representação). A 
 m = alg(est(X), y1)   para todo (alg, est) ∈ A_uniao × {BC, DF}
 ```
 
-Total: `|A_uniao| × 2` modelos (10 a 14 dependendo do tamanho da união). Treinamos cada algoritmo selecionado em ambas as representações para preservar a comparação BC vs DF necessária à Fase F.
+Total: `|A_uniao| × 2` modelos (10 a 14 dependendo do tamanho da união). Treinamos cada algoritmo selecionado em ambas as representações para preservar a comparação BC vs DF necessária à seleção posterior do melhor modelo por representação.
 
 Para conter o custo computacional, cada algoritmo recebe um grid de hiperparâmetros com no máximo **192 configurações** (guarda-corpo de ordem de grandeza atualizado em 2026-05-20). Random Forest, por exemplo, sai de 864 configurações no desenho original para 192.
 
@@ -662,7 +662,7 @@ Essa etapa mede se a percepção comunitária pode ser aprendida a partir dos da
 
 ### 13.5.1 Ensembles por votação (hard voting, sem retreino)
 
-A pedido da professora (2026-05-19), avaliamos seis ensembles construídos por **votação majoritária** das predições out-of-fold dos modelos da §13.5. Como todas as predições OOF compartilham o mesmo conjunto de folds e seeds, a votação é exata por linha e por fold — não há novo treinamento.
+A pedido da professora (2026-05-19), avaliamos seis ensembles construídos por **votação majoritária** das predições out-of-fold dos modelos da §13.5. Como todas as predições OOF compartilham o mesmo conjunto de folds e seeds, a votação é exata por linha e por fold — não há novo treinamento. No plano atualizado, a votação só roda depois da verificação dos modelos individuais: completude dos 15 outer folds, GroupKFold por comandante e testes estatísticos.
 
 ```text
 voting_top3_BC        top-3 modelos BC por macro-F1 média da §13.5

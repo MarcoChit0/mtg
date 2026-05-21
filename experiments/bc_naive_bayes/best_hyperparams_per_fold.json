@@ -1,150 +1,165 @@
 [
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.026639858572587702,
+      "clf__fit_prior": true
     },
     "fold_id": "r1_f1",
-    "inner_best_macro_f1": 0.5568851790796253,
+    "inner_best_macro_f1": 0.5573900394072187,
     "model_id": "bc_naive_bayes",
     "outer_fold": 1,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.014798331982375287,
+      "clf__fit_prior": true
     },
     "fold_id": "r1_f2",
-    "inner_best_macro_f1": 0.5571385236910683,
+    "inner_best_macro_f1": 0.5575605802767148,
     "model_id": "bc_naive_bayes",
     "outer_fold": 2,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.00024153425010859465,
+      "clf__fit_prior": false
     },
     "fold_id": "r1_f3",
-    "inner_best_macro_f1": 0.5509624366873916,
+    "inner_best_macro_f1": 0.5546337316288947,
     "model_id": "bc_naive_bayes",
     "outer_fold": 3,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__alpha": 0.1
+      "clf__alpha": 0.0014090816855117302,
+      "clf__fit_prior": true
     },
     "fold_id": "r1_f4",
-    "inner_best_macro_f1": 0.5559571850131956,
+    "inner_best_macro_f1": 0.5566645077028793,
     "model_id": "bc_naive_bayes",
     "outer_fold": 4,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.011029433117916125,
+      "clf__fit_prior": true
     },
     "fold_id": "r1_f5",
-    "inner_best_macro_f1": 0.5546639294953039,
+    "inner_best_macro_f1": 0.5545900467824715,
     "model_id": "bc_naive_bayes",
     "outer_fold": 5,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.00024153425010859465,
+      "clf__fit_prior": true
     },
     "fold_id": "r2_f1",
-    "inner_best_macro_f1": 0.5523532300593895,
+    "inner_best_macro_f1": 0.5539266040895158,
     "model_id": "bc_naive_bayes",
     "outer_fold": 1,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.6757518355386216,
+      "clf__fit_prior": true
     },
     "fold_id": "r2_f2",
-    "inner_best_macro_f1": 0.5486485253255841,
+    "inner_best_macro_f1": 0.5507105569866207,
     "model_id": "bc_naive_bayes",
     "outer_fold": 2,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.0014090816855117302,
+      "clf__fit_prior": true
     },
     "fold_id": "r2_f3",
-    "inner_best_macro_f1": 0.5528704966316267,
+    "inner_best_macro_f1": 0.5544636109901536,
     "model_id": "bc_naive_bayes",
     "outer_fold": 3,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.008220412614574901,
+      "clf__fit_prior": true
     },
     "fold_id": "r2_f4",
-    "inner_best_macro_f1": 0.5567237639992473,
+    "inner_best_macro_f1": 0.5567960862456993,
     "model_id": "bc_naive_bayes",
     "outer_fold": 4,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.008220412614574901,
+      "clf__fit_prior": true
     },
     "fold_id": "r2_f5",
-    "inner_best_macro_f1": 0.5507399406256339,
+    "inner_best_macro_f1": 0.5512484975244253,
     "model_id": "bc_naive_bayes",
     "outer_fold": 5,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__alpha": 0.1
+      "clf__alpha": 0.06434438263328988,
+      "clf__fit_prior": true
     },
     "fold_id": "r3_f1",
-    "inner_best_macro_f1": 0.5500510819452201,
+    "inner_best_macro_f1": 0.5506810087048019,
     "model_id": "bc_naive_bayes",
     "outer_fold": 1,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.006126804780573316,
+      "clf__fit_prior": true
     },
     "fold_id": "r3_f2",
-    "inner_best_macro_f1": 0.5525280343184109,
+    "inner_best_macro_f1": 0.553009067603024,
     "model_id": "bc_naive_bayes",
     "outer_fold": 2,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 0.008220412614574901,
+      "clf__fit_prior": true
     },
     "fold_id": "r3_f3",
-    "inner_best_macro_f1": 0.5489410072184888,
+    "inner_best_macro_f1": 0.5494828135850504,
     "model_id": "bc_naive_bayes",
     "outer_fold": 3,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__alpha": 0.01
+      "clf__alpha": 5.289373746757303,
+      "clf__fit_prior": false
     },
     "fold_id": "r3_f4",
-    "inner_best_macro_f1": 0.5488935174247129,
+    "inner_best_macro_f1": 0.5500486026632777,
     "model_id": "bc_naive_bayes",
     "outer_fold": 4,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__alpha": 0.1
+      "clf__alpha": 0.08633168407011575,
+      "clf__fit_prior": true
     },
     "fold_id": "r3_f5",
-    "inner_best_macro_f1": 0.5496516593280373,
+    "inner_best_macro_f1": 0.549843487796381,
     "model_id": "bc_naive_bayes",
     "outer_fold": 5,
     "repeat_seed": 3

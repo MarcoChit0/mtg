@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
 import numpy as np
+import sklearn
 from scipy import sparse
 from scipy.stats import friedmanchisquare, rankdata, studentized_range, wilcoxon
 from sklearn.base import BaseEstimator, TransformerMixin, clone
@@ -53,7 +54,6 @@ except ImportError:  # pragma: no cover
 DEFAULT_PROCESSED_DIR = Path("data/processed/archidekt")
 DEFAULT_DOCS_DIR = Path("documents/reports/results")
 NESTED_CV_REPORT_FILENAME = "phase_e_nested_cv.md"
-VOTING_REPORT_FILENAME = "phase_e_voting.md"
 STATS_REPORT_FILENAME = "phase_e_statistical_tests.md"
 DEFAULT_EXPERIMENT_DIR = Path("experiments")
 DEFAULT_EXPERIMENTS_DRIVE_REMOTE = os.environ.get("MTG_EXPERIMENTS_DRIVE_REMOTE", "mtg-experiments:")
@@ -100,6 +100,15 @@ class SparseToDenseTransformer(BaseEstimator, TransformerMixin):
         if sparse.issparse(X):
             return X.toarray()
         return np.asarray(X)
+
+
+def sklearn_at_least(major: int, minor: int) -> bool:
+    """Return whether the imported sklearn is at least major.minor."""
+    try:
+        current = tuple(int(part) for part in sklearn.__version__.split(".")[:2])
+    except (AttributeError, TypeError, ValueError):
+        return False
+    return current >= (major, minor)
 
 
 def read_json(path: Path) -> Any:
@@ -267,16 +276,18 @@ def estimator_for(algorithm: str, representation: str, random_state: int, n_jobs
     if algorithm == "knn":
         return KNeighborsClassifier(n_jobs=n_jobs)
     if algorithm == "logistic_regression":
-        # penalty='elasticnet' (with l1_ratio swept by the grid) covers the full
-        # L2 → ElasticNet → L1 spectrum: l1_ratio=0.0 ≡ L2, l1_ratio=1.0 ≡ L1,
-        # l1_ratio=0.5 = mix. saga is the only sklearn solver that supports
-        # elasticnet for multinomial logistic regression.
-        return LogisticRegression(
+        # l1_ratio swept by the grid covers the full regularization spectrum:
+        # 0.0 ≡ L2, 0.5 = ElasticNet mix, 1.0 ≡ L1. sklearn >=1.8 deprecated
+        # explicit penalty=... in favor of l1_ratio/C, while older sklearn
+        # needs penalty='elasticnet' for l1_ratio to have effect.
+        kwargs = dict(
             max_iter=5000,
             solver="saga",
-            penalty="elasticnet",
             random_state=random_state,
         )
+        if not sklearn_at_least(1, 8):
+            kwargs["penalty"] = "elasticnet"
+        return LogisticRegression(**kwargs)
     if algorithm == "random_forest":
         return RandomForestClassifier(random_state=random_state, n_jobs=n_jobs)
     if algorithm == "linear_svc":
@@ -348,7 +359,8 @@ def full_param_grid(algorithm: str, representation: str) -> Dict[str, List[Any]]
         }
     if algorithm == "logistic_regression":
         # 16 C × 2 class_weight × 3 l1_ratio = 96 configs.
-        # Requires penalty='elasticnet' in estimator_for (see above).
+        # l1_ratio covers L2, ElasticNet, and L1 in sklearn >=1.8; older
+        # sklearn gets penalty='elasticnet' in estimator_for for compatibility.
         return {
             "clf__C": [
                 0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3,
@@ -1425,36 +1437,6 @@ def write_report(path: Path, summary: Mapping[str, Any], stats: Mapping[str, Any
 
     lines.extend([
         "",
-        "## Ensembles por votação (Fase E.5)",
-        "",
-    ])
-    voting_rows = summary.get("voting") or []
-    if voting_rows:
-        lines.extend([
-            "| Ensemble | Status | Membros | Macro-F1 média | Macro-F1 dp |",
-            "|---|---|---:|---:|---:|",
-        ])
-        for ensemble in voting_rows:
-            agg = ensemble.get("aggregate") or {}
-            if ensemble.get("status") == "ok":
-                lines.append(
-                    "| `{name}` | ok | {n} | {f1:.4f} | {f1_std:.4f} |".format(
-                        name=ensemble["voting_id"],
-                        n=ensemble.get("n_members", len(ensemble.get("members") or [])),
-                        f1=agg.get("macro_f1_mean", 0.0),
-                        f1_std=agg.get("macro_f1_std", 0.0),
-                    )
-                )
-            else:
-                lines.append(
-                    f"| `{ensemble['voting_id']}` | {ensemble.get('status')} | "
-                    f"{len(ensemble.get('members') or [])} | _n/a_ | _n/a_ |"
-                )
-    else:
-        lines.append("- Votação desativada ou nenhum ensemble computado nesta rodada.")
-
-    lines.extend([
-        "",
         "## Testes Estatísticos",
         "",
     ])
@@ -1480,7 +1462,6 @@ def write_report(path: Path, summary: Mapping[str, Any], stats: Mapping[str, Any
         "- `experiments/<representação>_<algoritmo>/checkpoints/<assinatura>/<outer_fold>.json`",
         "- `experiments/archives/<representação>_<algoritmo>.zip` quando upload via Drive estiver habilitado",
         "- `documents/reports/results/phase_e_nested_cv.md`",
-        "- `documents/reports/results/phase_e_voting.md`",
         "- `documents/reports/results/phase_e_statistical_tests.md`",
         "",
         "## Google Drive",
@@ -1516,7 +1497,7 @@ def write_voting_report(
     models: Sequence[Mapping[str, Any]],
 ) -> None:
     lines: List[str] = [
-        "# Ensembles por votação — Fase E.5",
+        "# Ensembles por votação",
         "",
         "Hard voting majoritário a partir das predições out-of-fold dos modelos individuais. Sem retreino. Empates são resolvidos pela maior macro-F1 média dos membros que votaram em cada classe; empate residual usa o menor rótulo numérico para manter reprodutibilidade.",
         "",
@@ -1696,7 +1677,8 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser.add_argument(
         "--skip-voting",
         action="store_true",
-        help="Do not compute voting ensembles after training the base models.",
+        default=True,
+        help="Compatibility flag; voting is not computed automatically by Phase E.",
     )
     parser.add_argument("--quiet-progress", action="store_true", help="Hide human-readable progress messages.")
     return parser.parse_args(argv)
@@ -1779,23 +1761,12 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
 
     stats = statistical_payload(combined_results)
 
-    voting_payload: Dict[str, Any] = {"ensembles": [], "problems": []}
-    if args.skip_voting:
-        print_progress("[Phase E voting] disabled via --skip-voting", args.quiet_progress)
-    else:
-        voting_payload = run_voting_ensembles(
-            combined_results,
-            experiment_dir=args.experiment_dir,
-            quiet=args.quiet_progress,
-        )
-        drive_upload_problems.extend(voting_payload.get("problems", []))
-
-    # Voting and shared (seeds.json/folds.json) bundles are uploaded after the
-    # per-model archives so collaborators that restore from the manifest can
-    # reproduce the experimental setup end-to-end. Skipped silently when there
-    # is nothing on disk to upload (e.g. partial runs or --skip-voting).
+    # The shared bundle (seeds.json/folds.json) is uploaded after the per-model
+    # archives so collaborators that restore from the manifest can reproduce
+    # the experimental setup end-to-end. Voting is intentionally outside
+    # Phase E in the updated project plan.
     if upload_enabled and upload_executor is not None:
-        for bundle_id in ("voting", "shared"):
+        for bundle_id in ("shared",):
             if bundle_has_content(bundle_id, experiment_dir=args.experiment_dir):
                 upload_futures.append((
                     f"bundle:{bundle_id}",
@@ -1850,7 +1821,6 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         "model_plan": [{"representation": rep, "algorithm": alg} for rep, alg in model_plan],
         "models": combined_results,
         "statistics": stats,
-        "voting": voting_payload["ensembles"],
         "drive_uploads": drive_upload_records,
         "elapsed_seconds": round(time.monotonic() - started, 3),
         "problems": drive_upload_problems,
@@ -1860,7 +1830,6 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
     args.docs_dir.mkdir(parents=True, exist_ok=True)
     write_stats_report(args.docs_dir / STATS_REPORT_FILENAME, stats)
     write_report(args.docs_dir / NESTED_CV_REPORT_FILENAME, summary, stats)
-    write_voting_report(args.docs_dir / VOTING_REPORT_FILENAME, voting_payload["ensembles"], combined_results)
     return summary
 
 

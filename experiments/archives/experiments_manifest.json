@@ -1,6 +1,38 @@
 {
-  "generated_at": "2026-05-19T18:25:27.449561+00:00",
+  "bundles": [
+    {
+      "bundle_id": "shared",
+      "drive_file_id": "1xvS6nomf3vmaIofFtN26QSdxp23zzlKY",
+      "filename": "shared.zip",
+      "size_bytes": 452698
+    },
+    {
+      "bundle_id": "spot_check",
+      "drive_file_id": "1ETe-P3B7pdzapxGd5kHmB5QCkSGvyyd4",
+      "filename": "spot_check.zip",
+      "size_bytes": 18453
+    },
+    {
+      "bundle_id": "voting",
+      "drive_file_id": "1m26zPoVKX1UFVLSnEbjZJOm3Qo9R86pi",
+      "filename": "voting.zip",
+      "size_bytes": 5324625
+    }
+  ],
+  "generated_at": "2026-05-20T21:39:46.090644+00:00",
   "models": [
+    {
+      "drive_file_id": "12JYI-cMpiYXi4LxtumoSZjK7Uz0-ZCKg",
+      "filename": "bc_naive_bayes.zip",
+      "model_id": "bc_naive_bayes",
+      "size_bytes": 1967592
+    },
+    {
+      "drive_file_id": "1L5_9znEb_Anr2I4pQNqklZfzWJdHu2rG",
+      "filename": "df_naive_bayes.zip",
+      "model_id": "df_naive_bayes",
+      "size_bytes": 1979475
+    },
     {
       "drive_file_id": "1tQ1vDAFLrNejSdw6krdWggTmosYJRoV8",
       "filename": "mock_knn.zip",
@@ -8,5 +40,5 @@
       "size_bytes": 1726
     }
   ],
-  "schema_version": 1
+  "schema_version": 2
 }
