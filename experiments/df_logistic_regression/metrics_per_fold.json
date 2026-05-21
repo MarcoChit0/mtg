@@ -1,22 +1,22 @@
 {
   "aggregate": {
-    "accuracy_mean": 0.6905370141464083,
-    "accuracy_std": 0.010395079212647504,
+    "accuracy_mean": 0.6945749210273315,
+    "accuracy_std": 0.01015550823545319,
     "confusion_matrix_sum": [
       [
-        3973,
-        2948,
-        42
+        3941,
+        2982,
+        40
       ],
       [
-        2428,
-        14477,
-        1746
+        2345,
+        14653,
+        1653
       ],
       [
-        222,
-        3880,
-        6689
+        204,
+        3895,
+        6692
       ]
     ],
     "labels": [
@@ -24,50 +24,208 @@
       3,
       4
     ],
-    "macro_f1_mean": 0.6679266770148793,
-    "macro_f1_std": 0.010453672964881507,
-    "precision_macro_mean": 0.6896676702160394,
-    "precision_macro_std": 0.011712274638314746,
-    "recall_macro_mean": 0.6555561823290502,
-    "recall_macro_std": 0.009975169408274757
+    "macro_f1_mean": 0.6710254511090173,
+    "macro_f1_std": 0.010238847545163526,
+    "precision_macro_mean": 0.6954945632232578,
+    "precision_macro_std": 0.011438561063553409,
+    "recall_macro_mean": 0.6572622175550908,
+    "recall_macro_std": 0.00982931878501189
   },
   "algorithm": "logistic_regression",
+  "checkpoint": {
+    "checkpoint_dir": "experiments/df_logistic_regression/checkpoints/c3d417feaab8bd50",
+    "completed_folds": 15,
+    "signature_id": "c3d417feaab8bd50",
+    "total_folds": 15
+  },
   "folds": [
     {
-      "accuracy": 0.6992171405026782,
+      "accuracy": 0.6979810465595385,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          262,
-          199,
+          252,
+          209,
           4
         ],
         [
-          147,
-          981,
-          115
+          141,
+          993,
+          109
         ],
         [
-          24,
-          241,
-          454
+          19,
+          251,
+          449
         ]
       ],
-      "elapsed_seconds": 7.795,
+      "elapsed_seconds": 795.452,
       "fold_id": "r1_f1",
-      "inner_best_macro_f1": 0.6652332602014744,
+      "inner_best_macro_f1": 0.66908860980284,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6742639317177161,
+      "macro_f1": 0.6707827158167312,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 1,
-      "precision_macro": 0.6959202835062617,
-      "recall_macro": 0.6613643451147725,
+      "precision_macro": 0.6979988322523983,
+      "recall_macro": 0.6550958729436387,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6918005768438401,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          257,
+          201,
+          6
+        ],
+        [
+          142,
+          980,
+          122
+        ],
+        [
+          13,
+          264,
+          442
+        ]
+      ],
+      "elapsed_seconds": 861.567,
+      "fold_id": "r1_f2",
+      "inner_best_macro_f1": 0.6701362714450935,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6671521463584149,
+      "model_id": "df_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.6924752320999135,
+      "recall_macro": 0.6521344530063587,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6893283889575608,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          277,
+          185,
+          2
+        ],
+        [
+          183,
+          940,
+          121
+        ],
+        [
+          7,
+          256,
+          456
+        ]
+      ],
+      "elapsed_seconds": 1171.243,
+      "fold_id": "r1_f3",
+      "inner_best_macro_f1": 0.6638586261740299,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6712896556454604,
+      "model_id": "df_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.6871262341233555,
+      "recall_macro": 0.66227465154565,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.700041203131438,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          266,
+          198,
+          0
+        ],
+        [
+          157,
+          990,
+          96
+        ],
+        [
+          13,
+          264,
+          443
+        ]
+      ],
+      "elapsed_seconds": 889.994,
+      "fold_id": "r1_f4",
+      "inner_best_macro_f1": 0.6699471647794111,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6765127033957171,
+      "model_id": "df_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.7046007727528042,
+      "recall_macro": 0.661671272279298,
+      "repeat_seed": 1,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6856201071281417,
+      "algorithm": "logistic_regression",
+      "confusion_matrix": [
+        [
+          256,
+          206,
+          2
+        ],
+        [
+          161,
+          974,
+          108
+        ],
+        [
+          13,
+          273,
+          434
+        ]
+      ],
+      "elapsed_seconds": 1324.354,
+      "fold_id": "r1_f5",
+      "inner_best_macro_f1": 0.6720729438367328,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.660655908221973,
+      "model_id": "df_logistic_regression",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.6878267293889179,
+      "recall_macro": 0.646030003010473,
       "repeat_seed": 1,
       "representation": "DF"
     },
@@ -76,231 +234,79 @@
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          265,
-          193,
-          6
-        ],
-        [
-          157,
-          958,
-          129
-        ],
-        [
-          12,
-          265,
-          442
-        ]
-      ],
-      "elapsed_seconds": 7.816,
-      "fold_id": "r1_f2",
-      "inner_best_macro_f1": 0.6679713954778533,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6641999875820321,
-      "model_id": "df_logistic_regression",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 2,
-      "precision_macro": 0.6843946488326509,
-      "recall_macro": 0.6519866169565379,
-      "repeat_seed": 1,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.6843840131850021,
-      "algorithm": "logistic_regression",
-      "confusion_matrix": [
-        [
-          273,
-          190,
-          1
-        ],
-        [
-          185,
-          935,
-          124
-        ],
-        [
-          8,
-          258,
-          453
-        ]
-      ],
-      "elapsed_seconds": 7.887,
-      "fold_id": "r1_f3",
-      "inner_best_macro_f1": 0.6620022387842077,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6658234847707145,
-      "model_id": "df_logistic_regression",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 3,
-      "precision_macro": 0.681880152048735,
-      "recall_macro": 0.6566705035416142,
-      "repeat_seed": 1,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.6975690152451587,
-      "algorithm": "logistic_regression",
-      "confusion_matrix": [
-        [
-          267,
+          264,
           196,
-          1
+          5
         ],
         [
-          164,
-          981,
-          98
-        ],
-        [
-          12,
-          263,
-          445
-        ]
-      ],
-      "elapsed_seconds": 7.884,
-      "fold_id": "r1_f4",
-      "inner_best_macro_f1": 0.6646772006092472,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6747130079657712,
-      "model_id": "df_logistic_regression",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 4,
-      "precision_macro": 0.7006578364980304,
-      "recall_macro": 0.6609020733219696,
-      "repeat_seed": 1,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.6814997939843428,
-      "algorithm": "logistic_regression",
-      "confusion_matrix": [
-        [
-          255,
-          207,
-          2
-        ],
-        [
-          166,
-          965,
-          112
+          161,
+          968,
+          114
         ],
         [
           14,
           272,
-          434
+          433
         ]
       ],
-      "elapsed_seconds": 7.871,
-      "fold_id": "r1_f5",
-      "inner_best_macro_f1": 0.6686906390645979,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6567042501715344,
-      "model_id": "df_logistic_regression",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 5,
-      "precision_macro": 0.6821534159826288,
-      "recall_macro": 0.6428980965180232,
-      "repeat_seed": 1,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.6798516687268232,
-      "algorithm": "logistic_regression",
-      "confusion_matrix": [
-        [
-          259,
-          200,
-          6
-        ],
-        [
-          166,
-          951,
-          126
-        ],
-        [
-          10,
-          269,
-          440
-        ]
-      ],
-      "elapsed_seconds": 7.73,
+      "elapsed_seconds": 855.469,
       "fold_id": "r2_f1",
-      "inner_best_macro_f1": 0.6681483398462688,
+      "inner_best_macro_f1": 0.6707951515294345,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6571432541760585,
+      "macro_f1": 0.6626939232352563,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 1,
-      "precision_macro": 0.6781171259801663,
-      "recall_macro": 0.6446782591281822,
+      "precision_macro": 0.6866272466575915,
+      "recall_macro": 0.649576103455135,
       "repeat_seed": 2,
       "representation": "DF"
     },
     {
-      "accuracy": 0.6955088586732592,
+      "accuracy": 0.7012772970745776,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          271,
-          188,
-          5
+          265,
+          196,
+          3
         ],
         [
-          157,
-          962,
-          125
+          149,
+          980,
+          115
         ],
         [
-          10,
+          8,
           254,
-          455
+          457
         ]
       ],
-      "elapsed_seconds": 7.788,
+      "elapsed_seconds": 880.093,
       "fold_id": "r2_f2",
-      "inner_best_macro_f1": 0.6669429341579137,
+      "inner_best_macro_f1": 0.669589688243054,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6751085938051061,
+      "macro_f1": 0.679171787947006,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 2,
-      "precision_macro": 0.6938948080500592,
-      "recall_macro": 0.6633956623432847,
+      "precision_macro": 0.7026864597727981,
+      "recall_macro": 0.6648356823638636,
       "repeat_seed": 2,
       "representation": "DF"
     },
     {
-      "accuracy": 0.6880922950144212,
+      "accuracy": 0.6909765142150803,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
@@ -310,35 +316,35 @@
         ],
         [
           160,
-          968,
-          116
+          973,
+          111
         ],
         [
           14,
-          272,
-          433
+          270,
+          435
         ]
       ],
-      "elapsed_seconds": 7.894,
+      "elapsed_seconds": 1074.438,
       "fold_id": "r2_f3",
-      "inner_best_macro_f1": 0.6702490016590517,
+      "inner_best_macro_f1": 0.6710292107811759,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.666172981225689,
+      "macro_f1": 0.6687388777589641,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 3,
-      "precision_macro": 0.6898436903580607,
-      "recall_macro": 0.6533672468254959,
+      "precision_macro": 0.6931917856856885,
+      "recall_macro": 0.6556342247497594,
       "repeat_seed": 2,
       "representation": "DF"
     },
     {
-      "accuracy": 0.6782035434693037,
+      "accuracy": 0.6847960444993819,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
@@ -347,259 +353,259 @@
           1
         ],
         [
-          175,
-          944,
-          124
+          173,
+          954,
+          116
         ],
         [
-          19,
-          256,
-          445
+          18,
+          251,
+          451
         ]
       ],
-      "elapsed_seconds": 7.843,
+      "elapsed_seconds": 1119.822,
       "fold_id": "r2_f4",
-      "inner_best_macro_f1": 0.6748865352280965,
+      "inner_best_macro_f1": 0.6751308796974076,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6547976321014636,
+      "macro_f1": 0.6609406319168278,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 4,
-      "precision_macro": 0.6739849313661894,
-      "recall_macro": 0.6437959341148234,
+      "precision_macro": 0.6812636761390456,
+      "recall_macro": 0.6492553959902144,
       "repeat_seed": 2,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7041615162752369,
+      "accuracy": 0.703749484960857,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          267,
-          196,
-          1
+          256,
+          206,
+          2
         ],
         [
-          155,
-          987,
+          147,
+          995,
           101
         ],
         [
-          17,
-          248,
-          455
+          14,
+          249,
+          457
         ]
       ],
-      "elapsed_seconds": 7.855,
+      "elapsed_seconds": 1138.058,
       "fold_id": "r2_f5",
-      "inner_best_macro_f1": 0.65911157102733,
+      "inner_best_macro_f1": 0.6610367939619838,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.680729898590099,
+      "macro_f1": 0.6780577053178325,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 5,
-      "precision_macro": 0.7049346803252732,
-      "recall_macro": 0.6671407134101672,
+      "precision_macro": 0.7053957326749437,
+      "recall_macro": 0.662309687763609,
       "repeat_seed": 2,
       "representation": "DF"
     },
     {
-      "accuracy": 0.6852080758137619,
+      "accuracy": 0.6860321384425216,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          255,
-          208,
+          253,
+          210,
           2
         ],
         [
           167,
-          955,
-          121
+          959,
+          117
         ],
         [
-          17,
-          249,
+          16,
+          250,
           453
         ]
       ],
-      "elapsed_seconds": 7.874,
+      "elapsed_seconds": 944.043,
       "fold_id": "r3_f1",
-      "inner_best_macro_f1": 0.6699744628340084,
+      "inner_best_macro_f1": 0.6693563028990942,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6610568517048193,
+      "macro_f1": 0.6612968943128319,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 1,
-      "precision_macro": 0.6812231820143787,
-      "recall_macro": 0.648910438452643,
+      "precision_macro": 0.6826871064123038,
+      "recall_macro": 0.6485494203354158,
       "repeat_seed": 3,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7053976102183765,
+      "accuracy": 0.7066337041615163,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          260,
-          201,
-          3
+          262,
+          198,
+          4
         ],
         [
-          136,
-          995,
-          113
+          138,
+          997,
+          109
         ],
         [
           8,
-          254,
-          457
+          255,
+          456
         ]
       ],
-      "elapsed_seconds": 7.705,
+      "elapsed_seconds": 802.758,
       "fold_id": "r3_f2",
-      "inner_best_macro_f1": 0.6619921851274523,
+      "inner_best_macro_f1": 0.6641549186864241,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6817290754952419,
+      "macro_f1": 0.6830517637545265,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 2,
-      "precision_macro": 0.7091093240033518,
-      "recall_macro": 0.6652630209453766,
+      "precision_macro": 0.7103830150123601,
+      "recall_macro": 0.6667721013737906,
       "repeat_seed": 3,
       "representation": "DF"
     },
     {
-      "accuracy": 0.6938607334157396,
+      "accuracy": 0.6992171405026782,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          265,
-          198,
+          259,
+          204,
           1
         ],
         [
-          154,
-          981,
-          109
+          139,
+          999,
+          106
         ],
         [
-          20,
-          261,
-          438
+          14,
+          266,
+          439
         ]
       ],
-      "elapsed_seconds": 7.822,
+      "elapsed_seconds": 973.348,
       "fold_id": "r3_f3",
-      "inner_best_macro_f1": 0.6635903172558267,
+      "inner_best_macro_f1": 0.6671025300066168,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6697759859579545,
+      "macro_f1": 0.673949818999935,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 3,
-      "precision_macro": 0.6947215733058433,
-      "recall_macro": 0.6562951048379141,
+      "precision_macro": 0.7042415131812847,
+      "recall_macro": 0.6572715179971115,
       "repeat_seed": 3,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7053976102183765,
+      "accuracy": 0.7165224557066338,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          278,
-          182,
-          4
+          276,
+          185,
+          3
         ],
         [
-          170,
-          969,
-          104
+          162,
+          992,
+          89
         ],
         [
-          15,
-          240,
-          465
+          14,
+          235,
+          471
         ]
       ],
-      "elapsed_seconds": 7.855,
+      "elapsed_seconds": 875.064,
       "fold_id": "r3_f4",
-      "inner_best_macro_f1": 0.6639388170628584,
+      "inner_best_macro_f1": 0.6681467630304833,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6849349629409405,
+      "macro_f1": 0.6947020233982683,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 4,
-      "precision_macro": 0.7028571419745222,
-      "recall_macro": 0.6748456105146676,
+      "precision_macro": 0.7165862473811838,
+      "recall_macro": 0.6823544801077607,
       "repeat_seed": 3,
       "representation": "DF"
     },
     {
-      "accuracy": 0.6736711990111248,
+      "accuracy": 0.6786155747836835,
       "algorithm": "logistic_regression",
       "confusion_matrix": [
         [
-          270,
-          190,
+          272,
+          188,
           4
         ],
         [
-          169,
-          945,
-          129
+          165,
+          959,
+          119
         ],
         [
-          22,
-          278,
-          420
+          19,
+          285,
+          416
         ]
       ],
-      "elapsed_seconds": 7.833,
+      "elapsed_seconds": 952.971,
       "fold_id": "r3_f5",
-      "inner_best_macro_f1": 0.6702422058859345,
+      "inner_best_macro_f1": 0.67165211531027,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6517462570180512,
+      "macro_f1": 0.6563852105555159,
       "model_id": "df_logistic_regression",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 5,
-      "precision_macro": 0.6713222589944389,
-      "recall_macro": 0.6418291089102808,
+      "precision_macro": 0.6793278648142764,
+      "recall_macro": 0.6451683964042828,
       "repeat_seed": 3,
       "representation": "DF"
     }

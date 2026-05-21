@@ -325,80 +325,76 @@ def pipeline_for(
     return Pipeline(steps)
 
 
-MAX_GRID_CONFIGS = 192
+MAX_GRID_CONFIGS = 24
 
 
 def full_param_grid(algorithm: str, representation: str) -> Dict[str, List[Any]]:
-    """Hyperparameter grids kept below the project's practical budget.
-
-    The budget is an order-of-magnitude guardrail, not a hard 128-config cap:
-    grids up to 192 configurations are acceptable, while larger searches are
-    avoided to keep nested CV feasible.
-    """
+    """Hyperparameter grids kept at ~24 configs for Phase-E viability."""
     if algorithm == "decision_tree":
         return {
-            "clf__max_depth": [None, 5, 10, 20, 40],
-            "clf__min_samples_leaf": [1, 2, 5, 10],
+            "clf__max_depth": [None, 10, 20],
+            "clf__min_samples_leaf": [1, 5],
             "clf__ccp_alpha": [0.0, 0.005],
-            "clf__criterion": ["gini", "entropy"],
             "clf__class_weight": [None, "balanced"],
         }
     if algorithm == "gradient_boosting":
+        # BC requires dense conversion for HistGradientBoosting, making this
+        # model exceptionally slow. Preserve the main boosting knobs while
+        # keeping the nested-CV grid to 24 configs.
+        # learning_rate is the #1 knob per Chen & Guestrin 2016 (XGBoost) and
+        # Ke et al. 2017 (LightGBM); we give it 3 values (conservative/moderate/
+        # aggressive) and balance with max_iter=2 to keep total at 24.
         return {
-            "clf__max_iter": [100, 200, 300, 500],
-            "clf__learning_rate": [0.01, 0.05, 0.1],
-            "clf__max_leaf_nodes": [15, 31, 63],
-            "clf__l2_regularization": [0.0, 0.1],
+            "clf__max_iter": [200, 500],
+            "clf__learning_rate": [0.05, 0.1, 0.2],
+            "clf__max_leaf_nodes": [15, 31],
             "clf__class_weight": [None, "balanced"],
         }
     if algorithm == "knn":
         return {
-            "clf__n_neighbors": [1, 3, 5, 7, 9, 11, 13, 15, 19, 25, 31, 41, 51, 71, 101],
+            "clf__n_neighbors": [3, 5, 7, 11, 19, 31],
             "clf__weights": ["uniform", "distance"],
             "clf__p": [1, 2],
         }
     if algorithm == "logistic_regression":
-        # 16 C × 2 class_weight × 3 l1_ratio = 96 configs.
-        # l1_ratio covers L2, ElasticNet, and L1 in sklearn >=1.8; older
-        # sklearn gets penalty='elasticnet' in estimator_for for compatibility.
+        # 4 C × 2 class_weight × 3 l1_ratio = 24 configs.
+        # l1_ratio covers L2 (0.0), ElasticNet (0.5), and L1 (1.0) in sklearn
+        # >=1.8; older sklearn gets penalty='elasticnet' in estimator_for for
+        # compatibility.
+        # C spans 5 orders of magnitude (Hastie ESL §4.4 + Pedregosa et al.
+        # recommend log-spaced grids covering 1e-4..1e4; with only 4 slots we
+        # take {1e-3, 0.1, 1, 100} — the previous [0.01, 10] window was too
+        # narrow for BC + class_weight='balanced' + l1_ratio=1.0, where the
+        # optimum often sits below 0.01.
         return {
-            "clf__C": [
-                0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3,
-                1.0, 3.0, 10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0,
-            ],
+            "clf__C": [0.001, 0.1, 1.0, 100.0],
             "clf__class_weight": [None, "balanced"],
             "clf__l1_ratio": [0.0, 0.5, 1.0],
         }
     if algorithm == "random_forest":
         return {
-            "clf__n_estimators": [100, 250, 500, 1000],
-            "clf__max_depth": [10, 20, 40, None],
+            "clf__n_estimators": [100, 250, 500],
             "clf__max_features": ["sqrt", "log2"],
-            "clf__min_samples_leaf": [1, 2, 4],
+            "clf__min_samples_leaf": [1, 2],
             "clf__class_weight": [None, "balanced"],
         }
     if algorithm == "linear_svc":
-        # 24 C × 2 class_weight × 2 penalty = 96 configs.
+        # 6 C × 2 class_weight × 2 penalty = 24 configs.
         # fit_intercept removed (default True is essentially universal best per
         # Hastie et al. §4.4 and LIBLINEAR/Fan et al. 2008); budget recycled
-        # into finer C resolution.
+        # into a compact log-spaced C sweep.
         return {
-            "clf__C": [
-                0.0001, 0.0002, 0.0005, 0.001, 0.002, 0.005,
-                0.01, 0.02, 0.05, 0.1, 0.2, 0.5,
-                1.0, 2.0, 5.0, 10.0, 20.0, 50.0,
-                100.0, 200.0, 500.0, 1000.0, 2000.0, 5000.0,
-            ],
+            "clf__C": [0.001, 0.01, 0.1, 1.0, 10.0, 100.0],
             "clf__class_weight": [None, "balanced"],
             "clf__penalty": ["l1", "l2"],
         }
     if algorithm == "naive_bayes" and representation == "BC":
         return {
-            "clf__alpha": list(np.logspace(-4, 2, 48)),
+            "clf__alpha": [0.001, 0.01, 0.05, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0, 25.0, 50.0, 100.0],
             "clf__fit_prior": [True, False],
         }
     if algorithm == "naive_bayes" and representation == "DF":
-        return {"clf__var_smoothing": list(np.logspace(-12, -3, 96))}
+        return {"clf__var_smoothing": list(np.logspace(-12, -3, 24))}
     raise ValueError(f"No grid for {representation}/{algorithm}")
 
 

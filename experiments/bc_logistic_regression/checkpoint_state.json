@@ -1,0 +1,73 @@
+{
+  "checkpoint_dir": "experiments/bc_logistic_regression/checkpoints/4bb568b730a41424",
+  "completed_fold_ids": [],
+  "completed_folds": 0,
+  "schema_version": 1,
+  "signature": {
+    "algorithm": "logistic_regression",
+    "bc_min_df": 10,
+    "fold_ids": [
+      "r1_f1",
+      "r1_f2",
+      "r1_f3",
+      "r1_f4",
+      "r1_f5",
+      "r2_f1",
+      "r2_f2",
+      "r2_f3",
+      "r2_f4",
+      "r2_f5",
+      "r3_f1",
+      "r3_f2",
+      "r3_f3",
+      "r3_f4",
+      "r3_f5"
+    ],
+    "grid": {
+      "clf__C": [
+        0.0001,
+        0.0003,
+        0.001,
+        0.003,
+        0.01,
+        0.03,
+        0.1,
+        0.3,
+        1.0,
+        3.0,
+        10.0,
+        30.0,
+        100.0,
+        300.0,
+        1000.0,
+        3000.0
+      ],
+      "clf__class_weight": [
+        null,
+        "balanced"
+      ],
+      "clf__l1_ratio": [
+        0.0,
+        0.5,
+        1.0
+      ]
+    },
+    "inner_splits": 3,
+    "max_grid_values": null,
+    "max_rows": null,
+    "model_id": "bc_logistic_regression",
+    "outer_splits": 5,
+    "random_state": 42,
+    "repeats": [
+      1,
+      2,
+      3
+    ],
+    "representation": "BC",
+    "schema_version": 1,
+    "use_tfidf": false
+  },
+  "signature_id": "4bb568b730a41424",
+  "total_folds": 15,
+  "updated_at": "2026-05-21T06:26:53.034953+00:00"
+}

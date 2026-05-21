@@ -1,77 +1,84 @@
 [
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.1,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r1_f1",
-    "inner_best_macro_f1": 0.6652332602014744,
+    "inner_best_macro_f1": 0.66908860980284,
     "model_id": "df_logistic_regression",
     "outer_fold": 1,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.1,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r1_f2",
-    "inner_best_macro_f1": 0.6679713954778533,
+    "inner_best_macro_f1": 0.6701362714450935,
     "model_id": "df_logistic_regression",
     "outer_fold": 2,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.3,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r1_f3",
-    "inner_best_macro_f1": 0.6620022387842077,
+    "inner_best_macro_f1": 0.6638586261740299,
     "model_id": "df_logistic_regression",
     "outer_fold": 3,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": null
+      "clf__C": 0.1,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r1_f4",
-    "inner_best_macro_f1": 0.6646772006092472,
+    "inner_best_macro_f1": 0.6699471647794111,
     "model_id": "df_logistic_regression",
     "outer_fold": 4,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.3,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r1_f5",
-    "inner_best_macro_f1": 0.6686906390645979,
+    "inner_best_macro_f1": 0.6720729438367328,
     "model_id": "df_logistic_regression",
     "outer_fold": 5,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": null
+      "clf__C": 0.1,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r2_f1",
-    "inner_best_macro_f1": 0.6681483398462688,
+    "inner_best_macro_f1": 0.6707951515294345,
     "model_id": "df_logistic_regression",
     "outer_fold": 1,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.3,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r2_f2",
-    "inner_best_macro_f1": 0.6669429341579137,
+    "inner_best_macro_f1": 0.669589688243054,
     "model_id": "df_logistic_regression",
     "outer_fold": 2,
     "repeat_seed": 2
@@ -79,43 +86,47 @@
   {
     "best_params": {
       "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__class_weight": null,
+      "clf__l1_ratio": 0.0
     },
     "fold_id": "r2_f3",
-    "inner_best_macro_f1": 0.6702490016590517,
+    "inner_best_macro_f1": 0.6710292107811759,
     "model_id": "df_logistic_regression",
     "outer_fold": 3,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.3,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r2_f4",
-    "inner_best_macro_f1": 0.6748865352280965,
+    "inner_best_macro_f1": 0.6751308796974076,
     "model_id": "df_logistic_regression",
     "outer_fold": 4,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.1,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r2_f5",
-    "inner_best_macro_f1": 0.65911157102733,
+    "inner_best_macro_f1": 0.6610367939619838,
     "model_id": "df_logistic_regression",
     "outer_fold": 5,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 1.0,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r3_f1",
-    "inner_best_macro_f1": 0.6699744628340084,
+    "inner_best_macro_f1": 0.6693563028990942,
     "model_id": "df_logistic_regression",
     "outer_fold": 1,
     "repeat_seed": 3
@@ -123,43 +134,47 @@
   {
     "best_params": {
       "clf__C": 1.0,
-      "clf__class_weight": null
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r3_f2",
-    "inner_best_macro_f1": 0.6619921851274523,
+    "inner_best_macro_f1": 0.6641549186864241,
     "model_id": "df_logistic_regression",
     "outer_fold": 2,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.1,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r3_f3",
-    "inner_best_macro_f1": 0.6635903172558267,
+    "inner_best_macro_f1": 0.6671025300066168,
     "model_id": "df_logistic_regression",
     "outer_fold": 3,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": null
+      "clf__C": 0.1,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r3_f4",
-    "inner_best_macro_f1": 0.6639388170628584,
+    "inner_best_macro_f1": 0.6681467630304833,
     "model_id": "df_logistic_regression",
     "outer_fold": 4,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": null
+      "clf__C": 0.3,
+      "clf__class_weight": null,
+      "clf__l1_ratio": 1.0
     },
     "fold_id": "r3_f5",
-    "inner_best_macro_f1": 0.6702422058859345,
+    "inner_best_macro_f1": 0.67165211531027,
     "model_id": "df_logistic_regression",
     "outer_fold": 5,
     "repeat_seed": 3

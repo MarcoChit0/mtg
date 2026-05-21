@@ -48,7 +48,7 @@ estimator   = random_state = base_random_state + outer_seed * 100 + outer_fold
 
 ### Grid search progresso-aware (não usa `GridSearchCV` do sklearn)
 
-`sklearn.GridSearchCV` é prático mas não dá feedback de progresso por configuração, e não checkpointa. Para um grid de até 192 configs × 3 inner folds × outer fold, rodar horas sem feedback é frustrante. Solução: `inner_grid_search_with_progress()` em [phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py) faz o loop manualmente:
+`sklearn.GridSearchCV` é prático mas não dá feedback de progresso por configuração, e não checkpointa. Mesmo com grids compactos, cada configuração roda 3 inner folds dentro de cada outer fold, então ficar sem feedback é ruim. Solução: `inner_grid_search_with_progress()` em [phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py) faz o loop manualmente:
 
 ```python
 for config_index, params in enumerate(ParameterGrid(grid)):
@@ -61,22 +61,22 @@ for config_index, params in enumerate(ParameterGrid(grid)):
 
 Mesma semântica do sklearn (refit no full train com melhor config), com barra de progresso por config.
 
-### Grids limitados a 192 configs por algoritmo
+### Grids compactados para 24 configs por algoritmo
 
-Guarda-corpo de custo atualizado em 2026-05-20: 192 configurações por algoritmo é a ordem de grandeza máxima aceita para manter a nested CV viável. `full_param_grid(alg, rep)` em [phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py):
+Guarda-corpo de custo atualizado em 2026-05-21: a execução real mostrou que os grids de 72-192 configs ainda são caros demais, principalmente em BC. `full_param_grid(alg, rep)` em [phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py) agora usa **24 configurações por algoritmo**, preservando os knobs mais relevantes:
 
 | Algoritmo | Grid | Total |
 |---|---|---:|
-| DecisionTree | max_depth ∈ {None,5,10,20,40}, min_samples_leaf ∈ {1,2,5,10}, ccp_alpha ∈ {0,0.005}, criterion ∈ {gini,entropy}, class_weight ∈ {None,balanced} | 160 |
-| RandomForest | n_estimators ∈ {100,250,500,1000}, max_depth ∈ {10,20,40,None}, max_features ∈ {sqrt,log2}, min_samples_leaf ∈ {1,2,4}, class_weight ∈ {None,balanced} | 192 |
-| GradientBoosting | max_iter ∈ {100,200,300,500}, lr ∈ {0.01,0.05,0.1}, max_leaf_nodes ∈ {15,31,63}, l2 ∈ {0,0.1}, class_weight ∈ {None,balanced} | 144 |
-| MultinomialNB | alpha ∈ 48 valores × fit_prior ∈ {True,False} | 96 |
-| GaussianNB | var_smoothing ∈ 96 valores | 96 |
-| LogReg | C ∈ 16 valores log-espaçados (1e-4 → 3e3) × class_weight ∈ {None, balanced} × l1_ratio ∈ {0, 0.5, 1} — estimador usa `solver='saga'`; em sklearn <1.8 também define `penalty='elasticnet'` para compatibilidade | 96 |
-| LinearSVC | C ∈ 24 valores log-espaçados (1e-4 → 5e3) × class_weight ∈ {None, balanced} × penalty ∈ {l1, l2} — estimador usa `dual='auto'` + `loss='squared_hinge'` | 96 |
-| KNN | (fora da união, não é treinado) | — |
+| DecisionTree | max_depth ∈ {None,10,20}, min_samples_leaf ∈ {1,5}, ccp_alpha ∈ {0,0.005}, class_weight ∈ {None,balanced} | 24 |
+| RandomForest | n_estimators ∈ {100,250,500}, max_features ∈ {sqrt,log2}, min_samples_leaf ∈ {1,2}, class_weight ∈ {None,balanced} | 24 |
+| GradientBoosting | max_iter ∈ {200,500}, lr ∈ {0.05,0.1,0.2}, max_leaf_nodes ∈ {15,31}, class_weight ∈ {None,balanced} | 24 |
+| MultinomialNB | alpha ∈ {1e-3, 1e-2, 0.05, 0.1, 0.5, 1, 2, 5, 10, 25, 50, 100} × fit_prior ∈ {True,False} | 24 |
+| GaussianNB | var_smoothing ∈ 24 valores log-espaçados (1e-12 → 1e-3) | 24 |
+| LogReg | C ∈ {0.001, 0.1, 1, 100} × class_weight ∈ {None, balanced} × l1_ratio ∈ {0, 0.5, 1} — estimador usa `solver='saga'`; em sklearn <1.8 também define `penalty='elasticnet'` para compatibilidade | 24 |
+| LinearSVC | C ∈ {0.001, 0.01, 0.1, 1, 10, 100} × class_weight ∈ {None, balanced} × penalty ∈ {l1, l2} — estimador usa `dual='auto'` + `loss='squared_hinge'` | 24 |
+| KNN | n_neighbors ∈ {3,5,7,11,19,31}, weights ∈ {uniform,distance}, p ∈ {1,2} | 24 |
 
-`MAX_GRID_CONFIGS = 192` é constante exportada; `test_all_grids_fit_within_max_configs` em [tests/test_phase_e_nested_cv.py](../../../tests/test_phase_e_nested_cv.py) faz o sanity-check no CI. Todos os grids dos 6 algoritmos da união caem em **[92, 192]** (floor garante exploração mínima, ceiling garante runtime).
+`MAX_GRID_CONFIGS = 24` é constante exportada; `test_all_grids_fit_within_max_configs` em [tests/test_phase_e_nested_cv.py](../../../tests/test_phase_e_nested_cv.py) faz o sanity-check no CI.
 
 ### Auditoria contra a literatura (2026-05-20)
 
@@ -92,11 +92,37 @@ Cada grid foi revisado contra a referência canônica do algoritmo. Mudanças ap
 
 #### Bug histórico corrigido em 2026-05-20
 
-A versão anterior da LR tinha `l1_ratio` no grid sem ativar ElasticNet no estimador em versões antigas do sklearn. Nessas versões, sklearn ignora silenciosamente `l1_ratio` quando `penalty != 'elasticnet'`, então das 144 configs originais apenas 48 eram distintas. O fix simultâneo (compatibilidade ElasticNet + remoção de `fit_intercept`) trouxe o grid para 96 configs **todas distintas**. Em sklearn 1.8+, `penalty` foi depreciado; o script deixa `penalty` no default e usa `l1_ratio` diretamente para evitar `FutureWarning`.
+Uma versão histórica da LR tinha `l1_ratio` no grid sem ativar ElasticNet no estimador em versões antigas do sklearn. Nessas versões, sklearn ignora silenciosamente `l1_ratio` quando `penalty != 'elasticnet'`. O fix atual mantém compatibilidade: em sklearn 1.8+ o script deixa `penalty` no default e usa `l1_ratio` diretamente para evitar `FutureWarning`; em versões antigas define `penalty='elasticnet'`.
 
-### Por que cap em 192 e não busca aleatória/halving
+#### Re-auditoria sob o teto de 24 configs (2026-05-21)
 
-Discutimos os três (grid completo, RandomizedSearchCV, HalvingGridSearch). Grid completo dentro do cap é mais fácil de auditar (todas as configs documentadas, resultados em `cv_results_per_fold.jsonl`) e a professora preferiu reproducibilidade explícita. Halving/Random ficaram como fallback futuro se algum grid se mostrar inviável.
+Quando o budget caiu para `MAX_GRID_CONFIGS = 24` (BC inviável com grids maiores), revisitamos cada grid contra a literatura:
+
+| Algoritmo | Mudança | Justificativa |
+|---|---|---|
+| `LogisticRegression` | C `{0.01, 0.1, 1, 10}` → `{0.001, 0.1, 1, 100}` | Hastie *ESL* §4.4 + Pedregosa et al. recomendam C log-spaced em 5+ ordens de magnitude. A janela antiga (4 ordens) corria risco de não cobrir o ótimo em BC com `class_weight='balanced'` + `l1_ratio=1.0` (L1 + reescalonamento de classe empurram o ótimo para C pequeno). Mesmo número de configs, faixa mais larga. |
+| `HistGradientBoosting` | `max_iter(3) × lr(2)` → `max_iter(2) × lr(3)` | Chen & Guestrin 2016 (XGBoost) e Ke et al. 2017 (LightGBM) convergem em "`learning_rate` é o #1 knob de boosting". A versão anterior tinha 2 lr's e 3 max_iter's — invertido para priorizar lr. Novo grid: lr ∈ {0.05, 0.1, 0.2} (conservador/moderado/agressivo) × max_iter ∈ {200, 500} (dá ao lr=0.05 chance de convergir). |
+
+Demais 5 grids (`DecisionTree`, `RandomForest`, `LinearSVC`, `MultinomialNB`, `GaussianNB`) já cobriam os top-2 knobs da literatura — não mudaram.
+
+### Por que 24 configs e não busca aleatória/halving
+
+Discutimos grid completo, RandomizedSearchCV e HalvingGridSearch. Grid completo de 24 configs é mais fácil de auditar: todas as configs ficam documentadas e aparecem em `cv_results_per_fold.jsonl`. Halving/Random ficam como fallback futuro se até 24 configs ainda se mostrar inviável para algum algoritmo/representação.
+
+#### Corte operacional do grid de GradientBoosting em BC
+
+Durante a execução real em servidor, `bc_gradient_boosting` começou com `dense_conversion=True` e levou minutos por configuração no primeiro outer fold; a projeção para o grid completo ficava em vários dias. O custo vem da combinação BC esparso → matriz densa + HistGradientBoosting.
+
+Para preservar uma versão forte do modelo sem travar a Fase E, o grid foi reduzido para **24 configs**:
+
+- removido `max_iter=500`, o maior multiplicador direto de tempo;
+- removido `learning_rate=0.01`, que normalmente exige mais iterações para competir;
+- removido `max_leaf_nodes=63`, a opção mais cara de complexidade;
+- removido `l2_regularization`, mantendo o default;
+- mantido `max_leaf_nodes ∈ {15,31}`, o principal controle de complexidade recomendado pela literatura;
+- mantido `class_weight`, importante para macro-F1.
+
+Essa é uma redução por viabilidade computacional documentada, não uma mudança metodológica silenciosa.
 
 ### `SparseToDenseTransformer` para `HistGradientBoosting` e `DecisionTree` em BC
 
@@ -173,7 +199,7 @@ Dado mesmo `deck_features.jsonl` + mesmas seeds + mesmas versões de sklearn (pi
 
 ## Pontos de extensão / armadilhas
 
-- **Adicionar algoritmo**: atualizar `SELECTED_ALGORITHMS`, `estimator_for`, `pipeline_for`, `needs_df_scaling`, `full_param_grid`. Adicionar test em `test_all_grids_fit_within_max_configs` (passa automaticamente se o grid couber em 192). Atualizar também `ALGORITHMS` em Phase D pra que apareça no spot-check.
+- **Adicionar algoritmo**: atualizar `SELECTED_ALGORITHMS`, `estimator_for`, `pipeline_for`, `needs_df_scaling`, `full_param_grid`. Adicionar test em `test_all_grids_fit_within_max_configs` (o contrato atual é grid com 24 configs). Atualizar também `ALGORITHMS` em Phase D pra que apareça no spot-check.
 - **Mudar grids**: vai invalidar checkpoints antigos (signature muda). Considere isso no orçamento de re-run.
 - **Mudar tie-break do voting**: requer recálculo dos ensembles, mas não retreina modelos individuais.
 - **NÃO rodar voting antes da verificação**: o plano atualizado coloca completude, GroupKFold por comandante e testes estatísticos antes de qualquer votação.
@@ -185,7 +211,7 @@ Dado mesmo `deck_features.jsonl` + mesmas seeds + mesmas versões de sklearn (pi
 
 | Problema | Diagnóstico | Correção |
 |---|---|---|
-| RF grid original com 864 configs (4×4×2×3×3×3×1) | Inviável dentro de 192; inflava runtime sem ganho proporcional | Reduzido para 192 configs (n_estimators × max_depth × max_features × min_samples_leaf × class_weight); `bootstrap=True` e `criterion=gini` fixos |
+| RF grid original com 864 configs (4×4×2×3×3×3×1) | Inviável na nested CV; inflava runtime sem ganho proporcional | Reduzido em etapas até 24 configs (n_estimators × max_features × min_samples_leaf × class_weight); `bootstrap=True`, `criterion=gini` e `max_depth=None` fixos |
 | GridSearchCV sem feedback de progresso | Frustrante em runs de horas | Loop manual com `print_inner_grid_progress` por config |
 | Voting `voting_all10` (nome com `10`) | Misnomer quando a união tem 6 ou 7 algoritmos (= 12 ou 14 modelos) | Renomeado para `voting_all` (covers all individual models present) |
 | Checkpoints antigos com grid velho ainda eram lidos | Resultados misturavam grids | `signature_id = sha256(grid + folds + params)`; checkpoint só é restaurado se signature bater |

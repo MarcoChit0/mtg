@@ -149,7 +149,7 @@ Implementada em [scripts/phase_e_nested_cv.py](../scripts/phase_e_nested_cv.py),
 
 Alvo único: `y1`. **10 a 14 modelos** a treinar (cada algoritmo da união `A_uniao = A_DF ∪ A_BC` em ambas as representações), conforme §D.3. Para a seleção atual da Fase D, `|A_uniao|=6`, então a rodada completa da Fase E deve produzir **12 modelos**. As listas são lidas de `experiments/spot_check/summary.json`.
 
-Restrição de custo (orientação da professora, atualizada em 2026-05-20): o limite é um guarda-corpo de ordem de grandeza, não o teto rígido anterior de 128 configs. Para esta versão, adotamos **≤192 configurações por grid**: grande o suficiente para cobrir hiperparâmetros importantes, pequeno o bastante para manter a nested CV viável. Isso ainda evita a explosão combinatorial do Random Forest do desenho anterior (864 configs) e mantém o orçamento de execução previsível.
+Restrição de custo (orientação atualizada em 2026-05-21): a execução real mostrou que os grids de 72-192 configs ainda ficam caros demais na Fase E, principalmente em BC. Para esta versão, adotamos **~24 configurações por grid**. O corte preserva as variações principais de cada algoritmo e reduz o custo do nested CV sem trocar a metodologia.
 
 ### E.1 Esquema
 ```text
@@ -166,27 +166,29 @@ Folds idênticos para todos os modelos individuais (10 a 14) em cada repeat. See
 **Predições out-of-fold salvas** para todos os modelos — reutilizadas nas Fases F, G, I e M sem retreino.
 
 ### E.2 Grids de hiperparâmetros
-Grids definidos para todos os 7 candidatos da Fase D (apenas os que aparecem em `A_uniao` são executados). Todos respeitam o teto prático de **≤192 configurações**. Nenhum dos candidatos tem variante `*CV` com grids embutidos no sklearn que cubra exatamente o que queremos (`LogisticRegressionCV` existe e oferece grade automática de `Cs`, mas usamos uma busca em grid uniforme no script para padronização, progresso e checkpoint). Valores baseados no sklearn user guide / Géron / Hastie, com auditoria de literatura em 2026-05-20:
+Grids definidos para todos os 7 candidatos da Fase D (apenas os que aparecem em `A_uniao` são executados). Todos usam **24 configurações** para manter os algoritmos comparáveis e viáveis no runtime atual. Nenhum dos candidatos tem variante `*CV` com grids embutidos no sklearn que cubra exatamente o que queremos (`LogisticRegressionCV` existe e oferece grade automática de `Cs`, mas usamos uma busca em grid uniforme no script para padronização, progresso e checkpoint). Valores baseados no sklearn user guide / Géron / Hastie, com auditoria de literatura em 2026-05-20 e corte operacional em 2026-05-21:
 
 | Algoritmo | Grid | Total |
 |---|---|---:|
-| `DecisionTreeClassifier` | `max_depth ∈ {None, 5, 10, 20, 40}`, `min_samples_leaf ∈ {1, 2, 5, 10}`, `ccp_alpha ∈ {0.0, 5e-3}`, `criterion ∈ {gini, entropy}`, `class_weight ∈ {None, balanced}` | 160 |
-| `RandomForestClassifier` | `n_estimators ∈ {100, 250, 500, 1000}`, `max_depth ∈ {10, 20, 40, None}`, `max_features ∈ {sqrt, log2}`, `min_samples_leaf ∈ {1, 2, 4}`, `class_weight ∈ {None, balanced}` | 192 |
-| `HistGradientBoostingClassifier` | `max_iter ∈ {100, 200, 300, 500}`, `learning_rate ∈ {0.01, 0.05, 0.1}`, `max_leaf_nodes ∈ {15, 31, 63}`, `l2_regularization ∈ {0.0, 0.1}`, `class_weight ∈ {None, balanced}` | 144 |
-| `MultinomialNB` (BC) | `alpha ∈ np.logspace(-4, 2, 48)`, `fit_prior ∈ {True, False}` | 96 |
-| `GaussianNB` (DF) | `var_smoothing ∈ np.logspace(-12, -3, 96)` | 96 |
-| `LogisticRegression` | `solver='saga'`, `C ∈ 16 valores log-espaçados de 1e-4 a 3000`, `class_weight ∈ {None, balanced}`, `l1_ratio ∈ {0.0, 0.5, 1.0}` (`penalty='elasticnet'` só em sklearn <1.8) | 96 |
-| `LinearSVC` | `dual='auto'`, `loss='squared_hinge'`, `C ∈ 24 valores log-espaçados de 1e-4 a 5000`, `class_weight ∈ {None, balanced}`, `penalty ∈ {l1, l2}` | 96 |
-| `KNeighborsClassifier` | (fora da união atual — não treinado) | — |
+| `DecisionTreeClassifier` | `max_depth ∈ {None, 10, 20}`, `min_samples_leaf ∈ {1, 5}`, `ccp_alpha ∈ {0.0, 5e-3}`, `class_weight ∈ {None, balanced}` | 24 |
+| `RandomForestClassifier` | `n_estimators ∈ {100, 250, 500}`, `max_features ∈ {sqrt, log2}`, `min_samples_leaf ∈ {1, 2}`, `class_weight ∈ {None, balanced}` | 24 |
+| `HistGradientBoostingClassifier` | `max_iter ∈ {200, 500}`, `learning_rate ∈ {0.05, 0.1, 0.2}`, `max_leaf_nodes ∈ {15, 31}`, `class_weight ∈ {None, balanced}` | 24 |
+| `MultinomialNB` (BC) | `alpha ∈ {1e-3, 1e-2, 0.05, 0.1, 0.5, 1, 2, 5, 10, 25, 50, 100}`, `fit_prior ∈ {True, False}` | 24 |
+| `GaussianNB` (DF) | `var_smoothing ∈ np.logspace(-12, -3, 24)` | 24 |
+| `LogisticRegression` | `solver='saga'`, `C ∈ {0.001, 0.1, 1, 100}`, `class_weight ∈ {None, balanced}`, `l1_ratio ∈ {0.0, 0.5, 1.0}` (`penalty='elasticnet'` só em sklearn <1.8) | 24 |
+| `LinearSVC` | `dual='auto'`, `loss='squared_hinge'`, `C ∈ {0.001, 0.01, 0.1, 1, 10, 100}`, `class_weight ∈ {None, balanced}`, `penalty ∈ {l1, l2}` | 24 |
+| `KNeighborsClassifier` | `n_neighbors ∈ {3, 5, 7, 11, 19, 31}`, `weights ∈ {uniform, distance}`, `p ∈ {1, 2}` | 24 |
 
-Todos os grids dos 6 algoritmos da união caem em **[92, 192] configurações**. NB ganha resolução em `alpha`/`var_smoothing` para chegar ao floor; os lineares ganham malha fina de `C` (16 valores em LR, 24 em LinearSVC) e cobrem L1/L2/elastic-net. Busca em grid no inner; trocar para busca aleatória/halving se algum grid se mostrar inviável. `random_state=42` onde aplicável. As principais decisões pós-auditoria de literatura (2026-05-20) foram:
+Busca em grid no inner; trocar para busca aleatória/halving se algum grid de 24 configs ainda se mostrar inviável. `random_state=42` onde aplicável. As principais decisões pós-auditoria de literatura (2026-05-20) e corte operacional (2026-05-21) foram:
 
 - **`DecisionTree`**: `ccp_alpha` em vez de `min_samples_split` (Breiman/Hastie *Elements of Statistical Learning* §9.2 + sklearn user guide §1.10.4 — cost-complexity pruning é o regularizador canônico).
 - **`HistGradientBoosting`**: `max_leaf_nodes` em vez de `max_depth` (LightGBM paper, Ke et al. 2017; sklearn user guide explicitamente recomenda `max_leaf_nodes` como knob principal para HistGB).
+- **Corte global para ~24 configs**: a execução em BC ficou muito mais lenta que o previsto. Preservamos os principais knobs por algoritmo e removemos knobs secundários ou faixas mais custosas: `criterion` em DT, `max_depth` em RF, `l2_regularization` e `max_leaf_nodes=63` em HistGB, malhas finas demais de `C` nos lineares e resoluções excessivas de smoothing em NB.
+- **`HistGradientBoosting` em BC foi excepcionalmente caro**: a combinação Bag of Cards + conversão densa (`dense_conversion=True`) levou minutos por configuração e projetava vários dias para concluir a representação BC no grid completo. Para manter a Fase E viável, o grid foi cortado para 24 configs, removendo `max_iter=500`, `learning_rate=0.01`, `max_leaf_nodes=63` e `l2_regularization`. Mantivemos `max_leaf_nodes ∈ {15,31}`, o principal controle de complexidade, além de `class_weight`.
 - **Estimadores com suporte recebem `class_weight ∈ {None, balanced}`** porque a métrica principal é macro-F1 e a base é imbalanceada (y1=2 com 21% vs y1=3 com 52%).
 - **`LogisticRegression`** usa `solver='saga'`, com `l1_ratio ∈ {0.0, 0.5, 1.0}` cobrindo o espectro completo L2 → elastic → L1 num único grid simétrico para BC e DF; `penalty='elasticnet'` é definido apenas em sklearn <1.8, porque sklearn 1.8+ depreciou `penalty` em favor de `l1_ratio`/`C` (Zou & Hastie 2005 sobre ElasticNet em problemas com features correlacionadas — relevante para cartas de combo em BC).
 - **`LinearSVC`** usa `dual='auto'` + `loss='squared_hinge'`, com `penalty ∈ {l1, l2}` simétrico em BC e DF (LIBLINEAR / Fan et al. 2008).
-- **`fit_intercept`** foi **removido** dos grids lineares — Hastie et al. §4.4 e LIBLINEAR docs convergem em "intercept=True é a escolha universal"; o orçamento foi reciclado em resolução mais fina de `C`.
+- **`fit_intercept`** foi **removido** dos grids lineares — Hastie et al. §4.4 e LIBLINEAR docs convergem em "intercept=True é a escolha universal"; o orçamento foi concentrado em `C`, `class_weight` e regularização.
 - **`KNN`** ficou fora da união (rank 7 em ambas as representações no spot-check) — não treinado na Fase E.
 
 **Saídas E**: `experiments/<fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, cv_results_per_fold.jsonl, metrics_per_fold.json, checkpoint_state.json, checkpoints/...}`, `experiments/archives/<fs>_<algo>.zip` quando upload via Drive estiver habilitado, `experiments/seeds.json`, `experiments/folds.json`, `experiments/nested_cv_summary.json`, `documents/reports/results/phase_e_nested_cv.md`.
@@ -354,7 +356,7 @@ Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 | Pré-processamento | C | dentro do pipeline de fold (sem leakage) |
 | ≥5 algoritmos diversos | D | Pool comum de 7 candidatos para BC e DF: DT, RF, GB, NB, LR, LinearSVC, KNN. SVC RBF/Poly foram retirados por não serem viáveis em BC. |
 | Spot-checking | D | re-desenhada: N=5 repetições com seeds {1..5}, média ± dp; top-5 selecionado por representação; união forma `A_DF ∪ A_BC` para a Fase E. |
-| Otimização sem leakage | E | nested CV (3-fold inner, 5-fold outer × 3 repeats) sobre os `|A_uniao| × 2` modelos (cada algoritmo da união em ambas as representações); grids limitados a ≤192 configs por algoritmo. |
+| Otimização sem leakage | E | nested CV (3-fold inner, 5-fold outer × 3 repeats) sobre os `|A_uniao| × 2` modelos (cada algoritmo da união em ambas as representações); grids compactados para ~24 configs por algoritmo. |
 | Folds idênticos entre algoritmos | E/F/G | seeds fixas, mesma divisão para todos os modelos individuais e os 6 ensembles de votação |
 | Seeds | E + Apêndice 1 | salvas em `experiments/seeds.json` (modelos) e `experiments/spot_check/summary.json` (spot-check N=5) |
 | Média ± desvio nos outer folds | E, F, G | 15 outer scores por modelo individual, verificação auxiliar e ensemble |
@@ -385,6 +387,6 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | L (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |
 | M (opcional) | 1 | stacking — vira seção extra do artigo se feito |
 
-Soma do caminho obrigatório restante (E+F+G+H+I+J+K): **8,0-9,5 dias**. Com 8 dias disponíveis, a margem é apertada — os grids ≤192 da Fase E e a seleção top-5 por representação cortam o custo total da nested CV. Mitigações em ordem de prioridade: (1) não rodar Fase M (stacking, opcional); (2) não rodar Fase L (OOD, opcional); (3) fazer GroupKFold da Fase F com melhor hiperparâmetro já escolhido, sem nova busca pesada; (4) reduzir grids dos algoritmos caros; (5) cortar `voting_all` se o cálculo das predições agregadas estourar tempo (mantemos `voting_top3_*` e `voting_top5_*`).
+Soma do caminho obrigatório restante (E+F+G+H+I+J+K): **8,0-9,5 dias**. Com 8 dias disponíveis, a margem é apertada — os grids ~24 da Fase E e a seleção top-5 por representação cortam o custo total da nested CV. Mitigações em ordem de prioridade: (1) não rodar Fase M (stacking, opcional); (2) não rodar Fase L (OOD, opcional); (3) fazer GroupKFold da Fase F com melhor hiperparâmetro já escolhido, sem nova busca pesada; (4) reduzir ainda mais ou pular o BC de algoritmos excepcionalmente caros se necessário; (5) cortar `voting_all` se o cálculo das predições agregadas estourar tempo (mantemos `voting_top3_*` e `voting_top5_*`).
 
 Caso o cronograma comporte, L e M rodam **depois** do artigo (Fase K) e geram seções extras incluídas em revisão final.

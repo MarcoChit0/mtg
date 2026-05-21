@@ -212,15 +212,13 @@ class PhaseENestedCVTests(unittest.TestCase):
     def test_random_forest_grid_matches_tuning_plan(self):
         grid = phase_e_nested_cv.full_param_grid("random_forest", "DF")
 
-        # The project budget is an order-of-magnitude guardrail, so this stays
-        # well below the "avoid very large grids" threshold while covering the
-        # main RF knobs from the tuning literature.
-        self.assertEqual(grid["clf__n_estimators"], [100, 250, 500, 1000])
-        self.assertEqual(grid["clf__max_depth"], [10, 20, 40, None])
+        # Compact grid keeps the main RF knobs while avoiding BC runtime blowup.
+        self.assertEqual(grid["clf__n_estimators"], [100, 250, 500])
+        self.assertNotIn("clf__max_depth", grid)
         self.assertEqual(grid["clf__max_features"], ["sqrt", "log2"])
-        self.assertEqual(grid["clf__min_samples_leaf"], [1, 2, 4])
+        self.assertEqual(grid["clf__min_samples_leaf"], [1, 2])
         self.assertEqual(grid["clf__class_weight"], [None, "balanced"])
-        self.assertEqual(phase_e_nested_cv.grid_size(grid), 192)
+        self.assertEqual(phase_e_nested_cv.grid_size(grid), 24)
         self.assertLessEqual(phase_e_nested_cv.grid_size(grid), phase_e_nested_cv.MAX_GRID_CONFIGS)
 
     def test_tree_and_histgb_grids_match_literature_audit(self):
@@ -229,49 +227,56 @@ class PhaseENestedCVTests(unittest.TestCase):
 
         self.assertIn("clf__ccp_alpha", tree_grid)
         self.assertNotIn("clf__min_samples_split", tree_grid)
-        self.assertEqual(phase_e_nested_cv.grid_size(tree_grid), 160)
+        self.assertNotIn("clf__criterion", tree_grid)
+        self.assertEqual(tree_grid["clf__max_depth"], [None, 10, 20])
+        self.assertEqual(tree_grid["clf__min_samples_leaf"], [1, 5])
+        self.assertEqual(phase_e_nested_cv.grid_size(tree_grid), 24)
         self.assertIn("clf__max_leaf_nodes", histgb_grid)
         self.assertNotIn("clf__max_depth", histgb_grid)
-        self.assertEqual(histgb_grid["clf__max_leaf_nodes"], [15, 31, 63])
-        self.assertEqual(phase_e_nested_cv.grid_size(histgb_grid), 144)
+        # learning_rate prioritized over max_iter resolution per Chen & Guestrin
+        # 2016 / Ke et al. 2017 (lr is the #1 boosting knob).
+        self.assertEqual(histgb_grid["clf__max_iter"], [200, 500])
+        self.assertEqual(histgb_grid["clf__learning_rate"], [0.05, 0.1, 0.2])
+        self.assertEqual(histgb_grid["clf__max_leaf_nodes"], [15, 31])
+        self.assertNotIn("clf__l2_regularization", histgb_grid)
+        self.assertEqual(phase_e_nested_cv.grid_size(histgb_grid), 24)
 
     def test_linear_grids_include_sparse_regularization_knobs(self):
         logistic_grid = phase_e_nested_cv.full_param_grid("logistic_regression", "BC")
         linear_svc_grid = phase_e_nested_cv.full_param_grid("linear_svc", "BC")
 
         # LR sweeps the full L2 → ElasticNet → L1 spectrum via l1_ratio.
+        # C window widened to 5 orders of magnitude (Hastie ESL §4.4) so the
+        # optimum at low C (typical with class_weight='balanced' + L1 in BC) is
+        # actually inside the grid.
+        self.assertEqual(logistic_grid["clf__C"], [0.001, 0.1, 1.0, 100.0])
         self.assertEqual(logistic_grid["clf__l1_ratio"], [0.0, 0.5, 1.0])
         self.assertNotIn("clf__fit_intercept", logistic_grid)
-        self.assertEqual(phase_e_nested_cv.grid_size(logistic_grid), 96)
+        self.assertEqual(phase_e_nested_cv.grid_size(logistic_grid), 24)
         # LinearSVC keeps L1 vs L2 as explicit penalty (no elasticnet for SVC).
+        self.assertEqual(linear_svc_grid["clf__C"], [0.001, 0.01, 0.1, 1.0, 10.0, 100.0])
         self.assertEqual(linear_svc_grid["clf__penalty"], ["l1", "l2"])
         self.assertNotIn("clf__fit_intercept", linear_svc_grid)
-        self.assertEqual(phase_e_nested_cv.grid_size(linear_svc_grid), 96)
+        self.assertEqual(phase_e_nested_cv.grid_size(linear_svc_grid), 24)
 
     def test_small_knob_grids_have_comparable_budget_when_possible(self):
         multinomial_grid = phase_e_nested_cv.full_param_grid("naive_bayes", "BC")
         gaussian_grid = phase_e_nested_cv.full_param_grid("naive_bayes", "DF")
 
-        self.assertEqual(len(multinomial_grid["clf__alpha"]), 48)
-        self.assertEqual(phase_e_nested_cv.grid_size(multinomial_grid), 96)
-        self.assertEqual(len(gaussian_grid["clf__var_smoothing"]), 96)
-        self.assertEqual(phase_e_nested_cv.grid_size(gaussian_grid), 96)
+        self.assertEqual(len(multinomial_grid["clf__alpha"]), 12)
+        self.assertEqual(phase_e_nested_cv.grid_size(multinomial_grid), 24)
+        self.assertEqual(len(gaussian_grid["clf__var_smoothing"]), 24)
+        self.assertEqual(phase_e_nested_cv.grid_size(gaussian_grid), 24)
 
     def test_all_grids_fit_within_max_configs(self):
         for alg in phase_e_nested_cv.SELECTED_ALGORITHMS:
             for rep in phase_e_nested_cv.REPRESENTATIONS:
                 grid = phase_e_nested_cv.full_param_grid(alg, rep)
-                self.assertLessEqual(
+                self.assertEqual(
                     phase_e_nested_cv.grid_size(grid),
                     phase_e_nested_cv.MAX_GRID_CONFIGS,
-                    msg=f"{rep}/{alg} exceeds MAX_GRID_CONFIGS",
+                    msg=f"{rep}/{alg} should use the compact 24-config Phase-E grid",
                 )
-                if alg in {"logistic_regression", "linear_svc"} or (alg == "naive_bayes" and rep in {"DF", "BC"}):
-                    self.assertGreaterEqual(
-                        phase_e_nested_cv.grid_size(grid),
-                        92,
-                        msg=f"{rep}/{alg} should stay in the comparable 92-192 grid-size band",
-                    )
 
     def test_hard_vote_uses_member_macro_f1_for_ties(self):
         winner = phase_e_nested_cv.hard_vote(
