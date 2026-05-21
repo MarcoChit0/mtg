@@ -1,0 +1,81 @@
+{
+  "delete": {
+    "command": [
+      "rclone",
+      "deletefile",
+      "mtg-experiments:__mtg_write_check_1779379031716.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote": "mtg-experiments:",
+  "remote_path": "mtg-experiments:__mtg_write_check_1779379031716.txt",
+  "status": "ok",
+  "upload": {
+    "command": [
+      "rclone",
+      "copyto",
+      "/var/folders/s5/03dr8cj92qz9x9gnkcdgk0740000gn/T/tmppbqu3dmo/__mtg_write_check_1779379031716.txt",
+      "mtg-experiments:__mtg_write_check_1779379031716.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  }
+}
+[Phase E df_logistic_regression] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E df_logistic_regression] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 1/2 fold 1/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=27s
+[Phase E df_logistic_regression outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=27s
+[Phase E df_logistic_regression outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=26s
+[Phase E df_logistic_regression outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=24s
+[Phase E df_logistic_regression outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=23s
+[Phase E df_logistic_regression outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=23s
+[Phase E df_logistic_regression outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=12s | eta=30s
+[Phase E df_logistic_regression outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=23s | eta=45s
+[Phase E df_logistic_regression outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=39s | eta=1m04s
+[Phase E df_logistic_regression outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=43s | eta=1m00s
+[Phase E df_logistic_regression outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=52s | eta=1m02s
+[Phase E df_logistic_regression outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m08s | eta=1m08s
+[Phase E df_logistic_regression outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m16s | eta=1m04s
+[Phase E df_logistic_regression outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m29s | eta=1m04s
+[Phase E df_logistic_regression outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m44s | eta=1m02s
+[Phase E df_logistic_regression outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m50s | eta=55s
+[Phase E df_logistic_regression outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m01s | eta=50s
+[Phase E df_logistic_regression outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m13s | eta=44s
+[Phase E df_logistic_regression outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m22s | eta=37s
+[Phase E df_logistic_regression outer=r1_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m37s | eta=31s
+[Phase E df_logistic_regression outer=r1_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=2m51s | eta=24s
+[Phase E df_logistic_regression outer=r1_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=2m59s | eta=16s
+[Phase E df_logistic_regression outer=r1_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m12s | eta=8s
+[Phase E df_logistic_regression outer=r1_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m25s | eta=0s
+[Phase E model 1/2 fold 1/15] DONE  model=df_logistic_regression | outer=r1_f1 | macro_f1=0.6708 | inner_best=0.6691 | elapsed=215.254s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=3m35s | eta=50m14s
+[Phase E df_logistic_regression] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=3m35s | eta=50m14s | running outer=r1_f2
+
+[Phase E model 1/2 fold 2/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r1_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r1_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r1_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=29s
+[Phase E df_logistic_regression outer=r1_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=29s
+[Phase E df_logistic_regression outer=r1_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=29s
+[Phase E df_logistic_regression outer=r1_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=26s
+[Phase E df_logistic_regression outer=r1_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=7s | eta=25s
+[Phase E df_logistic_regression outer=r1_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=9s | eta=26s
+[Phase E df_logistic_regression outer=r1_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=14s | eta=34s
+[Phase E df_logistic_regression outer=r1_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=25s | eta=51s
+[Phase E df_logistic_regression outer=r1_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=45s | eta=1m14s
+[Phase E df_logistic_regression outer=r1_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=49s | eta=1m09s
+[Phase E df_logistic_regression outer=r1_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=1m00s | eta=1m11s
+[Phase E df_logistic_regression outer=r1_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m19s | eta=1m19s
+[Phase E df_logistic_regression outer=r1_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m28s | eta=1m14s
+[Phase E df_logistic_regression outer=r1_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m43s | eta=1m13s
+[Phase E df_logistic_regression outer=r1_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m59s | eta=1m11s
+[Phase E df_logistic_regression outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m06s | eta=1m03s
+[Phase E df_logistic_regression outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m18s | eta=57s
+[Phase E df_logistic_regression outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m31s | eta=50s

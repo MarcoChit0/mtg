@@ -97,6 +97,8 @@ uv run sync-experiments-drive check-write
 
 Durante a configuração, autentique com uma conta Google que tenha permissão de escrita em `MTG/Experiments`. Se a conta não tiver escrita, `train` para antes do treino pesado e pede para usar `--run-local`.
 
+Guia completo para instalar/configurar `rclone` em máquina local ou servidor remoto: [documents/rclone_drive_setup.md](documents/rclone_drive_setup.md).
+
 Se a máquina já tiver `gdrive:` apontando para a conta correta:
 
 ```bash

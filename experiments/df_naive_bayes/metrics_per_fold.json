@@ -1,22 +1,22 @@
 {
   "aggregate": {
-    "accuracy_mean": 0.5872544980085153,
-    "accuracy_std": 0.009842617416135208,
+    "accuracy_mean": 0.5874193105342672,
+    "accuracy_std": 0.009973816766162102,
     "confusion_matrix_sum": [
       [
         5765,
-        852,
-        346
+        854,
+        344
       ],
       [
-        6644,
-        9190,
-        2817
+        6638,
+        9187,
+        2826
       ],
       [
-        899,
-        3468,
-        6424
+        898,
+        3460,
+        6433
       ]
     ],
     "labels": [
@@ -24,18 +24,18 @@
       3,
       4
     ],
-    "macro_f1_mean": 0.5902792396617371,
-    "macro_f1_std": 0.009155064147955128,
-    "precision_macro_mean": 0.5948655023977952,
-    "precision_macro_std": 0.00940096672071505,
-    "recall_macro_mean": 0.6386669362510946,
-    "recall_macro_std": 0.008067691660929606
+    "macro_f1_mean": 0.5904702793143987,
+    "macro_f1_std": 0.009306388007933087,
+    "precision_macro_mean": 0.5949595043423431,
+    "precision_macro_std": 0.009478906454534999,
+    "recall_macro_mean": 0.6388914379433763,
+    "recall_macro_std": 0.008214406459746776
   },
   "algorithm": "naive_bayes",
   "checkpoint": {
-    "checkpoint_dir": "experiments/df_naive_bayes/checkpoints/a25d93e8584291a6",
+    "checkpoint_dir": "experiments/df_naive_bayes/checkpoints/d3eab651c75aca32",
     "completed_folds": 15,
-    "signature_id": "a25d93e8584291a6",
+    "signature_id": "d3eab651c75aca32",
     "total_folds": 15
   },
   "folds": [
@@ -59,9 +59,9 @@
           446
         ]
       ],
-      "elapsed_seconds": 75.301,
+      "elapsed_seconds": 19.155,
       "fold_id": "r1_f1",
-      "inner_best_macro_f1": 0.5955084609645286,
+      "inner_best_macro_f1": 0.5954940617638343,
       "labels": [
         2,
         3,
@@ -97,7 +97,7 @@
           435
         ]
       ],
-      "elapsed_seconds": 77.129,
+      "elapsed_seconds": 19.425,
       "fold_id": "r1_f2",
       "inner_best_macro_f1": 0.5844393129839576,
       "labels": [
@@ -116,7 +116,7 @@
       "representation": "DF"
     },
     {
-      "accuracy": 0.5871446229913473,
+      "accuracy": 0.5875566543057272,
       "algorithm": "naive_bayes",
       "confusion_matrix": [
         [
@@ -125,8 +125,8 @@
           27
         ],
         [
-          463,
-          602,
+          462,
+          603,
           179
         ],
         [
@@ -135,21 +135,21 @@
           436
         ]
       ],
-      "elapsed_seconds": 77.706,
+      "elapsed_seconds": 19.609,
       "fold_id": "r1_f3",
-      "inner_best_macro_f1": 0.5944087884866613,
+      "inner_best_macro_f1": 0.5943226036525636,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.5912259213704767,
+      "macro_f1": 0.5915891834900432,
       "model_id": "df_naive_bayes",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 3,
-      "precision_macro": 0.5964512381857543,
-      "recall_macro": 0.64145744280233,
+      "precision_macro": 0.5967309808461293,
+      "recall_macro": 0.6417253956426302,
       "repeat_seed": 1,
       "representation": "DF"
     },
@@ -173,9 +173,9 @@
           415
         ]
       ],
-      "elapsed_seconds": 77.888,
+      "elapsed_seconds": 19.742,
       "fold_id": "r1_f4",
-      "inner_best_macro_f1": 0.5896314536427094,
+      "inner_best_macro_f1": 0.5896170095417532,
       "labels": [
         2,
         3,
@@ -211,9 +211,9 @@
           419
         ]
       ],
-      "elapsed_seconds": 77.698,
+      "elapsed_seconds": 19.82,
       "fold_id": "r1_f5",
-      "inner_best_macro_f1": 0.5939944281151474,
+      "inner_best_macro_f1": 0.593978095241739,
       "labels": [
         2,
         3,
@@ -230,40 +230,40 @@
       "representation": "DF"
     },
     {
-      "accuracy": 0.595797280593325,
+      "accuracy": 0.5949732179645653,
       "algorithm": "naive_bayes",
       "confusion_matrix": [
         [
           395,
-          47,
-          23
+          48,
+          22
         ],
         [
           422,
-          614,
-          207
+          610,
+          211
         ],
         [
           53,
-          229,
-          437
+          227,
+          439
         ]
       ],
-      "elapsed_seconds": 77.554,
+      "elapsed_seconds": 19.801,
       "fold_id": "r2_f1",
-      "inner_best_macro_f1": 0.6010517957904536,
+      "inner_best_macro_f1": 0.6008421669040941,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.5993556285596299,
+      "macro_f1": 0.5987563818093229,
       "model_id": "df_naive_bayes",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 1,
-      "precision_macro": 0.5996943475827629,
-      "recall_macro": 0.6504057238809926,
+      "precision_macro": 0.5988541115842402,
+      "recall_macro": 0.6502602639647104,
       "repeat_seed": 2,
       "representation": "DF"
     },
@@ -287,7 +287,7 @@
           424
         ]
       ],
-      "elapsed_seconds": 77.609,
+      "elapsed_seconds": 19.873,
       "fold_id": "r2_f2",
       "inner_best_macro_f1": 0.5817967899329703,
       "labels": [
@@ -325,9 +325,9 @@
           431
         ]
       ],
-      "elapsed_seconds": 76.944,
+      "elapsed_seconds": 19.767,
       "fold_id": "r2_f3",
-      "inner_best_macro_f1": 0.5984281346249611,
+      "inner_best_macro_f1": 0.5983175780774047,
       "labels": [
         2,
         3,
@@ -348,13 +348,13 @@
       "algorithm": "naive_bayes",
       "confusion_matrix": [
         [
-          377,
-          69,
+          378,
+          68,
           18
         ],
         [
-          420,
-          613,
+          421,
+          612,
           210
         ],
         [
@@ -363,26 +363,26 @@
           417
         ]
       ],
-      "elapsed_seconds": 77.892,
+      "elapsed_seconds": 19.784,
       "fold_id": "r2_f4",
-      "inner_best_macro_f1": 0.5993624657117421,
+      "inner_best_macro_f1": 0.5994145767176133,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.5823087268543014,
+      "macro_f1": 0.5823914241282497,
       "model_id": "df_naive_bayes",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 4,
-      "precision_macro": 0.5831775758501394,
-      "recall_macro": 0.6282761240725843,
+      "precision_macro": 0.5833437107191313,
+      "recall_macro": 0.6287263464674205,
       "repeat_seed": 2,
       "representation": "DF"
     },
     {
-      "accuracy": 0.5756077461887104,
+      "accuracy": 0.5760197775030902,
       "algorithm": "naive_bayes",
       "confusion_matrix": [
         [
@@ -397,25 +397,25 @@
         ],
         [
           67,
-          224,
-          429
+          223,
+          430
         ]
       ],
-      "elapsed_seconds": 77.969,
+      "elapsed_seconds": 19.819,
       "fold_id": "r2_f5",
-      "inner_best_macro_f1": 0.583012447271969,
+      "inner_best_macro_f1": 0.5829912175739143,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.58003328838277,
+      "macro_f1": 0.5804558318989413,
       "model_id": "df_naive_bayes",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 5,
-      "precision_macro": 0.5877041159432818,
-      "recall_macro": 0.6337848657462634,
+      "precision_macro": 0.5881417537482961,
+      "recall_macro": 0.6342478287092264,
       "repeat_seed": 2,
       "representation": "DF"
     },
@@ -439,7 +439,7 @@
           414
         ]
       ],
-      "elapsed_seconds": 77.546,
+      "elapsed_seconds": 19.74,
       "fold_id": "r3_f1",
       "inner_best_macro_f1": 0.5988374722261506,
       "labels": [
@@ -477,7 +477,7 @@
           440
         ]
       ],
-      "elapsed_seconds": 77.251,
+      "elapsed_seconds": 19.798,
       "fold_id": "r3_f2",
       "inner_best_macro_f1": 0.5759821786822424,
       "labels": [
@@ -496,40 +496,40 @@
       "representation": "DF"
     },
     {
-      "accuracy": 0.5949732179645653,
+      "accuracy": 0.5978574371652245,
       "algorithm": "naive_bayes",
       "confusion_matrix": [
         [
-          394,
-          50,
-          20
+          393,
+          52,
+          19
         ],
         [
-          433,
-          636,
-          175
+          427,
+          637,
+          180
         ],
         [
-          56,
-          249,
-          414
+          55,
+          243,
+          421
         ]
       ],
-      "elapsed_seconds": 77.558,
+      "elapsed_seconds": 19.756,
       "fold_id": "r3_f3",
-      "inner_best_macro_f1": 0.5923842921903355,
+      "inner_best_macro_f1": 0.5916520434162887,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.5974172344865297,
+      "macro_f1": 0.6004368840516041,
       "model_id": "df_naive_bayes",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 3,
-      "precision_macro": 0.6020743249745429,
-      "recall_macro": 0.6453972240543234,
+      "precision_macro": 0.6038838366857195,
+      "recall_macro": 0.6481920341196967,
       "repeat_seed": 3,
       "representation": "DF"
     },
@@ -553,7 +553,7 @@
           442
         ]
       ],
-      "elapsed_seconds": 77.884,
+      "elapsed_seconds": 19.773,
       "fold_id": "r3_f4",
       "inner_best_macro_f1": 0.5941509444881715,
       "labels": [
@@ -572,7 +572,7 @@
       "representation": "DF"
     },
     {
-      "accuracy": 0.5793160280181294,
+      "accuracy": 0.5789039967037495,
       "algorithm": "naive_bayes",
       "confusion_matrix": [
         [
@@ -587,25 +587,25 @@
         ],
         [
           71,
-          224,
-          425
+          225,
+          424
         ]
       ],
-      "elapsed_seconds": 77.908,
+      "elapsed_seconds": 19.911,
       "fold_id": "r3_f5",
-      "inner_best_macro_f1": 0.5937708996498868,
+      "inner_best_macro_f1": 0.5936109945748335,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.5823140976847032,
+      "macro_f1": 0.5818907867501723,
       "model_id": "df_naive_bayes",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 5,
-      "precision_macro": 0.5863394032598185,
-      "recall_macro": 0.6345187584316361,
+      "precision_macro": 0.5858966413810018,
+      "recall_macro": 0.6340557954686731,
       "repeat_seed": 3,
       "representation": "DF"
     }

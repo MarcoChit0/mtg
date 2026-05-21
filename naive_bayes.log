@@ -1,0 +1,1205 @@
+{
+  "delete": {
+    "command": [
+      "rclone",
+      "deletefile",
+      "mtg-experiments:__mtg_write_check_1779377433750.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote": "mtg-experiments:",
+  "remote_path": "mtg-experiments:__mtg_write_check_1779377433750.txt",
+  "status": "ok",
+  "upload": {
+    "command": [
+      "rclone",
+      "copyto",
+      "/var/folders/s5/03dr8cj92qz9x9gnkcdgk0740000gn/T/tmptj9ii2gc/__mtg_write_check_1779377433750.txt",
+      "mtg-experiments:__mtg_write_check_1779377433750.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  }
+}
+[Phase E df_naive_bayes] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E df_naive_bayes] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 1/2 fold 1/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=18s
+[Phase E df_naive_bayes outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=16s
+[Phase E df_naive_bayes outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E df_naive_bayes outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=14s
+[Phase E df_naive_bayes outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=13s
+[Phase E df_naive_bayes outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E df_naive_bayes outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=10s
+[Phase E df_naive_bayes outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E df_naive_bayes outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=9s
+[Phase E df_naive_bayes outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E df_naive_bayes outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=13s | eta=5s
+[Phase E df_naive_bayes outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=14s | eta=5s
+[Phase E df_naive_bayes outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r1_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r1_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=16s | eta=2s
+[Phase E df_naive_bayes outer=r1_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r1_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=18s | eta=1s
+[Phase E df_naive_bayes outer=r1_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 1/15] DONE  model=df_naive_bayes | outer=r1_f1 | macro_f1=0.6037 | inner_best=0.5955 | elapsed=19.155s | best_params={'clf__var_smoothing': np.float64(2.4620924014946304e-12)}
+[Phase E df_naive_bayes] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=19s | eta=4m28s
+[Phase E df_naive_bayes] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=19s | eta=4m28s | running outer=r1_f2
+
+[Phase E model 1/2 fold 2/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r1_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r1_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r1_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=18s
+[Phase E df_naive_bayes outer=r1_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r1_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r1_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r1_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r1_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=14s
+[Phase E df_naive_bayes outer=r1_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r1_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r1_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r1_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r1_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=10s
+[Phase E df_naive_bayes outer=r1_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r1_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=9s
+[Phase E df_naive_bayes outer=r1_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r1_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=14s | eta=5s
+[Phase E df_naive_bayes outer=r1_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r1_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r1_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r1_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r1_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=18s | eta=1s
+[Phase E df_naive_bayes outer=r1_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 2/15] DONE  model=df_naive_bayes | outer=r1_f2 | macro_f1=0.5783 | inner_best=0.5844 | elapsed=19.425s | best_params={'clf__var_smoothing': np.float64(1e-12)}
+[Phase E df_naive_bayes] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=39s | eta=4m11s
+[Phase E df_naive_bayes] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=39s | eta=4m11s | running outer=r1_f3
+
+[Phase E model 1/2 fold 3/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r1_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r1_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r1_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r1_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r1_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r1_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r1_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r1_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=14s
+[Phase E df_naive_bayes outer=r1_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r1_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r1_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r1_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r1_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=10s
+[Phase E df_naive_bayes outer=r1_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r1_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=9s
+[Phase E df_naive_bayes outer=r1_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r1_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r1_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r1_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r1_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=14s | eta=5s
+[Phase E df_naive_bayes outer=r1_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r1_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r1_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r1_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r1_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=18s | eta=1s
+[Phase E df_naive_bayes outer=r1_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 3/15] DONE  model=df_naive_bayes | outer=r1_f3 | macro_f1=0.5916 | inner_best=0.5943 | elapsed=19.609s | best_params={'clf__var_smoothing': np.float64(3.674661940736688e-11)}
+[Phase E df_naive_bayes] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=58s | eta=3m53s
+[Phase E df_naive_bayes] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=58s | eta=3m53s | running outer=r1_f4
+
+[Phase E model 1/2 fold 4/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r1_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r1_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r1_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=18s
+[Phase E df_naive_bayes outer=r1_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r1_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r1_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r1_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r1_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r1_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r1_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r1_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r1_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r1_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=10s
+[Phase E df_naive_bayes outer=r1_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r1_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=9s
+[Phase E df_naive_bayes outer=r1_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r1_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r1_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r1_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r1_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r1_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r1_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r1_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r1_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r1_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r1_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 4/15] DONE  model=df_naive_bayes | outer=r1_f4 | macro_f1=0.5829 | inner_best=0.5896 | elapsed=19.742s | best_params={'clf__var_smoothing': np.float64(1e-12)}
+[Phase E df_naive_bayes] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=1m18s | eta=3m34s
+[Phase E df_naive_bayes] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=1m18s | eta=3m34s | running outer=r1_f5
+
+[Phase E model 1/2 fold 5/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r1_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r1_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r1_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r1_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r1_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r1_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r1_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r1_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r1_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r1_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r1_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r1_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r1_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r1_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r1_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r1_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r1_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r1_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r1_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r1_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r1_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r1_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r1_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r1_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r1_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r1_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 5/15] DONE  model=df_naive_bayes | outer=r1_f5 | macro_f1=0.6037 | inner_best=0.5940 | elapsed=19.82s | best_params={'clf__var_smoothing': np.float64(2.4620924014946304e-12)}
+[Phase E df_naive_bayes] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=1m38s | eta=3m16s
+[Phase E df_naive_bayes] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=1m38s | eta=3m16s | running outer=r2_f1
+
+[Phase E model 1/2 fold 6/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r2_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r2_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r2_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r2_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r2_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r2_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r2_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r2_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r2_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r2_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r2_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r2_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r2_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r2_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r2_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r2_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r2_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r2_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r2_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r2_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r2_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r2_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r2_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r2_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r2_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r2_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 6/15] DONE  model=df_naive_bayes | outer=r2_f1 | macro_f1=0.5988 | inner_best=0.6008 | elapsed=19.801s | best_params={'clf__var_smoothing': np.float64(1.492495545051832e-11)}
+[Phase E df_naive_bayes] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=1m58s | eta=2m56s
+[Phase E df_naive_bayes] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=1m58s | eta=2m56s | running outer=r2_f2
+
+[Phase E model 1/2 fold 7/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r2_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r2_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r2_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r2_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r2_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r2_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r2_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r2_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r2_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r2_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=7s | eta=13s
+[Phase E df_naive_bayes outer=r2_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r2_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r2_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r2_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r2_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r2_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r2_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r2_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r2_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r2_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r2_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r2_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r2_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r2_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r2_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r2_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 7/15] DONE  model=df_naive_bayes | outer=r2_f2 | macro_f1=0.5873 | inner_best=0.5818 | elapsed=19.873s | best_params={'clf__var_smoothing': np.float64(1e-12)}
+[Phase E df_naive_bayes] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=2m17s | eta=2m37s
+[Phase E df_naive_bayes] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=2m17s | eta=2m37s | running outer=r2_f3
+
+[Phase E model 1/2 fold 8/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r2_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r2_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r2_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r2_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r2_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r2_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r2_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r2_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r2_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r2_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r2_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r2_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r2_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=10s
+[Phase E df_naive_bayes outer=r2_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r2_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r2_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r2_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r2_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r2_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r2_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r2_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r2_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r2_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r2_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r2_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r2_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 8/15] DONE  model=df_naive_bayes | outer=r2_f3 | macro_f1=0.5960 | inner_best=0.5983 | elapsed=19.767s | best_params={'clf__var_smoothing': np.float64(2.4620924014946304e-12)}
+[Phase E df_naive_bayes] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=2m37s | eta=2m18s
+[Phase E df_naive_bayes] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=2m37s | eta=2m18s | running outer=r2_f4
+
+[Phase E model 1/2 fold 9/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r2_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r2_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r2_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r2_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r2_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r2_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r2_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r2_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r2_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r2_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r2_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r2_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r2_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r2_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r2_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r2_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r2_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r2_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r2_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r2_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r2_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r2_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r2_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r2_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r2_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r2_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 9/15] DONE  model=df_naive_bayes | outer=r2_f4 | macro_f1=0.5824 | inner_best=0.5994 | elapsed=19.784s | best_params={'clf__var_smoothing': np.float64(1.492495545051832e-11)}
+[Phase E df_naive_bayes] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=2m57s | eta=1m58s
+[Phase E df_naive_bayes] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=2m57s | eta=1m58s | running outer=r2_f5
+
+[Phase E model 1/2 fold 10/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r2_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r2_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r2_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r2_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r2_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r2_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r2_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r2_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r2_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r2_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r2_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r2_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r2_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r2_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r2_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r2_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r2_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r2_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r2_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r2_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r2_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r2_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r2_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r2_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r2_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r2_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 10/15] DONE  model=df_naive_bayes | outer=r2_f5 | macro_f1=0.5805 | inner_best=0.5830 | elapsed=19.819s | best_params={'clf__var_smoothing': np.float64(1e-12)}
+[Phase E df_naive_bayes] [###################---------] 10/15 outer folds | remaining=5 | elapsed=3m17s | eta=1m38s
+[Phase E df_naive_bayes] [###################---------] 10/15 outer folds | remaining=5 | elapsed=3m17s | eta=1m38s | running outer=r3_f1
+
+[Phase E model 1/2 fold 11/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r3_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r3_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r3_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r3_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r3_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r3_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r3_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r3_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r3_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r3_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r3_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r3_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r3_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r3_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r3_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r3_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r3_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r3_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r3_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r3_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r3_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r3_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r3_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r3_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r3_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r3_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 11/15] DONE  model=df_naive_bayes | outer=r3_f1 | macro_f1=0.5815 | inner_best=0.5988 | elapsed=19.74s | best_params={'clf__var_smoothing': np.float64(1e-12)}
+[Phase E df_naive_bayes] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=3m37s | eta=1m19s
+[Phase E df_naive_bayes] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=3m37s | eta=1m19s | running outer=r3_f2
+
+[Phase E model 1/2 fold 12/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r3_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r3_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r3_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r3_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r3_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r3_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r3_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r3_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r3_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r3_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r3_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r3_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r3_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r3_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r3_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=9s
+[Phase E df_naive_bayes outer=r3_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r3_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r3_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r3_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r3_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r3_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r3_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r3_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r3_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r3_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r3_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 12/15] DONE  model=df_naive_bayes | outer=r3_f2 | macro_f1=0.5870 | inner_best=0.5760 | elapsed=19.798s | best_params={'clf__var_smoothing': np.float64(2.4620924014946304e-12)}
+[Phase E df_naive_bayes] [######################------] 12/15 outer folds | remaining=3 | elapsed=3m56s | eta=59s
+[Phase E df_naive_bayes] [######################------] 12/15 outer folds | remaining=3 | elapsed=3m56s | eta=59s | running outer=r3_f3
+
+[Phase E model 1/2 fold 13/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r3_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r3_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r3_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r3_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r3_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r3_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r3_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r3_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r3_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r3_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r3_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r3_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r3_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=10s
+[Phase E df_naive_bayes outer=r3_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r3_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=9s
+[Phase E df_naive_bayes outer=r3_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r3_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r3_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r3_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r3_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r3_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r3_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r3_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r3_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r3_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r3_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 13/15] DONE  model=df_naive_bayes | outer=r3_f3 | macro_f1=0.6004 | inner_best=0.5917 | elapsed=19.756s | best_params={'clf__var_smoothing': np.float64(3.674661940736688e-11)}
+[Phase E df_naive_bayes] [########################----] 13/15 outer folds | remaining=2 | elapsed=4m16s | eta=39s
+[Phase E df_naive_bayes] [########################----] 13/15 outer folds | remaining=2 | elapsed=4m16s | eta=39s | running outer=r3_f4
+
+[Phase E model 1/2 fold 14/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r3_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r3_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r3_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r3_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r3_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r3_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r3_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r3_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r3_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r3_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r3_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r3_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r3_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=11s
+[Phase E df_naive_bayes outer=r3_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r3_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=11s | eta=9s
+[Phase E df_naive_bayes outer=r3_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r3_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r3_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r3_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r3_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r3_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r3_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r3_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r3_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r3_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r3_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=19s | eta=0s
+[Phase E model 1/2 fold 14/15] DONE  model=df_naive_bayes | outer=r3_f4 | macro_f1=0.6012 | inner_best=0.5942 | elapsed=19.773s | best_params={'clf__var_smoothing': np.float64(6.0618989934975725e-12)}
+[Phase E df_naive_bayes] [##########################--] 14/15 outer folds | remaining=1 | elapsed=4m36s | eta=20s
+[Phase E df_naive_bayes] [##########################--] 14/15 outer folds | remaining=1 | elapsed=4m36s | eta=20s | running outer=r3_f5
+
+[Phase E model 1/2 fold 15/15] START model=df_naive_bayes | representation=DF | algorithm=naive_bayes | outer=r3_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_naive_bayes outer=r3_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_naive_bayes outer=r3_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=19s
+[Phase E df_naive_bayes outer=r3_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=18s
+[Phase E df_naive_bayes outer=r3_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=17s
+[Phase E df_naive_bayes outer=r3_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=16s
+[Phase E df_naive_bayes outer=r3_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=15s
+[Phase E df_naive_bayes outer=r3_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=5s | eta=15s
+[Phase E df_naive_bayes outer=r3_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=6s | eta=14s
+[Phase E df_naive_bayes outer=r3_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=13s
+[Phase E df_naive_bayes outer=r3_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=12s
+[Phase E df_naive_bayes outer=r3_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=8s | eta=11s
+[Phase E df_naive_bayes outer=r3_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=9s | eta=10s
+[Phase E df_naive_bayes outer=r3_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=10s | eta=10s
+[Phase E df_naive_bayes outer=r3_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=9s
+[Phase E df_naive_bayes outer=r3_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=11s | eta=8s
+[Phase E df_naive_bayes outer=r3_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=12s | eta=7s
+[Phase E df_naive_bayes outer=r3_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=13s | eta=6s
+[Phase E df_naive_bayes outer=r3_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=14s | eta=6s
+[Phase E df_naive_bayes outer=r3_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=15s | eta=5s
+[Phase E df_naive_bayes outer=r3_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=15s | eta=4s
+[Phase E df_naive_bayes outer=r3_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=16s | eta=3s
+[Phase E df_naive_bayes outer=r3_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=17s | eta=2s
+[Phase E df_naive_bayes outer=r3_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=18s | eta=2s
+[Phase E df_naive_bayes outer=r3_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=19s | eta=1s
+[Phase E df_naive_bayes outer=r3_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=20s | eta=0s
+[Phase E model 1/2 fold 15/15] DONE  model=df_naive_bayes | outer=r3_f5 | macro_f1=0.5819 | inner_best=0.5936 | elapsed=19.911s | best_params={'clf__var_smoothing': np.float64(1e-12)}
+[Phase E df_naive_bayes] [############################] 15/15 outer folds | remaining=0 | elapsed=4m56s | eta=0s
+[Phase E drive] scheduling upload for df_naive_bayes to mtg-experiments:
+[Phase E bc_naive_bayes] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E bc_naive_bayes] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 2/2 fold 1/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=14s
+[Phase E bc_naive_bayes outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=14s | eta=3s
+[Phase E bc_naive_bayes outer=r1_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r1_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 1/15] DONE  model=bc_naive_bayes | outer=r1_f1 | macro_f1=0.5635 | inner_best=0.5569 | elapsed=17.737s | best_params={'clf__alpha': 0.01, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=18s | eta=4m08s
+[Phase E bc_naive_bayes] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=18s | eta=4m08s | running outer=r1_f2
+
+[Phase E model 2/2 fold 2/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r1_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r1_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r1_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r1_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r1_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r1_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r1_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r1_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r1_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r1_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r1_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r1_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 2/15] DONE  model=bc_naive_bayes | outer=r1_f2 | macro_f1=0.5423 | inner_best=0.5571 | elapsed=17.698s | best_params={'clf__alpha': 0.01, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=35s | eta=3m50s
+[Phase E bc_naive_bayes] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=35s | eta=3m50s | running outer=r1_f3
+
+[Phase E model 2/2 fold 3/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r1_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r1_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r1_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r1_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r1_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=14s
+[Phase E bc_naive_bayes outer=r1_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r1_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r1_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r1_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r1_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r1_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r1_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r1_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r1_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r1_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r1_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=18s | eta=0s
+[Phase E model 2/2 fold 3/15] DONE  model=bc_naive_bayes | outer=r1_f3 | macro_f1=0.5480 | inner_best=0.5533 | elapsed=17.931s | best_params={'clf__alpha': 0.001, 'clf__fit_prior': False}
+[Phase E bc_naive_bayes] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=53s | eta=3m34s
+[Phase E bc_naive_bayes] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=53s | eta=3m34s | running outer=r1_f4
+
+[Phase E model 2/2 fold 4/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r1_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r1_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r1_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r1_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r1_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r1_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r1_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r1_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r1_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r1_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=6s
+[Phase E bc_naive_bayes outer=r1_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r1_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r1_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=14s | eta=3s
+[Phase E bc_naive_bayes outer=r1_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r1_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 4/15] DONE  model=bc_naive_bayes | outer=r1_f4 | macro_f1=0.5481 | inner_best=0.5563 | elapsed=17.571s | best_params={'clf__alpha': 0.001, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=1m11s | eta=3m15s
+[Phase E bc_naive_bayes] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=1m11s | eta=3m15s | running outer=r1_f5
+
+[Phase E model 2/2 fold 5/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r1_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r1_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r1_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r1_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r1_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r1_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r1_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r1_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r1_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r1_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r1_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r1_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r1_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r1_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=6s
+[Phase E bc_naive_bayes outer=r1_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=11s | eta=6s
+[Phase E bc_naive_bayes outer=r1_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r1_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r1_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=14s | eta=3s
+[Phase E bc_naive_bayes outer=r1_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r1_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r1_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 5/15] DONE  model=bc_naive_bayes | outer=r1_f5 | macro_f1=0.5720 | inner_best=0.5547 | elapsed=17.504s | best_params={'clf__alpha': 0.01, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=1m28s | eta=2m57s
+[Phase E bc_naive_bayes] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=1m28s | eta=2m57s | running outer=r2_f1
+
+[Phase E model 2/2 fold 6/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r2_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r2_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r2_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r2_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r2_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r2_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r2_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r2_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r2_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r2_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r2_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=11s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r2_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=14s | eta=3s
+[Phase E bc_naive_bayes outer=r2_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r2_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 6/15] DONE  model=bc_naive_bayes | outer=r2_f1 | macro_f1=0.5534 | inner_best=0.5524 | elapsed=17.528s | best_params={'clf__alpha': 0.01, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=1m46s | eta=2m39s
+[Phase E bc_naive_bayes] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=1m46s | eta=2m39s | running outer=r2_f2
+
+[Phase E model 2/2 fold 7/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r2_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r2_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r2_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r2_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r2_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r2_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r2_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r2_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r2_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r2_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r2_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r2_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r2_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=14s | eta=3s
+[Phase E bc_naive_bayes outer=r2_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r2_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 7/15] DONE  model=bc_naive_bayes | outer=r2_f2 | macro_f1=0.5605 | inner_best=0.5500 | elapsed=17.581s | best_params={'clf__alpha': 0.5, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=2m04s | eta=2m21s
+[Phase E bc_naive_bayes] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=2m04s | eta=2m21s | running outer=r2_f3
+
+[Phase E model 2/2 fold 8/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r2_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r2_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r2_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r2_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r2_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r2_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r2_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r2_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=6s | eta=11s
+[Phase E bc_naive_bayes outer=r2_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r2_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r2_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r2_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r2_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=14s | eta=3s
+[Phase E bc_naive_bayes outer=r2_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r2_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 8/15] DONE  model=bc_naive_bayes | outer=r2_f3 | macro_f1=0.5551 | inner_best=0.5538 | elapsed=17.638s | best_params={'clf__alpha': 0.001, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=2m21s | eta=2m04s
+[Phase E bc_naive_bayes] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=2m21s | eta=2m04s | running outer=r2_f4
+
+[Phase E model 2/2 fold 9/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r2_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r2_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r2_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r2_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r2_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r2_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r2_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r2_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r2_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r2_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r2_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r2_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r2_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r2_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r2_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r2_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=18s | eta=0s
+[Phase E model 2/2 fold 9/15] DONE  model=bc_naive_bayes | outer=r2_f4 | macro_f1=0.5521 | inner_best=0.5567 | elapsed=17.869s | best_params={'clf__alpha': 0.01, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=2m39s | eta=1m46s
+[Phase E bc_naive_bayes] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=2m39s | eta=1m46s | running outer=r2_f5
+
+[Phase E model 2/2 fold 10/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r2_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r2_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r2_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r2_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r2_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r2_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r2_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r2_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r2_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r2_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r2_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r2_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r2_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r2_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r2_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r2_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r2_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r2_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r2_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r2_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r2_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r2_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=18s | eta=0s
+[Phase E model 2/2 fold 10/15] DONE  model=bc_naive_bayes | outer=r2_f5 | macro_f1=0.5538 | inner_best=0.5509 | elapsed=17.857s | best_params={'clf__alpha': 0.05, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [###################---------] 10/15 outer folds | remaining=5 | elapsed=2m57s | eta=1m29s
+[Phase E bc_naive_bayes] [###################---------] 10/15 outer folds | remaining=5 | elapsed=2m57s | eta=1m29s | running outer=r3_f1
+
+[Phase E model 2/2 fold 11/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r3_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r3_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r3_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r3_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=17s
+[Phase E bc_naive_bayes outer=r3_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=16s
+[Phase E bc_naive_bayes outer=r3_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r3_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r3_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=13s
+[Phase E bc_naive_bayes outer=r3_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r3_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r3_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=8s
+[Phase E bc_naive_bayes outer=r3_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r3_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=13s | eta=5s
+[Phase E bc_naive_bayes outer=r3_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r3_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=16s | eta=2s
+[Phase E bc_naive_bayes outer=r3_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=18s | eta=0s
+[Phase E model 2/2 fold 11/15] DONE  model=bc_naive_bayes | outer=r3_f1 | macro_f1=0.5342 | inner_best=0.5502 | elapsed=18.045s | best_params={'clf__alpha': 0.05, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=3m15s | eta=1m11s
+[Phase E bc_naive_bayes] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=3m15s | eta=1m11s | running outer=r3_f2
+
+[Phase E model 2/2 fold 12/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r3_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r3_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r3_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r3_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r3_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r3_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r3_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=13s
+[Phase E bc_naive_bayes outer=r3_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r3_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r3_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=8s
+[Phase E bc_naive_bayes outer=r3_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r3_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=13s | eta=5s
+[Phase E bc_naive_bayes outer=r3_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r3_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=16s | eta=2s
+[Phase E bc_naive_bayes outer=r3_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=18s | eta=0s
+[Phase E model 2/2 fold 12/15] DONE  model=bc_naive_bayes | outer=r3_f2 | macro_f1=0.5610 | inner_best=0.5525 | elapsed=18.088s | best_params={'clf__alpha': 0.01, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [######################------] 12/15 outer folds | remaining=3 | elapsed=3m33s | eta=53s
+[Phase E bc_naive_bayes] [######################------] 12/15 outer folds | remaining=3 | elapsed=3m33s | eta=53s | running outer=r3_f3
+
+[Phase E model 2/2 fold 13/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r3_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r3_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r3_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r3_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r3_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r3_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r3_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r3_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r3_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r3_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=8s
+[Phase E bc_naive_bayes outer=r3_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r3_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r3_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r3_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r3_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=18s | eta=0s
+[Phase E model 2/2 fold 13/15] DONE  model=bc_naive_bayes | outer=r3_f3 | macro_f1=0.5507 | inner_best=0.5493 | elapsed=17.9s | best_params={'clf__alpha': 0.01, 'clf__fit_prior': False}
+[Phase E bc_naive_bayes] [########################----] 13/15 outer folds | remaining=2 | elapsed=3m51s | eta=36s
+[Phase E bc_naive_bayes] [########################----] 13/15 outer folds | remaining=2 | elapsed=3m51s | eta=36s | running outer=r3_f4
+
+[Phase E model 2/2 fold 14/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r3_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r3_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r3_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r3_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r3_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r3_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r3_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r3_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=9s
+[Phase E bc_naive_bayes outer=r3_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r3_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=9s | eta=8s
+[Phase E bc_naive_bayes outer=r3_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r3_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r3_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r3_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r3_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 14/15] DONE  model=bc_naive_bayes | outer=r3_f4 | macro_f1=0.5565 | inner_best=0.5498 | elapsed=17.791s | best_params={'clf__alpha': 5.0, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [##########################--] 14/15 outer folds | remaining=1 | elapsed=4m09s | eta=18s
+[Phase E bc_naive_bayes] [##########################--] 14/15 outer folds | remaining=1 | elapsed=4m09s | eta=18s | running outer=r3_f5
+
+[Phase E model 2/2 fold 15/15] START model=bc_naive_bayes | representation=BC | algorithm=naive_bayes | outer=r3_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_naive_bayes outer=r3_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_naive_bayes outer=r3_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=17s
+[Phase E bc_naive_bayes outer=r3_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1s | eta=16s
+[Phase E bc_naive_bayes outer=r3_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=2s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=3s | eta=15s
+[Phase E bc_naive_bayes outer=r3_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=4s | eta=14s
+[Phase E bc_naive_bayes outer=r3_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=4s | eta=13s
+[Phase E bc_naive_bayes outer=r3_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=5s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=6s | eta=12s
+[Phase E bc_naive_bayes outer=r3_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=7s | eta=11s
+[Phase E bc_naive_bayes outer=r3_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=7s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=8s | eta=10s
+[Phase E bc_naive_bayes outer=r3_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=9s | eta=9s
+[Phase E bc_naive_bayes outer=r3_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=10s | eta=8s
+[Phase E bc_naive_bayes outer=r3_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=10s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=11s | eta=7s
+[Phase E bc_naive_bayes outer=r3_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=12s | eta=6s
+[Phase E bc_naive_bayes outer=r3_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=12s | eta=5s
+[Phase E bc_naive_bayes outer=r3_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=13s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=14s | eta=4s
+[Phase E bc_naive_bayes outer=r3_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=15s | eta=3s
+[Phase E bc_naive_bayes outer=r3_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=15s | eta=2s
+[Phase E bc_naive_bayes outer=r3_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=16s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=17s | eta=1s
+[Phase E bc_naive_bayes outer=r3_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=17s | eta=0s
+[Phase E model 2/2 fold 15/15] DONE  model=bc_naive_bayes | outer=r3_f5 | macro_f1=0.5516 | inner_best=0.5497 | elapsed=17.815s | best_params={'clf__alpha': 0.1, 'clf__fit_prior': True}
+[Phase E bc_naive_bayes] [############################] 15/15 outer folds | remaining=0 | elapsed=4m27s | eta=0s
+[Phase E drive] scheduling upload for bc_naive_bayes to mtg-experiments:
+[Phase E drive] scheduling bundle upload shared → mtg-experiments:
+[Phase E drive] upload df_naive_bayes: ok
+[Phase E drive] upload bc_naive_bayes: ok
+[Phase E drive] upload bundle:shared: ok
+{"best_params": {"clf__var_smoothing": 2.4620924014946304e-12}, "elapsed_seconds": 19.155, "fold_id": "r1_f1", "macro_f1": 0.6037003895795154, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1e-12}, "elapsed_seconds": 19.425, "fold_id": "r1_f2", "macro_f1": 0.5783399354936467, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 3.674661940736688e-11}, "elapsed_seconds": 19.609, "fold_id": "r1_f3", "macro_f1": 0.5915891834900432, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1e-12}, "elapsed_seconds": 19.742, "fold_id": "r1_f4", "macro_f1": 0.5828521722479341, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 2.4620924014946304e-12}, "elapsed_seconds": 19.82, "fold_id": "r1_f5", "macro_f1": 0.6036724049164155, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1.492495545051832e-11}, "elapsed_seconds": 19.801, "fold_id": "r2_f1", "macro_f1": 0.5987563818093229, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1e-12}, "elapsed_seconds": 19.873, "fold_id": "r2_f2", "macro_f1": 0.58729875238312, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 2.4620924014946304e-12}, "elapsed_seconds": 19.767, "fold_id": "r2_f3", "macro_f1": 0.5960417747981721, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1.492495545051832e-11}, "elapsed_seconds": 19.784, "fold_id": "r2_f4", "macro_f1": 0.5823914241282497, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1e-12}, "elapsed_seconds": 19.819, "fold_id": "r2_f5", "macro_f1": 0.5804558318989413, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1e-12}, "elapsed_seconds": 19.74, "fold_id": "r3_f1", "macro_f1": 0.5814591115590791, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 2.4620924014946304e-12}, "elapsed_seconds": 19.798, "fold_id": "r3_f2", "macro_f1": 0.5869721150037636, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 3.674661940736688e-11}, "elapsed_seconds": 19.756, "fold_id": "r3_f3", "macro_f1": 0.6004368840516041, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 6.0618989934975725e-12}, "elapsed_seconds": 19.773, "fold_id": "r3_f4", "macro_f1": 0.6011970416060002, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__var_smoothing": 1e-12}, "elapsed_seconds": 19.911, "fold_id": "r3_f5", "macro_f1": 0.5818907867501723, "model_id": "df_naive_bayes"}
+{"best_params": {"clf__alpha": 0.01, "clf__fit_prior": true}, "elapsed_seconds": 17.737, "fold_id": "r1_f1", "macro_f1": 0.5634615256029963, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.01, "clf__fit_prior": true}, "elapsed_seconds": 17.698, "fold_id": "r1_f2", "macro_f1": 0.5422842875923363, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.001, "clf__fit_prior": false}, "elapsed_seconds": 17.931, "fold_id": "r1_f3", "macro_f1": 0.5480386932290403, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.001, "clf__fit_prior": true}, "elapsed_seconds": 17.571, "fold_id": "r1_f4", "macro_f1": 0.5480989056114023, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.01, "clf__fit_prior": true}, "elapsed_seconds": 17.504, "fold_id": "r1_f5", "macro_f1": 0.572049081019366, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.01, "clf__fit_prior": true}, "elapsed_seconds": 17.528, "fold_id": "r2_f1", "macro_f1": 0.5534286257992839, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.5, "clf__fit_prior": true}, "elapsed_seconds": 17.581, "fold_id": "r2_f2", "macro_f1": 0.5605355603629343, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.001, "clf__fit_prior": true}, "elapsed_seconds": 17.638, "fold_id": "r2_f3", "macro_f1": 0.5551317520101388, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.01, "clf__fit_prior": true}, "elapsed_seconds": 17.869, "fold_id": "r2_f4", "macro_f1": 0.552068359140025, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.05, "clf__fit_prior": true}, "elapsed_seconds": 17.857, "fold_id": "r2_f5", "macro_f1": 0.5538388412555375, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.05, "clf__fit_prior": true}, "elapsed_seconds": 18.045, "fold_id": "r3_f1", "macro_f1": 0.5341759478276484, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.01, "clf__fit_prior": true}, "elapsed_seconds": 18.088, "fold_id": "r3_f2", "macro_f1": 0.5609539167995797, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.01, "clf__fit_prior": false}, "elapsed_seconds": 17.9, "fold_id": "r3_f3", "macro_f1": 0.5506928751705288, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 5.0, "clf__fit_prior": true}, "elapsed_seconds": 17.791, "fold_id": "r3_f4", "macro_f1": 0.5564549552814062, "model_id": "bc_naive_bayes"}
+{"best_params": {"clf__alpha": 0.1, "clf__fit_prior": true}, "elapsed_seconds": 17.815, "fold_id": "r3_f5", "macro_f1": 0.5515650436179631, "model_id": "bc_naive_bayes"}
+{
+  "elapsed_seconds": 605.157,
+  "models": [
+    {
+      "macro_f1_mean": 0.6900837016866804,
+      "macro_f1_std": 0.008132958476463755,
+      "model_id": "df_gradient_boosting"
+    },
+    {
+      "macro_f1_mean": 0.6566264344806674,
+      "macro_f1_std": 0.00861384656916465,
+      "model_id": "df_linear_svc"
+    },
+    {
+      "macro_f1_mean": 0.6710254511090173,
+      "macro_f1_std": 0.010238847545163526,
+      "model_id": "df_logistic_regression"
+    },
+    {
+      "macro_f1_mean": 0.5904702793143987,
+      "macro_f1_std": 0.009306388007933087,
+      "model_id": "df_naive_bayes"
+    },
+    {
+      "macro_f1_mean": 0.6617989540784532,
+      "macro_f1_std": 0.011309225191077557,
+      "model_id": "df_random_forest"
+    },
+    {
+      "macro_f1_mean": 0.625698199188549,
+      "macro_f1_std": 0.011309807848948219,
+      "model_id": "bc_gradient_boosting"
+    },
+    {
+      "macro_f1_mean": 0.5926656500094076,
+      "macro_f1_std": 0.009045194328118594,
+      "model_id": "bc_linear_svc"
+    },
+    {
+      "macro_f1_mean": 0.6034949126172732,
+      "macro_f1_std": 0.011599034354896776,
+      "model_id": "bc_logistic_regression"
+    },
+    {
+      "macro_f1_mean": 0.5535185580213458,
+      "macro_f1_std": 0.008991074908957829,
+      "model_id": "bc_naive_bayes"
+    },
+    {
+      "macro_f1_mean": 0.5221084884073779,
+      "macro_f1_std": 0.012758043470268278,
+      "model_id": "bc_random_forest"
+    }
+  ],
+  "n_rows": 12135,
+  "status": "ok"
+}
+{
+  "bundle_uploads": [
+    {
+      "archive": {
+        "archive_path": "experiments/archives/spot_check.zip",
+        "bundle_id": "spot_check",
+        "files": [
+          "spot_check/combinations.jsonl",
+          "spot_check/results.jsonl",
+          "spot_check/summary.json"
+        ],
+        "size_bytes": 18453,
+        "status": "ok"
+      },
+      "bundle_id": "spot_check",
+      "rclone": {
+        "command": [
+          "rclone",
+          "copyto",
+          "experiments/archives/spot_check.zip",
+          "mtg-experiments:spot_check.zip"
+        ],
+        "returncode": 0,
+        "status": "ok",
+        "stderr": "",
+        "stdout": ""
+      },
+      "remote": "mtg-experiments:",
+      "status": "ok"
+    },
+    {
+      "archive": {
+        "archive_path": "experiments/archives/voting.zip",
+        "bundle_id": "voting",
+        "files": [
+          "voting/voting_all/metrics_per_fold.json",
+          "voting/voting_all/predictions_per_fold.jsonl",
+          "voting/voting_summary.json",
+          "voting/voting_top3_BC/metrics_per_fold.json",
+          "voting/voting_top3_BC/predictions_per_fold.jsonl",
+          "voting/voting_top3_BC_DF/metrics_per_fold.json",
+          "voting/voting_top3_BC_DF/predictions_per_fold.jsonl",
+          "voting/voting_top3_DF/metrics_per_fold.json",
+          "voting/voting_top3_DF/predictions_per_fold.jsonl",
+          "voting/voting_top5_BC/metrics_per_fold.json",
+          "voting/voting_top5_BC/predictions_per_fold.jsonl",
+          "voting/voting_top5_DF/metrics_per_fold.json",
+          "voting/voting_top5_DF/predictions_per_fold.jsonl"
+        ],
+        "size_bytes": 5324625,
+        "status": "ok"
+      },
+      "bundle_id": "voting",
+      "rclone": {
+        "command": [
+          "rclone",
+          "copyto",
+          "experiments/archives/voting.zip",
+          "mtg-experiments:voting.zip"
+        ],
+        "returncode": 0,
+        "status": "ok",
+        "stderr": "",
+        "stdout": ""
+      },
+      "remote": "mtg-experiments:",
+      "status": "ok"
+    },
+    {
+      "archive": {
+        "archive_path": "experiments/archives/shared.zip",
+        "bundle_id": "shared",
+        "files": [
+          "seeds.json",
+          "folds.json"
+        ],
+        "size_bytes": 452698,
+        "status": "ok"
+      },
+      "bundle_id": "shared",
+      "rclone": {
+        "command": [
+          "rclone",
+          "copyto",
+          "experiments/archives/shared.zip",
+          "mtg-experiments:shared.zip"
+        ],
+        "returncode": 0,
+        "status": "ok",
+        "stderr": "",
+        "stdout": ""
+      },
+      "remote": "mtg-experiments:",
+      "status": "ok"
+    }
+  ],
+  "manifest": {
+    "bundles": [
+      {
+        "bundle_id": "shared",
+        "drive_file_id": "1xvS6nomf3vmaIofFtN26QSdxp23zzlKY",
+        "filename": "shared.zip",
+        "size_bytes": 452698
+      },
+      {
+        "bundle_id": "spot_check",
+        "drive_file_id": "1ETe-P3B7pdzapxGd5kHmB5QCkSGvyyd4",
+        "filename": "spot_check.zip",
+        "size_bytes": 18453
+      },
+      {
+        "bundle_id": "voting",
+        "drive_file_id": "1vQsR7lz7B_gGDjIWp9lQTtK5hDMmb9CY",
+        "filename": "voting.zip",
+        "size_bytes": 5324625
+      }
+    ],
+    "generated_at": "2026-05-21T15:40:59.839854+00:00",
+    "models": [
+      {
+        "drive_file_id": "19LAXkG7GA2eZR85YorFPo2A8h3bLGZ1n",
+        "filename": "bc_naive_bayes.zip",
+        "model_id": "bc_naive_bayes",
+        "size_bytes": 2723658
+      },
+      {
+        "drive_file_id": "1m1uyefE-hFm1fpxu3E2vYeMg6WMReE1B",
+        "filename": "df_naive_bayes.zip",
+        "model_id": "df_naive_bayes",
+        "size_bytes": 2735216
+      },
+      {
+        "drive_file_id": "1tQ1vDAFLrNejSdw6krdWggTmosYJRoV8",
+        "filename": "mock_knn.zip",
+        "model_id": "mock_knn",
+        "size_bytes": 1726
+      }
+    ],
+    "schema_version": 2
+  },
+  "manifest_path": "experiments/archives/experiments_manifest.json",
+  "remote": "mtg-experiments:",
+  "remote_manifest": [
+    {
+      "ID": "1MU0AilsDnG11M9pySkDUebLKkJ4a_5kR",
+      "IsDir": false,
+      "MimeType": "application/json",
+      "ModTime": "2026-05-21T15:40:59.841Z",
+      "Name": "experiments_manifest.json",
+      "Path": "experiments_manifest.json",
+      "Size": 1124
+    }
+  ],
+  "status": "ok",
+  "upload": {
+    "command": [
+      "rclone",
+      "copyto",
+      "experiments/archives/experiments_manifest.json",
+      "mtg-experiments:experiments_manifest.json"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  }
+}
+Pipeline plan:
+  - check_drive_write: /Users/macsilva/Desktop/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py check-write --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+  - phase_e_nested_cv: /Users/macsilva/Desktop/mtg/.venv/bin/python3 scripts/phase_e_nested_cv.py --processed-dir data/processed/archidekt --docs-dir documents/reports/results --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone --model naive_bayes --bc-min-df 10 --outer-splits 5 --inner-splits 3 --repeats 1 2 3 --random-state 42 --grid-n-jobs 1 --grid-verbose 0 --estimator-n-jobs 4 --force-rerun --from-spot-check --spot-check-summary experiments/spot_check/summary.json
+  - publish_experiments_manifest: /Users/macsilva/Desktop/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+
+==> check_drive_write
+/Users/macsilva/Desktop/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py check-write --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+
+==> phase_e_nested_cv
+/Users/macsilva/Desktop/mtg/.venv/bin/python3 scripts/phase_e_nested_cv.py --processed-dir data/processed/archidekt --docs-dir documents/reports/results --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone --model naive_bayes --bc-min-df 10 --outer-splits 5 --inner-splits 3 --repeats 1 2 3 --random-state 42 --grid-n-jobs 1 --grid-verbose 0 --estimator-n-jobs 4 --force-rerun --from-spot-check --spot-check-summary experiments/spot_check/summary.json
+
+==> publish_experiments_manifest
+/Users/macsilva/Desktop/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+
+Manifest written to experiments/pipeline_run_manifest.json

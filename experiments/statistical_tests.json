@@ -6,10 +6,10 @@
     "bc_naive_bayes": 9.0,
     "bc_random_forest": 10.0,
     "df_gradient_boosting": 1.0,
-    "df_linear_svc": 3.6666666666666665,
-    "df_logistic_regression": 2.3333333333333335,
+    "df_linear_svc": 3.8,
+    "df_logistic_regression": 2.066666666666667,
     "df_naive_bayes": 7.6,
-    "df_random_forest": 3.0
+    "df_random_forest": 3.1333333333333333
   },
   "folds": [
     "r1_f1",
@@ -29,8 +29,8 @@
     "r3_f5"
   ],
   "friedman": {
-    "p_value": 4.374285099153349e-24,
-    "statistic": 132.10545454545456
+    "p_value": 2.6626392967638993e-24,
+    "statistic": 133.15272727272725
   },
   "models": [
     "bc_gradient_boosting",
@@ -81,13 +81,13 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_linear_svc",
-        "rank_diff": 1.3333333333333335,
+        "rank_diff": 1.2000000000000002,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_logistic_regression",
-        "rank_diff": 2.6666666666666665,
+        "rank_diff": 2.933333333333333,
         "significant_alpha_0_05": false
       },
       {
@@ -99,7 +99,7 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_random_forest",
-        "rank_diff": 2.0,
+        "rank_diff": 1.8666666666666667,
         "significant_alpha_0_05": false
       },
       {
@@ -129,13 +129,13 @@
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_linear_svc",
-        "rank_diff": 3.6666666666666665,
+        "rank_diff": 3.533333333333333,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_logistic_regression",
-        "rank_diff": 5.0,
+        "rank_diff": 5.266666666666666,
         "significant_alpha_0_05": true
       },
       {
@@ -147,7 +147,7 @@
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_random_forest",
-        "rank_diff": 4.333333333333333,
+        "rank_diff": 4.199999999999999,
         "significant_alpha_0_05": true
       },
       {
@@ -171,13 +171,13 @@
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_linear_svc",
-        "rank_diff": 2.4,
+        "rank_diff": 2.2666666666666666,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_logistic_regression",
-        "rank_diff": 3.733333333333333,
+        "rank_diff": 3.9999999999999996,
         "significant_alpha_0_05": true
       },
       {
@@ -189,7 +189,7 @@
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_random_forest",
-        "rank_diff": 3.0666666666666664,
+        "rank_diff": 2.933333333333333,
         "significant_alpha_0_05": false
       },
       {
@@ -207,13 +207,13 @@
       {
         "model_a": "bc_naive_bayes",
         "model_b": "df_linear_svc",
-        "rank_diff": 5.333333333333334,
+        "rank_diff": 5.2,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_naive_bayes",
         "model_b": "df_logistic_regression",
-        "rank_diff": 6.666666666666666,
+        "rank_diff": 6.933333333333334,
         "significant_alpha_0_05": true
       },
       {
@@ -225,7 +225,7 @@
       {
         "model_a": "bc_naive_bayes",
         "model_b": "df_random_forest",
-        "rank_diff": 6.0,
+        "rank_diff": 5.866666666666667,
         "significant_alpha_0_05": true
       },
       {
@@ -237,13 +237,13 @@
       {
         "model_a": "bc_random_forest",
         "model_b": "df_linear_svc",
-        "rank_diff": 6.333333333333334,
+        "rank_diff": 6.2,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_random_forest",
         "model_b": "df_logistic_regression",
-        "rank_diff": 7.666666666666666,
+        "rank_diff": 7.933333333333334,
         "significant_alpha_0_05": true
       },
       {
@@ -255,19 +255,19 @@
       {
         "model_a": "bc_random_forest",
         "model_b": "df_random_forest",
-        "rank_diff": 7.0,
+        "rank_diff": 6.866666666666667,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "df_gradient_boosting",
         "model_b": "df_linear_svc",
-        "rank_diff": 2.6666666666666665,
+        "rank_diff": 2.8,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_gradient_boosting",
         "model_b": "df_logistic_regression",
-        "rank_diff": 1.3333333333333335,
+        "rank_diff": 1.0666666666666669,
         "significant_alpha_0_05": false
       },
       {
@@ -279,19 +279,19 @@
       {
         "model_a": "df_gradient_boosting",
         "model_b": "df_random_forest",
-        "rank_diff": 2.0,
+        "rank_diff": 2.1333333333333333,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_linear_svc",
         "model_b": "df_logistic_regression",
-        "rank_diff": 1.333333333333333,
+        "rank_diff": 1.733333333333333,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_linear_svc",
         "model_b": "df_naive_bayes",
-        "rank_diff": 3.933333333333333,
+        "rank_diff": 3.8,
         "significant_alpha_0_05": true
       },
       {
@@ -303,19 +303,19 @@
       {
         "model_a": "df_logistic_regression",
         "model_b": "df_naive_bayes",
-        "rank_diff": 5.266666666666666,
+        "rank_diff": 5.533333333333333,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "df_logistic_regression",
         "model_b": "df_random_forest",
-        "rank_diff": 0.6666666666666665,
+        "rank_diff": 1.0666666666666664,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_naive_bayes",
         "model_b": "df_random_forest",
-        "rank_diff": 4.6,
+        "rank_diff": 4.466666666666667,
         "significant_alpha_0_05": true
       }
     ]
@@ -559,8 +559,8 @@
     {
       "model_a": "df_linear_svc",
       "model_b": "df_logistic_regression",
-      "p_value": 0.00030517578125,
-      "statistic": 3.0
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
     },
     {
       "model_a": "df_linear_svc",
@@ -583,8 +583,8 @@
     {
       "model_a": "df_logistic_regression",
       "model_b": "df_random_forest",
-      "p_value": 0.00836181640625,
-      "statistic": 15.0
+      "p_value": 0.0001220703125,
+      "statistic": 1.0
     },
     {
       "model_a": "df_naive_bayes",
