@@ -79,3 +79,426 @@
 [Phase E df_logistic_regression outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m06s | eta=1m03s
 [Phase E df_logistic_regression outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m18s | eta=57s
 [Phase E df_logistic_regression outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m31s | eta=50s
+[Phase E df_logistic_regression outer=r1_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m41s | eta=42s
+[Phase E df_logistic_regression outer=r1_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m57s | eta=35s
+[Phase E df_logistic_regression outer=r1_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m14s | eta=28s
+[Phase E df_logistic_regression outer=r1_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m22s | eta=18s
+[Phase E df_logistic_regression outer=r1_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m35s | eta=9s
+[Phase E df_logistic_regression outer=r1_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m48s | eta=0s
+[Phase E model 1/2 fold 2/15] DONE  model=df_logistic_regression | outer=r1_f2 | macro_f1=0.6672 | inner_best=0.6701 | elapsed=239.896s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=7m35s | eta=49m19s
+[Phase E df_logistic_regression] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=7m35s | eta=49m19s | running outer=r1_f3
+
+[Phase E model 1/2 fold 3/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r1_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r1_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r1_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r1_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=28s
+[Phase E df_logistic_regression outer=r1_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=26s
+[Phase E df_logistic_regression outer=r1_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=25s
+[Phase E df_logistic_regression outer=r1_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=24s
+[Phase E df_logistic_regression outer=r1_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=24s
+[Phase E df_logistic_regression outer=r1_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=13s | eta=32s
+[Phase E df_logistic_regression outer=r1_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=24s | eta=48s
+[Phase E df_logistic_regression outer=r1_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=42s | eta=1m10s
+[Phase E df_logistic_regression outer=r1_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=47s | eta=1m05s
+[Phase E df_logistic_regression outer=r1_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=57s | eta=1m07s
+[Phase E df_logistic_regression outer=r1_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m15s | eta=1m15s
+[Phase E df_logistic_regression outer=r1_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m25s | eta=1m12s
+[Phase E df_logistic_regression outer=r1_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m39s | eta=1m11s
+[Phase E df_logistic_regression outer=r1_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m54s | eta=1m09s
+[Phase E df_logistic_regression outer=r1_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m03s | eta=1m01s
+[Phase E df_logistic_regression outer=r1_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m15s | eta=56s
+[Phase E df_logistic_regression outer=r1_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m27s | eta=49s
+[Phase E df_logistic_regression outer=r1_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m42s | eta=43s
+[Phase E df_logistic_regression outer=r1_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=3m08s | eta=38s
+[Phase E df_logistic_regression outer=r1_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m34s | eta=31s
+[Phase E df_logistic_regression outer=r1_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m48s | eta=21s
+[Phase E df_logistic_regression outer=r1_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=4m11s | eta=11s
+[Phase E df_logistic_regression outer=r1_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=4m35s | eta=0s
+[Phase E model 1/2 fold 3/15] DONE  model=df_logistic_regression | outer=r1_f3 | macro_f1=0.6759 | inner_best=0.6634 | elapsed=287.065s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=12m22s | eta=49m29s
+[Phase E df_logistic_regression] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=12m22s | eta=49m29s | running outer=r1_f4
+
+[Phase E model 1/2 fold 4/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r1_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r1_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r1_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=26s
+[Phase E df_logistic_regression outer=r1_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=26s
+[Phase E df_logistic_regression outer=r1_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=26s
+[Phase E df_logistic_regression outer=r1_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=24s
+[Phase E df_logistic_regression outer=r1_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=23s
+[Phase E df_logistic_regression outer=r1_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=23s
+[Phase E df_logistic_regression outer=r1_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=12s | eta=29s
+[Phase E df_logistic_regression outer=r1_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=22s | eta=43s
+[Phase E df_logistic_regression outer=r1_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=36s | eta=1m00s
+[Phase E df_logistic_regression outer=r1_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=40s | eta=56s
+[Phase E df_logistic_regression outer=r1_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=49s | eta=58s
+[Phase E df_logistic_regression outer=r1_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m03s | eta=1m03s
+[Phase E df_logistic_regression outer=r1_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m10s | eta=59s
+[Phase E df_logistic_regression outer=r1_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m22s | eta=58s
+[Phase E df_logistic_regression outer=r1_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m35s | eta=57s
+[Phase E df_logistic_regression outer=r1_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m42s | eta=51s
+[Phase E df_logistic_regression outer=r1_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m52s | eta=46s
+[Phase E df_logistic_regression outer=r1_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m02s | eta=41s
+[Phase E df_logistic_regression outer=r1_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m11s | eta=35s
+[Phase E df_logistic_regression outer=r1_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m28s | eta=30s
+[Phase E df_logistic_regression outer=r1_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=2m43s | eta=23s
+[Phase E df_logistic_regression outer=r1_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=2m55s | eta=16s
+[Phase E df_logistic_regression outer=r1_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m15s | eta=8s
+[Phase E df_logistic_regression outer=r1_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m34s | eta=0s
+[Phase E model 1/2 fold 4/15] DONE  model=df_logistic_regression | outer=r1_f4 | macro_f1=0.6765 | inner_best=0.6699 | elapsed=224.306s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=16m07s | eta=44m18s
+[Phase E df_logistic_regression] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=16m07s | eta=44m18s | running outer=r1_f5
+
+[Phase E model 1/2 fold 5/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r1_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r1_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r1_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=25s
+[Phase E df_logistic_regression outer=r1_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=26s
+[Phase E df_logistic_regression outer=r1_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=25s
+[Phase E df_logistic_regression outer=r1_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=23s
+[Phase E df_logistic_regression outer=r1_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=22s
+[Phase E df_logistic_regression outer=r1_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=7s | eta=22s
+[Phase E df_logistic_regression outer=r1_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=11s | eta=28s
+[Phase E df_logistic_regression outer=r1_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=41s
+[Phase E df_logistic_regression outer=r1_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=34s | eta=57s
+[Phase E df_logistic_regression outer=r1_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=38s | eta=53s
+[Phase E df_logistic_regression outer=r1_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=46s | eta=54s
+[Phase E df_logistic_regression outer=r1_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=59s | eta=59s
+[Phase E df_logistic_regression outer=r1_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m07s | eta=57s
+[Phase E df_logistic_regression outer=r1_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m19s | eta=57s
+[Phase E df_logistic_regression outer=r1_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m31s | eta=55s
+[Phase E df_logistic_regression outer=r1_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m40s | eta=50s
+[Phase E df_logistic_regression outer=r1_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m52s | eta=46s
+[Phase E df_logistic_regression outer=r1_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m03s | eta=41s
+[Phase E df_logistic_regression outer=r1_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m19s | eta=37s
+[Phase E df_logistic_regression outer=r1_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m48s | eta=34s
+[Phase E df_logistic_regression outer=r1_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m16s | eta=28s
+[Phase E df_logistic_regression outer=r1_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m34s | eta=19s
+[Phase E df_logistic_regression outer=r1_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=4m05s | eta=11s
+[Phase E df_logistic_regression outer=r1_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=4m37s | eta=0s
+[Phase E model 1/2 fold 5/15] DONE  model=df_logistic_regression | outer=r1_f5 | macro_f1=0.6610 | inner_best=0.6719 | elapsed=284.875s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=20m51s | eta=41m43s
+[Phase E df_logistic_regression] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=20m51s | eta=41m43s | running outer=r2_f1
+
+[Phase E model 1/2 fold 6/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r2_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r2_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r2_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r2_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=29s
+[Phase E df_logistic_regression outer=r2_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=27s
+[Phase E df_logistic_regression outer=r2_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=25s
+[Phase E df_logistic_regression outer=r2_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=24s
+[Phase E df_logistic_regression outer=r2_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=24s
+[Phase E df_logistic_regression outer=r2_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=13s | eta=33s
+[Phase E df_logistic_regression outer=r2_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=25s | eta=50s
+[Phase E df_logistic_regression outer=r2_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=44s | eta=1m13s
+[Phase E df_logistic_regression outer=r2_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=48s | eta=1m08s
+[Phase E df_logistic_regression outer=r2_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=59s | eta=1m09s
+[Phase E df_logistic_regression outer=r2_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m18s | eta=1m18s
+[Phase E df_logistic_regression outer=r2_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m26s | eta=1m13s
+[Phase E df_logistic_regression outer=r2_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m41s | eta=1m12s
+[Phase E df_logistic_regression outer=r2_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m56s | eta=1m10s
+[Phase E df_logistic_regression outer=r2_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m03s | eta=1m02s
+[Phase E df_logistic_regression outer=r2_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m15s | eta=56s
+[Phase E df_logistic_regression outer=r2_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m28s | eta=49s
+[Phase E df_logistic_regression outer=r2_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m38s | eta=41s
+[Phase E df_logistic_regression outer=r2_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m54s | eta=35s
+[Phase E df_logistic_regression outer=r2_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m10s | eta=27s
+[Phase E df_logistic_regression outer=r2_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m18s | eta=18s
+[Phase E df_logistic_regression outer=r2_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m31s | eta=9s
+[Phase E df_logistic_regression outer=r2_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m44s | eta=0s
+[Phase E model 1/2 fold 6/15] DONE  model=df_logistic_regression | outer=r2_f1 | macro_f1=0.6627 | inner_best=0.6708 | elapsed=235.768s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=24m47s | eta=37m11s
+[Phase E df_logistic_regression] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=24m47s | eta=37m11s | running outer=r2_f2
+
+[Phase E model 1/2 fold 7/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r2_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r2_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r2_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r2_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=28s
+[Phase E df_logistic_regression outer=r2_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=26s
+[Phase E df_logistic_regression outer=r2_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=24s
+[Phase E df_logistic_regression outer=r2_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=24s
+[Phase E df_logistic_regression outer=r2_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=24s
+[Phase E df_logistic_regression outer=r2_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=13s | eta=32s
+[Phase E df_logistic_regression outer=r2_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=24s | eta=48s
+[Phase E df_logistic_regression outer=r2_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=41s | eta=1m08s
+[Phase E df_logistic_regression outer=r2_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=45s | eta=1m03s
+[Phase E df_logistic_regression outer=r2_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=55s | eta=1m05s
+[Phase E df_logistic_regression outer=r2_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m12s | eta=1m12s
+[Phase E df_logistic_regression outer=r2_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m19s | eta=1m07s
+[Phase E df_logistic_regression outer=r2_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m32s | eta=1m06s
+[Phase E df_logistic_regression outer=r2_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m47s | eta=1m04s
+[Phase E df_logistic_regression outer=r2_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m53s | eta=57s
+[Phase E df_logistic_regression outer=r2_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m04s | eta=51s
+[Phase E df_logistic_regression outer=r2_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m16s | eta=45s
+[Phase E df_logistic_regression outer=r2_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m25s | eta=38s
+[Phase E df_logistic_regression outer=r2_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m41s | eta=32s
+[Phase E df_logistic_regression outer=r2_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=2m56s | eta=25s
+[Phase E df_logistic_regression outer=r2_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m06s | eta=17s
+[Phase E df_logistic_regression outer=r2_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m23s | eta=9s
+[Phase E df_logistic_regression outer=r2_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m39s | eta=0s
+[Phase E model 1/2 fold 7/15] DONE  model=df_logistic_regression | outer=r2_f2 | macro_f1=0.6769 | inner_best=0.6680 | elapsed=225.514s | best_params={'clf__C': 1.0, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=28m33s | eta=32m37s
+[Phase E df_logistic_regression] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=28m33s | eta=32m37s | running outer=r2_f3
+
+[Phase E model 1/2 fold 8/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r2_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r2_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r2_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=27s
+[Phase E df_logistic_regression outer=r2_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=27s
+[Phase E df_logistic_regression outer=r2_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=26s
+[Phase E df_logistic_regression outer=r2_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=24s
+[Phase E df_logistic_regression outer=r2_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=23s
+[Phase E df_logistic_regression outer=r2_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=23s
+[Phase E df_logistic_regression outer=r2_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=12s | eta=30s
+[Phase E df_logistic_regression outer=r2_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=23s | eta=45s
+[Phase E df_logistic_regression outer=r2_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=39s | eta=1m04s
+[Phase E df_logistic_regression outer=r2_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=43s | eta=1m00s
+[Phase E df_logistic_regression outer=r2_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=52s | eta=1m02s
+[Phase E df_logistic_regression outer=r2_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m08s | eta=1m08s
+[Phase E df_logistic_regression outer=r2_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m16s | eta=1m05s
+[Phase E df_logistic_regression outer=r2_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m29s | eta=1m04s
+[Phase E df_logistic_regression outer=r2_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m43s | eta=1m02s
+[Phase E df_logistic_regression outer=r2_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m51s | eta=56s
+[Phase E df_logistic_regression outer=r2_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m02s | eta=50s
+[Phase E df_logistic_regression outer=r2_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m14s | eta=45s
+[Phase E df_logistic_regression outer=r2_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m28s | eta=39s
+[Phase E df_logistic_regression outer=r2_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m51s | eta=34s
+[Phase E df_logistic_regression outer=r2_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m15s | eta=28s
+[Phase E df_logistic_regression outer=r2_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m27s | eta=19s
+[Phase E df_logistic_regression outer=r2_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m50s | eta=10s
+[Phase E df_logistic_regression outer=r2_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=4m12s | eta=0s
+[Phase E model 1/2 fold 8/15] DONE  model=df_logistic_regression | outer=r2_f3 | macro_f1=0.6693 | inner_best=0.6708 | elapsed=262.611s | best_params={'clf__C': 100.0, 'clf__class_weight': None, 'clf__l1_ratio': 0.5}
+[Phase E df_logistic_regression] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=32m55s | eta=28m48s
+[Phase E df_logistic_regression] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=32m55s | eta=28m48s | running outer=r2_f4
+
+[Phase E model 1/2 fold 9/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r2_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r2_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r2_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r2_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=28s
+[Phase E df_logistic_regression outer=r2_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=28s
+[Phase E df_logistic_regression outer=r2_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=26s
+[Phase E df_logistic_regression outer=r2_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=25s
+[Phase E df_logistic_regression outer=r2_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=25s
+[Phase E df_logistic_regression outer=r2_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=13s | eta=32s
+[Phase E df_logistic_regression outer=r2_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=25s | eta=49s
+[Phase E df_logistic_regression outer=r2_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=42s | eta=1m10s
+[Phase E df_logistic_regression outer=r2_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=47s | eta=1m06s
+[Phase E df_logistic_regression outer=r2_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=58s | eta=1m09s
+[Phase E df_logistic_regression outer=r2_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m15s | eta=1m15s
+[Phase E df_logistic_regression outer=r2_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m24s | eta=1m11s
+[Phase E df_logistic_regression outer=r2_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m38s | eta=1m10s
+[Phase E df_logistic_regression outer=r2_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m53s | eta=1m08s
+[Phase E df_logistic_regression outer=r2_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m00s | eta=1m00s
+[Phase E df_logistic_regression outer=r2_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m12s | eta=54s
+[Phase E df_logistic_regression outer=r2_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m23s | eta=48s
+[Phase E df_logistic_regression outer=r2_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m37s | eta=41s
+[Phase E df_logistic_regression outer=r2_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=3m00s | eta=36s
+[Phase E df_logistic_regression outer=r2_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m22s | eta=29s
+[Phase E df_logistic_regression outer=r2_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m37s | eta=20s
+[Phase E df_logistic_regression outer=r2_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=4m03s | eta=11s
+[Phase E df_logistic_regression outer=r2_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=4m28s | eta=0s
+[Phase E model 1/2 fold 9/15] DONE  model=df_logistic_regression | outer=r2_f4 | macro_f1=0.6583 | inner_best=0.6741 | elapsed=275.647s | best_params={'clf__C': 1.0, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=37m31s | eta=25m01s
+[Phase E df_logistic_regression] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=37m31s | eta=25m01s | running outer=r2_f5
+
+[Phase E model 1/2 fold 10/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r2_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r2_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r2_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r2_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=29s
+[Phase E df_logistic_regression outer=r2_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=29s
+[Phase E df_logistic_regression outer=r2_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=27s
+[Phase E df_logistic_regression outer=r2_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=7s | eta=25s
+[Phase E df_logistic_regression outer=r2_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=25s
+[Phase E df_logistic_regression outer=r2_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=35s
+[Phase E df_logistic_regression outer=r2_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=26s | eta=52s
+[Phase E df_logistic_regression outer=r2_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=44s | eta=1m13s
+[Phase E df_logistic_regression outer=r2_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=49s | eta=1m09s
+[Phase E df_logistic_regression outer=r2_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=1m00s | eta=1m11s
+[Phase E df_logistic_regression outer=r2_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m17s | eta=1m17s
+[Phase E df_logistic_regression outer=r2_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m26s | eta=1m12s
+[Phase E df_logistic_regression outer=r2_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m39s | eta=1m11s
+[Phase E df_logistic_regression outer=r2_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m54s | eta=1m08s
+[Phase E df_logistic_regression outer=r2_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m03s | eta=1m02s
+[Phase E df_logistic_regression outer=r2_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m15s | eta=56s
+[Phase E df_logistic_regression outer=r2_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m27s | eta=49s
+[Phase E df_logistic_regression outer=r2_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m39s | eta=42s
+[Phase E df_logistic_regression outer=r2_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=3m00s | eta=36s
+[Phase E df_logistic_regression outer=r2_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m20s | eta=29s
+[Phase E df_logistic_regression outer=r2_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m36s | eta=20s
+[Phase E df_logistic_regression outer=r2_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=4m03s | eta=11s
+[Phase E df_logistic_regression outer=r2_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=4m30s | eta=0s
+[Phase E model 1/2 fold 10/15] DONE  model=df_logistic_regression | outer=r2_f5 | macro_f1=0.6781 | inner_best=0.6610 | elapsed=280.533s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [###################---------] 10/15 outer folds | remaining=5 | elapsed=42m12s | eta=21m06s
+[Phase E df_logistic_regression] [###################---------] 10/15 outer folds | remaining=5 | elapsed=42m12s | eta=21m06s | running outer=r3_f1
+
+[Phase E model 1/2 fold 11/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r3_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r3_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r3_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r3_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=28s
+[Phase E df_logistic_regression outer=r3_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=28s
+[Phase E df_logistic_regression outer=r3_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=26s
+[Phase E df_logistic_regression outer=r3_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=7s | eta=25s
+[Phase E df_logistic_regression outer=r3_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=25s
+[Phase E df_logistic_regression outer=r3_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=14s | eta=33s
+[Phase E df_logistic_regression outer=r3_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=25s | eta=50s
+[Phase E df_logistic_regression outer=r3_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=44s | eta=1m13s
+[Phase E df_logistic_regression outer=r3_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=48s | eta=1m08s
+[Phase E df_logistic_regression outer=r3_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=59s | eta=1m09s
+[Phase E df_logistic_regression outer=r3_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m17s | eta=1m17s
+[Phase E df_logistic_regression outer=r3_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m26s | eta=1m12s
+[Phase E df_logistic_regression outer=r3_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m40s | eta=1m11s
+[Phase E df_logistic_regression outer=r3_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m55s | eta=1m09s
+[Phase E df_logistic_regression outer=r3_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m03s | eta=1m01s
+[Phase E df_logistic_regression outer=r3_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m15s | eta=55s
+[Phase E df_logistic_regression outer=r3_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m27s | eta=49s
+[Phase E df_logistic_regression outer=r3_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m37s | eta=41s
+[Phase E df_logistic_regression outer=r3_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m54s | eta=35s
+[Phase E df_logistic_regression outer=r3_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m12s | eta=27s
+[Phase E df_logistic_regression outer=r3_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m21s | eta=18s
+[Phase E df_logistic_regression outer=r3_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m38s | eta=9s
+[Phase E df_logistic_regression outer=r3_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m54s | eta=0s
+[Phase E model 1/2 fold 11/15] DONE  model=df_logistic_regression | outer=r3_f1 | macro_f1=0.6613 | inner_best=0.6694 | elapsed=241.726s | best_params={'clf__C': 1.0, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=46m13s | eta=16m48s
+[Phase E df_logistic_regression] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=46m13s | eta=16m48s | running outer=r3_f2
+
+[Phase E model 1/2 fold 12/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r3_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r3_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r3_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r3_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=28s
+[Phase E df_logistic_regression outer=r3_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=28s
+[Phase E df_logistic_regression outer=r3_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=26s
+[Phase E df_logistic_regression outer=r3_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=24s
+[Phase E df_logistic_regression outer=r3_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=25s
+[Phase E df_logistic_regression outer=r3_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=13s | eta=32s
+[Phase E df_logistic_regression outer=r3_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=24s | eta=48s
+[Phase E df_logistic_regression outer=r3_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=42s | eta=1m09s
+[Phase E df_logistic_regression outer=r3_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=47s | eta=1m05s
+[Phase E df_logistic_regression outer=r3_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=56s | eta=1m07s
+[Phase E df_logistic_regression outer=r3_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m14s | eta=1m14s
+[Phase E df_logistic_regression outer=r3_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m22s | eta=1m09s
+[Phase E df_logistic_regression outer=r3_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m35s | eta=1m08s
+[Phase E df_logistic_regression outer=r3_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m50s | eta=1m06s
+[Phase E df_logistic_regression outer=r3_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m56s | eta=58s
+[Phase E df_logistic_regression outer=r3_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m08s | eta=53s
+[Phase E df_logistic_regression outer=r3_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m19s | eta=46s
+[Phase E df_logistic_regression outer=r3_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m28s | eta=39s
+[Phase E df_logistic_regression outer=r3_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m43s | eta=33s
+[Phase E df_logistic_regression outer=r3_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=2m58s | eta=25s
+[Phase E df_logistic_regression outer=r3_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m05s | eta=17s
+[Phase E df_logistic_regression outer=r3_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m17s | eta=9s
+[Phase E df_logistic_regression outer=r3_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m29s | eta=0s
+[Phase E model 1/2 fold 12/15] DONE  model=df_logistic_regression | outer=r3_f2 | macro_f1=0.6831 | inner_best=0.6642 | elapsed=215.505s | best_params={'clf__C': 1.0, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [######################------] 12/15 outer folds | remaining=3 | elapsed=49m49s | eta=12m27s
+[Phase E df_logistic_regression] [######################------] 12/15 outer folds | remaining=3 | elapsed=49m49s | eta=12m27s | running outer=r3_f3
+
+[Phase E model 1/2 fold 13/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r3_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r3_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r3_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=27s
+[Phase E df_logistic_regression outer=r3_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=2s | eta=27s
+[Phase E df_logistic_regression outer=r3_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=26s
+[Phase E df_logistic_regression outer=r3_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=24s
+[Phase E df_logistic_regression outer=r3_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=23s
+[Phase E df_logistic_regression outer=r3_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=23s
+[Phase E df_logistic_regression outer=r3_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=12s | eta=30s
+[Phase E df_logistic_regression outer=r3_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=22s | eta=45s
+[Phase E df_logistic_regression outer=r3_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=38s | eta=1m04s
+[Phase E df_logistic_regression outer=r3_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=42s | eta=59s
+[Phase E df_logistic_regression outer=r3_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=52s | eta=1m01s
+[Phase E df_logistic_regression outer=r3_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m07s | eta=1m07s
+[Phase E df_logistic_regression outer=r3_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m15s | eta=1m03s
+[Phase E df_logistic_regression outer=r3_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m27s | eta=1m02s
+[Phase E df_logistic_regression outer=r3_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m41s | eta=1m00s
+[Phase E df_logistic_regression outer=r3_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m48s | eta=54s
+[Phase E df_logistic_regression outer=r3_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m58s | eta=49s
+[Phase E df_logistic_regression outer=r3_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m09s | eta=43s
+[Phase E df_logistic_regression outer=r3_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m19s | eta=37s
+[Phase E df_logistic_regression outer=r3_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m38s | eta=32s
+[Phase E df_logistic_regression outer=r3_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=2m56s | eta=25s
+[Phase E df_logistic_regression outer=r3_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m09s | eta=17s
+[Phase E df_logistic_regression outer=r3_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m30s | eta=9s
+[Phase E df_logistic_regression outer=r3_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m51s | eta=0s
+[Phase E model 1/2 fold 13/15] DONE  model=df_logistic_regression | outer=r3_f3 | macro_f1=0.6739 | inner_best=0.6671 | elapsed=239.964s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [########################----] 13/15 outer folds | remaining=2 | elapsed=53m49s | eta=8m17s
+[Phase E df_logistic_regression] [########################----] 13/15 outer folds | remaining=2 | elapsed=53m49s | eta=8m17s | running outer=r3_f4
+
+[Phase E model 1/2 fold 14/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r3_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r3_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r3_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=27s
+[Phase E df_logistic_regression outer=r3_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=28s
+[Phase E df_logistic_regression outer=r3_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=26s
+[Phase E df_logistic_regression outer=r3_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=24s
+[Phase E df_logistic_regression outer=r3_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=6s | eta=23s
+[Phase E df_logistic_regression outer=r3_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=24s
+[Phase E df_logistic_regression outer=r3_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=13s | eta=31s
+[Phase E df_logistic_regression outer=r3_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=23s | eta=47s
+[Phase E df_logistic_regression outer=r3_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=41s | eta=1m08s
+[Phase E df_logistic_regression outer=r3_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=45s | eta=1m03s
+[Phase E df_logistic_regression outer=r3_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=55s | eta=1m05s
+[Phase E df_logistic_regression outer=r3_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m12s | eta=1m12s
+[Phase E df_logistic_regression outer=r3_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m20s | eta=1m08s
+[Phase E df_logistic_regression outer=r3_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m33s | eta=1m07s
+[Phase E df_logistic_regression outer=r3_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m48s | eta=1m05s
+[Phase E df_logistic_regression outer=r3_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=1m55s | eta=58s
+[Phase E df_logistic_regression outer=r3_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m07s | eta=52s
+[Phase E df_logistic_regression outer=r3_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m19s | eta=46s
+[Phase E df_logistic_regression outer=r3_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m28s | eta=39s
+[Phase E df_logistic_regression outer=r3_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m44s | eta=33s
+[Phase E df_logistic_regression outer=r3_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m00s | eta=26s
+[Phase E df_logistic_regression outer=r3_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m10s | eta=17s
+[Phase E df_logistic_regression outer=r3_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m26s | eta=9s
+[Phase E df_logistic_regression outer=r3_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=3m43s | eta=0s
+[Phase E model 1/2 fold 14/15] DONE  model=df_logistic_regression | outer=r3_f4 | macro_f1=0.6947 | inner_best=0.6681 | elapsed=233.386s | best_params={'clf__C': 0.1, 'clf__class_weight': None, 'clf__l1_ratio': 1.0}
+[Phase E df_logistic_regression] [##########################--] 14/15 outer folds | remaining=1 | elapsed=57m42s | eta=4m07s
+[Phase E df_logistic_regression] [##########################--] 14/15 outer folds | remaining=1 | elapsed=57m42s | eta=4m07s | running outer=r3_f5
+
+[Phase E model 1/2 fold 15/15] START model=df_logistic_regression | representation=DF | algorithm=logistic_regression | outer=r3_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_logistic_regression outer=r3_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_logistic_regression outer=r3_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=1s | eta=28s
+[Phase E df_logistic_regression outer=r3_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=3s | eta=28s
+[Phase E df_logistic_regression outer=r3_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=4s | eta=29s
+[Phase E df_logistic_regression outer=r3_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=5s | eta=26s
+[Phase E df_logistic_regression outer=r3_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=7s | eta=25s
+[Phase E df_logistic_regression outer=r3_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=8s | eta=25s
+[Phase E df_logistic_regression outer=r3_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=13s | eta=32s
+[Phase E df_logistic_regression outer=r3_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=25s | eta=49s
+[Phase E df_logistic_regression outer=r3_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=42s | eta=1m11s
+[Phase E df_logistic_regression outer=r3_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=47s | eta=1m06s
+[Phase E df_logistic_regression outer=r3_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=57s | eta=1m07s
+[Phase E df_logistic_regression outer=r3_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=1m15s | eta=1m15s
+[Phase E df_logistic_regression outer=r3_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=1m23s | eta=1m10s
+[Phase E df_logistic_regression outer=r3_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=1m38s | eta=1m10s
+[Phase E df_logistic_regression outer=r3_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=1m53s | eta=1m08s
+[Phase E df_logistic_regression outer=r3_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=2m01s | eta=1m00s
+[Phase E df_logistic_regression outer=r3_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=2m13s | eta=55s
+[Phase E df_logistic_regression outer=r3_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=2m25s | eta=48s
+[Phase E df_logistic_regression outer=r3_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=2m35s | eta=41s
+[Phase E df_logistic_regression outer=r3_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=2m53s | eta=35s
+[Phase E df_logistic_regression outer=r3_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=3m10s | eta=27s
+[Phase E df_logistic_regression outer=r3_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=3m22s | eta=18s
+[Phase E df_logistic_regression outer=r3_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=3m42s | eta=10s
+[Phase E df_logistic_regression outer=r3_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=4m01s | eta=0s
+[Phase E model 1/2 fold 15/15] DONE  model=df_logistic_regression | outer=r3_f5 | macro_f1=0.6508 | inner_best=0.6712 | elapsed=248.862s | best_params={'clf__C': 100.0, 'clf__class_weight': None, 'clf__l1_ratio': 0.5}
+[Phase E df_logistic_regression] [############################] 15/15 outer folds | remaining=0 | elapsed=1h01m51s | eta=0s
+[Phase E drive] scheduling upload for df_logistic_regression to mtg-experiments:
+[Phase E bc_logistic_regression] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E bc_logistic_regression] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 2/2 fold 1/15] START model=bc_logistic_regression | representation=BC | algorithm=logistic_regression | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_logistic_regression outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_logistic_regression outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=6s | eta=2m08s
+[Phase E bc_logistic_regression outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=20s | eta=3m39s
+[Phase E bc_logistic_regression outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=25s | eta=2m52s
+[Phase E bc_logistic_regression outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=26s | eta=2m08s
+[Phase E bc_logistic_regression outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=38s | eta=2m23s
+[Phase E bc_logistic_regression outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=43s | eta=2m08s
+[Phase E bc_logistic_regression outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=48s | eta=1m57s
+[Phase E bc_logistic_regression outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=2m21s | eta=4m42s
+[Phase E bc_logistic_regression outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=2m56s | eta=4m53s
+[Phase E bc_logistic_regression outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=3m01s | eta=4m14s
+[Phase E bc_logistic_regression outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m36s | eta=5m26s
+[Phase E bc_logistic_regression outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=5m09s | eta=5m09s
+[Phase E bc_logistic_regression outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m22s | eta=4m33s
+[Phase E bc_logistic_regression outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=31m37s | eta=22m35s
+[Phase E bc_logistic_regression outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=49m32s | eta=29m43s
+[Phase E bc_logistic_regression outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=49m46s | eta=24m53s
+[Phase E bc_logistic_regression outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1h16m05s | eta=31m20s
+[Phase E bc_logistic_regression outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1h33m48s | eta=31m16s
+[Phase E bc_logistic_regression outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1h34m11s | eta=24m47s

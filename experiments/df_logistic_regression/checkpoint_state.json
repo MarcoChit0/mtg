@@ -1,9 +1,23 @@
 {
   "checkpoint_dir": "experiments/df_logistic_regression/checkpoints/df72634dcd8685de",
   "completed_fold_ids": [
-    "r1_f1"
+    "r1_f1",
+    "r1_f2",
+    "r1_f3",
+    "r1_f4",
+    "r1_f5",
+    "r2_f1",
+    "r2_f2",
+    "r2_f3",
+    "r2_f4",
+    "r2_f5",
+    "r3_f1",
+    "r3_f2",
+    "r3_f3",
+    "r3_f4",
+    "r3_f5"
   ],
-  "completed_folds": 1,
+  "completed_folds": 15,
   "schema_version": 1,
   "signature": {
     "algorithm": "logistic_regression",
@@ -59,5 +73,5 @@
   },
   "signature_id": "df72634dcd8685de",
   "total_folds": 15,
-  "updated_at": "2026-05-21T16:01:11.991870+00:00"
+  "updated_at": "2026-05-21T16:59:27.737898+00:00"
 }

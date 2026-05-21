@@ -1,5 +1,5 @@
 {
-  "checkpoint_dir": "experiments/bc_logistic_regression/checkpoints/4bb568b730a41424",
+  "checkpoint_dir": "experiments/bc_logistic_regression/checkpoints/83501683241868da",
   "completed_fold_ids": [],
   "completed_folds": 0,
   "schema_version": 1,
@@ -25,22 +25,10 @@
     ],
     "grid": {
       "clf__C": [
-        0.0001,
-        0.0003,
         0.001,
-        0.003,
-        0.01,
-        0.03,
         0.1,
-        0.3,
         1.0,
-        3.0,
-        10.0,
-        30.0,
-        100.0,
-        300.0,
-        1000.0,
-        3000.0
+        100.0
       ],
       "clf__class_weight": [
         null,
@@ -67,7 +55,7 @@
     "schema_version": 1,
     "use_tfidf": false
   },
-  "signature_id": "4bb568b730a41424",
+  "signature_id": "83501683241868da",
   "total_folds": 15,
-  "updated_at": "2026-05-21T06:26:53.034953+00:00"
+  "updated_at": "2026-05-21T16:59:27.818214+00:00"
 }
