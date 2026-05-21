@@ -1,0 +1,1066 @@
+{
+  "delete": {
+    "command": [
+      "rclone",
+      "deletefile",
+      "mtg-experiments:__mtg_write_check_1779377717003.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote": "mtg-experiments:",
+  "remote_path": "mtg-experiments:__mtg_write_check_1779377717003.txt",
+  "status": "ok",
+  "upload": {
+    "command": [
+      "rclone",
+      "copyto",
+      "/tmp/tmpdihmd9r9/__mtg_write_check_1779377717003.txt",
+      "mtg-experiments:__mtg_write_check_1779377717003.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  }
+}
+[Phase E df_decision_tree] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E df_decision_tree] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 1/2 fold 1/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m03s
+[Phase E df_decision_tree outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=59s
+[Phase E df_decision_tree outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=54s
+[Phase E df_decision_tree outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=51s
+[Phase E df_decision_tree outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=49s
+[Phase E df_decision_tree outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=15s | eta=46s
+[Phase E df_decision_tree outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=18s | eta=44s
+[Phase E df_decision_tree outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=42s
+[Phase E df_decision_tree outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=23s | eta=39s
+[Phase E df_decision_tree outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=36s
+[Phase E df_decision_tree outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=31s | eta=31s
+[Phase E df_decision_tree outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=26s
+[Phase E df_decision_tree outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=39s | eta=23s
+[Phase E df_decision_tree outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=41s | eta=21s
+[Phase E df_decision_tree outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=44s | eta=18s
+[Phase E df_decision_tree outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r1_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=52s | eta=10s
+[Phase E df_decision_tree outer=r1_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=55s | eta=8s
+[Phase E df_decision_tree outer=r1_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=57s | eta=5s
+[Phase E df_decision_tree outer=r1_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m00s | eta=3s
+[Phase E df_decision_tree outer=r1_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 1/15] DONE  model=df_decision_tree | outer=r1_f1 | macro_f1=0.6770 | inner_best=0.6741 | elapsed=63.974s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=1m04s | eta=14m56s
+[Phase E df_decision_tree] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=1m04s | eta=14m56s | running outer=r1_f2
+
+[Phase E model 1/2 fold 2/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r1_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r1_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r1_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m05s
+[Phase E df_decision_tree outer=r1_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=1m00s
+[Phase E df_decision_tree outer=r1_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=56s
+[Phase E df_decision_tree outer=r1_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r1_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r1_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r1_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=45s
+[Phase E df_decision_tree outer=r1_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=42s
+[Phase E df_decision_tree outer=r1_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=39s
+[Phase E df_decision_tree outer=r1_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r1_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r1_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=31s | eta=31s
+[Phase E df_decision_tree outer=r1_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r1_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=26s
+[Phase E df_decision_tree outer=r1_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=39s | eta=24s
+[Phase E df_decision_tree outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=44s | eta=18s
+[Phase E df_decision_tree outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r1_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r1_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r1_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=55s | eta=8s
+[Phase E df_decision_tree outer=r1_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=57s | eta=5s
+[Phase E df_decision_tree outer=r1_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m00s | eta=3s
+[Phase E df_decision_tree outer=r1_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 2/15] DONE  model=df_decision_tree | outer=r1_f2 | macro_f1=0.6633 | inner_best=0.6750 | elapsed=64.185s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=2m08s | eta=13m53s
+[Phase E df_decision_tree] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=2m08s | eta=13m53s | running outer=r1_f3
+
+[Phase E model 1/2 fold 3/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r1_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r1_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r1_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m04s
+[Phase E df_decision_tree outer=r1_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=1m00s
+[Phase E df_decision_tree outer=r1_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=55s
+[Phase E df_decision_tree outer=r1_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=51s
+[Phase E df_decision_tree outer=r1_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=49s
+[Phase E df_decision_tree outer=r1_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r1_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=18s | eta=45s
+[Phase E df_decision_tree outer=r1_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=42s
+[Phase E df_decision_tree outer=r1_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=39s
+[Phase E df_decision_tree outer=r1_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=36s
+[Phase E df_decision_tree outer=r1_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r1_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=31s | eta=31s
+[Phase E df_decision_tree outer=r1_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r1_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=26s
+[Phase E df_decision_tree outer=r1_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=39s | eta=24s
+[Phase E df_decision_tree outer=r1_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r1_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=44s | eta=18s
+[Phase E df_decision_tree outer=r1_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r1_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r1_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r1_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=55s | eta=8s
+[Phase E df_decision_tree outer=r1_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=58s | eta=5s
+[Phase E df_decision_tree outer=r1_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m00s | eta=3s
+[Phase E df_decision_tree outer=r1_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 3/15] DONE  model=df_decision_tree | outer=r1_f3 | macro_f1=0.6739 | inner_best=0.6757 | elapsed=64.317s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=3m13s | eta=12m50s
+[Phase E df_decision_tree] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=3m13s | eta=12m50s | running outer=r1_f4
+
+[Phase E model 1/2 fold 4/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r1_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r1_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r1_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m05s
+[Phase E df_decision_tree outer=r1_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=1m00s
+[Phase E df_decision_tree outer=r1_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=55s
+[Phase E df_decision_tree outer=r1_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r1_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r1_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r1_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=45s
+[Phase E df_decision_tree outer=r1_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=43s
+[Phase E df_decision_tree outer=r1_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r1_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r1_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r1_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r1_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r1_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=27s
+[Phase E df_decision_tree outer=r1_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r1_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r1_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=18s
+[Phase E df_decision_tree outer=r1_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r1_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r1_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r1_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=55s | eta=8s
+[Phase E df_decision_tree outer=r1_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=58s | eta=5s
+[Phase E df_decision_tree outer=r1_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r1_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 4/15] DONE  model=df_decision_tree | outer=r1_f4 | macro_f1=0.6683 | inner_best=0.6744 | elapsed=64.746s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=4m17s | eta=11m48s
+[Phase E df_decision_tree] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=4m17s | eta=11m48s | running outer=r1_f5
+
+[Phase E model 1/2 fold 5/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r1_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r1_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r1_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m04s
+[Phase E df_decision_tree outer=r1_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=1m00s
+[Phase E df_decision_tree outer=r1_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=55s
+[Phase E df_decision_tree outer=r1_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=51s
+[Phase E df_decision_tree outer=r1_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r1_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r1_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=45s
+[Phase E df_decision_tree outer=r1_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=42s
+[Phase E df_decision_tree outer=r1_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=39s
+[Phase E df_decision_tree outer=r1_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r1_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r1_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r1_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r1_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=26s
+[Phase E df_decision_tree outer=r1_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=39s | eta=24s
+[Phase E df_decision_tree outer=r1_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r1_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=18s
+[Phase E df_decision_tree outer=r1_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r1_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r1_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r1_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=55s | eta=8s
+[Phase E df_decision_tree outer=r1_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=58s | eta=5s
+[Phase E df_decision_tree outer=r1_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m00s | eta=3s
+[Phase E df_decision_tree outer=r1_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 5/15] DONE  model=df_decision_tree | outer=r1_f5 | macro_f1=0.6790 | inner_best=0.6713 | elapsed=64.519s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=5m22s | eta=10m44s
+[Phase E df_decision_tree] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=5m22s | eta=10m44s | running outer=r2_f1
+
+[Phase E model 1/2 fold 6/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r2_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r2_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r2_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m04s
+[Phase E df_decision_tree outer=r2_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=1m00s
+[Phase E df_decision_tree outer=r2_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=55s
+[Phase E df_decision_tree outer=r2_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=51s
+[Phase E df_decision_tree outer=r2_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=49s
+[Phase E df_decision_tree outer=r2_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r2_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=45s
+[Phase E df_decision_tree outer=r2_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=42s
+[Phase E df_decision_tree outer=r2_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=39s
+[Phase E df_decision_tree outer=r2_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r2_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r2_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=31s | eta=31s
+[Phase E df_decision_tree outer=r2_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r2_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=26s
+[Phase E df_decision_tree outer=r2_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=39s | eta=24s
+[Phase E df_decision_tree outer=r2_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r2_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=18s
+[Phase E df_decision_tree outer=r2_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r2_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r2_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r2_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=55s | eta=8s
+[Phase E df_decision_tree outer=r2_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=58s | eta=5s
+[Phase E df_decision_tree outer=r2_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m00s | eta=3s
+[Phase E df_decision_tree outer=r2_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 6/15] DONE  model=df_decision_tree | outer=r2_f1 | macro_f1=0.6789 | inner_best=0.6756 | elapsed=64.428s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=6m26s | eta=9m40s
+[Phase E df_decision_tree] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=6m26s | eta=9m40s | running outer=r2_f2
+
+[Phase E model 1/2 fold 7/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r2_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r2_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r2_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m05s
+[Phase E df_decision_tree outer=r2_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=1m00s
+[Phase E df_decision_tree outer=r2_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=55s
+[Phase E df_decision_tree outer=r2_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=51s
+[Phase E df_decision_tree outer=r2_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=49s
+[Phase E df_decision_tree outer=r2_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r2_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=45s
+[Phase E df_decision_tree outer=r2_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=42s
+[Phase E df_decision_tree outer=r2_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=39s
+[Phase E df_decision_tree outer=r2_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=36s
+[Phase E df_decision_tree outer=r2_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r2_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=31s | eta=31s
+[Phase E df_decision_tree outer=r2_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r2_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=26s
+[Phase E df_decision_tree outer=r2_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=39s | eta=24s
+[Phase E df_decision_tree outer=r2_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r2_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=44s | eta=18s
+[Phase E df_decision_tree outer=r2_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r2_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r2_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r2_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=55s | eta=8s
+[Phase E df_decision_tree outer=r2_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=58s | eta=5s
+[Phase E df_decision_tree outer=r2_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m00s | eta=3s
+[Phase E df_decision_tree outer=r2_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 7/15] DONE  model=df_decision_tree | outer=r2_f2 | macro_f1=0.6791 | inner_best=0.6697 | elapsed=64.429s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=7m31s | eta=8m35s
+[Phase E df_decision_tree] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=7m31s | eta=8m35s | running outer=r2_f3
+
+[Phase E model 1/2 fold 8/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r2_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r2_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r2_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m06s
+[Phase E df_decision_tree outer=r2_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=6s | eta=1m01s
+[Phase E df_decision_tree outer=r2_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=56s
+[Phase E df_decision_tree outer=r2_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r2_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r2_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=48s
+[Phase E df_decision_tree outer=r2_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=46s
+[Phase E df_decision_tree outer=r2_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=22s | eta=43s
+[Phase E df_decision_tree outer=r2_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r2_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r2_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=35s
+[Phase E df_decision_tree outer=r2_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r2_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=35s | eta=29s
+[Phase E df_decision_tree outer=r2_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=38s | eta=27s
+[Phase E df_decision_tree outer=r2_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r2_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r2_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=19s
+[Phase E df_decision_tree outer=r2_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=48s | eta=16s
+[Phase E df_decision_tree outer=r2_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=51s | eta=13s
+[Phase E df_decision_tree outer=r2_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=54s | eta=11s
+[Phase E df_decision_tree outer=r2_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=56s | eta=8s
+[Phase E df_decision_tree outer=r2_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=59s | eta=5s
+[Phase E df_decision_tree outer=r2_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r2_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m04s | eta=0s
+[Phase E model 1/2 fold 8/15] DONE  model=df_decision_tree | outer=r2_f3 | macro_f1=0.6534 | inner_best=0.6712 | elapsed=65.45s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=8m36s | eta=7m32s
+[Phase E df_decision_tree] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=8m36s | eta=7m32s | running outer=r2_f4
+
+[Phase E model 1/2 fold 9/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r2_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r2_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r2_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m06s
+[Phase E df_decision_tree outer=r2_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=6s | eta=1m01s
+[Phase E df_decision_tree outer=r2_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=56s
+[Phase E df_decision_tree outer=r2_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r2_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r2_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=48s
+[Phase E df_decision_tree outer=r2_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=46s
+[Phase E df_decision_tree outer=r2_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=22s | eta=43s
+[Phase E df_decision_tree outer=r2_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r2_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=27s | eta=37s
+[Phase E df_decision_tree outer=r2_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=35s
+[Phase E df_decision_tree outer=r2_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r2_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=35s | eta=30s
+[Phase E df_decision_tree outer=r2_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=38s | eta=27s
+[Phase E df_decision_tree outer=r2_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r2_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r2_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=19s
+[Phase E df_decision_tree outer=r2_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=48s | eta=16s
+[Phase E df_decision_tree outer=r2_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=51s | eta=13s
+[Phase E df_decision_tree outer=r2_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=54s | eta=11s
+[Phase E df_decision_tree outer=r2_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=56s | eta=8s
+[Phase E df_decision_tree outer=r2_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=59s | eta=5s
+[Phase E df_decision_tree outer=r2_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r2_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m04s | eta=0s
+[Phase E model 1/2 fold 9/15] DONE  model=df_decision_tree | outer=r2_f4 | macro_f1=0.6629 | inner_best=0.6764 | elapsed=65.426s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=9m42s | eta=6m28s
+[Phase E df_decision_tree] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=9m42s | eta=6m28s | running outer=r2_f5
+
+[Phase E model 1/2 fold 10/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r2_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r2_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r2_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m06s
+[Phase E df_decision_tree outer=r2_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=6s | eta=1m01s
+[Phase E df_decision_tree outer=r2_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=56s
+[Phase E df_decision_tree outer=r2_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r2_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r2_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=48s
+[Phase E df_decision_tree outer=r2_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=46s
+[Phase E df_decision_tree outer=r2_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=22s | eta=43s
+[Phase E df_decision_tree outer=r2_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r2_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=27s | eta=37s
+[Phase E df_decision_tree outer=r2_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=35s
+[Phase E df_decision_tree outer=r2_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r2_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=35s | eta=29s
+[Phase E df_decision_tree outer=r2_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=38s | eta=27s
+[Phase E df_decision_tree outer=r2_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r2_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r2_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=19s
+[Phase E df_decision_tree outer=r2_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=48s | eta=16s
+[Phase E df_decision_tree outer=r2_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=51s | eta=13s
+[Phase E df_decision_tree outer=r2_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=54s | eta=11s
+[Phase E df_decision_tree outer=r2_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=56s | eta=8s
+[Phase E df_decision_tree outer=r2_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=59s | eta=5s
+[Phase E df_decision_tree outer=r2_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r2_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m04s | eta=0s
+[Phase E model 1/2 fold 10/15] DONE  model=df_decision_tree | outer=r2_f5 | macro_f1=0.6912 | inner_best=0.6664 | elapsed=65.48s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [###################---------] 10/15 outer folds | remaining=5 | elapsed=10m47s | eta=5m24s
+[Phase E df_decision_tree] [###################---------] 10/15 outer folds | remaining=5 | elapsed=10m47s | eta=5m24s | running outer=r3_f1
+
+[Phase E model 1/2 fold 11/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r3_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r3_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r3_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m06s
+[Phase E df_decision_tree outer=r3_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=6s | eta=1m01s
+[Phase E df_decision_tree outer=r3_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=56s
+[Phase E df_decision_tree outer=r3_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r3_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r3_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=48s
+[Phase E df_decision_tree outer=r3_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=46s
+[Phase E df_decision_tree outer=r3_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=22s | eta=43s
+[Phase E df_decision_tree outer=r3_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r3_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=27s | eta=37s
+[Phase E df_decision_tree outer=r3_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=35s
+[Phase E df_decision_tree outer=r3_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r3_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=35s | eta=30s
+[Phase E df_decision_tree outer=r3_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=38s | eta=27s
+[Phase E df_decision_tree outer=r3_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r3_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=43s | eta=21s
+[Phase E df_decision_tree outer=r3_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=19s
+[Phase E df_decision_tree outer=r3_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=48s | eta=16s
+[Phase E df_decision_tree outer=r3_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=51s | eta=13s
+[Phase E df_decision_tree outer=r3_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=54s | eta=11s
+[Phase E df_decision_tree outer=r3_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=56s | eta=8s
+[Phase E df_decision_tree outer=r3_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=59s | eta=5s
+[Phase E df_decision_tree outer=r3_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r3_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m04s | eta=0s
+[Phase E model 1/2 fold 11/15] DONE  model=df_decision_tree | outer=r3_f1 | macro_f1=0.6861 | inner_best=0.6735 | elapsed=65.406s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=11m53s | eta=4m19s
+[Phase E df_decision_tree] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=11m53s | eta=4m19s | running outer=r3_f2
+
+[Phase E model 1/2 fold 12/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r3_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r3_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r3_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m05s
+[Phase E df_decision_tree outer=r3_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=6s | eta=1m01s
+[Phase E df_decision_tree outer=r3_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=56s
+[Phase E df_decision_tree outer=r3_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r3_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r3_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=48s
+[Phase E df_decision_tree outer=r3_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=46s
+[Phase E df_decision_tree outer=r3_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=22s | eta=43s
+[Phase E df_decision_tree outer=r3_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r3_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r3_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=35s
+[Phase E df_decision_tree outer=r3_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r3_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=35s | eta=30s
+[Phase E df_decision_tree outer=r3_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=38s | eta=27s
+[Phase E df_decision_tree outer=r3_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r3_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=43s | eta=21s
+[Phase E df_decision_tree outer=r3_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=19s
+[Phase E df_decision_tree outer=r3_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=48s | eta=16s
+[Phase E df_decision_tree outer=r3_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=51s | eta=13s
+[Phase E df_decision_tree outer=r3_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=54s | eta=11s
+[Phase E df_decision_tree outer=r3_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=56s | eta=8s
+[Phase E df_decision_tree outer=r3_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=59s | eta=5s
+[Phase E df_decision_tree outer=r3_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r3_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m04s | eta=0s
+[Phase E model 1/2 fold 12/15] DONE  model=df_decision_tree | outer=r3_f2 | macro_f1=0.6747 | inner_best=0.6755 | elapsed=65.509s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [######################------] 12/15 outer folds | remaining=3 | elapsed=12m58s | eta=3m15s
+[Phase E df_decision_tree] [######################------] 12/15 outer folds | remaining=3 | elapsed=12m58s | eta=3m15s | running outer=r3_f3
+
+[Phase E model 1/2 fold 13/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r3_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r3_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r3_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m05s
+[Phase E df_decision_tree outer=r3_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=1m00s
+[Phase E df_decision_tree outer=r3_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=56s
+[Phase E df_decision_tree outer=r3_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=52s
+[Phase E df_decision_tree outer=r3_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=50s
+[Phase E df_decision_tree outer=r3_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r3_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=45s
+[Phase E df_decision_tree outer=r3_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=43s
+[Phase E df_decision_tree outer=r3_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r3_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r3_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r3_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r3_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=35s | eta=29s
+[Phase E df_decision_tree outer=r3_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=27s
+[Phase E df_decision_tree outer=r3_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r3_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r3_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=19s
+[Phase E df_decision_tree outer=r3_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=48s | eta=16s
+[Phase E df_decision_tree outer=r3_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=51s | eta=13s
+[Phase E df_decision_tree outer=r3_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r3_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=56s | eta=8s
+[Phase E df_decision_tree outer=r3_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=58s | eta=5s
+[Phase E df_decision_tree outer=r3_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r3_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m04s | eta=0s
+[Phase E model 1/2 fold 13/15] DONE  model=df_decision_tree | outer=r3_f3 | macro_f1=0.6746 | inner_best=0.6706 | elapsed=65.346s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [########################----] 13/15 outer folds | remaining=2 | elapsed=14m04s | eta=2m10s
+[Phase E df_decision_tree] [########################----] 13/15 outer folds | remaining=2 | elapsed=14m04s | eta=2m10s | running outer=r3_f4
+
+[Phase E model 1/2 fold 14/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r3_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r3_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r3_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m06s
+[Phase E df_decision_tree outer=r3_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=6s | eta=1m02s
+[Phase E df_decision_tree outer=r3_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=57s
+[Phase E df_decision_tree outer=r3_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=11s | eta=53s
+[Phase E df_decision_tree outer=r3_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=51s
+[Phase E df_decision_tree outer=r3_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=48s
+[Phase E df_decision_tree outer=r3_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=19s | eta=46s
+[Phase E df_decision_tree outer=r3_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=43s
+[Phase E df_decision_tree outer=r3_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=24s | eta=40s
+[Phase E df_decision_tree outer=r3_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=37s
+[Phase E df_decision_tree outer=r3_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r3_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=32s | eta=32s
+[Phase E df_decision_tree outer=r3_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=35s | eta=29s
+[Phase E df_decision_tree outer=r3_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=27s
+[Phase E df_decision_tree outer=r3_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=40s | eta=24s
+[Phase E df_decision_tree outer=r3_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=42s | eta=21s
+[Phase E df_decision_tree outer=r3_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=45s | eta=19s
+[Phase E df_decision_tree outer=r3_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=48s | eta=16s
+[Phase E df_decision_tree outer=r3_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=50s | eta=13s
+[Phase E df_decision_tree outer=r3_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=53s | eta=11s
+[Phase E df_decision_tree outer=r3_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=56s | eta=8s
+[Phase E df_decision_tree outer=r3_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=58s | eta=5s
+[Phase E df_decision_tree outer=r3_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m01s | eta=3s
+[Phase E df_decision_tree outer=r3_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m03s | eta=0s
+[Phase E model 1/2 fold 14/15] DONE  model=df_decision_tree | outer=r3_f4 | macro_f1=0.6640 | inner_best=0.6743 | elapsed=64.763s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [##########################--] 14/15 outer folds | remaining=1 | elapsed=15m08s | eta=1m05s
+[Phase E df_decision_tree] [##########################--] 14/15 outer folds | remaining=1 | elapsed=15m08s | eta=1m05s | running outer=r3_f5
+
+[Phase E model 1/2 fold 15/15] START model=df_decision_tree | representation=DF | algorithm=decision_tree | outer=r3_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_decision_tree outer=r3_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_decision_tree outer=r3_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=3s | eta=1m04s
+[Phase E df_decision_tree outer=r3_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=5s | eta=59s
+[Phase E df_decision_tree outer=r3_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=8s | eta=55s
+[Phase E df_decision_tree outer=r3_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=10s | eta=51s
+[Phase E df_decision_tree outer=r3_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=13s | eta=49s
+[Phase E df_decision_tree outer=r3_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=16s | eta=47s
+[Phase E df_decision_tree outer=r3_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=18s | eta=45s
+[Phase E df_decision_tree outer=r3_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=21s | eta=42s
+[Phase E df_decision_tree outer=r3_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=23s | eta=39s
+[Phase E df_decision_tree outer=r3_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=26s | eta=36s
+[Phase E df_decision_tree outer=r3_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=29s | eta=34s
+[Phase E df_decision_tree outer=r3_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=31s | eta=31s
+[Phase E df_decision_tree outer=r3_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=34s | eta=29s
+[Phase E df_decision_tree outer=r3_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=37s | eta=26s
+[Phase E df_decision_tree outer=r3_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=39s | eta=23s
+[Phase E df_decision_tree outer=r3_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=41s | eta=21s
+[Phase E df_decision_tree outer=r3_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=44s | eta=18s
+[Phase E df_decision_tree outer=r3_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=47s | eta=16s
+[Phase E df_decision_tree outer=r3_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=49s | eta=13s
+[Phase E df_decision_tree outer=r3_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=52s | eta=10s
+[Phase E df_decision_tree outer=r3_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=54s | eta=8s
+[Phase E df_decision_tree outer=r3_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=57s | eta=5s
+[Phase E df_decision_tree outer=r3_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m00s | eta=3s
+[Phase E df_decision_tree outer=r3_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m02s | eta=0s
+[Phase E model 1/2 fold 15/15] DONE  model=df_decision_tree | outer=r3_f5 | macro_f1=0.6634 | inner_best=0.6713 | elapsed=63.58s | best_params={'clf__ccp_alpha': 0.005, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 1}
+[Phase E df_decision_tree] [############################] 15/15 outer folds | remaining=0 | elapsed=16m12s | eta=0s
+[Phase E drive] scheduling upload for df_decision_tree to mtg-experiments:
+[Phase E bc_decision_tree] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E bc_decision_tree] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 2/2 fold 1/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=33s | eta=12m48s
+[Phase E bc_decision_tree outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m05s | eta=11m59s
+[Phase E bc_decision_tree outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m16s | eta=8m50s
+[Phase E bc_decision_tree outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m26s | eta=7m10s
+[Phase E bc_decision_tree outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m42s | eta=6m28s
+[Phase E bc_decision_tree outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m58s | eta=5m54s
+[Phase E bc_decision_tree outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m03s | eta=7m24s
+[Phase E bc_decision_tree outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m53s | eta=7m47s
+[Phase E bc_decision_tree outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=4m04s | eta=6m46s
+[Phase E bc_decision_tree outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m14s | eta=5m55s
+[Phase E bc_decision_tree outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m29s | eta=5m18s
+[Phase E bc_decision_tree outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m45s | eta=4m45s
+[Phase E bc_decision_tree outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m18s | eta=4m29s
+[Phase E bc_decision_tree outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m50s | eta=4m10s
+[Phase E bc_decision_tree outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=6m00s | eta=3m36s
+[Phase E bc_decision_tree outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m11s | eta=3m05s
+[Phase E bc_decision_tree outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m27s | eta=2m39s
+[Phase E bc_decision_tree outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m43s | eta=2m14s
+[Phase E bc_decision_tree outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m47s | eta=2m03s
+[Phase E bc_decision_tree outer=r1_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m38s | eta=1m44s
+[Phase E bc_decision_tree outer=r1_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m48s | eta=1m15s
+[Phase E bc_decision_tree outer=r1_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m58s | eta=49s
+[Phase E bc_decision_tree outer=r1_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m14s | eta=24s
+[Phase E bc_decision_tree outer=r1_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m30s | eta=0s
+[Phase E model 2/2 fold 1/15] DONE  model=bc_decision_tree | outer=r1_f1 | macro_f1=0.5504 | inner_best=0.5505 | elapsed=608.608s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=10m09s | eta=2h22m01s
+[Phase E bc_decision_tree] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=10m09s | eta=2h22m01s | running outer=r1_f2
+
+[Phase E model 2/2 fold 2/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r1_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r1_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r1_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=35s | eta=13m22s
+[Phase E bc_decision_tree outer=r1_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m08s | eta=12m25s
+[Phase E bc_decision_tree outer=r1_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m18s | eta=9m06s
+[Phase E bc_decision_tree outer=r1_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m28s | eta=7m21s
+[Phase E bc_decision_tree outer=r1_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m44s | eta=6m37s
+[Phase E bc_decision_tree outer=r1_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=2m00s | eta=6m00s
+[Phase E bc_decision_tree outer=r1_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m06s | eta=7m32s
+[Phase E bc_decision_tree outer=r1_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m57s | eta=7m55s
+[Phase E bc_decision_tree outer=r1_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=4m08s | eta=6m53s
+[Phase E bc_decision_tree outer=r1_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m18s | eta=6m01s
+[Phase E bc_decision_tree outer=r1_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m34s | eta=5m23s
+[Phase E bc_decision_tree outer=r1_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m49s | eta=4m49s
+[Phase E bc_decision_tree outer=r1_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m24s | eta=4m34s
+[Phase E bc_decision_tree outer=r1_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m57s | eta=4m15s
+[Phase E bc_decision_tree outer=r1_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=6m07s | eta=3m40s
+[Phase E bc_decision_tree outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m17s | eta=3m09s
+[Phase E bc_decision_tree outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m33s | eta=2m42s
+[Phase E bc_decision_tree outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m49s | eta=2m16s
+[Phase E bc_decision_tree outer=r1_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m55s | eta=2m05s
+[Phase E bc_decision_tree outer=r1_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m46s | eta=1m45s
+[Phase E bc_decision_tree outer=r1_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m57s | eta=1m17s
+[Phase E bc_decision_tree outer=r1_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=9m07s | eta=50s
+[Phase E bc_decision_tree outer=r1_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m23s | eta=24s
+[Phase E bc_decision_tree outer=r1_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m38s | eta=0s
+[Phase E model 2/2 fold 2/15] DONE  model=bc_decision_tree | outer=r1_f2 | macro_f1=0.5481 | inner_best=0.5390 | elapsed=599.816s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=20m08s | eta=2h10m55s
+[Phase E bc_decision_tree] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=20m08s | eta=2h10m55s | running outer=r1_f3
+
+[Phase E model 2/2 fold 3/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r1_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r1_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r1_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=34s | eta=13m13s
+[Phase E bc_decision_tree outer=r1_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m07s | eta=12m22s
+[Phase E bc_decision_tree outer=r1_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m18s | eta=9m05s
+[Phase E bc_decision_tree outer=r1_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m28s | eta=7m21s
+[Phase E bc_decision_tree outer=r1_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m44s | eta=6m36s
+[Phase E bc_decision_tree outer=r1_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=2m00s | eta=6m01s
+[Phase E bc_decision_tree outer=r1_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=2m59s | eta=7m14s
+[Phase E bc_decision_tree outer=r1_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m44s | eta=7m28s
+[Phase E bc_decision_tree outer=r1_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m54s | eta=6m30s
+[Phase E bc_decision_tree outer=r1_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m04s | eta=5m42s
+[Phase E bc_decision_tree outer=r1_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m20s | eta=5m08s
+[Phase E bc_decision_tree outer=r1_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m36s | eta=4m36s
+[Phase E bc_decision_tree outer=r1_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m10s | eta=4m22s
+[Phase E bc_decision_tree outer=r1_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m43s | eta=4m05s
+[Phase E bc_decision_tree outer=r1_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m54s | eta=3m32s
+[Phase E bc_decision_tree outer=r1_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m04s | eta=3m02s
+[Phase E bc_decision_tree outer=r1_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m20s | eta=2m36s
+[Phase E bc_decision_tree outer=r1_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m36s | eta=2m12s
+[Phase E bc_decision_tree outer=r1_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m34s | eta=2m00s
+[Phase E bc_decision_tree outer=r1_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m20s | eta=1m40s
+[Phase E bc_decision_tree outer=r1_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m30s | eta=1m13s
+[Phase E bc_decision_tree outer=r1_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m40s | eta=47s
+[Phase E bc_decision_tree outer=r1_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=8m56s | eta=23s
+[Phase E bc_decision_tree outer=r1_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m12s | eta=0s
+[Phase E model 2/2 fold 3/15] DONE  model=bc_decision_tree | outer=r1_f3 | macro_f1=0.5385 | inner_best=0.5466 | elapsed=589.013s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=29m58s | eta=1h59m50s
+[Phase E bc_decision_tree] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=29m58s | eta=1h59m50s | running outer=r1_f4
+
+[Phase E model 2/2 fold 4/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r1_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r1_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r1_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=39s | eta=14m47s
+[Phase E bc_decision_tree outer=r1_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m13s | eta=13m26s
+[Phase E bc_decision_tree outer=r1_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m24s | eta=9m45s
+[Phase E bc_decision_tree outer=r1_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m34s | eta=7m50s
+[Phase E bc_decision_tree outer=r1_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m50s | eta=6m58s
+[Phase E bc_decision_tree outer=r1_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=2m06s | eta=6m18s
+[Phase E bc_decision_tree outer=r1_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m00s | eta=7m18s
+[Phase E bc_decision_tree outer=r1_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m44s | eta=7m28s
+[Phase E bc_decision_tree outer=r1_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m54s | eta=6m30s
+[Phase E bc_decision_tree outer=r1_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m04s | eta=5m42s
+[Phase E bc_decision_tree outer=r1_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m20s | eta=5m07s
+[Phase E bc_decision_tree outer=r1_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m35s | eta=4m35s
+[Phase E bc_decision_tree outer=r1_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m14s | eta=4m26s
+[Phase E bc_decision_tree outer=r1_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m49s | eta=4m09s
+[Phase E bc_decision_tree outer=r1_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m59s | eta=3m35s
+[Phase E bc_decision_tree outer=r1_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m09s | eta=3m05s
+[Phase E bc_decision_tree outer=r1_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m25s | eta=2m39s
+[Phase E bc_decision_tree outer=r1_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m41s | eta=2m14s
+[Phase E bc_decision_tree outer=r1_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m36s | eta=2m00s
+[Phase E bc_decision_tree outer=r1_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m19s | eta=1m40s
+[Phase E bc_decision_tree outer=r1_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m29s | eta=1m13s
+[Phase E bc_decision_tree outer=r1_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m39s | eta=47s
+[Phase E bc_decision_tree outer=r1_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=8m55s | eta=23s
+[Phase E bc_decision_tree outer=r1_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m11s | eta=0s
+[Phase E model 2/2 fold 4/15] DONE  model=bc_decision_tree | outer=r1_f4 | macro_f1=0.5628 | inner_best=0.5484 | elapsed=585.398s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=39m43s | eta=1h49m13s
+[Phase E bc_decision_tree] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=39m43s | eta=1h49m13s | running outer=r1_f5
+
+[Phase E model 2/2 fold 5/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r1_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r1_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r1_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=38s | eta=14m25s
+[Phase E bc_decision_tree outer=r1_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m13s | eta=13m21s
+[Phase E bc_decision_tree outer=r1_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m23s | eta=9m43s
+[Phase E bc_decision_tree outer=r1_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m34s | eta=7m48s
+[Phase E bc_decision_tree outer=r1_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m50s | eta=6m58s
+[Phase E bc_decision_tree outer=r1_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=2m06s | eta=6m18s
+[Phase E bc_decision_tree outer=r1_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m06s | eta=7m31s
+[Phase E bc_decision_tree outer=r1_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m50s | eta=7m41s
+[Phase E bc_decision_tree outer=r1_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=4m01s | eta=6m41s
+[Phase E bc_decision_tree outer=r1_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m11s | eta=5m51s
+[Phase E bc_decision_tree outer=r1_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m27s | eta=5m15s
+[Phase E bc_decision_tree outer=r1_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m42s | eta=4m42s
+[Phase E bc_decision_tree outer=r1_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m20s | eta=4m31s
+[Phase E bc_decision_tree outer=r1_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m55s | eta=4m14s
+[Phase E bc_decision_tree outer=r1_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=6m05s | eta=3m39s
+[Phase E bc_decision_tree outer=r1_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m16s | eta=3m08s
+[Phase E bc_decision_tree outer=r1_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m32s | eta=2m41s
+[Phase E bc_decision_tree outer=r1_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m47s | eta=2m16s
+[Phase E bc_decision_tree outer=r1_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m47s | eta=2m03s
+[Phase E bc_decision_tree outer=r1_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m31s | eta=1m42s
+[Phase E bc_decision_tree outer=r1_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m42s | eta=1m15s
+[Phase E bc_decision_tree outer=r1_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m52s | eta=48s
+[Phase E bc_decision_tree outer=r1_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m08s | eta=24s
+[Phase E bc_decision_tree outer=r1_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m23s | eta=0s
+[Phase E model 2/2 fold 5/15] DONE  model=bc_decision_tree | outer=r1_f5 | macro_f1=0.5483 | inner_best=0.5399 | elapsed=598.19s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=49m41s | eta=1h39m22s
+[Phase E bc_decision_tree] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=49m41s | eta=1h39m22s | running outer=r2_f1
+
+[Phase E model 2/2 fold 6/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r2_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r2_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r2_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=34s | eta=12m55s
+[Phase E bc_decision_tree outer=r2_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m06s | eta=12m10s
+[Phase E bc_decision_tree outer=r2_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m17s | eta=8m57s
+[Phase E bc_decision_tree outer=r2_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m27s | eta=7m15s
+[Phase E bc_decision_tree outer=r2_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m43s | eta=6m32s
+[Phase E bc_decision_tree outer=r2_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m59s | eta=5m57s
+[Phase E bc_decision_tree outer=r2_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m02s | eta=7m21s
+[Phase E bc_decision_tree outer=r2_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m51s | eta=7m43s
+[Phase E bc_decision_tree outer=r2_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=4m01s | eta=6m42s
+[Phase E bc_decision_tree outer=r2_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m12s | eta=5m52s
+[Phase E bc_decision_tree outer=r2_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m27s | eta=5m16s
+[Phase E bc_decision_tree outer=r2_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m43s | eta=4m43s
+[Phase E bc_decision_tree outer=r2_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m16s | eta=4m28s
+[Phase E bc_decision_tree outer=r2_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m49s | eta=4m09s
+[Phase E bc_decision_tree outer=r2_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m59s | eta=3m36s
+[Phase E bc_decision_tree outer=r2_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m10s | eta=3m05s
+[Phase E bc_decision_tree outer=r2_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m26s | eta=2m39s
+[Phase E bc_decision_tree outer=r2_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m41s | eta=2m14s
+[Phase E bc_decision_tree outer=r2_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m45s | eta=2m02s
+[Phase E bc_decision_tree outer=r2_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m35s | eta=1m43s
+[Phase E bc_decision_tree outer=r2_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m45s | eta=1m15s
+[Phase E bc_decision_tree outer=r2_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m55s | eta=49s
+[Phase E bc_decision_tree outer=r2_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m11s | eta=24s
+[Phase E bc_decision_tree outer=r2_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m27s | eta=0s
+[Phase E model 2/2 fold 6/15] DONE  model=bc_decision_tree | outer=r2_f1 | macro_f1=0.5527 | inner_best=0.5444 | elapsed=593.768s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=59m35s | eta=1h29m22s
+[Phase E bc_decision_tree] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=59m35s | eta=1h29m22s | running outer=r2_f2
+
+[Phase E model 2/2 fold 7/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r2_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r2_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r2_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=34s | eta=13m05s
+[Phase E bc_decision_tree outer=r2_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m07s | eta=12m13s
+[Phase E bc_decision_tree outer=r2_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m17s | eta=8m59s
+[Phase E bc_decision_tree outer=r2_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m27s | eta=7m17s
+[Phase E bc_decision_tree outer=r2_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m43s | eta=6m33s
+[Phase E bc_decision_tree outer=r2_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m59s | eta=5m57s
+[Phase E bc_decision_tree outer=r2_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=2m59s | eta=7m14s
+[Phase E bc_decision_tree outer=r2_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m47s | eta=7m35s
+[Phase E bc_decision_tree outer=r2_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m58s | eta=6m36s
+[Phase E bc_decision_tree outer=r2_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m08s | eta=5m47s
+[Phase E bc_decision_tree outer=r2_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m23s | eta=5m11s
+[Phase E bc_decision_tree outer=r2_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m39s | eta=4m39s
+[Phase E bc_decision_tree outer=r2_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m13s | eta=4m24s
+[Phase E bc_decision_tree outer=r2_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m45s | eta=4m06s
+[Phase E bc_decision_tree outer=r2_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m55s | eta=3m33s
+[Phase E bc_decision_tree outer=r2_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m05s | eta=3m03s
+[Phase E bc_decision_tree outer=r2_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m21s | eta=2m37s
+[Phase E bc_decision_tree outer=r2_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m37s | eta=2m12s
+[Phase E bc_decision_tree outer=r2_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m36s | eta=2m00s
+[Phase E bc_decision_tree outer=r2_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m25s | eta=1m41s
+[Phase E bc_decision_tree outer=r2_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m35s | eta=1m14s
+[Phase E bc_decision_tree outer=r2_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m45s | eta=48s
+[Phase E bc_decision_tree outer=r2_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m01s | eta=24s
+[Phase E bc_decision_tree outer=r2_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m17s | eta=0s
+[Phase E model 2/2 fold 7/15] DONE  model=bc_decision_tree | outer=r2_f2 | macro_f1=0.5657 | inner_best=0.5456 | elapsed=592.836s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=1h09m28s | eta=1h19m23s
+[Phase E bc_decision_tree] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=1h09m28s | eta=1h19m23s | running outer=r2_f3
+
+[Phase E model 2/2 fold 8/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r2_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r2_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r2_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=34s | eta=13m08s
+[Phase E bc_decision_tree outer=r2_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m06s | eta=12m05s
+[Phase E bc_decision_tree outer=r2_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m16s | eta=8m53s
+[Phase E bc_decision_tree outer=r2_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m27s | eta=7m13s
+[Phase E bc_decision_tree outer=r2_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m43s | eta=6m30s
+[Phase E bc_decision_tree outer=r2_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m58s | eta=5m55s
+[Phase E bc_decision_tree outer=r2_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=2m56s | eta=7m08s
+[Phase E bc_decision_tree outer=r2_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m43s | eta=7m26s
+[Phase E bc_decision_tree outer=r2_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m53s | eta=6m28s
+[Phase E bc_decision_tree outer=r2_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m03s | eta=5m40s
+[Phase E bc_decision_tree outer=r2_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m19s | eta=5m06s
+[Phase E bc_decision_tree outer=r2_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m34s | eta=4m34s
+[Phase E bc_decision_tree outer=r2_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m08s | eta=4m21s
+[Phase E bc_decision_tree outer=r2_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m40s | eta=4m03s
+[Phase E bc_decision_tree outer=r2_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m50s | eta=3m30s
+[Phase E bc_decision_tree outer=r2_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m01s | eta=3m00s
+[Phase E bc_decision_tree outer=r2_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m17s | eta=2m35s
+[Phase E bc_decision_tree outer=r2_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m32s | eta=2m11s
+[Phase E bc_decision_tree outer=r2_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m30s | eta=1m58s
+[Phase E bc_decision_tree outer=r2_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m17s | eta=1m39s
+[Phase E bc_decision_tree outer=r2_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m27s | eta=1m12s
+[Phase E bc_decision_tree outer=r2_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m37s | eta=47s
+[Phase E bc_decision_tree outer=r2_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=8m53s | eta=23s
+[Phase E bc_decision_tree outer=r2_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m09s | eta=0s
+[Phase E model 2/2 fold 8/15] DONE  model=bc_decision_tree | outer=r2_f3 | macro_f1=0.5327 | inner_best=0.5427 | elapsed=569.335s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=1h18m57s | eta=1h09m05s
+[Phase E bc_decision_tree] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=1h18m57s | eta=1h09m05s | running outer=r2_f4
+
+[Phase E model 2/2 fold 9/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r2_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r2_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r2_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=33s | eta=12m32s
+[Phase E bc_decision_tree outer=r2_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m04s | eta=11m43s
+[Phase E bc_decision_tree outer=r2_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m14s | eta=8m39s
+[Phase E bc_decision_tree outer=r2_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m24s | eta=7m02s
+[Phase E bc_decision_tree outer=r2_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m41s | eta=6m22s
+[Phase E bc_decision_tree outer=r2_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m56s | eta=5m49s
+[Phase E bc_decision_tree outer=r2_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=2m52s | eta=6m58s
+[Phase E bc_decision_tree outer=r2_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m39s | eta=7m18s
+[Phase E bc_decision_tree outer=r2_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m49s | eta=6m22s
+[Phase E bc_decision_tree outer=r2_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=3m59s | eta=5m35s
+[Phase E bc_decision_tree outer=r2_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m15s | eta=5m02s
+[Phase E bc_decision_tree outer=r2_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m31s | eta=4m31s
+[Phase E bc_decision_tree outer=r2_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m04s | eta=4m17s
+[Phase E bc_decision_tree outer=r2_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m35s | eta=4m00s
+[Phase E bc_decision_tree outer=r2_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m46s | eta=3m28s
+[Phase E bc_decision_tree outer=r2_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=5m56s | eta=2m58s
+[Phase E bc_decision_tree outer=r2_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m12s | eta=2m33s
+[Phase E bc_decision_tree outer=r2_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m28s | eta=2m09s
+[Phase E bc_decision_tree outer=r2_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m23s | eta=1m57s
+[Phase E bc_decision_tree outer=r2_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m10s | eta=1m38s
+[Phase E bc_decision_tree outer=r2_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m20s | eta=1m11s
+[Phase E bc_decision_tree outer=r2_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m30s | eta=46s
+[Phase E bc_decision_tree outer=r2_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=8m46s | eta=23s
+[Phase E bc_decision_tree outer=r2_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m01s | eta=0s
+[Phase E model 2/2 fold 9/15] DONE  model=bc_decision_tree | outer=r2_f4 | macro_f1=0.5446 | inner_best=0.5468 | elapsed=565.083s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=1h28m22s | eta=58m55s
+[Phase E bc_decision_tree] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=1h28m22s | eta=58m55s | running outer=r2_f5
+
+[Phase E model 2/2 fold 10/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r2_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r2_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r2_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=34s | eta=12m57s
+[Phase E bc_decision_tree outer=r2_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m05s | eta=11m50s
+[Phase E bc_decision_tree outer=r2_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m15s | eta=8m44s
+[Phase E bc_decision_tree outer=r2_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m25s | eta=7m06s
+[Phase E bc_decision_tree outer=r2_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m41s | eta=6m25s
+[Phase E bc_decision_tree outer=r2_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m57s | eta=5m52s
+[Phase E bc_decision_tree outer=r2_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m01s | eta=7m19s
+[Phase E bc_decision_tree outer=r2_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m49s | eta=7m38s
+[Phase E bc_decision_tree outer=r2_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m59s | eta=6m39s
+[Phase E bc_decision_tree outer=r2_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m10s | eta=5m49s
+[Phase E bc_decision_tree outer=r2_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m25s | eta=5m14s
+[Phase E bc_decision_tree outer=r2_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m41s | eta=4m41s
+[Phase E bc_decision_tree outer=r2_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m15s | eta=4m26s
+[Phase E bc_decision_tree outer=r2_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m46s | eta=4m07s
+[Phase E bc_decision_tree outer=r2_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m56s | eta=3m34s
+[Phase E bc_decision_tree outer=r2_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m06s | eta=3m03s
+[Phase E bc_decision_tree outer=r2_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m23s | eta=2m38s
+[Phase E bc_decision_tree outer=r2_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m39s | eta=2m13s
+[Phase E bc_decision_tree outer=r2_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m43s | eta=2m02s
+[Phase E bc_decision_tree outer=r2_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m31s | eta=1m42s
+[Phase E bc_decision_tree outer=r2_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m41s | eta=1m14s
+[Phase E bc_decision_tree outer=r2_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m51s | eta=48s
+[Phase E bc_decision_tree outer=r2_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m07s | eta=24s
+[Phase E bc_decision_tree outer=r2_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m23s | eta=0s
+[Phase E model 2/2 fold 10/15] DONE  model=bc_decision_tree | outer=r2_f5 | macro_f1=0.5472 | inner_best=0.5421 | elapsed=599.347s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [###################---------] 10/15 outer folds | remaining=5 | elapsed=1h38m22s | eta=49m11s
+[Phase E bc_decision_tree] [###################---------] 10/15 outer folds | remaining=5 | elapsed=1h38m22s | eta=49m11s | running outer=r3_f1
+
+[Phase E model 2/2 fold 11/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r3_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r3_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r3_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=38s | eta=14m24s
+[Phase E bc_decision_tree outer=r3_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m12s | eta=13m16s
+[Phase E bc_decision_tree outer=r3_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m23s | eta=9m39s
+[Phase E bc_decision_tree outer=r3_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m33s | eta=7m45s
+[Phase E bc_decision_tree outer=r3_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m49s | eta=6m54s
+[Phase E bc_decision_tree outer=r3_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=2m05s | eta=6m14s
+[Phase E bc_decision_tree outer=r3_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m06s | eta=7m32s
+[Phase E bc_decision_tree outer=r3_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m54s | eta=7m49s
+[Phase E bc_decision_tree outer=r3_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=4m05s | eta=6m48s
+[Phase E bc_decision_tree outer=r3_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m15s | eta=5m56s
+[Phase E bc_decision_tree outer=r3_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m30s | eta=5m20s
+[Phase E bc_decision_tree outer=r3_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m46s | eta=4m46s
+[Phase E bc_decision_tree outer=r3_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m24s | eta=4m34s
+[Phase E bc_decision_tree outer=r3_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m59s | eta=4m16s
+[Phase E bc_decision_tree outer=r3_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=6m09s | eta=3m41s
+[Phase E bc_decision_tree outer=r3_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m20s | eta=3m10s
+[Phase E bc_decision_tree outer=r3_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m36s | eta=2m43s
+[Phase E bc_decision_tree outer=r3_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m52s | eta=2m17s
+[Phase E bc_decision_tree outer=r3_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m53s | eta=2m04s
+[Phase E bc_decision_tree outer=r3_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m41s | eta=1m44s
+[Phase E bc_decision_tree outer=r3_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m51s | eta=1m16s
+[Phase E bc_decision_tree outer=r3_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=9m01s | eta=49s
+[Phase E bc_decision_tree outer=r3_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m17s | eta=24s
+[Phase E bc_decision_tree outer=r3_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m33s | eta=0s
+[Phase E model 2/2 fold 11/15] DONE  model=bc_decision_tree | outer=r3_f1 | macro_f1=0.5603 | inner_best=0.5437 | elapsed=608.075s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=1h48m30s | eta=39m27s
+[Phase E bc_decision_tree] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=1h48m30s | eta=39m27s | running outer=r3_f2
+
+[Phase E model 2/2 fold 12/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r3_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r3_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r3_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=43s | eta=16m23s
+[Phase E bc_decision_tree outer=r3_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m22s | eta=15m05s
+[Phase E bc_decision_tree outer=r3_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m33s | eta=10m48s
+[Phase E bc_decision_tree outer=r3_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m43s | eta=8m35s
+[Phase E bc_decision_tree outer=r3_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m59s | eta=7m32s
+[Phase E bc_decision_tree outer=r3_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=2m15s | eta=6m45s
+[Phase E bc_decision_tree outer=r3_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m17s | eta=7m59s
+[Phase E bc_decision_tree outer=r3_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=4m07s | eta=8m14s
+[Phase E bc_decision_tree outer=r3_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=4m17s | eta=7m08s
+[Phase E bc_decision_tree outer=r3_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m27s | eta=6m14s
+[Phase E bc_decision_tree outer=r3_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m43s | eta=5m34s
+[Phase E bc_decision_tree outer=r3_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m59s | eta=4m59s
+[Phase E bc_decision_tree outer=r3_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m41s | eta=4m49s
+[Phase E bc_decision_tree outer=r3_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=6m21s | eta=4m32s
+[Phase E bc_decision_tree outer=r3_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=6m31s | eta=3m55s
+[Phase E bc_decision_tree outer=r3_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m42s | eta=3m21s
+[Phase E bc_decision_tree outer=r3_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m58s | eta=2m52s
+[Phase E bc_decision_tree outer=r3_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=7m13s | eta=2m24s
+[Phase E bc_decision_tree outer=r3_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=8m16s | eta=2m10s
+[Phase E bc_decision_tree outer=r3_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=9m05s | eta=1m49s
+[Phase E bc_decision_tree outer=r3_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=9m15s | eta=1m19s
+[Phase E bc_decision_tree outer=r3_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=9m25s | eta=51s
+[Phase E bc_decision_tree outer=r3_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m41s | eta=25s
+[Phase E bc_decision_tree outer=r3_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m56s | eta=0s
+[Phase E model 2/2 fold 12/15] DONE  model=bc_decision_tree | outer=r3_f2 | macro_f1=0.5397 | inner_best=0.5441 | elapsed=633.375s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [######################------] 12/15 outer folds | remaining=3 | elapsed=1h59m03s | eta=29m46s
+[Phase E bc_decision_tree] [######################------] 12/15 outer folds | remaining=3 | elapsed=1h59m03s | eta=29m46s | running outer=r3_f3
+
+[Phase E model 2/2 fold 13/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r3_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r3_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r3_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=41s | eta=15m35s
+[Phase E bc_decision_tree outer=r3_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m17s | eta=14m05s
+[Phase E bc_decision_tree outer=r3_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m27s | eta=10m10s
+[Phase E bc_decision_tree outer=r3_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m37s | eta=8m07s
+[Phase E bc_decision_tree outer=r3_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m54s | eta=7m11s
+[Phase E bc_decision_tree outer=r3_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=2m09s | eta=6m28s
+[Phase E bc_decision_tree outer=r3_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=3m11s | eta=7m43s
+[Phase E bc_decision_tree outer=r3_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m57s | eta=7m55s
+[Phase E bc_decision_tree outer=r3_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=4m08s | eta=6m53s
+[Phase E bc_decision_tree outer=r3_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=4m18s | eta=6m01s
+[Phase E bc_decision_tree outer=r3_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m34s | eta=5m23s
+[Phase E bc_decision_tree outer=r3_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m49s | eta=4m49s
+[Phase E bc_decision_tree outer=r3_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m30s | eta=4m39s
+[Phase E bc_decision_tree outer=r3_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=6m06s | eta=4m22s
+[Phase E bc_decision_tree outer=r3_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=6m17s | eta=3m46s
+[Phase E bc_decision_tree outer=r3_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=6m27s | eta=3m14s
+[Phase E bc_decision_tree outer=r3_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m43s | eta=2m46s
+[Phase E bc_decision_tree outer=r3_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m59s | eta=2m20s
+[Phase E bc_decision_tree outer=r3_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=8m01s | eta=2m06s
+[Phase E bc_decision_tree outer=r3_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m47s | eta=1m45s
+[Phase E bc_decision_tree outer=r3_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m57s | eta=1m17s
+[Phase E bc_decision_tree outer=r3_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=9m07s | eta=50s
+[Phase E bc_decision_tree outer=r3_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=9m23s | eta=24s
+[Phase E bc_decision_tree outer=r3_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m39s | eta=0s
+[Phase E model 2/2 fold 13/15] DONE  model=bc_decision_tree | outer=r3_f3 | macro_f1=0.5369 | inner_best=0.5372 | elapsed=600.415s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [########################----] 13/15 outer folds | remaining=2 | elapsed=2h09m04s | eta=19m51s
+[Phase E bc_decision_tree] [########################----] 13/15 outer folds | remaining=2 | elapsed=2h09m04s | eta=19m51s | running outer=r3_f4
+
+[Phase E model 2/2 fold 14/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r3_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r3_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r3_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=30s | eta=11m31s
+[Phase E bc_decision_tree outer=r3_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=59s | eta=10m46s
+[Phase E bc_decision_tree outer=r3_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m09s | eta=8m03s
+[Phase E bc_decision_tree outer=r3_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m19s | eta=6m36s
+[Phase E bc_decision_tree outer=r3_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m35s | eta=6m01s
+[Phase E bc_decision_tree outer=r3_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m51s | eta=5m32s
+[Phase E bc_decision_tree outer=r3_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=2m50s | eta=6m52s
+[Phase E bc_decision_tree outer=r3_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m36s | eta=7m12s
+[Phase E bc_decision_tree outer=r3_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m46s | eta=6m17s
+[Phase E bc_decision_tree outer=r3_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=3m56s | eta=5m30s
+[Phase E bc_decision_tree outer=r3_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m12s | eta=4m58s
+[Phase E bc_decision_tree outer=r3_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m27s | eta=4m27s
+[Phase E bc_decision_tree outer=r3_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=4m58s | eta=4m12s
+[Phase E bc_decision_tree outer=r3_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m26s | eta=3m53s
+[Phase E bc_decision_tree outer=r3_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m37s | eta=3m22s
+[Phase E bc_decision_tree outer=r3_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=5m47s | eta=2m53s
+[Phase E bc_decision_tree outer=r3_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m03s | eta=2m29s
+[Phase E bc_decision_tree outer=r3_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m18s | eta=2m06s
+[Phase E bc_decision_tree outer=r3_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m18s | eta=1m55s
+[Phase E bc_decision_tree outer=r3_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m04s | eta=1m37s
+[Phase E bc_decision_tree outer=r3_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m14s | eta=1m11s
+[Phase E bc_decision_tree outer=r3_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m24s | eta=46s
+[Phase E bc_decision_tree outer=r3_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=8m40s | eta=23s
+[Phase E bc_decision_tree outer=r3_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=8m55s | eta=0s
+[Phase E model 2/2 fold 14/15] DONE  model=bc_decision_tree | outer=r3_f4 | macro_f1=0.5597 | inner_best=0.5476 | elapsed=564.813s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': 'balanced', 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [##########################--] 14/15 outer folds | remaining=1 | elapsed=2h18m28s | eta=9m53s
+[Phase E bc_decision_tree] [##########################--] 14/15 outer folds | remaining=1 | elapsed=2h18m28s | eta=9m53s | running outer=r3_f5
+
+[Phase E model 2/2 fold 15/15] START model=bc_decision_tree | representation=BC | algorithm=decision_tree | outer=r3_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_decision_tree outer=r3_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_decision_tree outer=r3_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=31s | eta=11m51s
+[Phase E bc_decision_tree outer=r3_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=1m00s | eta=11m00s
+[Phase E bc_decision_tree outer=r3_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=1m10s | eta=8m12s
+[Phase E bc_decision_tree outer=r3_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=1m21s | eta=6m43s
+[Phase E bc_decision_tree outer=r3_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=1m37s | eta=6m07s
+[Phase E bc_decision_tree outer=r3_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=1m52s | eta=5m37s
+[Phase E bc_decision_tree outer=r3_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=2m51s | eta=6m56s
+[Phase E bc_decision_tree outer=r3_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=3m39s | eta=7m18s
+[Phase E bc_decision_tree outer=r3_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=3m49s | eta=6m22s
+[Phase E bc_decision_tree outer=r3_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=3m59s | eta=5m35s
+[Phase E bc_decision_tree outer=r3_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=4m15s | eta=5m01s
+[Phase E bc_decision_tree outer=r3_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=4m31s | eta=4m31s
+[Phase E bc_decision_tree outer=r3_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=5m01s | eta=4m15s
+[Phase E bc_decision_tree outer=r3_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=5m30s | eta=3m56s
+[Phase E bc_decision_tree outer=r3_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=5m41s | eta=3m24s
+[Phase E bc_decision_tree outer=r3_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=5m51s | eta=2m56s
+[Phase E bc_decision_tree outer=r3_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=6m07s | eta=2m31s
+[Phase E bc_decision_tree outer=r3_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=6m23s | eta=2m08s
+[Phase E bc_decision_tree outer=r3_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=7m22s | eta=1m56s
+[Phase E bc_decision_tree outer=r3_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=8m10s | eta=1m38s
+[Phase E bc_decision_tree outer=r3_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=8m20s | eta=1m11s
+[Phase E bc_decision_tree outer=r3_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=8m30s | eta=46s
+[Phase E bc_decision_tree outer=r3_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=8m46s | eta=23s
+[Phase E bc_decision_tree outer=r3_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=9m01s | eta=0s
+[Phase E model 2/2 fold 15/15] DONE  model=bc_decision_tree | outer=r3_f5 | macro_f1=0.5253 | inner_best=0.5386 | elapsed=561.361s | best_params={'clf__ccp_alpha': 0.0, 'clf__class_weight': None, 'clf__max_depth': None, 'clf__min_samples_leaf': 5}
+[Phase E bc_decision_tree] [############################] 15/15 outer folds | remaining=0 | elapsed=2h27m50s | eta=0s
+[Phase E drive] scheduling upload for bc_decision_tree to mtg-experiments:
+[Phase E drive] scheduling bundle upload shared → mtg-experiments:
+[Phase E drive] upload df_decision_tree: ok
+[Phase E drive] upload bc_decision_tree: ok
+[Phase E drive] upload bundle:shared: ok
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 63.974, "fold_id": "r1_f1", "macro_f1": 0.6770257726172174, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 64.185, "fold_id": "r1_f2", "macro_f1": 0.6633258261823315, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 64.317, "fold_id": "r1_f3", "macro_f1": 0.6739352674518129, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 64.746, "fold_id": "r1_f4", "macro_f1": 0.6682959918184842, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 64.519, "fold_id": "r1_f5", "macro_f1": 0.678974431301559, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 64.428, "fold_id": "r2_f1", "macro_f1": 0.6789052613467293, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 64.429, "fold_id": "r2_f2", "macro_f1": 0.6790964339919333, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 65.45, "fold_id": "r2_f3", "macro_f1": 0.6533909102356193, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 65.426, "fold_id": "r2_f4", "macro_f1": 0.6629456522968369, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 65.48, "fold_id": "r2_f5", "macro_f1": 0.6911843654106359, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 65.406, "fold_id": "r3_f1", "macro_f1": 0.686099263883524, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 65.509, "fold_id": "r3_f2", "macro_f1": 0.6746852525896481, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 65.346, "fold_id": "r3_f3", "macro_f1": 0.6745675847723908, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 64.763, "fold_id": "r3_f4", "macro_f1": 0.6639516515727539, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.005, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 1}, "elapsed_seconds": 63.58, "fold_id": "r3_f5", "macro_f1": 0.6634014725973255, "model_id": "df_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 608.608, "fold_id": "r1_f1", "macro_f1": 0.550352333804916, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 599.816, "fold_id": "r1_f2", "macro_f1": 0.5480640067814867, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 589.013, "fold_id": "r1_f3", "macro_f1": 0.5385344894956681, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 585.398, "fold_id": "r1_f4", "macro_f1": 0.5628165558076313, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 598.19, "fold_id": "r1_f5", "macro_f1": 0.5483453741753571, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 593.768, "fold_id": "r2_f1", "macro_f1": 0.5526696281474504, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 592.836, "fold_id": "r2_f2", "macro_f1": 0.5657389614982773, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 569.335, "fold_id": "r2_f3", "macro_f1": 0.5327241228256177, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 565.083, "fold_id": "r2_f4", "macro_f1": 0.5445924724259815, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 599.347, "fold_id": "r2_f5", "macro_f1": 0.5471813295245632, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 608.075, "fold_id": "r3_f1", "macro_f1": 0.5602915387596025, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 633.375, "fold_id": "r3_f2", "macro_f1": 0.5396951366535069, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 600.415, "fold_id": "r3_f3", "macro_f1": 0.5369072266659248, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": "balanced", "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 564.813, "fold_id": "r3_f4", "macro_f1": 0.5596833883394701, "model_id": "bc_decision_tree"}
+{"best_params": {"clf__ccp_alpha": 0.0, "clf__class_weight": null, "clf__max_depth": null, "clf__min_samples_leaf": 5}, "elapsed_seconds": 561.361, "fold_id": "r3_f5", "macro_f1": 0.525301517920916, "model_id": "bc_decision_tree"}
+{
+  "elapsed_seconds": 9848.853,
+  "models": [
+    {
+      "macro_f1_mean": 0.6726523425379202,
+      "macro_f1_std": 0.010021007469218881,
+      "model_id": "df_decision_tree"
+    },
+    {
+      "macro_f1_mean": 0.6900837016866804,
+      "macro_f1_std": 0.008132958476463755,
+      "model_id": "df_gradient_boosting"
+    },
+    {
+      "macro_f1_mean": 0.6566264344806674,
+      "macro_f1_std": 0.00861384656916465,
+      "model_id": "df_linear_svc"
+    },
+    {
+      "macro_f1_mean": 0.6710254511090173,
+      "macro_f1_std": 0.010238847545163526,
+      "model_id": "df_logistic_regression"
+    },
+    {
+      "macro_f1_mean": 0.5902792396617371,
+      "macro_f1_std": 0.009155064147955128,
+      "model_id": "df_naive_bayes"
+    },
+    {
+      "macro_f1_mean": 0.6617989540784532,
+      "macro_f1_std": 0.011309225191077557,
+      "model_id": "df_random_forest"
+    },
+    {
+      "macro_f1_mean": 0.5475265388550913,
+      "macro_f1_std": 0.011613894422307232,
+      "model_id": "bc_decision_tree"
+    },
+    {
+      "macro_f1_mean": 0.625698199188549,
+      "macro_f1_std": 0.011309807848948219,
+      "model_id": "bc_gradient_boosting"
+    },
+    {
+      "macro_f1_mean": 0.5926656500094076,
+      "macro_f1_std": 0.009045194328118594,
+      "model_id": "bc_linear_svc"
+    },
+    {
+      "macro_f1_mean": 0.6034949126172732,
+      "macro_f1_std": 0.011599034354896776,
+      "model_id": "bc_logistic_regression"
+    },
+    {
+      "macro_f1_mean": 0.553471019478032,
+      "macro_f1_std": 0.008842353219016172,
+      "model_id": "bc_naive_bayes"
+    },
+    {
+      "macro_f1_mean": 0.5221084884073779,
+      "macro_f1_std": 0.012758043470268278,
+      "model_id": "bc_random_forest"
+    }
+  ],
+  "n_rows": 12135,
+  "status": "ok"
+}
+Traceback (most recent call last):
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 965, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 951, in main
+    payload = run(args)
+              ^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 935, in run
+    return publish_manifest(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 756, in publish_manifest
+    metadata = list_remote_zip_metadata(remote=remote, rclone_bin=rclone_bin)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 669, in list_remote_zip_metadata
+    model_id = validate_model_id(Path(name).stem)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 57, in validate_model_id
+    raise ValueError(f"Invalid model id: {model_id}")
+ValueError: Invalid model id: .codex
+Command failed with exit code 1: /home/macsilva/mtg/.venv/bin/python scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+Pipeline plan:
+  - check_drive_write: /home/macsilva/mtg/.venv/bin/python scripts/sync_experiments_drive.py check-write --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+  - phase_e_nested_cv: /home/macsilva/mtg/.venv/bin/python scripts/phase_e_nested_cv.py --processed-dir data/processed/archidekt --docs-dir documents/reports/results --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone --model decision_tree --bc-min-df 10 --outer-splits 5 --inner-splits 3 --repeats 1 2 3 --random-state 42 --grid-n-jobs 1 --grid-verbose 0 --estimator-n-jobs 4 --force-rerun --from-spot-check --spot-check-summary experiments/spot_check/summary.json
+  - publish_experiments_manifest: /home/macsilva/mtg/.venv/bin/python scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+
+==> check_drive_write
+/home/macsilva/mtg/.venv/bin/python scripts/sync_experiments_drive.py check-write --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+
+==> phase_e_nested_cv
+/home/macsilva/mtg/.venv/bin/python scripts/phase_e_nested_cv.py --processed-dir data/processed/archidekt --docs-dir documents/reports/results --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone --model decision_tree --bc-min-df 10 --outer-splits 5 --inner-splits 3 --repeats 1 2 3 --random-state 42 --grid-n-jobs 1 --grid-verbose 0 --estimator-n-jobs 4 --force-rerun --from-spot-check --spot-check-summary experiments/spot_check/summary.json
+
+==> publish_experiments_manifest
+/home/macsilva/mtg/.venv/bin/python scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone

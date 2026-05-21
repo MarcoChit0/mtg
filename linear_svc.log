@@ -1,0 +1,335 @@
+{
+  "delete": {
+    "command": [
+      "rclone",
+      "deletefile",
+      "mtg-experiments:__mtg_write_check_1779372381838.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote": "mtg-experiments:",
+  "remote_path": "mtg-experiments:__mtg_write_check_1779372381838.txt",
+  "status": "ok",
+  "upload": {
+    "command": [
+      "rclone",
+      "copyto",
+      "/tmp/tmplzrvyumu/__mtg_write_check_1779372381838.txt",
+      "mtg-experiments:__mtg_write_check_1779372381838.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  }
+}
+[Phase E df_linear_svc] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E df_linear_svc] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 1/2 fold 1/15] START model=df_linear_svc | representation=DF | algorithm=linear_svc | outer=r1_f1 | inner_splits=3 | grid_configs=96 | train=9708 | test=2427
+[Phase E df_linear_svc outer=r1_f1] [----------------------------] 0/96 grid configs trained | remaining=96 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_linear_svc outer=r1_f1] [----------------------------] 1/96 grid configs trained | remaining=95 | elapsed=2s | eta=3m10s
+[Phase E df_linear_svc outer=r1_f1] [#---------------------------] 2/96 grid configs trained | remaining=94 | elapsed=4s | eta=3m26s
+[Phase E df_linear_svc outer=r1_f1] [#---------------------------] 3/96 grid configs trained | remaining=93 | elapsed=6s | eta=3m18s
+[Phase E df_linear_svc outer=r1_f1] [#---------------------------] 4/96 grid configs trained | remaining=92 | elapsed=9s | eta=3m21s
+[Phase E df_linear_svc outer=r1_f1] [#---------------------------] 5/96 grid configs trained | remaining=91 | elapsed=11s | eta=3m16s
+[Phase E df_linear_svc outer=r1_f1] [##--------------------------] 6/96 grid configs trained | remaining=90 | elapsed=13s | eta=3m18s
+[Phase E df_linear_svc outer=r1_f1] [##--------------------------] 7/96 grid configs trained | remaining=89 | elapsed=15s | eta=3m13s
+[Phase E df_linear_svc outer=r1_f1] [##--------------------------] 8/96 grid configs trained | remaining=88 | elapsed=18s | eta=3m14s
+[Phase E df_linear_svc outer=r1_f1] [###-------------------------] 9/96 grid configs trained | remaining=87 | elapsed=20s | eta=3m11s
+[Phase E df_linear_svc outer=r1_f1] [###-------------------------] 10/96 grid configs trained | remaining=86 | elapsed=22s | eta=3m12s
+[Phase E df_linear_svc outer=r1_f1] [###-------------------------] 11/96 grid configs trained | remaining=85 | elapsed=24s | eta=3m08s
+[Phase E df_linear_svc outer=r1_f1] [####------------------------] 12/96 grid configs trained | remaining=84 | elapsed=27s | eta=3m09s
+[Phase E df_linear_svc outer=r1_f1] [####------------------------] 13/96 grid configs trained | remaining=83 | elapsed=29s | eta=3m06s
+[Phase E df_linear_svc outer=r1_f1] [####------------------------] 14/96 grid configs trained | remaining=82 | elapsed=32s | eta=3m07s
+[Phase E df_linear_svc outer=r1_f1] [####------------------------] 15/96 grid configs trained | remaining=81 | elapsed=34s | eta=3m04s
+[Phase E df_linear_svc outer=r1_f1] [#####-----------------------] 16/96 grid configs trained | remaining=80 | elapsed=37s | eta=3m04s
+[Phase E df_linear_svc outer=r1_f1] [#####-----------------------] 17/96 grid configs trained | remaining=79 | elapsed=39s | eta=3m01s
+[Phase E df_linear_svc outer=r1_f1] [#####-----------------------] 18/96 grid configs trained | remaining=78 | elapsed=42s | eta=3m02s
+[Phase E df_linear_svc outer=r1_f1] [######----------------------] 19/96 grid configs trained | remaining=77 | elapsed=44s | eta=2m59s
+[Phase E df_linear_svc outer=r1_f1] [######----------------------] 20/96 grid configs trained | remaining=76 | elapsed=47s | eta=2m59s
+[Phase E df_linear_svc outer=r1_f1] [######----------------------] 21/96 grid configs trained | remaining=75 | elapsed=50s | eta=2m57s
+[Phase E df_linear_svc outer=r1_f1] [######----------------------] 22/96 grid configs trained | remaining=74 | elapsed=53s | eta=2m58s
+[Phase E df_linear_svc outer=r1_f1] [#######---------------------] 23/96 grid configs trained | remaining=73 | elapsed=55s | eta=2m55s
+[Phase E df_linear_svc outer=r1_f1] [#######---------------------] 24/96 grid configs trained | remaining=72 | elapsed=59s | eta=2m56s
+[Phase E df_linear_svc outer=r1_f1] [#######---------------------] 25/96 grid configs trained | remaining=71 | elapsed=1m01s | eta=2m55s
+[Phase E df_linear_svc outer=r1_f1] [########--------------------] 26/96 grid configs trained | remaining=70 | elapsed=1m05s | eta=2m55s
+[Phase E df_linear_svc outer=r1_f1] [########--------------------] 27/96 grid configs trained | remaining=69 | elapsed=1m08s | eta=2m53s
+[Phase E df_linear_svc outer=r1_f1] [########--------------------] 28/96 grid configs trained | remaining=68 | elapsed=1m11s | eta=2m53s
+[Phase E df_linear_svc outer=r1_f1] [########--------------------] 29/96 grid configs trained | remaining=67 | elapsed=1m15s | eta=2m54s
+[Phase E df_linear_svc outer=r1_f1] [#########-------------------] 30/96 grid configs trained | remaining=66 | elapsed=1m19s | eta=2m54s
+[Phase E df_linear_svc outer=r1_f1] [#########-------------------] 31/96 grid configs trained | remaining=65 | elapsed=1m23s | eta=2m54s
+[Phase E df_linear_svc outer=r1_f1] [#########-------------------] 32/96 grid configs trained | remaining=64 | elapsed=1m27s | eta=2m54s
+[Phase E df_linear_svc outer=r1_f1] [##########------------------] 33/96 grid configs trained | remaining=63 | elapsed=1m35s | eta=3m01s
+[Phase E df_linear_svc outer=r1_f1] [##########------------------] 34/96 grid configs trained | remaining=62 | elapsed=1m39s | eta=3m01s
+[Phase E df_linear_svc outer=r1_f1] [##########------------------] 35/96 grid configs trained | remaining=61 | elapsed=1m46s | eta=3m04s
+[Phase E df_linear_svc outer=r1_f1] [##########------------------] 36/96 grid configs trained | remaining=60 | elapsed=1m50s | eta=3m03s
+[Phase E df_linear_svc outer=r1_f1] [###########-----------------] 37/96 grid configs trained | remaining=59 | elapsed=2m01s | eta=3m13s
+[Phase E df_linear_svc outer=r1_f1] [###########-----------------] 38/96 grid configs trained | remaining=58 | elapsed=2m06s | eta=3m12s
+[Phase E df_linear_svc outer=r1_f1] [###########-----------------] 39/96 grid configs trained | remaining=57 | elapsed=2m15s | eta=3m17s
+[Phase E df_linear_svc outer=r1_f1] [############----------------] 40/96 grid configs trained | remaining=56 | elapsed=2m19s | eta=3m15s
+[Phase E df_linear_svc outer=r1_f1] [############----------------] 41/96 grid configs trained | remaining=55 | elapsed=2m32s | eta=3m25s
+[Phase E df_linear_svc outer=r1_f1] [############----------------] 42/96 grid configs trained | remaining=54 | elapsed=2m38s | eta=3m23s
+[Phase E df_linear_svc outer=r1_f1] [#############---------------] 43/96 grid configs trained | remaining=53 | elapsed=2m54s | eta=3m34s
+[Phase E df_linear_svc outer=r1_f1] [#############---------------] 44/96 grid configs trained | remaining=52 | elapsed=2m59s | eta=3m31s
+[Phase E df_linear_svc outer=r1_f1] [#############---------------] 45/96 grid configs trained | remaining=51 | elapsed=3m47s | eta=4m17s
+[Phase E df_linear_svc outer=r1_f1] [#############---------------] 46/96 grid configs trained | remaining=50 | elapsed=3m53s | eta=4m13s
+[Phase E df_linear_svc outer=r1_f1] [##############--------------] 47/96 grid configs trained | remaining=49 | elapsed=4m33s | eta=4m44s
+[Phase E df_linear_svc outer=r1_f1] [##############--------------] 48/96 grid configs trained | remaining=48 | elapsed=4m38s | eta=4m38s
+[Phase E df_linear_svc outer=r1_f1] [##############--------------] 49/96 grid configs trained | remaining=47 | elapsed=5m52s | eta=5m38s
+[Phase E df_linear_svc outer=r1_f1] [###############-------------] 50/96 grid configs trained | remaining=46 | elapsed=5m58s | eta=5m30s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [###############-------------] 51/96 grid configs trained | remaining=45 | elapsed=7m10s | eta=6m19s
+[Phase E df_linear_svc outer=r1_f1] [###############-------------] 52/96 grid configs trained | remaining=44 | elapsed=7m16s | eta=6m09s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [###############-------------] 53/96 grid configs trained | remaining=43 | elapsed=9m03s | eta=7m20s
+[Phase E df_linear_svc outer=r1_f1] [################------------] 54/96 grid configs trained | remaining=42 | elapsed=9m09s | eta=7m07s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [################------------] 55/96 grid configs trained | remaining=41 | elapsed=11m05s | eta=8m16s
+[Phase E df_linear_svc outer=r1_f1] [################------------] 56/96 grid configs trained | remaining=40 | elapsed=11m11s | eta=8m00s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [#################-----------] 57/96 grid configs trained | remaining=39 | elapsed=13m19s | eta=9m06s
+[Phase E df_linear_svc outer=r1_f1] [#################-----------] 58/96 grid configs trained | remaining=38 | elapsed=13m26s | eta=8m48s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [#################-----------] 59/96 grid configs trained | remaining=37 | elapsed=15m15s | eta=9m34s
+[Phase E df_linear_svc outer=r1_f1] [##################----------] 60/96 grid configs trained | remaining=36 | elapsed=15m22s | eta=9m13s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [##################----------] 61/96 grid configs trained | remaining=35 | elapsed=17m24s | eta=9m59s
+[Phase E df_linear_svc outer=r1_f1] [##################----------] 62/96 grid configs trained | remaining=34 | elapsed=17m31s | eta=9m37s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [##################----------] 63/96 grid configs trained | remaining=33 | elapsed=19m18s | eta=10m07s
+[Phase E df_linear_svc outer=r1_f1] [###################---------] 64/96 grid configs trained | remaining=32 | elapsed=19m26s | eta=9m43s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [###################---------] 65/96 grid configs trained | remaining=31 | elapsed=21m30s | eta=10m15s
+[Phase E df_linear_svc outer=r1_f1] [###################---------] 66/96 grid configs trained | remaining=30 | elapsed=21m37s | eta=9m49s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [####################--------] 67/96 grid configs trained | remaining=29 | elapsed=23m23s | eta=10m07s
+[Phase E df_linear_svc outer=r1_f1] [####################--------] 68/96 grid configs trained | remaining=28 | elapsed=23m30s | eta=9m41s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [####################--------] 69/96 grid configs trained | remaining=27 | elapsed=25m33s | eta=10m00s
+[Phase E df_linear_svc outer=r1_f1] [####################--------] 70/96 grid configs trained | remaining=26 | elapsed=25m40s | eta=9m32s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [#####################-------] 71/96 grid configs trained | remaining=25 | elapsed=27m25s | eta=9m39s
+[Phase E df_linear_svc outer=r1_f1] [#####################-------] 72/96 grid configs trained | remaining=24 | elapsed=27m32s | eta=9m11s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [#####################-------] 73/96 grid configs trained | remaining=23 | elapsed=29m35s | eta=9m19s
+[Phase E df_linear_svc outer=r1_f1] [######################------] 74/96 grid configs trained | remaining=22 | elapsed=29m43s | eta=8m50s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [######################------] 75/96 grid configs trained | remaining=21 | elapsed=31m27s | eta=8m48s
+[Phase E df_linear_svc outer=r1_f1] [######################------] 76/96 grid configs trained | remaining=20 | elapsed=31m35s | eta=8m19s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [######################------] 77/96 grid configs trained | remaining=19 | elapsed=33m39s | eta=8m18s
+[Phase E df_linear_svc outer=r1_f1] [#######################-----] 78/96 grid configs trained | remaining=18 | elapsed=33m47s | eta=7m48s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [#######################-----] 79/96 grid configs trained | remaining=17 | elapsed=35m37s | eta=7m40s
+[Phase E df_linear_svc outer=r1_f1] [#######################-----] 80/96 grid configs trained | remaining=16 | elapsed=35m44s | eta=7m09s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [########################----] 81/96 grid configs trained | remaining=15 | elapsed=37m51s | eta=7m01s
+[Phase E df_linear_svc outer=r1_f1] [########################----] 82/96 grid configs trained | remaining=14 | elapsed=37m59s | eta=6m29s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [########################----] 83/96 grid configs trained | remaining=13 | elapsed=39m48s | eta=6m14s
+[Phase E df_linear_svc outer=r1_f1] [########################----] 84/96 grid configs trained | remaining=12 | elapsed=39m55s | eta=5m42s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [#########################---] 85/96 grid configs trained | remaining=11 | elapsed=42m04s | eta=5m27s
+[Phase E df_linear_svc outer=r1_f1] [#########################---] 86/96 grid configs trained | remaining=10 | elapsed=42m11s | eta=4m54s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [#########################---] 87/96 grid configs trained | remaining=9 | elapsed=43m59s | eta=4m33s
+[Phase E df_linear_svc outer=r1_f1] [##########################--] 88/96 grid configs trained | remaining=8 | elapsed=44m06s | eta=4m01s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [##########################--] 89/96 grid configs trained | remaining=7 | elapsed=46m10s | eta=3m38s
+[Phase E df_linear_svc outer=r1_f1] [##########################--] 90/96 grid configs trained | remaining=6 | elapsed=46m18s | eta=3m05s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [###########################-] 91/96 grid configs trained | remaining=5 | elapsed=48m04s | eta=2m38s
+[Phase E df_linear_svc outer=r1_f1] [###########################-] 92/96 grid configs trained | remaining=4 | elapsed=48m12s | eta=2m06s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [###########################-] 93/96 grid configs trained | remaining=3 | elapsed=50m15s | eta=1m37s
+[Phase E df_linear_svc outer=r1_f1] [###########################-] 94/96 grid configs trained | remaining=2 | elapsed=50m23s | eta=1m04s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f1] [############################] 95/96 grid configs trained | remaining=1 | elapsed=52m11s | eta=33s
+[Phase E df_linear_svc outer=r1_f1] [############################] 96/96 grid configs trained | remaining=0 | elapsed=52m18s | eta=0s
+[Phase E model 1/2 fold 1/15] DONE  model=df_linear_svc | outer=r1_f1 | macro_f1=0.6577 | inner_best=0.6515 | elapsed=3142.577s | best_params={'clf__C': 0.05, 'clf__class_weight': 'balanced', 'clf__penalty': 'l1'}
+[Phase E df_linear_svc] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=52m23s | eta=12h13m16s
+[Phase E df_linear_svc] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=52m23s | eta=12h13m16s | running outer=r1_f2
+
+[Phase E model 1/2 fold 2/15] START model=df_linear_svc | representation=DF | algorithm=linear_svc | outer=r1_f2 | inner_splits=3 | grid_configs=96 | train=9708 | test=2427
+[Phase E df_linear_svc outer=r1_f2] [----------------------------] 0/96 grid configs trained | remaining=96 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_linear_svc outer=r1_f2] [----------------------------] 1/96 grid configs trained | remaining=95 | elapsed=2s | eta=3m05s
+[Phase E df_linear_svc outer=r1_f2] [#---------------------------] 2/96 grid configs trained | remaining=94 | elapsed=4s | eta=3m19s
+[Phase E df_linear_svc outer=r1_f2] [#---------------------------] 3/96 grid configs trained | remaining=93 | elapsed=6s | eta=3m11s
+[Phase E df_linear_svc outer=r1_f2] [#---------------------------] 4/96 grid configs trained | remaining=92 | elapsed=8s | eta=3m15s
+[Phase E df_linear_svc outer=r1_f2] [#---------------------------] 5/96 grid configs trained | remaining=91 | elapsed=10s | eta=3m10s
+[Phase E df_linear_svc outer=r1_f2] [##--------------------------] 6/96 grid configs trained | remaining=90 | elapsed=13s | eta=3m12s
+[Phase E df_linear_svc outer=r1_f2] [##--------------------------] 7/96 grid configs trained | remaining=89 | elapsed=15s | eta=3m08s
+[Phase E df_linear_svc outer=r1_f2] [##--------------------------] 8/96 grid configs trained | remaining=88 | elapsed=17s | eta=3m08s
+[Phase E df_linear_svc outer=r1_f2] [###-------------------------] 9/96 grid configs trained | remaining=87 | elapsed=19s | eta=3m05s
+[Phase E df_linear_svc outer=r1_f2] [###-------------------------] 10/96 grid configs trained | remaining=86 | elapsed=22s | eta=3m06s
+[Phase E df_linear_svc outer=r1_f2] [###-------------------------] 11/96 grid configs trained | remaining=85 | elapsed=24s | eta=3m02s
+[Phase E df_linear_svc outer=r1_f2] [####------------------------] 12/96 grid configs trained | remaining=84 | elapsed=26s | eta=3m03s
+[Phase E df_linear_svc outer=r1_f2] [####------------------------] 13/96 grid configs trained | remaining=83 | elapsed=28s | eta=3m00s
+[Phase E df_linear_svc outer=r1_f2] [####------------------------] 14/96 grid configs trained | remaining=82 | elapsed=31s | eta=3m01s
+[Phase E df_linear_svc outer=r1_f2] [####------------------------] 15/96 grid configs trained | remaining=81 | elapsed=33s | eta=2m58s
+[Phase E df_linear_svc outer=r1_f2] [#####-----------------------] 16/96 grid configs trained | remaining=80 | elapsed=36s | eta=2m58s
+[Phase E df_linear_svc outer=r1_f2] [#####-----------------------] 17/96 grid configs trained | remaining=79 | elapsed=38s | eta=2m55s
+[Phase E df_linear_svc outer=r1_f2] [#####-----------------------] 18/96 grid configs trained | remaining=78 | elapsed=41s | eta=2m56s
+[Phase E df_linear_svc outer=r1_f2] [######----------------------] 19/96 grid configs trained | remaining=77 | elapsed=43s | eta=2m53s
+[Phase E df_linear_svc outer=r1_f2] [######----------------------] 20/96 grid configs trained | remaining=76 | elapsed=46s | eta=2m53s
+[Phase E df_linear_svc outer=r1_f2] [######----------------------] 21/96 grid configs trained | remaining=75 | elapsed=48s | eta=2m51s
+[Phase E df_linear_svc outer=r1_f2] [######----------------------] 22/96 grid configs trained | remaining=74 | elapsed=51s | eta=2m52s
+[Phase E df_linear_svc outer=r1_f2] [#######---------------------] 23/96 grid configs trained | remaining=73 | elapsed=53s | eta=2m49s
+[Phase E df_linear_svc outer=r1_f2] [#######---------------------] 24/96 grid configs trained | remaining=72 | elapsed=57s | eta=2m50s
+[Phase E df_linear_svc outer=r1_f2] [#######---------------------] 25/96 grid configs trained | remaining=71 | elapsed=59s | eta=2m49s
+[Phase E df_linear_svc outer=r1_f2] [########--------------------] 26/96 grid configs trained | remaining=70 | elapsed=1m03s | eta=2m49s
+[Phase E df_linear_svc outer=r1_f2] [########--------------------] 27/96 grid configs trained | remaining=69 | elapsed=1m06s | eta=2m48s
+[Phase E df_linear_svc outer=r1_f2] [########--------------------] 28/96 grid configs trained | remaining=68 | elapsed=1m09s | eta=2m48s
+[Phase E df_linear_svc outer=r1_f2] [########--------------------] 29/96 grid configs trained | remaining=67 | elapsed=1m13s | eta=2m49s
+[Phase E df_linear_svc outer=r1_f2] [#########-------------------] 30/96 grid configs trained | remaining=66 | elapsed=1m17s | eta=2m49s
+[Phase E df_linear_svc outer=r1_f2] [#########-------------------] 31/96 grid configs trained | remaining=65 | elapsed=1m21s | eta=2m49s
+[Phase E df_linear_svc outer=r1_f2] [#########-------------------] 32/96 grid configs trained | remaining=64 | elapsed=1m24s | eta=2m49s
+[Phase E df_linear_svc outer=r1_f2] [##########------------------] 33/96 grid configs trained | remaining=63 | elapsed=1m31s | eta=2m53s
+[Phase E df_linear_svc outer=r1_f2] [##########------------------] 34/96 grid configs trained | remaining=62 | elapsed=1m35s | eta=2m53s
+[Phase E df_linear_svc outer=r1_f2] [##########------------------] 35/96 grid configs trained | remaining=61 | elapsed=1m42s | eta=2m57s
+[Phase E df_linear_svc outer=r1_f2] [##########------------------] 36/96 grid configs trained | remaining=60 | elapsed=1m46s | eta=2m57s
+[Phase E df_linear_svc outer=r1_f2] [###########-----------------] 37/96 grid configs trained | remaining=59 | elapsed=1m56s | eta=3m06s
+[Phase E df_linear_svc outer=r1_f2] [###########-----------------] 38/96 grid configs trained | remaining=58 | elapsed=2m01s | eta=3m04s
+[Phase E df_linear_svc outer=r1_f2] [###########-----------------] 39/96 grid configs trained | remaining=57 | elapsed=2m12s | eta=3m12s
+[Phase E df_linear_svc outer=r1_f2] [############----------------] 40/96 grid configs trained | remaining=56 | elapsed=2m16s | eta=3m11s
+[Phase E df_linear_svc outer=r1_f2] [############----------------] 41/96 grid configs trained | remaining=55 | elapsed=2m36s | eta=3m29s
+[Phase E df_linear_svc outer=r1_f2] [############----------------] 42/96 grid configs trained | remaining=54 | elapsed=2m41s | eta=3m27s
+[Phase E df_linear_svc outer=r1_f2] [#############---------------] 43/96 grid configs trained | remaining=53 | elapsed=2m59s | eta=3m41s
+[Phase E df_linear_svc outer=r1_f2] [#############---------------] 44/96 grid configs trained | remaining=52 | elapsed=3m04s | eta=3m38s
+[Phase E df_linear_svc outer=r1_f2] [#############---------------] 45/96 grid configs trained | remaining=51 | elapsed=3m47s | eta=4m17s
+[Phase E df_linear_svc outer=r1_f2] [#############---------------] 46/96 grid configs trained | remaining=50 | elapsed=3m53s | eta=4m13s
+[Phase E df_linear_svc outer=r1_f2] [##############--------------] 47/96 grid configs trained | remaining=49 | elapsed=4m34s | eta=4m46s
+[Phase E df_linear_svc outer=r1_f2] [##############--------------] 48/96 grid configs trained | remaining=48 | elapsed=4m40s | eta=4m40s
+[Phase E df_linear_svc outer=r1_f2] [##############--------------] 49/96 grid configs trained | remaining=47 | elapsed=5m54s | eta=5m39s
+[Phase E df_linear_svc outer=r1_f2] [###############-------------] 50/96 grid configs trained | remaining=46 | elapsed=6m00s | eta=5m31s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f2] [###############-------------] 51/96 grid configs trained | remaining=45 | elapsed=7m11s | eta=6m20s
+[Phase E df_linear_svc outer=r1_f2] [###############-------------] 52/96 grid configs trained | remaining=44 | elapsed=7m17s | eta=6m10s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f2] [###############-------------] 53/96 grid configs trained | remaining=43 | elapsed=9m05s | eta=7m22s
+[Phase E df_linear_svc outer=r1_f2] [################------------] 54/96 grid configs trained | remaining=42 | elapsed=9m11s | eta=7m09s
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+/home/macsilva/mtg/.venv/lib/python3.11/site-packages/sklearn/svm/_base.py:1258: ConvergenceWarning: Liblinear failed to converge, increase the number of iterations.
+  warnings.warn(
+[Phase E df_linear_svc outer=r1_f2] [################------------] 55/96 grid configs trained | remaining=41 | elapsed=10m42s | eta=7m59s
+[Phase E df_linear_svc outer=r1_f2] [################------------] 56/96 grid configs trained | remaining=40 | elapsed=10m48s | eta=7m43s

@@ -1,107 +1,69 @@
 # Report da Fase C — Pré-processamento
 
+*Gerado automaticamente em `2026-05-21T13:56:43.572757+00:00`.*
+
 ## Objetivo
 
-A Fase C teve como objetivo congelar a base modelável e implementar transformações sem vazamento para as duas representações que serão usadas nos modelos:
+Congelar a base modelável (`y1, y2 ∈ {2,3,4}`) e registrar as transformações sem vazamento aplicadas pelos modelos das Fases D e E. O alvo único é `y1` (`archidekt_edh_bracket`); `y2` é preservado para comparação descritiva (Fase G), nunca como feature.
 
-- Deck Features (`DF`): features agregadas por deck.
-- Bag of Cards (`BC`): matriz esparsa carta × deck.
+## Entrada e saída
 
-O alvo único de treino é `y1` (`archidekt_edh_bracket`). `y2` é preservado apenas para análise descritiva e comparação posterior, nunca como feature.
+| Item | Valor |
+|---|---|
+| Origem | `data/processed/archidekt/deck_features.jsonl` |
+| Snapshot ids modeláveis | `data/processed/archidekt/modeling_snapshot_ids.json` |
+| Decks excluídos (audit) | `data/processed/archidekt/modeling_excluded.jsonl` |
+| Manifesto JSON | `data/processed/archidekt/modeling_dataset_manifest.json` |
 
-## O que foi feito
+## C.1 Filtro da base modelável
 
-1. Implementado o filtro da base modelável em `scripts/phase_c_filter_dataset.py`.
-2. Implementados transformadores sklearn-compatible em `scripts/preprocessing.py`.
-3. Gerados os artefatos:
-   - `data/processed/archidekt/modeling_snapshot_ids.json`
-   - `data/processed/archidekt/modeling_excluded.jsonl`
-   - `data/processed/archidekt/modeling_dataset_manifest.json`
-4. Testada a materialização real das duas representações com os dados atuais.
-5. Validado que colunas de vazamento não entram em `X`.
-
-## Como foi feito
-
-### C.1 Filtro da base modelável
-
-O filtro mantém apenas decks com `y1` e `y2` em `{2,3,4}`. O resultado registrado em `modeling_dataset_manifest.json` foi:
+Mantém apenas decks com `y1 ∈ {2,3,4}` e `y2 ∈ {2,3,4}`. Os excluídos não são removidos do snapshot original — ficam preservados em `modeling_excluded.jsonl` para análise qualitativa (Fase B) e auditoria.
 
 | Métrica | Valor |
 |---|---:|
-| Total de decks no snapshot | 12.950 |
-| Decks incluídos na modelagem | 12.135 |
+| Total de decks no snapshot | 12,950 |
+| Decks incluídos | 12,135 |
 | Decks excluídos | 815 |
-| Excluídos por `y2=1` | 393 |
-| Excluídos por `y2=5` | 422 |
 
-Os excluídos não foram apagados; eles ficam em `modeling_excluded.jsonl` para análise qualitativa e discussão.
+### Motivos de exclusão
 
-### C.2 Deck Features
+| Motivo | Quantidade |
+|---|---:|
+| `y2_out_of_range:5` | 422 |
+| `y2_out_of_range:1` | 393 |
 
-`DeckFeaturePreprocessor` executa no `fit`:
+## C.2 Deck Features
 
-- inferência das colunas numéricas permitidas;
-- remoção de `y1`, `y2`, `delta`, `abs_delta`, `edhpowerlevel`, `edhpowerlevel_bracket` e metadados;
-- imputação por mediana do treino para `edhrec_rank_*` e `salt_*`;
+Aplicado fold a fold pelos modelos da Fase D/E (fit apenas no treino do fold), via `scripts/preprocessing.py::DeckFeaturePreprocessor`:
+
+- inferência das colunas numéricas permitidas, excluindo `y1`, `y2`, `delta`, `abs_delta`, `edhpowerlevel`, `edhpowerlevel_bracket` e metadados;
+- imputação por mediana do treino para colunas `edhrec_rank_*` e `salt_*`;
 - winsorização de `price_total` no p99 do treino;
-- remoção de variância zero no treino;
-- `StandardScaler` opcional para modelos lineares, SVM e KNN.
+- remoção de colunas com variância zero no treino;
+- `StandardScaler` opcional (ligado para `logistic_regression`, `linear_svc` e `knn`; desligado para árvores, ensembles e Naive Bayes).
 
-Na checagem real, a representação DF materializou:
+## C.3 Bag of Cards
 
-| Item | Valor |
-|---|---:|
-| Linhas | 12.135 |
-| Colunas após remoção de variância zero | 102 |
-| Colunas de vazamento detectadas | 0 |
+Aplicado fold a fold pelos modelos da Fase D/E, via `scripts/preprocessing.py::BagOfCardsPreprocessor`:
 
-### C.3 Bag of Cards
+- contagem por carta usando somente o treino do fold (sem vazamento de cartas de teste);
+- pruning por `bc_min_df` (valor decidido na Fase D entre `{5, 10, 20}`);
+- matriz `scipy.sparse.csr_matrix`;
+- variante `use_tfidf` disponível mas **desligada** na Fase D; pode ser ativada como hiperparâmetro em fases posteriores para algoritmos que se beneficiam de IDF (ex.: `LinearSVC`). Permanece incompatível com `MultinomialNB`.
 
-`BagOfCardsPreprocessor` executa no `fit`:
+## C.4 Antivazamento
 
-- contagem de presença por carta apenas no treino;
-- pruning por `bc_min_df` no experimento de BC (internamente, o transformador usa o nome sklearn-convencional `min_df`);
-- construção de matriz CSR esparsa;
-- opção `use_tfidf`, para modelos que podem se beneficiar de IDF em fases posteriores. Na Fase D, TF-IDF fica desligado.
+- Toda transformação faz `fit` apenas no treino do fold (nunca no teste).
+- `y2`, `delta`, `abs_delta` e todos os campos `edhpowerlevel.*` (score, power_level, etc.) **nunca** entram em `X` — bloqueio explícito em `is_leakage_column`.
+- `y1` é o único target; não há modelo previsto para `y2`.
+- Os mesmos folds são usados para todos os algoritmos em cada repeat (ver `experiments/folds.json` gerado pela Fase E).
 
-Na checagem real de Fase C com `bc_min_df=10`, a representação BC materializou:
+## Saídas geradas
 
-| Item | Valor |
-|---|---:|
-| Linhas | 12.135 |
-| Colunas/cartas após pruning | 11.114 |
+- `snapshot_ids`: `data/processed/archidekt/modeling_snapshot_ids.json`
+- `excluded`: `data/processed/archidekt/modeling_excluded.jsonl`
+- `manifest`: `data/processed/archidekt/modeling_dataset_manifest.json`
 
-## Problemas encontrados e correções
+## Próximo passo
 
-| Problema | Impacto | Correção |
-|---|---|---|
-| `scripts/preprocessing.py` estava aberto no IDE, mas não existia no repositório | A Fase C não era reprodutível em código | Criado `scripts/preprocessing.py` com transformadores reutilizáveis |
-| `pyproject.toml` já apontava para `phase-c-filter-dataset`, mas o script não existia | O console script quebraria em ambiente limpo | Criado `scripts/phase_c_filter_dataset.py` |
-| Risco de vazamento de `y2` ou campos da calculadora | Resultados de modelagem ficariam inválidos | Bloqueio explícito de labels, deltas e campos `edhpowerlevel*` na inferência de colunas |
-| Necessidade de aplicar mediana/p99/vocabulário somente no treino | Vazamento fold→treino em CV | Transformadores seguem API `fit/transform`; toda estatística é aprendida no `fit` |
-| Reprodutibilidade a partir do Google Drive | Rodar em diretórios temporários precisava respeitar paths configuráveis | `run-mtg-pipeline` restaura o snapshot processado e roda C até o manifest sem reconsultar `y2` |
-
-## Testes e validação
-
-Testes adicionados em `tests/test_phase_c_preprocessing.py` cobrem:
-
-- filtro de incluídos/excluídos;
-- geração dos audit rows de exclusão;
-- remoção de colunas de vazamento;
-- imputação por mediana aprendida no treino;
-- winsorização por p99 do treino;
-- scaler opcional;
-- pruning `bc_min_df` da Bag of Cards;
-- variante TF-IDF.
-
-Comando validado:
-
-```bash
-uv run python -m unittest discover -s tests -v
-```
-
-Resultado da última validação: 31 testes passaram.
-
-## Estado final da Fase C
-
-A Fase C está concluída. A base modelável está congelada em 12.135 decks, as exclusões estão auditadas e os transformadores estão prontos para Fase D e Fase E sem vazamento.
+Executar `uv run run-mtg-pipeline spot-checking` para a Fase D — o filtro acima alimenta o seletor top-5 por representação que define o conjunto da Fase E.
