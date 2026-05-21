@@ -8,6 +8,7 @@
     {
       "archive": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "archive_path": "experiments/archives/df_naive_bayes.zip",
         "files": [
           "df_naive_bayes/best_hyperparams_per_fold.json",
@@ -81,16 +82,51 @@
       },
       "model_id": "df_decision_tree",
 >>>>>>> Stashed changes
+=======
+        "archive_path": "experiments/archives/df_random_forest.zip",
+        "files": [
+          "df_random_forest/best_hyperparams_per_fold.json",
+          "df_random_forest/checkpoint_state.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r1_f1.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r1_f2.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r1_f3.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r1_f4.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r1_f5.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r2_f1.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r2_f2.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r2_f3.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r2_f4.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r2_f5.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r3_f1.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r3_f2.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r3_f3.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r3_f4.json",
+          "df_random_forest/checkpoints/f1ad16b24de54183/r3_f5.json",
+          "df_random_forest/cv_results_per_fold.jsonl",
+          "df_random_forest/metrics_per_fold.json",
+          "df_random_forest/predictions_per_fold.jsonl"
+        ],
+        "model_id": "df_random_forest",
+        "size_bytes": 1696873,
+        "status": "ok"
+      },
+      "model_id": "df_random_forest",
+>>>>>>> Stashed changes
       "rclone": {
         "command": [
           "rclone",
           "copyto",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "experiments/archives/df_naive_bayes.zip",
           "mtg-experiments:df_naive_bayes.zip"
 =======
           "experiments/archives/df_decision_tree.zip",
           "mtg-experiments:df_decision_tree.zip"
+>>>>>>> Stashed changes
+=======
+          "experiments/archives/df_random_forest.zip",
+          "mtg-experiments:df_random_forest.zip"
 >>>>>>> Stashed changes
         ],
         "returncode": 0,
@@ -103,6 +139,7 @@
     },
     {
       "archive": {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "archive_path": "experiments/archives/bc_naive_bayes.zip",
         "files": [
@@ -177,16 +214,51 @@
       },
       "model_id": "bc_decision_tree",
 >>>>>>> Stashed changes
+=======
+        "archive_path": "experiments/archives/bc_random_forest.zip",
+        "files": [
+          "bc_random_forest/best_hyperparams_per_fold.json",
+          "bc_random_forest/checkpoint_state.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r1_f1.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r1_f2.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r1_f3.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r1_f4.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r1_f5.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r2_f1.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r2_f2.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r2_f3.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r2_f4.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r2_f5.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r3_f1.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r3_f2.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r3_f3.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r3_f4.json",
+          "bc_random_forest/checkpoints/1b5f99e039e5d2fd/r3_f5.json",
+          "bc_random_forest/cv_results_per_fold.jsonl",
+          "bc_random_forest/metrics_per_fold.json",
+          "bc_random_forest/predictions_per_fold.jsonl"
+        ],
+        "model_id": "bc_random_forest",
+        "size_bytes": 1705565,
+        "status": "ok"
+      },
+      "model_id": "bc_random_forest",
+>>>>>>> Stashed changes
       "rclone": {
         "command": [
           "rclone",
           "copyto",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "experiments/archives/bc_naive_bayes.zip",
           "mtg-experiments:bc_naive_bayes.zip"
 =======
           "experiments/archives/bc_decision_tree.zip",
           "mtg-experiments:bc_decision_tree.zip"
+>>>>>>> Stashed changes
+=======
+          "experiments/archives/bc_random_forest.zip",
+          "mtg-experiments:bc_random_forest.zip"
 >>>>>>> Stashed changes
         ],
         "returncode": 0,
@@ -226,6 +298,7 @@
     }
   ],
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "elapsed_seconds": 605.157,
 =======
   "elapsed_seconds": 9848.853,
@@ -237,6 +310,16 @@
     },
     {
       "algorithm": "decision_tree",
+=======
+  "elapsed_seconds": 2115.366,
+  "model_plan": [
+    {
+      "algorithm": "random_forest",
+      "representation": "DF"
+    },
+    {
+      "algorithm": "random_forest",
+>>>>>>> Stashed changes
       "representation": "BC"
     }
   ],
@@ -246,13 +329,21 @@
     "bc_linear_svc": "existing_artifact",
     "bc_logistic_regression": "existing_artifact",
     "bc_naive_bayes": "existing_artifact",
+<<<<<<< Updated upstream
     "bc_random_forest": "existing_artifact",
     "df_decision_tree": "current_run",
+=======
+    "bc_random_forest": "current_run",
+>>>>>>> Stashed changes
     "df_gradient_boosting": "existing_artifact",
     "df_linear_svc": "existing_artifact",
     "df_logistic_regression": "existing_artifact",
     "df_naive_bayes": "existing_artifact",
+<<<<<<< Updated upstream
     "df_random_forest": "existing_artifact"
+=======
+    "df_random_forest": "current_run"
+>>>>>>> Stashed changes
   },
   "models": [
     {
@@ -3320,23 +3411,23 @@
     },
     {
       "aggregate": {
-        "accuracy_mean": 0.7041615162752369,
-        "accuracy_std": 0.010153756777876591,
+        "accuracy_mean": 0.7033649224007691,
+        "accuracy_std": 0.0069287565167946265,
         "confusion_matrix_sum": [
           [
-            3075,
-            3822,
-            66
+            3658,
+            3242,
+            63
           ],
           [
-            1669,
-            15918,
-            1064
+            2180,
+            15283,
+            1188
           ],
           [
-            140,
-            4009,
-            6642
+            157,
+            3969,
+            6665
           ]
         ],
         "labels": [
@@ -3344,126 +3435,56 @@
           3,
           4
         ],
-        "macro_f1_mean": 0.6617989540784532,
-        "macro_f1_std": 0.011309225191077557,
-        "precision_macro_mean": 0.7185094612326035,
-        "precision_macro_std": 0.012818468493426867,
-        "recall_macro_mean": 0.6368675552808873,
-        "recall_macro_std": 0.010907848149744027
+        "macro_f1_mean": 0.6732750782145236,
+        "macro_f1_std": 0.0075889324109546154,
+        "precision_macro_mean": 0.710760650560776,
+        "precision_macro_std": 0.008862317661366973,
+        "recall_macro_mean": 0.6541392153091369,
+        "recall_macro_std": 0.007800369082740042
       },
       "algorithm": "random_forest",
+      "checkpoint": {
+        "checkpoint_dir": "experiments/df_random_forest/checkpoints/f1ad16b24de54183",
+        "completed_folds": 15,
+        "signature_id": "f1ad16b24de54183",
+        "total_folds": 15
+      },
       "folds": [
         {
-          "accuracy": 0.7128141738772147,
+          "accuracy": 0.7119901112484549,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              198,
-              262,
-              5
+              242,
+              219,
+              4
             ],
             [
-              98,
-              1081,
-              64
+              130,
+              1031,
+              82
             ],
             [
-              10,
-              258,
-              451
+              11,
+              253,
+              455
             ]
           ],
-          "elapsed_seconds": 14.964,
+          "elapsed_seconds": 53.849,
           "fold_id": "r1_f1",
-          "inner_best_macro_f1": 0.6574763509642431,
+          "inner_best_macro_f1": 0.6664624228879664,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6672740132097812,
+          "macro_f1": 0.6812957847842208,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 1,
-          "precision_macro": 0.7298565046544251,
-          "recall_macro": 0.640912229306044,
-          "repeat_seed": 1,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7053976102183765,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              210,
-              247,
-              7
-            ],
-            [
-              102,
-              1068,
-              74
-            ],
-            [
-              9,
-              276,
-              434
-            ]
-          ],
-          "elapsed_seconds": 15.065,
-          "fold_id": "r1_f2",
-          "inner_best_macro_f1": 0.6666197539074369,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.663958188737702,
-          "model_id": "df_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.7227333270561527,
-          "recall_macro": 0.6382410802456238,
-          "repeat_seed": 1,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.6988051091882983,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              218,
-              242,
-              4
-            ],
-            [
-              127,
-              1035,
-              82
-            ],
-            [
-              8,
-              268,
-              443
-            ]
-          ],
-          "elapsed_seconds": 14.616,
-          "fold_id": "r1_f3",
-          "inner_best_macro_f1": 0.658952118685079,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6619323780247169,
-          "model_id": "df_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.7082985878431071,
-          "recall_macro": 0.6393182247049357,
+          "precision_macro": 0.7196167721869887,
+          "recall_macro": 0.6608994549014965,
           "repeat_seed": 1,
           "representation": "DF"
         },
@@ -3472,379 +3493,189 @@
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              197,
-              264,
-              3
+              235,
+              223,
+              6
             ],
             [
-              126,
-              1057,
-              60
+              139,
+              1021,
+              84
             ],
             [
-              7,
-              274,
-              439
+              15,
+              267,
+              437
             ]
           ],
-          "elapsed_seconds": 15.296,
-          "fold_id": "r1_f4",
-          "inner_best_macro_f1": 0.6624082257718776,
+          "elapsed_seconds": 53.192,
+          "fold_id": "r1_f2",
+          "inner_best_macro_f1": 0.6772222310347421,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6532022341002857,
+          "macro_f1": 0.6645463093118902,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.7113892045888198,
-          "recall_macro": 0.6282177383642138,
+          "outer_fold": 2,
+          "precision_macro": 0.7030155237654406,
+          "recall_macro": 0.6449978874506058,
           "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.707457766790276,
+          "accuracy": 0.7058096415327565,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              193,
-              264,
-              7
+              269,
+              191,
+              4
             ],
             [
-              97,
-              1075,
-              71
+              172,
+              994,
+              78
             ],
             [
-              9,
-              262,
-              449
-            ]
-          ],
-          "elapsed_seconds": 15.345,
-          "fold_id": "r1_f5",
-          "inner_best_macro_f1": 0.6611489157953968,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.660667858791899,
-          "model_id": "df_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 5,
-          "precision_macro": 0.7229775667040638,
-          "recall_macro": 0.6348008361511566,
-          "repeat_seed": 1,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7053976102183765,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              202,
-              255,
-              8
-            ],
-            [
-              108,
-              1060,
-              75
-            ],
-            [
-              9,
-              260,
+              10,
+              259,
               450
             ]
           ],
-          "elapsed_seconds": 15.403,
-          "fold_id": "r2_f1",
-          "inner_best_macro_f1": 0.657001234339731,
+          "elapsed_seconds": 53.418,
+          "fold_id": "r1_f3",
+          "inner_best_macro_f1": 0.6651231928987356,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6621541877101348,
-          "model_id": "df_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.7168407955624104,
-          "recall_macro": 0.6376844693522192,
-          "repeat_seed": 2,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7136382365059745,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              219,
-              241,
-              4
-            ],
-            [
-              104,
-              1066,
-              74
-            ],
-            [
-              11,
-              261,
-              447
-            ]
-          ],
-          "elapsed_seconds": 14.995,
-          "fold_id": "r2_f2",
-          "inner_best_macro_f1": 0.6572201756935744,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6752336433331525,
-          "model_id": "df_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.7289880443195242,
-          "recall_macro": 0.650197581004363,
-          "repeat_seed": 2,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.6971569839307787,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              204,
-              256,
-              4
-            ],
-            [
-              110,
-              1072,
-              62
-            ],
-            [
-              8,
-              295,
-              416
-            ]
-          ],
-          "elapsed_seconds": 15.028,
-          "fold_id": "r2_f3",
-          "inner_best_macro_f1": 0.660096471395569,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6532200090098614,
+          "macro_f1": 0.682328645280497,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.7190387164349762,
-          "recall_macro": 0.6266576232743701,
-          "repeat_seed": 2,
+          "precision_macro": 0.7102275469277699,
+          "recall_macro": 0.6682153373167848,
+          "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.6971569839307787,
+          "accuracy": 0.7049855789039967,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              202,
-              259,
+              241,
+              220,
               3
             ],
             [
-              124,
-              1045,
-              74
+              153,
+              1018,
+              72
             ],
             [
-              12,
+              5,
               263,
-              445
+              452
             ]
           ],
-          "elapsed_seconds": 15.531,
-          "fold_id": "r2_f4",
-          "inner_best_macro_f1": 0.6628902975840564,
+          "elapsed_seconds": 53.632,
+          "fold_id": "r1_f4",
+          "inner_best_macro_f1": 0.6729054686343922,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6546996805802316,
+          "macro_f1": 0.6751463882653986,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.7056676483050013,
-          "recall_macro": 0.6313694492478441,
-          "repeat_seed": 2,
+          "precision_macro": 0.7133031860670741,
+          "recall_macro": 0.6553868843043392,
+          "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7124021425628347,
+          "accuracy": 0.7066337041615163,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              203,
-              259,
-              2
+              238,
+              221,
+              5
             ],
             [
-              102,
-              1066,
-              75
+              127,
+              1035,
+              81
             ],
             [
-              9,
-              251,
-              460
+              10,
+              268,
+              442
             ]
           ],
-          "elapsed_seconds": 15.69,
-          "fold_id": "r2_f5",
-          "inner_best_macro_f1": 0.6613915965915566,
+          "elapsed_seconds": 53.15,
+          "fold_id": "r1_f5",
+          "inner_best_macro_f1": 0.6695957006757474,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6700162704109468,
+          "macro_f1": 0.6745926818223958,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.7265011850392659,
-          "recall_macro": 0.6446638211018741,
-          "repeat_seed": 2,
+          "precision_macro": 0.7169739123518651,
+          "recall_macro": 0.6531609452268592,
+          "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7029254223320972,
+          "accuracy": 0.700041203131438,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              203,
-              259,
-              3
+              236,
+              222,
+              7
             ],
             [
-              122,
-              1056,
-              65
+              143,
+              1010,
+              90
             ],
             [
-              13,
-              259,
-              447
+              9,
+              257,
+              453
             ]
           ],
-          "elapsed_seconds": 15.029,
-          "fold_id": "r3_f1",
-          "inner_best_macro_f1": 0.6552190811868432,
+          "elapsed_seconds": 53.669,
+          "fold_id": "r2_f1",
+          "inner_best_macro_f1": 0.6707930851253815,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6599370006910017,
+          "macro_f1": 0.6688914017719391,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 1,
-          "precision_macro": 0.713151680375509,
-          "recall_macro": 0.6359378210071654,
-          "repeat_seed": 3,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7148743304491141,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              210,
-              249,
-              5
-            ],
-            [
-              106,
-              1062,
-              76
-            ],
-            [
-              6,
-              250,
-              463
-            ]
-          ],
-          "elapsed_seconds": 15.768,
-          "fold_id": "r3_f2",
-          "inner_best_macro_f1": 0.662471034395877,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6749151255269751,
-          "model_id": "df_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.7278699913383173,
-          "recall_macro": 0.650077962183888,
-          "repeat_seed": 3,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7053976102183765,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              195,
-              267,
-              2
-            ],
-            [
-              90,
-              1084,
-              70
-            ],
-            [
-              7,
-              279,
-              433
-            ]
-          ],
-          "elapsed_seconds": 15.782,
-          "fold_id": "r3_f3",
-          "inner_best_macro_f1": 0.6582562365665808,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6592462315475948,
-          "model_id": "df_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.7300882121996551,
-          "recall_macro": 0.6312888567600784,
-          "repeat_seed": 3,
+          "precision_macro": 0.7033971251008908,
+          "recall_macro": 0.6500396293049283,
+          "repeat_seed": 2,
           "representation": "DF"
         },
         {
@@ -3852,74 +3683,340 @@
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              223,
-              237,
-              4
+              249,
+              209,
+              6
             ],
             [
-              120,
-              1064,
-              59
+              131,
+              1035,
+              78
             ],
             [
-              8,
-              263,
-              449
+              11,
+              256,
+              452
             ]
           ],
-          "elapsed_seconds": 15.154,
-          "fold_id": "r3_f4",
-          "inner_best_macro_f1": 0.6583283082257307,
+          "elapsed_seconds": 53.143,
+          "fold_id": "r2_f2",
+          "inner_best_macro_f1": 0.6705400947101583,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6780800352847994,
+          "macro_f1": 0.6857160144310148,
+          "model_id": "df_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.7233707421969436,
+          "recall_macro": 0.6657608013998985,
+          "repeat_seed": 2,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6996291718170581,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              248,
+              214,
+              2
+            ],
+            [
+              147,
+              1032,
+              65
+            ],
+            [
+              5,
+              296,
+              418
+            ]
+          ],
+          "elapsed_seconds": 53.178,
+          "fold_id": "r2_f3",
+          "inner_best_macro_f1": 0.6692929912737436,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6697577753827998,
+          "model_id": "df_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.7170387901640659,
+          "recall_macro": 0.6484759187874277,
+          "repeat_seed": 2,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6955088586732592,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              239,
+              222,
+              3
+            ],
+            [
+              160,
+              1002,
+              81
+            ],
+            [
+              12,
+              261,
+              447
+            ]
+          ],
+          "elapsed_seconds": 53.631,
+          "fold_id": "r2_f4",
+          "inner_best_macro_f1": 0.6706428203716451,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6651727057398907,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.7308625552328265,
-          "recall_macro": 0.6534027077817129,
-          "repeat_seed": 3,
+          "precision_macro": 0.6993546333890266,
+          "recall_macro": 0.6473445933241478,
+          "repeat_seed": 2,
           "representation": "DF"
         },
         {
-          "accuracy": 0.6761433868974042,
+          "accuracy": 0.7058096415327565,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              198,
-              261,
-              5
+              232,
+              229,
+              3
             ],
             [
-              133,
-              1027,
-              83
+              135,
+              1032,
+              76
             ],
             [
-              14,
-              290,
-              416
+              15,
+              256,
+              449
             ]
           ],
-          "elapsed_seconds": 15.26,
-          "fold_id": "r3_f5",
-          "inner_best_macro_f1": 0.6640268707562323,
+          "elapsed_seconds": 53.396,
+          "fold_id": "r2_f5",
+          "inner_best_macro_f1": 0.6695583703302578,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.632447454217719,
+          "macro_f1": 0.6719469086605997,
           "model_id": "df_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.6833778988349991,
-          "recall_macro": 0.6102429287278234,
+          "precision_macro": 0.7126662256514766,
+          "recall_macro": 0.6512868359107297,
+          "repeat_seed": 2,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6971569839307787,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              241,
+              220,
+              4
+            ],
+            [
+              156,
+              1002,
+              85
+            ],
+            [
+              11,
+              259,
+              449
+            ]
+          ],
+          "elapsed_seconds": 53.258,
+          "fold_id": "r3_f1",
+          "inner_best_macro_f1": 0.6687048623330764,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6674004374620061,
+          "model_id": "df_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.7006095501429392,
+          "recall_macro": 0.6496240839719924,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.7008652657601978,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              235,
+              224,
+              5
+            ],
+            [
+              147,
+              1012,
+              85
+            ],
+            [
+              11,
+              254,
+              454
+            ]
+          ],
+          "elapsed_seconds": 53.109,
+          "fold_id": "r3_f2",
+          "inner_best_macro_f1": 0.6700330910453315,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6692183927751607,
+          "model_id": "df_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.7039059436640752,
+          "recall_macro": 0.6504676285313913,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.7132262051915945,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              248,
+              214,
+              2
+            ],
+            [
+              133,
+              1041,
+              70
+            ],
+            [
+              6,
+              271,
+              442
+            ]
+          ],
+          "elapsed_seconds": 53.718,
+          "fold_id": "r3_f3",
+          "inner_best_macro_f1": 0.6682815353759902,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6838062630614877,
+          "model_id": "df_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.7276415583053115,
+          "recall_macro": 0.6620140590232859,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.7053976102183765,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              254,
+              203,
+              7
+            ],
+            [
+              166,
+              1005,
+              72
+            ],
+            [
+              11,
+              256,
+              453
+            ]
+          ],
+          "elapsed_seconds": 52.895,
+          "fold_id": "r3_f4",
+          "inner_best_macro_f1": 0.6654319416708762,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6779197773501235,
+          "model_id": "df_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.7091021051354186,
+          "recall_macro": 0.6617027384001751,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6905644829007005,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              251,
+              211,
+              2
+            ],
+            [
+              141,
+              1013,
+              89
+            ],
+            [
+              15,
+              293,
+              412
+            ]
+          ],
+          "elapsed_seconds": 53.312,
+          "fold_id": "r3_f5",
+          "inner_best_macro_f1": 0.6765665914540887,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6613866871184305,
+          "model_id": "df_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 5,
+          "precision_macro": 0.7011861433623544,
+          "recall_macro": 0.6427114317829912,
           "repeat_seed": 3,
           "representation": "DF"
         }
@@ -6986,23 +7083,23 @@
     },
     {
       "aggregate": {
-        "accuracy_mean": 0.6360664743853867,
-        "accuracy_std": 0.007599822641756424,
+        "accuracy_mean": 0.6533717895893421,
+        "accuracy_std": 0.011426473527983821,
         "confusion_matrix_sum": [
           [
-            1076,
-            5850,
-            37
+            3836,
+            3062,
+            65
           ],
           [
-            574,
-            17003,
-            1074
+            2684,
+            13343,
+            2624
           ],
           [
-            75,
-            5639,
-            5077
+            387,
+            3797,
+            6607
           ]
         ],
         "labels": [
@@ -7010,431 +7107,209 @@
           3,
           4
         ],
-        "macro_f1_mean": 0.5221084884073779,
-        "macro_f1_std": 0.012758043470268278,
-        "precision_macro_mean": 0.6804690688326863,
-        "precision_macro_std": 0.01718029832801908,
-        "recall_macro_mean": 0.5122206153319018,
-        "recall_macro_std": 0.009113996407366697
+        "macro_f1_mean": 0.6325801512182957,
+        "macro_f1_std": 0.012248654448666962,
+        "precision_macro_mean": 0.642372479589045,
+        "precision_macro_std": 0.012296455884566954,
+        "recall_macro_mean": 0.6261988869940799,
+        "recall_macro_std": 0.012364038917948508
       },
       "algorithm": "random_forest",
+      "checkpoint": {
+        "checkpoint_dir": "experiments/bc_random_forest/checkpoints/1b5f99e039e5d2fd",
+        "completed_folds": 15,
+        "signature_id": "1b5f99e039e5d2fd",
+        "total_folds": 15
+      },
       "folds": [
         {
-          "accuracy": 0.6415327564894932,
+          "accuracy": 0.6489493201483313,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              71,
-              390,
-              4
+              246,
+              214,
+              5
             ],
             [
-              28,
-              1128,
-              87
+              161,
+              887,
+              195
             ],
             [
-              3,
-              358,
-              358
+              33,
+              244,
+              442
             ]
           ],
-          "elapsed_seconds": 12.768,
+          "elapsed_seconds": 85.023,
           "fold_id": "r1_f1",
-          "inner_best_macro_f1": 0.5093531760491211,
+          "inner_best_macro_f1": 0.6311095491205897,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5289211228477023,
+          "macro_f1": 0.6262134084413101,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 1,
-          "precision_macro": 0.6982283810930437,
-          "recall_macro": 0.519361279933045,
+          "precision_macro": 0.6356813277478253,
+          "recall_macro": 0.6191236982104497,
           "repeat_seed": 1,
           "representation": "BC"
         },
         {
-          "accuracy": 0.630819942315616,
+          "accuracy": 0.6559538524927895,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              63,
-              397,
-              4
+              255,
+              207,
+              2
             ],
             [
-              38,
-              1132,
-              74
+              166,
+              895,
+              183
             ],
             [
-              6,
-              377,
-              336
+              24,
+              253,
+              442
             ]
           ],
-          "elapsed_seconds": 12.862,
+          "elapsed_seconds": 85.178,
           "fold_id": "r1_f2",
-          "inner_best_macro_f1": 0.5160491197899919,
+          "inner_best_macro_f1": 0.6333263131027266,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5108370933654459,
+          "macro_f1": 0.6355144371712829,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 2,
-          "precision_macro": 0.6647644018520563,
-          "recall_macro": 0.5043531413335768,
+          "precision_macro": 0.6461648305532032,
+          "recall_macro": 0.6279216799716542,
           "repeat_seed": 1,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6361763494025546,
+          "accuracy": 0.6407086938607334,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              88,
-              374,
-              2
+              262,
+              196,
+              6
             ],
             [
-              51,
-              1125,
-              68
+              199,
+              865,
+              180
             ],
             [
-              3,
-              385,
-              331
+              23,
+              268,
+              428
             ]
           ],
-          "elapsed_seconds": 12.953,
+          "elapsed_seconds": 84.086,
           "fold_id": "r1_f3",
-          "inner_best_macro_f1": 0.5142580625263513,
+          "inner_best_macro_f1": 0.6215318979201497,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5336033114637734,
+          "macro_f1": 0.6224233476904125,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.6807628255994982,
-          "recall_macro": 0.5181192072595108,
+          "precision_macro": 0.6297520100744141,
+          "recall_macro": 0.6184213343354932,
           "repeat_seed": 1,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6365883807169345,
+          "accuracy": 0.6547177585496498,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              83,
-              380,
-              1
+              258,
+              203,
+              3
             ],
             [
-              48,
-              1134,
-              61
+              182,
+              894,
+              167
             ],
             [
-              4,
-              388,
-              328
+              17,
+              266,
+              437
             ]
           ],
-          "elapsed_seconds": 12.919,
+          "elapsed_seconds": 85.27,
           "fold_id": "r1_f4",
-          "inner_best_macro_f1": 0.5168850866949776,
+          "inner_best_macro_f1": 0.6280519634335066,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5297547375520467,
+          "macro_f1": 0.634999350301002,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.6840183222938218,
-          "recall_macro": 0.5155812653028093,
+          "precision_macro": 0.6467972046565308,
+          "recall_macro": 0.6274022007276508,
           "repeat_seed": 1,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6390605686032138,
+          "accuracy": 0.6662546353522868,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              76,
-              386,
-              2
+              266,
+              192,
+              6
             ],
             [
-              38,
-              1136,
-              69
-            ],
-            [
-              9,
-              372,
-              339
-            ]
-          ],
-          "elapsed_seconds": 13.028,
-          "fold_id": "r1_f5",
-          "inner_best_macro_f1": 0.5146508052185372,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5277342093244394,
-          "model_id": "bc_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 5,
-          "precision_macro": 0.681501417970885,
-          "recall_macro": 0.5161814590827407,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6320560362587556,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              76,
-              386,
-              3
-            ],
-            [
-              42,
-              1115,
-              86
-            ],
-            [
-              4,
-              372,
-              343
-            ]
-          ],
-          "elapsed_seconds": 12.997,
-          "fold_id": "r2_f1",
-          "inner_best_macro_f1": 0.5182704290464036,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5235361203868206,
-          "model_id": "bc_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.6707446520841281,
-          "recall_macro": 0.5125052170761054,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6398846312319736,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              70,
-              392,
-              2
-            ],
-            [
-              33,
-              1136,
-              75
-            ],
-            [
-              5,
-              367,
-              347
-            ]
-          ],
-          "elapsed_seconds": 13.062,
-          "fold_id": "r2_f2",
-          "inner_best_macro_f1": 0.5161548816637453,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5252422452318101,
-          "model_id": "bc_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.6886722233592515,
-          "recall_macro": 0.5155533638021581,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6349402554594149,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              70,
-              391,
-              3
+              178,
+              906,
+              159
             ],
             [
               29,
-              1149,
-              66
-            ],
-            [
-              5,
-              392,
-              322
+              246,
+              445
             ]
           ],
-          "elapsed_seconds": 13.091,
-          "fold_id": "r2_f3",
-          "inner_best_macro_f1": 0.5100547857657528,
+          "elapsed_seconds": 84.065,
+          "fold_id": "r1_f5",
+          "inner_best_macro_f1": 0.6292109701202465,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5167368968997379,
-          "model_id": "bc_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.697108943912013,
-          "recall_macro": 0.5074465791915209,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.638648537288834,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              64,
-              398,
-              2
-            ],
-            [
-              42,
-              1136,
-              65
-            ],
-            [
-              3,
-              367,
-              350
-            ]
-          ],
-          "elapsed_seconds": 13.112,
-          "fold_id": "r2_f4",
-          "inner_best_macro_f1": 0.5197035965320413,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5205624109521089,
-          "model_id": "bc_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.6746882404697886,
-          "recall_macro": 0.5126533620201609,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6324680675731356,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              71,
-              391,
-              2
-            ],
-            [
-              33,
-              1127,
-              83
-            ],
-            [
-              8,
-              375,
-              337
-            ]
-          ],
-          "elapsed_seconds": 13.151,
-          "fold_id": "r2_f5",
-          "inner_best_macro_f1": 0.5199873982922708,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5184901407537135,
+          "macro_f1": 0.6457892041076739,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.6759526882408826,
-          "recall_macro": 0.5092500634459743,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6180469715698393,
-          "algorithm": "random_forest",
-          "confusion_matrix": [
-            [
-              48,
-              414,
-              3
-            ],
-            [
-              38,
-              1126,
-              79
-            ],
-            [
-              5,
-              388,
-              326
-            ]
-          ],
-          "elapsed_seconds": 13.082,
-          "fold_id": "r3_f1",
-          "inner_best_macro_f1": 0.516360303647002,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.4871249982273828,
-          "model_id": "bc_random_forest",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.636839010527075,
-          "recall_macro": 0.4875020683521801,
-          "repeat_seed": 3,
+          "precision_macro": 0.6553277347573002,
+          "recall_macro": 0.6400710517852721,
+          "repeat_seed": 1,
           "representation": "BC"
         },
         {
@@ -7442,150 +7317,378 @@
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              72,
-              389,
-              3
+              255,
+              204,
+              6
             ],
             [
-              32,
-              1152,
-              60
+              197,
+              865,
+              181
             ],
             [
-              3,
-              372,
-              344
+              25,
+              246,
+              448
             ]
           ],
-          "elapsed_seconds": 13.12,
-          "fold_id": "r3_f2",
-          "inner_best_macro_f1": 0.5212368889473553,
+          "elapsed_seconds": 85.041,
+          "fold_id": "r2_f1",
+          "inner_best_macro_f1": 0.6276437846104019,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5310027846120663,
+          "macro_f1": 0.6264846248417969,
+          "model_id": "bc_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.6326325609327531,
+          "recall_macro": 0.6224572472672154,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.673259167696745,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              268,
+              192,
+              4
+            ],
+            [
+              170,
+              902,
+              172
+            ],
+            [
+              23,
+              232,
+              464
+            ]
+          ],
+          "elapsed_seconds": 85.435,
+          "fold_id": "r2_f2",
+          "inner_best_macro_f1": 0.6273000835960788,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.654753341740741,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 2,
-          "precision_macro": 0.7067671819712701,
-          "recall_macro": 0.5198865702720107,
-          "repeat_seed": 3,
+          "precision_macro": 0.6621954098954227,
+          "recall_macro": 0.649335781263919,
+          "repeat_seed": 2,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6337041615162753,
+          "accuracy": 0.6505974454058508,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              59,
-              403,
-              2
+              246,
+              215,
+              3
+            ],
+            [
+              165,
+              911,
+              168
             ],
             [
               30,
-              1136,
-              78
-            ],
-            [
-              6,
-              370,
-              343
+              267,
+              422
             ]
           ],
-          "elapsed_seconds": 13.184,
-          "fold_id": "r3_f3",
-          "inner_best_macro_f1": 0.5074272087076976,
+          "elapsed_seconds": 85.345,
+          "fold_id": "r2_f3",
+          "inner_best_macro_f1": 0.6268212308401463,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5107917769810412,
+          "macro_f1": 0.6259585874084876,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.6756677640228593,
-          "recall_macro": 0.5057966375060573,
-          "repeat_seed": 3,
+          "precision_macro": 0.6411476954737706,
+          "recall_macro": 0.6164712709474455,
+          "repeat_seed": 2,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6510094767202307,
+          "accuracy": 0.6555418211784095,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              80,
-              380,
-              4
+              263,
+              198,
+              3
             ],
             [
-              44,
-              1152,
-              47
+              195,
+              878,
+              170
             ],
             [
-              5,
-              367,
-              348
+              21,
+              249,
+              450
             ]
           ],
-          "elapsed_seconds": 13.846,
-          "fold_id": "r3_f4",
-          "inner_best_macro_f1": 0.5223660991323333,
+          "elapsed_seconds": 85.451,
+          "fold_id": "r2_f4",
+          "inner_best_macro_f1": 0.6307952041005015,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5416964380853769,
+          "macro_f1": 0.6372454569863709,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.6996568536591856,
-          "recall_macro": 0.5275123835239796,
-          "repeat_seed": 3,
+          "precision_macro": 0.644671149566719,
+          "recall_macro": 0.6327219787129765,
+          "repeat_seed": 2,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6299958796868562,
+          "accuracy": 0.6481252575195715,
           "algorithm": "random_forest",
           "confusion_matrix": [
             [
-              85,
-              379,
-              0
+              261,
+              197,
+              6
             ],
             [
-              48,
-              1119,
-              76
+              173,
+              877,
+              193
             ],
             [
-              6,
-              389,
-              325
+              27,
+              258,
+              435
             ]
           ],
-          "elapsed_seconds": 13.541,
-          "fold_id": "r3_f5",
-          "inner_best_macro_f1": 0.5217878125692307,
+          "elapsed_seconds": 85.169,
+          "fold_id": "r2_f5",
+          "inner_best_macro_f1": 0.6240607598877183,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5255930394272026,
+          "macro_f1": 0.6293433310840203,
           "model_id": "bc_random_forest",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.671663125434537,
-          "recall_macro": 0.511606631876696,
+          "precision_macro": 0.6368962676109394,
+          "recall_macro": 0.6240725842495753,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6316440049443758,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              232,
+              231,
+              2
+            ],
+            [
+              195,
+              868,
+              180
+            ],
+            [
+              24,
+              262,
+              433
+            ]
+          ],
+          "elapsed_seconds": 85.07,
+          "fold_id": "r3_f1",
+          "inner_best_macro_f1": 0.6317181730587568,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.607464099100377,
+          "model_id": "bc_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.6187479352583921,
+          "recall_macro": 0.5998201943786435,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.673259167696745,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              253,
+              205,
+              6
+            ],
+            [
+              170,
+              918,
+              156
+            ],
+            [
+              16,
+              240,
+              463
+            ]
+          ],
+          "elapsed_seconds": 85.53,
+          "fold_id": "r3_f2",
+          "inner_best_macro_f1": 0.6260482411131835,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6512000790316216,
+          "model_id": "bc_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.6635413672216864,
+          "recall_macro": 0.6423835577783737,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6592501030078286,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              257,
+              204,
+              3
+            ],
+            [
+              159,
+              903,
+              182
+            ],
+            [
+              22,
+              257,
+              440
+            ]
+          ],
+          "elapsed_seconds": 85.39,
+          "fold_id": "r3_f3",
+          "inner_best_macro_f1": 0.616876791402819,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6390304522318587,
+          "model_id": "bc_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.6509271504260458,
+          "recall_macro": 0.6305748705804873,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6518335393489906,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              264,
+              191,
+              9
+            ],
+            [
+              197,
+              879,
+              167
+            ],
+            [
+              34,
+              247,
+              439
+            ]
+          ],
+          "elapsed_seconds": 85.369,
+          "fold_id": "r3_f4",
+          "inner_best_macro_f1": 0.63251349995327,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6316567222329622,
+          "model_id": "bc_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.638193479884685,
+          "recall_macro": 0.6286159453347431,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6444169756901524,
+          "algorithm": "random_forest",
+          "confusion_matrix": [
+            [
+              250,
+              213,
+              1
+            ],
+            [
+              177,
+              895,
+              171
+            ],
+            [
+              39,
+              262,
+              419
+            ]
+          ],
+          "elapsed_seconds": 84.088,
+          "fold_id": "r3_f5",
+          "inner_best_macro_f1": 0.6298615559852992,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6206258259045184,
+          "model_id": "bc_random_forest",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 5,
+          "precision_macro": 0.6329110697759855,
+          "recall_macro": 0.6135899093672972,
           "repeat_seed": 3,
           "representation": "BC"
         }
@@ -7597,11 +7700,19 @@
   "n_rows": 12135,
   "parameters": {
     "algorithms": [
+<<<<<<< Updated upstream
       "decision_tree"
     ],
     "bc_min_df": 10,
     "docs_dir": "documents/reports/results",
     "estimator_n_jobs": 4,
+=======
+      "random_forest"
+    ],
+    "bc_min_df": 10,
+    "docs_dir": "documents/reports/results",
+    "estimator_n_jobs": 10,
+>>>>>>> Stashed changes
     "experiment_dir": "experiments",
     "experiments_drive_remote": "mtg-experiments:",
     "force_rerun": true,
@@ -7612,7 +7723,11 @@
     "max_grid_values": null,
     "max_rows": null,
     "merge_existing_models": true,
+<<<<<<< Updated upstream
     "model_selector": "decision_tree",
+=======
+    "model_selector": "random_forest",
+>>>>>>> Stashed changes
     "outer_splits": 5,
     "processed_dir": "data/processed/archidekt",
     "random_state": 42,
@@ -7634,6 +7749,7 @@
   "problems": [],
   "statistics": {
     "average_ranks": {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       "bc_gradient_boosting": 5.0,
       "bc_linear_svc": 7.333333333333333,
@@ -7659,6 +7775,18 @@
       "df_naive_bayes": 8.6,
       "df_random_forest": 3.933333333333333
 >>>>>>> Stashed changes
+=======
+      "bc_gradient_boosting": 5.666666666666667,
+      "bc_linear_svc": 8.333333333333334,
+      "bc_logistic_regression": 7.066666666666666,
+      "bc_naive_bayes": 10.0,
+      "bc_random_forest": 5.333333333333333,
+      "df_gradient_boosting": 1.0,
+      "df_linear_svc": 3.933333333333333,
+      "df_logistic_regression": 2.6666666666666665,
+      "df_naive_bayes": 8.6,
+      "df_random_forest": 2.4
+>>>>>>> Stashed changes
     },
     "folds": [
       "r1_f1",
@@ -7679,11 +7807,16 @@
     ],
     "friedman": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "p_value": 2.6626392967638993e-24,
       "statistic": 133.15272727272725
 =======
       "p_value": 6.804353312882388e-29,
       "statistic": 161.43076923076922
+>>>>>>> Stashed changes
+=======
+      "p_value": 4.344235339476515e-24,
+      "statistic": 132.12
 >>>>>>> Stashed changes
     },
     "models": [
@@ -7702,7 +7835,11 @@
     ],
     "nemenyi": {
       "alpha": 0.05,
+<<<<<<< Updated upstream
       "critical_difference": 4.302527093918013,
+=======
+      "critical_difference": 3.4975837934984884,
+>>>>>>> Stashed changes
       "pairs": [
         {
           "model_a": "bc_decision_tree",
@@ -7773,6 +7910,7 @@
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "bc_linear_svc",
+<<<<<<< Updated upstream
           "rank_diff": 2.333333333333334,
           "significant_alpha_0_05": false
         },
@@ -7854,6 +7992,75 @@
           "model_a": "bc_linear_svc",
           "model_b": "bc_random_forest",
           "rank_diff": 3.5999999999999996,
+=======
+          "rank_diff": 2.666666666666667,
+>>>>>>> Stashed changes
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "bc_logistic_regression",
+          "rank_diff": 1.3999999999999995,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "bc_naive_bayes",
+          "rank_diff": 4.333333333333333,
+          "significant_alpha_0_05": true
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "bc_random_forest",
+          "rank_diff": 0.3333333333333339,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "df_gradient_boosting",
+          "rank_diff": 4.666666666666667,
+          "significant_alpha_0_05": true
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "df_linear_svc",
+          "rank_diff": 1.7333333333333338,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "df_logistic_regression",
+          "rank_diff": 3.0000000000000004,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "df_naive_bayes",
+          "rank_diff": 2.9333333333333327,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "df_random_forest",
+          "rank_diff": 3.266666666666667,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_linear_svc",
+          "model_b": "bc_logistic_regression",
+          "rank_diff": 1.2666666666666675,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_linear_svc",
+          "model_b": "bc_naive_bayes",
+          "rank_diff": 1.666666666666666,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_linear_svc",
+          "model_b": "bc_random_forest",
+          "rank_diff": 3.000000000000001,
           "significant_alpha_0_05": false
         },
         {
@@ -7865,14 +8072,22 @@
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
           "rank_diff": 7.2666666666666675,
+=======
+          "rank_diff": 7.333333333333334,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_linear_svc",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 3.533333333333333,
+=======
+          "rank_diff": 4.4,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
 =======
           "rank_diff": 3.533333333333334,
@@ -7883,7 +8098,11 @@
           "model_a": "bc_linear_svc",
           "model_b": "df_logistic_regression",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 5.266666666666666,
+=======
+          "rank_diff": 5.666666666666668,
+>>>>>>> Stashed changes
 =======
           "rank_diff": 5.666666666666668,
 >>>>>>> Stashed changes
@@ -7899,9 +8118,13 @@
           "model_a": "bc_linear_svc",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 4.199999999999999,
 =======
           "rank_diff": 4.4,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 5.933333333333334,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
@@ -7914,6 +8137,7 @@
         {
           "model_a": "bc_logistic_regression",
           "model_b": "bc_random_forest",
+<<<<<<< Updated upstream
           "rank_diff": 4.866666666666667,
           "significant_alpha_0_05": true
         },
@@ -7922,24 +8146,40 @@
           "model_b": "df_decision_tree",
           "rank_diff": 4.533333333333333,
           "significant_alpha_0_05": true
+=======
+          "rank_diff": 1.7333333333333334,
+          "significant_alpha_0_05": false
+>>>>>>> Stashed changes
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
           "rank_diff": 6.0,
+=======
+          "rank_diff": 6.066666666666666,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
           "rank_diff": 2.2666666666666666,
+=======
+          "rank_diff": 3.1333333333333333,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_logistic_regression",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 3.9999999999999996,
+=======
+          "rank_diff": 4.4,
+>>>>>>> Stashed changes
 =======
           "rank_diff": 4.4,
 >>>>>>> Stashed changes
@@ -7955,17 +8195,27 @@
           "model_a": "bc_logistic_regression",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.933333333333333,
 =======
           "rank_diff": 3.1333333333333333,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
+=======
+          "rank_diff": 4.666666666666666,
+          "significant_alpha_0_05": true
+>>>>>>> Stashed changes
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "bc_random_forest",
+<<<<<<< Updated upstream
           "rank_diff": 1.5999999999999996,
           "significant_alpha_0_05": false
+=======
+          "rank_diff": 4.666666666666667,
+          "significant_alpha_0_05": true
+>>>>>>> Stashed changes
         },
         {
           "model_a": "bc_naive_bayes",
@@ -7976,18 +8226,27 @@
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
           "rank_diff": 9.266666666666667,
+=======
+          "rank_diff": 9.0,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
           "rank_diff": 5.533333333333334,
+=======
+          "rank_diff": 6.066666666666666,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
           "rank_diff": 7.666666666666668,
           "significant_alpha_0_05": true
         },
@@ -8050,6 +8309,9 @@
           "model_a": "bc_naive_bayes",
           "model_b": "df_logistic_regression",
           "rank_diff": 6.933333333333334,
+=======
+          "rank_diff": 7.333333333333334,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
@@ -8061,18 +8323,23 @@
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
           "rank_diff": 5.866666666666667,
+=======
+          "rank_diff": 7.6,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_gradient_boosting",
-          "rank_diff": 9.0,
+          "rank_diff": 4.333333333333333,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
           "rank_diff": 6.2,
           "significant_alpha_0_05": true
         },
@@ -8086,10 +8353,14 @@
           "model_a": "bc_random_forest",
           "model_b": "df_naive_bayes",
           "rank_diff": 2.4000000000000004,
+=======
+          "rank_diff": 1.4,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_random_forest",
+<<<<<<< Updated upstream
           "model_b": "df_random_forest",
           "rank_diff": 6.866666666666667,
 =======
@@ -8131,31 +8402,65 @@
 =======
           "rank_diff": 3.7333333333333334,
 >>>>>>> Stashed changes
+=======
+          "model_b": "df_logistic_regression",
+          "rank_diff": 2.6666666666666665,
+>>>>>>> Stashed changes
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_random_forest",
+          "model_b": "df_naive_bayes",
+          "rank_diff": 3.2666666666666666,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_random_forest",
+          "model_b": "df_random_forest",
+          "rank_diff": 2.933333333333333,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "df_gradient_boosting",
+          "model_b": "df_linear_svc",
+          "rank_diff": 2.933333333333333,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 1.0666666666666669,
 =======
           "rank_diff": 1.5999999999999999,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 1.6666666666666665,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_naive_bayes",
+<<<<<<< Updated upstream
           "rank_diff": 7.533333333333333,
+=======
+          "rank_diff": 7.6,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.1333333333333333,
 =======
           "rank_diff": 2.8666666666666663,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 1.4,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
@@ -8163,17 +8468,25 @@
           "model_a": "df_linear_svc",
           "model_b": "df_logistic_regression",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 1.733333333333333,
 =======
           "rank_diff": 2.1333333333333333,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 1.2666666666666666,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_linear_svc",
           "model_b": "df_naive_bayes",
+<<<<<<< Updated upstream
           "rank_diff": 3.8,
 <<<<<<< Updated upstream
+=======
+          "rank_diff": 4.666666666666666,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
 =======
           "significant_alpha_0_05": false
@@ -8182,14 +8495,22 @@
         {
           "model_a": "df_linear_svc",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
           "rank_diff": 0.8666666666666667,
+=======
+          "rank_diff": 1.5333333333333332,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_logistic_regression",
           "model_b": "df_naive_bayes",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 5.533333333333333,
+=======
+          "rank_diff": 5.933333333333334,
+>>>>>>> Stashed changes
 =======
           "rank_diff": 5.933333333333334,
 >>>>>>> Stashed changes
@@ -8199,9 +8520,13 @@
           "model_a": "df_logistic_regression",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 1.0666666666666664,
 =======
           "rank_diff": 1.2666666666666666,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 0.2666666666666666,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
@@ -8209,9 +8534,13 @@
           "model_a": "df_naive_bayes",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 4.466666666666667,
 =======
           "rank_diff": 4.666666666666666,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 6.199999999999999,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         }
@@ -8306,8 +8635,8 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "bc_random_forest",
-        "p_value": 6.103515625e-05,
-        "statistic": 0.0
+        "p_value": 0.12054443359375,
+        "statistic": 32.0
       },
       {
         "model_a": "bc_gradient_boosting",
@@ -8594,8 +8923,8 @@
       {
         "model_a": "df_linear_svc",
         "model_b": "df_random_forest",
-        "p_value": 0.05535888671875,
-        "statistic": 26.0
+        "p_value": 0.00018310546875,
+        "statistic": 2.0
       },
       {
         "model_a": "df_logistic_regression",
@@ -8606,8 +8935,13 @@
       {
         "model_a": "df_logistic_regression",
         "model_b": "df_random_forest",
+<<<<<<< Updated upstream
         "p_value": 0.0001220703125,
         "statistic": 1.0
+=======
+        "p_value": 0.27685546875,
+        "statistic": 40.0
+>>>>>>> Stashed changes
       },
       {
         "model_a": "df_naive_bayes",

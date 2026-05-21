@@ -1,17 +1,26 @@
 {
   "command": "train",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "finished_at": "2026-05-21T19:04:26.237207+00:00",
 =======
   "error": "Command '['/home/macsilva/mtg/.venv/bin/python', 'scripts/sync_experiments_drive.py', 'publish-manifest', '--experiment-dir', 'experiments', '--experiments-drive-remote', 'mtg-experiments:', '--rclone-bin', 'rclone']' returned non-zero exit status 1.",
   "finished_at": "2026-05-21T18:19:59.973505+00:00",
+>>>>>>> Stashed changes
+=======
+  "error": "Command '['/home/macsilva/mtg/.venv/bin/python3', 'scripts/sync_experiments_drive.py', 'publish-manifest', '--experiment-dir', 'experiments', '--experiments-drive-remote', 'mtg-experiments:', '--rclone-bin', 'rclone']' returned non-zero exit status 1.",
+  "finished_at": "2026-05-21T16:31:32.894877+00:00",
 >>>>>>> Stashed changes
   "parameters": {
     "bc_min_df": 10,
     "command": "train",
     "docs_dir": "documents/reports/results",
     "dry_run": false,
+<<<<<<< Updated upstream
     "estimator_n_jobs": 4,
+=======
+    "estimator_n_jobs": 10,
+>>>>>>> Stashed changes
     "experiment_dir": "experiments",
     "experiments_drive_remote": "mtg-experiments:",
     "feature": null,
@@ -25,9 +34,13 @@
     "max_grid_values": null,
     "max_rows": null,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "model": "logistic_regression",
 =======
     "model": "decision_tree",
+>>>>>>> Stashed changes
+=======
+    "model": "random_forest",
 >>>>>>> Stashed changes
     "no_merge_existing_models": false,
     "no_wait_drive_upload": false,
@@ -50,9 +63,13 @@
     {
       "command": [
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "/Users/macsilva/Desktop/mtg/.venv/bin/python3",
 =======
         "/home/macsilva/mtg/.venv/bin/python",
+>>>>>>> Stashed changes
+=======
+        "/home/macsilva/mtg/.venv/bin/python3",
 >>>>>>> Stashed changes
         "scripts/sync_experiments_drive.py",
         "check-write",
@@ -63,6 +80,7 @@
       ],
       "description": "Check write permission on the experiments Drive remote.",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "elapsed_seconds": 23.942,
       "failure_hint": "Sem permissão de escrita em mtg-experiments:. Peça acesso de colaborador ou rode com --run-local.",
       "finished_at": "2026-05-21T15:57:35.612319+00:00",
@@ -71,10 +89,16 @@
       "failure_hint": "Sem permissão de escrita em mtg-experiments:. Peça acesso de colaborador ou rode com --run-local.",
       "finished_at": "2026-05-21T15:35:39.342500+00:00",
 >>>>>>> Stashed changes
+=======
+      "elapsed_seconds": 4.234,
+      "failure_hint": "Sem permissão de escrita em mtg-experiments:. Peça acesso de colaborador ou rode com --run-local.",
+      "finished_at": "2026-05-21T15:55:42.038993+00:00",
+>>>>>>> Stashed changes
       "implemented": true,
       "name": "check_drive_write",
       "reason": "",
       "returncode": 0,
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       "started_at": "2026-05-21T15:57:11.669912+00:00",
       "status": "ok"
@@ -84,11 +108,18 @@
   "status": "running"
 =======
       "started_at": "2026-05-21T15:35:16.957197+00:00",
+=======
+      "started_at": "2026-05-21T15:55:37.804629+00:00",
+>>>>>>> Stashed changes
       "status": "ok"
     },
     {
       "command": [
+<<<<<<< Updated upstream
         "/home/macsilva/mtg/.venv/bin/python",
+=======
+        "/home/macsilva/mtg/.venv/bin/python3",
+>>>>>>> Stashed changes
         "scripts/phase_e_nested_cv.py",
         "--processed-dir",
         "data/processed/archidekt",
@@ -101,7 +132,11 @@
         "--rclone-bin",
         "rclone",
         "--model",
+<<<<<<< Updated upstream
         "decision_tree",
+=======
+        "random_forest",
+>>>>>>> Stashed changes
         "--bc-min-df",
         "10",
         "--outer-splits",
@@ -119,25 +154,44 @@
         "--grid-verbose",
         "0",
         "--estimator-n-jobs",
+<<<<<<< Updated upstream
         "4",
+=======
+        "10",
+>>>>>>> Stashed changes
         "--force-rerun",
         "--from-spot-check",
         "--spot-check-summary",
         "experiments/spot_check/summary.json"
       ],
       "description": "Train Phase-E nested CV models.",
+<<<<<<< Updated upstream
       "elapsed_seconds": 9849.821,
       "failure_hint": "",
       "finished_at": "2026-05-21T18:19:49.164111+00:00",
+=======
+      "elapsed_seconds": 2116.049,
+      "failure_hint": "",
+      "finished_at": "2026-05-21T16:30:58.088223+00:00",
+>>>>>>> Stashed changes
       "implemented": true,
       "name": "phase_e_nested_cv",
       "reason": "",
       "returncode": 0,
+<<<<<<< Updated upstream
       "started_at": "2026-05-21T15:35:39.342950+00:00",
       "status": "ok"
     }
   ],
   "started_at": "2026-05-21T15:35:16.957173+00:00",
+  "status": "failed"
+>>>>>>> Stashed changes
+=======
+      "started_at": "2026-05-21T15:55:42.039219+00:00",
+      "status": "ok"
+    }
+  ],
+  "started_at": "2026-05-21T15:55:37.804611+00:00",
   "status": "failed"
 >>>>>>> Stashed changes
 }

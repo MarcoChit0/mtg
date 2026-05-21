@@ -1,0 +1,1056 @@
+{
+  "delete": {
+    "command": [
+      "rclone",
+      "deletefile",
+      "mtg-experiments:__mtg_write_check_1779378937838.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  },
+  "remote": "mtg-experiments:",
+  "remote_path": "mtg-experiments:__mtg_write_check_1779378937838.txt",
+  "status": "ok",
+  "upload": {
+    "command": [
+      "rclone",
+      "copyto",
+      "/tmp/tmp2k5cnz2d/__mtg_write_check_1779378937838.txt",
+      "mtg-experiments:__mtg_write_check_1779378937838.txt"
+    ],
+    "returncode": 0,
+    "status": "ok",
+    "stderr": "",
+    "stdout": ""
+  }
+}
+[Phase E df_random_forest] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E df_random_forest] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 1/2 fold 1/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=42s
+[Phase E df_random_forest outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=38s
+[Phase E df_random_forest outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r1_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=44s | eta=9s
+[Phase E df_random_forest outer=r1_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r1_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r1_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=50s | eta=2s
+[Phase E df_random_forest outer=r1_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 1/15] DONE  model=df_random_forest | outer=r1_f1 | macro_f1=0.6813 | inner_best=0.6665 | elapsed=53.849s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E df_random_forest] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=54s | eta=12m34s
+[Phase E df_random_forest] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=54s | eta=12m34s | running outer=r1_f2
+
+[Phase E model 1/2 fold 2/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r1_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r1_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r1_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r1_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=42s
+[Phase E df_random_forest outer=r1_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r1_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r1_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r1_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r1_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=38s
+[Phase E df_random_forest outer=r1_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r1_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r1_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r1_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r1_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r1_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r1_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r1_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r1_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r1_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=44s | eta=9s
+[Phase E df_random_forest outer=r1_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r1_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r1_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=50s | eta=2s
+[Phase E df_random_forest outer=r1_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 2/15] DONE  model=df_random_forest | outer=r1_f2 | macro_f1=0.6645 | inner_best=0.6772 | elapsed=53.192s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E df_random_forest] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=1m47s | eta=11m36s
+[Phase E df_random_forest] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=1m47s | eta=11m36s | running outer=r1_f3
+
+[Phase E model 1/2 fold 3/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r1_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r1_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r1_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=36s
+[Phase E df_random_forest outer=r1_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=42s
+[Phase E df_random_forest outer=r1_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r1_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=44s
+[Phase E df_random_forest outer=r1_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r1_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r1_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=38s
+[Phase E df_random_forest outer=r1_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r1_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r1_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r1_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r1_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r1_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r1_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r1_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r1_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r1_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r1_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r1_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r1_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=44s | eta=9s
+[Phase E df_random_forest outer=r1_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r1_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r1_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=50s | eta=2s
+[Phase E df_random_forest outer=r1_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 3/15] DONE  model=df_random_forest | outer=r1_f3 | macro_f1=0.6823 | inner_best=0.6651 | elapsed=53.418s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E df_random_forest] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=2m41s | eta=10m42s
+[Phase E df_random_forest] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=2m41s | eta=10m42s | running outer=r1_f4
+
+[Phase E model 1/2 fold 4/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r1_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r1_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r1_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r1_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r1_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r1_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r1_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r1_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r1_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=37s
+[Phase E df_random_forest outer=r1_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r1_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=33s
+[Phase E df_random_forest outer=r1_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=21s | eta=30s
+[Phase E df_random_forest outer=r1_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r1_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r1_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r1_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r1_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r1_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r1_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r1_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r1_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r1_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r1_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r1_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r1_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r1_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 4/15] DONE  model=df_random_forest | outer=r1_f4 | macro_f1=0.6751 | inner_best=0.6729 | elapsed=53.632s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E df_random_forest] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=3m34s | eta=9m49s
+[Phase E df_random_forest] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=3m34s | eta=9m49s | running outer=r1_f5
+
+[Phase E model 1/2 fold 5/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r1_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r1_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r1_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r1_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r1_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=49s
+[Phase E df_random_forest outer=r1_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r1_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r1_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r1_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=37s
+[Phase E df_random_forest outer=r1_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r1_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=33s
+[Phase E df_random_forest outer=r1_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=21s | eta=30s
+[Phase E df_random_forest outer=r1_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=27s
+[Phase E df_random_forest outer=r1_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r1_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r1_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r1_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r1_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r1_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r1_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r1_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=41s | eta=11s
+[Phase E df_random_forest outer=r1_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r1_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r1_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=47s | eta=4s
+[Phase E df_random_forest outer=r1_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r1_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 5/15] DONE  model=df_random_forest | outer=r1_f5 | macro_f1=0.6746 | inner_best=0.6696 | elapsed=53.15s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E df_random_forest] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=4m27s | eta=8m55s
+[Phase E df_random_forest] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=4m27s | eta=8m55s | running outer=r2_f1
+
+[Phase E model 1/2 fold 6/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r2_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r2_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r2_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r2_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r2_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=49s
+[Phase E df_random_forest outer=r2_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r2_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r2_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r2_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=37s
+[Phase E df_random_forest outer=r2_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=34s
+[Phase E df_random_forest outer=r2_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=33s
+[Phase E df_random_forest outer=r2_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=21s | eta=30s
+[Phase E df_random_forest outer=r2_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r2_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r2_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r2_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r2_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r2_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r2_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r2_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r2_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=41s | eta=11s
+[Phase E df_random_forest outer=r2_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r2_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r2_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r2_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r2_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 6/15] DONE  model=df_random_forest | outer=r2_f1 | macro_f1=0.6689 | inner_best=0.6708 | elapsed=53.669s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E df_random_forest] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=5m21s | eta=8m02s
+[Phase E df_random_forest] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=5m21s | eta=8m02s | running outer=r2_f2
+
+[Phase E model 1/2 fold 7/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r2_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r2_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r2_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r2_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=42s
+[Phase E df_random_forest outer=r2_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r2_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r2_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r2_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r2_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=38s
+[Phase E df_random_forest outer=r2_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r2_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r2_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r2_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r2_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r2_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r2_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r2_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r2_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r2_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r2_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r2_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r2_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=44s | eta=9s
+[Phase E df_random_forest outer=r2_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r2_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r2_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r2_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 7/15] DONE  model=df_random_forest | outer=r2_f2 | macro_f1=0.6857 | inner_best=0.6705 | elapsed=53.143s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E df_random_forest] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=6m14s | eta=7m08s
+[Phase E df_random_forest] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=6m14s | eta=7m08s | running outer=r2_f3
+
+[Phase E model 1/2 fold 8/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r2_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r2_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r2_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r2_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=42s
+[Phase E df_random_forest outer=r2_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r2_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r2_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r2_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r2_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=38s
+[Phase E df_random_forest outer=r2_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r2_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r2_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r2_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r2_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r2_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r2_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r2_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r2_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r2_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r2_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r2_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r2_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r2_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r2_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r2_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r2_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 8/15] DONE  model=df_random_forest | outer=r2_f3 | macro_f1=0.6698 | inner_best=0.6693 | elapsed=53.178s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E df_random_forest] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=7m07s | eta=6m14s
+[Phase E df_random_forest] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=7m07s | eta=6m14s | running outer=r2_f4
+
+[Phase E model 1/2 fold 9/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r2_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r2_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r2_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r2_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r2_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r2_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r2_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r2_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r2_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=37s
+[Phase E df_random_forest outer=r2_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r2_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=33s
+[Phase E df_random_forest outer=r2_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=21s | eta=30s
+[Phase E df_random_forest outer=r2_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r2_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r2_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r2_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r2_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r2_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r2_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r2_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r2_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=41s | eta=11s
+[Phase E df_random_forest outer=r2_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r2_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r2_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r2_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r2_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 9/15] DONE  model=df_random_forest | outer=r2_f4 | macro_f1=0.6652 | inner_best=0.6706 | elapsed=53.631s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E df_random_forest] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=8m01s | eta=5m21s
+[Phase E df_random_forest] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=8m01s | eta=5m21s | running outer=r2_f5
+
+[Phase E model 1/2 fold 10/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r2_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r2_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r2_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r2_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r2_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r2_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r2_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r2_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r2_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=38s
+[Phase E df_random_forest outer=r2_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r2_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r2_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r2_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r2_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r2_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r2_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r2_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r2_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r2_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r2_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r2_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r2_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=44s | eta=9s
+[Phase E df_random_forest outer=r2_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r2_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r2_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=50s | eta=2s
+[Phase E df_random_forest outer=r2_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 10/15] DONE  model=df_random_forest | outer=r2_f5 | macro_f1=0.6719 | inner_best=0.6696 | elapsed=53.396s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E df_random_forest] [###################---------] 10/15 outer folds | remaining=5 | elapsed=8m54s | eta=4m27s
+[Phase E df_random_forest] [###################---------] 10/15 outer folds | remaining=5 | elapsed=8m54s | eta=4m27s | running outer=r3_f1
+
+[Phase E model 1/2 fold 11/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r3_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r3_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r3_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r3_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r3_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r3_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r3_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r3_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r3_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=37s
+[Phase E df_random_forest outer=r3_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r3_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=33s
+[Phase E df_random_forest outer=r3_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=21s | eta=30s
+[Phase E df_random_forest outer=r3_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r3_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r3_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r3_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r3_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r3_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r3_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r3_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r3_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r3_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r3_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r3_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r3_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r3_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 11/15] DONE  model=df_random_forest | outer=r3_f1 | macro_f1=0.6674 | inner_best=0.6687 | elapsed=53.258s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E df_random_forest] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=9m48s | eta=3m34s
+[Phase E df_random_forest] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=9m48s | eta=3m34s | running outer=r3_f2
+
+[Phase E model 1/2 fold 12/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r3_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r3_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r3_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r3_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r3_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=49s
+[Phase E df_random_forest outer=r3_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r3_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r3_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r3_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=16s | eta=38s
+[Phase E df_random_forest outer=r3_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r3_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r3_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r3_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r3_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r3_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=24s
+[Phase E df_random_forest outer=r3_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r3_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r3_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r3_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r3_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r3_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r3_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=44s | eta=9s
+[Phase E df_random_forest outer=r3_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r3_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r3_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=50s | eta=2s
+[Phase E df_random_forest outer=r3_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 12/15] DONE  model=df_random_forest | outer=r3_f2 | macro_f1=0.6692 | inner_best=0.6700 | elapsed=53.109s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 100}
+[Phase E df_random_forest] [######################------] 12/15 outer folds | remaining=3 | elapsed=10m41s | eta=2m40s
+[Phase E df_random_forest] [######################------] 12/15 outer folds | remaining=3 | elapsed=10m41s | eta=2m40s | running outer=r3_f3
+
+[Phase E model 1/2 fold 13/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r3_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r3_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r3_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=36s
+[Phase E df_random_forest outer=r3_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r3_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r3_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r3_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r3_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r3_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=38s
+[Phase E df_random_forest outer=r3_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r3_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r3_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r3_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r3_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r3_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r3_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r3_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r3_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r3_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r3_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r3_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r3_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r3_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r3_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r3_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=50s | eta=2s
+[Phase E df_random_forest outer=r3_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 13/15] DONE  model=df_random_forest | outer=r3_f3 | macro_f1=0.6838 | inner_best=0.6683 | elapsed=53.718s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E df_random_forest] [########################----] 13/15 outer folds | remaining=2 | elapsed=11m35s | eta=1m47s
+[Phase E df_random_forest] [########################----] 13/15 outer folds | remaining=2 | elapsed=11m35s | eta=1m47s | running outer=r3_f4
+
+[Phase E model 1/2 fold 14/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r3_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r3_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r3_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r3_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r3_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r3_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=44s
+[Phase E df_random_forest outer=r3_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=42s
+[Phase E df_random_forest outer=r3_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=43s
+[Phase E df_random_forest outer=r3_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=16s | eta=38s
+[Phase E df_random_forest outer=r3_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r3_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=34s
+[Phase E df_random_forest outer=r3_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=22s | eta=30s
+[Phase E df_random_forest outer=r3_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=28s
+[Phase E df_random_forest outer=r3_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r3_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=28s | eta=23s
+[Phase E df_random_forest outer=r3_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r3_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r3_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=35s | eta=17s
+[Phase E df_random_forest outer=r3_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r3_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r3_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=42s | eta=11s
+[Phase E df_random_forest outer=r3_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r3_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r3_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=48s | eta=4s
+[Phase E df_random_forest outer=r3_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=50s | eta=2s
+[Phase E df_random_forest outer=r3_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 14/15] DONE  model=df_random_forest | outer=r3_f4 | macro_f1=0.6779 | inner_best=0.6654 | elapsed=52.895s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 100}
+[Phase E df_random_forest] [##########################--] 14/15 outer folds | remaining=1 | elapsed=12m27s | eta=53s
+[Phase E df_random_forest] [##########################--] 14/15 outer folds | remaining=1 | elapsed=12m27s | eta=53s | running outer=r3_f5
+
+[Phase E model 1/2 fold 15/15] START model=df_random_forest | representation=DF | algorithm=random_forest | outer=r3_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427
+[Phase E df_random_forest outer=r3_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E df_random_forest outer=r3_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=35s
+[Phase E df_random_forest outer=r3_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=4s | eta=41s
+[Phase E df_random_forest outer=r3_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=7s | eta=50s
+[Phase E df_random_forest outer=r3_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=9s | eta=43s
+[Phase E df_random_forest outer=r3_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=11s | eta=41s
+[Phase E df_random_forest outer=r3_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=14s | eta=42s
+[Phase E df_random_forest outer=r3_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=15s | eta=37s
+[Phase E df_random_forest outer=r3_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=17s | eta=35s
+[Phase E df_random_forest outer=r3_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=20s | eta=33s
+[Phase E df_random_forest outer=r3_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=21s | eta=30s
+[Phase E df_random_forest outer=r3_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=23s | eta=27s
+[Phase E df_random_forest outer=r3_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=26s | eta=26s
+[Phase E df_random_forest outer=r3_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=27s | eta=23s
+[Phase E df_random_forest outer=r3_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=30s | eta=21s
+[Phase E df_random_forest outer=r3_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=33s | eta=20s
+[Phase E df_random_forest outer=r3_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=34s | eta=17s
+[Phase E df_random_forest outer=r3_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=37s | eta=15s
+[Phase E df_random_forest outer=r3_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=40s | eta=13s
+[Phase E df_random_forest outer=r3_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=41s | eta=11s
+[Phase E df_random_forest outer=r3_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=43s | eta=9s
+[Phase E df_random_forest outer=r3_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=46s | eta=7s
+[Phase E df_random_forest outer=r3_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=47s | eta=4s
+[Phase E df_random_forest outer=r3_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=49s | eta=2s
+[Phase E df_random_forest outer=r3_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=52s | eta=0s
+[Phase E model 1/2 fold 15/15] DONE  model=df_random_forest | outer=r3_f5 | macro_f1=0.6614 | inner_best=0.6766 | elapsed=53.312s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E df_random_forest] [############################] 15/15 outer folds | remaining=0 | elapsed=13m21s | eta=0s
+[Phase E drive] scheduling upload for df_random_forest to mtg-experiments:
+[Phase E bc_random_forest] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | starting
+[Phase E bc_random_forest] [----------------------------] 0/15 outer folds | remaining=15 | elapsed=0s | eta=? | running outer=r1_f1
+
+[Phase E model 2/2 fold 1/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r1_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r1_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r1_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r1_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r1_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r1_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r1_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r1_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r1_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r1_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r1_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r1_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r1_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r1_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r1_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r1_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r1_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r1_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r1_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r1_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r1_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m08s | eta=18s
+[Phase E bc_random_forest outer=r1_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m11s | eta=14s
+[Phase E bc_random_forest outer=r1_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m16s | eta=11s
+[Phase E bc_random_forest outer=r1_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r1_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m19s | eta=3s
+[Phase E bc_random_forest outer=r1_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 1/15] DONE  model=bc_random_forest | outer=r1_f1 | macro_f1=0.6262 | inner_best=0.6311 | elapsed=85.023s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=1m25s | eta=19m51s
+[Phase E bc_random_forest] [##--------------------------] 1/15 outer folds | remaining=14 | elapsed=1m25s | eta=19m51s | running outer=r1_f2
+
+[Phase E model 2/2 fold 2/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r1_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r1_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r1_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r1_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r1_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r1_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r1_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r1_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r1_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r1_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m00s
+[Phase E bc_random_forest outer=r1_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r1_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r1_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r1_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r1_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r1_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r1_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r1_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r1_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r1_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r1_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r1_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r1_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m16s | eta=11s
+[Phase E bc_random_forest outer=r1_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r1_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m19s | eta=3s
+[Phase E bc_random_forest outer=r1_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 2/15] DONE  model=bc_random_forest | outer=r1_f2 | macro_f1=0.6355 | inner_best=0.6333 | elapsed=85.178s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=2m50s | eta=18m26s
+[Phase E bc_random_forest] [####------------------------] 2/15 outer folds | remaining=13 | elapsed=2m50s | eta=18m26s | running outer=r1_f3
+
+[Phase E model 2/2 fold 3/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r1_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r1_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r1_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r1_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m15s
+[Phase E bc_random_forest outer=r1_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m41s
+[Phase E bc_random_forest outer=r1_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r1_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m16s
+[Phase E bc_random_forest outer=r1_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r1_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=28s | eta=1m07s
+[Phase E bc_random_forest outer=r1_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r1_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r1_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r1_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r1_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r1_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r1_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r1_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=56s | eta=33s
+[Phase E bc_random_forest outer=r1_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=58s | eta=29s
+[Phase E bc_random_forest outer=r1_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r1_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r1_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r1_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r1_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r1_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r1_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r1_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 3/15] DONE  model=bc_random_forest | outer=r1_f3 | macro_f1=0.6224 | inner_best=0.6215 | elapsed=84.086s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E bc_random_forest] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=4m14s | eta=16m57s
+[Phase E bc_random_forest] [######----------------------] 3/15 outer folds | remaining=12 | elapsed=4m14s | eta=16m57s | running outer=r1_f4
+
+[Phase E model 2/2 fold 4/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r1_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r1_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r1_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=56s
+[Phase E bc_random_forest outer=r1_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m15s
+[Phase E bc_random_forest outer=r1_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m41s
+[Phase E bc_random_forest outer=r1_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r1_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m16s
+[Phase E bc_random_forest outer=r1_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r1_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=28s | eta=1m07s
+[Phase E bc_random_forest outer=r1_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r1_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r1_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r1_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r1_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r1_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r1_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r1_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r1_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=58s | eta=29s
+[Phase E bc_random_forest outer=r1_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r1_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r1_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r1_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r1_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r1_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r1_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r1_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 4/15] DONE  model=bc_random_forest | outer=r1_f4 | macro_f1=0.6350 | inner_best=0.6281 | elapsed=85.27s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=5m40s | eta=15m34s
+[Phase E bc_random_forest] [#######---------------------] 4/15 outer folds | remaining=11 | elapsed=5m40s | eta=15m34s | running outer=r1_f5
+
+[Phase E model 2/2 fold 5/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r1_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r1_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r1_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r1_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r1_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m41s
+[Phase E bc_random_forest outer=r1_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r1_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m16s
+[Phase E bc_random_forest outer=r1_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r1_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=28s | eta=1m07s
+[Phase E bc_random_forest outer=r1_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r1_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r1_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r1_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r1_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r1_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r1_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r1_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r1_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=58s | eta=29s
+[Phase E bc_random_forest outer=r1_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r1_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r1_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r1_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r1_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r1_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r1_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r1_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 5/15] DONE  model=bc_random_forest | outer=r1_f5 | macro_f1=0.6458 | inner_best=0.6292 | elapsed=84.065s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E bc_random_forest] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=7m04s | eta=14m07s
+[Phase E bc_random_forest] [#########-------------------] 5/15 outer folds | remaining=10 | elapsed=7m04s | eta=14m07s | running outer=r2_f1
+
+[Phase E model 2/2 fold 6/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r2_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r2_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r2_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=56s
+[Phase E bc_random_forest outer=r2_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r2_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r2_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r2_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r2_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r2_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r2_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m00s
+[Phase E bc_random_forest outer=r2_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r2_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r2_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r2_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r2_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r2_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r2_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r2_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r2_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r2_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r2_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r2_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r2_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m16s | eta=11s
+[Phase E bc_random_forest outer=r2_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r2_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m19s | eta=3s
+[Phase E bc_random_forest outer=r2_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 6/15] DONE  model=bc_random_forest | outer=r2_f1 | macro_f1=0.6265 | inner_best=0.6276 | elapsed=85.041s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=8m29s | eta=12m43s
+[Phase E bc_random_forest] [###########-----------------] 6/15 outer folds | remaining=9 | elapsed=8m29s | eta=12m43s | running outer=r2_f2
+
+[Phase E model 2/2 fold 7/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r2_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r2_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r2_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r2_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r2_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r2_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r2_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r2_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r2_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=28s | eta=1m07s
+[Phase E bc_random_forest outer=r2_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r2_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r2_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r2_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r2_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r2_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r2_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r2_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r2_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=58s | eta=29s
+[Phase E bc_random_forest outer=r2_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r2_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r2_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r2_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r2_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r2_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r2_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r2_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 7/15] DONE  model=bc_random_forest | outer=r2_f2 | macro_f1=0.6548 | inner_best=0.6273 | elapsed=85.435s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=9m54s | eta=11m19s
+[Phase E bc_random_forest] [#############---------------] 7/15 outer folds | remaining=8 | elapsed=9m54s | eta=11m19s | running outer=r2_f3
+
+[Phase E model 2/2 fold 8/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r2_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r2_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r2_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r2_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r2_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r2_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r2_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r2_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r2_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r2_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r2_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r2_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r2_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r2_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r2_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r2_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r2_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r2_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r2_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r2_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r2_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r2_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r2_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m16s | eta=11s
+[Phase E bc_random_forest outer=r2_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r2_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m19s | eta=3s
+[Phase E bc_random_forest outer=r2_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 8/15] DONE  model=bc_random_forest | outer=r2_f3 | macro_f1=0.6260 | inner_best=0.6268 | elapsed=85.345s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=11m20s | eta=9m55s
+[Phase E bc_random_forest] [###############-------------] 8/15 outer folds | remaining=7 | elapsed=11m20s | eta=9m55s | running outer=r2_f4
+
+[Phase E model 2/2 fold 9/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r2_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r2_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r2_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r2_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m15s
+[Phase E bc_random_forest outer=r2_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m41s
+[Phase E bc_random_forest outer=r2_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r2_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m16s
+[Phase E bc_random_forest outer=r2_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r2_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=28s | eta=1m07s
+[Phase E bc_random_forest outer=r2_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r2_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r2_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r2_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r2_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r2_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r2_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r2_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r2_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r2_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r2_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r2_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r2_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r2_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r2_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r2_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r2_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 9/15] DONE  model=bc_random_forest | outer=r2_f4 | macro_f1=0.6372 | inner_best=0.6308 | elapsed=85.451s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=12m45s | eta=8m30s
+[Phase E bc_random_forest] [#################-----------] 9/15 outer folds | remaining=6 | elapsed=12m45s | eta=8m30s | running outer=r2_f5
+
+[Phase E model 2/2 fold 10/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r2_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r2_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r2_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r2_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r2_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r2_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r2_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r2_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r2_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r2_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r2_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r2_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r2_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r2_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r2_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r2_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r2_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r2_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r2_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r2_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r2_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r2_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r2_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m16s | eta=11s
+[Phase E bc_random_forest outer=r2_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r2_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m19s | eta=3s
+[Phase E bc_random_forest outer=r2_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 10/15] DONE  model=bc_random_forest | outer=r2_f5 | macro_f1=0.6293 | inner_best=0.6241 | elapsed=85.169s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [###################---------] 10/15 outer folds | remaining=5 | elapsed=14m10s | eta=7m05s
+[Phase E bc_random_forest] [###################---------] 10/15 outer folds | remaining=5 | elapsed=14m10s | eta=7m05s | running outer=r3_f1
+
+[Phase E model 2/2 fold 11/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r3_f1 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r3_f1] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r3_f1] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r3_f1] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m15s
+[Phase E bc_random_forest outer=r3_f1] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r3_f1] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r3_f1] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r3_f1] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r3_f1] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r3_f1] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r3_f1] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r3_f1] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r3_f1] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r3_f1] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r3_f1] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r3_f1] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r3_f1] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r3_f1] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r3_f1] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r3_f1] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r3_f1] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r3_f1] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r3_f1] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m16s | eta=11s
+[Phase E bc_random_forest outer=r3_f1] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r3_f1] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m19s | eta=3s
+[Phase E bc_random_forest outer=r3_f1] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 11/15] DONE  model=bc_random_forest | outer=r3_f1 | macro_f1=0.6075 | inner_best=0.6317 | elapsed=85.07s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=15m35s | eta=5m40s
+[Phase E bc_random_forest] [#####################-------] 11/15 outer folds | remaining=4 | elapsed=15m35s | eta=5m40s | running outer=r3_f2
+
+[Phase E model 2/2 fold 12/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r3_f2 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r3_f2] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r3_f2] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r3_f2] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r3_f2] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r3_f2] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r3_f2] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r3_f2] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r3_f2] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r3_f2] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r3_f2] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r3_f2] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r3_f2] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r3_f2] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r3_f2] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r3_f2] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r3_f2] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r3_f2] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=58s | eta=29s
+[Phase E bc_random_forest outer=r3_f2] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r3_f2] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r3_f2] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r3_f2] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r3_f2] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r3_f2] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r3_f2] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r3_f2] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 12/15] DONE  model=bc_random_forest | outer=r3_f2 | macro_f1=0.6512 | inner_best=0.6260 | elapsed=85.53s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [######################------] 12/15 outer folds | remaining=3 | elapsed=17m01s | eta=4m15s
+[Phase E bc_random_forest] [######################------] 12/15 outer folds | remaining=3 | elapsed=17m01s | eta=4m15s | running outer=r3_f3
+
+[Phase E model 2/2 fold 13/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r3_f3 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r3_f3] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r3_f3] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r3_f3] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r3_f3] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m40s
+[Phase E bc_random_forest outer=r3_f3] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r3_f3] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m15s
+[Phase E bc_random_forest outer=r3_f3] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r3_f3] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=27s | eta=1m07s
+[Phase E bc_random_forest outer=r3_f3] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m00s
+[Phase E bc_random_forest outer=r3_f3] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r3_f3] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r3_f3] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r3_f3] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r3_f3] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r3_f3] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=47s | eta=34s
+[Phase E bc_random_forest outer=r3_f3] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r3_f3] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=57s | eta=29s
+[Phase E bc_random_forest outer=r3_f3] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r3_f3] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r3_f3] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r3_f3] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r3_f3] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r3_f3] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r3_f3] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r3_f3] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 13/15] DONE  model=bc_random_forest | outer=r3_f3 | macro_f1=0.6390 | inner_best=0.6169 | elapsed=85.39s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [########################----] 13/15 outer folds | remaining=2 | elapsed=18m26s | eta=2m50s
+[Phase E bc_random_forest] [########################----] 13/15 outer folds | remaining=2 | elapsed=18m26s | eta=2m50s | running outer=r3_f4
+
+[Phase E model 2/2 fold 14/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r3_f4 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r3_f4] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r3_f4] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=55s
+[Phase E bc_random_forest outer=r3_f4] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m14s
+[Phase E bc_random_forest outer=r3_f4] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m41s
+[Phase E bc_random_forest outer=r3_f4] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r3_f4] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m16s
+[Phase E bc_random_forest outer=r3_f4] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r3_f4] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=28s | eta=1m07s
+[Phase E bc_random_forest outer=r3_f4] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r3_f4] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r3_f4] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r3_f4] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r3_f4] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=40s | eta=40s
+[Phase E bc_random_forest outer=r3_f4] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r3_f4] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=48s | eta=34s
+[Phase E bc_random_forest outer=r3_f4] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=55s | eta=33s
+[Phase E bc_random_forest outer=r3_f4] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=58s | eta=29s
+[Phase E bc_random_forest outer=r3_f4] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r3_f4] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r3_f4] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r3_f4] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r3_f4] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r3_f4] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r3_f4] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r3_f4] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 14/15] DONE  model=bc_random_forest | outer=r3_f4 | macro_f1=0.6317 | inner_best=0.6325 | elapsed=85.369s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 500}
+[Phase E bc_random_forest] [##########################--] 14/15 outer folds | remaining=1 | elapsed=19m52s | eta=1m25s
+[Phase E bc_random_forest] [##########################--] 14/15 outer folds | remaining=1 | elapsed=19m52s | eta=1m25s | running outer=r3_f5
+
+[Phase E model 2/2 fold 15/15] START model=bc_random_forest | representation=BC | algorithm=random_forest | outer=r3_f5 | inner_splits=3 | grid_configs=24 | train=9708 | test=2427 | bc_min_df=10 | use_tfidf=False
+[Phase E bc_random_forest outer=r3_f5] [----------------------------] 0/24 grid configs trained | remaining=24 | elapsed=0s | eta=? | starting inner grid
+[Phase E bc_random_forest outer=r3_f5] [#---------------------------] 1/24 grid configs trained | remaining=23 | elapsed=2s | eta=56s
+[Phase E bc_random_forest outer=r3_f5] [##--------------------------] 2/24 grid configs trained | remaining=22 | elapsed=7s | eta=1m15s
+[Phase E bc_random_forest outer=r3_f5] [####------------------------] 3/24 grid configs trained | remaining=21 | elapsed=14s | eta=1m41s
+[Phase E bc_random_forest outer=r3_f5] [#####-----------------------] 4/24 grid configs trained | remaining=20 | elapsed=16s | eta=1m22s
+[Phase E bc_random_forest outer=r3_f5] [######----------------------] 5/24 grid configs trained | remaining=19 | elapsed=20s | eta=1m16s
+[Phase E bc_random_forest outer=r3_f5] [#######---------------------] 6/24 grid configs trained | remaining=18 | elapsed=26s | eta=1m17s
+[Phase E bc_random_forest outer=r3_f5] [########--------------------] 7/24 grid configs trained | remaining=17 | elapsed=28s | eta=1m07s
+[Phase E bc_random_forest outer=r3_f5] [#########-------------------] 8/24 grid configs trained | remaining=16 | elapsed=30s | eta=1m01s
+[Phase E bc_random_forest outer=r3_f5] [##########------------------] 9/24 grid configs trained | remaining=15 | elapsed=35s | eta=58s
+[Phase E bc_random_forest outer=r3_f5] [############----------------] 10/24 grid configs trained | remaining=14 | elapsed=36s | eta=51s
+[Phase E bc_random_forest outer=r3_f5] [#############---------------] 11/24 grid configs trained | remaining=13 | elapsed=38s | eta=45s
+[Phase E bc_random_forest outer=r3_f5] [##############--------------] 12/24 grid configs trained | remaining=12 | elapsed=41s | eta=41s
+[Phase E bc_random_forest outer=r3_f5] [###############-------------] 13/24 grid configs trained | remaining=11 | elapsed=43s | eta=36s
+[Phase E bc_random_forest outer=r3_f5] [################------------] 14/24 grid configs trained | remaining=10 | elapsed=48s | eta=34s
+[Phase E bc_random_forest outer=r3_f5] [##################----------] 15/24 grid configs trained | remaining=9 | elapsed=56s | eta=33s
+[Phase E bc_random_forest outer=r3_f5] [###################---------] 16/24 grid configs trained | remaining=8 | elapsed=58s | eta=29s
+[Phase E bc_random_forest outer=r3_f5] [####################--------] 17/24 grid configs trained | remaining=7 | elapsed=1m01s | eta=25s
+[Phase E bc_random_forest outer=r3_f5] [#####################-------] 18/24 grid configs trained | remaining=6 | elapsed=1m07s | eta=22s
+[Phase E bc_random_forest outer=r3_f5] [######################------] 19/24 grid configs trained | remaining=5 | elapsed=1m09s | eta=18s
+[Phase E bc_random_forest outer=r3_f5] [#######################-----] 20/24 grid configs trained | remaining=4 | elapsed=1m12s | eta=14s
+[Phase E bc_random_forest outer=r3_f5] [########################----] 21/24 grid configs trained | remaining=3 | elapsed=1m17s | eta=11s
+[Phase E bc_random_forest outer=r3_f5] [##########################--] 22/24 grid configs trained | remaining=2 | elapsed=1m18s | eta=7s
+[Phase E bc_random_forest outer=r3_f5] [###########################-] 23/24 grid configs trained | remaining=1 | elapsed=1m20s | eta=3s
+[Phase E bc_random_forest outer=r3_f5] [############################] 24/24 grid configs trained | remaining=0 | elapsed=1m22s | eta=0s
+[Phase E model 2/2 fold 15/15] DONE  model=bc_random_forest | outer=r3_f5 | macro_f1=0.6206 | inner_best=0.6299 | elapsed=84.088s | best_params={'clf__class_weight': 'balanced', 'clf__max_features': 'sqrt', 'clf__min_samples_leaf': 2, 'clf__n_estimators': 250}
+[Phase E bc_random_forest] [############################] 15/15 outer folds | remaining=0 | elapsed=21m16s | eta=0s
+[Phase E drive] scheduling upload for bc_random_forest to mtg-experiments:
+[Phase E drive] scheduling bundle upload shared → mtg-experiments:
+[Phase E drive] upload df_random_forest: ok
+[Phase E drive] upload bc_random_forest: ok
+[Phase E drive] upload bundle:shared: ok
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 53.849, "fold_id": "r1_f1", "macro_f1": 0.6812957847842208, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 53.192, "fold_id": "r1_f2", "macro_f1": 0.6645463093118902, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 53.418, "fold_id": "r1_f3", "macro_f1": 0.682328645280497, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 53.632, "fold_id": "r1_f4", "macro_f1": 0.6751463882653986, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 53.15, "fold_id": "r1_f5", "macro_f1": 0.6745926818223958, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 53.669, "fold_id": "r2_f1", "macro_f1": 0.6688914017719391, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 53.143, "fold_id": "r2_f2", "macro_f1": 0.6857160144310148, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 53.178, "fold_id": "r2_f3", "macro_f1": 0.6697577753827998, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 53.631, "fold_id": "r2_f4", "macro_f1": 0.6651727057398907, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 53.396, "fold_id": "r2_f5", "macro_f1": 0.6719469086605997, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 53.258, "fold_id": "r3_f1", "macro_f1": 0.6674004374620061, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 100}, "elapsed_seconds": 53.109, "fold_id": "r3_f2", "macro_f1": 0.6692183927751607, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 53.718, "fold_id": "r3_f3", "macro_f1": 0.6838062630614877, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 100}, "elapsed_seconds": 52.895, "fold_id": "r3_f4", "macro_f1": 0.6779197773501235, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 53.312, "fold_id": "r3_f5", "macro_f1": 0.6613866871184305, "model_id": "df_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.023, "fold_id": "r1_f1", "macro_f1": 0.6262134084413101, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.178, "fold_id": "r1_f2", "macro_f1": 0.6355144371712829, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 84.086, "fold_id": "r1_f3", "macro_f1": 0.6224233476904125, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.27, "fold_id": "r1_f4", "macro_f1": 0.634999350301002, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 84.065, "fold_id": "r1_f5", "macro_f1": 0.6457892041076739, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.041, "fold_id": "r2_f1", "macro_f1": 0.6264846248417969, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.435, "fold_id": "r2_f2", "macro_f1": 0.654753341740741, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.345, "fold_id": "r2_f3", "macro_f1": 0.6259585874084876, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.451, "fold_id": "r2_f4", "macro_f1": 0.6372454569863709, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.169, "fold_id": "r2_f5", "macro_f1": 0.6293433310840203, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.07, "fold_id": "r3_f1", "macro_f1": 0.607464099100377, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.53, "fold_id": "r3_f2", "macro_f1": 0.6512000790316216, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.39, "fold_id": "r3_f3", "macro_f1": 0.6390304522318587, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 500}, "elapsed_seconds": 85.369, "fold_id": "r3_f4", "macro_f1": 0.6316567222329622, "model_id": "bc_random_forest"}
+{"best_params": {"clf__class_weight": "balanced", "clf__max_features": "sqrt", "clf__min_samples_leaf": 2, "clf__n_estimators": 250}, "elapsed_seconds": 84.088, "fold_id": "r3_f5", "macro_f1": 0.6206258259045184, "model_id": "bc_random_forest"}
+{
+  "elapsed_seconds": 2115.366,
+  "models": [
+    {
+      "macro_f1_mean": 0.6900837016866804,
+      "macro_f1_std": 0.008132958476463755,
+      "model_id": "df_gradient_boosting"
+    },
+    {
+      "macro_f1_mean": 0.6566264344806674,
+      "macro_f1_std": 0.00861384656916465,
+      "model_id": "df_linear_svc"
+    },
+    {
+      "macro_f1_mean": 0.6710254511090173,
+      "macro_f1_std": 0.010238847545163526,
+      "model_id": "df_logistic_regression"
+    },
+    {
+      "macro_f1_mean": 0.5902792396617371,
+      "macro_f1_std": 0.009155064147955128,
+      "model_id": "df_naive_bayes"
+    },
+    {
+      "macro_f1_mean": 0.6732750782145236,
+      "macro_f1_std": 0.0075889324109546154,
+      "model_id": "df_random_forest"
+    },
+    {
+      "macro_f1_mean": 0.625698199188549,
+      "macro_f1_std": 0.011309807848948219,
+      "model_id": "bc_gradient_boosting"
+    },
+    {
+      "macro_f1_mean": 0.5926656500094076,
+      "macro_f1_std": 0.009045194328118594,
+      "model_id": "bc_linear_svc"
+    },
+    {
+      "macro_f1_mean": 0.6034949126172732,
+      "macro_f1_std": 0.011599034354896776,
+      "model_id": "bc_logistic_regression"
+    },
+    {
+      "macro_f1_mean": 0.553471019478032,
+      "macro_f1_std": 0.008842353219016172,
+      "model_id": "bc_naive_bayes"
+    },
+    {
+      "macro_f1_mean": 0.6325801512182957,
+      "macro_f1_std": 0.012248654448666962,
+      "model_id": "bc_random_forest"
+    }
+  ],
+  "n_rows": 12135,
+  "status": "ok"
+}
+Traceback (most recent call last):
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 965, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 951, in main
+    payload = run(args)
+              ^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 935, in run
+    return publish_manifest(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 756, in publish_manifest
+    metadata = list_remote_zip_metadata(remote=remote, rclone_bin=rclone_bin)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 669, in list_remote_zip_metadata
+    model_id = validate_model_id(Path(name).stem)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macsilva/mtg/scripts/sync_experiments_drive.py", line 57, in validate_model_id
+    raise ValueError(f"Invalid model id: {model_id}")
+ValueError: Invalid model id: .codex
+Command failed with exit code 1: /home/macsilva/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+Pipeline plan:
+  - check_drive_write: /home/macsilva/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py check-write --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+  - phase_e_nested_cv: /home/macsilva/mtg/.venv/bin/python3 scripts/phase_e_nested_cv.py --processed-dir data/processed/archidekt --docs-dir documents/reports/results --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone --model random_forest --bc-min-df 10 --outer-splits 5 --inner-splits 3 --repeats 1 2 3 --random-state 42 --grid-n-jobs 1 --grid-verbose 0 --estimator-n-jobs 10 --force-rerun --from-spot-check --spot-check-summary experiments/spot_check/summary.json
+  - publish_experiments_manifest: /home/macsilva/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+
+==> check_drive_write
+/home/macsilva/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py check-write --experiments-drive-remote mtg-experiments: --rclone-bin rclone
+
+==> phase_e_nested_cv
+/home/macsilva/mtg/.venv/bin/python3 scripts/phase_e_nested_cv.py --processed-dir data/processed/archidekt --docs-dir documents/reports/results --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone --model random_forest --bc-min-df 10 --outer-splits 5 --inner-splits 3 --repeats 1 2 3 --random-state 42 --grid-n-jobs 1 --grid-verbose 0 --estimator-n-jobs 10 --force-rerun --from-spot-check --spot-check-summary experiments/spot_check/summary.json
+
+==> publish_experiments_manifest
+/home/macsilva/mtg/.venv/bin/python3 scripts/sync_experiments_drive.py publish-manifest --experiment-dir experiments --experiments-drive-remote mtg-experiments: --rclone-bin rclone

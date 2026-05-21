@@ -1,9 +1,13 @@
 # Testes Estatísticos — Fase E
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - Friedman statistic: `133.152727`
 =======
 - Friedman statistic: `161.430769`
+>>>>>>> Stashed changes
+=======
+- Friedman statistic: `132.120000`
 >>>>>>> Stashed changes
 - Friedman p-value: `0.000000`
 - Nemenyi critical difference (alpha=0.05): `4.302527`
@@ -14,6 +18,7 @@
 |---|---:|
 <<<<<<< Updated upstream
 | `df_gradient_boosting` | 1.0000 |
+<<<<<<< Updated upstream
 | `df_logistic_regression` | 2.0667 |
 | `df_random_forest` | 3.1333 |
 | `df_linear_svc` | 3.8000 |
@@ -96,6 +101,39 @@
 - `df_logistic_regression` vs `df_naive_bayes`: rank diff `5.9333`.
 - `df_naive_bayes` vs `df_random_forest`: rank diff `4.6667`.
 >>>>>>> Stashed changes
+=======
+| `df_random_forest` | 2.4000 |
+| `df_logistic_regression` | 2.6667 |
+| `df_linear_svc` | 3.9333 |
+| `bc_random_forest` | 5.3333 |
+| `bc_gradient_boosting` | 5.6667 |
+| `bc_logistic_regression` | 7.0667 |
+| `bc_linear_svc` | 8.3333 |
+| `df_naive_bayes` | 8.6000 |
+| `bc_naive_bayes` | 10.0000 |
+
+## Nemenyi
+
+- `bc_gradient_boosting` vs `bc_naive_bayes`: rank diff `4.3333`.
+- `bc_gradient_boosting` vs `df_gradient_boosting`: rank diff `4.6667`.
+- `bc_linear_svc` vs `df_gradient_boosting`: rank diff `7.3333`.
+- `bc_linear_svc` vs `df_linear_svc`: rank diff `4.4000`.
+- `bc_linear_svc` vs `df_logistic_regression`: rank diff `5.6667`.
+- `bc_linear_svc` vs `df_random_forest`: rank diff `5.9333`.
+- `bc_logistic_regression` vs `df_gradient_boosting`: rank diff `6.0667`.
+- `bc_logistic_regression` vs `df_logistic_regression`: rank diff `4.4000`.
+- `bc_logistic_regression` vs `df_random_forest`: rank diff `4.6667`.
+- `bc_naive_bayes` vs `bc_random_forest`: rank diff `4.6667`.
+- `bc_naive_bayes` vs `df_gradient_boosting`: rank diff `9.0000`.
+- `bc_naive_bayes` vs `df_linear_svc`: rank diff `6.0667`.
+- `bc_naive_bayes` vs `df_logistic_regression`: rank diff `7.3333`.
+- `bc_naive_bayes` vs `df_random_forest`: rank diff `7.6000`.
+- `bc_random_forest` vs `df_gradient_boosting`: rank diff `4.3333`.
+- `df_gradient_boosting` vs `df_naive_bayes`: rank diff `7.6000`.
+- `df_linear_svc` vs `df_naive_bayes`: rank diff `4.6667`.
+- `df_logistic_regression` vs `df_naive_bayes`: rank diff `5.9333`.
+- `df_naive_bayes` vs `df_random_forest`: rank diff `6.2000`.
+>>>>>>> Stashed changes
 
 ## Wilcoxon Pareado
 
@@ -115,8 +153,12 @@
 | `bc_gradient_boosting` | `bc_linear_svc` | 0.0000 | 0.000061 |
 | `bc_gradient_boosting` | `bc_logistic_regression` | 0.0000 | 0.000061 |
 | `bc_gradient_boosting` | `bc_naive_bayes` | 0.0000 | 0.000061 |
+<<<<<<< Updated upstream
 | `bc_gradient_boosting` | `bc_random_forest` | 0.0000 | 0.000061 |
 | `bc_gradient_boosting` | `df_decision_tree` | 0.0000 | 0.000061 |
+=======
+| `bc_gradient_boosting` | `bc_random_forest` | 32.0000 | 0.120544 |
+>>>>>>> Stashed changes
 | `bc_gradient_boosting` | `df_gradient_boosting` | 0.0000 | 0.000061 |
 | `bc_gradient_boosting` | `df_linear_svc` | 0.0000 | 0.000061 |
 | `bc_gradient_boosting` | `df_logistic_regression` | 0.0000 | 0.000061 |
@@ -163,7 +205,11 @@
 | `df_gradient_boosting` | `df_random_forest` | 0.0000 | 0.000061 |
 | `df_linear_svc` | `df_logistic_regression` | 0.0000 | 0.000061 |
 | `df_linear_svc` | `df_naive_bayes` | 0.0000 | 0.000061 |
-| `df_linear_svc` | `df_random_forest` | 26.0000 | 0.055359 |
+| `df_linear_svc` | `df_random_forest` | 2.0000 | 0.000183 |
 | `df_logistic_regression` | `df_naive_bayes` | 0.0000 | 0.000061 |
+<<<<<<< Updated upstream
 | `df_logistic_regression` | `df_random_forest` | 1.0000 | 0.000122 |
+=======
+| `df_logistic_regression` | `df_random_forest` | 40.0000 | 0.276855 |
+>>>>>>> Stashed changes
 | `df_naive_bayes` | `df_random_forest` | 0.0000 | 0.000061 |

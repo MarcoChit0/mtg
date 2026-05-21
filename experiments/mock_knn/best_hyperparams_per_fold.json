@@ -1,0 +1,8 @@
+[
+  {
+    "best_params": {
+      "clf__n_neighbors": 5
+    },
+    "outer_fold": "mock_r1_f1"
+  }
+]

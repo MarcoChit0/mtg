@@ -1,7 +1,23 @@
 {
-  "checkpoint_dir": "experiments/df_random_forest/checkpoints/d2ba2c05088b0184",
-  "completed_fold_ids": [],
-  "completed_folds": 0,
+  "checkpoint_dir": "experiments/df_random_forest/checkpoints/f1ad16b24de54183",
+  "completed_fold_ids": [
+    "r1_f1",
+    "r1_f2",
+    "r1_f3",
+    "r1_f4",
+    "r1_f5",
+    "r2_f1",
+    "r2_f2",
+    "r2_f3",
+    "r2_f4",
+    "r2_f5",
+    "r3_f1",
+    "r3_f2",
+    "r3_f3",
+    "r3_f4",
+    "r3_f5"
+  ],
+  "completed_folds": 15,
   "schema_version": 1,
   "signature": {
     "algorithm": "random_forest",
@@ -24,39 +40,22 @@
       "r3_f5"
     ],
     "grid": {
-      "clf__bootstrap": [
-        true
-      ],
-      "clf__criterion": [
-        "gini",
-        "entropy"
-      ],
-      "clf__max_depth": [
-        10,
-        20,
-        40,
-        null
+      "clf__class_weight": [
+        null,
+        "balanced"
       ],
       "clf__max_features": [
         "sqrt",
-        "log2",
-        null
+        "log2"
       ],
       "clf__min_samples_leaf": [
         1,
-        2,
-        4
-      ],
-      "clf__min_samples_split": [
-        2,
-        4,
-        8
+        2
       ],
       "clf__n_estimators": [
         100,
         250,
-        500,
-        1000
+        500
       ]
     },
     "inner_splits": 3,
@@ -74,7 +73,7 @@
     "schema_version": 1,
     "use_tfidf": false
   },
-  "signature_id": "d2ba2c05088b0184",
+  "signature_id": "f1ad16b24de54183",
   "total_folds": 15,
-  "updated_at": "2026-05-19T17:19:05.485115+00:00"
+  "updated_at": "2026-05-21T16:09:03.800529+00:00"
 }
