@@ -9,6 +9,7 @@
       "archive": {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "archive_path": "experiments/archives/df_naive_bayes.zip",
         "files": [
           "df_naive_bayes/best_hyperparams_per_fold.json",
@@ -112,10 +113,56 @@
       },
       "model_id": "df_random_forest",
 >>>>>>> Stashed changes
+=======
+        "archive_path": "experiments/archives/df_gradient_boosting.zip",
+        "files": [
+          "df_gradient_boosting/best_hyperparams_per_fold.json",
+          "df_gradient_boosting/checkpoint_state.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r1_f1.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r1_f2.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r1_f3.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r1_f4.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r1_f5.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r2_f1.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r2_f2.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r2_f3.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r2_f4.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r2_f5.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r3_f1.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r3_f2.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r3_f3.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r3_f4.json",
+          "df_gradient_boosting/checkpoints/c2605ed322b1465b/r3_f5.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r1_f1.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r1_f2.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r1_f3.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r1_f4.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r1_f5.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r2_f1.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r2_f2.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r2_f3.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r2_f4.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r2_f5.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r3_f1.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r3_f2.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r3_f3.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r3_f4.json",
+          "df_gradient_boosting/checkpoints/f6475512f1631d22/r3_f5.json",
+          "df_gradient_boosting/cv_results_per_fold.jsonl",
+          "df_gradient_boosting/metrics_per_fold.json",
+          "df_gradient_boosting/predictions_per_fold.jsonl"
+        ],
+        "model_id": "df_gradient_boosting",
+        "size_bytes": 2789242,
+        "status": "ok"
+      },
+      "model_id": "df_gradient_boosting",
+>>>>>>> Stashed changes
       "rclone": {
         "command": [
           "rclone",
           "copyto",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "experiments/archives/df_naive_bayes.zip",
@@ -128,6 +175,10 @@
           "experiments/archives/df_random_forest.zip",
           "mtg-experiments:df_random_forest.zip"
 >>>>>>> Stashed changes
+=======
+          "experiments/archives/df_gradient_boosting.zip",
+          "mtg-experiments:df_gradient_boosting.zip"
+>>>>>>> Stashed changes
         ],
         "returncode": 0,
         "status": "ok",
@@ -139,6 +190,7 @@
     },
     {
       "archive": {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "archive_path": "experiments/archives/bc_naive_bayes.zip",
@@ -244,10 +296,41 @@
       },
       "model_id": "bc_random_forest",
 >>>>>>> Stashed changes
+=======
+        "archive_path": "experiments/archives/bc_gradient_boosting.zip",
+        "files": [
+          "bc_gradient_boosting/best_hyperparams_per_fold.json",
+          "bc_gradient_boosting/checkpoint_state.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r1_f1.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r1_f2.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r1_f3.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r1_f4.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r1_f5.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r2_f1.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r2_f2.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r2_f3.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r2_f4.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r2_f5.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r3_f1.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r3_f2.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r3_f3.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r3_f4.json",
+          "bc_gradient_boosting/checkpoints/afd686dd02e08c4a/r3_f5.json",
+          "bc_gradient_boosting/cv_results_per_fold.jsonl",
+          "bc_gradient_boosting/metrics_per_fold.json",
+          "bc_gradient_boosting/predictions_per_fold.jsonl"
+        ],
+        "model_id": "bc_gradient_boosting",
+        "size_bytes": 1713909,
+        "status": "ok"
+      },
+      "model_id": "bc_gradient_boosting",
+>>>>>>> Stashed changes
       "rclone": {
         "command": [
           "rclone",
           "copyto",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "experiments/archives/bc_naive_bayes.zip",
@@ -259,6 +342,10 @@
 =======
           "experiments/archives/bc_random_forest.zip",
           "mtg-experiments:bc_random_forest.zip"
+>>>>>>> Stashed changes
+=======
+          "experiments/archives/bc_gradient_boosting.zip",
+          "mtg-experiments:bc_gradient_boosting.zip"
 >>>>>>> Stashed changes
         ],
         "returncode": 0,
@@ -299,6 +386,7 @@
   ],
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "elapsed_seconds": 605.157,
 =======
   "elapsed_seconds": 9848.853,
@@ -320,10 +408,21 @@
     {
       "algorithm": "random_forest",
 >>>>>>> Stashed changes
+=======
+  "elapsed_seconds": 124861.723,
+  "model_plan": [
+    {
+      "algorithm": "gradient_boosting",
+      "representation": "DF"
+    },
+    {
+      "algorithm": "gradient_boosting",
+>>>>>>> Stashed changes
       "representation": "BC"
     }
   ],
   "model_sources": {
+<<<<<<< Updated upstream
     "bc_decision_tree": "current_run",
     "bc_gradient_boosting": "existing_artifact",
     "bc_linear_svc": "existing_artifact",
@@ -340,6 +439,17 @@
     "df_logistic_regression": "existing_artifact",
     "df_naive_bayes": "existing_artifact",
 <<<<<<< Updated upstream
+=======
+    "bc_gradient_boosting": "current_run",
+    "bc_linear_svc": "existing_artifact",
+    "bc_logistic_regression": "existing_artifact",
+    "bc_naive_bayes": "existing_artifact",
+    "bc_random_forest": "existing_artifact",
+    "df_gradient_boosting": "current_run",
+    "df_linear_svc": "existing_artifact",
+    "df_logistic_regression": "existing_artifact",
+    "df_naive_bayes": "existing_artifact",
+>>>>>>> Stashed changes
     "df_random_forest": "existing_artifact"
 =======
     "df_random_forest": "current_run"
@@ -348,6 +458,7 @@
   "models": [
     {
       "aggregate": {
+<<<<<<< Updated upstream
         "accuracy_mean": 0.6875703886828731,
         "accuracy_std": 0.008667313877751819,
         "confusion_matrix_sum": [
@@ -965,21 +1076,25 @@
       "aggregate": {
         "accuracy_mean": 0.7128691113857986,
         "accuracy_std": 0.007531542582000565,
+=======
+        "accuracy_mean": 0.6977612965252027,
+        "accuracy_std": 0.008834159297000427,
+>>>>>>> Stashed changes
         "confusion_matrix_sum": [
           [
-            4212,
-            2666,
-            85
+            5303,
+            1530,
+            130
           ],
           [
-            2604,
-            15022,
-            1025
+            4086,
+            12715,
+            1850
           ],
           [
-            242,
-            3831,
-            6718
+            440,
+            2967,
+            7384
           ]
         ],
         "labels": [
@@ -987,582 +1102,588 @@
           3,
           4
         ],
-        "macro_f1_mean": 0.6900837016866804,
-        "macro_f1_std": 0.008132958476463755,
-        "precision_macro_mean": 0.7178472255110435,
-        "precision_macro_std": 0.008754007228735131,
-        "recall_macro_mean": 0.6776312185233536,
-        "recall_macro_std": 0.00802630942792344
+        "macro_f1_mean": 0.6907864040640452,
+        "macro_f1_std": 0.009293633138701542,
+        "precision_macro_mean": 0.6899265015778687,
+        "precision_macro_std": 0.00820071322283598,
+        "recall_macro_mean": 0.7092042996419724,
+        "recall_macro_std": 0.014999607249758231
       },
       "algorithm": "gradient_boosting",
+      "checkpoint": {
+        "checkpoint_dir": "experiments/df_gradient_boosting/checkpoints/c2605ed322b1465b",
+        "completed_folds": 15,
+        "signature_id": "c2605ed322b1465b",
+        "total_folds": 15
+      },
       "folds": [
         {
-          "accuracy": 0.7218788627935723,
+          "accuracy": 0.7021013597033374,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              281,
-              177,
-              7
+              358,
+              101,
+              6
             ],
             [
-              165,
-              1015,
-              63
+              270,
+              841,
+              132
             ],
             [
-              19,
-              244,
-              456
+              40,
+              174,
+              505
             ]
           ],
-          "elapsed_seconds": 25.149,
+          "elapsed_seconds": 122.457,
           "fold_id": "r1_f1",
-          "inner_best_macro_f1": 0.685809549352948,
+          "inner_best_macro_f1": 0.6893364491367063,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6981922077163426,
+          "macro_f1": 0.6955070323948679,
           "model_id": "df_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 1,
-          "precision_macro": 0.7260152466316302,
-          "recall_macro": 0.6850293564540085,
+          "precision_macro": 0.6916311331806083,
+          "recall_macro": 0.7162819219797205,
           "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7095179233621756,
+          "accuracy": 0.6856201071281417,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              276,
-              182,
-              6
+              372,
+              80,
+              12
             ],
             [
-              164,
-              998,
-              82
+              323,
+              775,
+              146
             ],
             [
-              15,
-              256,
-              448
+              36,
+              166,
+              517
             ]
           ],
-          "elapsed_seconds": 25.178,
+          "elapsed_seconds": 126.006,
           "fold_id": "r1_f2",
-          "inner_best_macro_f1": 0.688849879446367,
+          "inner_best_macro_f1": 0.6889139271837216,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6864577420265506,
+          "macro_f1": 0.6828904039187496,
           "model_id": "df_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 2,
-          "precision_macro": 0.7124667915130644,
-          "recall_macro": 0.6733886705874061,
+          "precision_macro": 0.6779592000460645,
+          "recall_macro": 0.7145895778771885,
           "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7144622991347342,
+          "accuracy": 0.6843840131850021,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              300,
-              160,
-              4
-            ],
-            [
-              194,
-              998,
-              52
-            ],
-            [
-              12,
-              271,
-              436
-            ]
-          ],
-          "elapsed_seconds": 25.309,
-          "fold_id": "r1_f3",
-          "inner_best_macro_f1": 0.6865286229878351,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6951164288805846,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.7258182400459442,
-          "recall_macro": 0.6850667675611725,
-          "repeat_seed": 1,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7165224557066338,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              292,
-              169,
-              3
-            ],
-            [
-              181,
-              999,
-              63
-            ],
-            [
-              12,
-              260,
-              448
-            ]
-          ],
-          "elapsed_seconds": 25.809,
-          "fold_id": "r1_f4",
-          "inner_best_macro_f1": 0.6893175917853402,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6965043542181867,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.7244123394473919,
-          "recall_macro": 0.685077763701505,
-          "repeat_seed": 1,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7119901112484549,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              273,
-              182,
-              9
-            ],
-            [
-              167,
-              1001,
-              75
-            ],
-            [
-              17,
-              249,
-              454
-            ]
-          ],
-          "elapsed_seconds": 25.958,
-          "fold_id": "r1_f5",
-          "inner_best_macro_f1": 0.6930331051792672,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6876752317694382,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 5,
-          "precision_macro": 0.7134208989345017,
-          "recall_macro": 0.674742453011449,
-          "repeat_seed": 1,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7082818294190358,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              273,
-              182,
+              393,
+              61,
               10
             ],
             [
-              174,
-              994,
-              75
+              340,
+              768,
+              136
             ],
             [
-              16,
-              251,
-              452
+              36,
+              183,
+              500
             ]
           ],
-          "elapsed_seconds": 25.688,
-          "fold_id": "r2_f1",
-          "inner_best_macro_f1": 0.6885600805071957,
+          "elapsed_seconds": 118.131,
+          "fold_id": "r1_f3",
+          "inner_best_macro_f1": 0.6870382767419269,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6842255267616556,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.7093040912734233,
-          "recall_macro": 0.6718086253784049,
-          "repeat_seed": 2,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7202307375360527,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              283,
-              174,
-              7
-            ],
-            [
-              157,
-              1018,
-              69
-            ],
-            [
-              18,
-              254,
-              447
-            ]
-          ],
-          "elapsed_seconds": 25.486,
-          "fold_id": "r2_f2",
-          "inner_best_macro_f1": 0.688632608195657,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6968556500152209,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.7255331691887394,
-          "recall_macro": 0.6833128561642107,
-          "repeat_seed": 2,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7016893283889576,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              275,
-              185,
-              4
-            ],
-            [
-              187,
-              992,
-              65
-            ],
-            [
-              13,
-              270,
-              436
-            ]
-          ],
-          "elapsed_seconds": 25.657,
-          "fold_id": "r2_f3",
-          "inner_best_macro_f1": 0.6872247269364483,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.678473396522472,
+          "macro_f1": 0.6836404609350719,
           "model_id": "df_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.7092900094941658,
-          "recall_macro": 0.6654992804044292,
-          "repeat_seed": 2,
+          "precision_macro": 0.6813134682255817,
+          "recall_macro": 0.7199187982481531,
+          "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7049855789039967,
+          "accuracy": 0.6971569839307787,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              267,
-              193,
-              4
+              364,
+              92,
+              8
             ],
             [
-              176,
-              987,
-              80
+              275,
+              852,
+              116
             ],
             [
-              19,
-              244,
-              457
+              33,
+              211,
+              476
             ]
           ],
-          "elapsed_seconds": 25.159,
-          "fold_id": "r2_f4",
-          "inner_best_macro_f1": 0.6918947683728459,
+          "elapsed_seconds": 119.413,
+          "fold_id": "r1_f4",
+          "inner_best_macro_f1": 0.6900899408787667,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6805509721960227,
+          "macro_f1": 0.6908831172560337,
           "model_id": "df_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.7052573444230074,
-          "recall_macro": 0.668066639336093,
-          "repeat_seed": 2,
+          "precision_macro": 0.690887445887446,
+          "recall_macro": 0.7103441083605868,
+          "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7243510506798516,
+          "accuracy": 0.703749484960857,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              286,
-              174,
-              4
+              325,
+              132,
+              7
             ],
             [
-              166,
-              1012,
-              65
+              234,
+              892,
+              117
             ],
             [
-              16,
-              244,
-              460
+              23,
+              206,
+              491
             ]
           ],
-          "elapsed_seconds": 24.876,
-          "fold_id": "r2_f5",
-          "inner_best_macro_f1": 0.6859258360138561,
+          "elapsed_seconds": 130.313,
+          "fold_id": "r1_f5",
+          "inner_best_macro_f1": 0.6927854083967291,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.7025082743623559,
+          "macro_f1": 0.6927954871171442,
           "model_id": "df_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.7294562120649077,
-          "recall_macro": 0.6898091637563716,
-          "repeat_seed": 2,
+          "precision_macro": 0.693998826586204,
+          "recall_macro": 0.6999980478161741,
+          "repeat_seed": 1,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7025133910177174,
+          "accuracy": 0.6872682323856613,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              280,
-              180,
-              5
+              352,
+              105,
+              8
             ],
             [
-              195,
-              980,
-              68
+              290,
+              818,
+              135
             ],
             [
-              20,
-              254,
-              445
+              29,
+              192,
+              498
             ]
           ],
-          "elapsed_seconds": 24.631,
-          "fold_id": "r3_f1",
-          "inner_best_macro_f1": 0.6889193850506906,
+          "elapsed_seconds": 131.608,
+          "fold_id": "r2_f1",
+          "inner_best_macro_f1": 0.6921312999806548,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6801633403572457,
+          "macro_f1": 0.6819598543881827,
           "model_id": "df_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 1,
-          "precision_macro": 0.7059330772202058,
-          "recall_macro": 0.6698269407590288,
-          "repeat_seed": 3,
+          "precision_macro": 0.6783778424576665,
+          "recall_macro": 0.7025677252567218,
+          "repeat_seed": 2,
           "representation": "DF"
         },
         {
-          "accuracy": 0.7202307375360527,
+          "accuracy": 0.7008652657601978,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              280,
-              178,
-              6
+              364,
+              90,
+              10
             ],
             [
-              174,
-              1015,
-              55
-            ],
-            [
-              16,
-              250,
-              453
-            ]
-          ],
-          "elapsed_seconds": 24.813,
-          "fold_id": "r3_f2",
-          "inner_best_macro_f1": 0.6853140720178499,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6966181050662726,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.7268211138150703,
-          "recall_macro": 0.6831354663978066,
-          "repeat_seed": 3,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7173465183353935,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              278,
-              183,
-              3
-            ],
-            [
-              156,
-              1020,
-              68
-            ],
-            [
-              15,
-              261,
-              443
-            ]
-          ],
-          "elapsed_seconds": 26.608,
-          "fold_id": "r3_f3",
-          "inner_best_macro_f1": 0.6792672661070259,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6936258177396489,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.7259142301961758,
-          "recall_macro": 0.6784023803762963,
-          "repeat_seed": 3,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7161104243922538,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              284,
-              174,
-              6
-            ],
-            [
-              180,
-              989,
-              74
-            ],
-            [
-              10,
-              245,
-              465
-            ]
-          ],
-          "elapsed_seconds": 25.56,
-          "fold_id": "r3_f4",
-          "inner_best_macro_f1": 0.6893382248064825,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6956183700497492,
-          "model_id": "df_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.7182606333483482,
-          "recall_macro": 0.6845193235374804,
-          "repeat_seed": 3,
-          "representation": "DF"
-        },
-        {
-          "accuracy": 0.7029254223320972,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              284,
-              173,
-              7
-            ],
-            [
-              168,
-              1004,
-              71
+              266,
+              845,
+              133
             ],
             [
               24,
-              278,
-              418
+              203,
+              492
             ]
           ],
-          "elapsed_seconds": 46.739,
-          "fold_id": "r3_f5",
-          "inner_best_macro_f1": 0.6933829343541894,
+          "elapsed_seconds": 119.042,
+          "fold_id": "r2_f2",
+          "inner_best_macro_f1": 0.6866917346611512,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6786701076184617,
+          "macro_f1": 0.6957954047606639,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.6913029429551583,
+          "recall_macro": 0.7160089787268756,
+          "repeat_seed": 2,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.7008652657601978,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              318,
+              137,
+              9
+            ],
+            [
+              235,
+              913,
+              96
+            ],
+            [
+              20,
+              229,
+              470
+            ]
+          ],
+          "elapsed_seconds": 125.001,
+          "fold_id": "r2_f3",
+          "inner_best_macro_f1": 0.6893121805495029,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6878262903471253,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.6954013543355426,
+          "recall_macro": 0.6909844439053945,
+          "repeat_seed": 2,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.695920889987639,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              348,
+              111,
+              5
+            ],
+            [
+              277,
+              847,
+              119
+            ],
+            [
+              30,
+              196,
+              494
+            ]
+          ],
+          "elapsed_seconds": 119.625,
+          "fold_id": "r2_f4",
+          "inner_best_macro_f1": 0.6932985826400127,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6890387296814794,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.6882064216307237,
+          "recall_macro": 0.7058423467715503,
+          "repeat_seed": 2,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.7107540173053152,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              372,
+              85,
+              7
+            ],
+            [
+              268,
+              854,
+              121
+            ],
+            [
+              30,
+              191,
+              499
+            ]
+          ],
+          "elapsed_seconds": 123.148,
+          "fold_id": "r2_f5",
+          "inner_best_macro_f1": 0.6896111677894831,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.7055847947636321,
           "model_id": "df_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.7098049850690747,
-          "recall_macro": 0.6667825904246412,
+          "precision_macro": 0.702276454174625,
+          "recall_macro": 0.7272757197650392,
+          "repeat_seed": 2,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6930366707869798,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              361,
+              94,
+              10
+            ],
+            [
+              304,
+              811,
+              128
+            ],
+            [
+              27,
+              182,
+              510
+            ]
+          ],
+          "elapsed_seconds": 125.711,
+          "fold_id": "r3_f1",
+          "inner_best_macro_f1": 0.6880225120318005,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.688774823363504,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.6849344980029387,
+          "recall_macro": 0.7127054416281968,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6967449526163988,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              362,
+              89,
+              13
+            ],
+            [
+              275,
+              833,
+              136
+            ],
+            [
+              25,
+              198,
+              496
+            ]
+          ],
+          "elapsed_seconds": 119.401,
+          "fold_id": "r3_f2",
+          "inner_best_macro_f1": 0.691225029048114,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6916648247129444,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.6865233475413163,
+          "recall_macro": 0.7132111904796051,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.7169344870210136,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              370,
+              91,
+              3
+            ],
+            [
+              256,
+              868,
+              120
+            ],
+            [
+              27,
+              190,
+              502
+            ]
+          ],
+          "elapsed_seconds": 116.281,
+          "fold_id": "r3_f3",
+          "inner_best_macro_f1": 0.6858142941541683,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.7116539485820965,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.7084183776113547,
+          "recall_macro": 0.7311183074951798,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6975690152451587,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              350,
+              102,
+              12
+            ],
+            [
+              273,
+              848,
+              122
+            ],
+            [
+              31,
+              194,
+              495
+            ]
+          ],
+          "elapsed_seconds": 122.782,
+          "fold_id": "r3_f4",
+          "inner_best_macro_f1": 0.6894002262795844,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6901701016749424,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.6877967903332177,
+          "recall_macro": 0.70801025975347,
+          "repeat_seed": 3,
+          "representation": "DF"
+        },
+        {
+          "accuracy": 0.6934487021013597,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              294,
+              160,
+              10
+            ],
+            [
+              200,
+              950,
+              93
+            ],
+            [
+              29,
+              252,
+              439
+            ]
+          ],
+          "elapsed_seconds": 129.107,
+          "fold_id": "r3_f5",
+          "inner_best_macro_f1": 0.6923309275518973,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6736107870642402,
+          "model_id": "df_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 5,
+          "precision_macro": 0.6898694206995809,
+          "recall_macro": 0.6692076265657286,
           "repeat_seed": 3,
           "representation": "DF"
         }
@@ -4026,6 +4147,7 @@
     },
     {
       "aggregate": {
+<<<<<<< Updated upstream
         "accuracy_mean": 0.554017305315204,
         "accuracy_std": 0.010719377497461213,
         "confusion_matrix_sum": [
@@ -4643,21 +4765,25 @@
       "aggregate": {
         "accuracy_mean": 0.6610355720368083,
         "accuracy_std": 0.008091634842277394,
+=======
+        "accuracy_mean": 0.6442246944101085,
+        "accuracy_std": 0.013042473305593855,
+>>>>>>> Stashed changes
         "confusion_matrix_sum": [
           [
-            3262,
-            3661,
-            40
+            5343,
+            1536,
+            84
           ],
           [
-            2404,
-            14498,
-            1749
+            4497,
+            10699,
+            3455
           ],
           [
-            386,
-            4100,
-            6305
+            659,
+            2721,
+            7411
           ]
         ],
         "labels": [
@@ -4665,582 +4791,588 @@
           3,
           4
         ],
-        "macro_f1_mean": 0.625698199188549,
-        "macro_f1_std": 0.011309807848948219,
-        "precision_macro_mean": 0.6566904041005475,
-        "precision_macro_std": 0.00964013706827577,
-        "recall_macro_mean": 0.610031242105009,
-        "recall_macro_std": 0.012739131155248839
+        "macro_f1_mean": 0.6432634320677485,
+        "macro_f1_std": 0.012128067533674498,
+        "precision_macro_mean": 0.6342586295578253,
+        "precision_macro_std": 0.010607567796644138,
+        "recall_macro_mean": 0.6759143274864831,
+        "recall_macro_std": 0.011398520061371082
       },
       "algorithm": "gradient_boosting",
+      "checkpoint": {
+        "checkpoint_dir": "experiments/bc_gradient_boosting/checkpoints/afd686dd02e08c4a",
+        "completed_folds": 15,
+        "signature_id": "afd686dd02e08c4a",
+        "total_folds": 15
+      },
       "folds": [
         {
-          "accuracy": 0.6761433868974042,
+          "accuracy": 0.6291718170580964,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              228,
-              234,
-              3
-            ],
-            [
-              146,
-              979,
-              118
-            ],
-            [
-              28,
-              257,
-              434
-            ]
-          ],
-          "elapsed_seconds": 653.391,
-          "fold_id": "r1_f1",
-          "inner_best_macro_f1": 0.6136070293514247,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6429935074102526,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.6717108518814277,
-          "recall_macro": 0.627183111210988,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6604861969509682,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              199,
-              262,
-              3
-            ],
-            [
-              158,
-              964,
-              122
-            ],
-            [
-              24,
-              255,
-              440
-            ]
-          ],
-          "elapsed_seconds": 650.663,
-          "fold_id": "r1_f2",
-          "inner_best_macro_f1": 0.6138971780117614,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6212957027970978,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.6506607731618413,
-          "recall_macro": 0.6052533271721271,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.657601977750309,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              231,
-              232,
-              1
-            ],
-            [
-              175,
-              954,
-              115
-            ],
-            [
-              24,
-              284,
-              411
-            ]
-          ],
-          "elapsed_seconds": 616.436,
-          "fold_id": "r1_f3",
-          "inner_best_macro_f1": 0.6143037798197784,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6265036565339807,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.6553583473899688,
-          "recall_macro": 0.6121177055361876,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6592501030078286,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              224,
-              239,
-              1
-            ],
-            [
-              162,
-              972,
-              109
-            ],
-            [
-              18,
-              298,
-              404
-            ]
-          ],
-          "elapsed_seconds": 614.568,
-          "fold_id": "r1_f4",
-          "inner_best_macro_f1": 0.6258783383314435,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6257685268156585,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.6615276174367288,
-          "recall_macro": 0.6086162715549349,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6637824474660075,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              227,
-              232,
+              391,
+              69,
               5
             ],
             [
-              153,
-              969,
-              121
+              344,
+              640,
+              259
             ],
             [
-              31,
-              274,
-              415
+              74,
+              149,
+              496
             ]
           ],
-          "elapsed_seconds": 614.861,
-          "fold_id": "r1_f5",
-          "inner_best_macro_f1": 0.6129970716622734,
+          "elapsed_seconds": 8167.35,
+          "fold_id": "r1_f1",
+          "inner_best_macro_f1": 0.6381488084070378,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6300297323425609,
+          "macro_f1": 0.631257305569782,
           "model_id": "bc_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
-          "outer_fold": 5,
-          "precision_macro": 0.6587861849312561,
-          "recall_macro": 0.6150595313320366,
+          "outer_fold": 1,
+          "precision_macro": 0.6272883522119096,
+          "recall_macro": 0.6818635238437537,
           "repeat_seed": 1,
           "representation": "BC"
         },
         {
-          "accuracy": 0.65389369592089,
+          "accuracy": 0.6419447878038731,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              216,
-              245,
+              330,
+              127,
+              7
+            ],
+            [
+              283,
+              722,
+              239
+            ],
+            [
+              38,
+              175,
+              506
+            ]
+          ],
+          "elapsed_seconds": 8153.333,
+          "fold_id": "r1_f2",
+          "inner_best_macro_f1": 0.630762832526664,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6388599745362293,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.6282876359406151,
+          "recall_macro": 0.6651159880729822,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6398846312319736,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              350,
+              104,
+              10
+            ],
+            [
+              307,
+              706,
+              231
+            ],
+            [
+              39,
+              183,
+              497
+            ]
+          ],
+          "elapsed_seconds": 8209.743,
+          "fold_id": "r1_f3",
+          "inner_best_macro_f1": 0.6349836523154776,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6389581755469972,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.6290973785002635,
+          "recall_macro": 0.6710240969677006,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6440049443757726,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              361,
+              99,
               4
             ],
             [
-              164,
-              945,
-              134
+              296,
+              722,
+              225
+            ],
+            [
+              36,
+              204,
+              480
+            ]
+          ],
+          "elapsed_seconds": 8109.451,
+          "fold_id": "r1_f4",
+          "inner_best_macro_f1": 0.6438187573487114,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6441701405161181,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.6341078792955361,
+          "recall_macro": 0.6751788945296727,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6621343222084879,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              368,
+              89,
+              7
+            ],
+            [
+              281,
+              743,
+              219
+            ],
+            [
+              43,
+              181,
+              496
+            ]
+          ],
+          "elapsed_seconds": 8249.932,
+          "fold_id": "r1_f5",
+          "inner_best_macro_f1": 0.6308848560728476,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6610998565839855,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 5,
+          "precision_macro": 0.6507458241700753,
+          "recall_macro": 0.693246574174252,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6168108776266996,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              398,
+              61,
+              6
+            ],
+            [
+              366,
+              599,
+              278
+            ],
+            [
+              63,
+              156,
+              500
+            ]
+          ],
+          "elapsed_seconds": 8218.291,
+          "fold_id": "r2_f1",
+          "inner_best_macro_f1": 0.633020998913704,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6210903028422672,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.6176937623094381,
+          "recall_macro": 0.6777409676360189,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6588380716934487,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              351,
+              106,
+              7
+            ],
+            [
+              287,
+              745,
+              212
+            ],
+            [
+              39,
+              177,
+              503
+            ]
+          ],
+          "elapsed_seconds": 8258.8,
+          "fold_id": "r2_f2",
+          "inner_best_macro_f1": 0.6322780177224067,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6563953137428729,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.6466159608046033,
+          "recall_macro": 0.6849742897122919,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6510094767202307,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              351,
+              106,
+              7
+            ],
+            [
+              282,
+              733,
+              229
+            ],
+            [
+              48,
+              175,
+              496
+            ]
+          ],
+          "elapsed_seconds": 8281.084,
+          "fold_id": "r2_f3",
+          "inner_best_macro_f1": 0.6254341000649882,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6486713316558628,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.6386312716786966,
+          "recall_macro": 0.6785136075990197,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.638236505974454,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              334,
+              126,
+              4
+            ],
+            [
+              298,
+              716,
+              229
+            ],
+            [
+              43,
+              178,
+              499
+            ]
+          ],
+          "elapsed_seconds": 8264.451,
+          "fold_id": "r2_f4",
+          "inner_best_macro_f1": 0.6387882445952879,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6355318418759429,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.6261565293998596,
+          "recall_macro": 0.662969628643263,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6349402554594149,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              343,
+              118,
+              3
+            ],
+            [
+              302,
+              714,
+              227
+            ],
+            [
+              38,
+              198,
+              484
+            ]
+          ],
+          "elapsed_seconds": 8124.744,
+          "fold_id": "r2_f5",
+          "inner_best_macro_f1": 0.6339722144495304,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6337871436902905,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 5,
+          "precision_macro": 0.6244237417398456,
+          "recall_macro": 0.6619543646206753,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6468891635764318,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              351,
+              110,
+              4
+            ],
+            [
+              288,
+              716,
+              239
+            ],
+            [
+              35,
+              181,
+              503
+            ]
+          ],
+          "elapsed_seconds": 8221.427,
+          "fold_id": "r3_f1",
+          "inner_best_macro_f1": 0.6342546885150426,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6464879927916242,
+          "model_id": "bc_gradient_boosting",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.6353523626855773,
+          "recall_macro": 0.6768157358898378,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6547177585496498,
+          "algorithm": "gradient_boosting",
+          "confusion_matrix": [
+            [
+              350,
+              109,
+              5
+            ],
+            [
+              295,
+              729,
+              220
             ],
             [
               25,
-              268,
-              426
+              184,
+              510
             ]
           ],
-          "elapsed_seconds": 558.411,
-          "fold_id": "r2_f1",
-          "inner_best_macro_f1": 0.6092610473900094,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6201203833696762,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.6456002101392172,
-          "recall_macro": 0.6057543798504159,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6650185414091471,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              222,
-              238,
-              4
-            ],
-            [
-              158,
-              959,
-              127
-            ],
-            [
-              23,
-              263,
-              433
-            ]
-          ],
-          "elapsed_seconds": 557.595,
-          "fold_id": "r2_f2",
-          "inner_best_macro_f1": 0.6127832962045766,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6321369225633824,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.6584827659582504,
-          "recall_macro": 0.6171913034467029,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6497733827770911,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              218,
-              240,
-              6
-            ],
-            [
-              162,
-              960,
-              122
-            ],
-            [
-              36,
-              284,
-              399
-            ]
-          ],
-          "elapsed_seconds": 564.696,
-          "fold_id": "r2_f3",
-          "inner_best_macro_f1": 0.6103782591660739,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6132387667907784,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.642684826868619,
-          "recall_macro": 0.5988230597816396,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6493613514627111,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              187,
-              276,
-              1
-            ],
-            [
-              179,
-              960,
-              104
-            ],
-            [
-              27,
-              264,
-              429
-            ]
-          ],
-          "elapsed_seconds": 555.889,
-          "fold_id": "r2_f4",
-          "inner_best_macro_f1": 0.6162025947620183,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6068600458530584,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.6397325861756773,
-          "recall_macro": 0.5903918649417581,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6670786979810466,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              226,
-              237,
-              1
-            ],
-            [
-              163,
-              967,
-              113
-            ],
-            [
-              23,
-              271,
-              426
-            ]
-          ],
-          "elapsed_seconds": 557.035,
-          "fold_id": "r2_f5",
-          "inner_best_macro_f1": 0.6106591385419812,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6345749411883859,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 5,
-          "precision_macro": 0.6643419328494201,
-          "recall_macro": 0.6188973963005089,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6534816646065101,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              218,
-              246,
-              1
-            ],
-            [
-              172,
-              945,
-              126
-            ],
-            [
-              27,
-              269,
-              423
-            ]
-          ],
-          "elapsed_seconds": 558.893,
-          "fold_id": "r3_f1",
-          "inner_best_macro_f1": 0.6164402765676852,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.620073605962301,
-          "model_id": "bc_gradient_boosting",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.6463776525479492,
-          "recall_macro": 0.6057972510225437,
-          "repeat_seed": 3,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6637824474660075,
-          "algorithm": "gradient_boosting",
-          "confusion_matrix": [
-            [
-              204,
-              256,
-              4
-            ],
-            [
-              154,
-              974,
-              116
-            ],
-            [
-              15,
-              271,
-              433
-            ]
-          ],
-          "elapsed_seconds": 558.07,
+          "elapsed_seconds": 8145.604,
           "fold_id": "r3_f2",
-          "inner_best_macro_f1": 0.6176667341479657,
+          "inner_best_macro_f1": 0.6276290623274455,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6259755744689343,
+          "macro_f1": 0.6540738515486596,
           "model_id": "bc_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 2,
-          "precision_macro": 0.6596064770811544,
-          "recall_macro": 0.6082795615684459,
+          "precision_macro": 0.6431909504754673,
+          "recall_macro": 0.6832139014925632,
           "repeat_seed": 3,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6658426040379068,
+          "accuracy": 0.6596621343222084,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              221,
-              243,
-              0
+              362,
+              100,
+              2
             ],
             [
-              147,
-              973,
-              124
+              283,
+              739,
+              222
             ],
             [
-              26,
-              271,
-              422
+              41,
+              178,
+              500
             ]
           ],
-          "elapsed_seconds": 557.409,
+          "elapsed_seconds": 8171.706,
           "fold_id": "r3_f3",
-          "inner_best_macro_f1": 0.6055694627539027,
+          "inner_best_macro_f1": 0.6235366801934344,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6316348976849192,
+          "macro_f1": 0.6587529888539446,
           "model_id": "bc_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.6627150236485285,
-          "recall_macro": 0.6151245769311097,
+          "precision_macro": 0.6483171762642765,
+          "recall_macro": 0.6898780509369212,
           "repeat_seed": 3,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6744952616398846,
+          "accuracy": 0.6551297898640297,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              249,
-              209,
-              6
+              358,
+              96,
+              10
             ],
             [
-              183,
-              954,
-              106
+              298,
+              736,
+              209
             ],
             [
-              36,
-              250,
-              434
+              49,
+              175,
+              496
             ]
           ],
-          "elapsed_seconds": 557.334,
+          "elapsed_seconds": 8212.383,
           "fold_id": "r3_f4",
-          "inner_best_macro_f1": 0.6210979642170935,
+          "inner_best_macro_f1": 0.6381023486551537,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6461107568542107,
+          "macro_f1": 0.6526669093095264,
           "model_id": "bc_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.6673607708639556,
-          "recall_macro": 0.6356378991830623,
+          "precision_macro": 0.6441305084842873,
+          "recall_macro": 0.6841854872599455,
           "repeat_seed": 3,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6555418211784095,
+          "accuracy": 0.6299958796868562,
           "algorithm": "gradient_boosting",
           "confusion_matrix": [
             [
-              192,
-              272,
-              0
+              345,
+              116,
+              3
             ],
             [
-              128,
-              1023,
-              92
+              287,
+              739,
+              217
             ],
             [
-              23,
-              321,
-              376
+              48,
+              227,
+              445
             ]
           ],
-          "elapsed_seconds": 550.232,
+          "elapsed_seconds": 8201.605,
           "fold_id": "r3_f5",
-          "inner_best_macro_f1": 0.6171524044710336,
+          "inner_best_macro_f1": 0.6337175381700256,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6081559671930392,
+          "macro_f1": 0.6271483519521251,
           "model_id": "bc_gradient_boosting",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.6654100405742152,
-          "recall_macro": 0.5863413917426734,
+          "precision_macro": 0.6198401094069304,
+          "recall_macro": 0.6520398009183485,
           "repeat_seed": 3,
           "representation": "BC"
         }
@@ -7701,6 +7833,7 @@
   "parameters": {
     "algorithms": [
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "decision_tree"
     ],
     "bc_min_df": 10,
@@ -7708,6 +7841,13 @@
     "estimator_n_jobs": 4,
 =======
       "random_forest"
+    ],
+    "bc_min_df": 10,
+    "docs_dir": "documents/reports/results",
+    "estimator_n_jobs": 10,
+>>>>>>> Stashed changes
+=======
+      "gradient_boosting"
     ],
     "bc_min_df": 10,
     "docs_dir": "documents/reports/results",
@@ -7724,9 +7864,13 @@
     "max_rows": null,
     "merge_existing_models": true,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "model_selector": "decision_tree",
 =======
     "model_selector": "random_forest",
+>>>>>>> Stashed changes
+=======
+    "model_selector": "gradient_boosting",
 >>>>>>> Stashed changes
     "outer_splits": 5,
     "processed_dir": "data/processed/archidekt",
@@ -7751,11 +7895,16 @@
     "average_ranks": {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "bc_gradient_boosting": 5.0,
+=======
+      "bc_gradient_boosting": 4.666666666666667,
+>>>>>>> Stashed changes
       "bc_linear_svc": 7.333333333333333,
       "bc_logistic_regression": 6.066666666666666,
       "bc_naive_bayes": 9.0,
       "bc_random_forest": 10.0,
+<<<<<<< Updated upstream
       "df_gradient_boosting": 1.0,
       "df_linear_svc": 3.8,
       "df_logistic_regression": 2.066666666666667,
@@ -7787,6 +7936,13 @@
       "df_naive_bayes": 8.6,
       "df_random_forest": 2.4
 >>>>>>> Stashed changes
+=======
+      "df_gradient_boosting": 1.0666666666666667,
+      "df_linear_svc": 4.0,
+      "df_logistic_regression": 2.066666666666667,
+      "df_naive_bayes": 7.6,
+      "df_random_forest": 3.2
+>>>>>>> Stashed changes
     },
     "folds": [
       "r1_f1",
@@ -7808,6 +7964,7 @@
     "friedman": {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "p_value": 2.6626392967638993e-24,
       "statistic": 133.15272727272725
 =======
@@ -7817,6 +7974,10 @@
 =======
       "p_value": 4.344235339476515e-24,
       "statistic": 132.12
+>>>>>>> Stashed changes
+=======
+      "p_value": 6.259749189112665e-24,
+      "statistic": 131.34909090909093
 >>>>>>> Stashed changes
     },
     "models": [
@@ -7836,7 +7997,11 @@
     "nemenyi": {
       "alpha": 0.05,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "critical_difference": 4.302527093918013,
+=======
+      "critical_difference": 3.4975837934984884,
+>>>>>>> Stashed changes
 =======
       "critical_difference": 3.4975837934984884,
 >>>>>>> Stashed changes
@@ -7911,25 +8076,37 @@
           "model_a": "bc_gradient_boosting",
           "model_b": "bc_linear_svc",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.333333333333334,
+=======
+          "rank_diff": 2.666666666666666,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "bc_logistic_regression",
-          "rank_diff": 1.0666666666666664,
+          "rank_diff": 1.3999999999999995,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "bc_naive_bayes",
+<<<<<<< Updated upstream
           "rank_diff": 4.333333333333334,
+=======
+          "rank_diff": 4.333333333333333,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "bc_random_forest",
+<<<<<<< Updated upstream
           "rank_diff": 5.933333333333334,
+=======
+          "rank_diff": 5.333333333333333,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
@@ -7941,38 +8118,54 @@
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
           "rank_diff": 4.933333333333334,
+=======
+          "rank_diff": 3.6000000000000005,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
           "rank_diff": 1.2000000000000002,
+=======
+          "rank_diff": 0.666666666666667,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_logistic_regression",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.933333333333333,
 =======
           "rank_diff": 3.3333333333333335,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 2.6,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_naive_bayes",
-          "rank_diff": 2.5999999999999996,
+          "rank_diff": 2.9333333333333327,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 1.8666666666666667,
 =======
           "rank_diff": 2.066666666666667,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 1.4666666666666668,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
@@ -8073,15 +8266,20 @@
           "model_a": "bc_linear_svc",
           "model_b": "df_gradient_boosting",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 7.2666666666666675,
 =======
           "rank_diff": 7.333333333333334,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 6.266666666666667,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 3.533333333333333,
@@ -8093,10 +8291,15 @@
           "rank_diff": 3.533333333333334,
           "significant_alpha_0_05": false
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 3.333333333333333,
+          "significant_alpha_0_05": false
+>>>>>>> Stashed changes
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 5.266666666666666,
@@ -8105,6 +8308,9 @@
 >>>>>>> Stashed changes
 =======
           "rank_diff": 5.666666666666668,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 5.266666666666666,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
@@ -8119,12 +8325,16 @@
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 4.199999999999999,
 =======
           "rank_diff": 4.4,
 >>>>>>> Stashed changes
 =======
           "rank_diff": 5.933333333333334,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 4.133333333333333,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
@@ -8155,9 +8365,13 @@
           "model_a": "bc_logistic_regression",
           "model_b": "df_gradient_boosting",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 6.0,
 =======
           "rank_diff": 6.066666666666666,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 5.0,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
@@ -8165,9 +8379,13 @@
           "model_a": "bc_logistic_regression",
           "model_b": "df_linear_svc",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.2666666666666666,
 =======
           "rank_diff": 3.1333333333333333,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 2.0666666666666664,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
@@ -8176,12 +8394,16 @@
           "model_b": "df_logistic_regression",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 3.9999999999999996,
 =======
           "rank_diff": 4.4,
 >>>>>>> Stashed changes
 =======
           "rank_diff": 4.4,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 3.9999999999999996,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
@@ -8196,9 +8418,13 @@
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.933333333333333,
 =======
           "rank_diff": 3.1333333333333333,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 2.8666666666666663,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
 =======
@@ -8227,9 +8453,13 @@
           "model_a": "bc_naive_bayes",
           "model_b": "df_gradient_boosting",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 9.266666666666667,
 =======
           "rank_diff": 9.0,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 7.933333333333334,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
@@ -8237,15 +8467,20 @@
           "model_a": "bc_naive_bayes",
           "model_b": "df_linear_svc",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 5.533333333333334,
 =======
           "rank_diff": 6.066666666666666,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 5.0,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 7.666666666666668,
           "significant_alpha_0_05": true
@@ -8312,6 +8547,9 @@
 =======
           "rank_diff": 7.333333333333334,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 6.933333333333334,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
@@ -8324,23 +8562,35 @@
           "model_a": "bc_naive_bayes",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 5.866666666666667,
 =======
           "rank_diff": 7.6,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 5.8,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
           "rank_diff": 4.333333333333333,
+=======
+          "rank_diff": 8.933333333333334,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_linear_svc",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 6.2,
+=======
+          "rank_diff": 6.0,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
@@ -8417,18 +8667,28 @@
         {
           "model_a": "bc_random_forest",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
           "rank_diff": 2.933333333333333,
           "significant_alpha_0_05": false
+=======
+          "rank_diff": 6.8,
+          "significant_alpha_0_05": true
+>>>>>>> Stashed changes
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
           "rank_diff": 2.933333333333333,
+=======
+          "rank_diff": 2.9333333333333336,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 1.0666666666666669,
@@ -8438,21 +8698,29 @@
 =======
           "rank_diff": 1.6666666666666665,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 1.0000000000000002,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_naive_bayes",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 7.533333333333333,
 =======
           "rank_diff": 7.6,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 6.533333333333333,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 2.1333333333333333,
@@ -8462,11 +8730,15 @@
 =======
           "rank_diff": 1.4,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 2.1333333333333337,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_linear_svc",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 1.733333333333333,
@@ -8476,16 +8748,23 @@
 =======
           "rank_diff": 1.2666666666666666,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 1.9333333333333331,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_linear_svc",
           "model_b": "df_naive_bayes",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 3.8,
 <<<<<<< Updated upstream
 =======
           "rank_diff": 4.666666666666666,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 3.5999999999999996,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
 =======
@@ -8496,15 +8775,20 @@
           "model_a": "df_linear_svc",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 0.8666666666666667,
 =======
           "rank_diff": 1.5333333333333332,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 0.7999999999999998,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_logistic_regression",
           "model_b": "df_naive_bayes",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 5.533333333333333,
@@ -8514,11 +8798,15 @@
 =======
           "rank_diff": 5.933333333333334,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 5.533333333333333,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "df_logistic_regression",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 1.0666666666666664,
@@ -8528,11 +8816,15 @@
 =======
           "rank_diff": 0.2666666666666666,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 1.1333333333333333,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_naive_bayes",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 4.466666666666667,
@@ -8541,6 +8833,9 @@
 >>>>>>> Stashed changes
 =======
           "rank_diff": 6.199999999999999,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 4.3999999999999995,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         }
@@ -8653,14 +8948,14 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_linear_svc",
-        "p_value": 6.103515625e-05,
-        "statistic": 0.0
+        "p_value": 0.00152587890625,
+        "statistic": 8.0
       },
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_logistic_regression",
-        "p_value": 6.103515625e-05,
-        "statistic": 0.0
+        "p_value": 0.0001220703125,
+        "statistic": 1.0
       },
       {
         "model_a": "bc_gradient_boosting",
@@ -8671,8 +8966,8 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_random_forest",
-        "p_value": 6.103515625e-05,
-        "statistic": 0.0
+        "p_value": 0.0001220703125,
+        "statistic": 1.0
       },
       {
         "model_a": "bc_linear_svc",
@@ -8893,8 +9188,8 @@
       {
         "model_a": "df_gradient_boosting",
         "model_b": "df_logistic_regression",
-        "p_value": 6.103515625e-05,
-        "statistic": 0.0
+        "p_value": 0.0001220703125,
+        "statistic": 1.0
       },
       {
         "model_a": "df_gradient_boosting",
@@ -8936,11 +9231,16 @@
         "model_a": "df_logistic_regression",
         "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "p_value": 0.0001220703125,
         "statistic": 1.0
 =======
         "p_value": 0.27685546875,
         "statistic": 40.0
+>>>>>>> Stashed changes
+=======
+        "p_value": 0.0001220703125,
+        "statistic": 1.0
 >>>>>>> Stashed changes
       },
       {

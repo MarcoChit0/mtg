@@ -1,22 +1,22 @@
 {
   "aggregate": {
-    "accuracy_mean": 0.7128691113857986,
-    "accuracy_std": 0.007531542582000565,
+    "accuracy_mean": 0.6977612965252027,
+    "accuracy_std": 0.008834159297000427,
     "confusion_matrix_sum": [
       [
-        4212,
-        2666,
-        85
+        5303,
+        1530,
+        130
       ],
       [
-        2604,
-        15022,
-        1025
+        4086,
+        12715,
+        1850
       ],
       [
-        242,
-        3831,
-        6718
+        440,
+        2967,
+        7384
       ]
     ],
     "labels": [
@@ -24,582 +24,588 @@
       3,
       4
     ],
-    "macro_f1_mean": 0.6900837016866804,
-    "macro_f1_std": 0.008132958476463755,
-    "precision_macro_mean": 0.7178472255110435,
-    "precision_macro_std": 0.008754007228735131,
-    "recall_macro_mean": 0.6776312185233536,
-    "recall_macro_std": 0.00802630942792344
+    "macro_f1_mean": 0.6907864040640452,
+    "macro_f1_std": 0.009293633138701542,
+    "precision_macro_mean": 0.6899265015778687,
+    "precision_macro_std": 0.00820071322283598,
+    "recall_macro_mean": 0.7092042996419724,
+    "recall_macro_std": 0.014999607249758231
   },
   "algorithm": "gradient_boosting",
+  "checkpoint": {
+    "checkpoint_dir": "experiments/df_gradient_boosting/checkpoints/c2605ed322b1465b",
+    "completed_folds": 15,
+    "signature_id": "c2605ed322b1465b",
+    "total_folds": 15
+  },
   "folds": [
     {
-      "accuracy": 0.7218788627935723,
+      "accuracy": 0.7021013597033374,
       "algorithm": "gradient_boosting",
       "confusion_matrix": [
         [
-          281,
-          177,
-          7
+          358,
+          101,
+          6
         ],
         [
-          165,
-          1015,
-          63
+          270,
+          841,
+          132
         ],
         [
-          19,
-          244,
-          456
+          40,
+          174,
+          505
         ]
       ],
-      "elapsed_seconds": 25.149,
+      "elapsed_seconds": 122.457,
       "fold_id": "r1_f1",
-      "inner_best_macro_f1": 0.685809549352948,
+      "inner_best_macro_f1": 0.6893364491367063,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6981922077163426,
+      "macro_f1": 0.6955070323948679,
       "model_id": "df_gradient_boosting",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 1,
-      "precision_macro": 0.7260152466316302,
-      "recall_macro": 0.6850293564540085,
+      "precision_macro": 0.6916311331806083,
+      "recall_macro": 0.7162819219797205,
       "repeat_seed": 1,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7095179233621756,
+      "accuracy": 0.6856201071281417,
       "algorithm": "gradient_boosting",
       "confusion_matrix": [
         [
-          276,
-          182,
-          6
+          372,
+          80,
+          12
         ],
         [
-          164,
-          998,
-          82
+          323,
+          775,
+          146
         ],
         [
-          15,
-          256,
-          448
+          36,
+          166,
+          517
         ]
       ],
-      "elapsed_seconds": 25.178,
+      "elapsed_seconds": 126.006,
       "fold_id": "r1_f2",
-      "inner_best_macro_f1": 0.688849879446367,
+      "inner_best_macro_f1": 0.6889139271837216,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6864577420265506,
+      "macro_f1": 0.6828904039187496,
       "model_id": "df_gradient_boosting",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 2,
-      "precision_macro": 0.7124667915130644,
-      "recall_macro": 0.6733886705874061,
+      "precision_macro": 0.6779592000460645,
+      "recall_macro": 0.7145895778771885,
       "repeat_seed": 1,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7144622991347342,
+      "accuracy": 0.6843840131850021,
       "algorithm": "gradient_boosting",
       "confusion_matrix": [
         [
-          300,
-          160,
-          4
-        ],
-        [
-          194,
-          998,
-          52
-        ],
-        [
-          12,
-          271,
-          436
-        ]
-      ],
-      "elapsed_seconds": 25.309,
-      "fold_id": "r1_f3",
-      "inner_best_macro_f1": 0.6865286229878351,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6951164288805846,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 3,
-      "precision_macro": 0.7258182400459442,
-      "recall_macro": 0.6850667675611725,
-      "repeat_seed": 1,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7165224557066338,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          292,
-          169,
-          3
-        ],
-        [
-          181,
-          999,
-          63
-        ],
-        [
-          12,
-          260,
-          448
-        ]
-      ],
-      "elapsed_seconds": 25.809,
-      "fold_id": "r1_f4",
-      "inner_best_macro_f1": 0.6893175917853402,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6965043542181867,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 4,
-      "precision_macro": 0.7244123394473919,
-      "recall_macro": 0.685077763701505,
-      "repeat_seed": 1,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7119901112484549,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          273,
-          182,
-          9
-        ],
-        [
-          167,
-          1001,
-          75
-        ],
-        [
-          17,
-          249,
-          454
-        ]
-      ],
-      "elapsed_seconds": 25.958,
-      "fold_id": "r1_f5",
-      "inner_best_macro_f1": 0.6930331051792672,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6876752317694382,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 5,
-      "precision_macro": 0.7134208989345017,
-      "recall_macro": 0.674742453011449,
-      "repeat_seed": 1,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7082818294190358,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          273,
-          182,
+          393,
+          61,
           10
         ],
         [
-          174,
-          994,
-          75
+          340,
+          768,
+          136
         ],
         [
-          16,
-          251,
-          452
+          36,
+          183,
+          500
         ]
       ],
-      "elapsed_seconds": 25.688,
-      "fold_id": "r2_f1",
-      "inner_best_macro_f1": 0.6885600805071957,
+      "elapsed_seconds": 118.131,
+      "fold_id": "r1_f3",
+      "inner_best_macro_f1": 0.6870382767419269,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6842255267616556,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 1,
-      "precision_macro": 0.7093040912734233,
-      "recall_macro": 0.6718086253784049,
-      "repeat_seed": 2,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7202307375360527,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          283,
-          174,
-          7
-        ],
-        [
-          157,
-          1018,
-          69
-        ],
-        [
-          18,
-          254,
-          447
-        ]
-      ],
-      "elapsed_seconds": 25.486,
-      "fold_id": "r2_f2",
-      "inner_best_macro_f1": 0.688632608195657,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6968556500152209,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 2,
-      "precision_macro": 0.7255331691887394,
-      "recall_macro": 0.6833128561642107,
-      "repeat_seed": 2,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7016893283889576,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          275,
-          185,
-          4
-        ],
-        [
-          187,
-          992,
-          65
-        ],
-        [
-          13,
-          270,
-          436
-        ]
-      ],
-      "elapsed_seconds": 25.657,
-      "fold_id": "r2_f3",
-      "inner_best_macro_f1": 0.6872247269364483,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.678473396522472,
+      "macro_f1": 0.6836404609350719,
       "model_id": "df_gradient_boosting",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 3,
-      "precision_macro": 0.7092900094941658,
-      "recall_macro": 0.6654992804044292,
-      "repeat_seed": 2,
+      "precision_macro": 0.6813134682255817,
+      "recall_macro": 0.7199187982481531,
+      "repeat_seed": 1,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7049855789039967,
+      "accuracy": 0.6971569839307787,
       "algorithm": "gradient_boosting",
       "confusion_matrix": [
         [
-          267,
-          193,
-          4
+          364,
+          92,
+          8
         ],
         [
-          176,
-          987,
-          80
+          275,
+          852,
+          116
         ],
         [
-          19,
-          244,
-          457
+          33,
+          211,
+          476
         ]
       ],
-      "elapsed_seconds": 25.159,
-      "fold_id": "r2_f4",
-      "inner_best_macro_f1": 0.6918947683728459,
+      "elapsed_seconds": 119.413,
+      "fold_id": "r1_f4",
+      "inner_best_macro_f1": 0.6900899408787667,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6805509721960227,
+      "macro_f1": 0.6908831172560337,
       "model_id": "df_gradient_boosting",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 4,
-      "precision_macro": 0.7052573444230074,
-      "recall_macro": 0.668066639336093,
-      "repeat_seed": 2,
+      "precision_macro": 0.690887445887446,
+      "recall_macro": 0.7103441083605868,
+      "repeat_seed": 1,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7243510506798516,
+      "accuracy": 0.703749484960857,
       "algorithm": "gradient_boosting",
       "confusion_matrix": [
         [
-          286,
-          174,
-          4
+          325,
+          132,
+          7
         ],
         [
-          166,
-          1012,
-          65
+          234,
+          892,
+          117
         ],
         [
-          16,
-          244,
-          460
+          23,
+          206,
+          491
         ]
       ],
-      "elapsed_seconds": 24.876,
-      "fold_id": "r2_f5",
-      "inner_best_macro_f1": 0.6859258360138561,
+      "elapsed_seconds": 130.313,
+      "fold_id": "r1_f5",
+      "inner_best_macro_f1": 0.6927854083967291,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.7025082743623559,
+      "macro_f1": 0.6927954871171442,
       "model_id": "df_gradient_boosting",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 5,
-      "precision_macro": 0.7294562120649077,
-      "recall_macro": 0.6898091637563716,
-      "repeat_seed": 2,
+      "precision_macro": 0.693998826586204,
+      "recall_macro": 0.6999980478161741,
+      "repeat_seed": 1,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7025133910177174,
+      "accuracy": 0.6872682323856613,
       "algorithm": "gradient_boosting",
       "confusion_matrix": [
         [
-          280,
-          180,
-          5
+          352,
+          105,
+          8
         ],
         [
-          195,
-          980,
-          68
+          290,
+          818,
+          135
         ],
         [
-          20,
-          254,
-          445
+          29,
+          192,
+          498
         ]
       ],
-      "elapsed_seconds": 24.631,
-      "fold_id": "r3_f1",
-      "inner_best_macro_f1": 0.6889193850506906,
+      "elapsed_seconds": 131.608,
+      "fold_id": "r2_f1",
+      "inner_best_macro_f1": 0.6921312999806548,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6801633403572457,
+      "macro_f1": 0.6819598543881827,
       "model_id": "df_gradient_boosting",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 1,
-      "precision_macro": 0.7059330772202058,
-      "recall_macro": 0.6698269407590288,
-      "repeat_seed": 3,
+      "precision_macro": 0.6783778424576665,
+      "recall_macro": 0.7025677252567218,
+      "repeat_seed": 2,
       "representation": "DF"
     },
     {
-      "accuracy": 0.7202307375360527,
+      "accuracy": 0.7008652657601978,
       "algorithm": "gradient_boosting",
       "confusion_matrix": [
         [
-          280,
-          178,
-          6
+          364,
+          90,
+          10
         ],
         [
-          174,
-          1015,
-          55
-        ],
-        [
-          16,
-          250,
-          453
-        ]
-      ],
-      "elapsed_seconds": 24.813,
-      "fold_id": "r3_f2",
-      "inner_best_macro_f1": 0.6853140720178499,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6966181050662726,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 2,
-      "precision_macro": 0.7268211138150703,
-      "recall_macro": 0.6831354663978066,
-      "repeat_seed": 3,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7173465183353935,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          278,
-          183,
-          3
-        ],
-        [
-          156,
-          1020,
-          68
-        ],
-        [
-          15,
-          261,
-          443
-        ]
-      ],
-      "elapsed_seconds": 26.608,
-      "fold_id": "r3_f3",
-      "inner_best_macro_f1": 0.6792672661070259,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6936258177396489,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 3,
-      "precision_macro": 0.7259142301961758,
-      "recall_macro": 0.6784023803762963,
-      "repeat_seed": 3,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7161104243922538,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          284,
-          174,
-          6
-        ],
-        [
-          180,
-          989,
-          74
-        ],
-        [
-          10,
-          245,
-          465
-        ]
-      ],
-      "elapsed_seconds": 25.56,
-      "fold_id": "r3_f4",
-      "inner_best_macro_f1": 0.6893382248064825,
-      "labels": [
-        2,
-        3,
-        4
-      ],
-      "macro_f1": 0.6956183700497492,
-      "model_id": "df_gradient_boosting",
-      "n_test": 2427,
-      "n_train": 9708,
-      "outer_fold": 4,
-      "precision_macro": 0.7182606333483482,
-      "recall_macro": 0.6845193235374804,
-      "repeat_seed": 3,
-      "representation": "DF"
-    },
-    {
-      "accuracy": 0.7029254223320972,
-      "algorithm": "gradient_boosting",
-      "confusion_matrix": [
-        [
-          284,
-          173,
-          7
-        ],
-        [
-          168,
-          1004,
-          71
+          266,
+          845,
+          133
         ],
         [
           24,
-          278,
-          418
+          203,
+          492
         ]
       ],
-      "elapsed_seconds": 46.739,
-      "fold_id": "r3_f5",
-      "inner_best_macro_f1": 0.6933829343541894,
+      "elapsed_seconds": 119.042,
+      "fold_id": "r2_f2",
+      "inner_best_macro_f1": 0.6866917346611512,
       "labels": [
         2,
         3,
         4
       ],
-      "macro_f1": 0.6786701076184617,
+      "macro_f1": 0.6957954047606639,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.6913029429551583,
+      "recall_macro": 0.7160089787268756,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.7008652657601978,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          318,
+          137,
+          9
+        ],
+        [
+          235,
+          913,
+          96
+        ],
+        [
+          20,
+          229,
+          470
+        ]
+      ],
+      "elapsed_seconds": 125.001,
+      "fold_id": "r2_f3",
+      "inner_best_macro_f1": 0.6893121805495029,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6878262903471253,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.6954013543355426,
+      "recall_macro": 0.6909844439053945,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.695920889987639,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          348,
+          111,
+          5
+        ],
+        [
+          277,
+          847,
+          119
+        ],
+        [
+          30,
+          196,
+          494
+        ]
+      ],
+      "elapsed_seconds": 119.625,
+      "fold_id": "r2_f4",
+      "inner_best_macro_f1": 0.6932985826400127,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6890387296814794,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.6882064216307237,
+      "recall_macro": 0.7058423467715503,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.7107540173053152,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          372,
+          85,
+          7
+        ],
+        [
+          268,
+          854,
+          121
+        ],
+        [
+          30,
+          191,
+          499
+        ]
+      ],
+      "elapsed_seconds": 123.148,
+      "fold_id": "r2_f5",
+      "inner_best_macro_f1": 0.6896111677894831,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.7055847947636321,
       "model_id": "df_gradient_boosting",
       "n_test": 2427,
       "n_train": 9708,
       "outer_fold": 5,
-      "precision_macro": 0.7098049850690747,
-      "recall_macro": 0.6667825904246412,
+      "precision_macro": 0.702276454174625,
+      "recall_macro": 0.7272757197650392,
+      "repeat_seed": 2,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6930366707869798,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          361,
+          94,
+          10
+        ],
+        [
+          304,
+          811,
+          128
+        ],
+        [
+          27,
+          182,
+          510
+        ]
+      ],
+      "elapsed_seconds": 125.711,
+      "fold_id": "r3_f1",
+      "inner_best_macro_f1": 0.6880225120318005,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.688774823363504,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 1,
+      "precision_macro": 0.6849344980029387,
+      "recall_macro": 0.7127054416281968,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6967449526163988,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          362,
+          89,
+          13
+        ],
+        [
+          275,
+          833,
+          136
+        ],
+        [
+          25,
+          198,
+          496
+        ]
+      ],
+      "elapsed_seconds": 119.401,
+      "fold_id": "r3_f2",
+      "inner_best_macro_f1": 0.691225029048114,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6916648247129444,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 2,
+      "precision_macro": 0.6865233475413163,
+      "recall_macro": 0.7132111904796051,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.7169344870210136,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          370,
+          91,
+          3
+        ],
+        [
+          256,
+          868,
+          120
+        ],
+        [
+          27,
+          190,
+          502
+        ]
+      ],
+      "elapsed_seconds": 116.281,
+      "fold_id": "r3_f3",
+      "inner_best_macro_f1": 0.6858142941541683,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.7116539485820965,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 3,
+      "precision_macro": 0.7084183776113547,
+      "recall_macro": 0.7311183074951798,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6975690152451587,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          350,
+          102,
+          12
+        ],
+        [
+          273,
+          848,
+          122
+        ],
+        [
+          31,
+          194,
+          495
+        ]
+      ],
+      "elapsed_seconds": 122.782,
+      "fold_id": "r3_f4",
+      "inner_best_macro_f1": 0.6894002262795844,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6901701016749424,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 4,
+      "precision_macro": 0.6877967903332177,
+      "recall_macro": 0.70801025975347,
+      "repeat_seed": 3,
+      "representation": "DF"
+    },
+    {
+      "accuracy": 0.6934487021013597,
+      "algorithm": "gradient_boosting",
+      "confusion_matrix": [
+        [
+          294,
+          160,
+          10
+        ],
+        [
+          200,
+          950,
+          93
+        ],
+        [
+          29,
+          252,
+          439
+        ]
+      ],
+      "elapsed_seconds": 129.107,
+      "fold_id": "r3_f5",
+      "inner_best_macro_f1": 0.6923309275518973,
+      "labels": [
+        2,
+        3,
+        4
+      ],
+      "macro_f1": 0.6736107870642402,
+      "model_id": "df_gradient_boosting",
+      "n_test": 2427,
+      "n_train": 9708,
+      "outer_fold": 5,
+      "precision_macro": 0.6898694206995809,
+      "recall_macro": 0.6692076265657286,
       "repeat_seed": 3,
       "representation": "DF"
     }

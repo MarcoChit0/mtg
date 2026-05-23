@@ -1,180 +1,195 @@
 [
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 15
     },
     "fold_id": "r1_f1",
-    "inner_best_macro_f1": 0.6136070293514247,
+    "inner_best_macro_f1": 0.6381488084070378,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 1,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r1_f2",
-    "inner_best_macro_f1": 0.6138971780117614,
+    "inner_best_macro_f1": 0.630762832526664,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 2,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r1_f3",
-    "inner_best_macro_f1": 0.6143037798197784,
+    "inner_best_macro_f1": 0.6349836523154776,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 3,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r1_f4",
-    "inner_best_macro_f1": 0.6258783383314435,
+    "inner_best_macro_f1": 0.6438187573487114,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 4,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r1_f5",
-    "inner_best_macro_f1": 0.6129970716622734,
+    "inner_best_macro_f1": 0.6308848560728476,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 5,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 15
     },
     "fold_id": "r2_f1",
-    "inner_best_macro_f1": 0.6092610473900094,
+    "inner_best_macro_f1": 0.633020998913704,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 1,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r2_f2",
-    "inner_best_macro_f1": 0.6127832962045766,
+    "inner_best_macro_f1": 0.6322780177224067,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 2,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r2_f3",
-    "inner_best_macro_f1": 0.6103782591660739,
+    "inner_best_macro_f1": 0.6254341000649882,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 3,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r2_f4",
-    "inner_best_macro_f1": 0.6162025947620183,
+    "inner_best_macro_f1": 0.6387882445952879,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 4,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r2_f5",
-    "inner_best_macro_f1": 0.6106591385419812,
+    "inner_best_macro_f1": 0.6339722144495304,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 5,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r3_f1",
-    "inner_best_macro_f1": 0.6164402765676852,
+    "inner_best_macro_f1": 0.6342546885150426,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 1,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r3_f2",
-    "inner_best_macro_f1": 0.6176667341479657,
+    "inner_best_macro_f1": 0.6276290623274455,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 2,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r3_f3",
-    "inner_best_macro_f1": 0.6055694627539027,
+    "inner_best_macro_f1": 0.6235366801934344,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 3,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 5,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r3_f4",
-    "inner_best_macro_f1": 0.6210979642170935,
+    "inner_best_macro_f1": 0.6381023486551537,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 4,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__learning_rate": 0.1,
-      "clf__max_depth": 3,
-      "clf__max_iter": 300
+      "clf__class_weight": "balanced",
+      "clf__learning_rate": 0.05,
+      "clf__max_iter": 200,
+      "clf__max_leaf_nodes": 31
     },
     "fold_id": "r3_f5",
-    "inner_best_macro_f1": 0.6171524044710336,
+    "inner_best_macro_f1": 0.6337175381700256,
     "model_id": "bc_gradient_boosting",
     "outer_fold": 5,
     "repeat_seed": 3
