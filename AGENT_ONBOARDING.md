@@ -17,6 +17,7 @@ scripts/
   phase_d_spot_check.py      ← Fase D
   phase_e_nested_cv.py           ← Fase E (núcleo, ~1900 linhas)
   phase_f_model_verification.py  ← Fase F (verificação: completude, GroupKFold, testes estatísticos)
+  phase_g_voting.py              ← Fase G (voting ensembles a partir de OOF predictions)
   sync_experiments_drive.py      ← Drive (uploads colaborador, downloads público)
 
 documents/
@@ -64,7 +65,7 @@ Estrutura mínima de um implementation report:
 | D | Spot-check N=5 seeds, 7 algos, top-5 por representação | ✓ concluída | `phase_d_spot_check.py` |
 | E | Nested CV dos modelos individuais (5 folds × 3 repeats), grids tunados | ◐ implementada, execução completa pendente | `phase_e_nested_cv.py` |
 | F | Verificação dos modelos individuais: completude, consistência, GroupKFold por comandante, testes estatísticos | ✓ implementada; executa com modelos parciais da Fase E | `phase_f_model_verification.py` |
-| G | Voting ensembles a partir de OOF predictions, só depois da F | planejada, não implementada | — |
+| G | Voting ensembles a partir de OOF predictions, só depois da F | ✓ implementada; executa com modelos parciais da Fase E | `phase_g_voting.py` |
 | H | Melhor modelo por representação | a fazer | — |
 | I | Comparar predições dos modelos vs y2 (descritivo) | a fazer | — |
 | J | Interpretabilidade dos 2 melhores (BC + DF) | a fazer | — |

@@ -143,7 +143,7 @@ Critério de desempate: desvio padrão menor (estabilidade) e diversidade de vie
 
 Combinações que falharem por erro no spot-check ficam fora automaticamente.
 
-## Fase E — Nested CV ◐ implementada; execução completa pendente
+## Fase E — Nested CV ◐ implementada; execução completa quase concluída (1 modelo pendente)
 
 Implementada em [scripts/phase_e_nested_cv.py](../scripts/phase_e_nested_cv.py), com entrypoint `phase-e-nested-cv`. A execução completa é sob demanda por custo computacional. Também é possível reexecutar apenas um algoritmo/modelo, por exemplo `uv run phase-e-nested-cv --model random_forest` para DF+BC ou `uv run phase-e-nested-cv --model random_forest --feature df` para uma representação específica. A execução salva checkpoints por outer fold em `experiments/<modelo>/checkpoints/<assinatura>/` e retoma automaticamente execuções interrompidas; usar `--force-rerun` para ignorar checkpoints e recalcular.
 
@@ -193,45 +193,69 @@ Busca em grid no inner; trocar para busca aleatória/halving se algum grid de 24
 
 **Saídas E**: `experiments/<fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, cv_results_per_fold.jsonl, metrics_per_fold.json, checkpoint_state.json, checkpoints/...}`, `experiments/archives/<fs>_<algo>.zip` quando upload via Drive estiver habilitado, `experiments/seeds.json`, `experiments/folds.json`, `experiments/nested_cv_summary.json`, `documents/reports/results/phase_e_nested_cv.md`.
 
-## Fase F — Verificação dos modelos individuais
+## Fase F — Verificação dos modelos individuais ✓ implementada
 
-Objetivo: verificar que os modelos gerados na Fase E estão completos, comparáveis e robustos o suficiente antes de qualquer votação ou análise interpretativa. Esta etapa funciona como portão de qualidade entre "treinamos modelos" e "vamos tirar conclusões".
+> Script: `scripts/phase_f_model_verification.py` · Entrypoint: `uv run phase-f-model-verification`
+> Implementation report: `documents/reports/implementation/phase_f_model_verification.md`
+
+Portão de qualidade entre a Fase E e as fases de conclusão. Já foi executada com os modelos disponíveis (11 de 12 — KNN ausente do treino). Depois que o último modelo da Fase E terminar, rodar novamente com `--all` e `--group-kfold` para a verificação completa.
+
+```bash
+# Comando completo pós-Fase E:
+uv run phase-f-model-verification --all --group-kfold
+```
+
+> ⚠️ **Pendência**: rodar com `--all --group-kfold` assim que a Fase E concluir o modelo restante. Sem `--all`, a Fase F opera com modelos parciais mas não garante completude.
 
 ### F.1 Checagem de completude
 
 Para cada modelo esperado em `A_uniao × {DF, BC}`:
 
-- exigir 15/15 outer folds completos;
-- exigir `metrics_per_fold.json`, `best_hyperparams_per_fold.json`, `cv_results_per_fold.jsonl`, `predictions_per_fold.jsonl` e `checkpoint_state.json`;
-- confirmar que todos compartilham as mesmas seeds, folds, número de linhas e rótulos;
-- confirmar que não há mistura de rodadas antigas ou checkpoints incompatíveis.
+- exigir 15/15 outer folds completos (sem `--all`: aceita mínimo de 5 folds via `--min-folds`);
+- exigir `metrics_per_fold.json`, `best_hyperparams_per_fold.json`, `predictions_per_fold.jsonl`;
+- arquivos opcionais (sem bloquear modelo): `cv_results_per_fold.jsonl`, `checkpoint_state.json`;
+- confirmar que todos compartilham as mesmas seeds, folds, número de linhas e rótulos.
 
 ### F.2 GroupKFold por comandante
 
-Rodada auxiliar com `GroupKFold(n_splits=5)` por `commander_signature`, sem repeat e sem nova busca de hiperparâmetros pesada. A ideia é medir o quanto o desempenho cai quando comandantes vistos no treino não podem aparecer no teste.
+Rodada auxiliar com `GroupKFold(n_splits=5)` por `commander_oracle_uids`, sem repeat e sem nova busca de hiperparâmetros. Mede o quanto o desempenho cai quando comandantes vistos no treino não aparecem no teste.
 
 Reportar **gap macro-F1 (Stratified − Group)** por modelo:
 
 - gap pequeno: o modelo aprendeu padrões mais gerais de deck;
 - gap grande: o modelo depende mais de comandantes/arquetipos específicos já vistos.
 
+Ativado com `--group-kfold` (mais lento — re-treina cada modelo 5 vezes).
+
 ### F.3 Testes estatísticos
 
-Sobre os 15 outer scores da Fase E:
+Sobre os outer scores disponíveis:
 
 - múltiplos algoritmos: Friedman + Nemenyi;
 - pares de modelos: Wilcoxon signed-rank por fold;
 - ranking médio por modelo e por representação.
 
-**Saídas F**: `documents/reports/results/phase_f_model_verification.md`, `documents/reports/results/phase_f_statistical_tests.md`, e, se implementado depois, artefatos auxiliares em `experiments/model_verification/`.
+**Saídas F**: `documents/reports/results/phase_f_model_verification.md`, `documents/reports/results/phase_f_statistical_tests.md`, `experiments/model_verification/group_kfold_results.json` (se `--group-kfold`).
 
-## Fase G — Ensembles por votação (sem retreino)
+## Fase G — Ensembles por votação (sem retreino) ✓ implementada
+
+> Script: `scripts/phase_g_voting.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_g_voting`
+> Implementation report: `documents/reports/implementation/phase_g_voting.md`
+
+Já executada com os 12 modelos disponíveis. Os 6 ensembles estão computados e armazenados em `experiments/voting/`. Depois que a Fase E concluir e a Fase F rodar com `--all`, re-executar com `--all --force-recompute` para garantir que os rankings e membros refletem o conjunto completo.
+
+```bash
+# Re-execução pós-Fase E + Fase F completas:
+uv run --no-sync python -m scripts.phase_g_voting --all --force-recompute
+```
+
+> ⚠️ **Pendência**: re-rodar com `--all --force-recompute` após Fase E concluir. Sem `--all`, opera com modelos parciais; os membros top-N podem mudar quando o modelo faltante entrar no ranking.
 
 Solicitado pela professora: avaliar o desempenho de combinações dos melhores modelos via votação majoritária (hard vote) sobre as predições out-of-fold já produzidas na Fase E. Como todas as predições OOF compartilham o mesmo conjunto de folds, a votação é exata por linha e por fold — não há retreino.
 
-**Pré-condição forte**: voting só deve ocorrer depois da Fase F confirmar que todos os modelos da união do spot-check (`A_uniao × {DF, BC}`) foram treinados, validados e comparados estatisticamente.
+**Pré-condição forte**: na versão final, voting deve ser re-executado depois da Fase F confirmar completude de todos os modelos (`--all`).
 
-Definem-se 6 ensembles:
+6 ensembles definidos:
 
 | Nome | Membros | Tamanho |
 |---|---|---:|
@@ -240,14 +264,14 @@ Definem-se 6 ensembles:
 | `voting_top3_DF` | top-3 modelos DF | 3 |
 | `voting_top5_DF` | top-5 modelos DF | 5 |
 | `voting_top3_BC_DF` | top-3 BC + top-3 DF | 6 |
-| `voting_all` | todos os modelos da Fase E (10 a 14) | 10–14 |
+| `voting_all` | todos os modelos da Fase E disponíveis (12 com a Fase E completa) | 10–14 |
 
 Regras:
 
-- Hard voting (maioria simples). Empates são desfeitos pela classe com maior macro-F1 médio entre os membros que a previram.
-- Para cada outer fold, agregamos as predições OOF dos membros e computamos macro-F1, accuracy, precision_macro, recall_macro e a matriz de confusão.
-- Reportar média ± desvio padrão dos 15 outer folds (mesmas seeds/repeats da Fase E), idêntico aos modelos individuais.
-- As predições OOF dos 6 ensembles também são salvas para reutilização nas Fases I e J (sem retreino).
+- Hard voting (maioria simples). Empate → classe com maior macro-F1 médio dos membros que a previram; empate residual → menor rótulo numérico.
+- Para cada outer fold, agrega predições OOF e computa macro-F1, accuracy, precision/recall por classe e matriz de confusão.
+- Reportar média ± desvio padrão dos folds compartilhados (até 15 quando Fase E concluída).
+- Predições OOF dos 6 ensembles salvas para Fases I e J.
 
 **Saídas G**: `experiments/voting/{voting_<nome>/metrics_per_fold.json, predictions_per_fold.jsonl}`, `experiments/voting/voting_summary.json`, `documents/reports/results/phase_g_voting.md`.
 
@@ -376,12 +400,12 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | ~~A~~ | — | ✓ concluída |
 | ~~B~~ | — | ✓ concluída |
 | ~~C~~ | — | ✓ concluída |
-| D | — | ✓ concluída com N=5 e top-5 por representação |
-| E | 2-3 | ◐ grids reduzidos; execução completa da nested CV pendente |
-| F | 0,5-1 | verificação dos modelos: completude, GroupKFold por comandante e testes estatísticos |
-| G (voting) | 0,2 | ensembles pós-OOF, sem retreino; requer Fase F concluída |
-| H | 0,5 | seleção de melhor modelo por representação |
-| I | 0,5 | comparação descritiva com `y2`, sem retreino |
+| ~~D~~ | — | ✓ concluída com N=5 e top-5 por representação |
+| E | — | ◐ 11/12 modelos com 15/15 folds; 1 modelo pendente. Após concluir: nenhuma ação extra necessária — F e G se atualizam sozinhos. |
+| ~~F~~ | — | ✓ implementada e executada (parcial). **Pendência**: `uv run phase-f-model-verification --all --group-kfold` após E concluir. |
+| ~~G~~ | — | ✓ implementada e executada (parcial). **Pendência**: `uv run --no-sync python -m scripts.phase_g_voting --all --force-recompute` após E + F completas. |
+| H | 0,5 | seleção de melhor modelo por representação — pode começar com resultados atuais |
+| I | 0,5 | comparação descritiva com `y2`, sem retreino — pode começar agora |
 | J | 1,5 | interpretabilidade (2 modelos) |
 | K (artigo) | 3 | escrita do artigo (seções extras se L/M rodarem) |
 | L (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |
