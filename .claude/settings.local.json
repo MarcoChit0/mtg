@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\\\\documents\\\\paper\\\\\" -Force | ForEach-Object { $_.Name })",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\\\\documents\\\\paper\\\\src\")",
+      "Bash(pdflatex -interaction=nonstopmode main.tex)"
+    ]
+  }
+}
