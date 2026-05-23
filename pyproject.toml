@@ -27,6 +27,7 @@ phase-b-eda-divergence = "scripts.phase_b_eda_divergence:main"
 phase-c-filter-dataset = "scripts.phase_c_filter_dataset:main"
 phase-d-spot-check = "scripts.phase_d_spot_check:main"
 phase-e-nested-cv = "scripts.phase_e_nested_cv:main"
+phase-f-model-verification = "scripts.phase_f_model_verification:main"
 sync-experiments-drive = "scripts.sync_experiments_drive:main"
 run-mtg-pipeline = "scripts.run_pipeline:main"
 

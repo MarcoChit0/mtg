@@ -3,7 +3,11 @@
     "allow": [
       "PowerShell(Get-ChildItem \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\\\\documents\\\\paper\\\\\" -Force | ForEach-Object { $_.Name })",
       "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\\\\documents\\\\paper\\\\src\")",
-      "Bash(pdflatex -interaction=nonstopmode main.tex)"
+      "Bash(pdflatex -interaction=nonstopmode main.tex)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(list\\(d.keys\\(\\)\\)\\)\")",
+      "Bash(uv run python -c ' *)",
+      "Bash(uv sync *)",
+      "Bash(uv run *)"
     ]
   }
 }

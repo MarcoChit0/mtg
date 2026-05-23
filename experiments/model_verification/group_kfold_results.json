@@ -1,0 +1,422 @@
+[
+  {
+    "model_id": "bc_decision_tree",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__ccp_alpha": 0.0,
+        "clf__class_weight": "balanced",
+        "clf__max_depth": null,
+        "clf__min_samples_leaf": 5
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5505274796727639,
+      "model_id": "bc_decision_tree",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.5671221656757265,
+      0.5609091051488085,
+      0.548601529977706,
+      0.5386466546341154,
+      0.5753299351835615
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.5581218781239835,
+    "macro_f1_group_std": 0.014618587458047248,
+    "macro_f1_stratified_mean": 0.5475265388550913,
+    "gap_vs_stratified": -0.0106
+  },
+  {
+    "model_id": "bc_gradient_boosting",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__class_weight": "balanced",
+        "clf__learning_rate": 0.05,
+        "clf__max_iter": 200,
+        "clf__max_leaf_nodes": 15
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.6381488084070378,
+      "model_id": "bc_gradient_boosting",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.6578870445139454,
+      0.6569541331648298,
+      0.6487157126907602,
+      0.6539020852548578,
+      0.6541513012931398
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.6543220553835066,
+    "macro_f1_group_std": 0.003580279011610927,
+    "macro_f1_stratified_mean": 0.6432634320677485,
+    "gap_vs_stratified": -0.0111
+  },
+  {
+    "model_id": "bc_linear_svc",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__C": 0.01,
+        "clf__class_weight": "balanced"
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5773940526518223,
+      "model_id": "bc_linear_svc",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.5457691961757002,
+      0.5531415726997948,
+      0.550454066150294,
+      0.5576084196508415,
+      0.5572547251805241
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.5528455959714309,
+    "macro_f1_group_std": 0.004949933357171866,
+    "macro_f1_stratified_mean": 0.5926656500094076,
+    "gap_vs_stratified": 0.0398
+  },
+  {
+    "model_id": "bc_logistic_regression",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__C": 0.01,
+        "clf__class_weight": "balanced"
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5908357225356646,
+      "model_id": "bc_logistic_regression",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.5872650152680916,
+      0.5993363901594652,
+      0.6062864697055,
+      0.6089859675802863,
+      0.6079062608771578
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.6019560207181003,
+    "macro_f1_group_std": 0.009031422986772513,
+    "macro_f1_stratified_mean": 0.6034949126172732,
+    "gap_vs_stratified": 0.0015
+  },
+  {
+    "model_id": "bc_naive_bayes",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__alpha": 0.01,
+        "clf__fit_prior": true
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5568851790796253,
+      "model_id": "bc_naive_bayes",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.5714170815760462,
+      0.5793704881946812,
+      0.5768734286378143,
+      0.5762990695916689,
+      0.5865788687047945
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.578107787341001,
+    "macro_f1_group_std": 0.005543335590057102,
+    "macro_f1_stratified_mean": 0.5535185580213458,
+    "gap_vs_stratified": -0.0246
+  },
+  {
+    "model_id": "bc_random_forest",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__class_weight": "balanced",
+        "clf__max_features": "sqrt",
+        "clf__min_samples_leaf": 2,
+        "clf__n_estimators": 500
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.6311095491205897,
+      "model_id": "bc_random_forest",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.5698005754417061,
+      0.5692803068365103,
+      0.5582653225373914,
+      0.5678602420700639,
+      0.562048571335798
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.565451003644294,
+    "macro_f1_group_std": 0.0050645169102038375,
+    "macro_f1_stratified_mean": 0.6325801512182957,
+    "gap_vs_stratified": 0.0671
+  },
+  {
+    "model_id": "df_decision_tree",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__ccp_alpha": 0.005,
+        "clf__class_weight": null,
+        "clf__max_depth": null,
+        "clf__min_samples_leaf": 1
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.6740705049102602,
+      "model_id": "df_decision_tree",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.617551215055404,
+      0.6143621545942386,
+      0.6070181277449008,
+      0.5881276599978801,
+      0.6331323148167678
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.6120382944418383,
+    "macro_f1_group_std": 0.01641394855340248,
+    "macro_f1_stratified_mean": 0.6726523425379202,
+    "gap_vs_stratified": 0.0606
+  },
+  {
+    "model_id": "df_gradient_boosting",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__class_weight": "balanced",
+        "clf__learning_rate": 0.05,
+        "clf__max_iter": 200,
+        "clf__max_leaf_nodes": 31
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.6893364491367063,
+      "model_id": "df_gradient_boosting",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.7059969498425499,
+      0.698234752579697,
+      0.6965898828141567,
+      0.7021060345340038,
+      0.7131664039605656
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.7032188047461946,
+    "macro_f1_group_std": 0.006646323416572502,
+    "macro_f1_stratified_mean": 0.6907864040640452,
+    "gap_vs_stratified": -0.0124
+  },
+  {
+    "model_id": "df_linear_svc",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__C": 0.1,
+        "clf__class_weight": "balanced"
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.6491585063608926,
+      "model_id": "df_linear_svc",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.6432146924783472,
+      0.6598208229760236,
+      0.6535999347679095,
+      0.6543569866046138,
+      0.6529299837569619
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.6527844841167713,
+    "macro_f1_group_std": 0.006005203379759191,
+    "macro_f1_stratified_mean": 0.6566264344806674,
+    "gap_vs_stratified": 0.0038
+  },
+  {
+    "model_id": "df_logistic_regression",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__C": 0.1,
+        "clf__class_weight": null,
+        "clf__l1_ratio": 1.0
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.66908860980284,
+      "model_id": "df_logistic_regression",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.6867884163513907,
+      0.6906206093723436,
+      0.6763546634216118,
+      0.6939931914798031,
+      0.6987752844978153
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.6893064330245929,
+    "macro_f1_group_std": 0.00847703745903675,
+    "macro_f1_stratified_mean": 0.6706988771688426,
+    "gap_vs_stratified": -0.0186
+  },
+  {
+    "model_id": "df_naive_bayes",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__var_smoothing": 2.4620924014946304e-12
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.5954940617638343,
+      "model_id": "df_naive_bayes",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.6318777102493183,
+      0.6323730932051373,
+      0.6314954731742884,
+      0.6358473587163861,
+      0.6625719456237154
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.638833116193769,
+    "macro_f1_group_std": 0.013382800009386272,
+    "macro_f1_stratified_mean": 0.5904702793143987,
+    "gap_vs_stratified": -0.0484
+  },
+  {
+    "model_id": "df_random_forest",
+    "status": "ok",
+    "chosen_hyperparams": {
+      "best_params": {
+        "clf__class_weight": "balanced",
+        "clf__max_features": "sqrt",
+        "clf__min_samples_leaf": 2,
+        "clf__n_estimators": 500
+      },
+      "fold_id": "r1_f1",
+      "inner_best_macro_f1": 0.6664624228879664,
+      "model_id": "df_random_forest",
+      "outer_fold": 1,
+      "repeat_seed": 1
+    },
+    "n_splits": 5,
+    "fold_f1s": [
+      0.6790306146041912,
+      0.6945961712236702,
+      0.673695009361178,
+      0.6783090279914293,
+      0.6961466036248741
+    ],
+    "fold_ids": [
+      "g1",
+      "g2",
+      "g3",
+      "g4",
+      "g5"
+    ],
+    "macro_f1_group_mean": 0.6843554853610685,
+    "macro_f1_group_std": 0.010276937295372752,
+    "macro_f1_stratified_mean": 0.6732750782145236,
+    "gap_vs_stratified": -0.0111
+  }
+]

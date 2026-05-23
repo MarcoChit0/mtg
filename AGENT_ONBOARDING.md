@@ -15,8 +15,9 @@ scripts/
   phase_b_eda_divergence.py  ← Fase B
   phase_c_filter_dataset.py  ← Fase C
   phase_d_spot_check.py      ← Fase D
-  phase_e_nested_cv.py       ← Fase E (núcleo, ~1900 linhas)
-  sync_experiments_drive.py  ← Drive (uploads colaborador, downloads público)
+  phase_e_nested_cv.py           ← Fase E (núcleo, ~1900 linhas)
+  phase_f_model_verification.py  ← Fase F (verificação: completude, GroupKFold, testes estatísticos)
+  sync_experiments_drive.py      ← Drive (uploads colaborador, downloads público)
 
 documents/
   action_plan.md             ← Roadmap fase por fase (LEIA ISSO PRIMEIRO)
@@ -62,7 +63,7 @@ Estrutura mínima de um implementation report:
 | C | Filtro (y1,y2 ∈ {2,3,4}) + transformers leakage-safe | ✓ concluída | `phase_c_filter_dataset.py` + `preprocessing.py` |
 | D | Spot-check N=5 seeds, 7 algos, top-5 por representação | ✓ concluída | `phase_d_spot_check.py` |
 | E | Nested CV dos modelos individuais (5 folds × 3 repeats), grids tunados | ◐ implementada, execução completa pendente | `phase_e_nested_cv.py` |
-| F | Verificação dos modelos individuais: completude, consistência, GroupKFold por comandante, testes estatísticos | planejada, não implementada | — |
+| F | Verificação dos modelos individuais: completude, consistência, GroupKFold por comandante, testes estatísticos | ✓ implementada; executa com modelos parciais da Fase E | `phase_f_model_verification.py` |
 | G | Voting ensembles a partir de OOF predictions, só depois da F | planejada, não implementada | — |
 | H | Melhor modelo por representação | a fazer | — |
 | I | Comparar predições dos modelos vs y2 (descritivo) | a fazer | — |
