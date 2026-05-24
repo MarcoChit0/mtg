@@ -135,6 +135,11 @@ class SyncExperimentsDriveTests(unittest.TestCase):
                 returncode=0,
                 stdout=json.dumps([
                     {
+                        "Name": ".codex.zip",
+                        "Size": 321,
+                        "ID": "ignored-file-id",
+                    },
+                    {
                         "Name": "df_random_forest.zip",
                         "Size": 123,
                         "ID": "zip-file-id",
@@ -165,9 +170,33 @@ class SyncExperimentsDriveTests(unittest.TestCase):
                 )
 
             self.assertEqual(result["status"], "ok")
+            self.assertEqual(result["manifest"]["models"], [
+                {
+                    "model_id": "df_random_forest",
+                    "filename": "df_random_forest.zip",
+                    "drive_file_id": "zip-file-id",
+                    "size_bytes": 123,
+                }
+            ])
             self.assertEqual(result["manifest"]["models"][0]["drive_file_id"], "zip-file-id")
+            self.assertNotIn("bundles", result["manifest"])
             manifest_path = Path(result["manifest_path"])
             self.assertTrue(manifest_path.exists())
+
+    def test_list_remote_archives_skips_invalid_zip_names(self):
+        lsf = subprocess.CompletedProcess(
+            args=["rclone"],
+            returncode=0,
+            stdout=".codex.zip\ndf_random_forest.zip\nnot a model.zip\n",
+            stderr="",
+        )
+
+        with mock.patch.object(sync_experiments_drive.subprocess, "run", return_value=lsf):
+            result = sync_experiments_drive.list_remote_archives(remote="mtg-experiments:")
+
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["files"], ["df_random_forest.zip"])
+        self.assertEqual(result["skipped_files"], [".codex.zip", "not a model.zip"])
 
     def test_check_write_access_returns_failed_for_read_only_remote(self):
         failed = subprocess.CompletedProcess(

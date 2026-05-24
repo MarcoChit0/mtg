@@ -58,6 +58,16 @@ def validate_model_id(model_id: str) -> str:
     return model_id
 
 
+def valid_remote_zip_model_id(name: str) -> Optional[str]:
+    """Return the model/bundle id for a valid remote zip filename, else None."""
+    if not name.endswith(".zip"):
+        return None
+    model_id = Path(name).stem
+    if not MODEL_ID_RE.fullmatch(model_id):
+        return None
+    return model_id
+
+
 def is_valid_zip(path: Path) -> bool:
     try:
         return path.exists() and zipfile.is_zipfile(path)
@@ -463,15 +473,23 @@ def list_remote_archives(*, remote: str = DEFAULT_REMOTE, rclone_bin: str = "rcl
     remote = require_remote(remote)
     command = [rclone_bin, "lsf", remote, "--files-only", "--include", "*.zip"]
     rclone = run_rclone(command)
-    files = [
-        line.strip()
-        for line in rclone["stdout"].splitlines()
-        if line.strip().endswith(".zip")
-    ] if rclone["returncode"] == 0 else []
+    files: List[str] = []
+    skipped_files: List[str] = []
+    if rclone["returncode"] == 0:
+        for line in rclone["stdout"].splitlines():
+            name = line.strip()
+            if not name.endswith(".zip"):
+                continue
+            model_id = valid_remote_zip_model_id(name)
+            if model_id is None:
+                skipped_files.append(name)
+                continue
+            files.append(f"{model_id}.zip")
     return {
         "status": "ok" if rclone["returncode"] == 0 else "failed",
         "remote": remote,
-        "files": files,
+        "files": sorted(files),
+        "skipped_files": sorted(skipped_files),
         "rclone": rclone,
     }
 
@@ -649,6 +667,7 @@ def list_remote_zip_metadata(*, remote: str = DEFAULT_REMOTE, rclone_bin: str = 
     command = [rclone_bin, "lsjson", remote, "--files-only", "--include", "*.zip"]
     rclone = run_rclone(command)
     files: List[Dict[str, Any]] = []
+    skipped_files: List[str] = []
     if rclone["returncode"] == 0:
         try:
             payload = json.loads(rclone["stdout"])
@@ -657,6 +676,7 @@ def list_remote_zip_metadata(*, remote: str = DEFAULT_REMOTE, rclone_bin: str = 
                 "status": "failed",
                 "remote": remote,
                 "files": [],
+                "skipped_files": [],
                 "rclone": rclone,
                 "error": f"Invalid rclone lsjson output: {exc}",
             }
@@ -666,13 +686,17 @@ def list_remote_zip_metadata(*, remote: str = DEFAULT_REMOTE, rclone_bin: str = 
             name = str(raw_file.get("Name") or raw_file.get("Path") or "")
             if not name.endswith(".zip"):
                 continue
-            model_id = validate_model_id(Path(name).stem)
+            model_id = valid_remote_zip_model_id(name)
+            if model_id is None:
+                skipped_files.append(name)
+                continue
             drive_file_id = str(raw_file.get("ID") or "")
             if not drive_file_id:
                 return {
                     "status": "failed",
                     "remote": remote,
                     "files": [],
+                    "skipped_files": sorted(skipped_files),
                     "rclone": rclone,
                     "error": f"rclone metadata for {name} did not include an ID.",
                 }
@@ -686,6 +710,7 @@ def list_remote_zip_metadata(*, remote: str = DEFAULT_REMOTE, rclone_bin: str = 
         "status": "ok" if rclone["returncode"] == 0 else "failed",
         "remote": remote,
         "files": sorted(files, key=lambda item: item["model_id"]),
+        "skipped_files": sorted(skipped_files),
         "rclone": rclone,
     }
 
