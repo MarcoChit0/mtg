@@ -30,6 +30,7 @@ phase-e-nested-cv = "scripts.phase_e_nested_cv:main"
 phase-f-model-verification = "scripts.phase_f_model_verification:main"
 phase-g-voting = "scripts.phase_g_voting:main"
 phase-h-best-models = "scripts.phase_h_best_models:main"
+phase-i-model-vs-calculator = "scripts.phase_i_model_vs_calculator:main"
 sync-experiments-drive = "scripts.sync_experiments_drive:main"
 run-mtg-pipeline = "scripts.run_pipeline:main"
 

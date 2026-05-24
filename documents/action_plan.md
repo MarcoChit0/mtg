@@ -143,7 +143,7 @@ Critério de desempate: desvio padrão menor (estabilidade) e diversidade de vie
 
 Combinações que falharem por erro no spot-check ficam fora automaticamente.
 
-## Fase E — Nested CV ◐ implementada; execução completa quase concluída (1 modelo pendente)
+## Fase E — Nested CV ✓ concluída (2026-05-24)
 
 Implementada em [scripts/phase_e_nested_cv.py](../scripts/phase_e_nested_cv.py), com entrypoint `phase-e-nested-cv`. A execução completa é sob demanda por custo computacional. Também é possível reexecutar apenas um algoritmo/modelo, por exemplo `uv run phase-e-nested-cv --model random_forest` para DF+BC ou `uv run phase-e-nested-cv --model random_forest --feature df` para uma representação específica. A execução salva checkpoints por outer fold em `experiments/<modelo>/checkpoints/<assinatura>/` e retoma automaticamente execuções interrompidas; usar `--force-rerun` para ignorar checkpoints e recalcular.
 
@@ -278,23 +278,18 @@ Artefato de seleção: `experiments/best_models.json` (consumido pela Fase J).
 
 Relatório inclui: ranking completo, tabela BC vs DF por algoritmo, ganho/perda de cada ensemble vs melhor individual, hiperparâmetros por fold dos dois selecionados, matrizes de confusão agregadas (36.405 predições OOF).
 
-## Fase I — Comparação das predições dos modelos com a calculadora
+## Fase I — Comparação das predições dos modelos com a calculadora ✓ concluída (2026-05-24)
 
-**Descritivo, sem retreino**. Reutiliza as predições out-of-fold dos modelos individuais (10 a 14, dependendo de `|A_uniao|`) + dos 6 ensembles de votação (G) e compara contra `y2`:
+> Script: `scripts/phase_i_model_vs_calculator.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_i_model_vs_calculator`
+> Implementation report: `documents/reports/implementation/phase_i_model_vs_calculator.md`
 
-```text
-para cada modelo individual e cada ensemble de votação:
-  ŷ1 = predição out-of-fold (treinado em y1)
-  comparar ŷ1 vs y2 por: concordância exata, ±1, macro-F1 contra y2,
-                          |Δ| médio, matriz de confusão ŷ1 × y2
-```
+**Descritivo, sem retreino**. 18 modelos analisados (12 individuais + 6 ensembles). Métricas: concordância exata ŷ1=y2, concordância ±1, |Δ| médio, macro-F1 vs y2, gap F1(y1)−concord.(y2). Subset analysis: decks concordantes (y1=y2) vs discordantes (y1≠y2).
 
-**Saída**:
-- Tabela completa com os modelos individuais + 6 ensembles (linha por modelo, colunas com cada métrica de concordância com `y2`).
-- Discussão narra 2-3 modelos de destaque (ex: o que mais concorda com y2, o que menos concorda, e o que tem maior gap entre `macro-F1(y1)` e `concordância(y2)`), incluindo se algum ensemble se aproxima/distancia mais da calculadora que os modelos individuais.
-- `documents/reports/model_vs_calculator.md` + figuras `documents/reports/figures/model_vs_calc/`.
-
-Subset analysis: para cada modelo, performance no subset `y1 == y2` vs `y1 ≠ y2`.
+**Resultados principais:**
+- Maior concordância com y2: `df_random_forest` (69,3% exata) — DF captura sinais mais próximos da calculadora
+- Menor concordância: `bc_decision_tree` (54,2%) — BC+árvore mais distante da lógica objetiva
+- Maior gap F1−concord.: `df_gradient_boosting` (gap=+0.051) — melhor em y1, mas aprende particularidades da percepção humana
+- Todos os modelos DF superam a concordância base y1vs y2 (60,9%); modelos BC ficam abaixo
 
 ## Fase J — Interpretabilidade
 
@@ -391,11 +386,11 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | ~~B~~ | — | ✓ concluída |
 | ~~C~~ | — | ✓ concluída |
 | ~~D~~ | — | ✓ concluída com N=5 e top-5 por representação |
-| E | — | ◐ 11/12 modelos com 15/15 folds; 1 modelo pendente. Após concluir: nenhuma ação extra necessária — F e G se atualizam sozinhos. |
+| ~~E~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, 15/15 folds cada |
 | ~~F~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, F.1+F.2+F.3 completos com `--all --group-kfold` |
 | ~~G~~ | — | ✓ concluída (2026-05-24) — 6 ensembles, melhor: `voting_top3_BC_DF` F1=0.6944, com `--all --force-recompute` |
 | ~~H~~ | — | ✓ concluída (2026-05-24) — melhor_BC=bc_gradient_boosting (F1=0.6433), melhor_DF=df_gradient_boosting (F1=0.6908) |
-| I | 0,5 | comparação descritiva com `y2`, sem retreino — pode começar agora |
+| ~~I~~ | — | ✓ concluída (2026-05-24) — maior concord.: df_random_forest 69,3%; maior gap: df_gradient_boosting +0.051 |
 | J | 1,5 | interpretabilidade (2 modelos) |
 | K (artigo) | 3 | escrita do artigo (seções extras se L/M rodarem) |
 | L (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |

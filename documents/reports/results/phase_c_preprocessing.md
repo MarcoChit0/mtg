@@ -1,10 +1,6 @@
 # Report da Fase C — Pré-processamento
 
-<<<<<<< Updated upstream
-*Gerado automaticamente em `2026-05-21T13:56:43.572757+00:00`.*
-=======
 *Gerado automaticamente em `2026-05-21T15:55:21.149704+00:00`.*
->>>>>>> Stashed changes
 
 ## Objetivo
 

@@ -19,6 +19,7 @@ scripts/
   phase_f_model_verification.py  ← Fase F (verificação: completude, GroupKFold, testes estatísticos)
   phase_g_voting.py              ← Fase G (voting ensembles a partir de OOF predictions)
   phase_h_best_models.py         ← Fase H (seleção melhor_BC e melhor_DF, ranking, confusão)
+  phase_i_model_vs_calculator.py ← Fase I (concordância ŷ1 vs y2 — descritivo, sem retreino)
   sync_experiments_drive.py      ← Drive (uploads colaborador, downloads público)
 
 documents/
@@ -68,7 +69,7 @@ Estrutura mínima de um implementation report:
 | F | Verificação dos modelos individuais: completude, consistência, GroupKFold por comandante, testes estatísticos | ✓ implementada; executa com modelos parciais da Fase E | `phase_f_model_verification.py` |
 | G | Voting ensembles a partir de OOF predictions, só depois da F | ✓ implementada; executa com modelos parciais da Fase E | `phase_g_voting.py` |
 | H | Melhor modelo por representação | ✓ implementada e executada | `phase_h_best_models.py` |
-| I | Comparar predições dos modelos vs y2 (descritivo) | a fazer | — |
+| I | Comparar predições dos modelos vs y2 (descritivo) | ✓ implementada e executada | `phase_i_model_vs_calculator.py` |
 | J | Interpretabilidade dos 2 melhores (BC + DF) | a fazer | — |
 | K | Artigo (template Moodle) | a fazer | — |
 | L | OOD (opcional): decks 500-1000 views | a fazer | — |

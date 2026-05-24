@@ -13,7 +13,10 @@
       "Bash(biber main *)",
       "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m scripts.phase_h_best_models)",
       "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -c ' *)",
-      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m unittest discover -s tests)"
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m unittest discover -s tests)",
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m scripts.phase_i_model_vs_calculator)",
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -c \"import json; json.load\\(open\\('experiments/nested_cv_summary.json', encoding='utf-8'\\)\\); print\\('nested_cv_summary.json: JSON valido'\\)\")",
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -c \"import json; json.load\\(open\\('experiments/statistical_tests.json', encoding='utf-8'\\)\\); print\\('statistical_tests.json: JSON valido'\\)\")"
     ]
   }
 }
