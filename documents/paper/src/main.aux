@@ -1,0 +1,157 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Overview of the pipeline. One Archidekt deck $\rightarrow $ two representations $\rightarrow $ two labels $\rightarrow $ one fold of nested CV.}}{1}{figure.1}\protected@file@percent }
+\newlabel{fig:overview}{{1}{1}{Overview of the pipeline. One Archidekt deck $\rightarrow $ two representations $\rightarrow $ two labels $\rightarrow $ one fold of nested CV}{figure.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Research question.}{2}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contributions.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Outline.}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
+\newlabel{sec:background}{{2}{2}{Background}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Magic: The Gathering}{2}{subsection.2.1}\protected@file@percent }
+\newlabel{sec:bg:mtg}{{2.1}{2}{Magic: The Gathering}{subsection.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Commander}{2}{subsection.2.2}\protected@file@percent }
+\newlabel{sec:bg:commander}{{2.2}{2}{Commander}{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Why power balance matters}{2}{subsection.2.3}\protected@file@percent }
+\newlabel{sec:bg:power}{{2.3}{2}{Why power balance matters}{subsection.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Commander Brackets (community label \(y_{\text  {com}}\))}{3}{subsection.2.4}\protected@file@percent }
+\newlabel{sec:bg:brackets}{{2.4}{3}{Commander Brackets (community label \(y_{\text {com}}\))}{subsection.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Automated calculators (calculator label \(y_{\text  {calc}}\))}{3}{subsection.2.5}\protected@file@percent }
+\newlabel{sec:bg:calculator}{{2.5}{3}{Automated calculators (calculator label \(y_{\text {calc}}\))}{subsection.2.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset Construction}{3}{section.3}\protected@file@percent }
+\newlabel{sec:dataset}{{3}{3}{Dataset Construction}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data sources}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:data:sources}{{3.1}{3}{Data sources}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Extraction pipeline}{3}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:data:extraction}{{3.2}{3}{Extraction pipeline}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Labels}{4}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:data:labels}{{3.3}{4}{Labels}{subsection.3.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Label distributions on the modeling set (12{,}135 decks).}}{4}{table.1}\protected@file@percent }
+\newlabel{tab:label-dist}{{1}{4}{Label distributions on the modeling set (12{,}135 decks)}{table.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Temporal stability of \(y_{\text  {calc}}\).}{4}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Exploratory analysis of the divergence}{4}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:data:eda}{{3.4}{4}{Exploratory analysis of the divergence}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Agreement.}{4}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Direction.}{4}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cross-tabulation.}{4}{section*.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Joint counts \(y_{\text  {com}} \times y_{\text  {calc}}\) on the modeling set.}}{4}{table.2}\protected@file@percent }
+\newlabel{tab:y1y2-matrix}{{2}{4}{Joint counts \(y_{\text {com}} \times y_{\text {calc}}\) on the modeling set}{table.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Structural correlates of \(|\Delta |\).}{5}{section*.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Left: signed distribution of $\Delta = y_{\text  {calc}} - y_{\text  {com}}$ on the modeling set. The mass on $\Delta = +1$ is larger than on $\Delta = -1$. Right: mean $|\Delta |$ as a function of Game Changer count.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:eda-divergence}{{2}{5}{Left: signed distribution of $\Delta = y_{\text {calc}} - y_{\text {com}}$ on the modeling set. The mass on $\Delta = +1$ is larger than on $\Delta = -1$. Right: mean $|\Delta |$ as a function of Game Changer count}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Bag of Cards (BC)}{5}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:data:bc}{{3.5}{5}{Bag of Cards (BC)}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Deck Features (DF)}{5}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:data:df}{{3.6}{5}{Deck Features (DF)}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Spot-Checking}{6}{section.4}\protected@file@percent }
+\newlabel{sec:spotcheck}{{4}{6}{Spot-Checking}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Algorithm pool}{6}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:spotcheck:pool}{{4.1}{6}{Algorithm pool}{subsection.4.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Candidate algorithms and their inductive biases.}}{6}{table.3}\protected@file@percent }
+\newlabel{tab:algorithms}{{3}{6}{Candidate algorithms and their inductive biases}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Hold-out protocol}{6}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:spotcheck:protocol}{{4.2}{6}{Hold-out protocol}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Results and selection}{6}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:spotcheck:results}{{4.3}{6}{Results and selection}{subsection.4.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Spot-checking macro-F1 (mean over 5 hold-out seeds) per algorithm and representation. \textbf  {\text  {$\mathsurround \z@ \mathchar "458$}} marks membership in $A_{\text  {union}}$ used by nested CV.}}{6}{table.4}\protected@file@percent }
+\newlabel{tab:spotcheck-main}{{4}{6}{Spot-checking macro-F1 (mean over 5 hold-out seeds) per algorithm and representation. \textbf {\checkmark } marks membership in $A_{\text {union}}$ used by nested CV}{table.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Training}{7}{section.5}\protected@file@percent }
+\newlabel{sec:training}{{5}{7}{Training}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Nested cross-validation}{7}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:training:nestedcv}{{5.1}{7}{Nested cross-validation}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Per-fold preprocessing}{7}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:training:preprocessing}{{5.2}{7}{Per-fold preprocessing}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Hyperparameter grids}{7}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:training:grids}{{5.3}{7}{Hyperparameter grids}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Evaluation metrics}{7}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:training:metrics}{{5.4}{7}{Evaluation metrics}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Results}{7}{subsection.5.5}\protected@file@percent }
+\newlabel{sec:training:results}{{5.5}{7}{Results}{subsection.5.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Hyperparameter grids for nested CV (24 configurations per algorithm).}}{8}{table.5}\protected@file@percent }
+\newlabel{tab:grids}{{5}{8}{Hyperparameter grids for nested CV (24 configurations per algorithm)}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Model-level divergence against \(y_{\text  {calc}}\)}{8}{subsection.5.6}\protected@file@percent }
+\newlabel{sec:training:divergence}{{5.6}{8}{Model-level divergence against \(y_{\text {calc}}\)}{subsection.5.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{8}{section.6}\protected@file@percent }
+\newlabel{sec:discussion}{{6}{8}{Discussion}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{8}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{7}{8}{Conclusion}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}MTG Terminology and Gameplay}{9}{section.A}\protected@file@percent }
+\newlabel{app:mtg}{{A}{9}{MTG Terminology and Gameplay}{section.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}How a turn of Commander is played}{9}{subsection.A.1}\protected@file@percent }
+\newlabel{app:mtg:turn}{{A.1}{9}{How a turn of Commander is played}{subsection.A.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Game structure}{9}{subsection.A.2}\protected@file@percent }
+\newlabel{app:mtg:structure}{{A.2}{9}{Game structure}{subsection.A.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Commander and command zone.}{9}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Singleton format.}{9}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Player count.}{9}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Cards, mana, and the curve}{9}{subsection.A.3}\protected@file@percent }
+\newlabel{app:mtg:cards}{{A.3}{9}{Cards, mana, and the curve}{subsection.A.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Mana and mana cost.}{9}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Mana curve.}{10}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Card types.}{10}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Rarity tiers.}{10}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Multiface layouts.}{10}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Mana colors.}{10}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Power indicators}{10}{subsection.A.4}\protected@file@percent }
+\newlabel{app:mtg:power}{{A.4}{10}{Power indicators}{subsection.A.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Staples.}{10}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Game Changers.}{10}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tutors.}{10}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Combos.}{10}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Extra-turn effects.}{10}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Mass land denial.}{10}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Keywords}{10}{subsection.A.5}\protected@file@percent }
+\newlabel{app:mtg:keywords}{{A.5}{10}{Keywords}{subsection.A.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Community resources}{11}{subsection.A.6}\protected@file@percent }
+\newlabel{app:mtg:community}{{A.6}{11}{Community resources}{subsection.A.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{EDHREC rank.}{11}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Salt score.}{11}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Preprocessing --- Extended Rationale}{11}{section.B}\protected@file@percent }
+\newlabel{app:preprocessing}{{B}{11}{Preprocessing --- Extended Rationale}{section.B}{}}
+\@writefile{toc}{\contentsline {paragraph}{Per-fold fitting.}{11}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Imputation.}{11}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Winsorization.}{11}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Scaling.}{11}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Leakage prevention.}{11}{section*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Deck Features (DF) Catalog}{11}{section.C}\protected@file@percent }
+\newlabel{app:features}{{C}{11}{Deck Features (DF) Catalog}{section.C}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Basic structure}{12}{subsection.C.1}\protected@file@percent }
+\newlabel{app:features:basic}{{C.1}{12}{Basic structure}{subsection.C.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Colors and color identity}{12}{subsection.C.2}\protected@file@percent }
+\newlabel{app:features:colors}{{C.2}{12}{Colors and color identity}{subsection.C.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Mana base}{12}{subsection.C.3}\protected@file@percent }
+\newlabel{app:features:mana}{{C.3}{12}{Mana base}{subsection.C.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.4}Mana curve (CMC)}{12}{subsection.C.4}\protected@file@percent }
+\newlabel{app:features:curve}{{C.4}{12}{Mana curve (CMC)}{subsection.C.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.5}Card types}{12}{subsection.C.5}\protected@file@percent }
+\newlabel{app:features:types}{{C.5}{12}{Card types}{subsection.C.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.6}Bracket-relevant flags}{13}{subsection.C.6}\protected@file@percent }
+\newlabel{app:features:bracket}{{C.6}{13}{Bracket-relevant flags}{subsection.C.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.7}Combo density}{13}{subsection.C.7}\protected@file@percent }
+\newlabel{app:features:combos}{{C.7}{13}{Combo density}{subsection.C.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.8}Popularity, salt, and price}{13}{subsection.C.8}\protected@file@percent }
+\newlabel{app:features:popularity}{{C.8}{13}{Popularity, salt, and price}{subsection.C.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.9}Rarity}{13}{subsection.C.9}\protected@file@percent }
+\newlabel{app:features:rarity}{{C.9}{13}{Rarity}{subsection.C.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.10}Keywords}{13}{subsection.C.10}\protected@file@percent }
+\newlabel{app:features:keywords}{{C.10}{13}{Keywords}{subsection.C.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.11}Super- and subtypes}{14}{subsection.C.11}\protected@file@percent }
+\newlabel{app:features:subtypes}{{C.11}{14}{Super- and subtypes}{subsection.C.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.12}Multiface layouts}{14}{subsection.C.12}\protected@file@percent }
+\newlabel{app:features:layouts}{{C.12}{14}{Multiface layouts}{subsection.C.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{Features deliberately excluded.}{14}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D}Spot-Checking --- Full Results}{14}{section.D}\protected@file@percent }
+\newlabel{app:spotcheck}{{D}{14}{Spot-Checking --- Full Results}{section.D}{}}
+\@writefile{toc}{\contentsline {paragraph}{Software versions.}{14}{section*.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Default hyperparameters.}{14}{section*.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{BC vocabulary threshold.}{14}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Per-algorithm macro-F1.}{15}{section*.35}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Spot-checking macro-F1 (mean $\pm $ std over 5 stratified 80/20 hold-outs) per algorithm and representation, with the top-5-per-representation selection. \textbf  {\text  {$\mathsurround \z@ \mathchar "458$}} marks membership in $A_{\text  {union}}$.}}{15}{table.6}\protected@file@percent }
+\newlabel{tab:spotcheck}{{6}{15}{Spot-checking macro-F1 (mean $\pm $ std over 5 stratified 80/20 hold-outs) per algorithm and representation, with the top-5-per-representation selection. \textbf {\checkmark } marks membership in $A_{\text {union}}$}{table.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Spot-checking visualizations.}{15}{section*.36}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Spot-checking macro-F1 per algorithm, across 5 seeds. Left: Bag of Cards. Right: Deck Features.}}{15}{figure.3}\protected@file@percent }
+\newlabel{fig:spotcheck-boxplots}{{3}{15}{Spot-checking macro-F1 per algorithm, across 5 seeds. Left: Bag of Cards. Right: Deck Features}{figure.3}{}}
+\gdef \@abspage@last{15}

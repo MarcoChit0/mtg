@@ -9,7 +9,8 @@
       "Bash(uv sync *)",
       "Bash(uv run *)",
       "Bash(dir experiments\\\\voting /s /b)",
-      "Bash(dir documents\\\\reports\\\\results\\\\phase_g* /b)"
+      "Bash(dir documents\\\\reports\\\\results\\\\phase_g* /b)",
+      "Bash(biber main *)"
     ]
   }
 }
