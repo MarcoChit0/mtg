@@ -1,11 +1,12 @@
 [
   {
     "best_params": {
-      "clf__C": 0.01,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r1_f1",
-    "inner_best_macro_f1": 0.5908357225356646,
+    "inner_best_macro_f1": 0.6072878082899617,
     "model_id": "bc_logistic_regression",
     "outer_fold": 1,
     "repeat_seed": 1
@@ -13,10 +14,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r1_f2",
-    "inner_best_macro_f1": 0.599916739829342,
+    "inner_best_macro_f1": 0.6061433529563555,
     "model_id": "bc_logistic_regression",
     "outer_fold": 2,
     "repeat_seed": 1
@@ -24,10 +26,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r1_f3",
-    "inner_best_macro_f1": 0.5967171270166384,
+    "inner_best_macro_f1": 0.6066717062980814,
     "model_id": "bc_logistic_regression",
     "outer_fold": 3,
     "repeat_seed": 1
@@ -35,10 +38,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r1_f4",
-    "inner_best_macro_f1": 0.5904322756464667,
+    "inner_best_macro_f1": 0.6108138968867628,
     "model_id": "bc_logistic_regression",
     "outer_fold": 4,
     "repeat_seed": 1
@@ -46,10 +50,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r1_f5",
-    "inner_best_macro_f1": 0.5937233757585759,
+    "inner_best_macro_f1": 0.6069492727395052,
     "model_id": "bc_logistic_regression",
     "outer_fold": 5,
     "repeat_seed": 1
@@ -57,10 +62,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r2_f1",
-    "inner_best_macro_f1": 0.6013961495673111,
+    "inner_best_macro_f1": 0.6143920840216053,
     "model_id": "bc_logistic_regression",
     "outer_fold": 1,
     "repeat_seed": 2
@@ -68,10 +74,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r2_f2",
-    "inner_best_macro_f1": 0.5898332908028608,
+    "inner_best_macro_f1": 0.5998445377178914,
     "model_id": "bc_logistic_regression",
     "outer_fold": 2,
     "repeat_seed": 2
@@ -79,10 +86,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r2_f3",
-    "inner_best_macro_f1": 0.5873902703989672,
+    "inner_best_macro_f1": 0.603678358226703,
     "model_id": "bc_logistic_regression",
     "outer_fold": 3,
     "repeat_seed": 2
@@ -90,32 +98,35 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r2_f4",
-    "inner_best_macro_f1": 0.5967871181516199,
+    "inner_best_macro_f1": 0.6125810951242722,
     "model_id": "bc_logistic_regression",
     "outer_fold": 4,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 0.01,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r2_f5",
-    "inner_best_macro_f1": 0.5894859503288705,
+    "inner_best_macro_f1": 0.6078582045959943,
     "model_id": "bc_logistic_regression",
     "outer_fold": 5,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 0.01,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r3_f1",
-    "inner_best_macro_f1": 0.5943794920165758,
+    "inner_best_macro_f1": 0.6171217702470639,
     "model_id": "bc_logistic_regression",
     "outer_fold": 1,
     "repeat_seed": 3
@@ -123,10 +134,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r3_f2",
-    "inner_best_macro_f1": 0.5898638147073908,
+    "inner_best_macro_f1": 0.6019834938825982,
     "model_id": "bc_logistic_regression",
     "outer_fold": 2,
     "repeat_seed": 3
@@ -134,10 +146,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r3_f3",
-    "inner_best_macro_f1": 0.5842610007472301,
+    "inner_best_macro_f1": 0.6035174146129031,
     "model_id": "bc_logistic_regression",
     "outer_fold": 3,
     "repeat_seed": 3
@@ -145,10 +158,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r3_f4",
-    "inner_best_macro_f1": 0.59392207928064,
+    "inner_best_macro_f1": 0.6117470317500948,
     "model_id": "bc_logistic_regression",
     "outer_fold": 4,
     "repeat_seed": 3
@@ -156,10 +170,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__l1_ratio": 0.5
     },
     "fold_id": "r3_f5",
-    "inner_best_macro_f1": 0.592826545479979,
+    "inner_best_macro_f1": 0.6130668179260849,
     "model_id": "bc_logistic_regression",
     "outer_fold": 5,
     "repeat_seed": 3

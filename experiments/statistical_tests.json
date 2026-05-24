@@ -3,6 +3,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "bc_gradient_boosting": 5.0,
 =======
     "bc_gradient_boosting": 4.666666666666667,
@@ -50,6 +51,20 @@
     "df_naive_bayes": 7.6,
     "df_random_forest": 3.2
 >>>>>>> Stashed changes
+=======
+    "bc_decision_tree": 11.666666666666666,
+    "bc_gradient_boosting": 7.066666666666666,
+    "bc_linear_svc": 9.4,
+    "bc_logistic_regression": 7.4,
+    "bc_naive_bayes": 11.333333333333334,
+    "bc_random_forest": 6.533333333333333,
+    "df_decision_tree": 2.933333333333333,
+    "df_gradient_boosting": 1.0666666666666667,
+    "df_linear_svc": 4.933333333333334,
+    "df_logistic_regression": 3.2666666666666666,
+    "df_naive_bayes": 9.6,
+    "df_random_forest": 2.8
+>>>>>>> Stashed changes
   },
   "folds": [
     "r1_f1",
@@ -72,6 +87,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "p_value": 2.6626392967638993e-24,
     "statistic": 133.15272727272725
 =======
@@ -85,6 +101,10 @@
 =======
     "p_value": 6.259749189112665e-24,
     "statistic": 131.34909090909093
+>>>>>>> Stashed changes
+=======
+    "p_value": 1.872719259865092e-28,
+    "statistic": 159.28717948717951
 >>>>>>> Stashed changes
   },
   "models": [
@@ -105,6 +125,7 @@
     "alpha": 0.05,
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "critical_difference": 4.302527093918013,
 =======
     "critical_difference": 3.4975837934984884,
@@ -112,71 +133,74 @@
 =======
     "critical_difference": 3.4975837934984884,
 >>>>>>> Stashed changes
+=======
+    "critical_difference": 4.302527093918013,
+>>>>>>> Stashed changes
     "pairs": [
       {
         "model_a": "bc_decision_tree",
         "model_b": "bc_gradient_boosting",
-        "rank_diff": 4.7333333333333325,
+        "rank_diff": 4.6,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "bc_linear_svc",
-        "rank_diff": 2.3999999999999986,
+        "rank_diff": 2.2666666666666657,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "bc_logistic_regression",
-        "rank_diff": 3.666666666666666,
+        "rank_diff": 4.266666666666666,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "bc_naive_bayes",
-        "rank_diff": 0.3999999999999986,
+        "rank_diff": 0.33333333333333215,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "bc_random_forest",
-        "rank_diff": 1.200000000000001,
-        "significant_alpha_0_05": false
+        "rank_diff": 5.133333333333333,
+        "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "df_decision_tree",
-        "rank_diff": 8.2,
+        "rank_diff": 8.733333333333333,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "df_gradient_boosting",
-        "rank_diff": 9.666666666666666,
+        "rank_diff": 10.6,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "df_linear_svc",
-        "rank_diff": 5.933333333333333,
+        "rank_diff": 6.7333333333333325,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "df_logistic_regression",
-        "rank_diff": 8.066666666666666,
+        "rank_diff": 8.399999999999999,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "df_naive_bayes",
-        "rank_diff": 2.133333333333333,
+        "rank_diff": 2.0666666666666664,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_decision_tree",
         "model_b": "df_random_forest",
-        "rank_diff": 6.799999999999999,
+        "rank_diff": 8.866666666666667,
         "significant_alpha_0_05": true
       },
       {
@@ -184,6 +208,9 @@
         "model_b": "bc_linear_svc",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
         "rank_diff": 2.333333333333334,
 =======
         "rank_diff": 2.666666666666666,
@@ -193,6 +220,7 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "bc_logistic_regression",
+<<<<<<< Updated upstream
         "rank_diff": 1.3999999999999995,
         "significant_alpha_0_05": false
       },
@@ -312,66 +340,87 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "bc_random_forest",
+=======
+>>>>>>> Stashed changes
         "rank_diff": 0.3333333333333339,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_gradient_boosting",
+        "model_b": "bc_naive_bayes",
+        "rank_diff": 4.2666666666666675,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "bc_random_forest",
+        "rank_diff": 0.5333333333333332,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
+        "model_b": "df_decision_tree",
+        "rank_diff": 4.133333333333333,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_gradient_boosting",
         "model_b": "df_gradient_boosting",
-        "rank_diff": 4.666666666666667,
+        "rank_diff": 6.0,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_linear_svc",
-        "rank_diff": 1.7333333333333338,
+        "rank_diff": 2.133333333333333,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_logistic_regression",
-        "rank_diff": 3.0000000000000004,
+        "rank_diff": 3.8,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_naive_bayes",
-        "rank_diff": 2.9333333333333327,
+        "rank_diff": 2.533333333333333,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "df_random_forest",
-        "rank_diff": 3.266666666666667,
+        "rank_diff": 4.266666666666667,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "bc_logistic_regression",
-        "rank_diff": 1.2666666666666675,
+        "rank_diff": 2.0,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "bc_naive_bayes",
-        "rank_diff": 1.666666666666666,
+        "rank_diff": 1.9333333333333336,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "bc_random_forest",
-        "rank_diff": 3.000000000000001,
+        "rank_diff": 2.866666666666667,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_decision_tree",
-        "rank_diff": 5.800000000000001,
+        "rank_diff": 6.466666666666667,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 7.2666666666666675,
@@ -381,11 +430,15 @@
 =======
         "rank_diff": 6.266666666666667,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 8.333333333333334,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -402,6 +455,10 @@
         "rank_diff": 3.333333333333333,
         "significant_alpha_0_05": false
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 4.466666666666667,
+        "significant_alpha_0_05": true
+>>>>>>> Stashed changes
       },
       {
         "model_a": "bc_linear_svc",
@@ -409,6 +466,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "rank_diff": 5.266666666666666,
 =======
         "rank_diff": 5.666666666666668,
@@ -418,18 +476,22 @@
 >>>>>>> Stashed changes
 =======
         "rank_diff": 5.266666666666666,
+>>>>>>> Stashed changes
+=======
+        "rank_diff": 6.133333333333334,
 >>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_naive_bayes",
-        "rank_diff": 0.2666666666666657,
+        "rank_diff": 0.1999999999999993,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_linear_svc",
         "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -443,34 +505,33 @@
 =======
         "rank_diff": 4.133333333333333,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 6.6000000000000005,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "bc_naive_bayes",
-        "rank_diff": 3.2666666666666675,
+        "rank_diff": 3.9333333333333336,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "bc_random_forest",
-<<<<<<< Updated upstream
-        "rank_diff": 4.866666666666667,
-        "significant_alpha_0_05": true
+        "rank_diff": 0.8666666666666671,
+        "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_decision_tree",
-        "rank_diff": 4.533333333333333,
+        "rank_diff": 4.466666666666667,
         "significant_alpha_0_05": true
-=======
-        "rank_diff": 1.7333333333333334,
-        "significant_alpha_0_05": false
->>>>>>> Stashed changes
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 6.0,
@@ -480,11 +541,15 @@
 =======
         "rank_diff": 5.0,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 6.333333333333334,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 2.2666666666666666,
@@ -494,11 +559,15 @@
 =======
         "rank_diff": 2.0666666666666664,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 2.466666666666667,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -513,16 +582,21 @@
         "rank_diff": 3.9999999999999996,
 >>>>>>> Stashed changes
         "significant_alpha_0_05": true
+=======
+        "rank_diff": 4.133333333333334,
+        "significant_alpha_0_05": false
+>>>>>>> Stashed changes
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_naive_bayes",
-        "rank_diff": 1.5333333333333332,
+        "rank_diff": 2.1999999999999993,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_logistic_regression",
         "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -536,29 +610,27 @@
         "significant_alpha_0_05": false
 =======
         "rank_diff": 4.666666666666666,
-        "significant_alpha_0_05": true
+=======
+        "rank_diff": 4.6000000000000005,
 >>>>>>> Stashed changes
+        "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_naive_bayes",
         "model_b": "bc_random_forest",
-<<<<<<< Updated upstream
-        "rank_diff": 1.5999999999999996,
-        "significant_alpha_0_05": false
-=======
-        "rank_diff": 4.666666666666667,
+        "rank_diff": 4.800000000000001,
         "significant_alpha_0_05": true
->>>>>>> Stashed changes
       },
       {
         "model_a": "bc_naive_bayes",
         "model_b": "df_decision_tree",
-        "rank_diff": 7.800000000000001,
+        "rank_diff": 8.4,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_naive_bayes",
         "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 9.266666666666667,
@@ -568,11 +640,15 @@
 =======
         "rank_diff": 7.933333333333334,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 10.266666666666667,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_naive_bayes",
         "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 5.533333333333334,
@@ -582,6 +658,9 @@
 =======
         "rank_diff": 5.0,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 6.4,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
@@ -589,7 +668,11 @@
         "model_b": "df_logistic_regression",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "rank_diff": 7.666666666666668,
+=======
+        "rank_diff": 8.066666666666666,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
@@ -601,30 +684,31 @@
       {
         "model_a": "bc_naive_bayes",
         "model_b": "df_random_forest",
-        "rank_diff": 6.4,
+        "rank_diff": 8.533333333333335,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_random_forest",
         "model_b": "df_decision_tree",
-        "rank_diff": 9.4,
-        "significant_alpha_0_05": true
+        "rank_diff": 3.6,
+        "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_random_forest",
         "model_b": "df_gradient_boosting",
-        "rank_diff": 10.866666666666667,
+        "rank_diff": 5.466666666666667,
         "significant_alpha_0_05": true
       },
       {
         "model_a": "bc_random_forest",
         "model_b": "df_linear_svc",
-        "rank_diff": 7.133333333333334,
-        "significant_alpha_0_05": true
+        "rank_diff": 1.5999999999999996,
+        "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_random_forest",
         "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
         "rank_diff": 9.266666666666667,
         "significant_alpha_0_05": true
       },
@@ -768,14 +852,56 @@
       {
         "model_a": "bc_random_forest",
         "model_b": "df_naive_bayes",
+=======
+>>>>>>> Stashed changes
         "rank_diff": 3.2666666666666666,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "bc_random_forest",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 3.0666666666666664,
         "significant_alpha_0_05": false
       },
       {
         "model_a": "bc_random_forest",
         "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "rank_diff": 2.933333333333333,
+=======
+        "rank_diff": 3.7333333333333334,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_decision_tree",
+        "model_b": "df_gradient_boosting",
+        "rank_diff": 1.8666666666666665,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_decision_tree",
+        "model_b": "df_linear_svc",
+        "rank_diff": 2.0000000000000004,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_decision_tree",
+        "model_b": "df_logistic_regression",
+        "rank_diff": 0.3333333333333335,
+        "significant_alpha_0_05": false
+      },
+      {
+        "model_a": "df_decision_tree",
+        "model_b": "df_naive_bayes",
+        "rank_diff": 6.666666666666666,
+        "significant_alpha_0_05": true
+      },
+      {
+        "model_a": "df_decision_tree",
+        "model_b": "df_random_forest",
+        "rank_diff": 0.1333333333333333,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": false
 =======
         "rank_diff": 6.8,
@@ -786,15 +912,20 @@
         "model_a": "df_gradient_boosting",
         "model_b": "df_linear_svc",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "rank_diff": 2.933333333333333,
 =======
         "rank_diff": 2.9333333333333336,
+>>>>>>> Stashed changes
+=======
+        "rank_diff": 3.866666666666667,
 >>>>>>> Stashed changes
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_gradient_boosting",
         "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -808,11 +939,15 @@
 =======
         "rank_diff": 1.0000000000000002,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 2.2,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_gradient_boosting",
         "model_b": "df_naive_bayes",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 7.533333333333333,
@@ -822,11 +957,15 @@
 =======
         "rank_diff": 6.533333333333333,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 8.533333333333333,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
         "model_a": "df_gradient_boosting",
         "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -840,11 +979,15 @@
 =======
         "rank_diff": 2.1333333333333337,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 1.7333333333333332,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_linear_svc",
         "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -858,11 +1001,15 @@
 =======
         "rank_diff": 1.9333333333333331,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 1.666666666666667,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_linear_svc",
         "model_b": "df_naive_bayes",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 3.8,
@@ -873,14 +1020,15 @@
 =======
         "rank_diff": 3.5999999999999996,
 >>>>>>> Stashed changes
-        "significant_alpha_0_05": true
 =======
-        "significant_alpha_0_05": false
+        "rank_diff": 4.666666666666666,
 >>>>>>> Stashed changes
+        "significant_alpha_0_05": true
       },
       {
         "model_a": "df_linear_svc",
         "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         "rank_diff": 0.8666666666666667,
@@ -890,6 +1038,9 @@
 =======
         "rank_diff": 0.7999999999999998,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 2.1333333333333337,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": false
       },
       {
@@ -898,6 +1049,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "rank_diff": 5.533333333333333,
 =======
         "rank_diff": 5.933333333333334,
@@ -907,12 +1059,16 @@
 >>>>>>> Stashed changes
 =======
         "rank_diff": 5.533333333333333,
+>>>>>>> Stashed changes
+=======
+        "rank_diff": 6.333333333333333,
 >>>>>>> Stashed changes
         "significant_alpha_0_05": true
       },
       {
         "model_a": "df_logistic_regression",
         "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -926,11 +1082,15 @@
 =======
         "rank_diff": 1.1333333333333333,
 >>>>>>> Stashed changes
+=======
+        "rank_diff": 0.4666666666666668,
+>>>>>>> Stashed changes
         "significant_alpha_0_05": false
       },
       {
         "model_a": "df_naive_bayes",
         "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -943,6 +1103,9 @@
 >>>>>>> Stashed changes
 =======
         "rank_diff": 4.3999999999999995,
+>>>>>>> Stashed changes
+=======
+        "rank_diff": 6.8,
 >>>>>>> Stashed changes
         "significant_alpha_0_05": true
       }
@@ -977,8 +1140,8 @@
     {
       "model_a": "bc_decision_tree",
       "model_b": "bc_random_forest",
-      "p_value": 0.0001220703125,
-      "statistic": 1.0
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
     },
     {
       "model_a": "bc_decision_tree",
@@ -1025,8 +1188,8 @@
     {
       "model_a": "bc_gradient_boosting",
       "model_b": "bc_logistic_regression",
-      "p_value": 6.103515625e-05,
-      "statistic": 0.0
+      "p_value": 0.389404296875,
+      "statistic": 44.0
     },
     {
       "model_a": "bc_gradient_boosting",
@@ -1079,8 +1242,8 @@
     {
       "model_a": "bc_linear_svc",
       "model_b": "bc_logistic_regression",
-      "p_value": 0.00018310546875,
-      "statistic": 2.0
+      "p_value": 6.103515625e-05,
+      "statistic": 0.0
     },
     {
       "model_a": "bc_linear_svc",
@@ -1139,8 +1302,8 @@
     {
       "model_a": "bc_logistic_regression",
       "model_b": "bc_random_forest",
-      "p_value": 6.103515625e-05,
-      "statistic": 0.0
+      "p_value": 0.012451171875,
+      "statistic": 17.0
     },
     {
       "model_a": "bc_logistic_regression",
@@ -1271,8 +1434,8 @@
     {
       "model_a": "df_decision_tree",
       "model_b": "df_logistic_regression",
-      "p_value": 0.5614013671875,
-      "statistic": 49.0
+      "p_value": 0.48870849609375,
+      "statistic": 47.0
     },
     {
       "model_a": "df_decision_tree",
@@ -1283,8 +1446,8 @@
     {
       "model_a": "df_decision_tree",
       "model_b": "df_random_forest",
-      "p_value": 0.00537109375,
-      "statistic": 13.0
+      "p_value": 0.7197265625,
+      "statistic": 53.0
     },
     {
       "model_a": "df_gradient_boosting",
@@ -1339,6 +1502,7 @@
       "model_b": "df_random_forest",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "p_value": 0.0001220703125,
       "statistic": 1.0
 =======
@@ -1348,6 +1512,10 @@
 =======
       "p_value": 0.0001220703125,
       "statistic": 1.0
+>>>>>>> Stashed changes
+=======
+      "p_value": 0.25238037109375,
+      "statistic": 39.0
 >>>>>>> Stashed changes
     },
     {

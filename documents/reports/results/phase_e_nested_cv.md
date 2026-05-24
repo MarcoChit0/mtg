@@ -9,12 +9,16 @@ Treinar os modelos individuais (10 a 14, cada algoritmo da união `A_DF ∪ A_BC
 - Representações: DF, BC
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - Algoritmos: decision_tree
 =======
 - Algoritmos: random_forest
 >>>>>>> Stashed changes
 =======
 - Algoritmos: gradient_boosting
+>>>>>>> Stashed changes
+=======
+- Algoritmos: logistic_regression
 >>>>>>> Stashed changes
 - Outer CV: 5 folds × repeats `1, 2, 3`
 - Inner CV: 3 folds
@@ -30,10 +34,9 @@ Treinar os modelos individuais (10 a 14, cada algoritmo da união `A_DF ∪ A_BC
 | df_decision_tree | 0.6727 | 0.0100 | 0.6876 | 0.7187 | 0.6811 |
 | df_gradient_boosting | 0.6901 | 0.0081 | 0.7129 | 0.7178 | 0.6776 |
 | df_linear_svc | 0.6566 | 0.0086 | 0.6599 | 0.6471 | 0.6821 |
-| df_logistic_regression | 0.6710 | 0.0102 | 0.6946 | 0.6955 | 0.6573 |
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+| df_logistic_regression | 0.6707 | 0.0110 | 0.6944 | 0.6952 | 0.6569 |
 | df_naive_bayes | 0.5905 | 0.0093 | 0.5874 | 0.5950 | 0.6389 |
+<<<<<<< Updated upstream
 =======
 =======
 | df_gradient_boosting | 0.6908 | 0.0093 | 0.6978 | 0.6899 | 0.7092 |
@@ -44,14 +47,18 @@ Treinar os modelos individuais (10 a 14, cada algoritmo da união `A_DF ∪ A_BC
 >>>>>>> Stashed changes
 | df_random_forest | 0.6618 | 0.0113 | 0.7042 | 0.7185 | 0.6369 |
 <<<<<<< Updated upstream
+=======
+| df_random_forest | 0.6733 | 0.0076 | 0.7034 | 0.7108 | 0.6541 |
+>>>>>>> Stashed changes
 | bc_decision_tree | 0.5475 | 0.0116 | 0.5540 | 0.5416 | 0.5653 |
 | bc_gradient_boosting | 0.6257 | 0.0113 | 0.6610 | 0.6567 | 0.6100 |
 =======
 | bc_gradient_boosting | 0.6433 | 0.0121 | 0.6442 | 0.6343 | 0.6759 |
 >>>>>>> Stashed changes
 | bc_linear_svc | 0.5927 | 0.0090 | 0.6131 | 0.5902 | 0.5956 |
-| bc_logistic_regression | 0.6035 | 0.0116 | 0.6131 | 0.5964 | 0.6197 |
+| bc_logistic_regression | 0.6236 | 0.0096 | 0.6212 | 0.6197 | 0.6728 |
 | bc_naive_bayes | 0.5535 | 0.0090 | 0.5636 | 0.5456 | 0.5687 |
+<<<<<<< Updated upstream
 | bc_random_forest | 0.5221 | 0.0128 | 0.6361 | 0.6805 | 0.5122 |
 
 ## Testes Estatísticos
@@ -66,10 +73,13 @@ Treinar os modelos individuais (10 a 14, cada algoritmo da união `A_DF ∪ A_BC
 | bc_linear_svc | 0.5927 | 0.0090 | 0.6131 | 0.5902 | 0.5956 |
 | bc_logistic_regression | 0.6035 | 0.0116 | 0.6131 | 0.5964 | 0.6197 |
 | bc_naive_bayes | 0.5535 | 0.0088 | 0.5636 | 0.5456 | 0.5683 |
+=======
+>>>>>>> Stashed changes
 | bc_random_forest | 0.6326 | 0.0122 | 0.6534 | 0.6424 | 0.6262 |
 
 ## Testes Estatísticos
 
+<<<<<<< Updated upstream
 - Friedman: statistic=132.1200, p=0.000000.
 >>>>>>> Stashed changes
 =======
@@ -78,8 +88,10 @@ Treinar os modelos individuais (10 a 14, cada algoritmo da união `A_DF ∪ A_BC
 - Nemenyi: diferença crítica=3.4976 para alpha=0.05.
 =======
 - Friedman: statistic=161.4308, p=0.000000.
-- Nemenyi: diferença crítica=4.3025 para alpha=0.05.
+=======
+- Friedman: statistic=159.2872, p=0.000000.
 >>>>>>> Stashed changes
+- Nemenyi: diferença crítica=4.3025 para alpha=0.05.
 
 ## Artefatos
 
@@ -101,6 +113,7 @@ Treinar os modelos individuais (10 a 14, cada algoritmo da união `A_DF ∪ A_BC
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - `df_naive_bayes`: ok
 - `bc_naive_bayes`: ok
 =======
@@ -114,6 +127,10 @@ Treinar os modelos individuais (10 a 14, cada algoritmo da união `A_DF ∪ A_BC
 =======
 - `df_gradient_boosting`: ok
 - `bc_gradient_boosting`: ok
+>>>>>>> Stashed changes
+=======
+- `df_logistic_regression`: ok
+- `bc_logistic_regression`: ok
 >>>>>>> Stashed changes
 - `_geral_`: ok
 

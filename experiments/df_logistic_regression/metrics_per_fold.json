@@ -59,7 +59,7 @@
           449
         ]
       ],
-      "elapsed_seconds": 215.254,
+      "elapsed_seconds": 234.287,
       "fold_id": "r1_f1",
       "inner_best_macro_f1": 0.66908860980284,
       "labels": [
@@ -97,7 +97,7 @@
           442
         ]
       ],
-      "elapsed_seconds": 239.896,
+      "elapsed_seconds": 258.223,
       "fold_id": "r1_f2",
       "inner_best_macro_f1": 0.6701362714450935,
       "labels": [
@@ -135,7 +135,7 @@
           454
         ]
       ],
-      "elapsed_seconds": 287.065,
+      "elapsed_seconds": 308.294,
       "fold_id": "r1_f3",
       "inner_best_macro_f1": 0.6633620236781125,
       "labels": [
@@ -173,7 +173,7 @@
           443
         ]
       ],
-      "elapsed_seconds": 224.306,
+      "elapsed_seconds": 240.49,
       "fold_id": "r1_f4",
       "inner_best_macro_f1": 0.6699471647794111,
       "labels": [
@@ -211,7 +211,7 @@
           433
         ]
       ],
-      "elapsed_seconds": 284.875,
+      "elapsed_seconds": 306.54,
       "fold_id": "r1_f5",
       "inner_best_macro_f1": 0.6718736079890245,
       "labels": [
@@ -249,7 +249,7 @@
           433
         ]
       ],
-      "elapsed_seconds": 235.768,
+      "elapsed_seconds": 254.506,
       "fold_id": "r2_f1",
       "inner_best_macro_f1": 0.6707951515294345,
       "labels": [
@@ -287,7 +287,7 @@
           459
         ]
       ],
-      "elapsed_seconds": 225.514,
+      "elapsed_seconds": 245.436,
       "fold_id": "r2_f2",
       "inner_best_macro_f1": 0.6679698461404221,
       "labels": [
@@ -325,7 +325,7 @@
           435
         ]
       ],
-      "elapsed_seconds": 262.611,
+      "elapsed_seconds": 280.605,
       "fold_id": "r2_f3",
       "inner_best_macro_f1": 0.6708144385748875,
       "labels": [
@@ -363,7 +363,7 @@
           451
         ]
       ],
-      "elapsed_seconds": 275.647,
+      "elapsed_seconds": 296.641,
       "fold_id": "r2_f4",
       "inner_best_macro_f1": 0.6740757381151449,
       "labels": [
@@ -401,7 +401,7 @@
           457
         ]
       ],
-      "elapsed_seconds": 280.533,
+      "elapsed_seconds": 302.508,
       "fold_id": "r2_f5",
       "inner_best_macro_f1": 0.6610367939619838,
       "labels": [
@@ -439,7 +439,7 @@
           453
         ]
       ],
-      "elapsed_seconds": 241.726,
+      "elapsed_seconds": 261.969,
       "fold_id": "r3_f1",
       "inner_best_macro_f1": 0.6693563028990942,
       "labels": [
@@ -477,7 +477,7 @@
           456
         ]
       ],
-      "elapsed_seconds": 215.505,
+      "elapsed_seconds": 233.722,
       "fold_id": "r3_f2",
       "inner_best_macro_f1": 0.6641549186864241,
       "labels": [
@@ -515,7 +515,7 @@
           439
         ]
       ],
-      "elapsed_seconds": 239.964,
+      "elapsed_seconds": 258.356,
       "fold_id": "r3_f3",
       "inner_best_macro_f1": 0.6671025300066168,
       "labels": [
@@ -553,7 +553,7 @@
           471
         ]
       ],
-      "elapsed_seconds": 233.386,
+      "elapsed_seconds": 250.788,
       "fold_id": "r3_f4",
       "inner_best_macro_f1": 0.6681467630304833,
       "labels": [
@@ -591,7 +591,7 @@
           420
         ]
       ],
-      "elapsed_seconds": 248.862,
+      "elapsed_seconds": 264.255,
       "fold_id": "r3_f5",
       "inner_best_macro_f1": 0.6711907928244824,
       "labels": [

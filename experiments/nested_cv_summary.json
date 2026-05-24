@@ -10,48 +10,53 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "archive_path": "experiments/archives/df_naive_bayes.zip",
+=======
+        "archive_path": "experiments/archives/df_logistic_regression.zip",
+>>>>>>> Stashed changes
         "files": [
-          "df_naive_bayes/best_hyperparams_per_fold.json",
-          "df_naive_bayes/checkpoint_state.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r1_f1.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r1_f2.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r1_f3.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r1_f4.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r1_f5.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r2_f1.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r2_f2.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r2_f3.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r2_f4.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r2_f5.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r3_f1.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r3_f2.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r3_f3.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r3_f4.json",
-          "df_naive_bayes/checkpoints/a25d93e8584291a6/r3_f5.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r1_f1.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r1_f2.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r1_f3.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r1_f4.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r1_f5.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r2_f1.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r2_f2.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r2_f3.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r2_f4.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r2_f5.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r3_f1.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r3_f2.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r3_f3.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r3_f4.json",
-          "df_naive_bayes/checkpoints/d3eab651c75aca32/r3_f5.json",
-          "df_naive_bayes/cv_results_per_fold.jsonl",
-          "df_naive_bayes/metrics_per_fold.json",
-          "df_naive_bayes/predictions_per_fold.jsonl"
+          "df_logistic_regression/best_hyperparams_per_fold.json",
+          "df_logistic_regression/checkpoint_state.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r1_f1.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r1_f2.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r1_f3.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r1_f4.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r1_f5.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r2_f1.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r2_f2.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r2_f3.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r2_f4.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r2_f5.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r3_f1.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r3_f2.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r3_f3.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r3_f4.json",
+          "df_logistic_regression/checkpoints/c3d417feaab8bd50/r3_f5.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r1_f1.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r1_f2.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r1_f3.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r1_f4.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r1_f5.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r2_f1.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r2_f2.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r2_f3.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r2_f4.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r2_f5.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r3_f1.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r3_f2.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r3_f3.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r3_f4.json",
+          "df_logistic_regression/checkpoints/df72634dcd8685de/r3_f5.json",
+          "df_logistic_regression/cv_results_per_fold.jsonl",
+          "df_logistic_regression/metrics_per_fold.json",
+          "df_logistic_regression/predictions_per_fold.jsonl"
         ],
-        "model_id": "df_naive_bayes",
-        "size_bytes": 2735216,
+        "model_id": "df_logistic_regression",
+        "size_bytes": 2671972,
         "status": "ok"
       },
+<<<<<<< Updated upstream
       "model_id": "df_naive_bayes",
 =======
         "archive_path": "experiments/archives/df_decision_tree.zip",
@@ -158,10 +163,14 @@
       },
       "model_id": "df_gradient_boosting",
 >>>>>>> Stashed changes
+=======
+      "model_id": "df_logistic_regression",
+>>>>>>> Stashed changes
       "rclone": {
         "command": [
           "rclone",
           "copyto",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -179,6 +188,10 @@
           "experiments/archives/df_gradient_boosting.zip",
           "mtg-experiments:df_gradient_boosting.zip"
 >>>>>>> Stashed changes
+=======
+          "experiments/archives/df_logistic_regression.zip",
+          "mtg-experiments:df_logistic_regression.zip"
+>>>>>>> Stashed changes
         ],
         "returncode": 0,
         "status": "ok",
@@ -193,48 +206,38 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "archive_path": "experiments/archives/bc_naive_bayes.zip",
+=======
+        "archive_path": "experiments/archives/bc_logistic_regression.zip",
+>>>>>>> Stashed changes
         "files": [
-          "bc_naive_bayes/best_hyperparams_per_fold.json",
-          "bc_naive_bayes/checkpoint_state.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r1_f1.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r1_f2.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r1_f3.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r1_f4.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r1_f5.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r2_f1.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r2_f2.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r2_f3.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r2_f4.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r2_f5.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r3_f1.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r3_f2.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r3_f3.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r3_f4.json",
-          "bc_naive_bayes/checkpoints/2ba16b4507eedcdd/r3_f5.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r1_f1.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r1_f2.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r1_f3.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r1_f4.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r1_f5.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r2_f1.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r2_f2.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r2_f3.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r2_f4.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r2_f5.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r3_f1.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r3_f2.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r3_f3.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r3_f4.json",
-          "bc_naive_bayes/checkpoints/77dbdb8ea976bfdd/r3_f5.json",
-          "bc_naive_bayes/cv_results_per_fold.jsonl",
-          "bc_naive_bayes/metrics_per_fold.json",
-          "bc_naive_bayes/predictions_per_fold.jsonl"
+          "bc_logistic_regression/best_hyperparams_per_fold.json",
+          "bc_logistic_regression/checkpoint_state.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r1_f1.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r1_f2.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r1_f3.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r1_f4.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r1_f5.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r2_f1.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r2_f2.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r2_f3.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r2_f4.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r2_f5.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r3_f1.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r3_f2.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r3_f3.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r3_f4.json",
+          "bc_logistic_regression/checkpoints/83501683241868da/r3_f5.json",
+          "bc_logistic_regression/cv_results_per_fold.jsonl",
+          "bc_logistic_regression/metrics_per_fold.json",
+          "bc_logistic_regression/predictions_per_fold.jsonl"
         ],
-        "model_id": "bc_naive_bayes",
-        "size_bytes": 2723658,
+        "model_id": "bc_logistic_regression",
+        "size_bytes": 1710172,
         "status": "ok"
       },
+<<<<<<< Updated upstream
       "model_id": "bc_naive_bayes",
 =======
         "archive_path": "experiments/archives/bc_decision_tree.zip",
@@ -326,10 +329,14 @@
       },
       "model_id": "bc_gradient_boosting",
 >>>>>>> Stashed changes
+=======
+      "model_id": "bc_logistic_regression",
+>>>>>>> Stashed changes
       "rclone": {
         "command": [
           "rclone",
           "copyto",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -346,6 +353,10 @@
 =======
           "experiments/archives/bc_gradient_boosting.zip",
           "mtg-experiments:bc_gradient_boosting.zip"
+>>>>>>> Stashed changes
+=======
+          "experiments/archives/bc_logistic_regression.zip",
+          "mtg-experiments:bc_logistic_regression.zip"
 >>>>>>> Stashed changes
         ],
         "returncode": 0,
@@ -387,16 +398,21 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "elapsed_seconds": 605.157,
 =======
   "elapsed_seconds": 9848.853,
 >>>>>>> Stashed changes
+=======
+  "elapsed_seconds": 240228.865,
+>>>>>>> Stashed changes
   "model_plan": [
     {
-      "algorithm": "decision_tree",
+      "algorithm": "logistic_regression",
       "representation": "DF"
     },
     {
+<<<<<<< Updated upstream
       "algorithm": "decision_tree",
 =======
   "elapsed_seconds": 2115.366,
@@ -418,26 +434,30 @@
     {
       "algorithm": "gradient_boosting",
 >>>>>>> Stashed changes
+=======
+      "algorithm": "logistic_regression",
+>>>>>>> Stashed changes
       "representation": "BC"
     }
   ],
   "model_sources": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "bc_decision_tree": "current_run",
+=======
+    "bc_decision_tree": "existing_artifact",
+>>>>>>> Stashed changes
     "bc_gradient_boosting": "existing_artifact",
     "bc_linear_svc": "existing_artifact",
-    "bc_logistic_regression": "existing_artifact",
+    "bc_logistic_regression": "current_run",
     "bc_naive_bayes": "existing_artifact",
-<<<<<<< Updated upstream
     "bc_random_forest": "existing_artifact",
-    "df_decision_tree": "current_run",
-=======
-    "bc_random_forest": "current_run",
->>>>>>> Stashed changes
+    "df_decision_tree": "existing_artifact",
     "df_gradient_boosting": "existing_artifact",
     "df_linear_svc": "existing_artifact",
-    "df_logistic_regression": "existing_artifact",
+    "df_logistic_regression": "current_run",
     "df_naive_bayes": "existing_artifact",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 =======
     "bc_gradient_boosting": "current_run",
@@ -450,10 +470,9 @@
     "df_logistic_regression": "existing_artifact",
     "df_naive_bayes": "existing_artifact",
 >>>>>>> Stashed changes
-    "df_random_forest": "existing_artifact"
 =======
-    "df_random_forest": "current_run"
 >>>>>>> Stashed changes
+    "df_random_forest": "existing_artifact"
   },
   "models": [
     {
@@ -2302,23 +2321,23 @@
     },
     {
       "aggregate": {
-        "accuracy_mean": 0.6945749210273315,
-        "accuracy_std": 0.01015550823545319,
+        "accuracy_mean": 0.6944101085015795,
+        "accuracy_std": 0.010705642730483758,
         "confusion_matrix_sum": [
           [
-            3941,
-            2982,
-            40
+            3931,
+            2991,
+            41
           ],
           [
-            2345,
-            14653,
-            1653
+            2342,
+            14654,
+            1655
           ],
           [
-            204,
-            3895,
-            6692
+            208,
+            3888,
+            6695
           ]
         ],
         "labels": [
@@ -2326,18 +2345,18 @@
           3,
           4
         ],
-        "macro_f1_mean": 0.6710254511090173,
-        "macro_f1_std": 0.010238847545163526,
-        "precision_macro_mean": 0.6954945632232578,
-        "precision_macro_std": 0.011438561063553409,
-        "recall_macro_mean": 0.6572622175550908,
-        "recall_macro_std": 0.00982931878501189
+        "macro_f1_mean": 0.6706988771688426,
+        "macro_f1_std": 0.011027056608234184,
+        "precision_macro_mean": 0.6951935672498065,
+        "precision_macro_std": 0.012275314885518961,
+        "recall_macro_mean": 0.6568936602395203,
+        "recall_macro_std": 0.010602170320106507
       },
       "algorithm": "logistic_regression",
       "checkpoint": {
-        "checkpoint_dir": "experiments/df_logistic_regression/checkpoints/c3d417feaab8bd50",
+        "checkpoint_dir": "experiments/df_logistic_regression/checkpoints/df72634dcd8685de",
         "completed_folds": 15,
-        "signature_id": "c3d417feaab8bd50",
+        "signature_id": "df72634dcd8685de",
         "total_folds": 15
       },
       "folds": [
@@ -2361,7 +2380,7 @@
               449
             ]
           ],
-          "elapsed_seconds": 795.452,
+          "elapsed_seconds": 234.287,
           "fold_id": "r1_f1",
           "inner_best_macro_f1": 0.66908860980284,
           "labels": [
@@ -2399,7 +2418,7 @@
               442
             ]
           ],
-          "elapsed_seconds": 861.567,
+          "elapsed_seconds": 258.223,
           "fold_id": "r1_f2",
           "inner_best_macro_f1": 0.6701362714450935,
           "labels": [
@@ -2418,40 +2437,40 @@
           "representation": "DF"
         },
         {
-          "accuracy": 0.6893283889575608,
+          "accuracy": 0.6950968273588792,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              277,
-              185,
-              2
+              276,
+              187,
+              1
             ],
             [
-              183,
-              940,
-              121
+              179,
+              957,
+              108
             ],
             [
               7,
-              256,
-              456
+              258,
+              454
             ]
           ],
-          "elapsed_seconds": 1171.243,
+          "elapsed_seconds": 308.294,
           "fold_id": "r1_f3",
-          "inner_best_macro_f1": 0.6638586261740299,
+          "inner_best_macro_f1": 0.6633620236781125,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6712896556454604,
+          "macro_f1": 0.6759122169395475,
           "model_id": "df_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.6871262341233555,
-          "recall_macro": 0.66227465154565,
+          "precision_macro": 0.6954644015262822,
+          "recall_macro": 0.665184245303391,
           "repeat_seed": 1,
           "representation": "DF"
         },
@@ -2475,7 +2494,7 @@
               443
             ]
           ],
-          "elapsed_seconds": 889.994,
+          "elapsed_seconds": 240.49,
           "fold_id": "r1_f4",
           "inner_best_macro_f1": 0.6699471647794111,
           "labels": [
@@ -2494,40 +2513,40 @@
           "representation": "DF"
         },
         {
-          "accuracy": 0.6856201071281417,
+          "accuracy": 0.6876802637000412,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              256,
-              206,
+              251,
+              211,
               2
             ],
             [
-              161,
-              974,
-              108
+              152,
+              985,
+              106
             ],
             [
-              13,
+              14,
               273,
-              434
+              433
             ]
           ],
-          "elapsed_seconds": 1324.354,
+          "elapsed_seconds": 306.54,
           "fold_id": "r1_f5",
-          "inner_best_macro_f1": 0.6720729438367328,
+          "inner_best_macro_f1": 0.6718736079890245,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.660655908221973,
+          "macro_f1": 0.6609882532750277,
           "model_id": "df_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.6878267293889179,
-          "recall_macro": 0.646030003010473,
+          "precision_macro": 0.6909374390314343,
+          "recall_macro": 0.6449249385318961,
           "repeat_seed": 1,
           "representation": "DF"
         },
@@ -2551,7 +2570,7 @@
               433
             ]
           ],
-          "elapsed_seconds": 855.469,
+          "elapsed_seconds": 254.506,
           "fold_id": "r2_f1",
           "inner_best_macro_f1": 0.6707951515294345,
           "labels": [
@@ -2570,50 +2589,50 @@
           "representation": "DF"
         },
         {
-          "accuracy": 0.7012772970745776,
+          "accuracy": 0.6983930778739185,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              265,
-              196,
-              3
+              266,
+              193,
+              5
             ],
             [
-              149,
-              980,
-              115
+              153,
+              970,
+              121
             ],
             [
               8,
-              254,
-              457
+              252,
+              459
             ]
           ],
-          "elapsed_seconds": 880.093,
+          "elapsed_seconds": 245.436,
           "fold_id": "r2_f2",
-          "inner_best_macro_f1": 0.669589688243054,
+          "inner_best_macro_f1": 0.6679698461404221,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.679171787947006,
+          "macro_f1": 0.6768890845189063,
           "model_id": "df_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 2,
-          "precision_macro": 0.7026864597727981,
-          "recall_macro": 0.6648356823638636,
+          "precision_macro": 0.6976928572595607,
+          "recall_macro": 0.6638017584882232,
           "repeat_seed": 2,
           "representation": "DF"
         },
         {
-          "accuracy": 0.6909765142150803,
+          "accuracy": 0.6913885455294603,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              269,
-              194,
+              270,
+              193,
               1
             ],
             [
@@ -2627,37 +2646,37 @@
               435
             ]
           ],
-          "elapsed_seconds": 1074.438,
+          "elapsed_seconds": 280.605,
           "fold_id": "r2_f3",
-          "inner_best_macro_f1": 0.6710292107811759,
+          "inner_best_macro_f1": 0.6708144385748875,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6687388777589641,
+          "macro_f1": 0.6693456169473113,
           "model_id": "df_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.6931917856856885,
-          "recall_macro": 0.6556342247497594,
+          "precision_macro": 0.6936438368368929,
+          "recall_macro": 0.6563526155543572,
           "repeat_seed": 2,
           "representation": "DF"
         },
         {
-          "accuracy": 0.6847960444993819,
+          "accuracy": 0.6823238566131026,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              257,
-              206,
+              255,
+              208,
               1
             ],
             [
               173,
-              954,
-              116
+              950,
+              120
             ],
             [
               18,
@@ -2665,21 +2684,21 @@
               451
             ]
           ],
-          "elapsed_seconds": 1119.822,
+          "elapsed_seconds": 296.641,
           "fold_id": "r2_f4",
-          "inner_best_macro_f1": 0.6751308796974076,
+          "inner_best_macro_f1": 0.6740757381151449,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6609406319168278,
+          "macro_f1": 0.6583407992076723,
           "model_id": "df_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.6812636761390456,
-          "recall_macro": 0.6492553959902144,
+          "precision_macro": 0.6781491549789201,
+          "recall_macro": 0.6467459407419737,
           "repeat_seed": 2,
           "representation": "DF"
         },
@@ -2703,7 +2722,7 @@
               457
             ]
           ],
-          "elapsed_seconds": 1138.058,
+          "elapsed_seconds": 302.508,
           "fold_id": "r2_f5",
           "inner_best_macro_f1": 0.6610367939619838,
           "labels": [
@@ -2741,7 +2760,7 @@
               453
             ]
           ],
-          "elapsed_seconds": 944.043,
+          "elapsed_seconds": 261.969,
           "fold_id": "r3_f1",
           "inner_best_macro_f1": 0.6693563028990942,
           "labels": [
@@ -2779,7 +2798,7 @@
               456
             ]
           ],
-          "elapsed_seconds": 802.758,
+          "elapsed_seconds": 233.722,
           "fold_id": "r3_f2",
           "inner_best_macro_f1": 0.6641549186864241,
           "labels": [
@@ -2817,7 +2836,7 @@
               439
             ]
           ],
-          "elapsed_seconds": 973.348,
+          "elapsed_seconds": 258.356,
           "fold_id": "r3_f3",
           "inner_best_macro_f1": 0.6671025300066168,
           "labels": [
@@ -2855,7 +2874,7 @@
               471
             ]
           ],
-          "elapsed_seconds": 875.064,
+          "elapsed_seconds": 250.788,
           "fold_id": "r3_f4",
           "inner_best_macro_f1": 0.6681467630304833,
           "labels": [
@@ -2874,40 +2893,40 @@
           "representation": "DF"
         },
         {
-          "accuracy": 0.6786155747836835,
+          "accuracy": 0.673259167696745,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              272,
-              188,
+              268,
+              192,
               4
             ],
             [
-              165,
-              959,
-              119
+              171,
+              946,
+              126
             ],
             [
-              19,
-              285,
-              416
+              22,
+              278,
+              420
             ]
           ],
-          "elapsed_seconds": 952.971,
+          "elapsed_seconds": 264.255,
           "fold_id": "r3_f5",
-          "inner_best_macro_f1": 0.67165211531027,
+          "inner_best_macro_f1": 0.6711907928244824,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6563852105555159,
+          "macro_f1": 0.6508074920546604,
           "model_id": "df_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.6793278648142764,
-          "recall_macro": 0.6451683964042828,
+          "precision_macro": 0.6710201206892261,
+          "recall_macro": 0.6406604957108466,
           "repeat_seed": 3,
           "representation": "DF"
         }
@@ -5991,23 +6010,23 @@
     },
     {
       "aggregate": {
-        "accuracy_mean": 0.6131025957972807,
-        "accuracy_std": 0.012435273967301184,
+        "accuracy_mean": 0.6211784095591266,
+        "accuracy_std": 0.009468783384942234,
         "confusion_matrix_sum": [
           [
-            4197,
-            2582,
-            184
+            5691,
+            1196,
+            76
           ],
           [
-            4130,
-            10832,
-            3689
+            5460,
+            9400,
+            3791
           ],
           [
-            629,
-            2871,
-            7291
+            958,
+            2310,
+            7523
           ]
         ],
         "labels": [
@@ -6015,582 +6034,588 @@
           3,
           4
         ],
-        "macro_f1_mean": 0.6034949126172732,
-        "macro_f1_std": 0.011599034354896776,
-        "precision_macro_mean": 0.5963512384040626,
-        "precision_macro_std": 0.011268996379965326,
-        "recall_macro_mean": 0.6197197487323933,
-        "recall_macro_std": 0.014203489788358777
+        "macro_f1_mean": 0.6235789884729325,
+        "macro_f1_std": 0.00963440916346044,
+        "precision_macro_mean": 0.619650594819739,
+        "precision_macro_std": 0.009344710158964058,
+        "recall_macro_mean": 0.672825935705626,
+        "recall_macro_std": 0.01128196340063631
       },
       "algorithm": "logistic_regression",
+      "checkpoint": {
+        "checkpoint_dir": "experiments/bc_logistic_regression/checkpoints/83501683241868da",
+        "completed_folds": 15,
+        "signature_id": "83501683241868da",
+        "total_folds": 15
+      },
       "folds": [
+        {
+          "accuracy": 0.630407911001236,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              374,
+              85,
+              6
+            ],
+            [
+              331,
+              662,
+              250
+            ],
+            [
+              75,
+              150,
+              494
+            ]
+          ],
+          "elapsed_seconds": 16348.89,
+          "fold_id": "r1_f1",
+          "inner_best_macro_f1": 0.6072878082899617,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6306870577726228,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.625389817911557,
+          "recall_macro": 0.6746496352074246,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6118665018541409,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              371,
+              87,
+              6
+            ],
+            [
+              374,
+              602,
+              268
+            ],
+            [
+              60,
+              147,
+              512
+            ]
+          ],
+          "elapsed_seconds": 16588.41,
+          "fold_id": "r1_f2",
+          "inner_best_macro_f1": 0.6061433529563555,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6146523989629712,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.6107882500304811,
+          "recall_macro": 0.6651973113937645,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.619283065512979,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              378,
+              78,
+              8
+            ],
+            [
+              369,
+              630,
+              245
+            ],
+            [
+              67,
+              157,
+              495
+            ]
+          ],
+          "elapsed_seconds": 15963.069,
+          "fold_id": "r1_f3",
+          "inner_best_macro_f1": 0.6066717062980814,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6212784887831617,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.6181539565592608,
+          "recall_macro": 0.6698474099108651,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6163988463123198,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              389,
+              72,
+              3
+            ],
+            [
+              387,
+              609,
+              247
+            ],
+            [
+              56,
+              166,
+              498
+            ]
+          ],
+          "elapsed_seconds": 16277.106,
+          "fold_id": "r1_f4",
+          "inner_best_macro_f1": 0.6108138968867628,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6205192920113167,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.6174439141518019,
+          "recall_macro": 0.6733241400887113,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6242274412855378,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              389,
+              70,
+              5
+            ],
+            [
+              363,
+              631,
+              249
+            ],
+            [
+              63,
+              162,
+              495
+            ]
+          ],
+          "elapsed_seconds": 13537.515,
+          "fold_id": "r1_f5",
+          "inner_best_macro_f1": 0.6069492727395052,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6271519442537853,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 5,
+          "precision_macro": 0.6231173748112929,
+          "recall_macro": 0.6778349562145717,
+          "repeat_seed": 1,
+          "representation": "BC"
+        },
         {
           "accuracy": 0.6098063452822414,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              320,
-              132,
-              13
-            ],
-            [
-              327,
-              657,
-              259
-            ],
-            [
-              68,
-              148,
-              503
-            ]
-          ],
-          "elapsed_seconds": 79.912,
-          "fold_id": "r1_f1",
-          "inner_best_macro_f1": 0.5908357225356646,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6061617606763202,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.5992528883540004,
-          "recall_macro": 0.638771577491697,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6081582200247219,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              247,
-              203,
-              14
-            ],
-            [
-              255,
-              740,
-              249
-            ],
-            [
-              33,
-              197,
-              489
-            ]
-          ],
-          "elapsed_seconds": 81.318,
-          "fold_id": "r1_f2",
-          "inner_best_macro_f1": 0.599916739829342,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5933845681821842,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.5870236691516689,
-          "recall_macro": 0.6024313857732887,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6131025957972805,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              273,
-              180,
-              11
-            ],
-            [
-              268,
-              737,
-              239
-            ],
-            [
-              42,
-              199,
-              478
-            ]
-          ],
-          "elapsed_seconds": 81.971,
-          "fold_id": "r1_f3",
-          "inner_best_macro_f1": 0.5967171270166384,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.602247835278844,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.5950850844338368,
-          "recall_macro": 0.6152060126967317,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6106304079110012,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              279,
-              173,
-              12
-            ],
-            [
-              271,
-              723,
-              249
-            ],
-            [
-              29,
-              211,
-              480
-            ]
-          ],
-          "elapsed_seconds": 80.155,
-          "fold_id": "r1_f4",
-          "inner_best_macro_f1": 0.5904322756464667,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6024661813280067,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.5942516984972106,
-          "recall_macro": 0.6165390169624225,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.61516275236918,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              280,
-              166,
-              18
-            ],
-            [
-              260,
-              741,
-              242
-            ],
-            [
-              45,
-              203,
-              472
-            ]
-          ],
-          "elapsed_seconds": 63.937,
-          "fold_id": "r1_f5",
-          "inner_best_macro_f1": 0.5937233757585759,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6046045830806519,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 5,
-          "precision_macro": 0.5970029297898151,
-          "recall_macro": 0.6183807354390205,
-          "repeat_seed": 1,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6143386897404203,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              275,
-              181,
-              9
-            ],
-            [
-              257,
-              730,
-              256
-            ],
-            [
-              38,
-              195,
-              486
-            ]
-          ],
-          "elapsed_seconds": 81.214,
-          "fold_id": "r2_f1",
-          "inner_best_macro_f1": 0.6013961495673111,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6047221790968965,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.5965431523940675,
-          "recall_macro": 0.6182084902446587,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6250515039142975,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              265,
-              177,
-              22
-            ],
-            [
-              242,
-              764,
-              238
-            ],
-            [
-              31,
-              200,
-              488
-            ]
-          ],
-          "elapsed_seconds": 80.754,
-          "fold_id": "r2_f2",
-          "inner_best_macro_f1": 0.5898332908028608,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6116387718190711,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.6048531845018021,
-          "recall_macro": 0.6213296815618684,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6159868149979398,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              276,
-              177,
-              11
-            ],
-            [
-              257,
-              745,
-              242
-            ],
-            [
-              51,
-              194,
-              474
-            ]
-          ],
-          "elapsed_seconds": 66.79,
-          "fold_id": "r2_f3",
-          "inner_best_macro_f1": 0.5873902703989672,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6045583830687785,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 3,
-          "precision_macro": 0.5973866538923636,
-          "recall_macro": 0.6176503803873993,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.5953852492789452,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              254,
-              203,
-              7
-            ],
-            [
-              280,
-              708,
-              255
-            ],
-            [
-              37,
-              200,
-              483
-            ]
-          ],
-          "elapsed_seconds": 79.892,
-          "fold_id": "r2_f4",
-          "inner_best_macro_f1": 0.5967871181516199,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5839120777924477,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 4,
-          "precision_macro": 0.5768064997475194,
-          "recall_macro": 0.595945609589949,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6069221260815822,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              327,
-              126,
-              11
-            ],
-            [
-              356,
-              644,
-              243
-            ],
-            [
-              52,
-              166,
-              502
-            ]
-          ],
-          "elapsed_seconds": 78.819,
-          "fold_id": "r2_f5",
-          "inner_best_macro_f1": 0.5894859503288705,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6055893936774627,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 5,
-          "precision_macro": 0.5989844370796752,
-          "recall_macro": 0.6400216563971522,
-          "repeat_seed": 2,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.588380716934487,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              316,
-              138,
-              11
-            ],
-            [
-              353,
-              620,
-              270
-            ],
-            [
-              53,
-              174,
-              492
-            ]
-          ],
-          "elapsed_seconds": 77.948,
-          "fold_id": "r3_f1",
-          "inner_best_macro_f1": 0.5943794920165758,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.5873556927178333,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 1,
-          "precision_macro": 0.5797968078702234,
-          "recall_macro": 0.6208822873427859,
-          "repeat_seed": 3,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6176349402554594,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              252,
-              198,
-              14
-            ],
-            [
-              258,
-              764,
-              222
-            ],
-            [
-              32,
-              204,
-              483
-            ]
-          ],
-          "elapsed_seconds": 65.174,
-          "fold_id": "r3_f2",
-          "inner_best_macro_f1": 0.5898638147073908,
-          "labels": [
-            2,
-            3,
-            4
-          ],
-          "macro_f1": 0.6022617580642374,
-          "model_id": "bc_logistic_regression",
-          "n_test": 2427,
-          "n_train": 9708,
-          "outer_fold": 2,
-          "precision_macro": 0.5973141841600987,
-          "recall_macro": 0.6096725667951904,
-          "repeat_seed": 3,
-          "representation": "BC"
-        },
-        {
-          "accuracy": 0.6407086938607334,
-          "algorithm": "logistic_regression",
-          "confusion_matrix": [
-            [
-              289,
-              170,
+              367,
+              93,
               5
             ],
             [
-              236,
-              767,
-              241
+              366,
+              607,
+              270
             ],
             [
-              35,
-              185,
-              499
+              72,
+              141,
+              506
             ]
           ],
-          "elapsed_seconds": 80.6,
-          "fold_id": "r3_f3",
-          "inner_best_macro_f1": 0.5842610007472301,
+          "elapsed_seconds": 16312.348,
+          "fold_id": "r2_f1",
+          "inner_best_macro_f1": 0.6143920840216053,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6314995874742289,
+          "macro_f1": 0.6117176706078725,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.6085159182706573,
+          "recall_macro": 0.6604457338601765,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6287597857437165,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              386,
+              73,
+              5
+            ],
+            [
+              355,
+              625,
+              264
+            ],
+            [
+              50,
+              154,
+              515
+            ]
+          ],
+          "elapsed_seconds": 16136.187,
+          "fold_id": "r2_f2",
+          "inner_best_macro_f1": 0.5998445377178914,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6322698541834112,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.626148572146462,
+          "recall_macro": 0.6835269093737771,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6213432220848785,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              390,
+              69,
+              5
+            ],
+            [
+              345,
+              642,
+              257
+            ],
+            [
+              80,
+              163,
+              476
+            ]
+          ],
+          "elapsed_seconds": 14138.202,
+          "fold_id": "r2_f3",
+          "inner_best_macro_f1": 0.603678358226703,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6231603776537545,
           "model_id": "bc_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 3,
-          "precision_macro": 0.6231569331006758,
-          "recall_macro": 0.6444745948683105,
-          "repeat_seed": 3,
+          "precision_macro": 0.6193559443233896,
+          "recall_macro": 0.6728750032833893,
+          "repeat_seed": 2,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6271116604861969,
+          "accuracy": 0.6221672847136382,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              285,
-              166,
-              13
+              371,
+              90,
+              3
             ],
             [
-              266,
-              743,
-              234
+              376,
+              622,
+              245
             ],
             [
-              41,
-              185,
-              494
+              60,
+              143,
+              517
             ]
           ],
-          "elapsed_seconds": 81.526,
-          "fold_id": "r3_f4",
-          "inner_best_macro_f1": 0.59392207928064,
+          "elapsed_seconds": 16406.418,
+          "fold_id": "r2_f4",
+          "inner_best_macro_f1": 0.6125810951242722,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.6172932697403667,
+          "macro_f1": 0.6243447494559478,
           "model_id": "bc_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 4,
-          "precision_macro": 0.6090815449819106,
-          "recall_macro": 0.6326942114667168,
-          "repeat_seed": 3,
+          "precision_macro": 0.6210099196529848,
+          "recall_macro": 0.6726755912291463,
+          "repeat_seed": 2,
           "representation": "BC"
         },
         {
-          "accuracy": 0.6081582200247219,
+          "accuracy": 0.611454470539761,
           "algorithm": "logistic_regression",
           "confusion_matrix": [
             [
-              259,
-              192,
-              13
+              375,
+              83,
+              6
             ],
             [
-              244,
-              749,
-              250
+              391,
+              605,
+              247
             ],
             [
-              42,
-              210,
-              468
+              60,
+              156,
+              504
             ]
           ],
-          "elapsed_seconds": 81.195,
-          "fold_id": "r3_f5",
-          "inner_best_macro_f1": 0.592826545479979,
+          "elapsed_seconds": 16221.802,
+          "fold_id": "r2_f5",
+          "inner_best_macro_f1": 0.6078582045959943,
           "labels": [
             2,
             3,
             4
           ],
-          "macro_f1": 0.5947276472617683,
+          "macro_f1": 0.6145464639129213,
           "model_id": "bc_logistic_regression",
           "n_test": 2427,
           "n_train": 9708,
           "outer_fold": 5,
-          "precision_macro": 0.5887289081060693,
-          "recall_macro": 0.6035880239687076,
+          "precision_macro": 0.612201933097581,
+          "recall_macro": 0.664971772963076,
+          "repeat_seed": 2,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6196950968273589,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              376,
+              86,
+              3
+            ],
+            [
+              368,
+              628,
+              247
+            ],
+            [
+              64,
+              155,
+              500
+            ]
+          ],
+          "elapsed_seconds": 16289.428,
+          "fold_id": "r3_f1",
+          "inner_best_macro_f1": 0.6171217702470639,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6220542404813759,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 1,
+          "precision_macro": 0.618227645549365,
+          "recall_macro": 0.669747242200101,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6295838483724763,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              376,
+              84,
+              4
+            ],
+            [
+              361,
+              624,
+              259
+            ],
+            [
+              46,
+              145,
+              528
+            ]
+          ],
+          "elapsed_seconds": 13586.0,
+          "fold_id": "r3_f2",
+          "inner_best_macro_f1": 0.6019834938825982,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6325069901125088,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 2,
+          "precision_macro": 0.6264165266989431,
+          "recall_macro": 0.6821019376854601,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6357643180881747,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              401,
+              59,
+              4
+            ],
+            [
+              338,
+              646,
+              260
+            ],
+            [
+              63,
+              160,
+              496
+            ]
+          ],
+          "elapsed_seconds": 16207.812,
+          "fold_id": "r3_f3",
+          "inner_best_macro_f1": 0.6035174146129031,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6389424618758516,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 3,
+          "precision_macro": 0.6331507960653078,
+          "recall_macro": 0.6911212507227954,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6337041615162753,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              390,
+              65,
+              9
+            ],
+            [
+              379,
+              636,
+              228
+            ],
+            [
+              67,
+              141,
+              512
+            ]
+          ],
+          "elapsed_seconds": 16108.177,
+          "fold_id": "r3_f4",
+          "inner_best_macro_f1": 0.6117470317500948,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6357149270372674,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 4,
+          "precision_macro": 0.6351432330748671,
+          "recall_macro": 0.6877645594383465,
+          "repeat_seed": 3,
+          "representation": "BC"
+        },
+        {
+          "accuracy": 0.6032138442521632,
+          "algorithm": "logistic_regression",
+          "confusion_matrix": [
+            [
+              358,
+              102,
+              4
+            ],
+            [
+              357,
+              631,
+              255
+            ],
+            [
+              75,
+              170,
+              475
+            ]
+          ],
+          "elapsed_seconds": 16096.013,
+          "fold_id": "r3_f5",
+          "inner_best_macro_f1": 0.6130668179260849,
+          "labels": [
+            2,
+            3,
+            4
+          ],
+          "macro_f1": 0.6041379099892195,
+          "model_id": "bc_logistic_regression",
+          "n_test": 2427,
+          "n_train": 9708,
+          "outer_fold": 5,
+          "precision_macro": 0.5996951199521346,
+          "recall_macro": 0.6463055820127838,
           "repeat_seed": 3,
           "representation": "BC"
         }
@@ -7834,6 +7859,7 @@
     "algorithms": [
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "decision_tree"
     ],
     "bc_min_df": 10,
@@ -7841,10 +7867,14 @@
     "estimator_n_jobs": 4,
 =======
       "random_forest"
+=======
+      "logistic_regression"
+>>>>>>> Stashed changes
     ],
     "bc_min_df": 10,
     "docs_dir": "documents/reports/results",
     "estimator_n_jobs": 10,
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
       "gradient_boosting"
@@ -7852,6 +7882,8 @@
     "bc_min_df": 10,
     "docs_dir": "documents/reports/results",
     "estimator_n_jobs": 10,
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     "experiment_dir": "experiments",
     "experiments_drive_remote": "mtg-experiments:",
@@ -7865,12 +7897,16 @@
     "merge_existing_models": true,
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "model_selector": "decision_tree",
 =======
     "model_selector": "random_forest",
 >>>>>>> Stashed changes
 =======
     "model_selector": "gradient_boosting",
+>>>>>>> Stashed changes
+=======
+    "model_selector": "logistic_regression",
 >>>>>>> Stashed changes
     "outer_splits": 5,
     "processed_dir": "data/processed/archidekt",
@@ -7893,6 +7929,7 @@
   "problems": [],
   "statistics": {
     "average_ranks": {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -7943,6 +7980,20 @@
       "df_naive_bayes": 7.6,
       "df_random_forest": 3.2
 >>>>>>> Stashed changes
+=======
+      "bc_decision_tree": 11.666666666666666,
+      "bc_gradient_boosting": 7.066666666666666,
+      "bc_linear_svc": 9.4,
+      "bc_logistic_regression": 7.4,
+      "bc_naive_bayes": 11.333333333333334,
+      "bc_random_forest": 6.533333333333333,
+      "df_decision_tree": 2.933333333333333,
+      "df_gradient_boosting": 1.0666666666666667,
+      "df_linear_svc": 4.933333333333334,
+      "df_logistic_regression": 3.2666666666666666,
+      "df_naive_bayes": 9.6,
+      "df_random_forest": 2.8
+>>>>>>> Stashed changes
     },
     "folds": [
       "r1_f1",
@@ -7965,6 +8016,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "p_value": 2.6626392967638993e-24,
       "statistic": 133.15272727272725
 =======
@@ -7978,6 +8030,10 @@
 =======
       "p_value": 6.259749189112665e-24,
       "statistic": 131.34909090909093
+>>>>>>> Stashed changes
+=======
+      "p_value": 1.872719259865092e-28,
+      "statistic": 159.28717948717951
 >>>>>>> Stashed changes
     },
     "models": [
@@ -7998,6 +8054,7 @@
       "alpha": 0.05,
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       "critical_difference": 4.302527093918013,
 =======
       "critical_difference": 3.4975837934984884,
@@ -8005,71 +8062,74 @@
 =======
       "critical_difference": 3.4975837934984884,
 >>>>>>> Stashed changes
+=======
+      "critical_difference": 4.302527093918013,
+>>>>>>> Stashed changes
       "pairs": [
         {
           "model_a": "bc_decision_tree",
           "model_b": "bc_gradient_boosting",
-          "rank_diff": 4.7333333333333325,
+          "rank_diff": 4.6,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "bc_linear_svc",
-          "rank_diff": 2.3999999999999986,
+          "rank_diff": 2.2666666666666657,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "bc_logistic_regression",
-          "rank_diff": 3.666666666666666,
+          "rank_diff": 4.266666666666666,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "bc_naive_bayes",
-          "rank_diff": 0.3999999999999986,
+          "rank_diff": 0.33333333333333215,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "bc_random_forest",
-          "rank_diff": 1.200000000000001,
-          "significant_alpha_0_05": false
+          "rank_diff": 5.133333333333333,
+          "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "df_decision_tree",
-          "rank_diff": 8.2,
+          "rank_diff": 8.733333333333333,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "df_gradient_boosting",
-          "rank_diff": 9.666666666666666,
+          "rank_diff": 10.6,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "df_linear_svc",
-          "rank_diff": 5.933333333333333,
+          "rank_diff": 6.7333333333333325,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "df_logistic_regression",
-          "rank_diff": 8.066666666666666,
+          "rank_diff": 8.399999999999999,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "df_naive_bayes",
-          "rank_diff": 2.133333333333333,
+          "rank_diff": 2.0666666666666664,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_decision_tree",
           "model_b": "df_random_forest",
-          "rank_diff": 6.799999999999999,
+          "rank_diff": 8.866666666666667,
           "significant_alpha_0_05": true
         },
         {
@@ -8077,6 +8137,9 @@
           "model_b": "bc_linear_svc",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
           "rank_diff": 2.333333333333334,
 =======
           "rank_diff": 2.666666666666666,
@@ -8086,6 +8149,7 @@
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "bc_logistic_regression",
+<<<<<<< Updated upstream
           "rank_diff": 1.3999999999999995,
           "significant_alpha_0_05": false
         },
@@ -8205,66 +8269,87 @@
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "bc_random_forest",
+=======
+>>>>>>> Stashed changes
           "rank_diff": 0.3333333333333339,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
+          "model_b": "bc_naive_bayes",
+          "rank_diff": 4.2666666666666675,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "bc_random_forest",
+          "rank_diff": 0.5333333333333332,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
+          "model_b": "df_decision_tree",
+          "rank_diff": 4.133333333333333,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_gradient_boosting",
           "model_b": "df_gradient_boosting",
-          "rank_diff": 4.666666666666667,
+          "rank_diff": 6.0,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_linear_svc",
-          "rank_diff": 1.7333333333333338,
+          "rank_diff": 2.133333333333333,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_logistic_regression",
-          "rank_diff": 3.0000000000000004,
+          "rank_diff": 3.8,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_naive_bayes",
-          "rank_diff": 2.9333333333333327,
+          "rank_diff": 2.533333333333333,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_gradient_boosting",
           "model_b": "df_random_forest",
-          "rank_diff": 3.266666666666667,
+          "rank_diff": 4.266666666666667,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "bc_logistic_regression",
-          "rank_diff": 1.2666666666666675,
+          "rank_diff": 2.0,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "bc_naive_bayes",
-          "rank_diff": 1.666666666666666,
+          "rank_diff": 1.9333333333333336,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "bc_random_forest",
-          "rank_diff": 3.000000000000001,
+          "rank_diff": 2.866666666666667,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_decision_tree",
-          "rank_diff": 5.800000000000001,
+          "rank_diff": 6.466666666666667,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 7.2666666666666675,
@@ -8274,11 +8359,15 @@
 =======
           "rank_diff": 6.266666666666667,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 8.333333333333334,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8295,6 +8384,10 @@
           "rank_diff": 3.333333333333333,
           "significant_alpha_0_05": false
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 4.466666666666667,
+          "significant_alpha_0_05": true
+>>>>>>> Stashed changes
         },
         {
           "model_a": "bc_linear_svc",
@@ -8302,6 +8395,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 5.266666666666666,
 =======
           "rank_diff": 5.666666666666668,
@@ -8311,18 +8405,22 @@
 >>>>>>> Stashed changes
 =======
           "rank_diff": 5.266666666666666,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 6.133333333333334,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_naive_bayes",
-          "rank_diff": 0.2666666666666657,
+          "rank_diff": 0.1999999999999993,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_linear_svc",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8336,34 +8434,33 @@
 =======
           "rank_diff": 4.133333333333333,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 6.6000000000000005,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "bc_naive_bayes",
-          "rank_diff": 3.2666666666666675,
+          "rank_diff": 3.9333333333333336,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "bc_random_forest",
-<<<<<<< Updated upstream
-          "rank_diff": 4.866666666666667,
-          "significant_alpha_0_05": true
+          "rank_diff": 0.8666666666666671,
+          "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_decision_tree",
-          "rank_diff": 4.533333333333333,
+          "rank_diff": 4.466666666666667,
           "significant_alpha_0_05": true
-=======
-          "rank_diff": 1.7333333333333334,
-          "significant_alpha_0_05": false
->>>>>>> Stashed changes
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 6.0,
@@ -8373,11 +8470,15 @@
 =======
           "rank_diff": 5.0,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 6.333333333333334,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 2.2666666666666666,
@@ -8387,11 +8488,15 @@
 =======
           "rank_diff": 2.0666666666666664,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 2.466666666666667,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8406,16 +8511,21 @@
           "rank_diff": 3.9999999999999996,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
+=======
+          "rank_diff": 4.133333333333334,
+          "significant_alpha_0_05": false
+>>>>>>> Stashed changes
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_naive_bayes",
-          "rank_diff": 1.5333333333333332,
+          "rank_diff": 2.1999999999999993,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_logistic_regression",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8429,29 +8539,27 @@
           "significant_alpha_0_05": false
 =======
           "rank_diff": 4.666666666666666,
-          "significant_alpha_0_05": true
+=======
+          "rank_diff": 4.6000000000000005,
 >>>>>>> Stashed changes
+          "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "bc_random_forest",
-<<<<<<< Updated upstream
-          "rank_diff": 1.5999999999999996,
-          "significant_alpha_0_05": false
-=======
-          "rank_diff": 4.666666666666667,
+          "rank_diff": 4.800000000000001,
           "significant_alpha_0_05": true
->>>>>>> Stashed changes
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_decision_tree",
-          "rank_diff": 7.800000000000001,
+          "rank_diff": 8.4,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_gradient_boosting",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 9.266666666666667,
@@ -8461,11 +8569,15 @@
 =======
           "rank_diff": 7.933333333333334,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 10.266666666666667,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_linear_svc",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 5.533333333333334,
@@ -8475,6 +8587,9 @@
 =======
           "rank_diff": 5.0,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 6.4,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
@@ -8482,7 +8597,11 @@
           "model_b": "df_logistic_regression",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 7.666666666666668,
+=======
+          "rank_diff": 8.066666666666666,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
@@ -8494,30 +8613,31 @@
         {
           "model_a": "bc_naive_bayes",
           "model_b": "df_random_forest",
-          "rank_diff": 6.4,
+          "rank_diff": 8.533333333333335,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_decision_tree",
-          "rank_diff": 9.4,
-          "significant_alpha_0_05": true
+          "rank_diff": 3.6,
+          "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_gradient_boosting",
-          "rank_diff": 10.866666666666667,
+          "rank_diff": 5.466666666666667,
           "significant_alpha_0_05": true
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_linear_svc",
-          "rank_diff": 7.133333333333334,
-          "significant_alpha_0_05": true
+          "rank_diff": 1.5999999999999996,
+          "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
           "rank_diff": 9.266666666666667,
           "significant_alpha_0_05": true
         },
@@ -8661,14 +8781,56 @@
         {
           "model_a": "bc_random_forest",
           "model_b": "df_naive_bayes",
+=======
+>>>>>>> Stashed changes
           "rank_diff": 3.2666666666666666,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "bc_random_forest",
+          "model_b": "df_naive_bayes",
+          "rank_diff": 3.0666666666666664,
           "significant_alpha_0_05": false
         },
         {
           "model_a": "bc_random_forest",
           "model_b": "df_random_forest",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.933333333333333,
+=======
+          "rank_diff": 3.7333333333333334,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "df_decision_tree",
+          "model_b": "df_gradient_boosting",
+          "rank_diff": 1.8666666666666665,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "df_decision_tree",
+          "model_b": "df_linear_svc",
+          "rank_diff": 2.0000000000000004,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "df_decision_tree",
+          "model_b": "df_logistic_regression",
+          "rank_diff": 0.3333333333333335,
+          "significant_alpha_0_05": false
+        },
+        {
+          "model_a": "df_decision_tree",
+          "model_b": "df_naive_bayes",
+          "rank_diff": 6.666666666666666,
+          "significant_alpha_0_05": true
+        },
+        {
+          "model_a": "df_decision_tree",
+          "model_b": "df_random_forest",
+          "rank_diff": 0.1333333333333333,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
 =======
           "rank_diff": 6.8,
@@ -8679,15 +8841,20 @@
           "model_a": "df_gradient_boosting",
           "model_b": "df_linear_svc",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 2.933333333333333,
 =======
           "rank_diff": 2.9333333333333336,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 3.866666666666667,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8701,11 +8868,15 @@
 =======
           "rank_diff": 1.0000000000000002,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 2.2,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_naive_bayes",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 7.533333333333333,
@@ -8715,11 +8886,15 @@
 =======
           "rank_diff": 6.533333333333333,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 8.533333333333333,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "df_gradient_boosting",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8733,11 +8908,15 @@
 =======
           "rank_diff": 2.1333333333333337,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 1.7333333333333332,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_linear_svc",
           "model_b": "df_logistic_regression",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8751,11 +8930,15 @@
 =======
           "rank_diff": 1.9333333333333331,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 1.666666666666667,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_linear_svc",
           "model_b": "df_naive_bayes",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 3.8,
@@ -8766,14 +8949,15 @@
 =======
           "rank_diff": 3.5999999999999996,
 >>>>>>> Stashed changes
-          "significant_alpha_0_05": true
 =======
-          "significant_alpha_0_05": false
+          "rank_diff": 4.666666666666666,
 >>>>>>> Stashed changes
+          "significant_alpha_0_05": true
         },
         {
           "model_a": "df_linear_svc",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
           "rank_diff": 0.8666666666666667,
@@ -8783,6 +8967,9 @@
 =======
           "rank_diff": 0.7999999999999998,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 2.1333333333333337,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
@@ -8791,6 +8978,7 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
           "rank_diff": 5.533333333333333,
 =======
           "rank_diff": 5.933333333333334,
@@ -8800,12 +8988,16 @@
 >>>>>>> Stashed changes
 =======
           "rank_diff": 5.533333333333333,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 6.333333333333333,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         },
         {
           "model_a": "df_logistic_regression",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8819,11 +9011,15 @@
 =======
           "rank_diff": 1.1333333333333333,
 >>>>>>> Stashed changes
+=======
+          "rank_diff": 0.4666666666666668,
+>>>>>>> Stashed changes
           "significant_alpha_0_05": false
         },
         {
           "model_a": "df_naive_bayes",
           "model_b": "df_random_forest",
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -8836,6 +9032,9 @@
 >>>>>>> Stashed changes
 =======
           "rank_diff": 4.3999999999999995,
+>>>>>>> Stashed changes
+=======
+          "rank_diff": 6.8,
 >>>>>>> Stashed changes
           "significant_alpha_0_05": true
         }
@@ -8870,8 +9069,8 @@
       {
         "model_a": "bc_decision_tree",
         "model_b": "bc_random_forest",
-        "p_value": 0.0001220703125,
-        "statistic": 1.0
+        "p_value": 6.103515625e-05,
+        "statistic": 0.0
       },
       {
         "model_a": "bc_decision_tree",
@@ -8918,8 +9117,8 @@
       {
         "model_a": "bc_gradient_boosting",
         "model_b": "bc_logistic_regression",
-        "p_value": 6.103515625e-05,
-        "statistic": 0.0
+        "p_value": 0.389404296875,
+        "statistic": 44.0
       },
       {
         "model_a": "bc_gradient_boosting",
@@ -8972,8 +9171,8 @@
       {
         "model_a": "bc_linear_svc",
         "model_b": "bc_logistic_regression",
-        "p_value": 0.00018310546875,
-        "statistic": 2.0
+        "p_value": 6.103515625e-05,
+        "statistic": 0.0
       },
       {
         "model_a": "bc_linear_svc",
@@ -9032,8 +9231,8 @@
       {
         "model_a": "bc_logistic_regression",
         "model_b": "bc_random_forest",
-        "p_value": 6.103515625e-05,
-        "statistic": 0.0
+        "p_value": 0.012451171875,
+        "statistic": 17.0
       },
       {
         "model_a": "bc_logistic_regression",
@@ -9164,8 +9363,8 @@
       {
         "model_a": "df_decision_tree",
         "model_b": "df_logistic_regression",
-        "p_value": 0.5614013671875,
-        "statistic": 49.0
+        "p_value": 0.48870849609375,
+        "statistic": 47.0
       },
       {
         "model_a": "df_decision_tree",
@@ -9176,8 +9375,8 @@
       {
         "model_a": "df_decision_tree",
         "model_b": "df_random_forest",
-        "p_value": 0.00537109375,
-        "statistic": 13.0
+        "p_value": 0.7197265625,
+        "statistic": 53.0
       },
       {
         "model_a": "df_gradient_boosting",
@@ -9232,6 +9431,7 @@
         "model_b": "df_random_forest",
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "p_value": 0.0001220703125,
         "statistic": 1.0
 =======
@@ -9241,6 +9441,10 @@
 =======
         "p_value": 0.0001220703125,
         "statistic": 1.0
+>>>>>>> Stashed changes
+=======
+        "p_value": 0.25238037109375,
+        "statistic": 39.0
 >>>>>>> Stashed changes
       },
       {
