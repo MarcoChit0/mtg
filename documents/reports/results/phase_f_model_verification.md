@@ -4,7 +4,7 @@
 
 Modelos incluídos na análise: **12**
 
-Flag `--all`: não — modelos parciais aceitos
+Flag `--all`: sim — todos os modelos exigidos
 
 
 | Modelo | Representação | Algoritmo | Folds | Macro-F1 média | Macro-F1 dp |
@@ -12,7 +12,7 @@ Flag `--all`: não — modelos parciais aceitos
 | `bc_decision_tree` | BC | decision_tree | 15/15 | 0.5475 | 0.0116 |
 | `bc_gradient_boosting` | BC | gradient_boosting | 15/15 | 0.6433 | 0.0121 |
 | `bc_linear_svc` | BC | linear_svc | 15/15 | 0.5927 | 0.0090 |
-| `bc_logistic_regression` | BC | logistic_regression | 15/15 | 0.6035 | 0.0116 |
+| `bc_logistic_regression` | BC | logistic_regression | 15/15 | 0.6236 | 0.0096 |
 | `bc_naive_bayes` | BC | naive_bayes | 15/15 | 0.5535 | 0.0090 |
 | `bc_random_forest` | BC | random_forest | 15/15 | 0.6326 | 0.0122 |
 | `df_decision_tree` | DF | decision_tree | 15/15 | 0.6727 | 0.0100 |
@@ -26,7 +26,6 @@ Flag `--all`: não — modelos parciais aceitos
 
 - [OPTIONAL MISSING] bc_linear_svc: cv_results_per_fold.jsonl not found
 - [OPTIONAL MISSING] bc_linear_svc: checkpoint_state.json not found
-- [OPTIONAL MISSING] bc_logistic_regression: cv_results_per_fold.jsonl not found
 - [OPTIONAL MISSING] df_linear_svc: cv_results_per_fold.jsonl not found
 
 ✅ Todos os modelos compartilham os mesmos fold IDs.
@@ -41,7 +40,7 @@ Avalia cada modelo com `GroupKFold(n_splits=5)` agrupando decks pelo mesmo coman
 | `bc_decision_tree` | 0.5581 | 0.0146 | 0.5475 | -0.0106 |
 | `bc_gradient_boosting` | 0.6543 | 0.0036 | 0.6433 | -0.0111 |
 | `bc_linear_svc` | 0.5528 | 0.0049 | 0.5927 | +0.0398 |
-| `bc_logistic_regression` | 0.6020 | 0.0090 | 0.6035 | +0.0015 |
+| `bc_logistic_regression` | 0.6020 | 0.0090 | 0.6236 | +0.0216 |
 | `bc_naive_bayes` | 0.5781 | 0.0055 | 0.5535 | -0.0246 |
 | `bc_random_forest` | 0.5655 | 0.0051 | 0.6326 | +0.0671 |
 | `df_decision_tree` | 0.6120 | 0.0164 | 0.6727 | +0.0606 |

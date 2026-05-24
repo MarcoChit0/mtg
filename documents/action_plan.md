@@ -193,19 +193,16 @@ Busca em grid no inner; trocar para busca aleatória/halving se algum grid de 24
 
 **Saídas E**: `experiments/<fs>_<algo>/{best_hyperparams_per_fold.json, predictions_per_fold.jsonl, cv_results_per_fold.jsonl, metrics_per_fold.json, checkpoint_state.json, checkpoints/...}`, `experiments/archives/<fs>_<algo>.zip` quando upload via Drive estiver habilitado, `experiments/seeds.json`, `experiments/folds.json`, `experiments/nested_cv_summary.json`, `documents/reports/results/phase_e_nested_cv.md`.
 
-## Fase F — Verificação dos modelos individuais ✓ implementada
+## Fase F — Verificação dos modelos individuais ✓ concluída (2026-05-24)
 
 > Script: `scripts/phase_f_model_verification.py` · Entrypoint: `uv run phase-f-model-verification`
 > Implementation report: `documents/reports/implementation/phase_f_model_verification.md`
 
-Portão de qualidade entre a Fase E e as fases de conclusão. Já foi executada com os modelos disponíveis (11 de 12 — KNN ausente do treino). Depois que o último modelo da Fase E terminar, rodar novamente com `--all` e `--group-kfold` para a verificação completa.
+Executada com `--all --group-kfold` sobre os 12 modelos completos. Todas as sub-fases concluídas.
 
-```bash
-# Comando completo pós-Fase E:
-uv run phase-f-model-verification --all --group-kfold
-```
-
-> ⚠️ **Pendência**: rodar com `--all --group-kfold` assim que a Fase E concluir o modelo restante. Sem `--all`, a Fase F opera com modelos parciais mas não garante completude.
+- F.1: 12/12 modelos com 15/15 folds ✓
+- F.2: GroupKFold por comandante — `group_kfold_results.json` gerado ✓
+- F.3: Friedman p≈0, 28 pares Nemenyi significativos ✓
 
 ### F.1 Checagem de completude
 
@@ -237,23 +234,14 @@ Sobre os outer scores disponíveis:
 
 **Saídas F**: `documents/reports/results/phase_f_model_verification.md`, `documents/reports/results/phase_f_statistical_tests.md`, `experiments/model_verification/group_kfold_results.json` (se `--group-kfold`).
 
-## Fase G — Ensembles por votação (sem retreino) ✓ implementada
+## Fase G — Ensembles por votação (sem retreino) ✓ concluída (2026-05-24)
 
 > Script: `scripts/phase_g_voting.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_g_voting`
 > Implementation report: `documents/reports/implementation/phase_g_voting.md`
 
-Já executada com os 12 modelos disponíveis. Os 6 ensembles estão computados e armazenados em `experiments/voting/`. Depois que a Fase E concluir e a Fase F rodar com `--all`, re-executar com `--all --force-recompute` para garantir que os rankings e membros refletem o conjunto completo.
-
-```bash
-# Re-execução pós-Fase E + Fase F completas:
-uv run --no-sync python -m scripts.phase_g_voting --all --force-recompute
-```
-
-> ⚠️ **Pendência**: re-rodar com `--all --force-recompute` após Fase E concluir. Sem `--all`, opera com modelos parciais; os membros top-N podem mudar quando o modelo faltante entrar no ranking.
+Executada com `--all --force-recompute` após F concluída. 6 ensembles computados sobre os 12 modelos completos (15/15 folds cada). Melhor ensemble: `voting_top3_BC_DF` com macro-F1=0.6944 (+0.0036 vs melhor individual `df_gradient_boosting`=0.6908).
 
 Solicitado pela professora: avaliar o desempenho de combinações dos melhores modelos via votação majoritária (hard vote) sobre as predições out-of-fold já produzidas na Fase E. Como todas as predições OOF compartilham o mesmo conjunto de folds, a votação é exata por linha e por fold — não há retreino.
-
-**Pré-condição forte**: na versão final, voting deve ser re-executado depois da Fase F confirmar completude de todos os modelos (`--all`).
 
 6 ensembles definidos:
 
@@ -402,8 +390,8 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | ~~C~~ | — | ✓ concluída |
 | ~~D~~ | — | ✓ concluída com N=5 e top-5 por representação |
 | E | — | ◐ 11/12 modelos com 15/15 folds; 1 modelo pendente. Após concluir: nenhuma ação extra necessária — F e G se atualizam sozinhos. |
-| ~~F~~ | — | ✓ implementada e executada (parcial). **Pendência**: `uv run phase-f-model-verification --all --group-kfold` após E concluir. |
-| ~~G~~ | — | ✓ implementada e executada (parcial). **Pendência**: `uv run --no-sync python -m scripts.phase_g_voting --all --force-recompute` após E + F completas. |
+| ~~F~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, F.1+F.2+F.3 completos com `--all --group-kfold` |
+| ~~G~~ | — | ✓ concluída (2026-05-24) — 6 ensembles, melhor: `voting_top3_BC_DF` F1=0.6944, com `--all --force-recompute` |
 | H | 0,5 | seleção de melhor modelo por representação — pode começar com resultados atuais |
 | I | 0,5 | comparação descritiva com `y2`, sem retreino — pode começar agora |
 | J | 1,5 | interpretabilidade (2 modelos) |

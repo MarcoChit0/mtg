@@ -110,11 +110,12 @@
     "status": "ok",
     "chosen_hyperparams": {
       "best_params": {
-        "clf__C": 0.01,
-        "clf__class_weight": "balanced"
+        "clf__C": 0.1,
+        "clf__class_weight": "balanced",
+        "clf__l1_ratio": 0.5
       },
       "fold_id": "r1_f1",
-      "inner_best_macro_f1": 0.5908357225356646,
+      "inner_best_macro_f1": 0.6072878082899617,
       "model_id": "bc_logistic_regression",
       "outer_fold": 1,
       "repeat_seed": 1
@@ -136,8 +137,8 @@
     ],
     "macro_f1_group_mean": 0.6019560207181003,
     "macro_f1_group_std": 0.009031422986772513,
-    "macro_f1_stratified_mean": 0.6034949126172732,
-    "gap_vs_stratified": 0.0015
+    "macro_f1_stratified_mean": 0.6235789884729325,
+    "gap_vs_stratified": 0.0216
   },
   {
     "model_id": "bc_naive_bayes",

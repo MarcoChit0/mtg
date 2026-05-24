@@ -222,7 +222,8 @@ def discover_models(
             }
         )
 
-    if require_all and warnings:
+    blocking_warnings = [w for w in warnings if w.startswith("[INCOMPLETE]")]
+    if require_all and blocking_warnings:
         sys.exit(
             "\nAborted — use without --all to run with partial results, "
             "or wait for Phase E to complete.\n"

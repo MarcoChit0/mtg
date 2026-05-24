@@ -2,7 +2,7 @@
 
 Modelos incluídos: **12** · Folds usados por modelo: **15**
 
-**Friedman**: statistic=159.7692, p=0.000000
+**Friedman**: statistic=159.5436, p=0.000000
 
 **Nemenyi**: diferença crítica=4.3025 para alpha=0.05
 
@@ -17,9 +17,9 @@ Modelos incluídos: **12** · Folds usados por modelo: **15**
 | `df_logistic_regression` | 3.2667 |
 | `df_linear_svc` | 5.1333 |
 | `bc_gradient_boosting` | 5.8667 |
-| `bc_random_forest` | 6.8667 |
-| `bc_logistic_regression` | 8.0667 |
-| `bc_linear_svc` | 9.3333 |
+| `bc_random_forest` | 7.0667 |
+| `bc_logistic_regression` | 7.8000 |
+| `bc_linear_svc` | 9.4000 |
 | `df_naive_bayes` | 9.6000 |
 | `bc_naive_bayes` | 11.3333 |
 | `bc_decision_tree` | 11.6667 |
@@ -35,27 +35,26 @@ Modelos incluídos: **12** · Folds usados por modelo: **15**
 | `bc_naive_bayes` | `df_random_forest` | 8.5333 |
 | `df_gradient_boosting` | `df_naive_bayes` | 8.5333 |
 | `bc_decision_tree` | `df_logistic_regression` | 8.4000 |
+| `bc_linear_svc` | `df_gradient_boosting` | 8.3333 |
 | `bc_naive_bayes` | `df_decision_tree` | 8.3333 |
-| `bc_linear_svc` | `df_gradient_boosting` | 8.2667 |
 | `bc_naive_bayes` | `df_logistic_regression` | 8.0667 |
-| `bc_logistic_regression` | `df_gradient_boosting` | 7.0000 |
 | `df_naive_bayes` | `df_random_forest` | 6.8000 |
+| `bc_logistic_regression` | `df_gradient_boosting` | 6.7333 |
+| `bc_linear_svc` | `df_random_forest` | 6.6000 |
 | `df_decision_tree` | `df_naive_bayes` | 6.6000 |
 | `bc_decision_tree` | `df_linear_svc` | 6.5333 |
-| `bc_linear_svc` | `df_random_forest` | 6.5333 |
-| `bc_linear_svc` | `df_decision_tree` | 6.3333 |
+| `bc_linear_svc` | `df_decision_tree` | 6.4000 |
 | `df_logistic_regression` | `df_naive_bayes` | 6.3333 |
 | `bc_naive_bayes` | `df_linear_svc` | 6.2000 |
-| `bc_linear_svc` | `df_logistic_regression` | 6.0667 |
+| `bc_linear_svc` | `df_logistic_regression` | 6.1333 |
+| `bc_random_forest` | `df_gradient_boosting` | 6.0000 |
 | `bc_decision_tree` | `bc_gradient_boosting` | 5.8000 |
-| `bc_random_forest` | `df_gradient_boosting` | 5.8000 |
 | `bc_gradient_boosting` | `bc_naive_bayes` | 5.4667 |
-| `bc_logistic_regression` | `df_random_forest` | 5.2667 |
-| `bc_logistic_regression` | `df_decision_tree` | 5.0667 |
-| `bc_decision_tree` | `bc_random_forest` | 4.8000 |
+| `bc_logistic_regression` | `df_random_forest` | 5.0000 |
 | `bc_gradient_boosting` | `df_gradient_boosting` | 4.8000 |
-| `bc_logistic_regression` | `df_logistic_regression` | 4.8000 |
-| `bc_naive_bayes` | `bc_random_forest` | 4.4667 |
+| `bc_logistic_regression` | `df_decision_tree` | 4.8000 |
+| `bc_decision_tree` | `bc_random_forest` | 4.6000 |
+| `bc_logistic_regression` | `df_logistic_regression` | 4.5333 |
 | `df_linear_svc` | `df_naive_bayes` | 4.4667 |
 
 ## Wilcoxon Pareado
@@ -83,7 +82,7 @@ Modelos incluídos: **12** · Folds usados por modelo: **15**
 | `bc_gradient_boosting` | `df_logistic_regression` | 1.0000 | 0.000122 | ✓ |
 | `bc_gradient_boosting` | `df_naive_bayes` | 0.0000 | 0.000061 | ✓ |
 | `bc_gradient_boosting` | `df_random_forest` | 0.0000 | 0.000061 | ✓ |
-| `bc_linear_svc` | `bc_logistic_regression` | 2.0000 | 0.000183 | ✓ |
+| `bc_linear_svc` | `bc_logistic_regression` | 0.0000 | 0.000061 | ✓ |
 | `bc_linear_svc` | `bc_naive_bayes` | 0.0000 | 0.000061 | ✓ |
 | `bc_linear_svc` | `bc_random_forest` | 0.0000 | 0.000061 | ✓ |
 | `bc_linear_svc` | `df_decision_tree` | 0.0000 | 0.000061 | ✓ |
@@ -93,7 +92,7 @@ Modelos incluídos: **12** · Folds usados por modelo: **15**
 | `bc_linear_svc` | `df_naive_bayes` | 43.0000 | 0.359131 |  |
 | `bc_linear_svc` | `df_random_forest` | 0.0000 | 0.000061 | ✓ |
 | `bc_logistic_regression` | `bc_naive_bayes` | 0.0000 | 0.000061 | ✓ |
-| `bc_logistic_regression` | `bc_random_forest` | 0.0000 | 0.000061 | ✓ |
+| `bc_logistic_regression` | `bc_random_forest` | 17.0000 | 0.012451 | ✓ |
 | `bc_logistic_regression` | `df_decision_tree` | 0.0000 | 0.000061 | ✓ |
 | `bc_logistic_regression` | `df_gradient_boosting` | 0.0000 | 0.000061 | ✓ |
 | `bc_logistic_regression` | `df_linear_svc` | 0.0000 | 0.000061 | ✓ |
