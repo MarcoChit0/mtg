@@ -1,6 +1,6 @@
 {
   "command": "spot-checking",
-  "finished_at": "2026-05-24T15:33:00.675669+00:00",
+  "finished_at": "2026-05-24T21:43:39.757338+00:00",
   "parameters": {
     "algorithms": [
       "decision_tree",
@@ -17,15 +17,15 @@
       20
     ],
     "command": "spot-checking",
-    "docs_dir": "documents/reports/results",
+    "docs_dir": "documents\\reports\\results",
     "dry_run": true,
     "experiment_dir": "experiments",
     "experiments_drive_remote": "mtg-experiments:",
     "list_stages": false,
-    "manifest_path": "experiments/pipeline_run_manifest.json",
+    "manifest_path": "experiments\\pipeline_run_manifest.json",
     "max_rows": null,
     "n_jobs": -1,
-    "processed_dir": "/var/folders/s5/03dr8cj92qz9x9gnkcdgk0740000gn/T/tmpxfxb9f4f/processed",
+    "processed_dir": "C:\\Users\\henri\\AppData\\Local\\Temp\\tmpf0oe9y5r\\processed",
     "quiet_progress": false,
     "rclone_bin": "rclone",
     "representations": [
@@ -45,14 +45,14 @@
   "stages": [
     {
       "command": [
-        "/Users/macsilva/Desktop/mtg/.venv/bin/python",
+        "C:\\Users\\henri\\Downloads\\Mestrado\\Cadeira ML\\mtg\\.venv\\Scripts\\python.exe",
         "scripts/phase_d_spot_check.py",
         "--processed-dir",
-        "/var/folders/s5/03dr8cj92qz9x9gnkcdgk0740000gn/T/tmpxfxb9f4f/processed",
+        "C:\\Users\\henri\\AppData\\Local\\Temp\\tmpf0oe9y5r\\processed",
         "--docs-dir",
-        "documents/reports/results",
+        "documents\\reports\\results",
         "--experiment-dir",
-        "experiments/spot_check",
+        "experiments\\spot_check",
         "--seeds",
         "1",
         "2",
@@ -92,7 +92,7 @@
     },
     {
       "command": [
-        "/Users/macsilva/Desktop/mtg/.venv/bin/python",
+        "C:\\Users\\henri\\Downloads\\Mestrado\\Cadeira ML\\mtg\\.venv\\Scripts\\python.exe",
         "scripts/sync_experiments_drive.py",
         "check-write",
         "--experiments-drive-remote",
@@ -113,7 +113,7 @@
     },
     {
       "command": [
-        "/Users/macsilva/Desktop/mtg/.venv/bin/python",
+        "C:\\Users\\henri\\Downloads\\Mestrado\\Cadeira ML\\mtg\\.venv\\Scripts\\python.exe",
         "scripts/sync_experiments_drive.py",
         "upload-bundle",
         "spot_check",
@@ -136,6 +136,6 @@
       "status": "dry_run"
     }
   ],
-  "started_at": "2026-05-24T15:33:00.675185+00:00",
+  "started_at": "2026-05-24T21:43:39.754275+00:00",
   "status": "ok"
 }

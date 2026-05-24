@@ -18,6 +18,7 @@ scripts/
   phase_e_nested_cv.py           ← Fase E (núcleo, ~1900 linhas)
   phase_f_model_verification.py  ← Fase F (verificação: completude, GroupKFold, testes estatísticos)
   phase_g_voting.py              ← Fase G (voting ensembles a partir de OOF predictions)
+  phase_h_best_models.py         ← Fase H (seleção melhor_BC e melhor_DF, ranking, confusão)
   sync_experiments_drive.py      ← Drive (uploads colaborador, downloads público)
 
 documents/
@@ -63,10 +64,10 @@ Estrutura mínima de um implementation report:
 | B | EDA + análise direta de divergência y1↔y2 | ✓ concluída | `phase_b_eda_divergence.py` |
 | C | Filtro (y1,y2 ∈ {2,3,4}) + transformers leakage-safe | ✓ concluída | `phase_c_filter_dataset.py` + `preprocessing.py` |
 | D | Spot-check N=5 seeds, 7 algos, top-5 por representação | ✓ concluída | `phase_d_spot_check.py` |
-| E | Nested CV dos modelos individuais (5 folds × 3 repeats), grids tunados | ◐ implementada, execução completa pendente | `phase_e_nested_cv.py` |
+| E | Nested CV dos modelos individuais (5 folds × 3 repeats), grids tunados | ✓ concluída — 12/12 modelos, 15/15 folds | `phase_e_nested_cv.py` |
 | F | Verificação dos modelos individuais: completude, consistência, GroupKFold por comandante, testes estatísticos | ✓ implementada; executa com modelos parciais da Fase E | `phase_f_model_verification.py` |
 | G | Voting ensembles a partir de OOF predictions, só depois da F | ✓ implementada; executa com modelos parciais da Fase E | `phase_g_voting.py` |
-| H | Melhor modelo por representação | a fazer | — |
+| H | Melhor modelo por representação | ✓ implementada e executada | `phase_h_best_models.py` |
 | I | Comparar predições dos modelos vs y2 (descritivo) | a fazer | — |
 | J | Interpretabilidade dos 2 melhores (BC + DF) | a fazer | — |
 | K | Artigo (template Moodle) | a fazer | — |
@@ -84,7 +85,7 @@ Estrutura mínima de um implementation report:
 7. **Métrica principal**: macro-F1 (imbalanced: y1=3 é 52%, y1=2 é 21%, y1=4 é 27%). `class_weight='balanced'` está nos grids de DT/RF/HistGB/LR/LinearSVC por causa disso.
 8. **Fase E não faz voting**. E treina modelos individuais e gera métricas/checkpoints/predições OOF. Voting foi deliberadamente movido para depois da verificação.
 9. **Fase F será portão de qualidade**: antes de voting, verificar todos os modelos esperados (`A_uniao × {DF,BC}`), completude 15/15 folds, artefatos, consistência de seeds/folds/rótulos, GroupKFold por comandante e testes estatísticos.
-10. **Voting (Fase G planejada)**: hard voting majoritário sobre predições OOF, sem retreino. Tie-break desejado: maior macro-F1 médio dos membros que votaram na classe; empate residual = menor rótulo numérico.
+10. **Voting (Fase G ✓ concluída)**: hard voting majoritário sobre predições OOF, sem retreino. Tie-break: maior macro-F1 médio dos membros que votaram na classe; empate residual = menor rótulo numérico. 6 ensembles computados, melhor: `voting_top3_BC_DF` F1=0.6944.
 11. **Determinismo**: dado mesmo `deck_features.jsonl` + seeds + versões pinadas (`uv.lock`), duas máquinas devem produzir resultados equivalentes (caveat: diferenças BLAS/versão sklearn podem causar epsilons).
 
 ## Antes de mexer em qualquer fase
@@ -146,7 +147,7 @@ Estas são decisões aprendidas em conversa e auditoria prática. Trate como con
 - `--skip-experiment-restore` no `init` só pula download de experimentos públicos; não afeta download dos dados processados nem B/C. Útil quando o servidor vai treinar novos modelos e não precisa restaurar resultados antigos.
 - A Fase E já passou por auditoria de literatura: DT usa `ccp_alpha`; HistGB usa `max_leaf_nodes`; LR usa `l1_ratio` para L2/ElasticNet/L1; lineares não tunam `fit_intercept`.
 - `bc_gradient_boosting` ficou muito mais lento que o esperado porque exige `dense_conversion=True`. O grid de HistGB foi reduzido para 24 configs, removendo `max_iter=500`, `learning_rate=0.01`, `max_leaf_nodes=63` e `l2_regularization`, mas mantendo `max_leaf_nodes ∈ {15,31}`.
-- O usuário corrigiu uma implementação indevida de voting como Fase F. Estado correto agora: **Fase F não implementada**, apenas planejada como verificação; **Fase G não implementada**, será voting depois da F.
+- O usuário corrigiu uma implementação indevida de voting como Fase F. Estado correto: Fase F é verificação (✓ concluída 2026-05-24), Fase G é voting (✓ concluída 2026-05-24), Fase H é seleção do melhor modelo (✓ concluída 2026-05-24).
 - Ao implementar uma etapa futura, primeiro alinhe o plano: qual fase é, quais artefatos produz, quais reports serão criados e quais comandos validam. Depois codifique.
 - O usuário valoriza comandos exatos para servidor, mas também quer que o código/documentação não confunda quem continuar o projeto. Se um comando antigo deixar de existir, remova do README/tests/docs.
 - Worktree local pode conter artefatos de treinos reais de NB/experimentos no Drive. Não use `git reset --hard`, não limpe `experiments/` por iniciativa própria.

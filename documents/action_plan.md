@@ -263,18 +263,20 @@ Regras:
 
 **Saídas G**: `experiments/voting/{voting_<nome>/metrics_per_fold.json, predictions_per_fold.jsonl}`, `experiments/voting/voting_summary.json`, `documents/reports/results/phase_g_voting.md`.
 
-## Fase H — Melhor modelo por representação
+## Fase H — Melhor modelo por representação ✓ concluída (2026-05-24)
 
-Ranquear os modelos individuais (10 a 14, dependendo de `|A_uniao|`) + 6 ensembles de votação por macro-F1 médio nos outer folds. Selecionar **um modelo por representação** (entre os modelos individuais):
+> Script: `scripts/phase_h_best_models.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_h_best_models`
+> Implementation report: `documents/reports/implementation/phase_h_best_models.md`
 
-```text
-melhor_BC = argmax_{alg ∈ A_uniao} macro_F1(alg, BC, y1)
-melhor_DF = argmax_{alg ∈ A_uniao} macro_F1(alg, DF, y1)
-```
+Ranking completo dos 12 modelos individuais + 6 ensembles de votação por macro-F1 médio. Seleção determinística por `argmax macro_F1`, desempate por menor std.
 
-Desvio padrão como desempate (estabilidade). Decisão registrada manualmente em `documents/reports/best_models.md`. Esses dois modelos receberão interpretabilidade (Fase J).
+**Resultado:**
+- `melhor_BC` = `bc_gradient_boosting` — macro-F1 = 0.6433 ± 0.0121 (15/15 folds)
+- `melhor_DF` = `df_gradient_boosting` — macro-F1 = 0.6908 ± 0.0093 (15/15 folds)
 
-Comparações no relatório: BC vs DF para `y1`; tabela de macro-F1 dos modelos individuais; tabela de macro-F1 dos 6 ensembles; ganho/perda da votação vs melhor modelo individual em cada representação.
+Artefato de seleção: `experiments/best_models.json` (consumido pela Fase J).
+
+Relatório inclui: ranking completo, tabela BC vs DF por algoritmo, ganho/perda de cada ensemble vs melhor individual, hiperparâmetros por fold dos dois selecionados, matrizes de confusão agregadas (36.405 predições OOF).
 
 ## Fase I — Comparação das predições dos modelos com a calculadora
 
@@ -392,7 +394,7 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | E | — | ◐ 11/12 modelos com 15/15 folds; 1 modelo pendente. Após concluir: nenhuma ação extra necessária — F e G se atualizam sozinhos. |
 | ~~F~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, F.1+F.2+F.3 completos com `--all --group-kfold` |
 | ~~G~~ | — | ✓ concluída (2026-05-24) — 6 ensembles, melhor: `voting_top3_BC_DF` F1=0.6944, com `--all --force-recompute` |
-| H | 0,5 | seleção de melhor modelo por representação — pode começar com resultados atuais |
+| ~~H~~ | — | ✓ concluída (2026-05-24) — melhor_BC=bc_gradient_boosting (F1=0.6433), melhor_DF=df_gradient_boosting (F1=0.6908) |
 | I | 0,5 | comparação descritiva com `y2`, sem retreino — pode começar agora |
 | J | 1,5 | interpretabilidade (2 modelos) |
 | K (artigo) | 3 | escrita do artigo (seções extras se L/M rodarem) |

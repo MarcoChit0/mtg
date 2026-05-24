@@ -1,0 +1,22 @@
+{
+  "best_BC": {
+    "model_id": "bc_gradient_boosting",
+    "representation": "BC",
+    "algorithm": "gradient_boosting",
+    "macro_f1_mean": 0.6432634320677486,
+    "macro_f1_std": 0.0121280675336745,
+    "n_folds": 15,
+    "predictions_path": "experiments\\bc_gradient_boosting\\predictions_per_fold.jsonl",
+    "hyperparams_path": "experiments\\bc_gradient_boosting\\best_hyperparams_per_fold.json"
+  },
+  "best_DF": {
+    "model_id": "df_gradient_boosting",
+    "representation": "DF",
+    "algorithm": "gradient_boosting",
+    "macro_f1_mean": 0.6907864040640452,
+    "macro_f1_std": 0.00929363313870154,
+    "n_folds": 15,
+    "predictions_path": "experiments\\df_gradient_boosting\\predictions_per_fold.jsonl",
+    "hyperparams_path": "experiments\\df_gradient_boosting\\best_hyperparams_per_fold.json"
+  }
+}

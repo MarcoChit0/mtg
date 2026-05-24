@@ -10,7 +10,10 @@
       "Bash(uv run *)",
       "Bash(dir experiments\\\\voting /s /b)",
       "Bash(dir documents\\\\reports\\\\results\\\\phase_g* /b)",
-      "Bash(biber main *)"
+      "Bash(biber main *)",
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m scripts.phase_h_best_models)",
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m unittest discover -s tests)"
     ]
   }
 }
