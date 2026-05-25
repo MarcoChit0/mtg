@@ -16,11 +16,17 @@
       "bundle_id": "voting",
       "drive_file_id": "1vQsR7lz7B_gGDjIWp9lQTtK5hDMmb9CY",
       "filename": "voting.zip",
-      "size_bytes": 2201760
+      "size_bytes": 1576853
     }
   ],
-  "generated_at": "2026-05-24T15:21:37.792540+00:00",
+  "generated_at": "2026-05-25T18:29:52.516997+00:00",
   "models": [
+    {
+      "drive_file_id": "1Zqj1-HoBrTqUPZM63YN37wnx_998-1rk",
+      "filename": "bc_decision_tree.zip",
+      "model_id": "bc_decision_tree",
+      "size_bytes": 1699752
+    },
     {
       "drive_file_id": "13fysYGVeRMl9KS8j1OA5nnTashBxkqsR",
       "filename": "bc_gradient_boosting.zip",
@@ -31,13 +37,31 @@
       "drive_file_id": "1U_2JBpdgqOn3KRek6iUzFIIyDOEmf7MW",
       "filename": "bc_linear_svc.zip",
       "model_id": "bc_linear_svc",
-      "size_bytes": 1712527
+      "size_bytes": 1705459
+    },
+    {
+      "drive_file_id": "1CjgUOJMu5Wd8JkXWh9gF7qTsdZxytr_H",
+      "filename": "bc_logistic_regression.zip",
+      "model_id": "bc_logistic_regression",
+      "size_bytes": 1710172
     },
     {
       "drive_file_id": "19LAXkG7GA2eZR85YorFPo2A8h3bLGZ1n",
       "filename": "bc_naive_bayes.zip",
       "model_id": "bc_naive_bayes",
       "size_bytes": 2723658
+    },
+    {
+      "drive_file_id": "1u_pg3DbKqbEYrkCz9qURBrxV84EBZPM6",
+      "filename": "bc_random_forest.zip",
+      "model_id": "bc_random_forest",
+      "size_bytes": 2863558
+    },
+    {
+      "drive_file_id": "17JVzqYywgLxtSvoTjL-stsc17-YlFK2C",
+      "filename": "df_decision_tree.zip",
+      "model_id": "df_decision_tree",
+      "size_bytes": 1680227
     },
     {
       "drive_file_id": "1lodwEjKQd51-7colb97hPWwFRJIHvshz",
@@ -49,7 +73,7 @@
       "drive_file_id": "1zlKqiZmvuTgVTpUXIextFtniaJO0-yki",
       "filename": "df_linear_svc.zip",
       "model_id": "df_linear_svc",
-      "size_bytes": 1773678
+      "size_bytes": 1765833
     },
     {
       "drive_file_id": "1bxzIbF9LgmCFeQvvsHpaa-euvfVNu3mn",
@@ -62,6 +86,12 @@
       "filename": "df_naive_bayes.zip",
       "model_id": "df_naive_bayes",
       "size_bytes": 2735216
+    },
+    {
+      "drive_file_id": "1a5bICJQykrcrcFZeYFzHiRh9Uxue-TpH",
+      "filename": "df_random_forest.zip",
+      "model_id": "df_random_forest",
+      "size_bytes": 2829042
     },
     {
       "drive_file_id": "1tQ1vDAFLrNejSdw6krdWggTmosYJRoV8",

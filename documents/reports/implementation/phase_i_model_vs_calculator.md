@@ -4,7 +4,7 @@
 
 ## Objetivo
 
-Comparar as predições OOF `ŷ1` (modelos treinados em `y1`) contra `y2` (calculadora EDHPowerLevel) de forma **descritiva** — sem retreino, sem novos folds, sem uso de `y2` como alvo de treinamento (backbone §5). O objetivo é medir o grau de alinhamento entre percepção comunitária aprendida pelos modelos e avaliação automática da calculadora, e identificar quais modelos capturam sinais mais próximos ou mais distantes da lógica objetiva da calculadora.
+Comparar, na mesma base OOF, o rótulo real `y1` (Archidekt) contra `y2` (calculadora EDHPowerLevel) e as predições OOF `ŷ1` (modelos treinados em `y1`) contra `y2`. A fase é **descritiva** — sem retreino, sem novos folds, sem uso de `y2` como alvo de treinamento (backbone §5). O objetivo é medir o grau de alinhamento entre percepção comunitária, percepção aprendida pelos modelos e avaliação automática da calculadora.
 
 ## O que foi construído
 
@@ -21,6 +21,16 @@ Nenhum artefato gerado em `experiments/` — análise puramente descritiva sobre
 ### Fonte de dados
 
 As predições OOF (`predictions_per_fold.jsonl`) já contêm o campo `y2` por linha, gravado na Fase E a partir de `deck_features.jsonl`. `y2` é estável por deck (verificado: 0 inconsistências entre os 3 repeats). Total: 36.405 entradas = 12.135 decks × 3 repeats.
+
+### Métricas calculadas para a referência direta `y1` vs `y2`
+
+Antes da análise de modelos, o relatório calcula na mesma base OOF:
+
+- **Concordância exata**: `mean(y1 == y2)`
+- **Concordância ±1**: `mean(|y1 − y2| ≤ 1)`
+- **|Δ| médio**: `mean(|y1 − y2|)`
+- **Macro-F1 vs y2**: macro-F1 com `y2` como referência descritiva
+- **Matriz de confusão y1 × y2**: linhas = `y1`, colunas = `y2`
 
 ### Métricas calculadas por modelo (backbone §13.7 + action plan §I)
 
@@ -40,30 +50,35 @@ Filtra as predições em dois grupos:
 
 Para cada grupo, calcula a concordância exata entre `ŷ1` e `y2`. Isso permite ver: nos decks onde a comunidade já concordava com a calculadora, o modelo acerta mais? E nos discordantes, qual fonte o modelo "prefere" imitar?
 
-### Gap desempenho(y1) vs concordância(y2)
+### Gap absoluto desempenho(y1) vs concordância(y2)
 
-Métrica derivada: `gap = macro_f1_y1 − exact_agreement_y2`. Gap positivo grande = modelo aprendeu particularidades de `y1` que não se traduzem em alinhamento com a calculadora. Gap negativo = modelo acerta mais com a calculadora do que seu F1 em `y1` sugeriria.
+Métrica derivada: `gap_abs = abs(macro_f1_y1 − exact_agreement_y2)`. Quanto maior o gap absoluto, maior a distância entre o desempenho do modelo no alvo comunitário (`y1`) e sua concordância exata com a calculadora (`y2`). O relatório também mostra a diferença assinada apenas como contexto.
 
-### Narrativa automática
+### Destaques automáticos globais
 
-O relatório identifica automaticamente 3 modelos de destaque:
-1. **Maior concordância com y2** — modelo mais alinhado à calculadora
-2. **Menor concordância com y2** — modelo mais distante
-3. **Maior gap F1(y1) − concordância(y2)** — aprendeu bem y1 mas diverge da calculadora
+Considerando todos os modelos e ensembles juntos, o relatório identifica:
+
+1. **Maior concordância com y2** — modelo mais alinhado à calculadora.
+2. **Menor concordância com y2** — modelo mais distante da calculadora.
+3. **Maior gap absoluto** — maior distância entre macro-F1 em `y1` e concordância com `y2`.
+4. **Menor gap absoluto** — menor distância entre macro-F1 em `y1` e concordância com `y2`.
+
+Cada escolha aparece com justificativa explícita e, quando o modelo ainda não apareceu no bloco, com matriz `ŷ1 × y2`. Os destaques são globais, isto é, independem de a origem ser `BC`, `DF` ou `BC+DF`.
 
 ### Referência cruzada com Fase B
 
-O relatório contextualiza os números com a concordância direta `y1` vs `y2` reportada na Fase B (60,9% exata, 97,7% dentro de ±1), que serve como linha de base natural.
+O relatório agora recalcula a concordância direta `y1` vs `y2` na mesma base OOF usada para os modelos, em vez de apenas citar a Fase B. Essa referência serve como linha de base natural.
 
 ## Resultados principais (2026-05-24)
 
 | Destaque | Modelo | Métrica |
 |---|---|---|
-| Maior concordância com y2 | `df_random_forest` | 69,3% exata |
-| Menor concordância com y2 | `bc_decision_tree` | 54,2% exata |
-| Maior gap F1−concord. | `df_gradient_boosting` | gap = +0.051 |
+| Maior concordância global | `df_random_forest` | 69,3% exata |
+| Menor concordância global | `bc_decision_tree` | 54,2% exata |
+| Maior gap absoluto global | `df_gradient_boosting` | gap = 0,0508 |
+| Menor gap absoluto global | `bc_naive_bayes` | gap = 0,0010 |
 
-Todos os modelos ficam acima da concordância base `y1==y2` (60,9%) na representação DF, e abaixo em BC — indicando que DF captura sinais mais próximos dos critérios da calculadora.
+Os destaques são escolhidos em um ranking único global.
 
 ## Comandos de execução
 

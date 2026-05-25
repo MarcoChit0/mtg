@@ -113,7 +113,7 @@ class PhaseENestedCVTests(unittest.TestCase):
             self.assertTrue((experiments / "seeds.json").exists())
             self.assertTrue((experiments / "folds.json").exists())
             self.assertTrue((docs / "phase_e_nested_cv.md").exists())
-            self.assertTrue((docs / "phase_e_statistical_tests.md").exists())
+            self.assertFalse((docs / "phase_e_statistical_tests.md").exists())
             self.assertFalse((docs / "phase_e_voting.md").exists())
             self.assertFalse((experiments / "voting").exists())
             self.assertNotIn("voting", summary)

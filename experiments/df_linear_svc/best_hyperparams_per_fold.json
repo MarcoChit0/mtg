@@ -1,33 +1,36 @@
 [
   {
     "best_params": {
-      "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__C": 1.0,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r1_f1",
-    "inner_best_macro_f1": 0.6491585063608926,
+    "inner_best_macro_f1": 0.6499718699066617,
     "model_id": "df_linear_svc",
     "outer_fold": 1,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__C": 1.0,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r1_f2",
-    "inner_best_macro_f1": 0.6532629185088338,
+    "inner_best_macro_f1": 0.65621079885809,
     "model_id": "df_linear_svc",
     "outer_fold": 2,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r1_f3",
-    "inner_best_macro_f1": 0.6492589976431098,
+    "inner_best_macro_f1": 0.6500684154774884,
     "model_id": "df_linear_svc",
     "outer_fold": 3,
     "repeat_seed": 1
@@ -35,10 +38,11 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r1_f4",
-    "inner_best_macro_f1": 0.6520745198135582,
+    "inner_best_macro_f1": 0.6554322450476234,
     "model_id": "df_linear_svc",
     "outer_fold": 4,
     "repeat_seed": 1
@@ -46,21 +50,23 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r1_f5",
-    "inner_best_macro_f1": 0.6550326835039564,
+    "inner_best_macro_f1": 0.6561889751218212,
     "model_id": "df_linear_svc",
     "outer_fold": 5,
     "repeat_seed": 1
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r2_f1",
-    "inner_best_macro_f1": 0.6575522700817452,
+    "inner_best_macro_f1": 0.6580293641138298,
     "model_id": "df_linear_svc",
     "outer_fold": 1,
     "repeat_seed": 2
@@ -68,98 +74,107 @@
   {
     "best_params": {
       "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r2_f2",
-    "inner_best_macro_f1": 0.6524563674191876,
+    "inner_best_macro_f1": 0.6548715787011846,
     "model_id": "df_linear_svc",
     "outer_fold": 2,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r2_f3",
-    "inner_best_macro_f1": 0.6548928578726955,
+    "inner_best_macro_f1": 0.6578572955216585,
     "model_id": "df_linear_svc",
     "outer_fold": 3,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__C": 1.0,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r2_f4",
-    "inner_best_macro_f1": 0.6567773617823499,
+    "inner_best_macro_f1": 0.656946060976395,
     "model_id": "df_linear_svc",
     "outer_fold": 4,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r2_f5",
-    "inner_best_macro_f1": 0.6475190369447859,
+    "inner_best_macro_f1": 0.6518203535583953,
     "model_id": "df_linear_svc",
     "outer_fold": 5,
     "repeat_seed": 2
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r3_f1",
-    "inner_best_macro_f1": 0.6564257815738678,
+    "inner_best_macro_f1": 0.6576713144454558,
     "model_id": "df_linear_svc",
     "outer_fold": 1,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__C": 0.1,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r3_f2",
-    "inner_best_macro_f1": 0.6471746891426235,
+    "inner_best_macro_f1": 0.6493004163961182,
     "model_id": "df_linear_svc",
     "outer_fold": 2,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r3_f3",
-    "inner_best_macro_f1": 0.647921218489198,
+    "inner_best_macro_f1": 0.6496065533231773,
     "model_id": "df_linear_svc",
     "outer_fold": 3,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__C": 1.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.01,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r3_f4",
-    "inner_best_macro_f1": 0.6550318838819053,
+    "inner_best_macro_f1": 0.6535421641742344,
     "model_id": "df_linear_svc",
     "outer_fold": 4,
     "repeat_seed": 3
   },
   {
     "best_params": {
-      "clf__C": 10.0,
-      "clf__class_weight": "balanced"
+      "clf__C": 0.1,
+      "clf__class_weight": "balanced",
+      "clf__penalty": "l1"
     },
     "fold_id": "r3_f5",
-    "inner_best_macro_f1": 0.652579036198957,
+    "inner_best_macro_f1": 0.6569299486050943,
     "model_id": "df_linear_svc",
     "outer_fold": 5,
     "repeat_seed": 3

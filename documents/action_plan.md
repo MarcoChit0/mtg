@@ -283,13 +283,13 @@ Relatório inclui: ranking completo, tabela BC vs DF por algoritmo, ganho/perda 
 > Script: `scripts/phase_i_model_vs_calculator.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_i_model_vs_calculator`
 > Implementation report: `documents/reports/implementation/phase_i_model_vs_calculator.md`
 
-**Descritivo, sem retreino**. 18 modelos analisados (12 individuais + 6 ensembles). Métricas: concordância exata ŷ1=y2, concordância ±1, |Δ| médio, macro-F1 vs y2, gap F1(y1)−concord.(y2). Subset analysis: decks concordantes (y1=y2) vs discordantes (y1≠y2).
+**Descritivo, sem retreino**. 18 modelos analisados (12 individuais + 6 ensembles). O relatório compara primeiro `y1` real do Archidekt contra `y2` da calculadora e, na mesma base OOF, compara `ŷ1` de cada modelo contra `y2`. Para ambos os blocos reporta concordância exata, concordância ±1, |Δ| médio, macro-F1 vs y2 e matriz de confusão. Subset analysis: decks concordantes (y1=y2) vs discordantes (y1≠y2).
 
 **Resultados principais:**
-- Maior concordância com y2: `df_random_forest` (69,3% exata) — DF captura sinais mais próximos da calculadora
-- Menor concordância: `bc_decision_tree` (54,2%) — BC+árvore mais distante da lógica objetiva
-- Maior gap F1−concord.: `df_gradient_boosting` (gap=+0.051) — melhor em y1, mas aprende particularidades da percepção humana
-- Todos os modelos DF superam a concordância base y1vs y2 (60,9%); modelos BC ficam abaixo
+- Maior concordância global: `df_random_forest` (69,3%).
+- Menor concordância global: `bc_decision_tree` (54,2%).
+- Maior gap absoluto global: `df_gradient_boosting` (0,0508).
+- Menor gap absoluto global: `bc_naive_bayes` (0,0010).
 
 ## Fase J — Interpretabilidade ✓ concluída (2026-05-24)
 
@@ -399,7 +399,7 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | ~~F~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, F.1+F.2+F.3 completos com `--all --group-kfold` |
 | ~~G~~ | — | ✓ concluída (2026-05-24) — 6 ensembles, melhor: `voting_top3_BC_DF` F1=0.6944, com `--all --force-recompute` |
 | ~~H~~ | — | ✓ concluída (2026-05-24) — melhor_BC=bc_gradient_boosting (F1=0.6433), melhor_DF=df_gradient_boosting (F1=0.6908) |
-| ~~I~~ | — | ✓ concluída (2026-05-24) — maior concord.: df_random_forest 69,3%; maior gap: df_gradient_boosting +0.051 |
+| ~~I~~ | — | ✓ concluída (2026-05-24) — destaques globais com maior/menor concordância e maior/menor gap absoluto |
 | ~~J~~ | — | ✓ concluída (2026-05-24) — PI: game_changer_count domina DF; BC: Blood Moon, Mana Vault em bracket 4 |
 | K (artigo) | 3 | escrita do artigo (seções extras se L/M rodarem) |
 | L (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |

@@ -54,7 +54,6 @@ except ImportError:  # pragma: no cover
 DEFAULT_PROCESSED_DIR = Path("data/processed/archidekt")
 DEFAULT_DOCS_DIR = Path("documents/reports/results")
 NESTED_CV_REPORT_FILENAME = "phase_e_nested_cv.md"
-STATS_REPORT_FILENAME = "phase_e_statistical_tests.md"
 DEFAULT_EXPERIMENT_DIR = Path("experiments")
 DEFAULT_EXPERIMENTS_DRIVE_REMOTE = os.environ.get("MTG_EXPERIMENTS_DRIVE_REMOTE", "mtg-experiments:")
 DEFAULT_SPOT_CHECK_SUMMARY = Path("experiments/spot_check/summary.json")
@@ -1396,6 +1395,13 @@ def statistical_payload(model_metrics: Sequence[Mapping[str, Any]]) -> Dict[str,
 
 
 def write_report(path: Path, summary: Mapping[str, Any], stats: Mapping[str, Any]) -> None:
+    model_plan = summary.get("model_plan") or []
+    if model_plan:
+        representations = list(dict.fromkeys(str(row["representation"]) for row in model_plan))
+        algorithms = list(dict.fromkeys(str(row["algorithm"]) for row in model_plan))
+    else:
+        representations = list(summary["parameters"]["representations"])
+        algorithms = list(summary["parameters"]["algorithms"])
     lines: List[str] = [
         "# Nested CV — Fase E",
         "",
@@ -1405,8 +1411,8 @@ def write_report(path: Path, summary: Mapping[str, Any], stats: Mapping[str, Any
         "",
         "## Configuração",
         "",
-        f"- Representações: {', '.join(summary['parameters']['representations'])}",
-        f"- Algoritmos: {', '.join(summary['parameters']['algorithms'])}",
+        f"- Representações: {', '.join(representations)}",
+        f"- Algoritmos: {', '.join(algorithms)}",
         f"- Outer CV: {summary['parameters']['outer_splits']} folds × repeats `{', '.join(map(str, summary['parameters']['repeats']))}`",
         f"- Inner CV: {summary['parameters']['inner_splits']} folds",
         f"- `bc_min_df`: {summary['parameters']['bc_min_df']}",
@@ -1458,7 +1464,6 @@ def write_report(path: Path, summary: Mapping[str, Any], stats: Mapping[str, Any
         "- `experiments/<representação>_<algoritmo>/checkpoints/<assinatura>/<outer_fold>.json`",
         "- `experiments/archives/<representação>_<algoritmo>.zip` quando upload via Drive estiver habilitado",
         "- `documents/reports/results/phase_e_nested_cv.md`",
-        "- `documents/reports/results/phase_e_statistical_tests.md`",
         "",
         "## Google Drive",
         "",
@@ -1822,9 +1827,7 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         "problems": drive_upload_problems,
     }
     write_json(args.experiment_dir / "nested_cv_summary.json", summary)
-    write_json(args.experiment_dir / "statistical_tests.json", stats)
     args.docs_dir.mkdir(parents=True, exist_ok=True)
-    write_stats_report(args.docs_dir / STATS_REPORT_FILENAME, stats)
     write_report(args.docs_dir / NESTED_CV_REPORT_FILENAME, summary, stats)
     return summary
 

@@ -1,6 +1,6 @@
 # Implementação — Fase E: Nested CV
 
-> Implementation report. **Público**: colaborador novo ou agente LLM que vai mexer em nested CV, grids, checkpoints ou integração com o Google Drive. Resultados da implementação atual vivem em [../results/phase_e_nested_cv.md](../results/phase_e_nested_cv.md) e [../results/phase_e_statistical_tests.md](../results/phase_e_statistical_tests.md). A separação conceitual posterior em Fase F (verificação) e Fase G (voting) está documentada no [action_plan.md](../../action_plan.md), mas não foi implementada neste momento.
+> Implementation report. **Público**: colaborador novo ou agente LLM que vai mexer em nested CV, grids, checkpoints ou integração com o Google Drive. O results report oficial da fase vive em [../results/phase_e_nested_cv.md](../results/phase_e_nested_cv.md). A verificação estatística formal pertence à Fase F e voting pertence à Fase G.
 
 ## Objetivo
 
@@ -10,7 +10,7 @@ Fase E treina todos os modelos individuais selecionados na Fase D (`|union| × 2
 
 | Componente | Arquivo | Responsabilidade |
 |---|---|---|
-| Driver Fase E | [scripts/phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py) | Nested CV, grid search com progresso, checkpoints, testes estatísticos, uploads Drive por modelo |
+| Driver Fase E | [scripts/phase_e_nested_cv.py](../../../scripts/phase_e_nested_cv.py) | Nested CV, grid search com progresso, checkpoints, resumo de métricas e uploads Drive por modelo |
 | Integração Drive | [scripts/sync_experiments_drive.py](../../../scripts/sync_experiments_drive.py) | Upload por modelo, bundles (spot_check/voting/shared), publish manifest, download público |
 | Driver de pipeline | [scripts/run_pipeline.py](../../../scripts/run_pipeline.py) | Compõe stages `train` (check-write → train → publish-manifest) |
 | Pré-processadores | [scripts/preprocessing.py](../../../scripts/preprocessing.py) | `DeckFeaturePreprocessor` e `BagOfCardsPreprocessor` usados como steps de `Pipeline` (ver Fase C) |
@@ -28,9 +28,7 @@ Fase E treina todos os modelos individuais selecionados na Fase D (`|union| × 2
 | `experiments/<modelo>/checkpoint_state.json` | Estado de retomada |
 | `experiments/<modelo>/checkpoints/<sig>/<fold>.json` | Checkpoint por outer fold; signature = sha256 da config |
 | `experiments/nested_cv_summary.json` | Sumário consolidado da rodada |
-| `experiments/statistical_tests.json` | Friedman/Nemenyi/Wilcoxon pareado |
 | `documents/reports/results/phase_e_nested_cv.md` | Auto-gerado: tabela de modelos |
-| `documents/reports/results/phase_e_statistical_tests.md` | Auto-gerado: ranks médios + significância |
 
 ## Como foi construído (decisões + porquês)
 

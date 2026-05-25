@@ -1,9 +1,23 @@
 {
-  "checkpoint_dir": "experiments/df_linear_svc/checkpoints/c94e24882fde4850",
+  "checkpoint_dir": "experiments/df_linear_svc/checkpoints/7801815cdd67634f",
   "completed_fold_ids": [
-    "r1_f1"
+    "r1_f1",
+    "r1_f2",
+    "r1_f3",
+    "r1_f4",
+    "r1_f5",
+    "r2_f1",
+    "r2_f2",
+    "r2_f3",
+    "r2_f4",
+    "r2_f5",
+    "r3_f1",
+    "r3_f2",
+    "r3_f3",
+    "r3_f4",
+    "r3_f5"
   ],
-  "completed_folds": 1,
+  "completed_folds": 15,
   "schema_version": 1,
   "signature": {
     "algorithm": "linear_svc",
@@ -27,30 +41,12 @@
     ],
     "grid": {
       "clf__C": [
-        0.0001,
-        0.0002,
-        0.0005,
         0.001,
-        0.002,
-        0.005,
         0.01,
-        0.02,
-        0.05,
         0.1,
-        0.2,
-        0.5,
         1.0,
-        2.0,
-        5.0,
         10.0,
-        20.0,
-        50.0,
-        100.0,
-        200.0,
-        500.0,
-        1000.0,
-        2000.0,
-        5000.0
+        100.0
       ],
       "clf__class_weight": [
         null,
@@ -76,7 +72,7 @@
     "schema_version": 1,
     "use_tfidf": false
   },
-  "signature_id": "c94e24882fde4850",
+  "signature_id": "7801815cdd67634f",
   "total_folds": 15,
-  "updated_at": "2026-05-21T14:58:55.196352+00:00"
+  "updated_at": "2026-05-25T15:22:10.727055+00:00"
 }

@@ -156,7 +156,6 @@ documents/
       phase_c_preprocessing.md
       phase_d_spot_checking.md
       phase_e_nested_cv.md
-      phase_e_statistical_tests.md
       figures/{eda,divergence}/
       sample_reports/
     implementation/              # hand-written; narrativa de decisões para colaboradores/LLMs

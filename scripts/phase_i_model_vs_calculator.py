@@ -27,7 +27,7 @@ import statistics
 import sys
 from collections import defaultdict
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -60,6 +60,17 @@ def read_jsonl(path: Path) -> List[Dict]:
     return rows
 
 
+def comparable_rows(rows: List[Dict], *, label_key: str) -> List[Dict]:
+    """Rows with valid y2 and a valid comparison label."""
+    return [
+        r for r in rows
+        if r.get("y2") is not None
+        and r.get(label_key) is not None
+        and r["y2"] in CLASSES
+        and r[label_key] in CLASSES
+    ]
+
+
 # ---------------------------------------------------------------------------
 # Metrics computation (manual — no sklearn dependency for this phase)
 # ---------------------------------------------------------------------------
@@ -78,32 +89,37 @@ def macro_f1(y_true: List[int], y_pred: List[int], classes: List[int]) -> float:
     return statistics.mean(f1s)
 
 
-def compute_agreement_metrics(rows: List[Dict]) -> Dict:
+def compute_agreement_metrics(
+    rows: List[Dict],
+    *,
+    label_key: str = "y_pred",
+    matrix_key: str = "cm_label_vs_y2",
+) -> Dict:
     """
-    Compute agreement metrics between ŷ1 (y_pred) and y2.
+    Compute agreement metrics between a chosen label column and y2.
 
     Returns dict with:
       n, exact_agreement, near_agreement, mean_abs_delta,
-      macro_f1_vs_y2, cm_pred_vs_y2 (rows=ŷ1, cols=y2)
+      macro_f1_vs_y2, matrix_key (rows=label, cols=y2)
     """
     n = len(rows)
     if n == 0:
         return {"n": 0, "exact_agreement": None, "near_agreement": None,
                 "mean_abs_delta": None, "macro_f1_vs_y2": None,
-                "cm_pred_vs_y2": None}
+                matrix_key: None}
 
-    y_pred = [r["y_pred"] for r in rows]
-    y2     = [r["y2"]    for r in rows]
+    y_label = [r[label_key] for r in rows]
+    y2      = [r["y2"] for r in rows]
 
-    exact = sum(1 for p, t in zip(y_pred, y2) if p == t)
-    near  = sum(1 for p, t in zip(y_pred, y2) if abs(p - t) <= 1)
-    deltas = [abs(p - t) for p, t in zip(y_pred, y2)]
+    exact = sum(1 for p, t in zip(y_label, y2) if p == t)
+    near  = sum(1 for p, t in zip(y_label, y2) if abs(p - t) <= 1)
+    deltas = [abs(p - t) for p, t in zip(y_label, y2)]
 
-    # confusion matrix: rows = ŷ1 (predicted), cols = y2
+    # confusion matrix: rows = chosen label, cols = y2
     label_idx = {c: i for i, c in enumerate(CLASSES)}
     nc = len(CLASSES)
     cm = [[0] * nc for _ in range(nc)]
-    for p, t in zip(y_pred, y2):
+    for p, t in zip(y_label, y2):
         if p in label_idx and t in label_idx:
             cm[label_idx[p]][label_idx[t]] += 1
 
@@ -112,8 +128,8 @@ def compute_agreement_metrics(rows: List[Dict]) -> Dict:
         "exact_agreement": exact / n,
         "near_agreement":  near  / n,
         "mean_abs_delta":  statistics.mean(deltas),
-        "macro_f1_vs_y2":  macro_f1(y2, y_pred, CLASSES),
-        "cm_pred_vs_y2":   cm,
+        "macro_f1_vs_y2":  macro_f1(y2, y_label, CLASSES),
+        matrix_key:        cm,
     }
 
 
@@ -126,9 +142,40 @@ def compute_subset_metrics(rows: List[Dict]) -> Dict:
     concordant = [r for r in rows if r["y_true"] == r["y2"]]
     discordant = [r for r in rows if r["y_true"] != r["y2"]]
     return {
-        "concordant": compute_agreement_metrics(concordant),
-        "discordant": compute_agreement_metrics(discordant),
+        "concordant": compute_agreement_metrics(
+            concordant,
+            label_key="y_pred",
+            matrix_key="cm_pred_vs_y2",
+        ),
+        "discordant": compute_agreement_metrics(
+            discordant,
+            label_key="y_pred",
+            matrix_key="cm_pred_vs_y2",
+        ),
     }
+
+
+def selected_algorithms_from_spot_check(summary: object) -> List[str]:
+    """Read A_union from both current and legacy spot-check summary formats."""
+    if not isinstance(summary, dict):
+        return []
+
+    legacy_union = summary.get("selection", {}).get("union", [])
+    if legacy_union:
+        return sorted({str(algo) for algo in legacy_union})
+
+    rankings = summary.get("rankings", {})
+    selected = set()
+    if isinstance(rankings, dict):
+        for representation in ("DF", "BC"):
+            rows = rankings.get(representation, [])
+            if isinstance(rows, list):
+                for row in rows:
+                    if isinstance(row, dict) and row.get("selected"):
+                        algorithm = row.get("algorithm")
+                        if algorithm:
+                            selected.add(str(algorithm))
+    return sorted(selected)
 
 
 # ---------------------------------------------------------------------------
@@ -143,7 +190,7 @@ def load_individual_models(
     expected: List[str] = []
     if spot_check_summary.exists():
         summary = read_json(spot_check_summary)
-        algos = summary.get("selection", {}).get("union", [])
+        algos = selected_algorithms_from_spot_check(summary)
         for rep in ("df", "bc"):
             for algo in algos:
                 expected.append(f"{rep}_{algo}")
@@ -237,10 +284,44 @@ def _delta_str(v: Optional[float]) -> str:
     return f"+{v:.4f}" if v >= 0 else f"{v:.4f}"
 
 
-def cm_to_markdown(cm: List[List[int]], labels: List[int], title: str) -> List[str]:
-    """Render confusion matrix (rows=ŷ1, cols=y2) as markdown."""
-    lines = [f"**{title}** — linhas = ŷ1 (previsto pelo modelo), colunas = y2 (calculadora)\n"]
-    header = "| ŷ1 \\ y2 |" + "".join(f" {lb} |" for lb in labels)
+def _signed_gap(row: Dict) -> Optional[float]:
+    f1 = row.get("macro_f1_y1")
+    ea = row["metrics"].get("exact_agreement")
+    if f1 is None or ea is None:
+        return None
+    return f1 - ea
+
+
+def _abs_gap(row: Dict) -> float:
+    gap = _signed_gap(row)
+    return abs(gap) if gap is not None else -1.0
+
+
+def _global_highlight_justification(kind: str, row: Dict) -> str:
+    exact = _pct(row["metrics"]["exact_agreement"])
+    gap = _fmt(_abs_gap(row))
+    if kind == "maior concordância":
+        return f"maior concordância exata com y2 entre todos os modelos ({exact})"
+    if kind == "menor concordância":
+        return f"menor concordância exata com y2 entre todos os modelos ({exact})"
+    if kind == "maior gap absoluto":
+        return f"maior distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos ({gap})"
+    if kind == "menor gap absoluto":
+        return f"menor distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos ({gap})"
+    return ""
+
+
+def cm_to_markdown(
+    cm: List[List[int]],
+    labels: List[int],
+    title: str,
+    *,
+    row_label: str,
+    row_description: str,
+) -> List[str]:
+    """Render confusion matrix (rows=chosen label, cols=y2) as markdown."""
+    lines = [f"**{title}** — linhas = {row_description}, colunas = y2 (calculadora)\n"]
+    header = f"| {row_label} \\ y2 |" + "".join(f" {lb} |" for lb in labels)
     sep = "|---|" + "---|" * len(labels)
     lines.append(header)
     lines.append(sep)
@@ -258,6 +339,7 @@ def cm_to_markdown(cm: List[List[int]], labels: List[int], title: str) -> List[s
 def render_report(
     all_models: List[Dict],
     results: List[Dict],
+    baseline: Dict,
 ) -> str:
     lines: List[str] = []
 
@@ -275,12 +357,45 @@ def render_report(
     )
 
     # ------------------------------------------------------------------
-    # 1. Tabela completa — todos os modelos
+    # 1. Referência direta — y1 vs y2
     # ------------------------------------------------------------------
-    lines.append("## 1. Concordância com y2 — todos os modelos\n")
+    lines.append("## 1. Referência direta: y1 real do Archidekt vs y2\n")
+    lines.append(
+        "Esta é a comparação sem modelo: `y1` é o bracket real extraído do Archidekt "
+        "e `y2` é o bracket calculado pela EDHPowerLevel. Ela é calculada na mesma "
+        "base OOF usada pelos modelos, para manter a comparação direta com `ŷ1`.\n"
+    )
+    lines.append("| Comparação | n | Concord. exata | Concord. ±1 | Delta abs. médio | Macro-F1 vs y2 |")
+    lines.append("|---|---:|---:|---:|---:|---:|")
+    lines.append(
+        f"| `y1` real vs `y2` | {baseline['n']} "
+        f"| {_pct(baseline['exact_agreement'])} "
+        f"| {_pct(baseline['near_agreement'])} "
+        f"| {_fmt(baseline['mean_abs_delta'], 3)} "
+        f"| {_fmt(baseline['macro_f1_vs_y2'])} |"
+    )
+    lines.append("")
+    lines.extend(cm_to_markdown(
+        baseline["cm_y1_vs_y2"],
+        CLASSES,
+        "`y1` real vs `y2`",
+        row_label="y1",
+        row_description="y1 real do Archidekt",
+    ))
+    lines.append("")
+
+    # ------------------------------------------------------------------
+    # 2. Tabela completa — todos os modelos
+    # ------------------------------------------------------------------
+    lines.append("## 2. Concordância de ŷ1 com y2 — todos os modelos\n")
+    lines.append(
+        "Aqui `ŷ1` é o label predito por cada modelo treinado em `y1`. "
+        "A tabela usa exatamente as mesmas métricas da seção anterior, agora trocando "
+        "`y1` real por `ŷ1`.\n"
+    )
     lines.append(
         "| Modelo | Tipo | Repr. | Macro-F1 (y1) | Concord. exata ŷ1=y2 | Concord. ±1 | "
-        "|Δ| médio | Macro-F1 vs y2 |"
+        "Delta abs. médio | Macro-F1 vs y2 |"
     )
     lines.append("|---|---|---|---:|---:|---:|---:|---:|")
 
@@ -299,41 +414,44 @@ def render_report(
         )
 
     # ------------------------------------------------------------------
-    # 2. Gap: macro-F1(y1) vs concordância exata com y2
+    # 3. Absolute gap: macro-F1(y1) vs exact agreement with y2
     # ------------------------------------------------------------------
-    lines.append("\n## 2. Gap entre desempenho em y1 e concordância com y2\n")
+    lines.append("\n## 3. Gap absoluto entre desempenho em y1 e concordância com y2\n")
     lines.append(
-        "> Um gap positivo grande significa que o modelo aprendeu bem `y1` "
-        "mas diverge da calculadora — aprendeu particularidades da percepção comunitária. "
-        "Gap negativo ou próximo de zero indica alinhamento estrutural entre os dois rótulos.\n"
+        "> Aqui o gap é uma distância absoluta: "
+        "`abs(macro-F1 em y1 − concordância exata entre ŷ1 e y2)`. "
+        "Quanto maior o valor, maior o desalinhamento entre o desempenho do modelo "
+        "no alvo comunitário e sua concordância com a calculadora. "
+        "A tabela está ordenada por esse gap absoluto.\n"
     )
-    lines.append("| Modelo | Tipo | Macro-F1 (y1) | Concord. exata (y2) | Gap (F1 − concord.) |")
-    lines.append("|---|---|---:|---:|---:|")
+    lines.append("| Modelo | Tipo | Repr. | Macro-F1 (y1) | Concord. exata (y2) | Gap absoluto | Diferença assinada |")
+    lines.append("|---|---|---|---:|---:|---:|---:|")
 
     gap_sorted = sorted(
         results,
-        key=lambda r: (
-            (r["macro_f1_y1"] or 0) - (r["metrics"]["exact_agreement"] or 0)
-        ),
+        key=_abs_gap,
         reverse=True,
     )
     for r in gap_sorted:
         f1 = r["macro_f1_y1"]
         ea = r["metrics"]["exact_agreement"]
-        gap = (f1 - ea) if (f1 is not None and ea is not None) else None
+        signed_gap = _signed_gap(r)
+        abs_gap = abs(signed_gap) if signed_gap is not None else None
         lines.append(
-            f"| `{r['model_id']}` | {r['type']} | {_fmt(f1)} "
-            f"| {_pct(ea)} | {_delta_str(gap)} |"
+            f"| `{r['model_id']}` | {r['type']} | {r['representation']} "
+            f"| {_fmt(f1)} | {_pct(ea)} | {_fmt(abs_gap)} | {_delta_str(signed_gap)} |"
         )
 
     # ------------------------------------------------------------------
-    # 3. Análise por subconjunto: y1==y2 vs y1!=y2
+    # 4. Análise por subconjunto: y1==y2 vs y1!=y2
     # ------------------------------------------------------------------
-    lines.append("\n## 3. Análise por subconjunto: decks concordantes vs discordantes\n")
+    lines.append("\n## 4. Análise por subconjunto: decks concordantes vs discordantes\n")
     lines.append(
         "> **Concordante**: decks onde `y1 == y2` — comunidade e calculadora atribuem o mesmo bracket.\n"
         "> **Discordante**: decks onde `y1 != y2` — as fontes divergem.\n"
-        "> Métricas: concordância exata entre ŷ1 e y2 dentro de cada subconjunto.\n"
+        "> Métricas: concordância exata entre ŷ1 e y2 dentro de cada subconjunto. "
+        "A tabela está ordenada pela concordância no subconjunto discordante, "
+        "que é onde a divergência entre as fontes aparece.\n"
     )
     lines.append(
         "| Modelo | Tipo | Concord. exata (todos) | "
@@ -341,7 +459,12 @@ def render_report(
     )
     lines.append("|---|---|---:|---:|---:|")
 
-    for r in sorted_results:
+    subset_sorted = sorted(
+        results,
+        key=lambda r: r["subset"]["discordant"]["exact_agreement"] or 0,
+        reverse=True,
+    )
+    for r in subset_sorted:
         m_all  = r["metrics"]
         m_conc = r["subset"]["concordant"]
         m_disc = r["subset"]["discordant"]
@@ -353,103 +476,124 @@ def render_report(
         )
 
     # ------------------------------------------------------------------
-    # 4. Matrizes de confusão — modelos de destaque
+    # 5. Global highlights
     # ------------------------------------------------------------------
-    lines.append("\n## 4. Matrizes de confusão ŷ1 × y2 — modelos de destaque\n")
+    best_agree = sorted_results[0]
+    worst_agree = sorted_results[-1]
+    largest_gap = gap_sorted[0]
+    smallest_gap = gap_sorted[-1]
+    highlight_rows = [
+        ("maior concordância", best_agree),
+        ("menor concordância", worst_agree),
+        ("maior gap absoluto", largest_gap),
+        ("menor gap absoluto", smallest_gap),
+    ]
+
+    lines.append("\n## 5. Destaques globais\n")
+    lines.append(
+        "Considerando todos os modelos e ensembles juntos, seleciono apenas quatro casos: "
+        "maior concordância, menor concordância, maior gap absoluto e menor gap absoluto. "
+        "Isso mantém a seção focada nos extremos realmente informativos, independente de "
+        "a origem ser `BC`, `DF` ou `BC+DF`.\n"
+    )
+    lines.append(
+        "| Caso | Modelo | Tipo | Repr. | Concord. exata | Macro-F1 (y1) | "
+        "Gap absoluto | Diferença assinada | Justificativa |"
+    )
+    lines.append("|---|---|---|---|---:|---:|---:|---:|---|")
+    for case, row in highlight_rows:
+        signed_gap = _signed_gap(row)
+        lines.append(
+            f"| {case} | `{row['model_id']}` | {row['type']} | {row['representation']} "
+            f"| {_pct(row['metrics']['exact_agreement'])} "
+            f"| {_fmt(row['macro_f1_y1'])} "
+            f"| {_fmt(_abs_gap(row))} "
+            f"| {_delta_str(signed_gap)} "
+            f"| {_global_highlight_justification(case, row)} |"
+        )
+    lines.append("")
+
+    # ------------------------------------------------------------------
+    # 6. Confusion matrices — global highlights
+    # ------------------------------------------------------------------
+    lines.append("## 6. Matrizes de confusão ŷ1 × y2 — destaques globais\n")
     lines.append(
         "> Linhas = ŷ1 (o que o modelo previu para bracket comunitário), "
         "colunas = y2 (o que a calculadora atribuiu). "
         "A diagonal principal = concordância exata ŷ1 = y2.\n"
     )
+    lines.append(
+        f"As matrizes abaixo somam {results[0]['metrics']['n'] if results else 0} entradas "
+        "porque são calculadas sobre predições OOF: 12.135 decks × 3 repeats. "
+        "Assim, cada deck pode contribuir até três vezes, uma por repeat.\n"
+    )
 
-    # Best agreement, worst agreement, largest gap
-    best_agree  = sorted_results[0]
-    worst_agree = sorted_results[-1]
-    largest_gap = gap_sorted[0]
-
-    highlight_ids = {best_agree["model_id"], worst_agree["model_id"], largest_gap["model_id"]}
-    highlights = [r for r in results if r["model_id"] in highlight_ids]
-    # Deduplicate preserving order: best, worst, gap
-    seen = set()
-    ordered_highlights = []
-    for r_ref in [best_agree, worst_agree, largest_gap]:
-        for r in highlights:
-            if r["model_id"] == r_ref["model_id"] and r["model_id"] not in seen:
-                ordered_highlights.append(r)
-                seen.add(r["model_id"])
-
-    for r in ordered_highlights:
-        m = r["metrics"]
-        if m["cm_pred_vs_y2"] is None:
+    seen_models = set()
+    for case, row in highlight_rows:
+        if row["model_id"] in seen_models:
             continue
-        role = []
-        if r["model_id"] == best_agree["model_id"]:
-            role.append("maior concordância com y2")
-        if r["model_id"] == worst_agree["model_id"]:
-            role.append("menor concordância com y2")
-        if r["model_id"] == largest_gap["model_id"]:
-            role.append("maior gap F1(y1)−concord.(y2)")
-        role_str = ", ".join(role)
-        lines.append(f"### `{r['model_id']}` ({role_str})\n")
-        cm_lines = cm_to_markdown(m["cm_pred_vs_y2"], CLASSES, r["model_id"])
+        seen_models.add(row["model_id"])
+        roles = [
+            role
+            for role, role_row in highlight_rows
+            if role_row["model_id"] == row["model_id"]
+        ]
+        role_str = ", ".join(roles)
+        justification = "; ".join(
+            _global_highlight_justification(role, row)
+            for role in roles
+        )
+        lines.append(f"### `{row['model_id']}` ({role_str})\n")
+        lines.append(f"Justificativa: {justification}.\n")
+        cm_lines = cm_to_markdown(
+            row["metrics"]["cm_pred_vs_y2"],
+            CLASSES,
+            row["model_id"],
+            row_label="ŷ1",
+            row_description="ŷ1 (previsto pelo modelo)",
+        )
         lines.extend(cm_lines)
         lines.append("")
 
     # ------------------------------------------------------------------
-    # 5. Narrativa comparativa
+    # 7. Discussão comparativa
     # ------------------------------------------------------------------
-    lines.append("## 5. Discussão comparativa\n")
-
-    best  = best_agree
-    worst = worst_agree
-    gap_m = largest_gap
-
-    best_ea  = best["metrics"]["exact_agreement"]
-    worst_ea = worst["metrics"]["exact_agreement"]
-    gap_val  = ((gap_m["macro_f1_y1"] or 0) - (gap_m["metrics"]["exact_agreement"] or 0))
-
+    lines.append("## 7. Discussão comparativa\n")
     lines.append(
-        f"**Maior concordância com y2**: `{best['model_id']}` "
-        f"({_pct(best_ea)} de concordância exata). "
-        f"Apesar de ter sido treinado exclusivamente em `y1`, este modelo "
-        f"alinha suas predições à calculadora em quase {_pct(best_ea)} dos decks — "
-        f"indicando que os sinais estruturais capturados pelo modelo coincidem parcialmente "
-        f"com os critérios objetivos usados por EDHPowerLevel.\n"
-    )
-    lines.append(
-        f"**Menor concordância com y2**: `{worst['model_id']}` "
-        f"({_pct(worst_ea)} de concordância exata). "
-        f"A baixa concordância sugere que este modelo captou padrões de percepção comunitária "
-        f"mais distantes da lógica da calculadora — possivelmente porque a representação "
-        f"ou o algoritmo enfatiza sinais que o usuário do Archidekt considera, "
-        f"mas que EDHPowerLevel não pondera da mesma forma.\n"
-    )
-    lines.append(
-        f"**Maior gap F1(y1) − concordância(y2)**: `{gap_m['model_id']}` "
-        f"(gap = {_delta_str(gap_val)}). "
-        f"Um gap positivo indica que o modelo performa bem em prever `y1`, "
-        f"mas essa performance vem de aprender particularidades da percepção comunitária "
-        f"que não se traduzem em alinhamento com a calculadora. "
-        f"Esse tipo de modelo é o mais informativo para entender a divergência entre as duas fontes.\n"
+        "A leitura global destaca apenas os extremos relevantes. Maior concordância "
+        "identifica o modelo mais próximo da calculadora; menor concordância identifica "
+        "o mais distante; maior gap absoluto mostra onde desempenho em `y1` e concordância "
+        "com `y2` mais se separam; menor gap absoluto mostra o caso em que essas duas "
+        "medidas ficam mais próximas.\n"
     )
 
     # ------------------------------------------------------------------
-    # 6. Referência cruzada: concordância base (y1 vs y2 sem modelo)
+    # 8. Comparação compacta y1 vs y2 e melhor ŷ1 vs y2
     # ------------------------------------------------------------------
-    lines.append("## 6. Referência: concordância direta y1 vs y2 (Fase B)\n")
+    best = best_agree
+    lines.append("## 8. Comparação compacta: `y1` vs `y2` e melhor `ŷ1` vs `y2`\n")
+    lines.append("| Comparação | Concord. exata | Concord. ±1 | Delta abs. médio | Macro-F1 vs y2 |")
+    lines.append("|---|---:|---:|---:|---:|")
     lines.append(
-        "Para contextualizar os números acima, a Fase B reportou que `y1` e `y2` "
-        "concordam exatamente em **60,9%** dos decks da base modelável, "
-        "e dentro de ±1 em **97,7%**. "
-        "Os modelos treinados em `y1` tendem a produzir `ŷ1` próximos de `y1`, "
-        "portanto espera-se concordância similar com `y2` — ligeiramente diferente "
-        "dependendo do viés e representação do algoritmo.\n"
+        f"| `y1` real vs `y2` "
+        f"| {_pct(baseline['exact_agreement'])} "
+        f"| {_pct(baseline['near_agreement'])} "
+        f"| {_fmt(baseline['mean_abs_delta'], 3)} "
+        f"| {_fmt(baseline['macro_f1_vs_y2'])} |"
     )
+    lines.append(
+        f"| melhor `ŷ1` vs `y2` (`{best['model_id']}`) "
+        f"| {_pct(best['metrics']['exact_agreement'])} "
+        f"| {_pct(best['metrics']['near_agreement'])} "
+        f"| {_fmt(best['metrics']['mean_abs_delta'], 3)} "
+        f"| {_fmt(best['metrics']['macro_f1_vs_y2'])} |"
+    )
+    lines.append("")
 
     # ------------------------------------------------------------------
-    # 7. Artefatos
+    # 9. Artefatos
     # ------------------------------------------------------------------
-    lines.append("## 7. Artefatos\n")
+    lines.append("## 9. Artefatos\n")
     lines.append("- `documents/reports/results/phase_i_model_vs_calculator.md` — este relatório")
     lines.append("- Todos os dados lidos de `experiments/*/predictions_per_fold.jsonl` (campo `y2`)")
     lines.append("- Nenhum novo artefato gerado em `experiments/` — análise puramente descritiva")
@@ -507,12 +651,13 @@ def main() -> None:
         log(f"  [{mid}] computando metricas vs y2...")
         rows = read_jsonl(model["predictions_path"])
 
-        # Filter rows with valid y2
-        valid = [r for r in rows if r.get("y2") is not None
-                 and r.get("y_pred") is not None
-                 and r["y2"] in CLASSES and r["y_pred"] in CLASSES]
+        valid = comparable_rows(rows, label_key="y_pred")
 
-        metrics = compute_agreement_metrics(valid)
+        metrics = compute_agreement_metrics(
+            valid,
+            label_key="y_pred",
+            matrix_key="cm_pred_vs_y2",
+        )
         subset  = compute_subset_metrics(valid)
 
         results.append({
@@ -525,11 +670,21 @@ def main() -> None:
             "subset":         subset,
         })
 
+    baseline_rows = comparable_rows(
+        read_jsonl(all_models[0]["predictions_path"]),
+        label_key="y_true",
+    )
+    baseline = compute_agreement_metrics(
+        baseline_rows,
+        label_key="y_true",
+        matrix_key="cm_y1_vs_y2",
+    )
+
     # ------------------------------------------------------------------
     # Generate report
     # ------------------------------------------------------------------
     log("[Phase I] Gerando relatorio...")
-    report = render_report(all_models, results)
+    report = render_report(all_models, results, baseline)
     write_text(report_path, report)
     log(f"[Phase I] Relatorio -> {report_path}")
     log("[Phase I] Concluido.")
