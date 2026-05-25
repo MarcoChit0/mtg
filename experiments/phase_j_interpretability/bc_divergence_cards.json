@@ -1,0 +1,294 @@
+{
+  "concordant_enriched": [
+    {
+      "card_name": "Blood Moon",
+      "freq_base": 0.01735367797768162,
+      "freq_ref": 0.0,
+      "lift": 35.70735595536324,
+      "oracle_uid": "94fac5fe-97d5-4c12-a80c-8efff9d853ae"
+    },
+    {
+      "card_name": "Winter Moon",
+      "freq_base": 0.010384878159872466,
+      "freq_ref": 0.0,
+      "lift": 21.769756319744932,
+      "oracle_uid": "b922f057-1c91-43eb-b74a-8a933b1be2d2"
+    },
+    {
+      "card_name": "Harbinger of the Seas",
+      "freq_base": 0.006467774994306536,
+      "freq_ref": 0.0001384083044982699,
+      "lift": 10.914292538507256,
+      "oracle_uid": "84910453-e5dc-4bff-8554-86a5f4ab2746"
+    },
+    {
+      "card_name": "Ruination",
+      "freq_base": 0.002732862673650649,
+      "freq_ref": 0.0,
+      "lift": 6.465725347301298,
+      "oracle_uid": "59dbc873-72d9-4e7b-9442-2c7b8e8523e1"
+    },
+    {
+      "card_name": "Back to Basics",
+      "freq_base": 0.004190389432930995,
+      "freq_ref": 0.0002768166089965398,
+      "lift": 6.037962343505823,
+      "oracle_uid": "05c2dec2-d2f7-4036-b91f-4fccba10a8bb"
+    },
+    {
+      "card_name": "Imperial Seal",
+      "freq_base": 0.010202687314962423,
+      "freq_ref": 0.001314878892733564,
+      "lift": 5.897190913296741,
+      "oracle_uid": "16cd0b90-f70c-4efa-b252-8de8784ef9a3"
+    },
+    {
+      "card_name": "Gandalf the Grey",
+      "freq_base": 0.002322933272603052,
+      "freq_ref": 0.0,
+      "lift": 5.645866545206103,
+      "oracle_uid": "dfd12e3c-2b2a-4461-a08d-09d4e6c4626e"
+    },
+    {
+      "card_name": "Chrome Mox",
+      "freq_base": 0.031109086768389888,
+      "freq_ref": 0.005467128027681661,
+      "lift": 5.2972027115480875,
+      "oracle_uid": "ec3d4466-547c-4e02-b1b5-a156ec4637e9"
+    },
+    {
+      "card_name": "Force of Will",
+      "freq_base": 0.04021862901389205,
+      "freq_ref": 0.007612456747404845,
+      "lift": 5.019272247820346,
+      "oracle_uid": "956381ba-6d37-4a8a-846c-bad79222dbee"
+    },
+    {
+      "card_name": "Armageddon",
+      "freq_base": 0.005784559325893873,
+      "freq_ref": 0.0007612456747404844,
+      "lift": 4.982819328349326,
+      "oracle_uid": "c9ed8b01-959a-47d6-891e-0abbdccf6e4f"
+    }
+  ],
+  "divergent_enriched": [
+    {
+      "card_name": "Infesting Radroach",
+      "freq_base": 0.004705882352941176,
+      "freq_ref": 0.0010020496470052379,
+      "lift": 3.465852385985097,
+      "oracle_uid": "064f371c-e4f2-423b-9f35-443191dfbb4c"
+    },
+    {
+      "card_name": "Seifer, Balamb Rival",
+      "freq_base": 0.0018685121107266437,
+      "freq_ref": 0.0002732862673650649,
+      "lift": 3.062917590399261,
+      "oracle_uid": "417b9d9c-0a67-4554-a275-a6ae15a04bfb"
+    },
+    {
+      "card_name": "Arahbo, Roar of the World",
+      "freq_base": 0.0033217993079584776,
+      "freq_ref": 0.0008198588020951948,
+      "lift": 2.8956122441973386,
+      "oracle_uid": "66944a11-40a1-4f3a-9f83-52324e0edfef"
+    },
+    {
+      "card_name": "Marshland Bloodcaster",
+      "freq_base": 0.0019377162629757784,
+      "freq_ref": 0.0003643816898200865,
+      "lift": 2.82018498504193,
+      "oracle_uid": "5ecf35b1-0bfd-4c60-a791-5a3b918dd630"
+    },
+    {
+      "card_name": "Transdimensional Bovine",
+      "freq_base": 0.0016608996539792388,
+      "freq_ref": 0.0002732862673650649,
+      "lift": 2.7944368666243076,
+      "oracle_uid": "eaa6b294-ac66-4fe2-b694-97b0a04f7be1"
+    },
+    {
+      "card_name": "Akal Pakal, First Among Equals",
+      "freq_base": 0.0016608996539792388,
+      "freq_ref": 0.0002732862673650649,
+      "lift": 2.7944368666243076,
+      "oracle_uid": "53bfe54e-9b97-4113-97d9-3c5dbc85e7cf"
+    },
+    {
+      "card_name": "Disruption Protocol",
+      "freq_base": 0.002837370242214533,
+      "freq_ref": 0.000728763379640173,
+      "lift": 2.7160397986403515,
+      "oracle_uid": "4ca3306b-06f7-4a09-b904-f5540d11ddf1"
+    },
+    {
+      "card_name": "Arcbound Worker",
+      "freq_base": 0.002560553633217993,
+      "freq_ref": 0.0006376679571851514,
+      "lift": 2.690199380134162,
+      "oracle_uid": "6d9af084-cd5d-4242-b0f0-24a36d0a75d4"
+    },
+    {
+      "card_name": "Bloatfly Swarm",
+      "freq_base": 0.004013840830449827,
+      "freq_ref": 0.0011842404919152813,
+      "lift": 2.680045309513243,
+      "oracle_uid": "fc50e254-71bc-46b3-93e6-c6eb820a3473"
+    },
+    {
+      "card_name": "Vexing Radgull",
+      "freq_base": 0.005467128027681661,
+      "freq_ref": 0.001730813026645411,
+      "lift": 2.6748669460007326,
+      "oracle_uid": "2b632e67-ff80-4d52-9f44-3bc4bf083ab1"
+    }
+  ],
+  "n_concordant_oof": 21955,
+  "n_divergent_oof": 14450,
+  "n_over_predicted_oof": 4373,
+  "n_under_predicted_oof": 10077,
+  "over_predicted_enriched": [
+    {
+      "card_name": "Titan's Presence",
+      "freq_base": 0.015549965698605077,
+      "freq_ref": 0.0,
+      "lift": 32.09993139721015,
+      "oracle_uid": "b011d6b2-8930-4192-aa94-82869faa991b"
+    },
+    {
+      "card_name": "Desecrate Reality",
+      "freq_base": 0.019666133089412303,
+      "freq_ref": 0.00029770765108663293,
+      "lift": 25.280104887977583,
+      "oracle_uid": "c9cd57f6-1f69-4ea1-9672-ca944759c7e8"
+    },
+    {
+      "card_name": "Zhulodok, Void Gorger",
+      "freq_base": 0.026297736107935055,
+      "freq_ref": 0.0005954153021732659,
+      "lift": 24.463540042547592,
+      "oracle_uid": "ec726c54-987b-48ed-8ffa-ec73a5e35333"
+    },
+    {
+      "card_name": "It That Heralds the End",
+      "freq_base": 0.025840384175623142,
+      "freq_ref": 0.0006946511858688102,
+      "lift": 22.04859835841296,
+      "oracle_uid": "c14ac951-329d-452b-be75-5c72166cd9c7"
+    },
+    {
+      "card_name": "Conduit of Ruin",
+      "freq_base": 0.03132860736336611,
+      "freq_ref": 0.0009923588369554431,
+      "lift": 21.327717285676115,
+      "oracle_uid": "cd3d79e9-c72e-4321-bca1-54505d51331a"
+    },
+    {
+      "card_name": "Eye of Ugin",
+      "freq_base": 0.0260690601417791,
+      "freq_ref": 0.0007938870695643545,
+      "lift": 20.534296050060053,
+      "oracle_uid": "10d13ff6-c4d0-4753-8939-a8a90f0e92bb"
+    },
+    {
+      "card_name": "Skittering Cicada",
+      "freq_base": 0.02355362451406357,
+      "freq_ref": 0.0006946511858688102,
+      "lift": 20.134433212461573,
+      "oracle_uid": "ac141679-6ada-49a8-b225-d1a20c3838db"
+    },
+    {
+      "card_name": "Abstruse Archaic",
+      "freq_base": 0.009375714612394238,
+      "freq_ref": 0.0,
+      "lift": 19.751429224788478,
+      "oracle_uid": "0727dc95-03df-4a2c-aed5-73fb840f3db7"
+    },
+    {
+      "card_name": "Breaker of Creation",
+      "freq_base": 0.01692202149554082,
+      "freq_ref": 0.0003969435347821772,
+      "lift": 19.423766179185137,
+      "oracle_uid": "785026c5-3f26-489c-8e26-96dd3ca6bc98"
+    },
+    {
+      "card_name": "Devourer of Destiny",
+      "freq_base": 0.010061742510862108,
+      "freq_ref": 9.92358836955443e-05,
+      "lift": 17.62535054764552,
+      "oracle_uid": "89215e6d-ebe7-4eb0-9999-11ee2e6eb1d2"
+    }
+  ],
+  "under_predicted_enriched": [
+    {
+      "card_name": "Vorinclex, Voice of Hunger",
+      "freq_base": 0.020641063808673216,
+      "freq_ref": 0.0,
+      "lift": 42.28212761734643,
+      "oracle_uid": "dbf0ad03-ab31-49d2-89b1-05b45948a61f"
+    },
+    {
+      "card_name": "Caesar, Legion's Emperor",
+      "freq_base": 0.013396844298898482,
+      "freq_ref": 0.0,
+      "lift": 27.793688597796965,
+      "oracle_uid": "8e62d05a-6efd-4764-bca8-97895e0cb613"
+    },
+    {
+      "card_name": "Champions from Beyond",
+      "freq_base": 0.011312890741292051,
+      "freq_ref": 0.0,
+      "lift": 23.625781482584102,
+      "oracle_uid": "57e4a1c0-4218-4a07-88e7-d6083884c2b6"
+    },
+    {
+      "card_name": "Timestream Navigator",
+      "freq_base": 0.010915947206509874,
+      "freq_ref": 0.0,
+      "lift": 22.831894413019747,
+      "oracle_uid": "d0896996-ee31-402e-b642-4e7cca4929fe"
+    },
+    {
+      "card_name": "Ajani, Nacatl Pariah // Ajani, Nacatl Avenger",
+      "freq_base": 0.010519003671727697,
+      "freq_ref": 0.0,
+      "lift": 22.038007343455394,
+      "oracle_uid": "2588f348-d7a3-46c8-9ace-dca53ed5ef99"
+    },
+    {
+      "card_name": "Wrecking Ball Arm",
+      "freq_base": 0.009725116602163342,
+      "freq_ref": 0.0,
+      "lift": 20.450233204326686,
+      "oracle_uid": "9f48cb32-46be-4c47-b558-2ea359efdd9b"
+    },
+    {
+      "card_name": "Expropriate",
+      "freq_base": 0.008633521881512354,
+      "freq_ref": 0.0,
+      "lift": 18.26704376302471,
+      "oracle_uid": "a69265b2-0e37-4d86-866e-e4a923233b4d"
+    },
+    {
+      "card_name": "Ms. Bumbleflower",
+      "freq_base": 0.011114418973900963,
+      "freq_ref": 0.000228675966155957,
+      "lift": 15.939072390669672,
+      "oracle_uid": "25636214-c6ea-4655-a5e8-98e735da5b05"
+    },
+    {
+      "card_name": "Time Stretch",
+      "freq_base": 0.007442691277165823,
+      "freq_ref": 0.0,
+      "lift": 15.885382554331645,
+      "oracle_uid": "72e56963-a9dd-44dc-a4d3-992b4d89dd28"
+    },
+    {
+      "card_name": "Time Sieve",
+      "freq_base": 0.00714498362607919,
+      "freq_ref": 0.0,
+      "lift": 15.289967252158378,
+      "oracle_uid": "3da5977a-36d4-4f32-ab9b-8b93809d818d"
+    }
+  ]
+}

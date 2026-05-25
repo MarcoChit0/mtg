@@ -1,0 +1,77 @@
+[
+  {
+    "feature": "game_changer_count",
+    "pi_mean": 0.22812528393766568,
+    "pi_std": 0.009590586939742107
+  },
+  {
+    "feature": "mass_land_denial_count",
+    "pi_mean": 0.028780250716031665,
+    "pi_std": 0.002907365534453523
+  },
+  {
+    "feature": "unique_atomic_combo_refs_count",
+    "pi_mean": 0.014273243702780459,
+    "pi_std": 0.005185971647610552
+  },
+  {
+    "feature": "tutor_count",
+    "pi_mean": 0.009742555909946281,
+    "pi_std": 0.003818254933740509
+  },
+  {
+    "feature": "cmc_1_count",
+    "pi_mean": 0.006011244769549529,
+    "pi_std": 0.0009695912286970237
+  },
+  {
+    "feature": "land_count",
+    "pi_mean": 0.004267302236242876,
+    "pi_std": 0.001889234623660794
+  },
+  {
+    "feature": "land_mana_production_W",
+    "pi_mean": 0.0035831538385281414,
+    "pi_std": 0.0011572005907634715
+  },
+  {
+    "feature": "nonland_cmc_mean",
+    "pi_mean": 0.003503751014300405,
+    "pi_std": 0.0019489741681530833
+  },
+  {
+    "feature": "land_mana_production_R",
+    "pi_mean": 0.003425951863714816,
+    "pi_std": 0.0013819182928359712
+  },
+  {
+    "feature": "potential_combo_refs_total",
+    "pi_mean": 0.003249451099223233,
+    "pi_std": 0.0020155517498711365
+  },
+  {
+    "feature": "sorcery_count",
+    "pi_mean": 0.0030269259997051544,
+    "pi_std": 0.0019139342067339769
+  },
+  {
+    "feature": "cmc_4_count",
+    "pi_mean": 0.0027701647934586073,
+    "pi_std": 0.002372111446280591
+  },
+  {
+    "feature": "legendary_count",
+    "pi_mean": 0.0027299704518693236,
+    "pi_std": 0.002149025979265287
+  },
+  {
+    "feature": "indestructible_count",
+    "pi_mean": 0.0026557315872911213,
+    "pi_std": 0.0014537781837724107
+  },
+  {
+    "feature": "noncreature_spell_count",
+    "pi_mean": 0.002624705805776195,
+    "pi_std": 0.0014001499537471612
+  }
+]

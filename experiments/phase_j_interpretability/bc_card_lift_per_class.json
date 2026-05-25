@@ -1,0 +1,428 @@
+{
+  "2": [
+    {
+      "card_name": "Owlbear",
+      "freq_in_class": 0.003428897990284789,
+      "freq_overall": 0.000988875154511743,
+      "lift": 3.467473092675492,
+      "oracle_uid": "0fab815f-bccf-40ef-95e9-ba64b137fb8c"
+    },
+    {
+      "card_name": "Bear Cub",
+      "freq_in_class": 0.004286122487855986,
+      "freq_overall": 0.0013185002060156572,
+      "lift": 3.2507560243832745,
+      "oracle_uid": "ed206651-3d9b-4546-8d45-0682817192fd"
+    },
+    {
+      "card_name": "Miscalculation",
+      "freq_in_class": 0.0026669206591103914,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 3.23630821983046,
+      "oracle_uid": "9078db26-3a54-4a11-9aae-e45c38da7226"
+    },
+    {
+      "card_name": "Zodiac Monkey",
+      "freq_in_class": 0.00314315649109439,
+      "freq_overall": 0.000988875154511743,
+      "lift": 3.1785170016192015,
+      "oracle_uid": "47dd7ef4-7645-4878-ab91-261aa8fcf834"
+    },
+    {
+      "card_name": "Tree Monkey",
+      "freq_in_class": 0.00314315649109439,
+      "freq_overall": 0.000988875154511743,
+      "lift": 3.1785170016192015,
+      "oracle_uid": "d7318464-e400-424f-ae6d-a9070c64df04"
+    },
+    {
+      "card_name": "Striped Bears",
+      "freq_in_class": 0.0028574149919039908,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 3.1522482660686295,
+      "oracle_uid": "ac856e91-1b88-464b-9420-dc311ce814ea"
+    },
+    {
+      "card_name": "Ulvenwald Bear",
+      "freq_in_class": 0.0028574149919039908,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 3.1522482660686295,
+      "oracle_uid": "2a79c29c-e539-49c5-b10c-1d5fd77842c9"
+    },
+    {
+      "card_name": "Wily Bandar",
+      "freq_in_class": 0.0025716734927135917,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 3.1207257834079436,
+      "oracle_uid": "2b0ba5a5-649a-4d7a-8136-6bcf692337f5"
+    },
+    {
+      "card_name": "Burnout Bashtronaut",
+      "freq_in_class": 0.0025716734927135917,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 3.1207257834079436,
+      "oracle_uid": "1b122fbb-c2e1-42d1-bfc5-fcacacdfa0bc"
+    },
+    {
+      "card_name": "Goliath Paladin",
+      "freq_in_class": 0.00304790932469759,
+      "freq_overall": 0.000988875154511743,
+      "lift": 3.0821983046004378,
+      "oracle_uid": "269a02ca-1425-4b32-81f3-440e1caadb17"
+    },
+    {
+      "card_name": "Chariot of Victory",
+      "freq_in_class": 0.003524145156681589,
+      "freq_overall": 0.0011536876802637,
+      "lift": 3.054678676880792,
+      "oracle_uid": "5a40339d-7821-4f37-a957-1a6ebdd993e0"
+    },
+    {
+      "card_name": "At Knifepoint",
+      "freq_in_class": 0.002762167825507191,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 3.047173323866342,
+      "oracle_uid": "bddb2064-afdb-4184-ae4a-633745e64a3c"
+    },
+    {
+      "card_name": "Compleated Huntmaster",
+      "freq_in_class": 0.002476426326316792,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 3.005143346985427,
+      "oracle_uid": "65b8bb9b-91f9-44e2-aa6e-e82e3760a4d9"
+    },
+    {
+      "card_name": "Start the TARDIS",
+      "freq_in_class": 0.0029526621583007904,
+      "freq_overall": 0.000988875154511743,
+      "lift": 2.985879607581674,
+      "oracle_uid": "31b72bcc-2f45-4ff8-8e4b-27c020ff0e32"
+    },
+    {
+      "card_name": "Valiant Changeling",
+      "freq_in_class": 0.0029526621583007904,
+      "freq_overall": 0.000988875154511743,
+      "lift": 2.985879607581674,
+      "oracle_uid": "65d9b8b6-5215-4037-8e50-e0ca80c5dc9e"
+    },
+    {
+      "card_name": "Scrounging Bandar",
+      "freq_in_class": 0.003428897990284789,
+      "freq_overall": 0.0011536876802637,
+      "lift": 2.972119793721851,
+      "oracle_uid": "8e1eff5a-77e8-4ea2-96b8-547504f83b45"
+    },
+    {
+      "card_name": "Aryel, Knight of Windgrace",
+      "freq_in_class": 0.003428897990284789,
+      "freq_overall": 0.0011536876802637,
+      "lift": 2.972119793721851,
+      "oracle_uid": "9956f9b7-0140-484c-b606-3685690b84cc"
+    },
+    {
+      "card_name": "Pale Bears",
+      "freq_in_class": 0.00314315649109439,
+      "freq_overall": 0.0010712814173877215,
+      "lift": 2.93401569380234,
+      "oracle_uid": "0acb070b-6e81-4e0e-925d-14da9b931355"
+    },
+    {
+      "card_name": "Mother Bear",
+      "freq_in_class": 0.004571863987046385,
+      "freq_overall": 0.001565718994643593,
+      "lift": 2.919977341200415,
+      "oracle_uid": "fe742976-ef13-4c25-972f-254b1ed436de"
+    },
+    {
+      "card_name": "Balduvian Bears",
+      "freq_in_class": 0.004286122487855986,
+      "freq_overall": 0.0014833127317676143,
+      "lift": 2.8895609105629108,
+      "oracle_uid": "32c10a3e-85b0-49af-9b23-81d0b7e407df"
+    }
+  ],
+  "3": [
+    {
+      "card_name": "Ongoing Investigation",
+      "freq_in_class": 0.0018052955335651243,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 2.1907261299812784,
+      "oracle_uid": "68227832-2916-49b9-92bb-c09b8a0c13f5"
+    },
+    {
+      "card_name": "Asmoranomardicadaistinaculdacar",
+      "freq_in_class": 0.0016715699384862264,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 2.028450120353036,
+      "oracle_uid": "1f74e26f-5cf3-4b0e-bcc6-f858599474fc"
+    },
+    {
+      "card_name": "Rustler Rampage",
+      "freq_in_class": 0.0025407863064990637,
+      "freq_overall": 0.0013185002060156572,
+      "lift": 1.9270276143353835,
+      "oracle_uid": "ef0c0f28-e1ee-42a1-9878-95a0ceb0a9fa"
+    },
+    {
+      "card_name": "Detective of the Month",
+      "freq_in_class": 0.006017651778550415,
+      "freq_overall": 0.003131437989287186,
+      "lift": 1.921689587702876,
+      "oracle_uid": "10d1d6ca-95f8-48da-8798-37c8aadb1f1f"
+    },
+    {
+      "card_name": "Book of Mazarbul",
+      "freq_in_class": 0.0017384327360256753,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 1.9178073865155971,
+      "oracle_uid": "4598c221-b111-4bde-b4dc-673186c4efe6"
+    },
+    {
+      "card_name": "Lamentation",
+      "freq_in_class": 0.002674511901577962,
+      "freq_overall": 0.0014009064688916357,
+      "lift": 1.9091295250381513,
+      "oracle_uid": "88e43e62-8bce-41b3-ac2d-47043fcc7077"
+    },
+    {
+      "card_name": "Braulios of Pheres Band",
+      "freq_in_class": 0.002340197913880717,
+      "freq_overall": 0.0012360939431396785,
+      "lift": 1.8932201123295,
+      "oracle_uid": "70e247e5-6ca4-458c-9519-d19b400955f6"
+    },
+    {
+      "card_name": "Waterbender's Restoration",
+      "freq_in_class": 0.0048141214228403315,
+      "freq_overall": 0.002554594149155336,
+      "lift": 1.88449559568282,
+      "oracle_uid": "285046f6-b3c4-4eb7-8712-9dffebabc762"
+    },
+    {
+      "card_name": "Dance of the Tumbleweeds",
+      "freq_in_class": 0.0020058839261834715,
+      "freq_overall": 0.0010712814173877215,
+      "lift": 1.8724154957104944,
+      "oracle_uid": "7c57d4aa-d221-4b36-a544-9fa89d63ffbe"
+    },
+    {
+      "card_name": "Foundation Breaker",
+      "freq_in_class": 0.01123294998662744,
+      "freq_overall": 0.006015657189946436,
+      "lift": 1.8672855902427943,
+      "oracle_uid": "8b7a3613-f1bd-4262-9b11-b631167c2c2d"
+    },
+    {
+      "card_name": "Tanufel Rimespeaker",
+      "freq_in_class": 0.0015378443434073282,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 1.8661741107247927,
+      "oracle_uid": "bf8de96b-0a75-4459-a123-dcf95e1b89f2"
+    },
+    {
+      "card_name": "Saproling Cluster",
+      "freq_in_class": 0.0015378443434073282,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 1.8661741107247927,
+      "oracle_uid": "3b64051e-d320-4991-bc9e-6e1435a23c17"
+    },
+    {
+      "card_name": "Canyon Jerboa",
+      "freq_in_class": 0.0015378443434073282,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 1.8661741107247927,
+      "oracle_uid": "254d4918-de40-4ac4-b542-f5c67a5e21eb"
+    },
+    {
+      "card_name": "Emergency Weld",
+      "freq_in_class": 0.0015378443434073282,
+      "freq_overall": 0.0008240626287597857,
+      "lift": 1.8661741107247927,
+      "oracle_uid": "86b0e978-5b4e-4bb7-bfda-be899c632d8e"
+    },
+    {
+      "card_name": "Nikya of the Old Ways",
+      "freq_in_class": 0.002607649104038513,
+      "freq_overall": 0.0014009064688916357,
+      "lift": 1.8614012869121974,
+      "oracle_uid": "ebf3fd80-9574-489b-9428-f4251834bdc4"
+    },
+    {
+      "card_name": "Five Hundred Year Diary",
+      "freq_in_class": 0.003811179459748596,
+      "freq_overall": 0.0020601565718994645,
+      "lift": 1.8499465097619685,
+      "oracle_uid": "9bdd6fea-d436-412b-a7b7-bbdba73dc986"
+    },
+    {
+      "card_name": "Wren's Run Packmaster",
+      "freq_in_class": 0.0016715699384862264,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 1.844045563957305,
+      "oracle_uid": "d4d27fef-e86b-4dd3-a15e-a0db8d0725ee"
+    },
+    {
+      "card_name": "The Boulder, Ready to Rumble",
+      "freq_in_class": 0.0016715699384862264,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 1.844045563957305,
+      "oracle_uid": "d33ee141-a880-4368-a274-a6ae2f2c624b"
+    },
+    {
+      "card_name": "Flamebraider",
+      "freq_in_class": 0.0016715699384862264,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 1.844045563957305,
+      "oracle_uid": "c552bd73-ce75-40fd-9d80-9e90b6f45274"
+    },
+    {
+      "card_name": "Thorn Mammoth",
+      "freq_in_class": 0.004546670232682536,
+      "freq_overall": 0.002472187886279357,
+      "lift": 1.8391281091200857,
+      "oracle_uid": "d7337b13-5459-434a-aa56-e1547b875594"
+    }
+  ],
+  "4": [
+    {
+      "card_name": "Blood Moon",
+      "freq_in_class": 0.034794520547945205,
+      "freq_overall": 0.01046559538524928,
+      "lift": 3.324657534246575,
+      "oracle_uid": "94fac5fe-97d5-4c12-a80c-8efff9d853ae"
+    },
+    {
+      "card_name": "Winter Moon",
+      "freq_in_class": 0.020821917808219178,
+      "freq_overall": 0.006262875978574372,
+      "lift": 3.324657534246575,
+      "oracle_uid": "b922f057-1c91-43eb-b74a-8a933b1be2d2"
+    },
+    {
+      "card_name": "Ruination",
+      "freq_in_class": 0.005479452054794521,
+      "freq_overall": 0.0016481252575195715,
+      "lift": 3.324657534246575,
+      "oracle_uid": "59dbc873-72d9-4e7b-9442-2c7b8e8523e1"
+    },
+    {
+      "card_name": "Harbinger of the Seas",
+      "freq_in_class": 0.012968036529680366,
+      "freq_overall": 0.003955500618046972,
+      "lift": 3.2784817351598172,
+      "oracle_uid": "84910453-e5dc-4bff-8554-86a5f4ab2746"
+    },
+    {
+      "card_name": "Back to Basics",
+      "freq_in_class": 0.008401826484018264,
+      "freq_overall": 0.0026370004120313145,
+      "lift": 3.186130136986301,
+      "oracle_uid": "05c2dec2-d2f7-4036-b91f-4fccba10a8bb"
+    },
+    {
+      "card_name": "Chrome Mox",
+      "freq_in_class": 0.06666666666666667,
+      "freq_overall": 0.02093119077049856,
+      "lift": 3.18503937007874,
+      "oracle_uid": "ec3d4466-547c-4e02-b1b5-a156ec4637e9"
+    },
+    {
+      "card_name": "Imperial Seal",
+      "freq_in_class": 0.021095890410958905,
+      "freq_overall": 0.006674907292954265,
+      "lift": 3.1604769152714356,
+      "oracle_uid": "16cd0b90-f70c-4efa-b252-8de8784ef9a3"
+    },
+    {
+      "card_name": "Grim Monolith",
+      "freq_in_class": 0.021461187214611873,
+      "freq_overall": 0.006839719818706222,
+      "lift": 3.137728998184519,
+      "oracle_uid": "229d6627-1292-4ae1-8849-b0f956fa6540"
+    },
+    {
+      "card_name": "Mox Diamond",
+      "freq_in_class": 0.020273972602739727,
+      "freq_overall": 0.006510094767202307,
+      "lift": 3.114236171319577,
+      "oracle_uid": "f3c5978a-70fa-431f-933b-b954bd0db0ea"
+    },
+    {
+      "card_name": "Chain of Smog",
+      "freq_in_class": 0.013242009132420091,
+      "freq_overall": 0.004285125669550886,
+      "lift": 3.09022655426765,
+      "oracle_uid": "ea14c26b-bf2f-48b4-b879-6e63069ded1f"
+    },
+    {
+      "card_name": "Armageddon",
+      "freq_in_class": 0.011598173515981735,
+      "freq_overall": 0.0037906880922950145,
+      "lift": 3.0596486003573555,
+      "oracle_uid": "c9ed8b01-959a-47d6-891e-0abbdccf6e4f"
+    },
+    {
+      "card_name": "Trinisphere",
+      "freq_in_class": 0.0030136986301369864,
+      "freq_overall": 0.000988875154511743,
+      "lift": 3.047602739726027,
+      "oracle_uid": "69d994f2-b8f6-425f-9655-977c2144d40c"
+    },
+    {
+      "card_name": "Winter Orb",
+      "freq_in_class": 0.011780821917808219,
+      "freq_overall": 0.003873094355170993,
+      "lift": 3.041707956863888,
+      "oracle_uid": "1dcbd583-3388-4b34-a7cd-131648aa6abd"
+    },
+    {
+      "card_name": "Mana Vault",
+      "freq_in_class": 0.0845662100456621,
+      "freq_overall": 0.028100535640708694,
+      "lift": 3.0094163017715823,
+      "oracle_uid": "736892cb-a34b-4bb9-b56c-e26e3db207a2"
+    },
+    {
+      "card_name": "Pithing Needle",
+      "freq_in_class": 0.0031963470319634705,
+      "freq_overall": 0.0010712814173877215,
+      "lift": 2.9836670179135933,
+      "oracle_uid": "a188fe7e-68de-4c7c-806c-bfe8fc7b44bf"
+    },
+    {
+      "card_name": "Tainted Pact",
+      "freq_in_class": 0.0053881278538812786,
+      "freq_overall": 0.0018129377832715287,
+      "lift": 2.972042341220423,
+      "oracle_uid": "1a85ba2b-ae10-4917-954a-7709b75a9740"
+    },
+    {
+      "card_name": "Food Chain",
+      "freq_in_class": 0.015342465753424657,
+      "freq_overall": 0.00519159456118665,
+      "lift": 2.9552511415525116,
+      "oracle_uid": "5c8e5092-962e-49ef-ab82-8434e475e4e7"
+    },
+    {
+      "card_name": "Spelltithe Enforcer",
+      "freq_in_class": 0.0026484018264840183,
+      "freq_overall": 0.0009064688916357644,
+      "lift": 2.921668742216687,
+      "oracle_uid": "0da4988f-47ca-4786-ac33-edbc9cfd6785"
+    },
+    {
+      "card_name": "Temporal Manipulation",
+      "freq_in_class": 0.017899543378995433,
+      "freq_overall": 0.006180469715698393,
+      "lift": 2.896146118721461,
+      "oracle_uid": "6b6ac99a-7548-4cad-9fe5-ea611618ab9e"
+    },
+    {
+      "card_name": "Static Orb",
+      "freq_in_class": 0.005479452054794521,
+      "freq_overall": 0.0018953440461475072,
+      "lift": 2.8910065515187613,
+      "oracle_uid": "0004ebd0-dfd6-4276-b4a6-de0003e94237"
+    }
+  ]
+}

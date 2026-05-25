@@ -291,20 +291,29 @@ Relatório inclui: ranking completo, tabela BC vs DF por algoritmo, ganho/perda 
 - Maior gap F1−concord.: `df_gradient_boosting` (gap=+0.051) — melhor em y1, mas aprende particularidades da percepção humana
 - Todos os modelos DF superam a concordância base y1vs y2 (60,9%); modelos BC ficam abaixo
 
-## Fase J — Interpretabilidade
+## Fase J — Interpretabilidade ✓ concluída (2026-05-24)
 
-**Dois modelos**: `melhor_BC` e `melhor_DF` (definidos na Fase H).
+> Script: `scripts/phase_j_interpretability.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_j_interpretability`
+> Implementation report: `documents/reports/implementation/phase_j_interpretability.md`
 
-Para **Deck Features**:
-- Feature importance (importance nativo para árvores/ensembles, coeficientes para lineares, permutation importance como fallback universal).
-- Top 10-15 features com direção do efeito.
-- Features associadas a divergência entre `ŷ1` do modelo e `y2` (calculadora).
+**Dois modelos**: `melhor_BC` (`bc_gradient_boosting`) e `melhor_DF` (`df_gradient_boosting`), definidos em `experiments/best_models.json`.
 
-Para **Bag of Cards**:
-- Top-20 cartas mais importantes por classe prevista.
-- Cartas associadas a divergência entre `ŷ1` e `y2`.
+**DF — Permutation importance** (hold-out 80/20, n_val=2.427):
+- `game_changer_count` domina com PI=0.228 (vs 2º em 0.029 — mais de 7× mais importante)
+- `mass_land_denial_count`, `unique_atomic_combo_refs_count`, `tutor_count` completam top-4
+- Direção clara: `game_changer_count` varia 0.001 → 1.499 → 4.146 nos brackets 2→3→4
+- Divergência: decks concordantes (ŷ1=y2) têm 2.3× mais Game Changers que divergentes
 
-**Saída**: `documents/reports/interpretability.md`.
+**BC — Lift analysis sobre OOF predictions** (36.405 entradas):
+- Bracket 2: cartas tribal/animal (Owlbear, Bear Cub) — tema casual
+- Bracket 4: stax/prisão (Blood Moon, Ruination), fast mana (Chrome Mox, Mox Diamond, Mana Vault), tutors (Imperial Seal), combos (Food Chain), turnos extras
+- Concordância alta: Blood Moon, Imperial Seal, Force of Will — cartas objetivamente fortes reconhecidas por ambas as fontes
+- Sub-previstos (ŷ1 < y2): Vorinclex, Expropriate, Time Stretch — sinais que a calculadora penaliza mais que a comunidade
+
+**Saídas**:
+- `documents/reports/results/phase_j_interpretability.md` — auto-gerado
+- `documents/reports/implementation/phase_j_interpretability.md` — este relatório
+- `experiments/phase_j_interpretability/` — artefatos intermediários (PI raw, lift por classe, divergência)
 
 ## Fase K — Artigo
 
@@ -391,7 +400,7 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | ~~G~~ | — | ✓ concluída (2026-05-24) — 6 ensembles, melhor: `voting_top3_BC_DF` F1=0.6944, com `--all --force-recompute` |
 | ~~H~~ | — | ✓ concluída (2026-05-24) — melhor_BC=bc_gradient_boosting (F1=0.6433), melhor_DF=df_gradient_boosting (F1=0.6908) |
 | ~~I~~ | — | ✓ concluída (2026-05-24) — maior concord.: df_random_forest 69,3%; maior gap: df_gradient_boosting +0.051 |
-| J | 1,5 | interpretabilidade (2 modelos) |
+| ~~J~~ | — | ✓ concluída (2026-05-24) — PI: game_changer_count domina DF; BC: Blood Moon, Mana Vault em bracket 4 |
 | K (artigo) | 3 | escrita do artigo (seções extras se L/M rodarem) |
 | L (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |
 | M (opcional) | 1 | stacking — vira seção extra do artigo se feito |

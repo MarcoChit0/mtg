@@ -1,0 +1,15 @@
+{
+  "bc_gradient_boosting": {
+    "class_weight": "balanced",
+    "learning_rate": 0.05,
+    "max_iter": 200,
+    "max_leaf_nodes": 31
+  },
+  "df_gradient_boosting": {
+    "class_weight": "balanced",
+    "learning_rate": 0.05,
+    "max_iter": 200,
+    "max_leaf_nodes": 31
+  },
+  "note": "Modal hyperparams from 15 outer folds (Phase H). Used only for interpretation — generalisation metrics come from Phase E nested CV."
+}

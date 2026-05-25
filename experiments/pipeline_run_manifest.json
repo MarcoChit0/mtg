@@ -1,6 +1,6 @@
 {
   "command": "spot-checking",
-  "finished_at": "2026-05-24T23:18:52.642585+00:00",
+  "finished_at": "2026-05-25T01:41:54.595646+00:00",
   "parameters": {
     "algorithms": [
       "decision_tree",
@@ -25,7 +25,7 @@
     "manifest_path": "experiments\\pipeline_run_manifest.json",
     "max_rows": null,
     "n_jobs": -1,
-    "processed_dir": "C:\\Users\\henri\\AppData\\Local\\Temp\\tmpbxnw9d33\\processed",
+    "processed_dir": "C:\\Users\\henri\\AppData\\Local\\Temp\\tmpswiklpym\\processed",
     "quiet_progress": false,
     "rclone_bin": "rclone",
     "representations": [
@@ -48,7 +48,7 @@
         "C:\\Users\\henri\\Downloads\\Mestrado\\Cadeira ML\\mtg\\.venv\\Scripts\\python.exe",
         "scripts/phase_d_spot_check.py",
         "--processed-dir",
-        "C:\\Users\\henri\\AppData\\Local\\Temp\\tmpbxnw9d33\\processed",
+        "C:\\Users\\henri\\AppData\\Local\\Temp\\tmpswiklpym\\processed",
         "--docs-dir",
         "documents\\reports\\results",
         "--experiment-dir",
@@ -136,6 +136,6 @@
       "status": "dry_run"
     }
   ],
-  "started_at": "2026-05-24T23:18:52.638456+00:00",
+  "started_at": "2026-05-25T01:41:54.590436+00:00",
   "status": "ok"
 }

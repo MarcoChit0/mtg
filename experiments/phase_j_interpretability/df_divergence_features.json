@@ -1,0 +1,72 @@
+[
+  {
+    "delta": -1.2255305568516217,
+    "feature": "game_changer_count",
+    "mean_concordant": 2.1649568613984633,
+    "mean_divergent": 0.9394263045468416,
+    "normalized_delta": -0.557614360733941
+  },
+  {
+    "delta": -0.034387016872369724,
+    "feature": "salt_std",
+    "mean_concordant": 0.3752378240246141,
+    "mean_divergent": 0.34085080715224436,
+    "normalized_delta": -0.3413492396756901
+  },
+  {
+    "delta": -296.88981010280713,
+    "feature": "edhrec_rank_mean",
+    "mean_concordant": 2707.8037607338056,
+    "mean_divergent": 2410.9139506309984,
+    "normalized_delta": -0.2526948727471754
+  },
+  {
+    "delta": -0.02385889733298091,
+    "feature": "salt_mean",
+    "mean_concordant": 0.4455375057826979,
+    "mean_divergent": 0.421678608449717,
+    "normalized_delta": -0.24065062713455757
+  },
+  {
+    "delta": -213.8846141270276,
+    "feature": "edhrec_rank_median",
+    "mean_concordant": 1360.351847877409,
+    "mean_divergent": 1146.4672337503814,
+    "normalized_delta": -0.2348811729992974
+  },
+  {
+    "delta": -0.09504433463106446,
+    "feature": "mass_land_denial_count",
+    "mean_concordant": 0.09924024552517492,
+    "mean_divergent": 0.004195910894110467,
+    "normalized_delta": -0.23483923970004122
+  },
+  {
+    "delta": -1.6558843827556977,
+    "feature": "basic_land_count",
+    "mean_concordant": 15.678542301583894,
+    "mean_divergent": 14.022657918828196,
+    "normalized_delta": -0.21865342074665756
+  },
+  {
+    "delta": -253.56769357651274,
+    "feature": "edhrec_rank_std",
+    "mean_concordant": 3386.4179484686924,
+    "mean_divergent": 3132.8502548921797,
+    "normalized_delta": -0.21363839771401025
+  },
+  {
+    "delta": 1.596678484798904,
+    "feature": "nonbasic_land_count",
+    "mean_concordant": 19.323904365368932,
+    "mean_divergent": 20.920582850167836,
+    "normalized_delta": 0.20969442095176102
+  },
+  {
+    "delta": 1.3639094114582448,
+    "feature": "lands_that_produce_multiple_colors_count",
+    "mean_concordant": 11.345580976091343,
+    "mean_divergent": 12.709490387549588,
+    "normalized_delta": 0.19826105569577984
+  }
+]

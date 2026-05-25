@@ -20,6 +20,7 @@ scripts/
   phase_g_voting.py              ← Fase G (voting ensembles a partir de OOF predictions)
   phase_h_best_models.py         ← Fase H (seleção melhor_BC e melhor_DF, ranking, confusão)
   phase_i_model_vs_calculator.py ← Fase I (concordância ŷ1 vs y2 — descritivo, sem retreino)
+  phase_j_interpretability.py    ← Fase J (interpretabilidade: PI para DF, lift analysis para BC)
   sync_experiments_drive.py      ← Drive (uploads colaborador, downloads público)
 
 documents/
@@ -66,11 +67,11 @@ Estrutura mínima de um implementation report:
 | C | Filtro (y1,y2 ∈ {2,3,4}) + transformers leakage-safe | ✓ concluída | `phase_c_filter_dataset.py` + `preprocessing.py` |
 | D | Spot-check N=5 seeds, 7 algos, top-5 por representação | ✓ concluída | `phase_d_spot_check.py` |
 | E | Nested CV dos modelos individuais (5 folds × 3 repeats), grids tunados | ✓ concluída — 12/12 modelos, 15/15 folds | `phase_e_nested_cv.py` |
-| F | Verificação dos modelos individuais: completude, consistência, GroupKFold por comandante, testes estatísticos | ✓ implementada; executa com modelos parciais da Fase E | `phase_f_model_verification.py` |
-| G | Voting ensembles a partir de OOF predictions, só depois da F | ✓ implementada; executa com modelos parciais da Fase E | `phase_g_voting.py` |
+| F | Verificação dos modelos individuais: completude, consistência, GroupKFold por comandante, testes estatísticos | ✓ concluída (2026-05-24) — 12/12 modelos, F.1+F.2+F.3 com --all --group-kfold | `phase_f_model_verification.py` |
+| G | Voting ensembles a partir de OOF predictions, só depois da F | ✓ concluída (2026-05-24) — 6 ensembles, melhor: voting_top3_BC_DF F1=0.6944 | `phase_g_voting.py` |
 | H | Melhor modelo por representação | ✓ implementada e executada | `phase_h_best_models.py` |
 | I | Comparar predições dos modelos vs y2 (descritivo) | ✓ implementada e executada | `phase_i_model_vs_calculator.py` |
-| J | Interpretabilidade dos 2 melhores (BC + DF) | a fazer | — |
+| J | Interpretabilidade dos 2 melhores (BC + DF) | ✓ implementada e executada | `phase_j_interpretability.py` |
 | K | Artigo (template Moodle) | a fazer | — |
 | L | OOD (opcional): decks 500-1000 views | a fazer | — |
 | M | Stacking (opcional) | a fazer | — |

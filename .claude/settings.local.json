@@ -16,7 +16,12 @@
       "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m unittest discover -s tests)",
       "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -m scripts.phase_i_model_vs_calculator)",
       "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -c \"import json; json.load\\(open\\('experiments/nested_cv_summary.json', encoding='utf-8'\\)\\); print\\('nested_cv_summary.json: JSON valido'\\)\")",
-      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -c \"import json; json.load\\(open\\('experiments/statistical_tests.json', encoding='utf-8'\\)\\); print\\('statistical_tests.json: JSON valido'\\)\")"
+      "Bash(PYTHONIOENCODING=utf-8 uv run --no-sync python -c \"import json; json.load\\(open\\('experiments/statistical_tests.json', encoding='utf-8'\\)\\); print\\('statistical_tests.json: JSON valido'\\)\")",
+      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $line = Get-Content \"data\\\\processed\\\\archidekt\\\\bag_of_cards.jsonl\" -First 1; $obj = $line | ConvertFrom-Json; $props = $obj.PSObject.Properties.Name; \"Top-level keys: $\\($props.Count\\)\"; $props | Select-Object -First 10)",
+      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $line = Get-Content \"data\\\\processed\\\\archidekt\\\\cards.jsonl\" -First 1; $obj = $line | ConvertFrom-Json; $obj.PSObject.Properties.Name)",
+      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $line = Get-Content \"data\\\\processed\\\\archidekt\\\\cards.jsonl\" -First 1; $obj = $line | ConvertFrom-Json; \"oracle_id=$\\($obj.oracle_id\\)\"; \"name=$\\($obj.name\\)\")",
+      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $line = Get-Content \"data\\\\processed\\\\archidekt\\\\cards.jsonl\" -First 1; $obj = $line | ConvertFrom-Json; \"oracle_uid=$\\($obj.oracle_uid\\)\"; \"oracle_name=$\\($obj.oracle_name\\)\")",
+      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $env:PYTHONIOENCODING=\"utf-8\"; uv run --no-sync python -m scripts.phase_j_interpretability 2>&1)"
     ]
   }
 }
