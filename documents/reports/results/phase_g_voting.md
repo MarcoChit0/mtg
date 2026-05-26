@@ -1,6 +1,6 @@
 # Voting Ensembles — Fase G
 
-Ensembles de hard-voting construídos sobre as predições out-of-fold (OOF) geradas na Fase E. Nenhum modelo é retreinado. O tie-break usa a macro-F1 média dos membros que votaram na classe; empate residual → menor rótulo.
+Ensembles de hard-voting simples construídos sobre as predições out-of-fold (OOF) geradas na Fase E. Nenhum modelo é retreinado. Os membros são os top-N modelos individuais globais por macro-F1 média na Fase E, independente de representação. Em empate de votos, o tie-break usa a macro-F1 média dos membros que votaram na classe; empate residual → menor rótulo.
 
 ## Modelos individuais (referência)
 
@@ -21,22 +21,19 @@ Ensembles de hard-voting construídos sobre as predições out-of-fold (OOF) ger
 
 ## Resultados dos ensembles
 
-| Ensemble | Membros | Folds | Macro-F1 média | Macro-F1 dp | Accuracy média |
-|---|---|---:|---:|---:|---:|
-| `voting_top3_BC` | `bc_gradient_boosting`, `bc_random_forest`, `bc_logistic_regression` | 15/15 | 0.6495 | 0.0116 | 0.6520 |
-| `voting_top5_BC` | `bc_gradient_boosting`, `bc_random_forest`, `bc_logistic_regression`, `bc_linear_svc`, `bc_naive_bayes` | 15/15 | 0.6450 | 0.0105 | 0.6503 |
-| `voting_top3_DF` | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree` | 15/15 | 0.6941 | 0.0096 | 0.7080 |
-| `voting_top5_DF` | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree`, `df_logistic_regression`, `df_linear_svc` | 15/15 | 0.6932 | 0.0076 | 0.7082 |
-| `voting_top3_BC_DF` | `bc_gradient_boosting`, `bc_random_forest`, `bc_logistic_regression`, `df_gradient_boosting`, `df_random_forest`, `df_decision_tree` | 15/15 | 0.6944 | 0.0095 | 0.7065 |
-| `voting_all` | `bc_decision_tree`, `bc_gradient_boosting`, `bc_linear_svc`, `bc_logistic_regression`, `bc_naive_bayes`, `bc_random_forest`, `df_decision_tree`, `df_gradient_boosting`, `df_linear_svc`, `df_logistic_regression`, `df_naive_bayes`, `df_random_forest` | 15/15 | 0.6900 | 0.0094 | 0.6995 |
+| Ensemble | N | Membros | Folds | Macro-F1 média | Macro-F1 dp | Accuracy média |
+|---|---:|---|---:|---:|---:|---:|
+| `voting_top3` | 3 | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree` | 15/15 | 0.6941 | 0.0096 | 0.7080 |
+| `voting_top5` | 5 | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree`, `df_logistic_regression`, `df_linear_svc` | 15/15 | 0.6932 | 0.0076 | 0.7082 |
+| `voting_top7` | 7 | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree`, `df_logistic_regression`, `df_linear_svc`, `bc_gradient_boosting`, `bc_random_forest` | 15/15 | 0.6936 | 0.0085 | 0.7071 |
 
 ## Comparação: melhor modelo individual vs melhor ensemble
 
 | Item | Macro-F1 |
 |---|---:|
 | Melhor modelo individual (`df_gradient_boosting`) | 0.6908 |
-| Melhor ensemble (`voting_top3_BC_DF`) | 0.6944 |
-| Delta (ensemble − individual) | +0.0036 |
+| Melhor ensemble (`voting_top3`) | 0.6941 |
+| Delta (ensemble − individual) | +0.0033 |
 
 ## Artefatos
 

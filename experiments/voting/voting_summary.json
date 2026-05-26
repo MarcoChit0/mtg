@@ -1,1002 +1,8 @@
 {
   "ensembles": [
     {
-      "voting_id": "voting_top3_BC",
-      "description": "Top-3 modelos BC",
-      "members": [
-        "bc_gradient_boosting",
-        "bc_random_forest",
-        "bc_logistic_regression"
-      ],
-      "n_members": 3,
-      "n_folds": 15,
-      "status": "ok",
-      "aggregate": {
-        "macro_f1_mean": 0.6495424802670472,
-        "macro_f1_std": 0.011611395479831577,
-        "accuracy_mean": 0.6519708831204505,
-        "accuracy_std": 0.011208102903950246,
-        "precision_macro_mean": 0.6403708923211392,
-        "precision_macro_std": 0.010937257267300105,
-        "recall_macro_mean": 0.677465421622559,
-        "recall_macro_std": 0.012958700220954236,
-        "confusion_matrix_sum": [
-          [
-            5253,
-            1643,
-            67
-          ],
-          [
-            4274,
-            11132,
-            3245
-          ],
-          [
-            651,
-            2790,
-            7350
-          ]
-        ],
-        "labels": [
-          2,
-          3,
-          4
-        ]
-      },
-      "folds": [
-        {
-          "fold_id": "r1_f1",
-          "n_test": 2427,
-          "macro_f1": 0.644052537865419,
-          "accuracy": 0.6468891635764318,
-          "precision_macro": 0.6367225221804583,
-          "recall_macro": 0.6772561036546962,
-          "confusion_matrix": [
-            [
-              362,
-              98,
-              5
-            ],
-            [
-              294,
-              728,
-              221
-            ],
-            [
-              70,
-              169,
-              480
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f2",
-          "n_test": 2427,
-          "macro_f1": 0.6444520641782492,
-          "accuracy": 0.6481252575195715,
-          "precision_macro": 0.6347186500860872,
-          "recall_macro": 0.6689987565785372,
-          "confusion_matrix": [
-            [
-              331,
-              129,
-              4
-            ],
-            [
-              283,
-              739,
-              222
-            ],
-            [
-              38,
-              178,
-              503
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6400461106717206,
-          "accuracy": 0.642356819118253,
-          "precision_macro": 0.630534538194292,
-          "recall_macro": 0.6681683000339828,
-          "confusion_matrix": [
-            [
-              344,
-              111,
-              9
-            ],
-            [
-              294,
-              727,
-              223
-            ],
-            [
-              41,
-              190,
-              488
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6510503799935845,
-          "accuracy": 0.6514215080346106,
-          "precision_macro": 0.6415803423467527,
-          "recall_macro": 0.6804084096996822,
-          "confusion_matrix": [
-            [
-              358,
-              103,
-              3
-            ],
-            [
-              299,
-              734,
-              210
-            ],
-            [
-              31,
-              200,
-              489
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f5",
-          "n_test": 2427,
-          "macro_f1": 0.6700937078310126,
-          "accuracy": 0.6720230737536053,
-          "precision_macro": 0.6608149374200649,
-          "recall_macro": 0.699743249296957,
-          "confusion_matrix": [
-            [
-              369,
-              91,
-              4
-            ],
-            [
-              277,
-              768,
-              198
-            ],
-            [
-              42,
-              184,
-              494
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6382381288735174,
-          "accuracy": 0.638648537288834,
-          "precision_macro": 0.6294782250554435,
-          "recall_macro": 0.6748243122337728,
-          "confusion_matrix": [
-            [
-              362,
-              98,
-              5
-            ],
-            [
-              308,
-              693,
-              242
-            ],
-            [
-              57,
-              167,
-              495
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f2",
-          "n_test": 2427,
-          "macro_f1": 0.6690680948975029,
-          "accuracy": 0.6720230737536053,
-          "precision_macro": 0.6593978569408538,
-          "recall_macro": 0.6957418405012485,
-          "confusion_matrix": [
-            [
-              355,
-              104,
-              5
-            ],
-            [
-              274,
-              771,
-              199
-            ],
-            [
-              37,
-              177,
-              505
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6519057477097665,
-          "accuracy": 0.6555418211784095,
-          "precision_macro": 0.6429144085070128,
-          "recall_macro": 0.6774297485764227,
-          "confusion_matrix": [
-            [
-              349,
-              111,
-              4
-            ],
-            [
-              269,
-              762,
-              213
-            ],
-            [
-              49,
-              190,
-              480
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6474202574681679,
-          "accuracy": 0.6501854140914709,
-          "precision_macro": 0.6382401421642613,
-          "recall_macro": 0.6736426414485616,
-          "confusion_matrix": [
-            [
-              340,
-              122,
-              2
-            ],
-            [
-              291,
-              738,
-              214
-            ],
-            [
-              39,
-              181,
-              500
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f5",
-          "n_test": 2427,
-          "macro_f1": 0.6366694514062935,
-          "accuracy": 0.6390605686032138,
-          "precision_macro": 0.627702190983974,
-          "recall_macro": 0.6622507754793382,
-          "confusion_matrix": [
-            [
-              339,
-              122,
-              3
-            ],
-            [
-              291,
-              731,
-              221
-            ],
-            [
-              40,
-              199,
-              481
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6454200024282811,
-          "accuracy": 0.6485372888339513,
-          "precision_macro": 0.6362668713426313,
-          "recall_macro": 0.6706076959573167,
-          "confusion_matrix": [
-            [
-              340,
-              121,
-              4
-            ],
-            [
-              284,
-              743,
-              216
-            ],
-            [
-              41,
-              187,
-              491
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f2",
-          "n_test": 2427,
-          "macro_f1": 0.6591572469952408,
-          "accuracy": 0.6608982282653482,
-          "precision_macro": 0.6482335010089685,
-          "recall_macro": 0.685627096260956,
-          "confusion_matrix": [
-            [
-              346,
-              113,
-              5
-            ],
-            [
-              280,
-              747,
-              217
-            ],
-            [
-              26,
-              182,
-              511
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6570862583341156,
-          "accuracy": 0.6571899464359291,
-          "precision_macro": 0.6459144140149727,
-          "recall_macro": 0.6871372754360894,
-          "confusion_matrix": [
-            [
-              366,
-              97,
-              1
-            ],
-            [
-              270,
-              744,
-              230
-            ],
-            [
-              39,
-              195,
-              485
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6585430215731137,
-          "accuracy": 0.6608982282653482,
-          "precision_macro": 0.6492129203284939,
-          "recall_macro": 0.6898748958407183,
-          "confusion_matrix": [
-            [
-              361,
-              92,
-              11
-            ],
-            [
-              289,
-              744,
-              210
-            ],
-            [
-              46,
-              175,
-              499
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f5",
-          "n_test": 2427,
-          "macro_f1": 0.629934193779723,
-          "accuracy": 0.6357643180881747,
-          "precision_macro": 0.6238318642428231,
-          "recall_macro": 0.6502702233401043,
-          "confusion_matrix": [
-            [
-              331,
-              131,
-              2
-            ],
-            [
-              271,
-              763,
-              209
-            ],
-            [
-              55,
-              216,
-              449
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        }
-      ]
-    },
-    {
-      "voting_id": "voting_top5_BC",
-      "description": "Top-5 modelos BC",
-      "members": [
-        "bc_gradient_boosting",
-        "bc_random_forest",
-        "bc_logistic_regression",
-        "bc_linear_svc",
-        "bc_naive_bayes"
-      ],
-      "n_members": 5,
-      "n_folds": 15,
-      "status": "ok",
-      "aggregate": {
-        "macro_f1_mean": 0.6449994212169952,
-        "macro_f1_std": 0.010452179999202215,
-        "accuracy_mean": 0.6503227578629309,
-        "accuracy_std": 0.009966519147129245,
-        "precision_macro_mean": 0.6361995052230874,
-        "precision_macro_std": 0.009852092011017057,
-        "recall_macro_mean": 0.6657620243623664,
-        "recall_macro_std": 0.011988931573688643,
-        "confusion_matrix_sum": [
-          [
-            4886,
-            2006,
-            71
-          ],
-          [
-            4003,
-            11410,
-            3238
-          ],
-          [
-            607,
-            2805,
-            7379
-          ]
-        ],
-        "labels": [
-          2,
-          3,
-          4
-        ]
-      },
-      "folds": [
-        {
-          "fold_id": "r1_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6494229447188459,
-          "accuracy": 0.6551297898640297,
-          "precision_macro": 0.639921366296251,
-          "recall_macro": 0.6727706043018925,
-          "confusion_matrix": [
-            [
-              337,
-              124,
-              4
-            ],
-            [
-              247,
-              766,
-              230
-            ],
-            [
-              62,
-              170,
-              487
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f2",
-          "n_test": 2427,
-          "macro_f1": 0.644965293064886,
-          "accuracy": 0.6522455706633704,
-          "precision_macro": 0.6361651247659506,
-          "recall_macro": 0.6613182118026937,
-          "confusion_matrix": [
-            [
-              308,
-              154,
-              2
-            ],
-            [
-              251,
-              772,
-              221
-            ],
-            [
-              36,
-              180,
-              503
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6402724613802536,
-          "accuracy": 0.6452410383189122,
-          "precision_macro": 0.63132958459451,
-          "recall_macro": 0.6618178267144574,
-          "confusion_matrix": [
-            [
-              324,
-              131,
-              9
-            ],
-            [
-              280,
-              750,
-              214
-            ],
-            [
-              36,
-              191,
-              492
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6446917823515145,
-          "accuracy": 0.6481252575195715,
-          "precision_macro": 0.6370479652887439,
-          "recall_macro": 0.6655097794135023,
-          "confusion_matrix": [
-            [
-              334,
-              127,
-              3
-            ],
-            [
-              284,
-              760,
-              199
-            ],
-            [
-              29,
-              212,
-              479
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f5",
-          "n_test": 2427,
-          "macro_f1": 0.6612469877401841,
-          "accuracy": 0.6658426040379068,
-          "precision_macro": 0.6518825221917042,
-          "recall_macro": 0.6837595130431566,
-          "confusion_matrix": [
-            [
-              342,
-              116,
-              6
-            ],
-            [
-              258,
-              779,
-              206
-            ],
-            [
-              41,
-              184,
-              495
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6324306095100356,
-          "accuracy": 0.6357643180881747,
-          "precision_macro": 0.6228998844307259,
-          "recall_macro": 0.659429008749063,
-          "confusion_matrix": [
-            [
-              331,
-              129,
-              5
-            ],
-            [
-              290,
-              715,
-              238
-            ],
-            [
-              49,
-              173,
-              497
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f2",
-          "n_test": 2427,
-          "macro_f1": 0.6584844983827239,
-          "accuracy": 0.6629583848372477,
-          "precision_macro": 0.6487546880874177,
-          "recall_macro": 0.6795459347579361,
-          "confusion_matrix": [
-            [
-              333,
-              127,
-              4
-            ],
-            [
-              260,
-              773,
-              211
-            ],
-            [
-              33,
-              183,
-              503
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6478674907556865,
-          "accuracy": 0.6547177585496498,
-          "precision_macro": 0.6399534378690347,
-          "recall_macro": 0.6657511536326519,
-          "confusion_matrix": [
-            [
-              326,
-              133,
-              5
-            ],
-            [
-              247,
-              787,
-              210
-            ],
-            [
-              47,
-              196,
-              476
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6382259876422256,
-          "accuracy": 0.6431808817470128,
-          "precision_macro": 0.6292707098399525,
-          "recall_macro": 0.6598239027442567,
-          "confusion_matrix": [
-            [
-              319,
-              142,
-              3
-            ],
-            [
-              283,
-              741,
-              219
-            ],
-            [
-              38,
-              181,
-              501
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f5",
-          "n_test": 2427,
-          "macro_f1": 0.6408819511199654,
-          "accuracy": 0.6468891635764318,
-          "precision_macro": 0.6322864227275992,
-          "recall_macro": 0.6599734117700246,
-          "confusion_matrix": [
-            [
-              317,
-              143,
-              4
-            ],
-            [
-              268,
-              759,
-              216
-            ],
-            [
-              39,
-              187,
-              494
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6371111100383104,
-          "accuracy": 0.6444169756901524,
-          "precision_macro": 0.6288157816506991,
-          "recall_macro": 0.6539014092098137,
-          "confusion_matrix": [
-            [
-              307,
-              153,
-              5
-            ],
-            [
-              263,
-              762,
-              218
-            ],
-            [
-              38,
-              186,
-              495
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f2",
-          "n_test": 2427,
-          "macro_f1": 0.6453307910380952,
-          "accuracy": 0.6497733827770911,
-          "precision_macro": 0.6357037252968728,
-          "recall_macro": 0.6653114043535454,
-          "confusion_matrix": [
-            [
-              320,
-              139,
-              5
-            ],
-            [
-              274,
-              753,
-              217
-            ],
-            [
-              25,
-              190,
-              504
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6592645571005429,
-          "accuracy": 0.6629583848372477,
-          "precision_macro": 0.6493457694254643,
-          "recall_macro": 0.6829355201965583,
-          "confusion_matrix": [
-            [
-              344,
-              117,
-              3
-            ],
-            [
-              259,
-              770,
-              215
-            ],
-            [
-              41,
-              183,
-              495
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f4",
-          "n_test": 2427,
-          "macro_f1": 0.652080595288593,
-          "accuracy": 0.6571899464359291,
-          "precision_macro": 0.6431010920218406,
-          "recall_macro": 0.6763399815467256,
-          "confusion_matrix": [
-            [
-              335,
-              119,
-              10
-            ],
-            [
-              278,
-              758,
-              207
-            ],
-            [
-              44,
-              174,
-              502
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f5",
-          "n_test": 2427,
-          "macro_f1": 0.6227142581230637,
-          "accuracy": 0.630407911001236,
-          "precision_macro": 0.6165145038595452,
-          "recall_macro": 0.6382427031992183,
-          "confusion_matrix": [
-            [
-              309,
-              152,
-              3
-            ],
-            [
-              261,
-              765,
-              217
-            ],
-            [
-              49,
-              215,
-              456
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        }
-      ]
-    },
-    {
-      "voting_id": "voting_top3_DF",
-      "description": "Top-3 modelos DF",
+      "voting_id": "voting_top3",
+      "description": "Top-3 modelos globais por macro-F1",
       "members": [
         "df_gradient_boosting",
         "df_random_forest",
@@ -1491,8 +497,8 @@
       ]
     },
     {
-      "voting_id": "voting_top5_DF",
-      "description": "Top-5 modelos DF",
+      "voting_id": "voting_top5",
+      "description": "Top-5 modelos globais por macro-F1",
       "members": [
         "df_gradient_boosting",
         "df_random_forest",
@@ -1989,43 +995,44 @@
       ]
     },
     {
-      "voting_id": "voting_top3_BC_DF",
-      "description": "Top-3 BC + Top-3 DF",
+      "voting_id": "voting_top7",
+      "description": "Top-7 modelos globais por macro-F1",
       "members": [
-        "bc_gradient_boosting",
-        "bc_random_forest",
-        "bc_logistic_regression",
         "df_gradient_boosting",
         "df_random_forest",
-        "df_decision_tree"
+        "df_decision_tree",
+        "df_logistic_regression",
+        "df_linear_svc",
+        "bc_gradient_boosting",
+        "bc_random_forest"
       ],
-      "n_members": 6,
+      "n_members": 7,
       "n_folds": 15,
       "status": "ok",
       "aggregate": {
-        "macro_f1_mean": 0.6944214415796139,
-        "macro_f1_std": 0.009512775087298754,
-        "accuracy_mean": 0.7065238291443483,
-        "accuracy_std": 0.008714753355458238,
-        "precision_macro_mean": 0.7087460160187035,
-        "precision_macro_std": 0.0085553584643486,
-        "recall_macro_mean": 0.7000257203222647,
-        "recall_macro_std": 0.01140831810134229,
+        "macro_f1_mean": 0.6936151652708552,
+        "macro_f1_std": 0.008515076599153279,
+        "accuracy_mean": 0.7070732042301882,
+        "accuracy_std": 0.00800545392801333,
+        "precision_macro_mean": 0.7054589752736911,
+        "precision_macro_std": 0.008995801767816827,
+        "recall_macro_mean": 0.6938871215849457,
+        "recall_macro_std": 0.009590057415499162,
         "confusion_matrix_sum": [
           [
-            5083,
-            1839,
-            41
+            4791,
+            2130,
+            42
           ],
           [
-            3613,
-            13890,
-            1148
+            3241,
+            14028,
+            1382
           ],
           [
-            435,
-            3608,
-            6748
+            296,
+            3573,
+            6922
           ]
         ],
         "labels": [
@@ -2038,679 +1045,24 @@
         {
           "fold_id": "r1_f1",
           "n_test": 2427,
-          "macro_f1": 0.6982136664090283,
-          "accuracy": 0.7107540173053152,
-          "precision_macro": 0.70780678580217,
-          "recall_macro": 0.7051223711524023,
+          "macro_f1": 0.6934540277132571,
+          "accuracy": 0.7066337041615163,
+          "precision_macro": 0.700155690412779,
+          "recall_macro": 0.6970785941905074,
           "confusion_matrix": [
             [
-              338,
-              123,
-              4
-            ],
-            [
-              237,
-              922,
-              84
-            ],
-            [
-              38,
-              216,
-              465
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f2",
-          "n_test": 2427,
-          "macro_f1": 0.6811139495788282,
-          "accuracy": 0.6926246394725999,
-          "precision_macro": 0.6919948723348525,
-          "recall_macro": 0.6884097462200929,
-          "confusion_matrix": [
-            [
-              332,
-              128,
-              4
-            ],
-            [
-              259,
-              897,
-              88
-            ],
-            [
-              31,
-              236,
-              452
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6942912854514968,
-          "accuracy": 0.7016893283889576,
-          "precision_macro": 0.7045591868472103,
-          "recall_macro": 0.7105978695982206,
-          "confusion_matrix": [
-            [
-              366,
-              94,
-              4
-            ],
-            [
-              286,
-              880,
-              78
-            ],
-            [
-              33,
-              229,
-              457
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6958663360509783,
-          "accuracy": 0.707869798104656,
-          "precision_macro": 0.7134540885366643,
-          "recall_macro": 0.7006544182543571,
-          "confusion_matrix": [
-            [
-              343,
-              119,
+              323,
+              140,
               2
             ],
             [
-              238,
-              936,
-              69
-            ],
-            [
-              26,
-              255,
-              439
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f5",
-          "n_test": 2427,
-          "macro_f1": 0.7032726850501149,
-          "accuracy": 0.7173465183353935,
-          "precision_macro": 0.7198724604657939,
-          "recall_macro": 0.7041338519977519,
-          "confusion_matrix": [
-            [
-              334,
-              128,
-              2
-            ],
-            [
-              207,
-              961,
-              75
-            ],
-            [
-              28,
-              246,
-              446
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6867522923768751,
-          "accuracy": 0.6967449526163988,
-          "precision_macro": 0.6961629546229059,
-          "recall_macro": 0.6943255364772863,
-          "confusion_matrix": [
-            [
-              336,
-              124,
-              5
-            ],
-            [
-              262,
-              894,
-              87
-            ],
-            [
-              22,
-              236,
-              461
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f2",
-          "n_test": 2427,
-          "macro_f1": 0.7053351180576696,
-          "accuracy": 0.7169344870210136,
-          "precision_macro": 0.7162511862668565,
-          "recall_macro": 0.7113851055591033,
-          "confusion_matrix": [
-            [
-              344,
-              116,
-              4
-            ],
-            [
-              230,
-              935,
-              79
-            ],
-            [
-              28,
-              230,
-              461
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6827230681374229,
-          "accuracy": 0.6975690152451587,
-          "precision_macro": 0.7050652108048695,
-          "recall_macro": 0.683758153792979,
-          "confusion_matrix": [
-            [
-              328,
-              134,
-              2
-            ],
-            [
-              231,
-              944,
-              69
-            ],
-            [
-              27,
-              271,
-              421
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6902519929652904,
-          "accuracy": 0.7025133910177174,
-          "precision_macro": 0.7063714370016156,
-          "recall_macro": 0.6945533172226795,
-          "confusion_matrix": [
-            [
-              332,
-              132,
-              0
-            ],
-            [
-              249,
-              922,
-              72
-            ],
-            [
-              29,
-              240,
-              451
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f5",
-          "n_test": 2427,
-          "macro_f1": 0.7022449943317995,
-          "accuracy": 0.7132262051915945,
-          "precision_macro": 0.7144944504803096,
-          "recall_macro": 0.7098980215130658,
-          "confusion_matrix": [
-            [
-              348,
-              115,
-              1
-            ],
-            [
-              240,
-              926,
-              77
+              218,
+              920,
+              105
             ],
             [
               32,
-              231,
-              457
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6979569301978176,
-          "accuracy": 0.707869798104656,
-          "precision_macro": 0.7088695876689278,
-          "recall_macro": 0.7062482966762113,
-          "confusion_matrix": [
-            [
-              346,
-              117,
-              2
-            ],
-            [
-              254,
-              910,
-              79
-            ],
-            [
-              27,
-              230,
-              462
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f2",
-          "n_test": 2427,
-          "macro_f1": 0.7005742238273243,
-          "accuracy": 0.711578079934075,
-          "precision_macro": 0.7099123033726333,
-          "recall_macro": 0.705490403301987,
-          "confusion_matrix": [
-            [
-              333,
-              125,
-              6
-            ],
-            [
-              244,
-              920,
-              80
-            ],
-            [
-              17,
-              228,
-              474
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f3",
-          "n_test": 2427,
-          "macro_f1": 0.7096378513647968,
-          "accuracy": 0.7214668314791924,
-          "precision_macro": 0.7256739696342255,
-          "recall_macro": 0.7142960582930499,
-          "confusion_matrix": [
-            [
-              350,
-              113,
-              1
-            ],
-            [
-              221,
-              954,
-              69
-            ],
-            [
-              27,
-              245,
-              447
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6912657497576434,
-          "accuracy": 0.7033374536464772,
-          "precision_macro": 0.7063163870807183,
-          "recall_macro": 0.6979857829644219,
-          "confusion_matrix": [
-            [
-              338,
-              123,
-              3
-            ],
-            [
-              256,
-              917,
-              70
-            ],
-            [
-              34,
-              234,
-              452
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r3_f5",
-          "n_test": 2427,
-          "macro_f1": 0.6768214801371212,
-          "accuracy": 0.696332921302019,
-          "precision_macro": 0.704385359360797,
-          "recall_macro": 0.6735268718103629,
-          "confusion_matrix": [
-            [
-              315,
-              148,
-              1
-            ],
-            [
-              199,
-              972,
-              72
-            ],
-            [
-              36,
-              281,
-              403
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        }
-      ]
-    },
-    {
-      "voting_id": "voting_all",
-      "description": "Todos os modelos disponíveis",
-      "members": [
-        "bc_decision_tree",
-        "bc_gradient_boosting",
-        "bc_linear_svc",
-        "bc_logistic_regression",
-        "bc_naive_bayes",
-        "bc_random_forest",
-        "df_decision_tree",
-        "df_gradient_boosting",
-        "df_linear_svc",
-        "df_logistic_regression",
-        "df_naive_bayes",
-        "df_random_forest"
-      ],
-      "n_members": 12,
-      "n_folds": 15,
-      "status": "ok",
-      "aggregate": {
-        "macro_f1_mean": 0.6900415903963514,
-        "macro_f1_std": 0.009383396764100249,
-        "accuracy_mean": 0.6994918280455981,
-        "accuracy_std": 0.00909362761032091,
-        "precision_macro_mean": 0.6939302545590771,
-        "precision_macro_std": 0.009181084669620863,
-        "recall_macro_mean": 0.700050719086165,
-        "recall_macro_std": 0.010436962205217061,
-        "confusion_matrix_sum": [
-          [
-            5104,
-            1815,
-            44
-          ],
-          [
-            3676,
-            13308,
-            1667
-          ],
-          [
-            426,
-            3312,
-            7053
-          ]
-        ],
-        "labels": [
-          2,
-          3,
-          4
-        ]
-      },
-      "folds": [
-        {
-          "fold_id": "r1_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6915734904663623,
-          "accuracy": 0.7012772970745776,
-          "precision_macro": 0.6914009089289644,
-          "recall_macro": 0.7040138607138005,
-          "confusion_matrix": [
-            [
-              341,
-              121,
-              3
-            ],
-            [
-              241,
-              877,
-              125
-            ],
-            [
-              40,
-              195,
-              484
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f2",
-          "n_test": 2427,
-          "macro_f1": 0.6802964793960715,
-          "accuracy": 0.6901524515863205,
-          "precision_macro": 0.6820838722117021,
-          "recall_macro": 0.6895003198059749,
-          "confusion_matrix": [
-            [
-              328,
-              128,
-              8
-            ],
-            [
-              253,
-              872,
-              119
-            ],
-            [
-              23,
-              221,
-              475
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f3",
-          "n_test": 2427,
-          "macro_f1": 0.6876847358162416,
-          "accuracy": 0.6934487021013597,
-          "precision_macro": 0.6879760646596411,
-          "recall_macro": 0.7057440435205481,
-          "confusion_matrix": [
-            [
-              358,
-              102,
-              4
-            ],
-            [
-              279,
-              847,
-              118
-            ],
-            [
-              28,
-              213,
-              478
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f4",
-          "n_test": 2427,
-          "macro_f1": 0.6882204105418391,
-          "accuracy": 0.6967449526163988,
-          "precision_macro": 0.6952132255009259,
-          "recall_macro": 0.6971756009900654,
-          "confusion_matrix": [
-            [
-              344,
-              119,
-              1
-            ],
-            [
-              249,
-              891,
-              103
-            ],
-            [
-              21,
-              243,
-              456
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r1_f5",
-          "n_test": 2427,
-          "macro_f1": 0.7013357452721309,
-          "accuracy": 0.7119901112484549,
-          "precision_macro": 0.7079501641638938,
-          "recall_macro": 0.7086561885768478,
-          "confusion_matrix": [
-            [
-              344,
-              118,
-              2
-            ],
-            [
-              223,
-              920,
-              100
-            ],
-            [
-              30,
-              226,
-              464
-            ]
-          ],
-          "labels": [
-            2,
-            3,
-            4
-          ]
-        },
-        {
-          "fold_id": "r2_f1",
-          "n_test": 2427,
-          "macro_f1": 0.6822707672735854,
-          "accuracy": 0.6913885455294603,
-          "precision_macro": 0.6844394348762709,
-          "recall_macro": 0.6929891701182115,
-          "confusion_matrix": [
-            [
-              336,
-              124,
-              5
-            ],
-            [
-              255,
-              870,
-              118
-            ],
-            [
-              28,
-              219,
+              215,
               472
             ]
           ],
@@ -2721,27 +1073,177 @@
           ]
         },
         {
-          "fold_id": "r2_f2",
+          "fold_id": "r1_f2",
           "n_test": 2427,
-          "macro_f1": 0.7023918489422684,
-          "accuracy": 0.7111660486196951,
-          "precision_macro": 0.7027051885516421,
-          "recall_macro": 0.7139355601369654,
+          "macro_f1": 0.6803613117467716,
+          "accuracy": 0.6950968273588792,
+          "precision_macro": 0.6893723539758626,
+          "recall_macro": 0.6799487025356196,
           "confusion_matrix": [
             [
-              348,
-              110,
+              304,
+              153,
+              7
+            ],
+            [
+              221,
+              918,
+              105
+            ],
+            [
+              18,
+              236,
+              465
+            ]
+          ],
+          "labels": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "fold_id": "r1_f3",
+          "n_test": 2427,
+          "macro_f1": 0.6959081160762558,
+          "accuracy": 0.7045735475896168,
+          "precision_macro": 0.7020121945509624,
+          "recall_macro": 0.7042065306112377,
+          "confusion_matrix": [
+            [
+              342,
+              120,
+              2
+            ],
+            [
+              248,
+              898,
+              98
+            ],
+            [
+              18,
+              231,
+              470
+            ]
+          ],
+          "labels": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "fold_id": "r1_f4",
+          "n_test": 2427,
+          "macro_f1": 0.693450414688361,
+          "accuracy": 0.7070457354758962,
+          "precision_macro": 0.708188438511927,
+          "recall_macro": 0.6924294568099878,
+          "confusion_matrix": [
+            [
+              319,
+              143,
+              2
+            ],
+            [
+              217,
+              942,
+              84
+            ],
+            [
+              17,
+              248,
+              455
+            ]
+          ],
+          "labels": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "fold_id": "r1_f5",
+          "n_test": 2427,
+          "macro_f1": 0.6934159183783558,
+          "accuracy": 0.7099299546765554,
+          "precision_macro": 0.7100845997315939,
+          "recall_macro": 0.6884537445454443,
+          "confusion_matrix": [
+            [
+              306,
+              155,
+              3
+            ],
+            [
+              194,
+              962,
+              87
+            ],
+            [
+              19,
+              246,
+              455
+            ]
+          ],
+          "labels": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "fold_id": "r2_f1",
+          "n_test": 2427,
+          "macro_f1": 0.6872845528709499,
+          "accuracy": 0.6996291718170581,
+          "precision_macro": 0.6959844283869879,
+          "recall_macro": 0.6900588686748533,
+          "confusion_matrix": [
+            [
+              321,
+              138,
               6
             ],
             [
-              235,
-              894,
-              115
+              233,
+              913,
+              97
             ],
             [
-              27,
-              208,
-              484
+              19,
+              236,
+              464
+            ]
+          ],
+          "labels": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "fold_id": "r2_f2",
+          "n_test": 2427,
+          "macro_f1": 0.7021442243383902,
+          "accuracy": 0.7148743304491141,
+          "precision_macro": 0.7101021595950806,
+          "recall_macro": 0.7036392142678443,
+          "confusion_matrix": [
+            [
+              325,
+              134,
+              5
+            ],
+            [
+              207,
+              938,
+              99
+            ],
+            [
+              20,
+              227,
+              472
             ]
           ],
           "labels": [
@@ -2753,25 +1255,25 @@
         {
           "fold_id": "r2_f3",
           "n_test": 2427,
-          "macro_f1": 0.6879076216001212,
-          "accuracy": 0.7008652657601978,
-          "precision_macro": 0.7006797635960779,
-          "recall_macro": 0.6903426890781184,
+          "macro_f1": 0.6899410495928723,
+          "accuracy": 0.7049855789039967,
+          "precision_macro": 0.7101677933889974,
+          "recall_macro": 0.6856012917765991,
           "confusion_matrix": [
             [
-              327,
-              135,
+              314,
+              148,
               2
             ],
             [
-              225,
-              928,
-              91
+              206,
+              959,
+              79
             ],
             [
-              25,
-              248,
-              446
+              13,
+              268,
+              438
             ]
           ],
           "labels": [
@@ -2783,25 +1285,25 @@
         {
           "fold_id": "r2_f4",
           "n_test": 2427,
-          "macro_f1": 0.6838660750238358,
-          "accuracy": 0.6930366707869798,
-          "precision_macro": 0.6871347795076609,
-          "recall_macro": 0.6937661633114791,
+          "macro_f1": 0.6867969563036921,
+          "accuracy": 0.7008652657601978,
+          "precision_macro": 0.6985315681284279,
+          "recall_macro": 0.6863635079304901,
           "confusion_matrix": [
             [
-              334,
-              130,
-              0
+              311,
+              152,
+              1
             ],
             [
-              253,
-              874,
-              116
+              221,
+              927,
+              95
             ],
             [
-              29,
-              217,
-              474
+              21,
+              236,
+              463
             ]
           ],
           "labels": [
@@ -2813,25 +1315,25 @@
         {
           "fold_id": "r2_f5",
           "n_test": 2427,
-          "macro_f1": 0.6953745078173346,
-          "accuracy": 0.7033374536464772,
-          "precision_macro": 0.6960390789102983,
-          "recall_macro": 0.7078080931376629,
+          "macro_f1": 0.7009880615538476,
+          "accuracy": 0.7144622991347342,
+          "precision_macro": 0.7130864999997838,
+          "recall_macro": 0.7002996730605825,
           "confusion_matrix": [
             [
-              349,
-              114,
+              321,
+              142,
               1
             ],
             [
-              240,
-              881,
-              122
+              206,
+              947,
+              90
             ],
             [
-              30,
-              213,
-              477
+              20,
+              234,
+              466
             ]
           ],
           "labels": [
@@ -2843,25 +1345,25 @@
         {
           "fold_id": "r3_f1",
           "n_test": 2427,
-          "macro_f1": 0.6825104491113821,
-          "accuracy": 0.6909765142150803,
-          "precision_macro": 0.6840133914830187,
-          "recall_macro": 0.6938936324181716,
+          "macro_f1": 0.6927741699789629,
+          "accuracy": 0.7049855789039967,
+          "precision_macro": 0.7007982522650228,
+          "recall_macro": 0.6949929644844435,
           "confusion_matrix": [
             [
-              336,
-              127,
-              2
+              319,
+              145,
+              1
             ],
             [
-              259,
-              863,
-              121
+              228,
+              916,
+              99
             ],
             [
-              28,
-              213,
-              478
+              20,
+              223,
+              476
             ]
           ],
           "labels": [
@@ -2873,25 +1375,25 @@
         {
           "fold_id": "r3_f2",
           "n_test": 2427,
-          "macro_f1": 0.6989144077229995,
-          "accuracy": 0.7082818294190358,
-          "precision_macro": 0.7002150368843024,
-          "recall_macro": 0.7077694288876474,
+          "macro_f1": 0.7017867410200352,
+          "accuracy": 0.7148743304491141,
+          "precision_macro": 0.7113855364075272,
+          "recall_macro": 0.7008183266377893,
           "confusion_matrix": [
             [
-              335,
-              125,
-              4
+              317,
+              142,
+              5
             ],
             [
-              240,
-              892,
-              112
+              207,
+              942,
+              95
             ],
             [
-              21,
-              206,
-              492
+              12,
+              231,
+              476
             ]
           ],
           "labels": [
@@ -2903,25 +1405,25 @@
         {
           "fold_id": "r3_f3",
           "n_test": 2427,
-          "macro_f1": 0.7022617542709818,
-          "accuracy": 0.7111660486196951,
-          "precision_macro": 0.707840202086048,
-          "recall_macro": 0.71264771332431,
+          "macro_f1": 0.7042742708540949,
+          "accuracy": 0.7169344870210136,
+          "precision_macro": 0.7182558784118939,
+          "recall_macro": 0.7041007039535296,
           "confusion_matrix": [
             [
-              356,
-              107,
+              330,
+              133,
               1
             ],
             [
-              230,
-              911,
-              103
+              206,
+              954,
+              84
             ],
             [
-              29,
-              231,
-              459
+              18,
+              245,
+              456
             ]
           ],
           "labels": [
@@ -2933,25 +1435,25 @@
         {
           "fold_id": "r3_f4",
           "n_test": 2427,
-          "macro_f1": 0.6958755485784748,
-          "accuracy": 0.7058096415327565,
-          "precision_macro": 0.7002060697444775,
-          "recall_macro": 0.7060230136786437,
+          "macro_f1": 0.7051456092630417,
+          "accuracy": 0.7189946435929131,
+          "precision_macro": 0.7199371919579011,
+          "recall_macro": 0.7057689600716759,
           "confusion_matrix": [
             [
-              338,
-              122,
-              4
+              324,
+              137,
+              3
             ],
             [
-              256,
-              890,
-              97
+              228,
+              949,
+              66
             ],
             [
-              30,
-              205,
-              485
+              23,
+              225,
+              472
             ]
           ],
           "labels": [
@@ -2963,25 +1465,25 @@
         {
           "fold_id": "r3_f5",
           "n_test": 2427,
-          "macro_f1": 0.6701400141116416,
-          "accuracy": 0.6827358879274825,
-          "precision_macro": 0.6810566372812312,
-          "recall_macro": 0.6764953085940268,
+          "macro_f1": 0.6765020546839405,
+          "accuracy": 0.69221260815822,
+          "precision_macro": 0.6938220433806198,
+          "recall_macro": 0.6745462842235805,
           "confusion_matrix": [
             [
-              330,
-              133,
+              315,
+              148,
               1
             ],
             [
-              238,
-              898,
-              107
+              201,
+              943,
+              99
             ],
             [
-              37,
-              254,
-              429
+              26,
+              272,
+              422
             ]
           ],
           "labels": [

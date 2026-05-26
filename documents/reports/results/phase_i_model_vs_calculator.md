@@ -4,6 +4,8 @@
 
 Base: 36405 entradas OOF (12.135 decks × 3 repeats). `y2` é estável por deck (0 inconsistências entre folds).
 
+**Importante**: a Fase I não treina nem retreina modelos. Ela apenas lê as predições out-of-fold já salvas pela Fase E (`experiments/<modelo>/predictions_per_fold.jsonl`) e pela Fase G (`experiments/voting/<ensemble>/predictions_per_fold.jsonl`) e compara `ŷ1` com `y2`.
+
 ## 1. Referência direta: y1 real do Archidekt vs y2
 
 Esta é a comparação sem modelo: `y1` é o bracket real extraído do Archidekt e `y2` é o bracket calculado pela EDHPowerLevel. Ela é calculada na mesma base OOF usada pelos modelos, para manter a comparação direta com `ŷ1`.
@@ -28,16 +30,13 @@ Aqui `ŷ1` é o label predito por cada modelo treinado em `y1`. A tabela usa exa
 |---|---|---|---:|---:|---:|---:|---:|
 | `df_random_forest` | individual | DF | 0.6733 | 69.3% | 99.5% | 0.312 | 0.6674 |
 | `df_logistic_regression` | individual | DF | 0.6707 | 68.8% | 99.3% | 0.319 | 0.6665 |
-| `voting_top5_DF` | ensemble | DF | 0.6932 | 68.2% | 99.1% | 0.327 | 0.6672 |
+| `voting_top7` | ensemble | BC+DF | 0.6936 | 68.4% | 99.0% | 0.326 | 0.6707 |
+| `voting_top5` | ensemble | DF | 0.6932 | 68.2% | 99.1% | 0.327 | 0.6672 |
 | `bc_random_forest` | individual | BC | 0.6326 | 66.9% | 98.8% | 0.343 | 0.6540 |
-| `voting_all` | ensemble | BC+DF | 0.6900 | 66.9% | 98.7% | 0.345 | 0.6594 |
-| `voting_top3_BC_DF` | ensemble | BC+DF | 0.6944 | 66.7% | 98.5% | 0.348 | 0.6539 |
-| `voting_top3_DF` | ensemble | DF | 0.6941 | 66.7% | 98.7% | 0.346 | 0.6499 |
+| `voting_top3` | ensemble | DF | 0.6941 | 66.7% | 98.7% | 0.346 | 0.6499 |
 | `df_linear_svc` | individual | DF | 0.6557 | 65.0% | 98.6% | 0.365 | 0.6466 |
 | `df_decision_tree` | individual | DF | 0.6727 | 64.8% | 97.8% | 0.374 | 0.6291 |
 | `df_gradient_boosting` | individual | DF | 0.6908 | 64.0% | 98.1% | 0.379 | 0.6323 |
-| `voting_top5_BC` | ensemble | BC | 0.6450 | 62.3% | 97.9% | 0.399 | 0.6163 |
-| `voting_top3_BC` | ensemble | BC | 0.6495 | 62.3% | 97.7% | 0.401 | 0.6184 |
 | `bc_gradient_boosting` | individual | BC | 0.6433 | 60.3% | 97.3% | 0.424 | 0.5984 |
 | `bc_linear_svc` | individual | BC | 0.6147 | 59.2% | 97.8% | 0.430 | 0.5753 |
 | `bc_logistic_regression` | individual | BC | 0.6236 | 58.6% | 96.9% | 0.445 | 0.5863 |
@@ -56,16 +55,13 @@ Aqui `ŷ1` é o label predito por cada modelo treinado em `y1`. A tabela usa exa
 | `bc_gradient_boosting` | individual | BC | 0.6433 | 60.3% | 0.0402 | +0.0402 |
 | `bc_logistic_regression` | individual | BC | 0.6236 | 58.6% | 0.0380 | +0.0380 |
 | `bc_random_forest` | individual | BC | 0.6326 | 66.9% | 0.0367 | -0.0367 |
-| `voting_top3_BC_DF` | ensemble | BC+DF | 0.6944 | 66.7% | 0.0277 | +0.0277 |
-| `voting_top3_DF` | ensemble | DF | 0.6941 | 66.7% | 0.0276 | +0.0276 |
-| `voting_top3_BC` | ensemble | BC | 0.6495 | 62.3% | 0.0270 | +0.0270 |
+| `voting_top3` | ensemble | DF | 0.6941 | 66.7% | 0.0276 | +0.0276 |
 | `df_decision_tree` | individual | DF | 0.6727 | 64.8% | 0.0251 | +0.0251 |
 | `bc_linear_svc` | individual | BC | 0.6147 | 59.2% | 0.0231 | +0.0231 |
-| `voting_top5_BC` | ensemble | BC | 0.6450 | 62.3% | 0.0224 | +0.0224 |
-| `voting_all` | ensemble | BC+DF | 0.6900 | 66.9% | 0.0215 | +0.0215 |
 | `df_random_forest` | individual | DF | 0.6733 | 69.3% | 0.0194 | -0.0194 |
 | `df_logistic_regression` | individual | DF | 0.6707 | 68.8% | 0.0177 | -0.0177 |
-| `voting_top5_DF` | ensemble | DF | 0.6932 | 68.2% | 0.0110 | +0.0110 |
+| `voting_top5` | ensemble | DF | 0.6932 | 68.2% | 0.0110 | +0.0110 |
+| `voting_top7` | ensemble | BC+DF | 0.6936 | 68.4% | 0.0100 | +0.0100 |
 | `df_linear_svc` | individual | DF | 0.6557 | 65.0% | 0.0059 | +0.0059 |
 | `bc_decision_tree` | individual | BC | 0.5475 | 54.2% | 0.0057 | +0.0057 |
 | `bc_naive_bayes` | individual | BC | 0.5535 | 55.5% | 0.0010 | -0.0010 |
@@ -82,14 +78,11 @@ Aqui `ŷ1` é o label predito por cada modelo treinado em `y1`. A tabela usa exa
 | `df_logistic_regression` | individual | 68.8% | 83.3% | 46.3% |
 | `df_random_forest` | individual | 69.3% | 84.3% | 45.8% |
 | `df_linear_svc` | individual | 65.0% | 77.6% | 45.3% |
-| `voting_top5_DF` | ensemble | 68.2% | 84.0% | 43.6% |
+| `voting_top7` | ensemble | 68.4% | 83.9% | 44.1% |
+| `voting_top5` | ensemble | 68.2% | 84.0% | 43.6% |
 | `bc_naive_bayes` | individual | 55.5% | 63.2% | 43.3% |
 | `bc_decision_tree` | individual | 54.2% | 61.3% | 43.1% |
-| `voting_all` | ensemble | 66.9% | 82.2% | 42.9% |
-| `voting_top5_BC` | ensemble | 62.3% | 74.8% | 42.7% |
-| `voting_top3_BC` | ensemble | 62.3% | 74.9% | 42.6% |
-| `voting_top3_BC_DF` | ensemble | 66.7% | 82.6% | 41.8% |
-| `voting_top3_DF` | ensemble | 66.7% | 82.7% | 41.5% |
+| `voting_top3` | ensemble | 66.7% | 82.7% | 41.5% |
 | `df_decision_tree` | individual | 64.8% | 79.7% | 41.5% |
 | `bc_linear_svc` | individual | 59.2% | 70.6% | 41.3% |
 | `bc_logistic_regression` | individual | 58.6% | 69.8% | 41.1% |

@@ -246,18 +246,31 @@ def load_ensemble_models(voting_dir: Path) -> List[Dict]:
             continue
 
         macro_f1_y1 = None
+        members: List[str] = []
         if metrics_path.exists():
             m = read_json(metrics_path)
             folds = m.get("folds", [])
             f1s = [f["macro_f1"] for f in folds if "macro_f1" in f]
             if f1s:
                 macro_f1_y1 = statistics.mean(f1s)
+            members = [str(member) for member in m.get("members", [])]
+
+        member_reps = {
+            member.split("_", 1)[0].upper()
+            for member in members
+            if member.startswith(("bc_", "df_"))
+        }
+        if len(member_reps) == 1:
+            representation = next(iter(member_reps))
+        elif len(member_reps) > 1:
+            representation = "BC+DF"
+        else:
+            representation = "ensemble"
 
         ensembles.append({
             "model_id": d.name,
             "type": "ensemble",
-            "representation": "BC+DF" if ("BC_DF" in d.name or "all" in d.name)
-                              else ("BC" if "_BC" in d.name else "DF"),
+            "representation": representation,
             "algorithm": "voting",
             "macro_f1_y1": macro_f1_y1,
             "predictions_path": preds_path,
@@ -354,6 +367,13 @@ def render_report(
     lines.append(
         f"Base: {results[0]['metrics']['n'] if results else 0} entradas OOF "
         "(12.135 decks × 3 repeats). `y2` é estável por deck (0 inconsistências entre folds).\n"
+    )
+    lines.append(
+        "**Importante**: a Fase I não treina nem retreina modelos. "
+        "Ela apenas lê as predições out-of-fold já salvas pela Fase E "
+        "(`experiments/<modelo>/predictions_per_fold.jsonl`) e pela Fase G "
+        "(`experiments/voting/<ensemble>/predictions_per_fold.jsonl`) e compara "
+        "`ŷ1` com `y2`.\n"
     )
 
     # ------------------------------------------------------------------

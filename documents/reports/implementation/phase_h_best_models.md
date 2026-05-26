@@ -6,7 +6,7 @@
 
 Selecionar `melhor_BC` e `melhor_DF` — um modelo individual por representação — com base no macro-F1 médio nos outer folds da Fase E. Esses dois modelos são o insumo direto da Fase J (interpretabilidade) e devem ser citados explicitamente no artigo como os melhores modelos por representação (backbone §13.8).
 
-A fase também produz o ranking completo (individuais + 6 ensembles) e as matrizes de confusão agregadas dos dois selecionados.
+A fase também produz o ranking completo (individuais + 3 ensembles) e as matrizes de confusão agregadas dos dois selecionados.
 
 ## O que foi construído
 
@@ -59,7 +59,7 @@ uv run --no-sync python -m scripts.phase_h_best_models
 - **Re-execução**: sempre regera tudo do zero. Idempotente — resultado é determinístico dado os mesmos artefatos da Fase E.
 - **Novos modelos na Fase E**: basta rodar novamente. Se um novo modelo superar o atual líder, a seleção muda automaticamente e `best_models.json` é atualizado.
 - **Fase J depende de `best_models.json`**: não editar manualmente. Rodar a Fase H gera o artefato correto.
-- **Ensembles não são selecionados para interpretabilidade**: o ranking inclui os 6 ensembles para comparação, mas a seleção de `melhor_BC`/`melhor_DF` é restrita a modelos individuais (backbone §13.8 e enunciado — interpretabilidade sobre modelos simples).
+- **Ensembles não são selecionados para interpretabilidade**: o ranking inclui os 3 ensembles para comparação, mas a seleção de `melhor_BC`/`melhor_DF` é restrita a modelos individuais (backbone §13.8 e enunciado — interpretabilidade sobre modelos simples).
 
 ## Problemas encontrados e correções
 

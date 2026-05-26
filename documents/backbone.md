@@ -98,7 +98,7 @@ O projeto pretende:
 7. Comparar as predições dos modelos com `y2` da calculadora — identificar quais modelos têm comportamento mais próximo do da calculadora.
 8. Analisar diretamente a divergência entre `y1` e `y2`, independente de modelos.
 9. Interpretar os **dois melhores modelos** (melhor BC + melhor DF) para entender quais cartas e quais features explicam o bracket comunitário.
-10. **Ensemble por votação** (hard voting) dos top-3/top-5 BC, top-3/top-5 DF, top-3 BC + top-3 DF e de todos os modelos individuais (`voting_all`), a partir das predições out-of-fold (sem retreino).
+10. **Ensemble por votação** (hard voting simples) dos top-3, top-5 e top-7 modelos individuais globais por macro-F1 média, a partir das predições out-of-fold (sem retreino).
 11. (Opcional, se o cronograma permitir) realizar **stacking** dos modelos individuais para prever `y1` e comparar o stacking final com `y2`.
 
 **Decisão metodológica**: a calculadora não é alvo de modelo. Treinar um modelo para prever a saída de outra ferramenta determinística (a calculadora produz o mesmo `y2` para o mesmo input) seria redundante e não responde à pergunta central. Tratamos `y2` como **fonte alternativa de avaliação** contra a qual comparamos os modelos treinados em `y1`.
@@ -662,20 +662,17 @@ Essa etapa mede se a percepção comunitária pode ser aprendida a partir dos da
 
 ### 13.5.1 Ensembles por votação (hard voting, sem retreino)
 
-A pedido da professora (2026-05-19), avaliamos seis ensembles construídos por **votação majoritária** das predições out-of-fold dos modelos da §13.5. Como todas as predições OOF compartilham o mesmo conjunto de folds e seeds, a votação é exata por linha e por fold — não há novo treinamento. No plano atualizado, a votação só roda depois da verificação dos modelos individuais: completude dos 15 outer folds, GroupKFold por comandante e testes estatísticos.
+A pedido da professora (2026-05-19), avaliamos três ensembles construídos por **votação simples** das predições out-of-fold dos modelos da §13.5. Como todas as predições OOF compartilham o mesmo conjunto de folds e seeds, a votação é exata por linha e por fold — não há novo treinamento. No plano atualizado, a votação só roda depois da verificação dos modelos individuais: completude dos 15 outer folds, GroupKFold por comandante e testes estatísticos.
 
 ```text
-voting_top3_BC        top-3 modelos BC por macro-F1 média da §13.5
-voting_top5_BC        top-5 modelos BC
-voting_top3_DF        top-3 modelos DF
-voting_top5_DF        top-5 modelos DF
-voting_top3_BC_DF     top-3 BC + top-3 DF (6 modelos)
-voting_all            todos os modelos individuais da §13.5 (10 a 14)
+voting_top3           top-3 modelos individuais globais por macro-F1 média da §13.5
+voting_top5           top-5 modelos individuais globais por macro-F1 média da §13.5
+voting_top7           top-7 modelos individuais globais por macro-F1 média da §13.5
 ```
 
 Para cada ensemble e cada outer fold, agregamos as predições dos membros, computamos a moda por linha (empates resolvidos pela classe com maior macro-F1 médio entre os membros que a previram), e reportamos macro-F1, accuracy, precision_macro, recall_macro e a matriz de confusão. Reportamos média e desvio padrão sobre os 15 outer folds, do mesmo jeito que para os modelos individuais.
 
-As predições OOF dos 6 ensembles também são preservadas e entram no leque de comparações da §13.7 (vs `y2`) e no relatório da §17 (interpretação).
+As predições OOF dos 3 ensembles também são preservadas e entram no leque de comparações da §13.7 (vs `y2`). A interpretabilidade da §17 continua restrita aos melhores modelos individuais BC e DF.
 
 ### 13.6 Comparação entre representações
 
@@ -701,7 +698,7 @@ Essa etapa é instrumental: alimenta a seleção dos dois melhores modelos (um p
 
 Esta é a camada central que conecta a modelagem à pergunta de pesquisa. Não envolve novo treinamento: reutiliza as **predições out-of-fold** já produzidas em §13.5 (modelos individuais) e §13.5.1 (ensembles de votação) e as compara contra `y2`.
 
-Para cada modelo individual (10 a 14 dependendo de `|A_uniao|`) e cada um dos 6 ensembles de votação, avaliados em todos os folds externos:
+Para cada modelo individual (10 a 14 dependendo de `|A_uniao|`) e cada um dos 3 ensembles de votação, avaliados em todos os folds externos:
 
 ```text
 ŷ1 = predição out-of-fold do modelo (alvo de treino: y1)
@@ -746,7 +743,7 @@ métricas complementares
 matrizes de confusão (por fold e agregada) contra y1
 melhores hiperparâmetros selecionados por fold
 comparação entre BC e DF para y1
-métricas dos 6 ensembles de votação (§13.5.1) lado a lado com os 10 individuais
+métricas dos 3 ensembles de votação (§13.5.1) lado a lado com os modelos individuais
 comparação descritiva entre as predições dos modelos e y2 (§13.7)
 ```
 
@@ -927,7 +924,7 @@ tabela do spot-checking (7 algoritmos candidatos, N=5 repetições, média ± dp
 comparação entre algoritmos para y1
 comparação entre BC e DF para y1
 matrizes de confusão contra y1
-métricas dos 6 ensembles de votação (top-3/top-5 BC, top-3/top-5 DF, top-3 BC + top-3 DF, voting_all)
+métricas dos 3 ensembles de votação (top-3/top-5/top-7 modelos individuais globais por macro-F1)
 ganho/perda dos ensembles vs melhores modelos individuais por representação
 análise direta de divergência entre y1 e y2 (descritiva, §14)
 comparação descritiva entre as predições dos modelos (individuais + ensembles) e y2 (§13.7)
@@ -973,7 +970,7 @@ O projeto está alinhado às diretrizes do trabalho prático porque:
 * compara ao menos 5 algoritmos com diferentes vieses indutivos;
 * usa spot-checking N=5 (seeds 1..5, média ± dp) como etapa inicial de seleção de algoritmos;
 * usa nested cross-validation para seleção de hiperparâmetros e estimativa final de desempenho, com grids limitados a ≤192 configs por algoritmo para evitar explosão combinatorial;
-* reporta média e desvio padrão das métricas nos outer folds, tanto para os modelos individuais (10 a 14) quanto para os 6 ensembles de votação;
+* reporta média e desvio padrão das métricas nos outer folds, tanto para os modelos individuais (10 a 14) quanto para os 3 ensembles de votação;
 * usa as mesmas divisões internas e externas para comparar algoritmos e ensembles de forma justa;
 * define seeds e procedimentos reprodutíveis;
 * inclui interpretação de modelos para ambas as representações (melhor BC e melhor DF), excedendo o requisito de "um modelo" do enunciado;
@@ -999,4 +996,4 @@ O projeto possui limitações importantes:
 
 A formulação atual do projeto é:
 
-> Este projeto estuda a divergência entre duas percepções de poder em decks Commander: o bracket atribuído no Archidekt (`y1`, percepção comunitária) e o bracket calculado por uma ferramenta externa (`y2`, avaliação automatizada). Usando dados extraídos do Archidekt, o projeto representa decks de duas formas — Bag of Cards e Deck Features. Após um spot-checking de 7 algoritmos candidatos (todos viáveis em BC e DF) com N=5 repetições (seeds 1..5) e média ± desvio padrão, selecionamos o top-5 de cada representação. A união `A_uniao = A_DF ∪ A_BC` (5 a 7 algoritmos) alimenta a nested CV: cada algoritmo da união é treinado nas duas representações, gerando **10 a 14 modelos individuais treinados apenas para prever `y1`**, com grids ≤192 configurações por algoritmo. A partir das predições out-of-fold construímos seis ensembles por votação majoritária (top-3/top-5 por representação, top-3 BC + top-3 DF e `voting_all` com todos os individuais) sem retreino. As predições dos modelos individuais e dos ensembles são comparadas descritivamente com `y2`, para identificar quais convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária. O objetivo não é descobrir o bracket verdadeiro, nem treinar modelos que imitem a calculadora, mas medir e explicar o desalinhamento entre as duas leituras de poder.
+> Este projeto estuda a divergência entre duas percepções de poder em decks Commander: o bracket atribuído no Archidekt (`y1`, percepção comunitária) e o bracket calculado por uma ferramenta externa (`y2`, avaliação automatizada). Usando dados extraídos do Archidekt, o projeto representa decks de duas formas — Bag of Cards e Deck Features. Após um spot-checking de 7 algoritmos candidatos (todos viáveis em BC e DF) com N=5 repetições (seeds 1..5) e média ± desvio padrão, selecionamos o top-5 de cada representação. A união `A_uniao = A_DF ∪ A_BC` (5 a 7 algoritmos) alimenta a nested CV: cada algoritmo da união é treinado nas duas representações, gerando **10 a 14 modelos individuais treinados apenas para prever `y1`**, com grids ≤192 configurações por algoritmo. A partir das predições out-of-fold construímos três ensembles por votação simples (top-3/top-5/top-7 modelos individuais globais por macro-F1) sem retreino. As predições dos modelos individuais e dos ensembles são comparadas descritivamente com `y2`, para identificar quais convergem para a lógica da calculadora e quais capturam particularidades da percepção comunitária. O objetivo não é descobrir o bracket verdadeiro, nem treinar modelos que imitem a calculadora, mas medir e explicar o desalinhamento entre as duas leituras de poder.

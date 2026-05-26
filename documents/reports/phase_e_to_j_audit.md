@@ -8,13 +8,15 @@ Atualizacao pos-restauracao: em 2026-05-25, `bc_linear_svc` e `df_linear_svc` fo
 
 Atualizacao E-H: em 2026-05-25, apos a restauracao definitiva dos artefatos `linear_svc`, as Fases F, G e H foram reexecutadas. Os reports e artefatos derivados agora refletem as metricas atuais (`bc_linear_svc` macro-F1 0,6147; `df_linear_svc` macro-F1 0,6557). O bundle `voting.zip` foi recriado, reenviado ao Drive e validado por download publico junto com os 12 modelos e os bundles `shared`, `spot_check` e `voting`.
 
+Atualizacao G: em 2026-05-26, a Fase G foi alterada para os 3 ensembles atuais pedidos no plano: `voting_top3`, `voting_top5` e `voting_top7`, todos definidos pelos modelos individuais globais com maior macro-F1. A fase foi reexecutada com `--all --force-recompute`; os diretórios antigos de voting foram removidos localmente e H/I foram regeneradas.
+
 ## Sumario executivo
 
 | Fase | Veredito | Justificativa curta |
 |---|---|---|
 | E — Nested CV | **Correta** | Os 12 modelos locais, o Drive autenticado e o download publico passam nas verificacoes de treino, folds, grids, best params, metricas, checkpoints, zips, manifest e restauracao em diretorio temporario. |
 | F — Verificação | **Correta** | A fase exige 12 modelos com 15/15 folds, não mantém avisos de artefatos ausentes depois da restauração, executa GroupKFold por comandante e testes Friedman/Nemenyi/Wilcoxon sobre 15 folds. |
-| G — Voting | **Correta** | Os 6 ensembles existem, usam hard voting sobre OOF alinhado por `(fold_id, row_index)`, têm 15 folds e 36.405 predições cada; as métricas recomputadas batem com os reports. |
+| G — Voting | **Correta** | Os 3 ensembles atuais existem, usam hard voting sobre OOF alinhado por `(fold_id, row_index)`, têm 15 folds e 36.405 predições cada; as métricas recomputadas batem com os reports. |
 | H — Melhores modelos | **Correta** | A seleção é separada por representação e escolhe corretamente `bc_gradient_boosting` como melhor BC e `df_gradient_boosting` como melhor DF. |
 | I — Modelo vs calculadora | **Correta** | A fase agora mostra, na mesma base OOF, a bateria completa para `y1` real vs `y2` e para `ŷ1` vs `y2`: concordância exata, ±1, macro-F1 vs `y2`, matriz de confusão e delta absoluto médio. |
 | J — Interpretabilidade | **Correta** | Usa exatamente os dois modelos individuais selecionados na Fase H, interpreta DF por permutation importance/features e BC por lift/cartas, incluindo divergência `ŷ1` vs `y2`. |
@@ -89,17 +91,17 @@ Observação: F é correta para o escopo próprio dela. Ela não prova que todos
 
 Veredito: **correta**.
 
-O action plan exige 6 ensembles por hard voting sem retreino. O script define exatamente os 6 (`scripts/phase_g_voting.py`, linhas 85-91), ranqueia membros por macro-F1 (`scripts/phase_g_voting.py`, linhas 214-227), carrega predições OOF (`scripts/phase_g_voting.py`, linhas 234-256), resolve empate por macro-F1 dos membros e menor rótulo residual (`scripts/phase_g_voting.py`, linhas 263-294) e alinha por folds/linhas compartilhados (`scripts/phase_g_voting.py`, linhas 321-356).
+O action plan exige 3 ensembles por hard voting simples sem retreino: `voting_top3`, `voting_top5` e `voting_top7`, formados pelos melhores modelos individuais globais por macro-F1. O script define exatamente esses 3 specs, ranqueia membros por macro-F1, carrega predições OOF, resolve empate por macro-F1 dos membros e menor rótulo residual, remove diretórios obsoletos de voting e alinha por folds/linhas compartilhados.
 
 Evidências de artefato:
 
-- Existem os diretórios `experiments/voting/voting_top3_BC`, `voting_top5_BC`, `voting_top3_DF`, `voting_top5_DF`, `voting_top3_BC_DF` e `voting_all`.
+- Existem os diretórios `experiments/voting/voting_top3`, `voting_top5` e `voting_top7`.
 - Cada ensemble tem `metrics_per_fold.json` e `predictions_per_fold.jsonl`.
 - Cada ensemble tem 15 folds, 36.405 predições e 2.427 entradas por fold.
 - Recomputei macro-F1 a partir dos JSONL; todos os valores batem com `metrics_per_fold.json`.
-- `experiments/voting/voting_summary.json` lista os 6 ensembles e seus membros.
+- `experiments/voting/voting_summary.json` lista os 3 ensembles e seus membros.
 
-Observação: os artefatos de `linear_svc` foram restaurados localmente depois da auditoria inicial; por isso, a Fase G foi reexecutada com `--all --force-recompute`. Os ensembles que usam `linear_svc` agora refletem exatamente o estado restaurado.
+Observação: os artefatos de `linear_svc` foram restaurados localmente depois da auditoria inicial; por isso, a Fase G foi reexecutada com `--all --force-recompute`. Na atualização de 2026-05-26, a Fase G foi novamente reexecutada após a troca dos specs para top-3/top-5/top-7 globais.
 
 ## Fase H — Melhores modelos
 

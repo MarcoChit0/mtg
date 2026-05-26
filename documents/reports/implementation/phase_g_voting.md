@@ -4,7 +4,7 @@
 
 ## Objetivo
 
-Combinar as predições OOF (out-of-fold) dos modelos individuais da Fase E em voting ensembles, sem retreino. O objetivo é verificar se a combinação de modelos complementares supera os melhores individuais em macro-F1, e produzir o ranking final de conjuntos candidatos para as fases H e I.
+Combinar as predições OOF (out-of-fold) dos modelos individuais da Fase E em voting ensembles, sem retreino. O objetivo é verificar se a combinação dos melhores modelos individuais por macro-F1 supera os melhores individuais isolados e produzir candidatos comparáveis para as fases H e I.
 
 A Fase G opera **exclusivamente sobre artefatos já gerados** — não re-treina nenhum modelo.
 
@@ -17,18 +17,15 @@ A Fase G opera **exclusivamente sobre artefatos já gerados** — não re-treina
 | Results report | `documents/reports/results/phase_g_voting.md` | Auto-gerado a cada execução |
 | Sumário JSON | `experiments/voting/voting_summary.json` | Metadados de todos os ensembles computados |
 | Artefatos por ensemble | `experiments/voting/<voting_id>/metrics_per_fold.json` | Métricas por fold salvas para reuso |
-| Predições por ensemble | `experiments/voting/<voting_id>/predictions_per_fold.jsonl` | OOF predictions combinadas (para Fases I/J) |
+| Predições por ensemble | `experiments/voting/<voting_id>/predictions_per_fold.jsonl` | OOF predictions combinadas (para Fase I e ranking da Fase H) |
 
 ## Ensemble specs implementadas
 
 | voting_id | Membros |
 |---|---|
-| `voting_top3_BC` | Top-3 modelos BC por macro-F1 |
-| `voting_top5_BC` | Top-5 modelos BC |
-| `voting_top3_DF` | Top-3 modelos DF |
-| `voting_top5_DF` | Top-5 modelos DF |
-| `voting_top3_BC_DF` | Top-3 BC + Top-3 DF (6 membros, representações mistas) |
-| `voting_all` | Todos os 12 modelos disponíveis |
+| `voting_top3` | Top-3 modelos individuais globais por macro-F1 |
+| `voting_top5` | Top-5 modelos individuais globais por macro-F1 |
+| `voting_top7` | Top-7 modelos individuais globais por macro-F1 |
 
 ## Como foi construído
 
@@ -38,9 +35,9 @@ A Fase G opera **exclusivamente sobre artefatos já gerados** — não re-treina
 
 Fallback: se o summary do spot-check não existir, escaneia `experiments/` diretamente por padrão `<rep>_<algo>`.
 
-### Ranking por representação
+### Ranking global por macro-F1
 
-`rank_models()` ordena por `macro_f1_mean` descendente dentro de cada representação (`bc`, `df`). O ranking define quem entra em top-3, top-5 etc.
+`rank_models()` ordena todos os modelos individuais por `macro_f1_mean` descendente, com desempate por menor desvio padrão e depois `model_id`. Esse ranking global define quem entra nos top-3, top-5 e top-7.
 
 ### Hard voting com tie-break
 
@@ -87,11 +84,12 @@ uv run phase-g-voting --all --force-recompute
 
 ## Pontos de extensão / armadilhas
 
-- **Adicionar novo modelo**: basta rodar a Fase E para ele. Na próxima execução da Fase G, os specs top-N incluirão o novo candidato automaticamente se ele entrar no top-N. `voting_all` sempre inclui todos.
-- **Novos specs de voting**: adicionar em `VOTING_SPECS` como `VotingSpec(voting_id, description, bc_top_n, df_top_n)`. `bc_top_n=None` inclui todos BC; `df_top_n=None` inclui todos DF.
-- **Membros ímpares vs pares**: ensembles com número par de membros têm maior chance de empate. O tie-break por F1 resolve, mas é algo a mencionar no artigo.
+- **Adicionar novo modelo**: basta rodar a Fase E para ele. Na próxima execução da Fase G, os specs top-N incluirão o novo candidato automaticamente se ele entrar no top-N.
+- **Novos specs de voting**: adicionar em `VOTING_SPECS` como `VotingSpec(voting_id, description, top_n)`.
+- **Artefatos obsoletos**: diretórios `experiments/voting/voting_*` que não pertencem aos specs atuais são removidos no início da Fase G para impedir que H/I leiam ensembles antigos.
+- **Empates no voting**: mesmo com 3, 5 e 7 membros, ainda pode haver empate em classificação multiclasse. O tie-break por F1 resolve, mas é algo a mencionar no artigo.
 - **Fase E incompleta**: folds compartilhados determinam o N efetivo. O relatório exibe `N_folds/15` para rastreabilidade.
-- **Fase I/J**: as predições OOF combinadas em `experiments/voting/<id>/predictions_per_fold.jsonl` ficam prontas para comparação com y2 (Fase I) e interpretabilidade (Fase J) sem retreino adicional.
+- **Fase I**: as predições OOF combinadas em `experiments/voting/<id>/predictions_per_fold.jsonl` ficam prontas para comparação com y2 sem retreino adicional.
 
 ## Problemas encontrados e correções
 

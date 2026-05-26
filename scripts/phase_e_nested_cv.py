@@ -75,17 +75,13 @@ FEATURE_CHOICES = tuple(representation.lower() for representation in REPRESENTAT
 class VotingSpec:
     name: str
     description: str
-    bc_count: Optional[int]
-    df_count: Optional[int]
+    top_n: int
 
 
 VOTING_SPECS: Tuple[VotingSpec, ...] = (
-    VotingSpec("voting_top3_BC", "Top-3 modelos BC", 3, 0),
-    VotingSpec("voting_top5_BC", "Top-5 modelos BC", 5, 0),
-    VotingSpec("voting_top3_DF", "Top-3 modelos DF", 0, 3),
-    VotingSpec("voting_top5_DF", "Top-5 modelos DF", 0, 5),
-    VotingSpec("voting_top3_BC_DF", "Top-3 BC + Top-3 DF", 3, 3),
-    VotingSpec("voting_all", "Todos os modelos individuais disponíveis", None, None),
+    VotingSpec("voting_top3", "Top-3 modelos globais por macro-F1", 3),
+    VotingSpec("voting_top5", "Top-5 modelos globais por macro-F1", 5),
+    VotingSpec("voting_top7", "Top-7 modelos globais por macro-F1", 7),
 )
 
 
@@ -1104,28 +1100,23 @@ def select_voting_members(
     spec: VotingSpec,
 ) -> Optional[List[str]]:
     """Return ordered list of model_ids that should participate in the ensemble."""
-    by_rep: Dict[str, List[Mapping[str, Any]]] = defaultdict(list)
+    ranked: List[Mapping[str, Any]] = []
     for row in model_metrics:
-        rep = str(row.get("representation"))
         aggregate = row.get("aggregate") or {}
         if aggregate.get("macro_f1_mean") is None:
             continue
-        by_rep[rep].append(row)
-    for rep in by_rep:
-        by_rep[rep].sort(key=lambda m: float(m["aggregate"]["macro_f1_mean"]), reverse=True)
+        ranked.append(row)
 
-    if spec.bc_count is None and spec.df_count is None:
-        chosen = list(by_rep.get("BC", [])) + list(by_rep.get("DF", []))
-        if len(chosen) < 2:
-            return None
-        return [str(row["model_id"]) for row in chosen]
-
-    bc_need = spec.bc_count or 0
-    df_need = spec.df_count or 0
-    if len(by_rep.get("BC", [])) < bc_need or len(by_rep.get("DF", [])) < df_need:
+    ranked.sort(
+        key=lambda m: (
+            -float((m.get("aggregate") or {})["macro_f1_mean"]),
+            float((m.get("aggregate") or {}).get("macro_f1_std", 0.0)),
+            str(m["model_id"]),
+        )
+    )
+    if len(ranked) < spec.top_n:
         return None
-    chosen = list(by_rep.get("BC", []))[:bc_need] + list(by_rep.get("DF", []))[:df_need]
-    return [str(row["model_id"]) for row in chosen]
+    return [str(row["model_id"]) for row in ranked[: spec.top_n]]
 
 
 def hard_vote(
@@ -1500,7 +1491,7 @@ def write_voting_report(
     lines: List[str] = [
         "# Ensembles por votação",
         "",
-        "Hard voting majoritário a partir das predições out-of-fold dos modelos individuais. Sem retreino. Empates são resolvidos pela maior macro-F1 média dos membros que votaram em cada classe; empate residual usa o menor rótulo numérico para manter reprodutibilidade.",
+        "Hard voting simples a partir das predições out-of-fold dos modelos individuais. Sem retreino. Os ensembles usam os top-3, top-5 e top-7 modelos globais por macro-F1 média. Empates são resolvidos pela maior macro-F1 média dos membros que votaram em cada classe; empate residual usa o menor rótulo numérico para manter reprodutibilidade.",
         "",
         "## Ensembles",
         "",

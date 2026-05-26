@@ -6,11 +6,11 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{booktabs}
+\usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{nicefrac}
 \usepackage[protrusion=true,expansion=false]{microtype}
-\usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{xcolor}
@@ -24,8 +24,6 @@
   left=2.5cm,
   right=2.5cm
 }
-
-\graphicspath{{../../reports/results/}}
 
 \title{
   Modeling Divergence Between Community-Perceived and\\
@@ -46,7 +44,7 @@
 \begin{abstract}
 % ============================================================
 
-Commander is the most popular casual format of \textit{Magic: The Gathering} (MTG). Before each game, players label their decks on a five-level power scale called the Commander Brackets, but the assignment is subjective and varies between playgroups. Automated calculators read the same deck and return a bracket from a fixed rule set; the two readings often disagree. We study this disagreement on 12{,}135 public Commander decks collected from Archidekt, each carrying a community-assigned bracket \(y_{\text{com}}\) and a calculator-assigned bracket \(y_{\text{calc}}\) in \(\{2,3,4\}\). Each deck is encoded in two ways: a sparse Bag of Cards (BC) over the card vocabulary and a dense Deck Features (DF) vector of 114 structural attributes. We train six classifiers on each representation to predict \(y_{\text{com}}\) under nested cross-validation, and compare their out-of-fold predictions to \(y_{\text{calc}}\). We do not treat either source as ground truth: the goal is to measure the misalignment between two imperfect readings of the same construct and to identify which deck-level signals drive each side of it.
+\textit{Magic: The Gathering} (MTG) is a collectible card game in which players build decks from a large card pool and play them under format-specific rules. Commander is a casual multiplayer MTG format where players use bracket labels to align deck power before a game. These labels are subjective; automated calculators provide a second estimate from the decklist alone. We study 12{,}135 public Commander decks from Archidekt, each with an Archidekt bracket \(y_{\text{arch}}\) and an EDHPowerLevel calculator bracket \(y_{\text{calc}}\) in \(\{2,3,4\}\). We encode each deck as Bag of Cards (BC) and Deck Features (DF), train six classifiers per representation to predict \(y_{\text{arch}}\), and evaluate them with 3 repeated 5-fold nested cross-validation. DF models outperform BC models for every algorithm. The best individual model is DF Gradient Boosting with macro-F1 \(0.6908 \pm 0.0093\), while the best hard-voting ensemble reaches \(0.6941 \pm 0.0096\). Raw \(y_{\text{arch}}\) and \(y_{\text{calc}}\) agree on 60.9\% of decks; the model closest to the calculator, DF Random Forest, reaches 69.3\% agreement with \(y_{\text{calc}}\) without using it as a training target. Interpretability links bracket predictions to Game Changers, mass land denial, tutors, combos, and high-power card identities. The results characterize disagreement between community labels and a calculator rather than treating either source as ground truth.
 
 \end{abstract}
 
@@ -55,37 +53,24 @@ Commander is the most popular casual format of \textit{Magic: The Gathering} (MT
 \label{sec:intro}
 % ============================================================
 
-A Commander game is fun when the four decks at the table sit close to each other in power. Pairings drift quickly: a deck that is slightly faster, slightly more consistent, or carries one or two cards that close the game on their own can flatten the experience for the other three players. The format does not enforce any of this --- it leaves the negotiation to the players, before the game starts.
+\textit{Magic: The Gathering} (MTG) is a collectible card game built around decks assembled from a large pool of cards. Commander is a casual multiplayer MTG format in which each player brings a 100-card singleton deck led by a legendary creature. Because each deck is built by a different player and the format is social, players often discuss deck power before a game starts. The goal is to avoid tables where one deck is much faster, more consistent, or more disruptive than the others.
 
-To make that negotiation easier, the Commander community converged on a small shared vocabulary. The format's official committee published a five-level system, the Commander Brackets, where each player labels their own deck. The label is largely subjective: it carries a few hard caps on specific cards but otherwise reflects the player's reading of their own deck. Two players with similar decks routinely pick different brackets, and the same player may pick different brackets for the same deck on different days.
+Commander Brackets provide a five-level vocabulary for this discussion. A player assigns a bracket to their own deck, using a mixture of rule constraints and self-assessment. Automated calculators offer a second signal: they parse the same decklist and return a bracket from fixed rules over card identities, Game Changers, tutors, combos, prices, and popularity. The two readings are related, but they are not identical. Their disagreement is the object of this paper.
 
-In parallel, the community built automated calculators that read a decklist and return a bracket from a deterministic rule set. The calculators are not subjective --- they see only the cards --- but they encode their own assumptions about what makes a deck strong. The two readings disagree, and the disagreement is itself the object of study.
-
-We collect 12{,}135 public Commander decks from Archidekt, each carrying a community bracket \(y_{\text{com}}\) and a calculator bracket \(y_{\text{calc}}\) from EDHPowerLevel, both in \(\{2,3,4\}\). We encode each deck as a sparse Bag of Cards (BC) and as a dense Deck Features (DF) vector, train six classifiers on each representation to predict \(y_{\text{com}}\), and compare the out-of-fold predictions against \(y_{\text{calc}}\). Figure~\ref{fig:overview} sketches the pipeline on a single deck.
-
-\begin{figure}[h]
-\centering
-% TODO: replace this placeholder with a composite figure built from a real
-% deck in the dataset. It should show (i) the Archidekt decklist, with arrows
-% pointing to (ii) the deck's BC row (sparse card-count vector) and (iii) the
-% deck's DF row (dense structural vector), plus (iv) a table comparing its
-% y_com and y_calc, with the deck framed inside one nested-CV training fold.
-\fbox{\parbox{0.95\linewidth}{\centering\vspace{1.5cm}\textit{[Figure placeholder]} An Archidekt deck is projected into the BC (sparse card-count row) and DF (dense structural row) representations and labeled with both \(y_{\text{com}}\) and \(y_{\text{calc}}\). The same deck is placed inside one outer training fold of the nested cross-validation.\vspace{1.5cm}}}
-\caption{Overview of the pipeline. One Archidekt deck $\rightarrow$ two representations $\rightarrow$ two labels $\rightarrow$ one fold of nested CV.}
-\label{fig:overview}
-\end{figure}
+We collect 12{,}135 public Commander decks from Archidekt, each carrying an Archidekt bracket \(y_{\text{arch}}\) and an EDHPowerLevel calculator bracket \(y_{\text{calc}}\), both in \(\{2,3,4\}\). We encode each deck as a sparse Bag of Cards (BC) and as a dense Deck Features (DF) vector, train six classifiers on each representation to predict \(y_{\text{arch}}\), and compare the out-of-fold predictions \(\hat{y}_{\text{arch}}\) against \(y_{\text{calc}}\).
 
 \paragraph{Research question.} \textit{To what extent do Archidekt-assigned Commander brackets diverge from automatically calculated bracket estimates, and which deck characteristics explain the disagreement?}
 
 \paragraph{Contributions.}
 \begin{enumerate}
-  \item A curated dataset of 12{,}135 high-visibility Commander decks with both \(y_{\text{com}}\) and \(y_{\text{calc}}\) labels in \(\{2,3,4\}\), released along with extraction code.
-  \item A direct measurement of the raw divergence between \(y_{\text{com}}\) and \(y_{\text{calc}}\) on the modeling set, including signed distribution and structural correlates.
-  \item Two complementary deck representations (BC and DF) compared across six classifiers under nested cross-validation, with strictly per-fold preprocessing.
-  \item A model-level divergence analysis that asks which representations and which signals drive each side of the disagreement.
+  \item A curated dataset of 12{,}135 high-visibility Commander decks with both \(y_{\text{arch}}\) and \(y_{\text{calc}}\) labels in \(\{2,3,4\}\), released along with extraction code.
+  \item A direct measurement of the raw divergence between \(y_{\text{arch}}\) and \(y_{\text{calc}}\) on the modeling set, including signed distribution and structural correlates.
+  \item A comparison of two deck representations (BC and DF) across six classifiers under repeated nested cross-validation, with per-fold preprocessing and shared splits.
+  \item A voting analysis over the top 3, 5, and 7 models by macro-F1, plus a separate selection of the best BC and DF models.
+  \item A comparison between \(y_{\text{arch}}\), \(\hat{y}_{\text{arch}}\), and \(y_{\text{calc}}\), followed by interpretability analyses for the best DF and BC models.
 \end{enumerate}
 
-\paragraph{Outline.} Section~\ref{sec:background} reviews Magic, Commander, and the two power-assessment systems we use. Section~\ref{sec:dataset} documents the data, the EDA, and the two deck representations. Section~\ref{sec:spotcheck} describes the spot-checking pass that selects the algorithm pool. Section~\ref{sec:training} describes nested cross-validation and reports model results. Section~\ref{sec:discussion} discusses limitations. Section~\ref{sec:conclusion} concludes. Appendices provide MTG background, an extended preprocessing rationale, the full DF feature catalog, and the full spot-checking table.
+\paragraph{Outline.} Section~\ref{sec:background} introduces MTG, Commander, Commander Brackets, and automated calculators. Section~\ref{sec:dataset} documents data extraction, filtering, labels, exploratory divergence, and deck representations. Section~\ref{sec:spotcheck} describes the spot-checking pass. Section~\ref{sec:training} reports nested cross-validation, voting, and model selection. Section~\ref{sec:modelcalc} compares models with the calculator. Section~\ref{sec:interpretability} interprets the best DF and BC models. Section~\ref{sec:conclusion} concludes with discussion, limitations, and future work.
 
 % ============================================================
 \section{Background}
@@ -97,7 +82,7 @@ This section gives the minimum context needed to read the rest of the paper. Gam
 \subsection{Magic: The Gathering}
 \label{sec:bg:mtg}
 
-MTG is a turn-based collectible card game first published in 1993.\footnote{\url{https://magic.wizards.com}} A player builds a deck from a pool of tens of thousands of unique cards, draws a hand, and casts spells using a resource called \textit{mana}. Each card has a type --- creature, instant, sorcery, artifact, enchantment, planeswalker, or land --- and a converted mana cost (CMC) that says how much mana is needed to play it. Lands produce mana; everything else consumes it.
+MTG is a turn-based collectible card game first published in 1993~\cite{mtg}. A player builds a deck from a pool of tens of thousands of unique cards, draws a hand, and casts spells using a resource called \textit{mana}. Each card has a type --- creature, instant, sorcery, artifact, enchantment, planeswalker, or land --- and a converted mana cost (CMC) that says how much mana is needed to play it. Lands produce mana; everything else consumes it.
 
 The game has many formats. Each defines deck-construction rules, the legal pool of cards, and the number of players at the table. Our work is restricted to one format, Commander.
 
@@ -115,19 +100,19 @@ A Commander table works when the four decks land in a comparable range of power.
 
 The metrics that the community has converged on are not deck win rates, but rather signals tied to deck \textit{structure}: how many \textit{Game Changers} a deck plays, how many \textit{tutors}, how many \textit{two-card combos}, the mana curve, and the rough cost of the deck. These are the same signals the automated calculators count, and they are the signals our DF representation captures.
 
-\subsection{Commander Brackets (community label \(y_{\text{com}}\))}
+\subsection{Commander Brackets (community label \(y_{\text{arch}}\))}
 \label{sec:bg:brackets}
 
-The format's official committee published a five-level bracket system in October 2024. Bracket~1 is casual and thematic; bracket~5 is cEDH (competitive EDH). The middle brackets, 2--4, cover most casual play. Each bracket has a few hard caps --- for instance, on the count of Game Changer cards --- but most of the label is left to the player's reading of their own deck.
+The format's official committee published a five-level bracket system in October 2024~\cite{commanderbrackets}. Bracket~1 is casual and thematic; bracket~5 is cEDH (competitive EDH). The middle brackets, 2--4, cover most casual play. Each bracket has a few hard caps --- for instance, on the count of Game Changer cards --- but most of the label is left to the player's reading of their own deck.
 
-In our dataset, \(y_{\text{com}}\) is the bracket the deck creator selected on Archidekt,\footnote{\url{https://archidekt.com}} the deck-building platform we scraped. It carries the same kind of noise as any self-report: a well-tuned deck without any Game Changers can be stronger than a poorly-built deck that happens to include several, and two players with similar decks may still pick different brackets.
+In our dataset, \(y_{\text{arch}}\) is the bracket the deck creator selected on Archidekt, the deck-building platform we scraped~\cite{archidekt}. It carries the same kind of noise as any self-report: a well-tuned deck without any Game Changers can be stronger than a poorly-built deck that happens to include several, and two players with similar decks may still pick different brackets.
 
 \subsection{Automated calculators (calculator label \(y_{\text{calc}}\))}
 \label{sec:bg:calculator}
 
-Several community tools take a decklist as input and return a bracket from a deterministic rule set. We use EDHPowerLevel.\footnote{\url{https://www.edhpowerlevel.com}} The calculator counts cards in named lists (Game Changers, tutors, extra-turn effects, mass land denial), counts known combo pieces, and weighs in card price and EDHREC\footnote{\url{https://edhrec.com}} popularity. It does not see the player; it only sees the cards. The bracket it returns is deterministic given the inputs, but the inputs change over time --- card prices and EDHREC ranks move daily.
+Several community tools take a decklist as input and return a bracket from a deterministic rule set. We use EDHPowerLevel~\cite{edhpowerlevel}. The calculator counts cards in named lists (Game Changers, tutors, extra-turn effects, mass land denial), counts known combo pieces, and weighs in card price and EDHREC popularity~\cite{edhrec}. It does not see the player; it only sees the cards. The bracket it returns is deterministic given the inputs, but the inputs change over time --- card prices and EDHREC ranks move daily.
 
-The two readings disagree. A deck the player called bracket~3 may receive a calculator bracket of 2 or 4, and the rate of disagreement is large enough to motivate this work. Neither label is correct: \(y_{\text{com}}\) reflects the player's reading, \(y_{\text{calc}}\) reflects one rule set. The aim of this paper is to characterize the misalignment, not to arbitrate it.
+The two readings disagree. A deck the player called bracket~3 may receive a calculator bracket of 2 or 4, and the rate of disagreement is large enough to motivate this work. Neither label is correct: \(y_{\text{arch}}\) reflects the player's reading, \(y_{\text{calc}}\) reflects one rule set. The aim of this paper is to characterize the misalignment, not to arbitrate it.
 
 % ============================================================
 \section{Dataset Construction}
@@ -149,18 +134,18 @@ Collection retrieved 14{,}421 deck records from the Archidekt API across the bra
 Every deck we retained on the Archidekt side satisfied, by construction of the API query:
 \begin{itemize}
   \item Public deck on Archidekt, format Commander;
-  \item User-assigned bracket \(y_{\text{com}} \in \{2,3,4\}\);
+  \item User-assigned bracket \(y_{\text{arch}} \in \{2,3,4\}\);
   \item At least 1{,}000 views on Archidekt;
   \item Exactly 100 cards in the mainboard;
   \item Mainboard only --- maybeboard, sideboard, tokens, and extras were ignored.
 \end{itemize}
 
-After joining \(y_{\text{calc}}\), 815 decks (6.3\%) received \(y_{\text{calc}} \in \{1,5\}\) and were dropped from the supervised setup, since brackets~1 and~5 are sparsely populated extremes. This yields the \textbf{modeling set of 12{,}135 decks}, with both labels in \(\{2,3,4\}\). The 815 dropped decks are still useful as context for the divergence (Section~\ref{sec:data:eda}).
+After joining \(y_{\text{calc}}\), 815 decks (6.3\%) received \(y_{\text{calc}} \in \{1,5\}\) and were dropped from the supervised setup, since brackets~1 and~5 are sparsely populated extremes. They are also qualitatively different from the middle of the scale: bracket~1 is reserved for very casual or thematic decks, while bracket~5 corresponds to competitive EDH, so including them would make the classifier spend capacity on edge cases rather than on the common Commander power range where most community negotiation happens. This yields the \textbf{modeling set of 12{,}135 decks}, with both labels in \(\{2,3,4\}\). The 815 dropped decks are still useful as context for the divergence (Section~\ref{sec:data:eda}).
 
 \subsection{Labels}
 \label{sec:data:labels}
 
-Each deck carries two labels: \(y_{\text{com}}\), the bracket the deck creator assigned on Archidekt, and \(y_{\text{calc}}\), the bracket EDHPowerLevel returned for the same card list. We never treat either as ground truth: \(y_{\text{com}}\) is subjective and varies across players, while \(y_{\text{calc}}\) reflects one rule set fed by time-varying inputs (prices, popularity). The supervised models are trained only on \(y_{\text{com}}\); \(y_{\text{calc}}\) is joined back after training for descriptive comparison.
+Each deck carries two labels: \(y_{\text{arch}}\), the bracket the deck creator assigned on Archidekt, and \(y_{\text{calc}}\), the bracket EDHPowerLevel returned for the same card list. We never treat either as ground truth: \(y_{\text{arch}}\) is subjective and varies across players, while \(y_{\text{calc}}\) reflects one rule set fed by time-varying inputs (prices, popularity). The supervised models are trained only on \(y_{\text{arch}}\); \(y_{\text{calc}}\) is joined back after training for descriptive comparison.
 
 Table~\ref{tab:label-dist} reports the marginal distributions on the modeling set. Bracket~3 dominates both labels.
 
@@ -172,32 +157,32 @@ Table~\ref{tab:label-dist} reports the marginal distributions on the modeling se
 \toprule
 Label & Bracket 2 & Bracket 3 & Bracket 4 \\
 \midrule
-\(y_{\text{com}}\) (Archidekt)     & 2{,}321 (19.1\%) & 6{,}217 (51.2\%) & 3{,}597 (29.6\%) \\
+\(y_{\text{arch}}\) (Archidekt)     & 2{,}321 (19.1\%) & 6{,}217 (51.2\%) & 3{,}597 (29.6\%) \\
 \(y_{\text{calc}}\) (EDHPowerLevel) & 1{,}911 (15.7\%) & 6{,}059 (49.9\%) & 4{,}165 (34.3\%) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\paragraph{Temporal stability of \(y_{\text{calc}}\).} EDHPowerLevel uses time-varying signals (prices and EDHREC rank). We re-queried 90 decks several weeks after the first pass: 87 of them (96.7\%) received the same bracket. The 3 changes were all border decks, with computed power score within 0.3 points of a bracket boundary. We therefore treat \(y_{\text{calc}}\) as a snapshot fixed at collection time, and revisit the limitation in Section~\ref{sec:discussion}.
+\paragraph{Temporal stability of \(y_{\text{calc}}\).} EDHPowerLevel uses time-varying signals (prices and EDHREC rank). We re-queried 90 decks several weeks after the first pass: 87 of them (96.7\%) received the same bracket. The 3 changes were all border decks, with computed power score within 0.3 points of a bracket boundary. We therefore treat \(y_{\text{calc}}\) as a snapshot fixed at collection time, and revisit the limitation in Section~\ref{sec:conclusion:discussion}.
 
 \subsection{Exploratory analysis of the divergence}
 \label{sec:data:eda}
 
 Before fitting any model, we measure how often the two labels disagree, by how much, and in which direction. The numbers below are computed on the modeling set (12{,}135 decks). All counts and percentages also live in the EDA report shipped with the dataset.
 
-\paragraph{Agreement.} \(y_{\text{com}} = y_{\text{calc}}\) on 7{,}395 decks (60.9\%). Allowing a one-bracket tolerance brings agreement to 11{,}853 decks (97.7\%). Differences larger than one bracket are rare (282 decks, 2.3\%) and concentrated in obvious mismatches.
+\paragraph{Agreement.} \(y_{\text{arch}} = y_{\text{calc}}\) on 7{,}395 decks (60.9\%). Allowing a one-bracket tolerance brings agreement to 11{,}853 decks (97.7\%). Differences larger than one bracket are rare (282 decks, 2.3\%) and concentrated in obvious mismatches.
 
-\paragraph{Direction.} The calculator tends to label a deck higher than the player did. With \(\Delta = y_{\text{calc}} - y_{\text{com}}\), \(\Delta > 0\) on 23.5\% of decks and \(\Delta < 0\) on 15.6\%. The mean of \(|\Delta|\) is 0.414; the median is 0. Player self-assessment is therefore biased downward relative to the calculator on the modeling set, by about 7.8 percentage points.
+\paragraph{Direction.} The calculator tends to label a deck higher than the player did. With \(\Delta = y_{\text{calc}} - y_{\text{arch}}\), \(\Delta > 0\) on 23.5\% of decks and \(\Delta < 0\) on 15.6\%. The mean of \(|\Delta|\) is 0.414; the median is 0. Player self-assessment is therefore biased downward relative to the calculator on the modeling set, by about 7.8 percentage points.
 
-\paragraph{Cross-tabulation.} Table~\ref{tab:y1y2-matrix} reports the joint distribution. The diagonal carries most of the mass; off-diagonal cells follow the same downward bias --- the (\(y_{\text{com}}=2, y_{\text{calc}}=3\)) cell is twice as large as (\(y_{\text{com}}=3, y_{\text{calc}}=2\)), and similarly for the next pair.
+\paragraph{Cross-tabulation.} Table~\ref{tab:yarch-ycalc-matrix} reports the joint distribution. The diagonal carries most of the mass; off-diagonal cells follow the same downward bias --- the (\(y_{\text{arch}}=2, y_{\text{calc}}=3\)) cell is twice as large as (\(y_{\text{arch}}=3, y_{\text{calc}}=2\)), and similarly for the next pair.
 
 \begin{table}[h]
 \centering
-\caption{Joint counts \(y_{\text{com}} \times y_{\text{calc}}\) on the modeling set.}
-\label{tab:y1y2-matrix}
+\caption{Joint counts \(y_{\text{arch}} \times y_{\text{calc}}\) on the modeling set.}
+\label{tab:yarch-ycalc-matrix}
 \begin{tabular}{lrrrr}
 \toprule
-$y_{\text{com}}$ \textbackslash{} $y_{\text{calc}}$ & 2 & 3 & 4 & Total \\
+$y_{\text{arch}}$ \textbackslash{} $y_{\text{calc}}$ & 2 & 3 & 4 & Total \\
 \midrule
 2 & 1{,}014 & 1{,}153 & 154 & 2{,}321 \\
 3 & 769 & 3{,}909 & 1{,}539 & 6{,}217 \\
@@ -206,16 +191,7 @@ $y_{\text{com}}$ \textbackslash{} $y_{\text{calc}}$ & 2 & 3 & 4 & Total \\
 \end{tabular}
 \end{table}
 
-\paragraph{Structural correlates of \(|\Delta|\).} The size of the disagreement varies with deck structure. \(|\Delta|\) grows with the count of Game Changer cards (Figure~\ref{fig:eda-divergence}, right) and with color count: monocolor decks are easier for both readers, four- and five-color decks more often produce disagreement. Tutor count, price quintile, and EDHREC rank show similar but smaller trends. Quantitative breakdowns by feature are reported in the EDA companion. \textit{[TODO once the final EDA pass is reconciled with the modeling set: add the per-bucket table.]}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.42\linewidth]{figures/divergence/delta_distribution.png}
-\hspace{0.04\linewidth}
-\includegraphics[width=0.42\linewidth]{figures/divergence/abs_delta_by_game_changers.png}
-\caption{Left: signed distribution of $\Delta = y_{\text{calc}} - y_{\text{com}}$ on the modeling set. The mass on $\Delta = +1$ is larger than on $\Delta = -1$. Right: mean $|\Delta|$ as a function of Game Changer count.}
-\label{fig:eda-divergence}
-\end{figure}
+\paragraph{Structural correlates of \(|\Delta|\).} The size of the disagreement varies with deck structure. \(|\Delta|\) is largest when the deck lacks clear bracket-defining signals, and it shrinks sharply when Game Changer counts are high: decks with 0 Game Changers have mean \(|\Delta| = 0.568\), while decks with 5 or more are almost always assigned the same bracket by both sources. Color count also matters: monocolor decks show lower mean disagreement than four- and five-color decks. Tutor count, price quintile, and EDHREC rank show similar but smaller trends. Quantitative breakdowns by feature are reported in the EDA companion.
 
 \subsection{Bag of Cards (BC)}
 \label{sec:data:bc}
@@ -279,7 +255,7 @@ K-Nearest Neighbors & \texttt{KNeighborsClassifier}         & Distance-based \\
 \subsection{Hold-out protocol}
 \label{sec:spotcheck:protocol}
 
-Each candidate runs on both representations with scikit-learn 1.5 defaults (see Appendix~\ref{app:spotcheck} for the exact defaults). We use 5 stratified 80/20 hold-out splits with seeds $\{1, 2, 3, 4, 5\}$, stratified by $y_{\text{com}}$, and report the mean and standard deviation of macro-F1 across seeds. Spot-checking is deliberately not a tuning pass: the hyperparameters are fixed at their defaults so that the ranking reflects the algorithm, not the search effort.
+Each candidate runs on both representations with scikit-learn 1.5 defaults (see Appendix~\ref{app:spotcheck} for the exact defaults). We use 5 stratified 80/20 hold-out splits with seeds $\{1, 2, 3, 4, 5\}$, stratified by $y_{\text{arch}}$, and report the mean and standard deviation of macro-F1 across seeds. Spot-checking is deliberately not a tuning pass: the hyperparameters are fixed at their defaults so that the ranking reflects the algorithm, not the search effort.
 
 \subsection{Results and selection}
 \label{sec:spotcheck:results}
@@ -308,7 +284,7 @@ KNN                 & 0.4541 & 0.5241 & --- \\
 We define $A_{\text{union}} = A_{\text{BC}} \cup A_{\text{DF}}$, where $A_{\text{BC}}$ and $A_{\text{DF}}$ are the top-five per representation. The union keeps Random Forest because the goal at this stage is to triage \textit{algorithms}, not specific (algorithm, representation) pairs --- under proper tuning, the asymmetric case may close. We carry the six algorithms in $A_{\text{union}}$ forward into nested CV: Decision Tree, Random Forest, Gradient Boosting, Naive Bayes, Logistic Regression, Linear SVC. Total training surface: $6 \times 2 = 12$ models. Full table, standard deviations, and the \texttt{bc\_min\_df} sweep that fixed \texttt{min\_df = 10} are in Appendix~\ref{app:spotcheck}.
 
 % ============================================================
-\section{Training}
+\section{Training and Model Selection}
 \label{sec:training}
 % ============================================================
 
@@ -333,7 +309,7 @@ All preprocessing is fit on the training partition of the current fold and appli
   \item \textbf{Imputation.} Missing EDHREC ranks and salt scores are filled with the training-fold median.
   \item \textbf{Winsorization.} \texttt{price\_total} is clipped at the training-fold 99th percentile; the long tail (a handful of decks above \$50{,}000) would otherwise dominate linear models and waste tree splits.
   \item \textbf{Scaling.} \texttt{StandardScaler} is applied to DF features for the scale-sensitive algorithms (Logistic Regression, Linear SVC, KNN). Tree-based models and Gaussian Naive Bayes receive unscaled DF features.
-  \item \textbf{Leakage prevention.} The model sees only the current training partition. All fields derived from EDHPowerLevel (\(y_{\text{calc}}\), the continuous power score, and any column prefixed \texttt{epl\_}) are stripped from every feature matrix, in every fold. The only training target is \(y_{\text{com}}\); \(y_{\text{calc}}\) is joined back after training, only for descriptive comparison.
+  \item \textbf{Leakage prevention.} The model sees only the current training partition. All fields derived from EDHPowerLevel (\(y_{\text{calc}}\), the continuous power score, and any column prefixed \texttt{epl\_}) are stripped from every feature matrix, in every fold. The only training target is \(y_{\text{arch}}\); \(y_{\text{calc}}\) is joined back after training, only for descriptive comparison.
 \end{itemize}
 
 \subsection{Hyperparameter grids}
@@ -391,39 +367,215 @@ Naive Bayes (DF)
 \subsection{Evaluation metrics}
 \label{sec:training:metrics}
 
-Macro-F1 is the primary metric. It averages per-class F1 with equal weight, which is appropriate here: \(y_{\text{com}} = 3\) is 51.2\% of the modeling set, and accuracy alone would mask poor recall on the minority classes. We also report accuracy, macro-precision, macro-recall, and per-class confusion matrices, all as mean $\pm$ standard deviation across the 15 outer folds.
+Macro-F1 is the primary metric. It averages per-class F1 with equal weight, which is appropriate here: \(y_{\text{arch}} = 3\) is 51.2\% of the modeling set, and accuracy alone would mask poor recall on the minority classes. We also report accuracy, macro-precision, macro-recall, and per-class confusion matrices, all as mean $\pm$ standard deviation across the 15 outer folds.
 
 \subsection{Results}
 \label{sec:training:results}
 
-\textit{[TODO --- this subsection is filled once the final nested-CV pass completes. Planned content: per-model macro-F1 with standard deviation, DF vs.\ BC gap analysis, Friedman test across all 12 models, post-hoc Nemenyi pairwise comparisons, paired Wilcoxon tests for the key pairs.]}
+All 12 models completed the full 15 outer folds. Table~\ref{tab:nested-results} reports the nested-CV results. The best individual model is DF Gradient Boosting with macro-F1 \(0.6908 \pm 0.0093\). The best BC model is BC Gradient Boosting with macro-F1 \(0.6433 \pm 0.0121\). DF is stronger than BC for every algorithm in the tuned comparison: the DF--BC macro-F1 gap ranges from +0.0370 for Naive Bayes to +0.1251 for Decision Tree.
 
-\subsection{Model-level divergence against \(y_{\text{calc}}\)}
-\label{sec:training:divergence}
+\begin{table}[h]
+\centering
+\caption{Nested-CV results for the 12 individual models. Values are mean $\pm$ std over 15 outer folds.}
+\label{tab:nested-results}
+\small
+\begin{tabular}{llrr}
+\toprule
+Model & Repr. & Macro-F1 & Accuracy \\
+\midrule
+\texttt{gradient\_boosting}   & DF & \(0.6908 \pm 0.0093\) & 0.6978 \\
+\texttt{random\_forest}       & DF & \(0.6733 \pm 0.0076\) & 0.7034 \\
+\texttt{decision\_tree}       & DF & \(0.6727 \pm 0.0100\) & 0.6876 \\
+\texttt{logistic\_regression} & DF & \(0.6707 \pm 0.0110\) & 0.6944 \\
+\texttt{linear\_svc}          & DF & \(0.6557 \pm 0.0085\) & 0.6584 \\
+\texttt{naive\_bayes}         & DF & \(0.5905 \pm 0.0093\) & 0.5874 \\
+\texttt{gradient\_boosting}   & BC & \(0.6433 \pm 0.0121\) & 0.6442 \\
+\texttt{random\_forest}       & BC & \(0.6326 \pm 0.0122\) & 0.6534 \\
+\texttt{logistic\_regression} & BC & \(0.6236 \pm 0.0096\) & 0.6212 \\
+\texttt{linear\_svc}          & BC & \(0.6147 \pm 0.0118\) & 0.6281 \\
+\texttt{naive\_bayes}         & BC & \(0.5535 \pm 0.0090\) & 0.5636 \\
+\texttt{decision\_tree}       & BC & \(0.5475 \pm 0.0116\) & 0.5540 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-After training, we compare the out-of-fold predictions $\hat{y}_{\text{com}}$ against $y_{\text{calc}}$ on the same fold partitions. This is a descriptive overlay --- no retraining, no new target. For each model we report exact and within-$\pm 1$ agreement with $y_{\text{calc}}$, mean $|\hat{y}_{\text{com}} - y_{\text{calc}}|$, macro-F1 treating $y_{\text{calc}}$ as the reference label, and the confusion matrix $\hat{y}_{\text{com}} \times y_{\text{calc}}$. The question this asks is which representations end up closer to the calculator's logic and which capture community-specific patterns the calculator does not encode.
+The statistical tests agree with this ordering. A Friedman test over the 12 models and 15 paired folds rejects equal ranks (statistic \(=158.84\), \(p < 10^{-6}\)). The post-hoc Nemenyi critical difference at \(\alpha=0.05\) is 4.3025 ranks. DF Gradient Boosting has mean rank 1.07 and is significantly above all BC models; the only non-significant Wilcoxon comparisons among top DF models are the near-ties among DF Decision Tree, DF Random Forest, and DF Logistic Regression.
 
-\textit{[TODO --- filled after nested CV runs complete.]}
+As a leakage check, we also ran a 5-fold \texttt{GroupKFold} grouped by commander identity. The best models remain stable: DF Gradient Boosting scores 0.7021 under grouped evaluation, compared with 0.6908 in the stratified nested CV, and BC Gradient Boosting scores 0.6496 versus 0.6433. This suggests that the leading models are not simply memorizing commander-specific patterns.
+
+\subsection{Voting ensembles}
+\label{sec:training:voting}
+
+We evaluate three simple hard-voting ensembles over the already-saved out-of-fold predictions: the top-3, top-5, and top-7 individual models ranked globally by mean macro-F1. No base model is retrained. Ties are resolved by the macro-F1 of the members voting for each class, with the smaller bracket as a final deterministic fallback. Table~\ref{tab:voting-results} reports the ensemble scores.
+
+\begin{table}[h]
+\centering
+\caption{Hard-voting ensembles built from OOF predictions.}
+\label{tab:voting-results}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Ensemble & Members & Macro-F1 & Accuracy \\
+\midrule
+\texttt{voting\_top3} & 3 & \(0.6941 \pm 0.0096\) & 0.7080 \\
+\texttt{voting\_top7} & 7 & \(0.6936 \pm 0.0085\) & 0.7071 \\
+\texttt{voting\_top5} & 5 & \(0.6932 \pm 0.0076\) & 0.7082 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The best ensemble, \texttt{voting\_top3}, improves over the best individual model by only +0.0033 macro-F1. The gain is real but small; it suggests that the strongest DF models already capture most of the learnable signal in \(y_{\text{arch}}\). Adding the fourth and fifth DF models, and then the two strongest BC models, does not improve over the top-3 vote.
+
+\subsection{Selected models}
+\label{sec:training:selection}
+
+For downstream analysis we separate three choices. The best individual model is DF Gradient Boosting. The best ensemble is \texttt{voting\_top3}. For interpretability, however, we select the best individual model separately by representation: DF Gradient Boosting for DF and BC Gradient Boosting for BC. We do not interpret the ensemble because it mixes model mechanisms and does not expose a single feature space.
+
+\begin{table}[h]
+\centering
+\caption{Model selections used after training.}
+\label{tab:selected-models}
+\small
+\begin{tabular}{lllr}
+\toprule
+Role & Model & Repr. & Macro-F1 \\
+\midrule
+Best individual & \texttt{df\_gradient\_boosting} & DF & \(0.6908 \pm 0.0093\) \\
+Best ensemble & \texttt{voting\_top3} & DF & \(0.6941 \pm 0.0096\) \\
+Best DF for interpretation & \texttt{df\_gradient\_boosting} & DF & \(0.6908 \pm 0.0093\) \\
+Best BC for interpretation & \texttt{bc\_gradient\_boosting} & BC & \(0.6433 \pm 0.0121\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both selected Gradient Boosting models use the modal hyperparameter configuration selected across their 15 outer folds: \texttt{class\_weight=balanced}, \texttt{learning\_rate=0.05}, \texttt{max\_iter=200}, and \texttt{max\_leaf\_nodes=31}.
 
 % ============================================================
-\section{Discussion}
-\label{sec:discussion}
+\section{Model-Calculator Comparison}
+\label{sec:modelcalc}
 % ============================================================
 
-\textit{[TODO --- expanded once results are filled. Planned content: (i) the \(y_{\text{calc}}\) snapshot is frozen at collection time, so any seasonal drift in card prices or EDHREC rank is not captured; (ii) we only see public, high-visibility Archidekt decks, which biases away from low-effort or private decklists; (iii) the calculator encodes one specific reading of the brackets, and a different calculator might disagree with ours as often as the community does; (iv) the question of whether a bracket prediction is ``correct'' is not well-posed in this setup --- both labels are imperfect, and the right interpretation of a model's score is how well it matches one specific reading.]}
+This section compares the model predictions \(\hat{y}_{\text{arch}}\) with \(y_{\text{calc}}\). It is descriptive: no model is trained or retrained in this phase, and \(y_{\text{calc}}\) is never used as a target. The analysis reads the out-of-fold predictions saved by nested CV and voting, then compares them to the calculator label on the same deck rows.
+
+Because the outer evaluation uses 3 repeats over the same 12{,}135 decks, the OOF comparison contains 36{,}405 rows. Each deck has a stable \(y_{\text{calc}}\), but it contributes one prediction per repeat. This is why the OOF confusion matrices in the appendix sum to 36{,}405 rather than 12{,}135.
+
+The raw baseline \(y_{\text{arch}}\) vs.\ \(y_{\text{calc}}\) was already shown in Table~\ref{tab:yarch-ycalc-matrix}. On the OOF-expanded base it has the same rates: 60.9\% exact agreement, 97.7\% within-one agreement, mean absolute difference 0.414, and macro-F1 0.5843 against \(y_{\text{calc}}\). We then compute the same statistics for \(\hat{y}_{\text{arch}}\) vs.\ \(y_{\text{calc}}\). Table~\ref{tab:calc-alignment} reports the global highlights.
+
+\begin{table}[h]
+\centering
+\caption{Descriptive comparison with \(y_{\text{calc}}\). Gap is \(|\mathrm{macro\text{-}F1}(y_{\text{arch}}) - \mathrm{exact\ agreement}(\hat{y}_{\text{arch}}, y_{\text{calc}})|\).}
+\label{tab:calc-alignment}
+\scriptsize
+\begin{tabular}{llrrrr}
+\toprule
+Case & Model / comparison & Repr. & Exact agr. & Macro-F1 vs \(y_{\text{calc}}\) & Gap \\
+\midrule
+Raw labels & \(y_{\text{arch}}\) vs.\ \(y_{\text{calc}}\) & --- & 60.9\% & 0.5843 & --- \\
+Highest agreement & \texttt{df\_random\_forest} & DF & 69.3\% & 0.6674 & 0.0194 \\
+Lowest agreement & \texttt{bc\_decision\_tree} & BC & 54.2\% & 0.5328 & 0.0057 \\
+Largest gap & \texttt{df\_gradient\_boosting} & DF & 64.0\% & 0.6323 & 0.0508 \\
+Smallest gap & \texttt{bc\_naive\_bayes} & BC & 55.5\% & 0.5462 & 0.0010 \\
+Best BC on \(y_{\text{arch}}\) & \texttt{bc\_gradient\_boosting} & BC & 60.3\% & 0.5984 & 0.0402 \\
+Best ensemble & \texttt{voting\_top3} & DF & 66.7\% & 0.6499 & 0.0276 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two points are important. First, high predictive performance on \(y_{\text{arch}}\) is not equivalent to high agreement with the calculator. DF Gradient Boosting is the best individual model for \(y_{\text{arch}}\), but its exact agreement with \(y_{\text{calc}}\) is 64.0\%, which gives the largest absolute gap in Table~\ref{tab:calc-alignment}. Second, several models align with the calculator more often than the raw Archidekt labels do. DF Random Forest reaches 69.3\% exact agreement and macro-F1 0.6674 against \(y_{\text{calc}}\), even though it was trained only on \(y_{\text{arch}}\). This suggests that part of the community-label signal captured by structured deck features overlaps with the calculator's rule set, while the remaining gap captures community-specific structure or calculator-specific assumptions.
+
+% ============================================================
+\section{Interpretability}
+\label{sec:interpretability}
+% ============================================================
+
+Interpretability uses exactly the best individual model from each representation, selected in Section~\ref{sec:training:selection}: DF Gradient Boosting and BC Gradient Boosting. Generalization estimates come from nested CV. For interpretation only, each selected model is fit again on the full modeling set or on an interpretability split, depending on the method.
+
+\subsection{Deck Features}
+\label{sec:interpretability:df}
+
+For DF, we compute permutation importance on a stratified 20\% hold-out with 10 repeats. HistGradientBoosting does not expose impurity-based feature importances, and permutation importance measures the drop in macro-F1 after shuffling each feature. Table~\ref{tab:df-interpretability} reports the top features.
+
+\begin{table}[h]
+\centering
+\caption{Top DF permutation importances for \texttt{df\_gradient\_boosting}.}
+\label{tab:df-interpretability}
+\small
+\begin{tabular}{lrr}
+\toprule
+Feature & PI mean & PI std \\
+\midrule
+\texttt{game\_changer\_count} & 0.2281 & 0.0096 \\
+\texttt{mass\_land\_denial\_count} & 0.0288 & 0.0029 \\
+\texttt{unique\_atomic\_combo\_refs\_count} & 0.0143 & 0.0052 \\
+\texttt{tutor\_count} & 0.0097 & 0.0038 \\
+\texttt{cmc\_1\_count} & 0.0060 & 0.0010 \\
+\texttt{land\_count} & 0.0043 & 0.0019 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The direction of the top feature is consistent with the bracket definition. In the validation split, mean \texttt{game\_changer\_count} is 0.001 for decks predicted as bracket~2, 1.499 for bracket~3, and 4.146 for bracket~4. The divergence analysis also shows that rows where \(\hat{y}_{\text{arch}}=y_{\text{calc}}\) have higher \texttt{game\_changer\_count} than divergent rows (2.165 vs.\ 0.939). When clear bracket-defining signals are present, the model and calculator align more often.
+
+\subsection{Bag of Cards}
+\label{sec:interpretability:bc}
+
+For BC, dense permutation importance over more than 11k card features is not practical for HistGradientBoosting. We instead analyze card lift over OOF predictions:
+\[
+\mathrm{lift}(k,c) = \frac{P(c \text{ present}\mid \hat{y}_{\text{arch}}=k)}{P(c \text{ present})}.
+\]
+Cards with fewer than 10 unique decks are filtered. Table~\ref{tab:bc-interpretability} shows the strongest bracket~4 lifts.
+
+\begin{table}[h]
+\centering
+\caption{Top bracket~4 card lifts for \texttt{bc\_gradient\_boosting}.}
+\label{tab:bc-interpretability}
+\small
+\begin{tabular}{lrr}
+\toprule
+Card & Lift & Freq. in predicted bracket~4 \\
+\midrule
+\textit{Blood Moon} & 3.325 & 3.5\% \\
+\textit{Winter Moon} & 3.325 & 2.1\% \\
+\textit{Ruination} & 3.325 & 0.5\% \\
+\textit{Harbinger of the Seas} & 3.278 & 1.3\% \\
+\textit{Back to Basics} & 3.186 & 0.8\% \\
+\textit{Chrome Mox} & 3.185 & 6.7\% \\
+\textit{Imperial Seal} & 3.160 & 2.1\% \\
+\textit{Grim Monolith} & 3.138 & 2.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The bracket~4 list is dominated by cards associated with high-power Commander: fast mana, tutors, and resource denial. The divergence lift analysis separates concordant and divergent OOF rows. Cards enriched in concordant rows include \textit{Blood Moon}, \textit{Imperial Seal}, \textit{Force of Will}, and \textit{Chrome Mox}. Rows where the model predicts below the calculator (\(\hat{y}_{\text{arch}}<y_{\text{calc}}\)) are enriched for cards such as \textit{Vorinclex, Voice of Hunger}, \textit{Expropriate}, \textit{Time Stretch}, and \textit{Time Sieve}. These cards can be strong, but their table impact is context-dependent; this helps explain why a deterministic calculator and a model trained on community labels disagree.
 
 % ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
 % ============================================================
 
-\textit{[TODO --- written after Discussion. Brief recap: dataset, two representations, six classifiers, divergence framing.]}
+We built a reproducible pipeline for studying the divergence between community-assigned and automatically calculated Commander brackets. On 12{,}135 Archidekt decks with both labels in brackets 2--4, raw agreement between \(y_{\text{arch}}\) and \(y_{\text{calc}}\) is 60.9\%, with the calculator assigning higher brackets more often than players do. Across six algorithms and two representations, DF models outperform BC models under nested cross-validation; the best individual model is DF Gradient Boosting with macro-F1 \(0.6908 \pm 0.0093\), and the best voting ensemble improves this only slightly to 0.6941.
+
+Interpretability points to a coherent explanation: aggregate deck structure, especially Game Changer count, mass land denial, combo references, and tutors, dominates the DF model, while BC lift recovers recognizable high-power cards such as \textit{Blood Moon}, \textit{Chrome Mox}, \textit{Imperial Seal}, and \textit{Mana Vault}. The models therefore do not decide whether the community or the calculator is ``right''; they expose where their readings overlap and where they diverge.
+
+\subsection{Discussion, Limitations, and Future Work}
+\label{sec:conclusion:discussion}
+
+The main result is that structured deck features are more predictive of the Archidekt bracket than raw card identity in this setting. DF wins for every tuned algorithm, and the best DF model also has the best statistical rank. This does not mean that individual cards are irrelevant: the BC lift analysis recovers familiar high-power cards, especially in bracket~4. Rather, the nested-CV comparison suggests that Archidekt brackets are better approximated by aggregate structure --- Game Changers, tutors, land denial, combo density, curve, and mana base --- than by sparse card identity alone.
+
+The comparison with \(y_{\text{calc}}\) is descriptive. We do not claim that the calculator is a ground truth label, nor that \(y_{\text{arch}}\) is one. DF Random Forest agrees with \(y_{\text{calc}}\) more often than the raw Archidekt labels do, which shows that part of the learned signal overlaps with the calculator's rules. Conversely, the best predictor of \(y_{\text{arch}}\), DF Gradient Boosting, is not the model most aligned with the calculator. This gap identifies where a model captures community-specific structure rather than reproducing the automated bracket logic.
+
+Several limitations remain. First, \(y_{\text{calc}}\) is a snapshot. EDHPowerLevel uses time-varying signals such as prices and EDHREC ranks, and a small re-query audit found that 3 of 90 decks changed brackets several weeks later. Second, the sample contains public, high-visibility Archidekt decks; private decks and low-view experimental lists may behave differently. Third, the calculator encodes one specific interpretation of Commander power. A different calculator might disagree with EDHPowerLevel in ways that mirror the community-calculator gap studied here. Finally, bracket prediction is not win-rate prediction. The models learn labels attached to decklists, not the strength, play experience, or social acceptability of a deck at a table.
+
+Future work should test temporal stability by re-querying calculator labels over time, include additional deck-building platforms, and evaluate whether ordinal classifiers or calibrated models better match the ordered nature of brackets. A separate design is needed for brackets~1 and~5, since they represent endpoints rather than the common Commander power range modeled here.
+
+\bibliographystyle{plain}
+\bibliography{refs}
 
 % ============================================================
 \appendix
 % ============================================================
 
-The appendices collect supplementary material. Appendix~\ref{app:mtg} provides MTG and Commander background, including a turn-by-turn walkthrough of how a Commander game is played. Appendix~\ref{app:preprocessing} expands the preprocessing rationale. Appendix~\ref{app:features} lists every Deck Features attribute and how it is computed. Appendix~\ref{app:spotcheck} gives the full spot-checking results, software versions, and default hyperparameters.
+The appendices collect supplementary material. Appendix~\ref{app:mtg} provides MTG and Commander background, including a turn-by-turn walkthrough of how a Commander game is played. Appendix~\ref{app:preprocessing} expands the preprocessing rationale. Appendix~\ref{app:features} lists every Deck Features attribute and how it is computed. Appendix~\ref{app:spotcheck} gives the full spot-checking results. Appendix~\ref{app:training-verification} summarizes model verification and statistical tests. Appendix~\ref{app:voting-selection} details voting and selected models. Appendix~\ref{app:modelcalc} adds calculator-comparison details. Appendix~\ref{app:interpretability} expands interpretability. Appendix~\ref{app:reproducibility-ai} gives reproducibility and AI-use statements.
 
 % ============================================================
 \section{MTG Terminology and Gameplay}
@@ -517,7 +669,7 @@ Section~\ref{sec:training:preprocessing} states the four transformations applied
 
 \paragraph{Scaling.} \texttt{StandardScaler} centers each DF feature to zero mean and unit variance, fit on the training fold. We apply it to Logistic Regression, Linear SVC, and KNN, whose objective functions or distance metrics are scale-dependent and would otherwise be dominated by high-magnitude features such as \texttt{price\_total} or \texttt{edhrec\_rank\_mean}. Tree-based models (Decision Tree, Random Forest, Gradient Boosting) and Gaussian Naive Bayes are invariant to monotonic per-feature rescaling, so we leave them unscaled to avoid an unnecessary transform that would obscure feature-importance interpretation.
 
-\paragraph{Leakage prevention.} The supervised target is $y_{\text{com}}$. Every field that the EDHPowerLevel pass produced --- $y_{\text{calc}}$, the continuous power score, efficiency, tipping point, and any column prefixed \texttt{epl\_} --- is stripped from the feature matrix before fitting. $y_{\text{calc}}$ is only joined back during the descriptive comparison after training. Without this rule, the easiest classifier on the planet (``predict the EDHPowerLevel bracket'') would score near-perfectly and explain nothing.
+\paragraph{Leakage prevention.} The supervised target is $y_{\text{arch}}$. Every field that the EDHPowerLevel pass produced --- $y_{\text{calc}}$, the continuous power score, efficiency, tipping point, and any column prefixed \texttt{epl\_} --- is stripped from the feature matrix before fitting. $y_{\text{calc}}$ is only joined back during the descriptive comparison after training. Without this rule, the easiest classifier on the planet (``predict the EDHPowerLevel bracket'') would score near-perfectly and explain nothing.
 
 % ============================================================
 \section{Deck Features (DF) Catalog}
@@ -671,15 +823,201 @@ KNN                 & 0.4541 & 0.0177 & 0.5241 & 0.0113 & --- \\
 
 Naive Bayes and Random Forest are retained asymmetrically. Naive Bayes makes the top-five for BC (rank 3) but not for DF (rank 6); Random Forest makes the top-five for DF (rank 2) but not for BC (rank 6). The union rule keeps both: the goal of spot-checking is to triage algorithms, not (algorithm, representation) pairs --- under proper tuning the asymmetric case may close, and we prefer to spend the tuning budget on an algorithm that already performs in one representation rather than rule it out from its default behavior in the other.
 
-\paragraph{Spot-checking visualizations.} Figure~\ref{fig:spotcheck-boxplots} shows per-seed macro-F1 boxplots for both representations. Gradient Boosting dominates on both sides; the gap between DF and BC is consistent with the gap visible in Table~\ref{tab:spotcheck}.
+\paragraph{Spot-checking summary.} The per-seed results follow the same pattern as Table~\ref{tab:spotcheck}: Gradient Boosting dominates on both sides, DF consistently outperforms BC, and KNN is the weakest candidate in both representations.
 
-\begin{figure}[h]
+% ============================================================
+\section{Training Verification and Statistical Tests}
+\label{app:training-verification}
+% ============================================================
+
+This appendix summarizes the verification phase applied before voting and model selection. The verification phase is a quality gate: it checks that all expected models exist, all outer folds completed, and all models share the same fold identities before any paired comparison is reported.
+
+\begin{table}[h]
 \centering
-\includegraphics[width=0.42\linewidth]{figures/spot_check/macro_f1_boxplot_bc.png}
-\hspace{0.04\linewidth}
-\includegraphics[width=0.42\linewidth]{figures/spot_check/macro_f1_boxplot_df.png}
-\caption{Spot-checking macro-F1 per algorithm, across 5 seeds. Left: Bag of Cards. Right: Deck Features.}
-\label{fig:spotcheck-boxplots}
-\end{figure}
+\caption{Model verification checks.}
+\label{tab:verification-checks}
+\small
+\begin{tabular}{ll}
+\toprule
+Check & Result \\
+\midrule
+Expected individual models & 12/12 present \\
+Outer folds per model & 15/15 for every model \\
+Shared fold identities & Same repeat/fold IDs across all models \\
+Inner-grid size & 24 configurations per algorithm/fold \\
+Best hyperparameters & Rank-1 inner macro-F1 recovered from CV results \\
+Training target & \(y_{\text{arch}}\) only; \(y_{\text{calc}}\) excluded from features \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To test whether models memorize commander-specific patterns, we also run a 5-fold \texttt{GroupKFold} grouped by commander identity. Table~\ref{tab:groupkfold} reports the two models later used for interpretation. The grouped scores are close to the stratified nested-CV scores, which supports the conclusion that the leading models do not rely only on commander identity.
+
+\begin{table}[h]
+\centering
+\caption{Commander-grouped robustness check for selected models.}
+\label{tab:groupkfold}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Model & Nested CV macro-F1 & GroupKFold macro-F1 & Group - nested \\
+\midrule
+\texttt{df\_gradient\_boosting} & 0.6908 & 0.7021 & +0.0113 \\
+\texttt{bc\_gradient\_boosting} & 0.6433 & 0.6496 & +0.0063 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The paired statistical tests use the same 15 outer scores for every model. A Friedman test rejects equal ranks across the 12 individual models (statistic \(=158.84\), \(p < 10^{-6}\)). The Nemenyi critical difference at \(\alpha=0.05\) is 4.3025 ranks. DF Gradient Boosting has mean rank 1.07 and is significantly above all BC models. Wilcoxon tests show that the top DF models are close to each other, while the DF-vs-BC gap is consistent across algorithms.
+
+% ============================================================
+\section{Voting and Model Selection Details}
+\label{app:voting-selection}
+% ============================================================
+
+Voting uses saved OOF predictions and never retrains a base model. The member lists are fixed by global macro-F1 ranking of individual models. Hard-vote ties are resolved by the summed macro-F1 of the models voting for each class; if a tie remains, the smaller bracket is selected.
+
+\begin{table}[h]
+\centering
+\caption{Voting ensemble members.}
+\label{tab:voting-members}
+\scriptsize
+\begin{tabular}{lp{9.5cm}}
+\toprule
+Ensemble & Members \\
+\midrule
+\texttt{voting\_top3} & \texttt{df\_gradient\_boosting}, \texttt{df\_random\_forest}, \texttt{df\_decision\_tree} \\
+\texttt{voting\_top5} & \texttt{df\_gradient\_boosting}, \texttt{df\_random\_forest}, \texttt{df\_decision\_tree}, \texttt{df\_logistic\_regression}, \texttt{df\_linear\_svc} \\
+\texttt{voting\_top7} & \texttt{df\_gradient\_boosting}, \texttt{df\_random\_forest}, \texttt{df\_decision\_tree}, \texttt{df\_logistic\_regression}, \texttt{df\_linear\_svc}, \texttt{bc\_gradient\_boosting}, \texttt{bc\_random\_forest} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Model selection for interpretability is representation-specific. The best DF model is \texttt{df\_gradient\_boosting}; the best BC model is \texttt{bc\_gradient\_boosting}. This rule prevents the interpretability phase from interpreting only the best global model and omitting the best model for one representation.
+
+% ============================================================
+\section{Calculator Comparison Details}
+\label{app:modelcalc}
+% ============================================================
+
+The model-calculator comparison uses 36{,}405 OOF rows: 12{,}135 decks times 3 repeats. The calculator label is stable per deck. Table~\ref{tab:oof-yarch-ycalc} repeats the raw \(y_{\text{arch}}\) vs.\ \(y_{\text{calc}}\) matrix on the OOF-expanded base used for direct comparison with model predictions.
+
+\begin{table}[h]
+\centering
+\caption{OOF-expanded \(y_{\text{arch}} \times y_{\text{calc}}\) matrix. Rows are Archidekt labels; columns are calculator labels.}
+\label{tab:oof-yarch-ycalc}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\(y_{\text{arch}}\) \textbackslash{} \(y_{\text{calc}}\) & 2 & 3 & 4 \\
+\midrule
+2 & 3{,}042 & 3{,}459 & 462 \\
+3 & 2{,}307 & 11{,}727 & 4{,}617 \\
+4 & 384 & 2{,}991 & 7{,}416 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Tables~\ref{tab:matrix-dfrf}--\ref{tab:matrix-bcnb} report the four highlighted model matrices. Rows are \(\hat{y}_{\text{arch}}\); columns are \(y_{\text{calc}}\). The diagonal is exact agreement with the calculator.
+
+\begin{table}[h]
+\centering
+\caption{\texttt{df\_random\_forest}: highest exact agreement with \(y_{\text{calc}}\).}
+\label{tab:matrix-dfrf}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\(\hat{y}_{\text{arch}}\) \textbackslash{} \(y_{\text{calc}}\) & 2 & 3 & 4 \\
+\midrule
+2 & 3{,}518 & 2{,}375 & 102 \\
+3 & 2{,}142 & 14{,}829 & 5{,}523 \\
+4 & 73 & 973 & 6{,}870 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\texttt{bc\_decision\_tree}: lowest exact agreement with \(y_{\text{calc}}\).}
+\label{tab:matrix-bcdt}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\(\hat{y}_{\text{arch}}\) \textbackslash{} \(y_{\text{calc}}\) & 2 & 3 & 4 \\
+\midrule
+2 & 3{,}516 & 4{,}488 & 820 \\
+3 & 1{,}811 & 9{,}511 & 4{,}976 \\
+4 & 406 & 4{,}178 & 6{,}699 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\texttt{df\_gradient\_boosting}: largest absolute gap between \(y_{\text{arch}}\) performance and calculator agreement.}
+\label{tab:matrix-dfgb}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\(\hat{y}_{\text{arch}}\) \textbackslash{} \(y_{\text{calc}}\) & 2 & 3 & 4 \\
+\midrule
+2 & 4{,}511 & 4{,}794 & 524 \\
+3 & 1{,}061 & 11{,}483 & 4{,}668 \\
+4 & 161 & 1{,}900 & 7{,}303 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{\texttt{bc\_naive\_bayes}: smallest absolute gap between \(y_{\text{arch}}\) performance and calculator agreement.}
+\label{tab:matrix-bcnb}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\(\hat{y}_{\text{arch}}\) \textbackslash{} \(y_{\text{calc}}\) & 2 & 3 & 4 \\
+\midrule
+2 & 3{,}508 & 4{,}435 & 472 \\
+3 & 1{,}645 & 9{,}432 & 4{,}775 \\
+4 & 580 & 4{,}310 & 7{,}248 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section{Interpretability Details}
+\label{app:interpretability}
+% ============================================================
+
+Table~\ref{tab:df-feature-direction} reports directional summaries for the top DF features. These are conditional means on the interpretability validation split. They are descriptive and do not imply causality.
+
+\begin{table}[h]
+\centering
+\caption{DF feature means by predicted bracket for \texttt{df\_gradient\_boosting}.}
+\label{tab:df-feature-direction}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Feature & Overall & Pred. 2 & Pred. 3 & Pred. 4 \\
+\midrule
+\texttt{game\_changer\_count} & 1.737 & 0.001 & 1.499 & 4.146 \\
+\texttt{mass\_land\_denial\_count} & 0.052 & 0.000 & 0.000 & 0.207 \\
+\texttt{unique\_atomic\_combo\_refs\_count} & 17.252 & 10.444 & 15.965 & 27.356 \\
+\texttt{tutor\_count} & 2.315 & 1.245 & 2.249 & 3.650 \\
+\texttt{cmc\_1\_count} & 8.748 & 7.920 & 8.579 & 9.998 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For the BC model, divergence lift separates concordant and divergent OOF rows. Cards enriched in concordant rows include \textit{Blood Moon} (lift 35.707), \textit{Winter Moon} (21.770), \textit{Harbinger of the Seas} (10.914), \textit{Ruination} (6.466), \textit{Back to Basics} (6.038), \textit{Imperial Seal} (5.897), \textit{Chrome Mox} (5.297), and \textit{Force of Will} (5.019). Cards enriched in sub-predicted rows include \textit{Vorinclex, Voice of Hunger} (42.282), \textit{Expropriate} (18.267), \textit{Time Stretch} (15.885), and \textit{Time Sieve} (15.290).
+
+% ============================================================
+\section{Reproducibility and AI Use}
+\label{app:reproducibility-ai}
+% ============================================================
+
+All experiments use fixed seeds and stored fold definitions. The nested-CV artifacts are stored under \texttt{experiments/model\_id/}; voting artifacts are stored under \texttt{experiments/voting/}; selected models are recorded in \texttt{experiments/best\_models.json}; interpretability artifacts are stored under \texttt{experiments/phase\_j\_interpretability/}. The processed data snapshot is distributed separately so that \(y_{\text{calc}}\) remains fixed to the collection-time values.
+
+The project used AI assistance during planning, implementation review, report drafting, and article editing. All reported numbers in the article come from saved experiment artifacts or generated reports, and the final responsibility for data collection, code execution, result validation, and paper content remains with the authors.
 
 \end{document}

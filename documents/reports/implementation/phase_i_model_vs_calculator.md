@@ -6,6 +6,13 @@
 
 Comparar, na mesma base OOF, o rótulo real `y1` (Archidekt) contra `y2` (calculadora EDHPowerLevel) e as predições OOF `ŷ1` (modelos treinados em `y1`) contra `y2`. A fase é **descritiva** — sem retreino, sem novos folds, sem uso de `y2` como alvo de treinamento (backbone §5). O objetivo é medir o grau de alinhamento entre percepção comunitária, percepção aprendida pelos modelos e avaliação automática da calculadora.
 
+As predições usadas aqui já foram feitas e persistidas antes:
+
+- Fase E: `experiments/<modelo>/predictions_per_fold.jsonl`, com as predições out-of-fold dos modelos individuais.
+- Fase G: `experiments/voting/<ensemble>/predictions_per_fold.jsonl`, com as predições dos ensembles por votação.
+
+A Fase I apenas lê esses arquivos, computa métricas e monta matrizes de confusão comparando `ŷ1` com `y2`. As 36.405 entradas aparecem porque cada um dos 12.135 decks possui uma predição OOF em cada um dos 3 repeats da Fase E.
+
 ## O que foi construído
 
 | Componente | Arquivo | Responsabilidade |
@@ -20,7 +27,7 @@ Nenhum artefato gerado em `experiments/` — análise puramente descritiva sobre
 
 ### Fonte de dados
 
-As predições OOF (`predictions_per_fold.jsonl`) já contêm o campo `y2` por linha, gravado na Fase E a partir de `deck_features.jsonl`. `y2` é estável por deck (verificado: 0 inconsistências entre os 3 repeats). Total: 36.405 entradas = 12.135 decks × 3 repeats.
+As predições OOF (`predictions_per_fold.jsonl`) já contêm o campo `y2` por linha, gravado na Fase E a partir de `deck_features.jsonl`. `y2` é estável por deck (verificado: 0 inconsistências entre os 3 repeats). Total: 36.405 entradas = 12.135 decks × 3 repeats. Isso não significa retreino na Fase I: os três repeats já foram treinados e preditos na Fase E; aqui eles são apenas lidos do disco.
 
 ### Métricas calculadas para a referência direta `y1` vs `y2`
 
@@ -34,7 +41,7 @@ Antes da análise de modelos, o relatório calcula na mesma base OOF:
 
 ### Métricas calculadas por modelo (backbone §13.7 + action plan §I)
 
-Para cada um dos 12 modelos individuais + 6 ensembles (18 total):
+Para cada um dos 12 modelos individuais + 3 ensembles (15 total):
 
 - **Concordância exata**: `mean(ŷ1 == y2)`
 - **Concordância ±1**: `mean(|ŷ1 − y2| ≤ 1)`

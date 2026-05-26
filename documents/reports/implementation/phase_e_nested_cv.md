@@ -150,20 +150,17 @@ Cada outer fold gera um arquivo `checkpoints/<sig>/<fold_id>.json` com metrics, 
 
 ### Voting — código legado, sem execução automática
 
-6 ensembles fixos em `VOTING_SPECS`:
+3 ensembles fixos em `VOTING_SPECS`:
 
 ```
-voting_top3_BC   : 3 BC models
-voting_top5_BC   : 5 BC models
-voting_top3_DF   : 3 DF models
-voting_top5_DF   : 5 DF models
-voting_top3_BC_DF: 3 BC + 3 DF
-voting_all       : todos os modelos individuais
+voting_top3      : top-3 modelos globais por macro-F1 média
+voting_top5      : top-5 modelos globais por macro-F1 média
+voting_top7      : top-7 modelos globais por macro-F1 média
 ```
 
 `hard_vote(predictions)`: `Counter` → classe com `max(count)`; em empate, vence a classe cuja coalizão de modelos votantes tem maior macro-F1 média. Empate residual usa o menor rótulo numérico (`min(labels)`) para manter determinismo cross-machine/cross-thread.
 
-Voting **não retreina**: usa as `predictions_per_fold.jsonl` persistidas. No plano atualizado, essa lógica deve sair da Fase E e virar uma etapa posterior à verificação dos modelos; por enquanto não há script separado implementado para isso e a Fase E não dispara voting automaticamente.
+Voting **não retreina**: usa as `predictions_per_fold.jsonl` persistidas. No plano atualizado, essa lógica saiu da Fase E e é executada pela Fase G (`scripts/phase_g_voting.py`) depois da verificação dos modelos; a Fase E não dispara voting automaticamente.
 
 ### Testes estatísticos
 
@@ -211,9 +208,9 @@ Dado mesmo `deck_features.jsonl` + mesmas seeds + mesmas versões de sklearn (pi
 |---|---|---|
 | RF grid original com 864 configs (4×4×2×3×3×3×1) | Inviável na nested CV; inflava runtime sem ganho proporcional | Reduzido em etapas até 24 configs (n_estimators × max_features × min_samples_leaf × class_weight); `bootstrap=True`, `criterion=gini` e `max_depth=None` fixos |
 | GridSearchCV sem feedback de progresso | Frustrante em runs de horas | Loop manual com `print_inner_grid_progress` por config |
-| Voting `voting_all10` (nome com `10`) | Misnomer quando a união tem 6 ou 7 algoritmos (= 12 ou 14 modelos) | Renomeado para `voting_all` (covers all individual models present) |
+| Voting `voting_all10` (nome com `10`) | Misnomer quando a união tem 6 ou 7 algoritmos (= 12 ou 14 modelos) | Substituído pelos specs atuais `voting_top3`, `voting_top5` e `voting_top7` |
 | Checkpoints antigos com grid velho ainda eram lidos | Resultados misturavam grids | `signature_id = sha256(grid + folds + params)`; checkpoint só é restaurado se signature bater |
 | `HistGradientBoosting` em CSR esparso | API não aceita | `SparseToDenseTransformer` antes do clf |
 | Upload Drive falhando em meio do run | Frustrava perder horas de treino | Upload em ThreadPoolExecutor; falhas registradas como problems mas run continua OK |
 | Tests com `--algorithms naive_bayes --representations DF` | Não passam pelo `--from-spot-check` flow | `build_model_plan` cai no caminho cartesiano quando `--from-spot-check` não está setado |
-| `MODEL_ID_RE` rejeitava nomes de bundle com maiúscula (`voting_top3_BC`) | Tentar fazer upload-bundle desses nomes quebraria | Bundles seguem nomes lowercase (`voting`, `spot_check`, `shared`); voting_<nome>_BC vive **dentro** do bundle voting.zip |
+| `MODEL_ID_RE` rejeitava nomes de bundle com maiúscula em specs antigos de voting | Tentar fazer upload-bundle desses nomes quebraria | Specs atuais usam nomes lowercase (`voting_top3`, `voting_top5`, `voting_top7`); bundles seguem nomes lowercase (`voting`, `spot_check`, `shared`) |

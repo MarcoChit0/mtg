@@ -4,7 +4,7 @@
       "bundle_id": "shared",
       "drive_file_id": "1xvS6nomf3vmaIofFtN26QSdxp23zzlKY",
       "filename": "shared.zip",
-      "size_bytes": 452698
+      "size_bytes": 646
     },
     {
       "bundle_id": "spot_check",
@@ -16,10 +16,10 @@
       "bundle_id": "voting",
       "drive_file_id": "1vQsR7lz7B_gGDjIWp9lQTtK5hDMmb9CY",
       "filename": "voting.zip",
-      "size_bytes": 1576853
+      "size_bytes": 721357
     }
   ],
-  "generated_at": "2026-05-25T18:29:52.516997+00:00",
+  "generated_at": "2026-05-26T13:59:39.805959+00:00",
   "models": [
     {
       "drive_file_id": "1Zqj1-HoBrTqUPZM63YN37wnx_998-1rk",

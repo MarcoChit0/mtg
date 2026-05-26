@@ -34,23 +34,17 @@ Ranqueamento dos modelos individuais (Fase E) e ensembles de votação (Fase G) 
 
 | Ensemble | Membros | Folds | Macro-F1 média | Macro-F1 dp |
 |---|---|---:|---:|---:|
-| `voting_top3_BC_DF` | `bc_gradient_boosting`, `bc_random_forest`, `bc_logistic_regression`, `df_gradient_boosting`, `df_random_forest`, `df_decision_tree` | 15/15 | 0.6944 | 0.0095 |
-| `voting_top3_DF` | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree` | 15/15 | 0.6941 | 0.0096 |
-| `voting_top5_DF` | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree`, `df_logistic_regression`, `df_linear_svc` | 15/15 | 0.6932 | 0.0076 |
-| `voting_all` | `bc_decision_tree`, `bc_gradient_boosting`, `bc_linear_svc`, `bc_logistic_regression`, `bc_naive_bayes`, `bc_random_forest`, `df_decision_tree`, `df_gradient_boosting`, `df_linear_svc`, `df_logistic_regression`, `df_naive_bayes`, `df_random_forest` | 15/15 | 0.6900 | 0.0094 |
-| `voting_top3_BC` | `bc_gradient_boosting`, `bc_random_forest`, `bc_logistic_regression` | 15/15 | 0.6495 | 0.0116 |
-| `voting_top5_BC` | `bc_gradient_boosting`, `bc_random_forest`, `bc_logistic_regression`, `bc_linear_svc`, `bc_naive_bayes` | 15/15 | 0.6450 | 0.0105 |
+| `voting_top3` | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree` | 15/15 | 0.6941 | 0.0096 |
+| `voting_top7` | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree`, `df_logistic_regression`, `df_linear_svc`, `bc_gradient_boosting`, `bc_random_forest` | 15/15 | 0.6936 | 0.0085 |
+| `voting_top5` | `df_gradient_boosting`, `df_random_forest`, `df_decision_tree`, `df_logistic_regression`, `df_linear_svc` | 15/15 | 0.6932 | 0.0076 |
 
 ### Ganho dos ensembles vs melhor modelo individual
 
 | Ensemble | Melhor individual (referência) | Delta macro-F1 |
 |---|---|---:|
-| `voting_top3_BC_DF` | melhor individual geral | +0.0036 |
-| `voting_top3_DF` | `df_gradient_boosting` | +0.0033 |
-| `voting_top5_DF` | `df_gradient_boosting` | +0.0024 |
-| `voting_all` | melhor individual geral | -0.0007 |
-| `voting_top3_BC` | `bc_gradient_boosting` | +0.0063 |
-| `voting_top5_BC` | `bc_gradient_boosting` | +0.0017 |
+| `voting_top3` | `df_gradient_boosting` | +0.0033 |
+| `voting_top7` | `df_gradient_boosting` | +0.0028 |
+| `voting_top5` | `df_gradient_boosting` | +0.0024 |
 
 ## 4. Seleção final
 

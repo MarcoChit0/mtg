@@ -239,27 +239,24 @@ Sobre os outer scores disponíveis:
 > Script: `scripts/phase_g_voting.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_g_voting`
 > Implementation report: `documents/reports/implementation/phase_g_voting.md`
 
-Executada com `--all --force-recompute` após F concluída. 6 ensembles computados sobre os 12 modelos completos (15/15 folds cada). Melhor ensemble: `voting_top3_BC_DF` com macro-F1=0.6944 (+0.0036 vs melhor individual `df_gradient_boosting`=0.6908).
+Executada com `--all --force-recompute` após F concluída. 3 ensembles computados sobre os 12 modelos completos (15/15 folds cada). Os ensembles são voting simples dos top-3, top-5 e top-7 modelos individuais globais, ranqueados pela macro-F1 média da Fase E. Melhor ensemble: `voting_top3` com macro-F1=0.6941 (+0.0033 vs melhor individual `df_gradient_boosting`=0.6908).
 
 Solicitado pela professora: avaliar o desempenho de combinações dos melhores modelos via votação majoritária (hard vote) sobre as predições out-of-fold já produzidas na Fase E. Como todas as predições OOF compartilham o mesmo conjunto de folds, a votação é exata por linha e por fold — não há retreino.
 
-6 ensembles definidos:
+3 ensembles definidos:
 
 | Nome | Membros | Tamanho |
 |---|---|---:|
-| `voting_top3_BC` | top-3 modelos BC ranqueados por macro-F1 média na Fase E | 3 |
-| `voting_top5_BC` | top-5 modelos BC | 5 |
-| `voting_top3_DF` | top-3 modelos DF | 3 |
-| `voting_top5_DF` | top-5 modelos DF | 5 |
-| `voting_top3_BC_DF` | top-3 BC + top-3 DF | 6 |
-| `voting_all` | todos os modelos da Fase E disponíveis (12 com a Fase E completa) | 10–14 |
+| `voting_top3` | top-3 modelos individuais globais ranqueados por macro-F1 média na Fase E | 3 |
+| `voting_top5` | top-5 modelos individuais globais ranqueados por macro-F1 média na Fase E | 5 |
+| `voting_top7` | top-7 modelos individuais globais ranqueados por macro-F1 média na Fase E | 7 |
 
 Regras:
 
-- Hard voting (maioria simples). Empate → classe com maior macro-F1 médio dos membros que a previram; empate residual → menor rótulo numérico.
+- Hard voting simples por pluralidade. Empate → classe com maior macro-F1 médio dos membros que a previram; empate residual → menor rótulo numérico.
 - Para cada outer fold, agrega predições OOF e computa macro-F1, accuracy, precision/recall por classe e matriz de confusão.
 - Reportar média ± desvio padrão dos folds compartilhados (até 15 quando Fase E concluída).
-- Predições OOF dos 6 ensembles salvas para Fases I e J.
+- Predições OOF dos 3 ensembles salvas para ranking na Fase H e comparação com `y2` na Fase I.
 
 **Saídas G**: `experiments/voting/{voting_<nome>/metrics_per_fold.json, predictions_per_fold.jsonl}`, `experiments/voting/voting_summary.json`, `documents/reports/results/phase_g_voting.md`.
 
@@ -268,7 +265,7 @@ Regras:
 > Script: `scripts/phase_h_best_models.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_h_best_models`
 > Implementation report: `documents/reports/implementation/phase_h_best_models.md`
 
-Ranking completo dos 12 modelos individuais + 6 ensembles de votação por macro-F1 médio. Seleção determinística por `argmax macro_F1`, desempate por menor std.
+Ranking completo dos 12 modelos individuais + 3 ensembles de votação por macro-F1 médio. Seleção determinística por `argmax macro_F1`, desempate por menor std.
 
 **Resultado:**
 - `melhor_BC` = `bc_gradient_boosting` — macro-F1 = 0.6433 ± 0.0121 (15/15 folds)
@@ -283,7 +280,7 @@ Relatório inclui: ranking completo, tabela BC vs DF por algoritmo, ganho/perda 
 > Script: `scripts/phase_i_model_vs_calculator.py` · Entrypoint: `uv run --no-sync python -m scripts.phase_i_model_vs_calculator`
 > Implementation report: `documents/reports/implementation/phase_i_model_vs_calculator.md`
 
-**Descritivo, sem retreino**. 18 modelos analisados (12 individuais + 6 ensembles). O relatório compara primeiro `y1` real do Archidekt contra `y2` da calculadora e, na mesma base OOF, compara `ŷ1` de cada modelo contra `y2`. Para ambos os blocos reporta concordância exata, concordância ±1, |Δ| médio, macro-F1 vs y2 e matriz de confusão. Subset analysis: decks concordantes (y1=y2) vs discordantes (y1≠y2).
+**Descritivo, sem retreino**. 15 modelos analisados (12 individuais + 3 ensembles). O relatório compara primeiro `y1` real do Archidekt contra `y2` da calculadora e, na mesma base OOF, compara `ŷ1` de cada modelo contra `y2`. Para ambos os blocos reporta concordância exata, concordância ±1, |Δ| médio, macro-F1 vs y2 e matriz de confusão. Subset analysis: decks concordantes (y1=y2) vs discordantes (y1≠y2).
 
 **Resultados principais:**
 - Maior concordância global: `df_random_forest` (69,3%).
@@ -336,7 +333,7 @@ Coletar decks com 500 ≤ views < 1000. Aplicar melhores modelos **sem retreinar
 
 ## Fase M — Stacking (opcional, se houver tempo)
 
-Movida para o final do plano por ser estritamente complementar — não é exigida pelo enunciado e seu valor depende de termos os modelos individuais (10 a 14) e os 6 ensembles de votação bem caracterizados e a comparação contra `y2` já fechada. Só faz sentido depois de G, H, I e J. Em particular, voting (G) é entregue como parte obrigatória do projeto; stacking continua opcional como passo extra.
+Movida para o final do plano por ser estritamente complementar — não é exigida pelo enunciado e seu valor depende de termos os modelos individuais (10 a 14) e os 3 ensembles de votação bem caracterizados e a comparação contra `y2` já fechada. Só faz sentido depois de G, H, I e J. Em particular, voting (G) é entregue como parte obrigatória do projeto; stacking continua opcional como passo extra.
 
 Base learners: os modelos individuais da Fase E (10 a 14, todos prevendo y1).
 Meta-learner: `LogisticRegression`.
@@ -362,7 +359,7 @@ experiments/
 └── manifest.json   # SHA-256 dos JSONL de entrada + versões
 ```
 
-Total: `|A_uniao| × 2` subpastas de modelo individuais (10 se a união tiver 5 algoritmos, 12 se 6, 14 se 7), 6 subpastas de votação e os agregados de spot-check. Todos alvejam `y1`.
+Total: `|A_uniao| × 2` subpastas de modelo individuais (10 se a união tiver 5 algoritmos, 12 se 6, 14 se 7), 3 subpastas de votação e os agregados de spot-check. Todos alvejam `y1`.
 
 Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 
@@ -375,10 +372,10 @@ Ambiente já é reprodutível via `pyproject.toml` + `uv.lock`.
 | ≥5 algoritmos diversos | D | Pool comum de 7 candidatos para BC e DF: DT, RF, GB, NB, LR, LinearSVC, KNN. SVC RBF/Poly foram retirados por não serem viáveis em BC. |
 | Spot-checking | D | re-desenhada: N=5 repetições com seeds {1..5}, média ± dp; top-5 selecionado por representação; união forma `A_DF ∪ A_BC` para a Fase E. |
 | Otimização sem leakage | E | nested CV (3-fold inner, 5-fold outer × 3 repeats) sobre os `|A_uniao| × 2` modelos (cada algoritmo da união em ambas as representações); grids compactados para ~24 configs por algoritmo. |
-| Folds idênticos entre algoritmos | E/F/G | seeds fixas, mesma divisão para todos os modelos individuais e os 6 ensembles de votação |
+| Folds idênticos entre algoritmos | E/F/G | seeds fixas, mesma divisão para todos os modelos individuais e os 3 ensembles de votação |
 | Seeds | E + Apêndice 1 | salvas em `experiments/seeds.json` (modelos) e `experiments/spot_check/summary.json` (spot-check N=5) |
 | Média ± desvio nos outer folds | E, F, G | 15 outer scores por modelo individual, verificação auxiliar e ensemble |
-| Ensemble por votação | G | 6 ensembles (top-3/top-5 BC, top-3/top-5 DF, top-3+top-3, todos os modelos individuais) a partir das predições OOF, sem retreino; só roda depois da verificação da Fase F |
+| Ensemble por votação | G | 3 ensembles (top-3/top-5/top-7 modelos individuais globais por macro-F1) a partir das predições OOF, sem retreino; só roda depois da verificação da Fase F |
 | Interpretação de um modelo | J | excedido: 2 modelos (melhor BC + melhor DF) |
 | Artigo científico | K | template Moodle, ≤20 pág; seções extras se L/M rodarem |
 | Reprodutibilidade | Apêndice 1 | código + dados + seeds + folds + predições |
@@ -397,7 +394,7 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | ~~D~~ | — | ✓ concluída com N=5 e top-5 por representação |
 | ~~E~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, 15/15 folds cada |
 | ~~F~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, F.1+F.2+F.3 completos com `--all --group-kfold` |
-| ~~G~~ | — | ✓ concluída (2026-05-24) — 6 ensembles, melhor: `voting_top3_BC_DF` F1=0.6944, com `--all --force-recompute` |
+| ~~G~~ | — | ✓ concluída (2026-05-24) — 3 ensembles top-N globais por macro-F1, melhor: `voting_top3` F1=0.6941, com `--all --force-recompute` |
 | ~~H~~ | — | ✓ concluída (2026-05-24) — melhor_BC=bc_gradient_boosting (F1=0.6433), melhor_DF=df_gradient_boosting (F1=0.6908) |
 | ~~I~~ | — | ✓ concluída (2026-05-24) — destaques globais com maior/menor concordância e maior/menor gap absoluto |
 | ~~J~~ | — | ✓ concluída (2026-05-24) — PI: game_changer_count domina DF; BC: Blood Moon, Mana Vault em bracket 4 |
@@ -405,6 +402,6 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | L (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |
 | M (opcional) | 1 | stacking — vira seção extra do artigo se feito |
 
-Soma do caminho obrigatório restante (E+F+G+H+I+J+K): **8,0-9,5 dias**. Com 8 dias disponíveis, a margem é apertada — os grids ~24 da Fase E e a seleção top-5 por representação cortam o custo total da nested CV. Mitigações em ordem de prioridade: (1) não rodar Fase M (stacking, opcional); (2) não rodar Fase L (OOD, opcional); (3) fazer GroupKFold da Fase F com melhor hiperparâmetro já escolhido, sem nova busca pesada; (4) reduzir ainda mais ou pular o BC de algoritmos excepcionalmente caros se necessário; (5) cortar `voting_all` se o cálculo das predições agregadas estourar tempo (mantemos `voting_top3_*` e `voting_top5_*`).
+Soma do caminho obrigatório restante (E+F+G+H+I+J+K): **8,0-9,5 dias**. Com 8 dias disponíveis, a margem é apertada — os grids ~24 da Fase E e a seleção top-5 por representação cortam o custo total da nested CV. Mitigações em ordem de prioridade: (1) não rodar Fase M (stacking, opcional); (2) não rodar Fase L (OOD, opcional); (3) fazer GroupKFold da Fase F com melhor hiperparâmetro já escolhido, sem nova busca pesada; (4) reduzir ainda mais ou pular o BC de algoritmos excepcionalmente caros se necessário; (5) se necessário, priorizar `voting_top3`/`voting_top5`, embora a agregação por voting use predições já salvas e seja barata.
 
 Caso o cronograma comporte, L e M rodam **depois** do artigo (Fase K) e geram seções extras incluídas em revisão final.

@@ -1,5 +1,50 @@
-[0] Config.pm:328> INFO - This is Biber 2.21
-[0] Config.pm:331> INFO - Logfile is 'main.blg'
-[166] biber-MSWIN64:342> INFO - === 
-[717] Utils.pm:479> ERROR - Cannot find 'main.bcf'!
-[717] Biber.pm:137> INFO - ERRORS: 1
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+Database file #1: refs.bib
+Warning--to sort, need author or key in archidekt
+Warning--to sort, need author or key in edhpowerlevel
+Warning--to sort, need author or key in edhrec
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            517 strings with 4486 characters,
+and the built_in function-call counts, 958 in all, are:
+= -- 95
+> -- 17
+< -- 0
++ -- 9
+- -- 4
+* -- 29
+:= -- 140
+add.period$ -- 17
+call.type$ -- 5
+change.case$ -- 17
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 35
+empty$ -- 114
+format.name$ -- 4
+if$ -- 223
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 0
+newline$ -- 30
+num.names$ -- 4
+pop$ -- 46
+preamble$ -- 1
+purify$ -- 12
+quote$ -- 0
+skip$ -- 27
+stack$ -- 0
+substring$ -- 25
+swap$ -- 5
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 3
+while$ -- 4
+width$ -- 6
+write$ -- 53
+(There were 3 warnings)
