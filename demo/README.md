@@ -26,11 +26,14 @@ uv run --no-sync python -m scripts.demo serve --port 8000
 ## O que a demo mostra
 
 - quatro cenarios prontos para apresentacao;
-- uma lista curta de decks reais da base modelavel;
-- labels `y1` do Archidekt e `y2` da EDHPowerLevel;
-- os tres modelos principais: melhor DF, melhor BC e melhor ensemble;
-- uma explicacao textual de cada predicao;
-- resumo simples das metricas dos decks mostrados.
+- uma lista curta de decks reais da base modelavel logo no inicio do fluxo;
+- imagem do comandante carregada via Scryfall quando houver conexao;
+- labels `y1` do Archidekt e `y2` da EDHPowerLevel em uma escala visual;
+- bloco de estatisticas inspirado na leitura do EDHPowerLevel, mas focado no estudo: `y1`, `y2`, diferenca e views;
+- sinais disponiveis no dataset, como game changers, tutores, combos, salt medio, CMC medio e terrenos;
+- seletor de modelos ordenado por macro-F1 global, com atalhos para Top 3, DF, BC, ensembles e todos;
+- distribuicao visual das predicoes por repeat para cada modelo selecionado;
+- explicacao textual do caso selecionado e resumo simples das metricas dos decks mostrados.
 
 ## Observacao metodologica
 

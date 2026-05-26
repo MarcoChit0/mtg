@@ -2,7 +2,8 @@
 
 Interface interativa para apresentacao do projeto. A demo usa os artefatos das Fases
 A-J e nao faz parte do artigo. A interface foi mantida simples para uma leitora leiga:
-ela mostra cenarios prontos, um deck por vez e apenas os tres modelos principais.
+ela mostra cenarios prontos, um deck por vez, imagem do comandante, explicacoes
+textuais e elementos visuais para comparar comunidade, calculadora e modelos.
 
 ## Comandos
 
@@ -43,6 +44,17 @@ as predicoes OOF alinhadas dos modelos membros.
 ## Fluxo sugerido para a professora
 
 1. Abrir a demo.
-2. Clicar em "Comunidade = calculadora" para ver um caso em que as fontes concordam.
-3. Clicar em "Calculadora acima" e depois em "Calculadora abaixo" para ver a divergencia.
-4. Em cada deck, comparar as tres predicoes: melhor DF, melhor BC e ensemble.
+2. Clicar em um cenario e escolher um deck.
+3. Observar a imagem do comandante, y1, y2 e os sinais do deck.
+4. Comparar as predicoes dos modelos selecionados.
+5. Usar o seletor ordenado por macro-F1 para alternar entre Top 3, DF, BC,
+   ensembles ou todos os modelos.
+
+## Referencia visual
+
+O EDHPowerLevel apresenta a leitura de um deck colocando primeiro numeros de alto
+nivel ao lado da imagem do comandante e depois graficos de composicao. A demo segue
+essa logica de apresentacao, mas nao destaca power level porque ele nao e o alvo do
+estudo. O foco fica em `y1`, `y2`, divergencia entre fontes e sinais disponiveis no
+projeto. O preco tambem nao aparece na demo porque `price_total` esta nulo nos
+artefatos processados atuais.

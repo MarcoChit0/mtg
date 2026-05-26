@@ -11,7 +11,7 @@
       <div>
         <p class="eyebrow">Demo interativa</p>
         <h1>Quando comunidade e calculadora discordam?</h1>
-        <p class="subtitle">Explore decks reais do projeto e veja como os modelos treinados em <strong>y1</strong> se comportam perto do rótulo da calculadora <strong>y2</strong>.</p>
+        <p class="subtitle">Explore decks reais do projeto e veja como os modelos treinados em <strong>y1</strong> se comportam perto do rotulo da calculadora <strong>y2</strong>.</p>
       </div>
       <div id="datasetMeta" class="dataset-meta">Carregando...</div>
     </header>
@@ -20,15 +20,15 @@
       <section class="panel intro">
         <h2>Como usar</h2>
         <ol>
-          <li>Escolha um cenário abaixo.</li>
+          <li>Escolha um cenario abaixo.</li>
           <li>Clique em um deck.</li>
-          <li>Compare os três modelos principais.</li>
+          <li>Compare os modelos, ja ordenados por desempenho global.</li>
         </ol>
-        <p>Esta demo não retreina modelos. Ela reaproveita as predições out-of-fold da validação do projeto, que é a forma justa de mostrar resultados sem vazamento.</p>
+        <p>Esta demo nao retreina modelos. Ela reaproveita as predicoes out-of-fold da validacao do projeto, que e a forma justa de mostrar resultados sem vazamento.</p>
       </section>
 
       <section class="panel scenario-panel">
-        <h2>Cenários</h2>
+        <h2>Cenarios</h2>
         <div class="scenario-grid">
           <button class="scenario active" data-scenario="interesting">Exemplos variados</button>
           <button class="scenario" data-scenario="agree">Comunidade = calculadora</button>
@@ -45,6 +45,11 @@
         <div id="deckList" class="deck-list"></div>
       </section>
 
+      <section class="panel story-panel">
+        <h2>O que esta sendo ilustrado?</h2>
+        <div id="storyRail" class="story-rail"></div>
+      </section>
+
       <section class="panel deck-card">
         <div class="section-head">
           <h2>Deck selecionado</h2>
@@ -53,15 +58,31 @@
         <div id="deckDetail"></div>
       </section>
 
+      <section id="caseReading" class="panel case-card"></section>
+
+      <section class="panel model-picker">
+        <div class="section-head">
+          <div>
+            <h2>Modelos para comparar</h2>
+            <p class="muted">A lista esta ordenada por macro-F1 global. Selecione poucos para apresentar, ou abra familias inteiras para explorar.</p>
+          </div>
+          <span id="modelCount" class="count-chip">0 selecionados</span>
+        </div>
+        <div class="preset-row">
+          <button data-model-preset="top3">Top 3</button>
+          <button data-model-preset="df">Somente DF</button>
+          <button data-model-preset="bc">Somente BC</button>
+          <button data-model-preset="ensemble">Ensembles</button>
+          <button data-model-preset="all">Todos</button>
+        </div>
+        <div id="modelSelector" class="model-selector"></div>
+      </section>
+
       <section class="panel model-card">
         <h2>O que os modelos dizem?</h2>
         <div id="modelCards" class="model-cards"></div>
       </section>
 
-      <section class="panel metrics-card">
-        <h2>Resumo dos decks nesta tela</h2>
-        <div id="scenarioMetrics" class="metrics-grid"></div>
-      </section>
     </main>
 
     <script src="app.js"></script>
