@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "command": "init",
   "finished_at": "2026-05-25T12:59:23.848603+00:00",
   "parameters": {
@@ -30,10 +31,55 @@
     "skip_experiment_restore": true,
     "skip_reports": false,
     "workers": 1
+=======
+  "command": "spot-checking",
+  "finished_at": "2026-05-24T15:18:30.943902+00:00",
+  "parameters": {
+    "algorithms": [
+      "decision_tree",
+      "random_forest",
+      "gradient_boosting",
+      "naive_bayes",
+      "logistic_regression",
+      "linear_svc",
+      "knn"
+    ],
+    "bc_min_df_values": [
+      5,
+      10,
+      20
+    ],
+    "command": "spot-checking",
+    "docs_dir": "documents/reports/results",
+    "dry_run": true,
+    "experiment_dir": "experiments",
+    "experiments_drive_remote": "mtg-experiments:",
+    "list_stages": false,
+    "manifest_path": "experiments/pipeline_run_manifest.json",
+    "max_rows": null,
+    "n_jobs": -1,
+    "processed_dir": "/var/folders/s5/03dr8cj92qz9x9gnkcdgk0740000gn/T/tmpozlm7xwm/processed",
+    "quiet_progress": false,
+    "rclone_bin": "rclone",
+    "representations": [
+      "DF",
+      "BC"
+    ],
+    "run_local": false,
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "test_size": 0.2
+>>>>>>> Stashed changes
   },
   "stages": [
     {
       "command": [
+<<<<<<< Updated upstream
         "/Users/macsilva/Desktop/mtg/.venv/bin/python3",
         "scripts/download_archidekt_processed.py",
         "--out-dir",
@@ -47,9 +93,71 @@
       "elapsed_seconds": 66.147,
       "failure_hint": "",
       "finished_at": "2026-05-25T12:59:20.324447+00:00",
+=======
+        "/Users/macsilva/Desktop/mtg/.venv/bin/python",
+        "scripts/phase_d_spot_check.py",
+        "--processed-dir",
+        "/var/folders/s5/03dr8cj92qz9x9gnkcdgk0740000gn/T/tmpozlm7xwm/processed",
+        "--docs-dir",
+        "documents/reports/results",
+        "--experiment-dir",
+        "experiments/spot_check",
+        "--seeds",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "--test-size",
+        "0.2",
+        "--bc-min-df-values",
+        "5",
+        "10",
+        "20",
+        "--algorithms",
+        "decision_tree",
+        "random_forest",
+        "gradient_boosting",
+        "naive_bayes",
+        "logistic_regression",
+        "linear_svc",
+        "knn",
+        "--representations",
+        "DF",
+        "BC",
+        "--n-jobs",
+        "-1"
+      ],
+      "description": "Run Phase-D spot-checking (N=5 repetitions per combination).",
+      "elapsed_seconds": null,
+      "failure_hint": "",
+      "finished_at": null,
+      "implemented": true,
+      "name": "phase_d_spot_check",
+      "reason": "",
+      "returncode": null,
+      "started_at": null,
+      "status": "dry_run"
+    },
+    {
+      "command": [
+        "/Users/macsilva/Desktop/mtg/.venv/bin/python",
+        "scripts/sync_experiments_drive.py",
+        "check-write",
+        "--experiments-drive-remote",
+        "mtg-experiments:",
+        "--rclone-bin",
+        "rclone"
+      ],
+      "description": "Check write permission on the experiments Drive remote.",
+      "elapsed_seconds": null,
+      "failure_hint": "Sem permissão de escrita em mtg-experiments:. Peça acesso de colaborador ou rode com --run-local.",
+      "finished_at": null,
+>>>>>>> Stashed changes
       "implemented": true,
       "name": "restore_processed",
       "reason": "",
+<<<<<<< Updated upstream
       "returncode": 0,
       "started_at": "2026-05-25T12:58:14.178126+00:00",
       "status": "ok"
@@ -111,5 +219,37 @@
     }
   ],
   "started_at": "2026-05-25T12:58:14.177978+00:00",
+=======
+      "returncode": null,
+      "started_at": null,
+      "status": "dry_run"
+    },
+    {
+      "command": [
+        "/Users/macsilva/Desktop/mtg/.venv/bin/python",
+        "scripts/sync_experiments_drive.py",
+        "upload-bundle",
+        "spot_check",
+        "--experiment-dir",
+        "experiments",
+        "--experiments-drive-remote",
+        "mtg-experiments:",
+        "--rclone-bin",
+        "rclone"
+      ],
+      "description": "Upload the spot_check bundle to the shared Drive remote.",
+      "elapsed_seconds": null,
+      "failure_hint": "Sem permissão de escrita em mtg-experiments: para subir spot_check. Peça acesso de colaborador ou rode com --run-local.",
+      "finished_at": null,
+      "implemented": true,
+      "name": "upload_spot_check_bundle",
+      "reason": "",
+      "returncode": null,
+      "started_at": null,
+      "status": "dry_run"
+    }
+  ],
+  "started_at": "2026-05-24T15:18:30.943596+00:00",
+>>>>>>> Stashed changes
   "status": "ok"
 }
