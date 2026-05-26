@@ -34,6 +34,7 @@ phase-i-model-vs-calculator = "scripts.phase_i_model_vs_calculator:main"
 phase-j-interpretability = "scripts.phase_j_interpretability:main"
 sync-experiments-drive = "scripts.sync_experiments_drive:main"
 run-mtg-pipeline = "scripts.run_pipeline:main"
+mtg-demo = "scripts.demo:main"
 
 [build-system]
 requires = ["setuptools>=69"]

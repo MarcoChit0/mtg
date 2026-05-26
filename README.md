@@ -173,3 +173,17 @@ experiments/
 ```
 
 O plano completo do projeto está em `documents/action_plan.md`.
+
+## Demo Local no Navegador
+
+Para apresentar o projeto de forma interativa:
+
+```bash
+uv run --no-sync python -m scripts.demo serve --port 8000
+```
+
+Abra `http://127.0.0.1:8000/`.
+
+A demo gera assets em `demo/assets/` a partir dos dados processados e das predições
+OOF dos modelos. Ela mostra cenários prontos, decks reais e as predições dos três
+modelos principais em uma interface simples. Mais detalhes em [documents/demo.md](documents/demo.md).
