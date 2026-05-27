@@ -15,6 +15,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{setspace}
 
@@ -172,7 +173,14 @@ Total & 1{,}911 & 6{,}059 & 4{,}165 & 12{,}135 \\
 
 The diagonal of Table~\ref{tab:yarch-ycalc-matrix} contains 7{,}395 decks, so \(y_{\text{arch}} = y_{\text{calc}}\) for 60.9\% of the modeling set. Allowing a one-bracket tolerance brings agreement to 97.7\%; disagreements larger than one bracket occur in 282 decks (2.3\%). The disagreement is also directional. With \(\Delta = y_{\text{calc}} - y_{\text{arch}}\), the calculator assigns a higher bracket than Archidekt on 23.5\% of decks and a lower bracket on 15.6\%. The mean absolute difference is 0.414. In other words, when the two labels disagree, the calculator is more likely to move a deck upward than downward relative to the player label.
 
-Only after this descriptive comparison do we move to supervised learning. We use \(y_{\text{arch}}\) as the target and treat \(y_{\text{calc}}\) as an external reference. To test whether deck power is better captured by specific card identity or by aggregate deck structure, we build two representations from the same filtered decks.
+Only after this descriptive comparison do we move to supervised learning. We use \(y_{\text{arch}}\) as the target and treat \(y_{\text{calc}}\) as an external reference. To test whether deck power is better captured by specific card identity or by aggregate deck structure, we build two representations from the same filtered decks. Figure~\ref{fig:representations} illustrates how the same deck is mapped into each representation: Bag of Cards encodes the decklist as a sparse count vector over the card vocabulary, while Deck Features encodes the deck as a dense vector of structural attributes.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\linewidth]{figures/df-vs-bc.png}
+  \caption{The two representations built from the same deck: Bag of Cards (sparse vector of card counts, \(\approx\)11k dimensions) and Deck Features (dense vector of 102 structural attributes).}
+  \label{fig:representations}
+\end{figure}
 
 \subsection{Bag of Cards (BC)}
 \label{sec:data:bc}
@@ -186,7 +194,7 @@ BC keeps the card list visible to the model. Staples, combo pieces, and high-imp
 \subsection{Deck Features (DF)}
 \label{sec:data:df}
 
-Each deck is encoded as a dense vector of 114 aggregated structural attributes extracted from the Archidekt JSON. These features were handpicked to describe deck construction rather than author style: each feature belongs to a known Commander-relevant category such as mana curve, card type balance, combo density, price, popularity, or bracket-specific flags. The complete catalog, with the exact computation for each feature, is in Appendix~\ref{app:features}.
+Each deck is encoded as a dense vector of 105 aggregated structural attributes extracted from the Archidekt JSON. These features were handpicked to describe deck construction rather than author style: each feature belongs to a known Commander-relevant category such as mana curve, card type balance, combo density, price, popularity, or bracket-specific flags. Three of those attributes (\texttt{has\_companion}, \texttt{mainboard\_count}, and \texttt{two\_card\_combo\_singleton\_count}) are constant in the modeling subset and removed by the fold-fitted zero-variance filter, leaving 102 features actually fed to each classifier. The complete catalog, with the exact computation for each feature, is in Appendix~\ref{app:features}.
 
 \begin{itemize}
   \item \textbf{Mana base and curve.} Land count, basic / non-basic split, mana production per color, and CMC summary statistics plus per-bucket counts.
@@ -692,7 +700,9 @@ This appendix lists every feature in the Deck Features representation introduced
   \item \texttt{unique\_card\_count}: number of distinct \texttt{oracle\_uid}s in the mainboard.
   \item \texttt{non\_commander\_card\_count}: total quantity of mainboard cards that are not the commander.
   \item \texttt{commander\_card\_count}: total quantity of commander cards (1 for single-commander decks, 2 for Partner pairs and Background combinations).
-  \item \texttt{has\_companion}: boolean flag indicating whether a Companion card is registered for the deck. Always false in the modeling set because Companions are excluded upstream.
+  \item \texttt{mainboard\_count}: total quantity of mainboard cards. Always 100 in the modeling set (the Commander deck-size rule) and removed by the zero-variance filter; included in the feature payload as a structural sanity check.
+  \item \texttt{has\_companion}: boolean flag indicating whether a Companion card is registered for the deck. Always false in the modeling set because Companions are excluded upstream; removed by the zero-variance filter.
+  \item \texttt{view\_count}: cumulative number of Archidekt page views for the deck snapshot, used as a coarse popularity proxy.
 \end{itemize}
 
 \subsection{Colors and color identity}
@@ -737,7 +747,7 @@ These count cards flagged by external sources whose presence the bracket system 
   \item \texttt{extra\_turns\_count}: count of cards with \texttt{oracleCard.extraTurns = true}.
   \item \texttt{tutor\_count}: count of cards with \texttt{oracleCard.tutor = true}.
   \item \texttt{mass\_land\_denial\_count}: count of cards with \texttt{oracleCard.massLandDenial = true}.
-  \item \texttt{two\_card\_combo\_singleton\_count}: count of cards flagged as a singleton piece of a known two-card combo by Archidekt's combo registry.
+  \item \texttt{two\_card\_combo\_singleton\_count}: count of cards flagged as a singleton piece of a known two-card combo by Archidekt's combo registry. Empirically zero across the entire collected dataset (the underlying \texttt{twoCardComboSingelton} flag is never set on the cards Archidekt returns for our deck pool), so removed by the zero-variance filter.
 \end{itemize}
 
 \subsection{Combo density}

@@ -21,7 +21,8 @@
       "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $line = Get-Content \"data\\\\processed\\\\archidekt\\\\cards.jsonl\" -First 1; $obj = $line | ConvertFrom-Json; $obj.PSObject.Properties.Name)",
       "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $line = Get-Content \"data\\\\processed\\\\archidekt\\\\cards.jsonl\" -First 1; $obj = $line | ConvertFrom-Json; \"oracle_id=$\\($obj.oracle_id\\)\"; \"name=$\\($obj.name\\)\")",
       "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $line = Get-Content \"data\\\\processed\\\\archidekt\\\\cards.jsonl\" -First 1; $obj = $line | ConvertFrom-Json; \"oracle_uid=$\\($obj.oracle_uid\\)\"; \"oracle_name=$\\($obj.oracle_name\\)\")",
-      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $env:PYTHONIOENCODING=\"utf-8\"; uv run --no-sync python -m scripts.phase_j_interpretability 2>&1)"
+      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $env:PYTHONIOENCODING=\"utf-8\"; uv run --no-sync python -m scripts.phase_j_interpretability 2>&1)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

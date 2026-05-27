@@ -1,0 +1,157 @@
+DECK FEATURES — Glissa, the Traitor: The Engine of Betrayal
+URL: https://archidekt.com/decks/3948
+============================================================
+
+--- LABELS ---
+y_arch (archidekt_edh_bracket): 2
+y_cal  (edhpowerlevel_bracket): 3
+
+--- IDENTITY ---
+deck_id:               3948
+deck_name:             Glissa, the Traitor: The Engine of Betrayal
+snapshot_id:           archidekt:3948:2026-05-12T21:46:40.162916+00:00
+archidekt_updated_at:  2026-04-12T04:18:26.957833Z
+fetched_at:            2026-05-12T21:46:40.162916+00:00
+view_count:            35098
+commander_oracle_uids: cafacba9-195c-44ea-ba80-3e489274759c
+
+--- COLORS ---
+has_B:                 true
+has_G:                 true
+has_R:                 false
+has_U:                 false
+has_W:                 false
+deck_color_count:      2
+has_companion:         false
+
+--- DECK COMPOSITION ---
+mainboard_count:             100
+commander_card_count:        1
+non_commander_card_count:    99
+creature_count:              25
+artifact_count:              53
+enchantment_count:           5
+instant_count:               9
+sorcery_count:               4
+planeswalker_count:          0
+land_count:                  35
+nonland_count:               65
+nonland_permanent_count:     52
+noncreature_spell_count:     40
+unique_card_count:           94
+legendary_count:             13
+multiface_card_count:        2
+cards_with_faces_count:      2
+total_face_count:            4
+max_faces_on_card:           2
+
+--- CARD LAYOUTS ---
+layout_normal_count:         97
+layout_modal_dfc_count:      1
+layout_transform_count:      1
+layout_adventure_count:      0
+layout_split_count:          0
+
+--- RARITIES ---
+common_count:                19
+uncommon_count:              22
+rare_count:                  45
+mythic_count:                13
+
+--- SUBTYPES / KEYWORDS ---
+distinct_subtype_count:      32
+most_common_subtype_count:   5
+distinct_keyword_count:      34
+keyword_total_count:         53
+equipment_subtype_count:     1
+aura_subtype_count:          0
+vehicle_subtype_count:       0
+snow_count:                  0
+
+--- CMC (CONVERTED MANA COST) ---
+cmc_mean:                    2.13
+cmc_median:                  2.0
+cmc_std:                     2.2700440524359875
+cmc_0_count:                 4
+cmc_1_count:                 9
+cmc_2_count:                 9
+cmc_3_count:                 16
+cmc_4_count:                 14
+cmc_5_count:                 5
+cmc_6_plus_count:            8
+nonland_cmc_mean:            3.276923076923077
+nonland_cmc_median:          3.0
+nonland_cmc_std:             2.041927387450715
+
+--- KEYWORDS (DETAILED) ---
+annihilator_count:           0
+cascade_count:               0
+deathtouch_count:            2
+equip_count:                 1
+extra_turns_count:           0
+flash_count:                 3
+flying_count:                7
+game_changer_count:          0
+haste_count:                 1
+hexproof_count:              0
+indestructible_count:        6
+lifelink_count:              1
+mass_land_denial_count:      0
+menace_count:                2
+protection_keyword_count:    0
+trample_count:               2
+vigilance_count:             0
+ward_count:                  0
+
+--- LANDS ---
+basic_land_count:                     8
+nonbasic_land_count:                  27
+lands_that_produce_colorless_count:   14
+lands_that_produce_multiple_colors_count: 12
+land_mana_production_B:               18
+land_mana_production_C:               14
+land_mana_production_G:               18
+land_mana_production_R:               6
+land_mana_production_U:               6
+land_mana_production_W:               6
+
+--- PRICE ---
+price_total:                 634.13
+price_mean:                  6.675052631578947
+price_median:                2.01
+price_std:                   12.974728624983522
+
+--- EDHREC ---
+edhrec_rank_mean:            3201.5760869565215
+edhrec_rank_median:          1334.0
+edhrec_rank_std:             4390.028385155572
+
+--- SALT ---
+salt_mean:                   0.3690909090909091
+salt_median:                 0.31
+salt_std:                    0.27457990284918615
+
+--- COMBOS ---
+atomic_combo_refs_total:          5
+unique_atomic_combo_refs_count:   5
+cards_with_atomic_combos_count:   3
+potential_combo_refs_total:       6
+unique_potential_combo_refs_count: 6
+cards_with_potential_combos_count: 5
+two_card_combo_ids_total:         1
+unique_two_card_combo_ids_count:  1
+two_card_combo_singleton_count:   0
+tutor_count:                      0
+
+--- EDHPOWERLEVEL CALCULATOR (y_cal DETAIL) ---
+commander_bracket:           3
+power_level:                 7.28
+score:                       616
+efficiency:                  5.52
+impact:                      685.60
+average_playability:         66.4
+tipping_point:               4
+queried_at:                  2026-05-14T17:06:25.835434+00:00
+finished_at:                 2026-05-14T17:06:25.827618+00:00
+started_at:                  2026-05-14T17:06:10.851293+00:00
+worker:                      3
