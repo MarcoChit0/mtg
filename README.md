@@ -24,7 +24,7 @@ uv run run-mtg-pipeline
 
 ## Interface Principal
 
-Inicializar dados e experimentos publicados:
+Inicializar dados e experimentos publicados (Fases B e C):
 
 ```bash
 uv run run-mtg-pipeline init
@@ -51,12 +51,27 @@ Treinar sem enviar resultados ao Drive:
 uv run run-mtg-pipeline train --model random_forest --feature df --run-local
 ```
 
+Rodar análise pós-treino (Fases F, G, H, I, J):
+
+```bash
+uv run run-mtg-pipeline analyze
+uv run run-mtg-pipeline analyze --require-all --group-kfold   # rigor maximo
+```
+
+Rodar pipeline completo (Fases B a J). Use `--skip-training` se a Fase E já foi executada:
+
+```bash
+uv run run-mtg-pipeline full --run-local --skip-training
+```
+
 Simular qualquer comando:
 
 ```bash
 uv run run-mtg-pipeline init --dry-run
 uv run run-mtg-pipeline spot-checking --dry-run
 uv run run-mtg-pipeline train --model random_forest --feature df --dry-run
+uv run run-mtg-pipeline analyze --dry-run
+uv run run-mtg-pipeline full --skip-training --dry-run
 ```
 
 O manifest de execução é salvo em:

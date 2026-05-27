@@ -1,9 +1,0 @@
-{
-  "completed_outer_folds": [
-    "mock_r1_f1"
-  ],
-  "last_completed_outer_fold": "mock_r1_f1",
-  "model_id": "mock_knn",
-  "status": "completed",
-  "total_outer_folds": 1
-}

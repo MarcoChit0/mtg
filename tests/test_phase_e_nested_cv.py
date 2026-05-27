@@ -278,21 +278,6 @@ class PhaseENestedCVTests(unittest.TestCase):
                     msg=f"{rep}/{alg} should use the compact 24-config Phase-E grid",
                 )
 
-    def test_hard_vote_uses_member_macro_f1_for_ties(self):
-        winner = phase_e_nested_cv.hard_vote(
-            {"weaker": 2, "stronger": 3},
-            member_scores={"weaker": 0.61, "stronger": 0.72},
-        )
-
-        self.assertEqual(winner, 3)
-        self.assertEqual(
-            phase_e_nested_cv.hard_vote(
-                {"left": 4, "right": 2},
-                member_scores={"left": 0.5, "right": 0.5},
-            ),
-            2,
-        )
-
 
 if __name__ == "__main__":
     unittest.main()

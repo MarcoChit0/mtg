@@ -169,6 +169,80 @@ class RunPipelineCliTests(unittest.TestCase):
             self.assertEqual(saved["status"], "failed")
             self.assertEqual(saved["stages"], [])
 
+    def test_analyze_requires_phase_e_outputs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            processed = root / "processed"
+            self.write_initialized_inputs(processed)
+            args = run_pipeline.parse_args([
+                "analyze",
+                "--processed-dir",
+                str(processed),
+                "--experiment-dir",
+                str(root / "experiments"),
+                "--dry-run",
+            ])
+
+            with self.assertRaisesRegex(FileNotFoundError, "No Phase E outputs"):
+                run_pipeline.run(args)
+
+    def test_analyze_dry_run_lists_phases_f_through_j(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            processed = root / "processed"
+            experiments = root / "experiments"
+            self.write_initialized_inputs(processed)
+            (experiments / "df_random_forest").mkdir(parents=True)
+            (experiments / "df_random_forest" / "metrics_per_fold.json").write_text("{}\n", encoding="utf-8")
+            args = run_pipeline.parse_args([
+                "analyze",
+                "--processed-dir",
+                str(processed),
+                "--experiment-dir",
+                str(experiments),
+                "--dry-run",
+            ])
+
+            with contextlib.redirect_stdout(io.StringIO()):
+                manifest = run_pipeline.run(args)
+
+            self.assertEqual(
+                [stage["name"] for stage in manifest["stages"]],
+                ["phase_f_verify", "phase_g_voting", "phase_h_best_models", "phase_i_compare_y2", "phase_j_interpret"],
+            )
+
+    def test_full_skip_training_runs_b_through_j(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            processed = root / "processed"
+            experiments = root / "experiments"
+            self.write_initialized_inputs(processed)
+            args = run_pipeline.parse_args([
+                "full",
+                "--skip-training",
+                "--run-local",
+                "--processed-dir",
+                str(processed),
+                "--experiment-dir",
+                str(experiments),
+                "--dry-run",
+            ])
+
+            stages = run_pipeline.build_stage_plan(args)
+            names = [stage.name for stage in stages]
+            self.assertNotIn("phase_e_nested_cv", names)
+            for expected in (
+                "phase_b_eda_divergence",
+                "phase_c_preprocessing",
+                "phase_d_spot_check",
+                "phase_f_verify",
+                "phase_g_voting",
+                "phase_h_best_models",
+                "phase_i_compare_y2",
+                "phase_j_interpret",
+            ):
+                self.assertIn(expected, names)
+
 
 if __name__ == "__main__":
     unittest.main()

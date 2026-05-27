@@ -161,7 +161,9 @@ uv sync                                          # instala deps
 uv run run-mtg-pipeline init                     # baixa tudo + Phase B/C
 uv run run-mtg-pipeline spot-checking            # Phase D
 uv run run-mtg-pipeline train --run-local        # Phase E sem Drive
-uv run python -m unittest discover -s tests      # testes (58+ atualmente passando)
+uv run run-mtg-pipeline analyze                  # Fases F+G+H+I+J pós-treino
+uv run run-mtg-pipeline full --skip-training     # Pipeline B->J sem retreino
+uv run python -m unittest discover -s tests      # testes (61+ atualmente passando)
 
 uv run sync-experiments-drive download-public    # só baixar modelos públicos
 uv run sync-experiments-drive check-write        # testar permissão de escrita

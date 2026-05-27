@@ -314,7 +314,6 @@ def build_train_stage(args: argparse.Namespace) -> Stage:
     append_bool(command, "--force-rerun", args.force_rerun)
     append_bool(command, "--from-spot-check", args.from_spot_check)
     append_option(command, "--spot-check-summary", args.spot_check_summary)
-    append_bool(command, "--skip-voting", args.skip_voting)
     append_bool(command, "--quiet-progress", args.quiet_progress)
     return Stage("phase_e_nested_cv", "Train Phase-E nested CV models.", command)
 
@@ -334,6 +333,74 @@ def build_publish_manifest_stage(args: argparse.Namespace) -> Stage:
             args.rclone_bin,
         ),
     )
+
+
+def build_phase_f_stage(args: argparse.Namespace) -> Stage:
+    command = python_script(
+        "scripts/phase_f_model_verification.py",
+        "--processed-dir",
+        str(args.processed_dir),
+        "--experiment-dir",
+        str(args.experiment_dir),
+        "--docs-dir",
+        str(args.docs_dir),
+    )
+    append_bool(command, "--all", args.require_all)
+    append_bool(command, "--group-kfold", args.group_kfold)
+    append_option(command, "--group-kfold-splits", args.group_kfold_splits)
+    append_option(command, "--min-folds", args.min_folds)
+    append_bool(command, "--quiet", args.quiet_progress)
+    return Stage("phase_f_verify", "Phase F: model verification, GroupKFold, stat tests.", command)
+
+
+def build_phase_g_stage(args: argparse.Namespace) -> Stage:
+    command = python_script(
+        "scripts/phase_g_voting.py",
+        "--experiment-dir",
+        str(args.experiment_dir),
+        "--docs-dir",
+        str(args.docs_dir),
+    )
+    append_bool(command, "--all", args.require_all)
+    append_bool(command, "--force-recompute", args.voting_force_recompute)
+    append_bool(command, "--quiet", args.quiet_progress)
+    return Stage("phase_g_voting", "Phase G: voting ensembles from OOF predictions.", command)
+
+
+def build_phase_h_stage(args: argparse.Namespace) -> Stage:
+    command = python_script(
+        "scripts/phase_h_best_models.py",
+        "--experiment-dir",
+        str(args.experiment_dir),
+        "--docs-dir",
+        str(args.docs_dir),
+    )
+    return Stage("phase_h_best_models", "Phase H: select best model per representation.", command)
+
+
+def build_phase_i_stage(args: argparse.Namespace) -> Stage:
+    command = python_script(
+        "scripts/phase_i_model_vs_calculator.py",
+        "--experiment-dir",
+        str(args.experiment_dir),
+        "--docs-dir",
+        str(args.docs_dir),
+    )
+    return Stage("phase_i_compare_y2", "Phase I: compare model predictions vs y2 calculator.", command)
+
+
+def build_phase_j_stage(args: argparse.Namespace) -> Stage:
+    command = python_script(
+        "scripts/phase_j_interpretability.py",
+        "--processed-dir",
+        str(args.processed_dir),
+        "--experiment-dir",
+        str(args.experiment_dir),
+        "--docs-dir",
+        str(args.docs_dir),
+    )
+    append_option(command, "--n-pi-repeats", args.n_pi_repeats)
+    return Stage("phase_j_interpret", "Phase J: interpretability for best BC and DF models.", command)
 
 
 def build_test_stage() -> Stage:
@@ -392,6 +459,26 @@ def build_train_stage_plan(args: argparse.Namespace) -> List[Stage]:
     return stages
 
 
+def build_analyze_stage_plan(args: argparse.Namespace) -> List[Stage]:
+    return [
+        build_phase_f_stage(args),
+        build_phase_g_stage(args),
+        build_phase_h_stage(args),
+        build_phase_i_stage(args),
+        build_phase_j_stage(args),
+    ]
+
+
+def build_full_stage_plan(args: argparse.Namespace) -> List[Stage]:
+    stages: List[Stage] = []
+    stages.extend(build_init_stage_plan(args))
+    stages.extend(build_spot_check_stage_plan(args))
+    if not args.skip_training:
+        stages.extend(build_train_stage_plan(args))
+    stages.extend(build_analyze_stage_plan(args))
+    return stages
+
+
 def build_stage_plan(args: argparse.Namespace) -> List[Stage]:
     if args.command == "init":
         return build_init_stage_plan(args)
@@ -399,6 +486,10 @@ def build_stage_plan(args: argparse.Namespace) -> List[Stage]:
         return build_spot_check_stage_plan(args)
     if args.command == "train":
         return build_train_stage_plan(args)
+    if args.command == "analyze":
+        return build_analyze_stage_plan(args)
+    if args.command == "full":
+        return build_full_stage_plan(args)
     raise ValueError(f"Unknown command: {args.command}")
 
 
@@ -415,6 +506,16 @@ def has_initialized_modeling_inputs(args: argparse.Namespace) -> bool:
         args.processed_dir / "bag_of_cards.jsonl",
         args.processed_dir / "modeling_snapshot_ids.json",
     ))
+
+
+def has_phase_e_outputs(args: argparse.Namespace) -> bool:
+    summary = args.experiment_dir / "nested_cv_summary.json"
+    if summary.exists():
+        return True
+    for path in args.experiment_dir.glob("*_*/metrics_per_fold.json"):
+        if path.parent.name.split("_", 1)[0] in {"df", "bc"}:
+            return True
+    return False
 
 
 def resolve_auto_data_source(args: argparse.Namespace) -> argparse.Namespace:
@@ -447,6 +548,15 @@ def check_inputs(args: argparse.Namespace, stages: Sequence[Stage]) -> None:
         raise FileNotFoundError(
             "Init has not been completed for modeling. Run `uv run run-mtg-pipeline init` first."
         )
+    elif args.command == "analyze":
+        if not has_initialized_modeling_inputs(args):
+            raise FileNotFoundError(
+                "Init has not been completed for modeling. Run `uv run run-mtg-pipeline init` first."
+            )
+        if not has_phase_e_outputs(args):
+            raise FileNotFoundError(
+                "No Phase E outputs found. Run `uv run run-mtg-pipeline train` or restore experiments first."
+            )
 
 
 def print_plan(stages: Sequence[Stage]) -> None:
@@ -607,17 +717,103 @@ def add_train_args(parser: argparse.ArgumentParser) -> None:
         type=Path,
         default=Path("experiments/spot_check/summary.json"),
     )
+    parser.add_argument("--quiet-progress", action="store_true")
+
+
+def add_analyze_args(parser: argparse.ArgumentParser) -> None:
+    add_common_args(parser)
     parser.add_argument(
-        "--skip-voting",
+        "--require-all",
+        dest="require_all",
         action="store_true",
-        help="Compatibility flag; Phase E no longer computes voting automatically.",
+        help="Require all expected models present (passed to Phase F and G).",
     )
+    parser.add_argument(
+        "--min-folds",
+        type=int,
+        default=5,
+        help="Minimum outer folds per model accepted by Phase F.",
+    )
+    parser.add_argument(
+        "--group-kfold",
+        action="store_true",
+        help="Enable Phase F.2 GroupKFold robustness check (slow).",
+    )
+    parser.add_argument("--group-kfold-splits", type=int, default=5)
+    parser.add_argument(
+        "--voting-force-recompute",
+        action="store_true",
+        help="Force Phase G to recompute voting predictions from OOF.",
+    )
+    parser.add_argument(
+        "--n-pi-repeats",
+        type=int,
+        default=20,
+        help="Permutation importance repeats for Phase J (DF model).",
+    )
+    parser.add_argument("--quiet-progress", action="store_true")
+
+
+def add_full_args(parser: argparse.ArgumentParser) -> None:
+    add_init_args(parser)
+    parser.add_argument("--bc-min-df-values", "--min-df-values", dest="bc_min_df_values", type=int, nargs="+", default=[5, 10, 20])
+    parser.add_argument("--seeds", type=int, nargs="+", default=[1, 2, 3, 4, 5])
+    parser.add_argument("--test-size", type=float, default=0.2)
+    parser.add_argument("--algorithms", nargs="+", choices=SPOT_CHECK_ALGORITHMS, default=list(SPOT_CHECK_ALGORITHMS))
+    parser.add_argument("--representations", nargs="+", choices=["DF", "BC"], default=["DF", "BC"])
+    parser.add_argument("--n-jobs", type=int, default=-1)
+    parser.add_argument("--max-rows", type=int, default=None)
+    parser.add_argument("--run-local", action="store_true", help="Skip Drive sync stages.")
+    parser.add_argument("--experiments-drive-remote", default=DEFAULT_EXPERIMENTS_DRIVE_REMOTE)
+    parser.add_argument("--rclone-bin", default="rclone")
+    parser.add_argument(
+        "--skip-training",
+        action="store_true",
+        help="Skip Phase E training. Recommended when models were already trained.",
+    )
+    parser.add_argument("--model", choices=SELECTED_ALGORITHMS, default=None)
+    parser.add_argument("--feature", choices=FEATURE_CHOICES, default=None)
+    parser.add_argument("--no-wait-drive-upload", action="store_true")
+    parser.add_argument("--bc-min-df", type=int, default=10)
+    parser.add_argument("--use-tfidf", action="store_true")
+    parser.add_argument("--outer-splits", type=int, default=5)
+    parser.add_argument("--inner-splits", type=int, default=3)
+    parser.add_argument("--repeats", type=int, nargs="+", default=[1, 2, 3])
+    parser.add_argument("--random-state", type=int, default=42)
+    parser.add_argument("--grid-n-jobs", type=int, default=1)
+    parser.add_argument("--grid-verbose", type=int, default=0)
+    parser.add_argument("--estimator-n-jobs", type=int, default=-1)
+    parser.add_argument("--max-grid-values", type=int, default=None)
+    parser.add_argument("--no-merge-existing-models", action="store_true")
+    parser.add_argument("--force-rerun", action="store_true")
+    parser.add_argument(
+        "--from-spot-check",
+        dest="from_spot_check",
+        action="store_true",
+        default=True,
+    )
+    parser.add_argument(
+        "--no-from-spot-check",
+        dest="from_spot_check",
+        action="store_false",
+    )
+    parser.add_argument(
+        "--spot-check-summary",
+        type=Path,
+        default=Path("experiments/spot_check/summary.json"),
+    )
+    parser.add_argument("--require-all", dest="require_all", action="store_true")
+    parser.add_argument("--min-folds", type=int, default=5)
+    parser.add_argument("--group-kfold", action="store_true")
+    parser.add_argument("--group-kfold-splits", type=int, default=5)
+    parser.add_argument("--voting-force-recompute", action="store_true")
+    parser.add_argument("--n-pi-repeats", type=int, default=20)
     parser.add_argument("--quiet-progress", action="store_true")
 
 
 def normalize_argv(argv: Optional[List[str]]) -> List[str]:
     values = list(sys.argv[1:] if argv is None else argv)
-    commands = {"init", "spot-checking", "train"}
+    commands = {"init", "spot-checking", "train", "analyze", "full"}
     if not values:
         return ["init"]
     if values[0] not in commands:
@@ -637,6 +833,12 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
 
     train = subparsers.add_parser("train", help="Run Phase-E nested CV training after init.")
     add_train_args(train)
+
+    analyze = subparsers.add_parser("analyze", help="Run post-training analysis (Phases F, G, H, I, J).")
+    add_analyze_args(analyze)
+
+    full = subparsers.add_parser("full", help="Run the complete pipeline (B through J). Use --skip-training to skip Phase E.")
+    add_full_args(full)
     return parser.parse_args(normalize_argv(argv))
 
 

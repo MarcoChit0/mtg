@@ -171,7 +171,6 @@ def discover_models(
         model_dir = experiment_dir / model_id
         issues = []
 
-        # Check directory and required files
         if not model_dir.exists():
             issues.append(f"directory not found: {model_dir}")
         else:
@@ -189,7 +188,6 @@ def discover_models(
                 print(f"ERROR — {msg}", file=sys.stderr)
             continue
 
-        # Check fold count
         metrics = read_json(model_dir / "metrics_per_fold.json")
         folds_list = metrics.get("folds", [])
         n_folds = len(folds_list)
@@ -299,31 +297,24 @@ def run_group_kfold(
     if not quiet:
         print(f"  [F.2] GroupKFold — {model_id} ...", file=sys.stderr)
 
-    # Load dataset
     df_path = processed_dir / "deck_features.jsonl"
     bc_path = processed_dir / "bag_of_cards.jsonl"
 
     records = list(iter_jsonl(df_path))
     y = target_vector(records)
 
-    # Build group array from commander_oracle_uids
     groups = np.array(
         [commander_signature(r.get("commander_oracle_uids")) for r in records]
     )
 
-    # Choose best hyperparams (most common across folds)
     hp_list = model["hyperparams"]
     if isinstance(hp_list, list):
         chosen_hp = most_common_hyperparams(hp_list)
     elif isinstance(hp_list, dict):
-        # May be keyed by fold_id
         chosen_hp = most_common_hyperparams(list(hp_list.values()))
     else:
         chosen_hp = {}
 
-    # Build preprocessing + estimator pipeline (same as Phase E)
-    # Extract scalar hyperparams that pipeline_for needs at construction time;
-    # the rest (clf__*) are set via pipeline.set_params() after construction.
     try:
         pipeline = pipeline_for(
             algo,
@@ -333,7 +324,6 @@ def run_group_kfold(
             random_state=42,
             n_jobs=1,
         )
-        # Apply chosen hyperparameters (prefix clf__ or prep__ as stored)
         clf_params = {k: v for k, v in chosen_hp.items() if k.startswith("clf__")}
         if clf_params:
             pipeline.set_params(**clf_params)
@@ -347,8 +337,6 @@ def run_group_kfold(
             "gap_vs_stratified": None,
         }
 
-    # Raw records — the pipeline_for pipelines include the preprocessor step,
-    # so we pass raw records directly and let the pipeline handle the transform.
     if rep == "BC":
         bc_records = list(iter_jsonl(bc_path))
         X_raw = bc_records
@@ -366,7 +354,6 @@ def run_group_kfold(
         y_train = y[train_idx]
         y_test = y[test_idx]
 
-        # Clone pipeline so each fold starts fresh (fit on training partition only)
         from sklearn.base import clone as sklearn_clone
         fold_pipeline = sklearn_clone(pipeline)
 
@@ -392,7 +379,6 @@ def run_group_kfold(
     macro_f1_mean = float(np.mean(valid_f1s)) if valid_f1s else None
     macro_f1_std = float(np.std(valid_f1s, ddof=1)) if len(valid_f1s) > 1 else None
 
-    # Gap vs stratified nested CV mean
     stratified_mean = model["metrics"].get("aggregate", {}).get("macro_f1_mean")
     gap = (
         round(stratified_mean - macro_f1_mean, 4)

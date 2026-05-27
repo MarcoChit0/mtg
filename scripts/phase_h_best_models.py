@@ -22,7 +22,6 @@ import argparse
 import json
 import statistics
 import sys
-from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -519,7 +518,7 @@ def main() -> None:
         "--docs-dir",
         dest="docs_dir",
         type=Path,
-        default=Path("documents"),
+        default=Path("documents/reports/results"),
         metavar="DIR",
     )
     parser.add_argument(
@@ -532,8 +531,7 @@ def main() -> None:
     args = parser.parse_args()
 
     voting_dir = args.experiment_dir / "voting"
-    results_dir = args.docs_dir / "reports" / "results"
-    report_path = results_dir / "phase_h_best_models.md"
+    report_path = args.docs_dir / "phase_h_best_models.md"
     best_models_path = args.experiment_dir / "best_models.json"
 
     log("[Phase H] Iniciando seleção do melhor modelo por representação...")

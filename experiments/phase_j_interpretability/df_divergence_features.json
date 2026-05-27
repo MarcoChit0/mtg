@@ -42,6 +42,13 @@
     "normalized_delta": -0.23483923970004122
   },
   {
+    "delta": 2.3790478693299164,
+    "feature": "rare_count",
+    "mean_concordant": 43.328153839550154,
+    "mean_divergent": 45.70720170888007,
+    "normalized_delta": 0.22095044765010863
+  },
+  {
     "delta": -1.6558843827556977,
     "feature": "basic_land_count",
     "mean_concordant": 15.678542301583894,
@@ -61,12 +68,5 @@
     "mean_concordant": 19.323904365368932,
     "mean_divergent": 20.920582850167836,
     "normalized_delta": 0.20969442095176102
-  },
-  {
-    "delta": 1.3639094114582448,
-    "feature": "lands_that_produce_multiple_colors_count",
-    "mean_concordant": 11.345580976091343,
-    "mean_divergent": 12.709490387549588,
-    "normalized_delta": 0.19826105569577984
   }
 ]

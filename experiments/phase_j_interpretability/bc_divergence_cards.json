@@ -101,18 +101,18 @@
       "oracle_uid": "5ecf35b1-0bfd-4c60-a791-5a3b918dd630"
     },
     {
-      "card_name": "Transdimensional Bovine",
-      "freq_base": 0.0016608996539792388,
-      "freq_ref": 0.0002732862673650649,
-      "lift": 2.7944368666243076,
-      "oracle_uid": "eaa6b294-ac66-4fe2-b694-97b0a04f7be1"
-    },
-    {
       "card_name": "Akal Pakal, First Among Equals",
       "freq_base": 0.0016608996539792388,
       "freq_ref": 0.0002732862673650649,
       "lift": 2.7944368666243076,
       "oracle_uid": "53bfe54e-9b97-4113-97d9-3c5dbc85e7cf"
+    },
+    {
+      "card_name": "Transdimensional Bovine",
+      "freq_base": 0.0016608996539792388,
+      "freq_ref": 0.0002732862673650649,
+      "lift": 2.7944368666243076,
+      "oracle_uid": "eaa6b294-ac66-4fe2-b694-97b0a04f7be1"
     },
     {
       "card_name": "Disruption Protocol",

@@ -25,10 +25,9 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import statistics
 import uuid
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
@@ -97,10 +96,6 @@ TRACKED_LAYOUTS: Tuple[str, ...] = (
 
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
-
-
-def normalize_category(value: Any) -> str:
-    return re.sub(r"[^a-z0-9]+", "", str(value or "").casefold())
 
 
 def iter_jsonl(path: Path) -> Iterable[Dict[str, Any]]:

@@ -10,9 +10,8 @@ import math
 import os
 import sys
 import time
-from collections import Counter, defaultdict
+from collections import Counter
 from concurrent.futures import Future, ThreadPoolExecutor
-from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
@@ -69,20 +68,6 @@ SELECTED_ALGORITHMS = (
 REPRESENTATIONS = ("DF", "BC")
 LABELS = [2, 3, 4]
 FEATURE_CHOICES = tuple(representation.lower() for representation in REPRESENTATIONS)
-
-
-@dataclass(frozen=True)
-class VotingSpec:
-    name: str
-    description: str
-    top_n: int
-
-
-VOTING_SPECS: Tuple[VotingSpec, ...] = (
-    VotingSpec("voting_top3", "Top-3 modelos globais por macro-F1", 3),
-    VotingSpec("voting_top5", "Top-5 modelos globais por macro-F1", 5),
-    VotingSpec("voting_top7", "Top-7 modelos globais por macro-F1", 7),
-)
 
 
 class SparseToDenseTransformer(BaseEstimator, TransformerMixin):
@@ -1081,215 +1066,6 @@ def load_existing_model_metrics(experiment_dir: Path, model_name: str) -> Option
     return read_json(path)
 
 
-def read_oof_predictions(model_dir: Path) -> List[Dict[str, Any]]:
-    """Read out-of-fold predictions persisted by a base model."""
-    path = model_dir / "predictions_per_fold.jsonl"
-    if not path.exists():
-        return []
-    rows: List[Dict[str, Any]] = []
-    with path.open("r", encoding="utf-8") as handle:
-        for line in handle:
-            stripped = line.strip()
-            if stripped:
-                rows.append(json.loads(stripped))
-    return rows
-
-
-def select_voting_members(
-    model_metrics: Sequence[Mapping[str, Any]],
-    spec: VotingSpec,
-) -> Optional[List[str]]:
-    """Return ordered list of model_ids that should participate in the ensemble."""
-    ranked: List[Mapping[str, Any]] = []
-    for row in model_metrics:
-        aggregate = row.get("aggregate") or {}
-        if aggregate.get("macro_f1_mean") is None:
-            continue
-        ranked.append(row)
-
-    ranked.sort(
-        key=lambda m: (
-            -float((m.get("aggregate") or {})["macro_f1_mean"]),
-            float((m.get("aggregate") or {}).get("macro_f1_std", 0.0)),
-            str(m["model_id"]),
-        )
-    )
-    if len(ranked) < spec.top_n:
-        return None
-    return [str(row["model_id"]) for row in ranked[: spec.top_n]]
-
-
-def hard_vote(
-    predictions: Sequence[int] | Mapping[str, int],
-    *,
-    member_scores: Optional[Mapping[str, float]] = None,
-) -> int:
-    """Majority vote with macro-F1 tie-break and deterministic fallback."""
-    if isinstance(predictions, Mapping):
-        prediction_items = [(str(member), int(prediction)) for member, prediction in predictions.items()]
-    else:
-        prediction_items = [(str(index), int(prediction)) for index, prediction in enumerate(predictions)]
-    counts = Counter(prediction for _member, prediction in prediction_items)
-    if not counts:
-        raise ValueError("Cannot vote over an empty list of predictions")
-    max_count = max(counts.values())
-    tied_labels = [label for label, count in counts.items() if count == max_count]
-    if len(tied_labels) == 1:
-        return tied_labels[0]
-    if member_scores:
-        label_scores: Dict[int, float] = {}
-        for label in tied_labels:
-            scores = [
-                float(member_scores[member])
-                for member, prediction in prediction_items
-                if prediction == label and member in member_scores
-            ]
-            label_scores[label] = float(np.mean(scores)) if scores else -math.inf
-        best_score = max(label_scores.values())
-        tied_labels = [label for label in tied_labels if label_scores[label] == best_score]
-    return min(tied_labels)
-
-
-def compute_voting_metrics(
-    members: Sequence[str],
-    experiment_dir: Path,
-    member_scores: Optional[Mapping[str, float]] = None,
-) -> Optional[Dict[str, Any]]:
-    """Compute hard-voting per (fold, row) and per-fold metrics."""
-    member_predictions: Dict[str, List[Dict[str, Any]]] = {}
-    for member_id in members:
-        rows = read_oof_predictions(experiment_dir / member_id)
-        if not rows:
-            return None
-        member_predictions[member_id] = rows
-
-    by_key: Dict[Tuple[str, int], Dict[str, Any]] = {}
-    for member_id, rows in member_predictions.items():
-        for row in rows:
-            key = (str(row["fold_id"]), int(row["row_index"]))
-            entry = by_key.setdefault(key, {
-                "fold_id": str(row["fold_id"]),
-                "row_index": int(row["row_index"]),
-                "snapshot_id": row.get("snapshot_id"),
-                "deck_id": row.get("deck_id"),
-                "y_true": int(row["y_true"]),
-                "y2": row.get("y2"),
-                "per_member_preds": {},
-            })
-            entry["per_member_preds"][member_id] = int(row["y_pred"])
-
-    expected = len(members)
-    voted_rows: List[Dict[str, Any]] = []
-    for entry in by_key.values():
-        if len(entry["per_member_preds"]) != expected:
-            return None
-        entry["y_pred"] = int(hard_vote(entry["per_member_preds"], member_scores=member_scores))
-        voted_rows.append(entry)
-
-    by_fold: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
-    for entry in voted_rows:
-        by_fold[entry["fold_id"]].append(entry)
-
-    fold_metrics: List[Dict[str, Any]] = []
-    for fold_id in sorted(by_fold):
-        rows = by_fold[fold_id]
-        y_true = np.asarray([r["y_true"] for r in rows], dtype=int)
-        y_pred = np.asarray([r["y_pred"] for r in rows], dtype=int)
-        metric = metric_record(y_true, y_pred)
-        metric.update({
-            "fold_id": fold_id,
-            "n_test": len(rows),
-        })
-        fold_metrics.append(metric)
-
-    return {
-        "fold_metrics": fold_metrics,
-        "aggregate": aggregate_metrics(fold_metrics),
-        "predictions": voted_rows,
-    }
-
-
-def run_voting_ensembles(
-    model_metrics: Sequence[Mapping[str, Any]],
-    *,
-    experiment_dir: Path,
-    quiet: bool,
-) -> Dict[str, Any]:
-    """Compute all configured voting ensembles using saved OOF predictions."""
-    voting_dir = experiment_dir / "voting"
-    voting_dir.mkdir(parents=True, exist_ok=True)
-    ensembles: List[Dict[str, Any]] = []
-    problems: List[str] = []
-    member_scores = {
-        str(row["model_id"]): float((row.get("aggregate") or {})["macro_f1_mean"])
-        for row in model_metrics
-        if (row.get("aggregate") or {}).get("macro_f1_mean") is not None
-    }
-    for spec in VOTING_SPECS:
-        members = select_voting_members(model_metrics, spec)
-        if not members:
-            print_progress(f"[Phase E voting] skip {spec.name}: insufficient members", quiet)
-            ensembles.append({
-                "voting_id": spec.name,
-                "description": spec.description,
-                "status": "skipped",
-                "reason": "insufficient_members",
-                "members": [],
-            })
-            continue
-        result = compute_voting_metrics(members, experiment_dir, member_scores=member_scores)
-        if result is None:
-            problems.append(f"voting {spec.name}: missing or misaligned predictions for members {members}")
-            ensembles.append({
-                "voting_id": spec.name,
-                "description": spec.description,
-                "status": "skipped",
-                "reason": "missing_predictions",
-                "members": members,
-            })
-            continue
-        record = {
-            "voting_id": spec.name,
-            "description": spec.description,
-            "status": "ok",
-            "members": members,
-            "n_members": len(members),
-            "folds": result["fold_metrics"],
-            "aggregate": result["aggregate"],
-        }
-        out_dir = voting_dir / spec.name
-        out_dir.mkdir(parents=True, exist_ok=True)
-        write_json(out_dir / "metrics_per_fold.json", {
-            "voting_id": spec.name,
-            "description": spec.description,
-            "members": members,
-            "folds": result["fold_metrics"],
-            "aggregate": result["aggregate"],
-        })
-        write_jsonl(out_dir / "predictions_per_fold.jsonl", [
-            {
-                "voting_id": spec.name,
-                "fold_id": entry["fold_id"],
-                "row_index": entry["row_index"],
-                "snapshot_id": entry.get("snapshot_id"),
-                "deck_id": entry.get("deck_id"),
-                "y_true": entry["y_true"],
-                "y_pred": entry["y_pred"],
-                "y2": entry.get("y2"),
-                "per_member_preds": entry["per_member_preds"],
-            }
-            for entry in result["predictions"]
-        ])
-        ensembles.append(record)
-        print_progress(
-            f"[Phase E voting] {spec.name}: macro_f1_mean={record['aggregate']['macro_f1_mean']:.4f}"
-            f" ± {record['aggregate']['macro_f1_std']:.4f} | members={members}",
-            quiet,
-        )
-    write_json(voting_dir / "voting_summary.json", {"ensembles": ensembles})
-    return {"ensembles": ensembles, "problems": problems}
-
-
 def statistical_payload(model_metrics: Sequence[Mapping[str, Any]]) -> Dict[str, Any]:
     by_model = {str(row["model_id"]): row for row in model_metrics}
     model_names = sorted(by_model)
@@ -1483,110 +1259,6 @@ def write_report(path: Path, summary: Mapping[str, Any], stats: Mapping[str, Any
     path.write_text("\n".join(lines), encoding="utf-8")
 
 
-def write_voting_report(
-    path: Path,
-    ensembles: Sequence[Mapping[str, Any]],
-    models: Sequence[Mapping[str, Any]],
-) -> None:
-    lines: List[str] = [
-        "# Ensembles por votação",
-        "",
-        "Hard voting simples a partir das predições out-of-fold dos modelos individuais. Sem retreino. Os ensembles usam os top-3, top-5 e top-7 modelos globais por macro-F1 média. Empates são resolvidos pela maior macro-F1 média dos membros que votaram em cada classe; empate residual usa o menor rótulo numérico para manter reprodutibilidade.",
-        "",
-        "## Ensembles",
-        "",
-        "| Ensemble | Status | n_membros | Membros | Macro-F1 média | Macro-F1 dp | Accuracy média | Precision macro | Recall macro |",
-        "|---|---|---:|---|---:|---:|---:|---:|---:|",
-    ]
-    for ensemble in ensembles:
-        agg = ensemble.get("aggregate") or {}
-        members = ensemble.get("members") or []
-        if ensemble.get("status") == "ok":
-            lines.append(
-                "| `{name}` | ok | {n} | {members} | {f1:.4f} | {f1_std:.4f} | {acc:.4f} | {prec:.4f} | {rec:.4f} |".format(
-                    name=ensemble["voting_id"],
-                    n=ensemble.get("n_members", len(members)),
-                    members=", ".join(f"`{m}`" for m in members),
-                    f1=agg.get("macro_f1_mean", 0.0),
-                    f1_std=agg.get("macro_f1_std", 0.0),
-                    acc=agg.get("accuracy_mean", 0.0),
-                    prec=agg.get("precision_macro_mean", 0.0),
-                    rec=agg.get("recall_macro_mean", 0.0),
-                )
-            )
-        else:
-            lines.append(
-                f"| `{ensemble['voting_id']}` | {ensemble.get('status')} | {len(members)} | "
-                f"{', '.join(f'`{m}`' for m in members) or '_n/a_'} |  |  |  |  |  |"
-            )
-
-    lines.extend([
-        "",
-        "## Modelos individuais (referência)",
-        "",
-        "| Modelo | Macro-F1 média | Macro-F1 dp |",
-        "|---|---:|---:|",
-    ])
-    for row in models:
-        agg = row.get("aggregate") or {}
-        if agg.get("macro_f1_mean") is None:
-            continue
-        lines.append(
-            f"| `{row['model_id']}` | {agg['macro_f1_mean']:.4f} | {agg.get('macro_f1_std', 0.0):.4f} |"
-        )
-    lines.append("")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(lines), encoding="utf-8")
-
-
-def write_stats_report(path: Path, stats: Mapping[str, Any]) -> None:
-    lines = [
-        "# Testes Estatísticos — Fase E",
-        "",
-    ]
-    if stats.get("status") != "ok":
-        lines.append("Dados insuficientes para Friedman/Nemenyi/Wilcoxon nesta rodada.")
-    else:
-        friedman = stats["friedman"]
-        lines.extend([
-            f"- Friedman statistic: `{friedman['statistic']:.6f}`",
-            f"- Friedman p-value: `{friedman['p_value']:.6f}`",
-            f"- Nemenyi critical difference (alpha=0.05): `{stats['nemenyi']['critical_difference']:.6f}`",
-            "",
-            "## Ranks Médios",
-            "",
-            "| Modelo | Rank médio |",
-            "|---|---:|",
-        ])
-        for model_name, rank in sorted(stats["average_ranks"].items(), key=lambda item: item[1]):
-            lines.append(f"| `{model_name}` | {rank:.4f} |")
-        significant = [row for row in stats["nemenyi"]["pairs"] if row["significant_alpha_0_05"]]
-        lines.extend([
-            "",
-            "## Nemenyi",
-            "",
-        ])
-        if significant:
-            for row in significant:
-                lines.append(f"- `{row['model_a']}` vs `{row['model_b']}`: rank diff `{row['rank_diff']:.4f}`.")
-        else:
-            lines.append("- Nenhum par superou a diferença crítica em alpha=0.05.")
-        lines.extend([
-            "",
-            "## Wilcoxon Pareado",
-            "",
-            "| Modelo A | Modelo B | Statistic | p-value |",
-            "|---|---|---:|---:|",
-        ])
-        for row in stats["wilcoxon_pairs"]:
-            stat = "" if row["statistic"] is None else f"{row['statistic']:.4f}"
-            p_value = "" if row["p_value"] is None else f"{row['p_value']:.6f}"
-            lines.append(f"| `{row['model_a']}` | `{row['model_b']}` | {stat} | {p_value} |")
-    lines.append("")
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text("\n".join(lines), encoding="utf-8")
-
-
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run Phase-E nested cross-validation.")
     parser.add_argument(
@@ -1665,12 +1337,6 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
         type=Path,
         default=DEFAULT_SPOT_CHECK_SUMMARY,
         help="Path to spot_check/summary.json with the top-5 selection.",
-    )
-    parser.add_argument(
-        "--skip-voting",
-        action="store_true",
-        default=True,
-        help="Compatibility flag; voting is not computed automatically by Phase E.",
     )
     parser.add_argument("--quiet-progress", action="store_true", help="Hide human-readable progress messages.")
     return parser.parse_args(argv)
@@ -1807,7 +1473,6 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
             "force_rerun": args.force_rerun,
             "from_spot_check": args.from_spot_check,
             "spot_check_summary": str(args.spot_check_summary),
-            "skip_voting": args.skip_voting,
         },
         "model_sources": model_sources,
         "model_plan": [{"representation": rep, "algorithm": alg} for rep, alg in model_plan],

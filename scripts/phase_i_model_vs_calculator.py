@@ -25,7 +25,6 @@ import argparse
 import json
 import statistics
 import sys
-from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -637,13 +636,13 @@ def main() -> None:
     parser.add_argument("--experiment-dir", dest="experiment_dir", type=Path,
                         default=Path("experiments"), metavar="DIR")
     parser.add_argument("--docs-dir", dest="docs_dir", type=Path,
-                        default=Path("documents"), metavar="DIR")
+                        default=Path("documents/reports/results"), metavar="DIR")
     parser.add_argument("--spot-check-summary", dest="spot_check_summary", type=Path,
                         default=Path("experiments/spot_check/summary.json"), metavar="PATH")
     args = parser.parse_args()
 
     voting_dir  = args.experiment_dir / "voting"
-    report_path = args.docs_dir / "reports" / "results" / "phase_i_model_vs_calculator.md"
+    report_path = args.docs_dir / "phase_i_model_vs_calculator.md"
 
     log("[Phase I] Iniciando comparacao com a calculadora (y2)...")
 
