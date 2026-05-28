@@ -24,5 +24,6 @@
       "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $env:PYTHONIOENCODING=\"utf-8\"; uv run --no-sync python -m scripts.phase_j_interpretability 2>&1)",
       "Bash(python3 -c ' *)"
     ]
-  }
+  },
+  "outputStyle": "default"
 }
