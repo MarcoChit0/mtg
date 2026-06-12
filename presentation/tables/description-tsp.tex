@@ -1,0 +1,63 @@
+\begin{tabular}{|l|l|}
+\hline
+\keystyle{Domain} & \namestyle{Travelling Salesman}\\
+\hline
+\keystyle{Type} & \typestyle{nation}\\
+\keystyle{} & \typestyle{city}\\
+% \keystyle{} & \typestyle{number}  : $\{$ \predicatestyle{1}, \predicatestyle{2}, \predicatestyle{3}, \predicatestyle{$\dots$} $\}$\\
+\keystyle{} & \typestyle{item}\\
+\keystyle{} & \typestyle{person}\\
+\hline
+% \keystyle{Predicate} & \predicatestyle{inc } (\variablestyle{n1}, \variablestyle{ n2 } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{dec } (\variablestyle{n1}, \variablestyle{ n2 } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{selling-price-nation-map } (\variablestyle{n } : \typestyle{ number}; \variablestyle{ s } : \typestyle{ nation})\\
+% \keystyle{} & \predicatestyle{buying-price-nation-map } (\variablestyle{n } : \typestyle{ number}; \variablestyle{ s } : \typestyle{ nation})\\
+% \keystyle{} & \predicatestyle{at } (\variablestyle{c } : \typestyle{ city}; \variablestyle{ s } : \typestyle{ nation})\\
+\keystyle{Constant Predicate} & \predicatestyle{at } (\variablestyle{c } : \typestyle{ city}) : \textbf{set}$\langle$\typestyle{nation}$\rangle$\\
+\keystyle{} & \predicatestyle{connected } (\variablestyle{c} : \typestyle{ city}) : \textbf{set}$\langle$\typestyle{city}$\rangle$\\
+% \keystyle{} & \predicatestyle{has-adjacent-cities } (\variablestyle{c } : \typestyle{ city}; \variablestyle{ n } : \typestyle{ number})\\
+\keystyle{} & \predicatestyle{volume } (\variablestyle{i } : \typestyle{ item}) : \typestyle{ number}\\
+\keystyle{} & \predicatestyle{nation-map } (\variablestyle{s } : \typestyle{ nation}) : \typestyle{ item}\\
+\keystyle{} & \predicatestyle{is-selling } (\variablestyle{p } : \typestyle{ person}) : \textbf{set}$\langle$\typestyle{item}$\rangle$\\
+\keystyle{} & \predicatestyle{is-buying } (\variablestyle{p } : \typestyle{ person}) : \textbf{set}$\langle$\typestyle{item}$\rangle$\\
+\keystyle{} & \predicatestyle{selling-price } (\variablestyle{i } : \typestyle{ item}) : \typestyle{ number}\\
+\keystyle{} & \predicatestyle{buying-price } (\variablestyle{i } : \typestyle{ item}) : \typestyle{ number}\\
+\keystyle{} & \predicatestyle{person-at } (\variablestyle{p } : \typestyle{ person}) : \typestyle{ city}\\
+\hline
+\keystyle{Variable Predicate} & \predicatestyle{money}() : \typestyle{number}\\
+% \keystyle{} & \predicatestyle{wallet } (\variablestyle{n } : \typestyle{ number})\\
+\keystyle{} & \predicatestyle{on-city}() : \typestyle{city}\\
+\keystyle{} & \predicatestyle{backpack-volume}() : \typestyle{number}\\
+% \keystyle{} & \predicatestyle{backpack-total-space } (\variablestyle{n } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{backpack-allocated-space } (\variablestyle{n } : \typestyle{ number})\\
+\keystyle{} & \predicatestyle{has}() : \textbf{set}$\langle$\typestyle{item}$\rangle$\\
+\keystyle{} & \predicatestyle{visits} (\variablestyle{c} : \typestyle{city}) : \typestyle{number}\\
+% \keystyle{} & \predicatestyle{has-nation-map } (\variablestyle{s } : \typestyle{ nation})\\
+% \keystyle{} & \predicatestyle{visiting } (\variablestyle{c } : \typestyle{ city})\\
+% \keystyle{} & \predicatestyle{visited-once } (\variablestyle{c } : \typestyle{ city})\\
+% \keystyle{} & \predicatestyle{visited-more-than-once } (\variablestyle{c } : \typestyle{ city})\\
+\hline
+\keystyle{Action} & \actionstyle{move } (\variablestyle{c1}, \variablestyle{ c2 } : \typestyle{ city})\\
+% \keystyle{Action} & \actionstyle{move-with-map-inside-nation } (\variablestyle{c1}, \variablestyle{ c2 } : \typestyle{ city}; \variablestyle{ s } : \typestyle{ nation})\\
+% \keystyle{} & \actionstyle{move-without-map-1-adjacent-cities } (\variablestyle{c1}, \variablestyle{ c2 } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{move-without-map-2-adjacent-cities } (\variablestyle{c1}, \variablestyle{ c2}, \variablestyle{ c3 } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{move-without-map-3-adjacent-cities } (\variablestyle{c1}, \variablestyle{ c2}, \variablestyle{ c3}, \variablestyle{ c4 } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{move-without-map-4-adjacent-cities } (\variablestyle{c1}, \variablestyle{ c2}, \variablestyle{ c3}, \variablestyle{ c4}, \variablestyle{ c5 } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{move-without-map-5-adjacent-cities } (\variablestyle{c1}, \variablestyle{ c2}, \variablestyle{ c3}, \variablestyle{ c4}, \variablestyle{ c5}, \variablestyle{ c6 } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{visit-city-first-visit } (\variablestyle{c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{visit-city-visited-again } (\variablestyle{c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{visit-city-multiple-visits } (\variablestyle{c } : \typestyle{ city})\\
+\keystyle{} & \actionstyle{sell-item-to} (\variablestyle{i } : \typestyle{ item}; \variablestyle{ p } : \typestyle{ person})\\
+% \keystyle{} & \actionstyle{seller-sells-item-to-travelling-salesman } (\variablestyle{i } : \typestyle{ item}; \variablestyle{ price}, \variablestyle{ capacity } : \typestyle{ number}; \variablestyle{ p } : \typestyle{ person}; \variablestyle{ c } : \typestyle{ city})\\
+\keystyle{} & \actionstyle{buy-item-from} (\variablestyle{i } : \typestyle{ item}; \variablestyle{ p } : \typestyle{ person})\\
+\keystyle{} & \actionstyle{sell-nation-map} (\variablestyle{s} : \typestyle{nation})\\
+\keystyle{} & \actionstyle{buy-nation-map} (\variablestyle{s} : \typestyle{nation})\\
+% \keystyle{} & \actionstyle{buyer-buys-item-from-travelling-salesman } (\variablestyle{i } : \typestyle{ item}; \variablestyle{ price}, \variablestyle{ capacity } : \typestyle{ number}; \variablestyle{ p } : \typestyle{ person}; \variablestyle{ c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{deallocate-backpack-space } (\variablestyle{a1}, \variablestyle{ a2}, \variablestyle{ b1}, \variablestyle{ b2 } : \typestyle{ number}; \variablestyle{ c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{allocate-backpack-space } (\variablestyle{a1}, \variablestyle{ a2}, \variablestyle{ b1}, \variablestyle{ b2 } : \typestyle{ number}; \variablestyle{ c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{buy-nation-map } (\variablestyle{s } : \typestyle{ nation}; \variablestyle{ price } : \typestyle{ number}; \variablestyle{ c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{sell-nation-map } (\variablestyle{s } : \typestyle{ nation}; \variablestyle{ price } : \typestyle{ number}; \variablestyle{ c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{inc-wallet } (\variablestyle{w1}, \variablestyle{ w2}, \variablestyle{ m1}, \variablestyle{ m2 } : \typestyle{ number}; \variablestyle{ c } : \typestyle{ city})\\
+% \keystyle{} & \actionstyle{dec-wallet } (\variablestyle{w1}, \variablestyle{ w2}, \variablestyle{ m1}, \variablestyle{ m2 } : \typestyle{ number}; \variablestyle{ c } : \typestyle{ city})\\
+\hline
+\end{tabular}

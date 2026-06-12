@@ -1,0 +1,34 @@
+\centering
+\begin{tikzpicture}
+    \node[black_node] at ( 0.0,  0.0) (s0) {$s_0$};
+    \node[black_node] at ( -1.5,  -1.5) (s1) {$s_1$};   
+    \node[black_node] at ( 0,  -1.5) (s2) {$s_2$};  
+    \node[black_node, fill=fnddeState] at ( 1.5,  -1.5) (s3) {$s_3$}; 
+    \node[black_node, fill=ddeState] at ( -2.5,  -2.5) (s4) {$s_4$};   
+    \node[black_node, fill=ddeState] at ( -2.5,  -4.0) (s5) {$s_5$};   
+    \node[black_node, accepting] at ( -.75,  -3) (s6) {$s_6$};  
+    \node[black_node] at ( .75,  -3) (s7) {$s_7$};  
+    \node[black_node] at ( .75,  -4.5) (s8) {$s_8$};   
+    \node[black_node, accepting] at (1.75,  -3) (s9) {$s_9$};
+    \node[black_node, fill=ddeState] at (2.75,  -3) (s10) {$s_{10}$};   
+    
+    \draw[->, thick] ( 0.0, 0.9) -- (s0) ;
+    \draw[->, thick] (s0) to [bend left=25] (s1) ;     \draw[->, thick] (s1) to [bend left=25] (s0) ;
+    \draw[->, thick] (s0) -- (s2);
+    \draw[badActionStyle] (s0) -- (s3) ;
+
+    \draw[badActionStyle] (s1.240) -- (s4) ;
+    \draw[badActionStyle] (s1.240) -- (s6) ;
+    \draw[->, thick] (s1.0) -- (s2) ;
+    \draw[badActionStyle] (s4)  to [bend left=25] (s5) ;
+    \draw[badActionStyle] (s5)  to [bend left=25] (s4) ;
+
+    \draw[->, thick] (s2) -- (s7) ;
+    \draw[->, thick] (s7) -- (s8) ;
+    \draw[->, thick] (s8.130) -- (s6) ;
+    \draw[->, thick] (s8.130)  to [bend left=25] (s2) ;
+    
+    \draw[badActionStyle] (s3.285) -- (s9) ;
+    \draw[badActionStyle] (s3.285) -- (s10) ;
+    
+    \node[] at (0.55, -0.25) () {$e$};     \node[] at (-0.4, -0.55) () {$w$};     \node[] at (.20, -0.60) () {$s$};     \node[] at (-1.3, -2.1) () {$s$};     \node[] at (-1., -1.75) () {$e$};     \node[] at (-1.5, -.9) () {$n$};     \node[] at (.45, -1.90) () {$s$};     \node[] at (1.95, -1.90) () {$s$};     \node[] at (-2.1, -2.9) () {$s$};     \node[] at (-3., -3.50) () {$n$};     \node[] at (.95, -3.55) () {$s$};     \node[] at (0.2, -4.2) () {$n$};     \myCurveA     \myCurveB     \myCurveC \end{tikzpicture}

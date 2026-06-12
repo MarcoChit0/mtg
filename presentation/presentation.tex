@@ -1,0 +1,1506 @@
+\documentclass[aspectratio=149, dvipsnames]{beamer}
+% \documentclass[aspectratio=149, dvipsnames, handout]{beamer}
+\usetheme{Inf}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{pifont}
+
+\usepackage{venturis}
+
+\setlength{\parskip}{.3em}
+\usepackage{indentfirst}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xparse}
+\usetikzlibrary{fit,shapes.misc, calc}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, patterns, automata}
+\tikzstyle{black_node}=[circle, draw, very thick, minimum height=8mm, minimum width=8mm]
+\tikzstyle{black_rec_node}=[draw, very thick, minimum height=8mm, minimum width=8mm]
+
+\usepackage{macros}
+
+\title
+[
+    \textbf{Dead Ends in FOND}
+]
+{
+    Dead Ends in FOND Planning: \\ {\small From Theory to Practical Contributions}
+}
+
+\author
+[
+    Marco Chitolina
+]
+{
+    \centering \footnotesize\textcolor{darkgray}{} \\[-7pt]
+}
+
+\institute
+{
+    \small \textcolor{black}{Marco Antônio Chitolina} \\[-8pt]
+}
+
+\date
+{
+    Advisor: \textcolor{black}{Prof.~Dr. André Grahl Pereira} \\[-2pt]
+    Co-advisor: \textcolor{black}{B. Sc. Frederico Messa}\\[-2pt]
+    Federal University of Rio Grande do Sul
+}
+
+\AtBeginSection
+{
+    \setbeamercolor{footline}{fg=InfWhite}
+    \begin{frame}[noframenumbering]
+        \begin{huge}
+            \begin{center}
+                \insertsection
+            \end{center}
+        \end{huge}
+    \end{frame}
+    \setbeamercolor{footline}{fg=InfBlack}
+} 
+
+\begin{document}
+
+\InfTitlePage
+\setbeamercolor{footline}{fg=InfBlack}
+\section{Introduction.}
+\begin{frame}{Fully Observable Non-Deterministic (FOND) planning.}
+    A framework for solving sequential decision problems with \textbf{uncertainty}.
+\end{frame}
+\begin{frame}{Motivation.}\pause
+\textbf{Problem:} \pause PR2 easily solves all instances in the benchmarks used by the FOND community.\pause
+
+\textbf{Our approach:} \pause study which factors are more relevant for a FOND task's difficulty. \pause
+Use this knowledge to build a new benchmark.
+\end{frame}
+
+\begin{frame}{Presentation Flow.}\pause
+    \begin{itemize}
+        \item FOND task. \pause
+        \item Dead ends in FOND planning. \pause
+        \item Finding all dead ends in a FOND task. \pause
+        \item What makes a FOND planning task difficult to solve? \pause
+        \item New benchmark. \pause
+        \item Evaluating new benchmark. \pause
+        \item Discussion and future work.
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}{Thesis Statement}
+%     \begin{quote}
+%         \textit{``\textbf{Explicit policy-space heuristic search} should be an \textbf{effective way} of solving \textbf{FOND planning tasks}.''}
+%     \end{quote}
+% \end{frame}
+
+\section{Background.}
+% \begin{frame}{State-space search with non-determinism.}
+%     \input{graphs/graph1}
+% \end{frame}
+\begin{frame}{FOND planning Task.} \pause
+    \begin{columns}
+        \begin{column}{.38\textwidth}
+            \begin{itemize}
+                \visible<2->{\item Set of states $\states$}
+                \visible<4->{\item Initial state $s_0$}
+                \visible<6->{\item Set of goal states $\states^*$}
+                \visible<8->{\item Set of actions $\actions$}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.58\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.7}
+                {
+                    \only<2-4>{\visible<3-4>{\input{graphs/graph-1-states}}}%
+                    \only<5-6>{\input{graphs/graph-1-initial-state}}%
+                    \only<7-8>{\input{graphs/graph-1-goal}}%
+                    \only<9->{\input{graphs/graph-1}}%
+                }
+            \end{figure}
+        \end{column}%
+    \end{columns}%
+\end{frame}
+
+\begin{frame}{Policy.}\pause
+ \begin{columns}
+        \begin{column}{.5\textwidth}
+            \begin{itemize}
+                \visible<3->{\item\textbf{Policy / Plan:} describes what actions to apply in what states. }
+                \visible<7->{\item \textbf{Solution:} policy that, when followed, ensures one parting from the initial state will eventually reach a goal.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.5\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.8}
+                {
+                    %%%%%%%%%%%%%%%%%%%%
+                    %% first policy 
+                    %%%%%%%%%%%%%%%%%%%%
+                    \only<-3>{\input{graphs/graph-1}}%
+                    \only<4>{\input{graphs/graph-1-pol-2-1}}%
+                    \only<5>{\input{graphs/graph-1-pol-2-2}}%
+                    \only<6-7>{\input{graphs/graph-1-pol-2-3}}%
+                    \only<8>{\input{graphs/graph-1-pol-2-4}}%
+
+                    % % %%%%%%%%%%%%%%%%%%%%
+                    % % %% second policy 
+                    % % %%%%%%%%%%%%%%%%%%%%
+                    \only<9>{\input{graphs/graph-1}}%
+                    \only<10>{\input{graphs/graph-1-pol-1-8}}%
+                    % \only<9>{\input{graphs/graph-1}}%
+                    % \only<10>{\input{graphs/graph-1-pol-1-1}}%
+                    % \only<11>{\input{graphs/graph-1-pol-1-2}}%
+                    % \only<12>{\input{graphs/graph-1-pol-1-3}}%
+                    % \only<13>{\input{graphs/graph-1-pol-1-4}}%
+                    % \only<14>{\input{graphs/graph-1-pol-1-5}}%
+                    % \only<15>{\input{graphs/graph-1-pol-1-6}}%
+                    % \only<16>{\input{graphs/graph-1-pol-1-7}}%
+
+                    % % %%%%%%%%%%%%%%%%%%%%
+                    % % %% third policy 
+                    % % %%%%%%%%%%%%%%%%%%%%
+                    % \only<17>{\input{graphs/graph-1}}%
+                    % \only<18>{\input{graphs/graph-1-pol-3-1}}%
+                    % \only<19>{\input{graphs/graph-1-pol-3-2}}%
+                    % \only<20>{\input{graphs/graph-1-pol-3-3}}%
+                    % \only<21>{\input{graphs/graph-1-pol-3-4}}%
+                    % \only<22>{\input{graphs/graph-1-pol-3-5}}%
+                    \only<11>{\input{graphs/graph-1}}%
+                    \only<12>{\input{graphs/graph-1-pol-3-4}}%
+                    \only<13>{\input{graphs/graph-1-pol-3-5}}%
+                }
+            \end{figure}
+        \end{column}%
+    \end{columns}
+\end{frame}
+\begin{frame}{Dead ends.}\pause
+ \begin{columns}
+        \begin{column}{.5\textwidth}
+            \begin{itemize}
+                \only<1-2>{\item[]{}}
+                \only<3-9>{\item\textbf{Dead-end state:} no goal-reachability guarantee.}
+                \only<4-9>{
+                \begin{itemize}
+                \only<4-9>{\item\textbf{Deterministic:} no chance at all.}
+                \only<6-9>{\item\textbf{Fully non-deterministic:} rely on luck.}
+                \end{itemize}}
+                \only<9>{\item\textbf{Alive state:} goal-reachability guarantee.}
+                \only<10->{\item\textbf{Bad state-action pair:} may produce dead end.}
+                % \only<12-13>{\item\textbf{Tricky state-action pair:} may produce both dead-end and alive state.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.5\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.8}
+                {
+                    \only<-4>{\input{graphs/graph-1}}%
+                    %\only<4-5>{\input{graphs/graph-1-dead-ends}}%
+                    \only<5-6>{\input{graphs/graph-1-dead-ends-dde}}%
+                    %\only<7>{\input{graphs/graph-1-dead-ends}}%
+                    \only<7>{\input{graphs/graph-1-dead-ends-fndde}}%
+                    \only<8>{\input{graphs/graph-1-dead-ends-fndde-trans}}%
+                    \only<9-10>{\input{graphs/graph-1-dead-ends-fndde}}%
+                    %\only<9-10>{\input{graphs/graph-1-dead-ends}}%
+                    \only<11->{\input{graphs/graph-1-dead-ends-bsap}}%
+                    % \only<13->{\input{graphs/graph-1-dead-ends-tsap}}%
+                }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+\section[Finding dead ends.]{Finding all dead ends in a FOND task.}
+\begin{frame}{Procedure for finding all dead ends.} \pause
+    Brute-Force Dead-End Detector (BFDED).\pause
+    \begin{columns}
+        \begin{column}{.38\textwidth}
+            \begin{itemize}
+                \only<-3>{\item[]{}}
+                \only<4->{\item \textbf{Backward search} from each goal state.}
+                \only<12->{\item Non-visited \textbf{states} are \textbf{deterministic} dead-ends.}
+                \only<14->{\item \textbf{Actions} that generate them are \textbf{bad}.}
+                \only<16>{\item Repeats.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.58\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.7}
+                {
+                    \only<-4>{\input{graphs/graph-1}}%
+                    \only<5>{\input{graphs/graph-1-bfded-1-1}}%
+                    \only<6>{\input{graphs/graph-1-bfded-1-2-1}}%
+                    \only<7>{\input{graphs/graph-1-bfded-1-2-2}}%
+                    \only<8>{\input{graphs/graph-1-bfded-1-2-3}}%
+                    \only<9>{\input{graphs/graph-1-bfded-1-3-1}}%
+                    \only<10>{\input{graphs/graph-1-bfded-1-3-2}}%
+                    \only<11-12>{\input{graphs/graph-1-bfded-1-4}}%
+                    \only<13-14>{\input{graphs/graph-1-bfded-1-5}}%
+                    \only<15->{\input{graphs/graph-1-bfded-1-6}}%
+            }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Procedure for finding all dead ends.} 
+    Brute-Force Dead-End Detector (BFDED).
+    \begin{columns}
+        \begin{column}{.38\textwidth}
+            \begin{itemize}
+                \only<1>{\item[]{}}
+                \only<2->{\item \textbf{Backward search} from each goal state.}
+                \only<9->{\item Non-visited \textbf{states} are \textbf{fully non-deterministic} dead-ends.}
+                \only<11->{\item \textbf{Actions} that generate them are \textbf{bad}.}
+                \only<13>{\item Repeats.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.58\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.7}
+                {
+                    %%%%%%%%%%%%%%%%%%%%%
+                    %% second iteration
+                    %%%%%%%%%%%%%%%%%%%%%
+                    \only<-2>{\input{graphs/graph-1-bfded-1-6}}%
+                    \only<3>{\input{graphs/graph-1-bfded-2-1}}%
+                    \only<4>{\input{graphs/graph-1-bfded-2-2}}%
+                    \only<5>{\input{graphs/graph-1-bfded-2-3}}%
+                    \only<6>{\input{graphs/graph-1-bfded-2-4}}%
+                    \only<7>{\input{graphs/graph-1-bfded-2-5}}%
+                    \only<8-9>{\input{graphs/graph-1-bfded-2-6}}%
+                    \only<10-11>{\input{graphs/graph-1-bfded-2-7}}%
+                    \only<12->{\input{graphs/graph-1-bfded-2-8}}%
+            }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Procedure for finding all dead ends.} 
+    Brute-Force Dead-End Detector (BFDED).
+    \begin{columns}
+        \begin{column}{.38\textwidth}
+            \begin{itemize}
+                \only<-1>{\item[]{}}
+                \only<2->{\item \textbf{Backward search} from each goal state.}
+                \only<9->{\item No new dead end were found.}
+                \only<11->{\item Procedure ends.}
+                \only<12>{\item This process repeats at most $|\sets|$ times.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.58\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.7}
+                {
+                    %%%%%%%%%%%%%%%%%%%%%
+                    %% third iteration
+                    %%%%%%%%%%%%%%%%%%%%%
+                    \only<-2>{\input{graphs/graph-1-bfded-2-8}}%
+                    \only<3>{\input{graphs/graph-1-bfded-3-1}}%
+                    \only<4>{\input{graphs/graph-1-bfded-3-2}}%
+                    \only<5>{\input{graphs/graph-1-bfded-3-3}}%
+                    \only<6>{\input{graphs/graph-1-bfded-3-4}}%
+                    \only<7>{\input{graphs/graph-1-bfded-3-5}}%
+                    \only<8-9>{\input{graphs/graph-1-bfded-3-6}}%
+                    \only<10->{\input{graphs/graph-1-bfded-2-8}}%
+            }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+% \begin{frame}{We genuinely tried to reduce BFDED's complexity and failed to do so.}
+    
+% \end{frame}
+
+\section[Theoretical study.]{What makes a FOND planning task difficult to solve?}
+
+\begin{frame}{The most naive way to solve a FOND task.}\pause
+    Greedy Policy Maker (GPM$_0$).\pause
+    \begin{columns}
+        \begin{column}{.5\textwidth}
+            \begin{itemize}
+                \visible<4->{\item Selects a state.}
+                \visible<6->{\item Maps it to an arbitrary action.}
+                \visible<8->{\item Repeat.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.5\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.8}
+                {
+                    \only<-4>{\input{graphs/graph-1}}%
+                    \only<5-6>{\input{graphs/graph-1-gpm-1-0}}%
+                    \only<7-8>{\input{graphs/graph-1-gpm-1-1}}%
+                    \only<9>{\input{graphs/graph-1-gpm-1-2}}%
+                    \only<10>{\input{graphs/graph-1-gpm-1-3}}%
+                    \only<11>{\input{graphs/graph-1-gpm-1-4}}%
+                    \only<12>{\input{graphs/graph-1-gpm-1-5}}%
+                    \only<13>{\input{graphs/graph-1-gpm-1-6}}%
+                }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+\begin{frame}{What happens when we select the wrong action?}\pause
+    Greedy Policy Maker (GPM$_0$).\pause
+    \begin{columns}
+        \begin{column}{.5\textwidth}
+            \begin{itemize}
+                \visible<4->{\item Selects a state.}
+                \visible<6->{\item Maps it to an arbitrary action.}
+                \visible<8->{\item Repeat.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.5\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.8}
+                {
+                    \only<-4>{\input{graphs/graph-1}}%
+                    \only<5-6>{\input{graphs/graph-1-gpm-1-0}}%
+                    \only<7-8>{\input{graphs/graph-1-gpm-1-1}}%
+                    \only<9>{\input{graphs/graph-1-gpm-5-1}}%
+                    
+                }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+\begin{frame}{Deterministic distance to the goal might help.}\pause
+    Greedy Policy Maker (GPM$_1$).\pause
+    \begin{columns}
+        \begin{column}{.5\textwidth}
+            \begin{itemize}
+                \visible<4->{\item \textbf{Deterministic distance to the goal}: in the best case, how many steps one must take to reach a goal.}
+                \visible<6->{\item Selects a state.}
+                \visible<8->{\item Maps it to an action whose successor state is one step closer to the goal.}
+                \visible<10->{\item Repeat.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.5\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.8}
+                {
+                    \only<-4>{\input{graphs/graph-1}}%
+                    \only<5-6>{\input{graphs/graph-1-gpm-3-1}}%
+                    \only<7-8>{\input{graphs/graph-1-gpm-3-2}}%
+                    \only<9-10>{\input{graphs/graph-1-gpm-3-3}}%
+                    \only<11>{\input{graphs/graph-1-gpm-3-4}}%
+                    \only<12>{\input{graphs/graph-1-gpm-3-5}}%
+                    \only<13>{\input{graphs/graph-1-gpm-3-6}}%
+                }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+\begin{frame}{Updating it dead-end information.}\pause
+    Greedy Policy Maker (GPM$_2$). \pause
+    \begin{columns}
+        \begin{column}{.5\textwidth}
+            \begin{itemize}
+                \visible<4->{\item \textbf{Do not} consider any \textbf{bad} state-action pair.}
+                \visible<6->{\item \textbf{Updated deterministic distance to the goal}: in the best case, how many steps one must take to reach a goal.}
+                \visible<8->{\item Selects a state.}
+                \visible<10->{\item Maps it to an action whose successor state is one step closer to the goal.}
+                \visible<11->{\item Repeat.}
+            \end{itemize} 
+        \end{column}%
+        \hfill%
+        \begin{column}{.5\textwidth}
+            \begin{figure}
+                \centering
+                \scalebox{0.8}
+                {
+                    \only<-4>{\input{graphs/graph-1}}%
+                    \only<5-6>{\input{graphs/graph-1-bfded-2-8}}%
+                    \only<7-8>{\input{graphs/graph-1-gpm-4-1}}%
+                    \only<9>{\input{graphs/graph-1-gpm-4-2}}%
+                    \only<10-11>{\input{graphs/graph-1-gpm-4-3}}%
+                    \only<12>{\input{graphs/graph-1-gpm-4-4}}%
+                    \only<13>{\input{graphs/graph-1-gpm-4-5}}%
+                    \only<14>{\input{graphs/graph-1-gpm-4-6}}%
+                    \only<15>{\input{graphs/graph-1-gpm-4-7}}%
+                }
+            \end{figure}
+        \end{column}%
+    \end{columns} 
+\end{frame}
+
+\begin{frame}{Where the difficulty lies in.}\pause
+    Costs $\mathcal{O}(|\sets|^{1 + \epsilon})$:\pause
+    \begin{itemize}
+        \item \textbf{Finding all deterministic} dead ends.\pause
+        \item Building \textbf{deterministic distances}.\pause
+        \item Greedily \textbf{building a policy}.\pause
+    \end{itemize} 
+    If $\sets$ is small, can we solve the task? \pause Not necessarily! \pause GPM$_2$ still requires fully non-deterministic dead ends, and we do not know how to compute them in $\mathcal{O}(|\sets|^{1 + \epsilon})$.\pause
+    
+    If a FOND task does not have state space $\sets$ prohibitively large, \pause it can \textbf{only} be difficult if it contains fully non-deterministic dead ends.
+\end{frame}
+\section{New benchmark.}
+\begin{frame}{Classical Benchmark.}
+\scalebox{0.8}{
+\begin{tabular}{l|c|c}
+Domain & Has dead ends? & Has fully non-deterministic dead ends? \\
+\hline
+Acrobatics & \experimentSuccessStyle & \experimentFailStyle \\
+Beam-walk & \experimentFailStyle & \experimentFailStyle \\
+Blocks-world original & \experimentFailStyle & \experimentFailStyle \\
+Blocks-world advanced & \experimentFailStyle & \experimentFailStyle \\
+Chain of rooms & \experimentFailStyle & \experimentFailStyle \\
+Doors & \experimentSuccessStyle & \experimentSuccessStyle \\
+Earth observation & \experimentFailStyle & \experimentFailStyle \\
+Elevators & \experimentFailStyle & \experimentFailStyle \\
+Faults & \experimentFailStyle & \experimentFailStyle \\
+First responders & \experimentSuccessStyle & \experimentSuccessStyle \\
+Islands & \experimentSuccessStyle & \experimentFailStyle \\
+Miner & \experimentSuccessStyle & \experimentFailStyle \\
+Tire-world spiky & \experimentSuccessStyle & \experimentSuccessStyle \\
+Tire-world truck & \experimentSuccessStyle & \experimentSuccessStyle \\
+Tire-world triangle & \experimentSuccessStyle & \experimentSuccessStyle \\
+Zeno & \experimentFailStyle & \experimentFailStyle \\
+\end{tabular}}
+\end{frame}
+\begin{frame}{Classical Benchmark is no longer challenging.}
+    \begin{itemize}
+        \visible<2->{\item PR2 \textbf{easily} solves each domain task.}
+        \visible<4->{\item Two-thirds of the domains have designs that \textbf{do not reflect} the \textbf{true nature} of FOND. }
+        \visible<5->{\item They can only become difficult due to scale.}
+        \visible<6->{\item This limits testing algorithms on real-world scenarios.}
+    \end{itemize}
+    \bigskip
+    \visible<3->{\textbf{Easily}: under 6 minutes with 8GB of memory.}
+\end{frame}
+\begin{frame}{New benchmark.}
+    \begin{itemize}
+        \visible<2->{\item Relying on scaling up the instances is \textbf{not} worth it.}
+        \visible<3->{\item Fully non-deterministic as the core characteristic of the design of our benchmark.}
+        \visible<4->{\item Five domains, each with four instances.}
+        \item[]\begin{itemize}
+            \visible<5->{\item Kitchen.}
+            \visible<6->{\item Rescue.}
+            \visible<7->{\item Slippery sokoban.}
+            \visible<8->{\item Tire-world spiky 2.}
+            \visible<9->{\item Travelling salesman.}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}{Kitchen.}
+    \scalebox{0.75}{\input{tables/description-kitchen}}
+\end{frame}
+\begin{frame}{Rescue.}
+    \scalebox{0.6}{\input{tables/description-rescue}}
+\end{frame}
+\begin{frame}{Slippery Sokoban.}
+    \scalebox{0.8}{\input{tables/description-sokoban}}
+\end{frame}
+\begin{frame}{Tire-world Spiky 2.}
+    \scalebox{0.9}{\input{tables/description-tireworld}}
+\end{frame}
+\begin{frame}{Travelling Salesman.}
+    \scalebox{0.65}{\input{tables/description-tsp}}
+\end{frame}
+\section[Empirical validation.]{Evaluating new benchmark.}
+\begin{frame}{Methodology.}
+\begin{columns}
+    \begin{column}{.5\textwidth}
+        \visible<2->{Two criteria:}
+        \begin{itemize}
+            \visible<3->{\item 1st. Be difficult.}
+            \visible<5->{\item 2nd. Their difficulty must arise from fully non-deterministic dead ends.}
+        \end{itemize} 
+    \end{column}%
+    \hfill%
+    \begin{column}{.5\textwidth}
+        \begin{figure}
+            \centering
+            \scalebox{0.7}
+            {
+            \only<4-5>{
+                \begin{tabular}{l|c}
+                \multicolumn{2}{c}{\large \textbf{Summary of Experiments}} \\
+                \toprule
+                \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{Expected Result} \\
+                \midrule
+                \experimentHeaderStyle{PR2} & \experimentFailStyle \\
+                \experimentHeaderStyle{AND$^{*}$EP} & \experimentFailStyle \\
+                \experimentHeaderStyle{IDFSP} & \experimentFailStyle \\
+                \midrule
+                \experimentHeaderStyle{GPM$_2$} & \experimentFailStyle \\
+                \bottomrule
+                \end{tabular}
+            }%
+            \only<6->{
+                \begin{tabular}{l|c}
+                \multicolumn{2}{c}{\large \textbf{Summary of Experiments}} \\
+                \toprule
+                \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{Expected Result} \\
+                \midrule
+                \experimentHeaderStyle{PR2} & \experimentFailStyle \\
+                \experimentHeaderStyle{AND$^{*}$EP} & \experimentFailStyle \\
+                \experimentHeaderStyle{IDFSP} & \experimentFailStyle \\
+                \midrule
+                \experimentHeaderStyle{GPM$_2$} & \experimentFailStyle \\
+                \midrule
+                \experimentHeaderStyle{GPM$_1$} & \experimentFailStyle \\
+                \experimentHeaderStyle{GPM$_2$ w/ faulty oracle} & \experimentFailStyle \\
+                \experimentHeaderStyle{GPM$_2$ w/ oracle} & \experimentSuccessStyle \\
+                \bottomrule
+                \end{tabular}
+            }%
+            }
+        \end{figure}
+    \end{column}%
+\end{columns} 
+\end{frame}
+
+\begin{frame}{Kitchen.}
+1st. Criteria: be difficult.
+\begin{figure}
+            \centering
+            \scalebox{1.0}
+            {\begin{tabular}{l|l|l|l|l}
+            \toprule
+            \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+            \midrule
+            \experimentHeaderStyle{PR2} & \mtl{1}\experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\\
+            \experimentHeaderStyle{AND$^{*}$EP} & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\\
+            \experimentHeaderStyle{IDFSP} & \experimentUnknownStyle & \experimentUnknownStyle & \experimentUnknownStyle & \experimentUnknownStyle\\
+            \midrule
+            \experimentHeaderStyle{GPM$_2$} & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{1}\\
+            \bottomrule
+            \end{tabular}}
+\end{figure}
+\end{frame}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Kitchen.}
+2nd. Criteria: difficulty must arise from fully non-deterministic dead ends.
+\begin{figure}
+            \centering
+            \scalebox{1.0}
+            {\begin{tabular}{l|l|l|l|l}
+            \toprule
+            \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+            \midrule
+            \experimentHeaderStyle{GPM$_1$} & \mtl{1}\experimentSuccessStyle & \experimentFailStyle & \mtl{2}\experimentSuccessStyle & \experimentFailStyle\\
+            \experimentHeaderStyle{GPM$_2$ w/ faulty oracle} & \experimentSuccessStyle\mbr[tableColor]{1} & \experimentFailStyle & \experimentSuccessStyle\mbr[tableColor]{2} & \mtl{3}\experimentSuccessStyle\mbr[tableColor]{3}\\
+            \experimentHeaderStyle{GPM$_2$ w/ oracle} & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\\
+            \bottomrule
+            \end{tabular}}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Slippery Sokoban.}
+1st. Criteria: be difficult.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{PR2} & \experimentFailStyle & \mtl{1}\experimentSuccessStyle\mbr[tableColor]{1} & \mtl{2}\experimentSuccessStyle & \experimentSuccessStyle\\
+        \experimentHeaderStyle{AND$^{*}$EP} & \mtl{3}\experimentSuccessStyle\mbr[tableColor]{3} & \experimentFailStyle & \experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{2}\\
+        \experimentHeaderStyle{IDFSP} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \mtl{4}\experimentSuccessStyle\mbr[tableColor]{4}\\
+        \midrule
+        \experimentHeaderStyle{GPM$_2$} & \mtl{5}\experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{5}\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Slippery Sokoban.}
+2nd. Criteria: difficulty must arise from fully non-deterministic dead ends.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{GPM$_1$} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{GPM$_2$ w/ faulty oracle} & \mtl{1}\experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{1}\\
+        \experimentHeaderStyle{GPM$_2$ w/ oracle} & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+
+\begin{frame}{Travelling Salesman.}
+1st. Criteria: be difficult.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{PR2} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{AND$^{*}$EP} & \experimentFailStyle & \mtl{1}\experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{1}\\
+        \experimentHeaderStyle{IDFSP} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \mtl{2}\experimentSuccessStyle\mbr[tableColor]{2}\\
+        \midrule
+        \experimentHeaderStyle{GPM$_2$} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \mtl{3}\experimentSuccessStyle\mbr[tableColor]{3}\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Travelling Salesman.}
+2nd. Criteria: difficulty must arise from fully non-deterministic dead ends.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{GPM$_1$} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{GPM$_2$ w/ faulty oracle} & \mtl{1}\experimentSuccessStyle\mbr[tableColor]{1} & \experimentFailStyle & \mtl{2}\experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{2}\\
+        \experimentHeaderStyle{GPM$_2$ w/ oracle} & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+
+\begin{frame}{Tire-world Spiky 2.}
+1st. Criteria: be difficult.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{PR2} & \experimentFailStyle & \experimentFailStyle & \mtl{1}\experimentSuccessStyle\mbr[tableColor]{1} & \experimentFailStyle\\
+        \experimentHeaderStyle{AND$^{*}$EP} & \experimentFailStyle & \mtl{2}\experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{2} & \experimentFailStyle\\
+        \experimentHeaderStyle{IDFSP} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \midrule
+        \experimentHeaderStyle{GPM$_2$} & \experimentFailStyle & \mtl{3}\experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{3} & \experimentFailStyle\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Tire-world Spiky 2.}
+2nd. Criteria: difficulty must arise from fully non-deterministic dead ends.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{GPM$_1$} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{GPM$_2$ w/ faulty oracle} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{GPM$_2$ w/ oracle} & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Rescue.}
+1st. Criteria: be difficult.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{PR2} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{AND$^{*}$EP} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{IDFSP} & \experimentFailStyle & \experimentFailStyle & \mtl{1}\experimentSuccessStyle\mbr[tableColor]{1} & \experimentFailStyle\\
+        \midrule
+        \experimentHeaderStyle{GPM$_2$} & \mtl{2}\experimentSuccessStyle & \experimentSuccessStyle\mbr[tableColor]{2} & \experimentFailStyle & \mtl{3}\experimentSuccessStyle\mbr[tableColor]{3}\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+\addtocounter{framenumber}{-1}
+\begin{frame}{Rescue.}
+2nd. Criteria: difficulty must arise from fully non-deterministic dead ends.
+\begin{figure}
+    \centering
+    \scalebox{1.0}
+    {
+        \begin{tabular}{l|l|l|l|l}
+        \toprule
+        \experimentHeaderStyle{Algorithm} & \experimentHeaderStyle{c1} & \experimentHeaderStyle{c2} & \experimentHeaderStyle{c3} & \experimentHeaderStyle{c4}\\
+        \midrule
+        \experimentHeaderStyle{GPM$_1$} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{GPM$_2$ w/ faulty oracle} & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle & \experimentFailStyle\\
+        \experimentHeaderStyle{GPM$_2$ w/ oracle}  & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle & \experimentSuccessStyle\\
+        \bottomrule
+        \end{tabular}
+    }
+\end{figure}
+\end{frame}
+
+
+
+\section[Conclusion.]{Discussion and future work.}
+\begin{frame}{Discussion.}\pause
+    \begin{itemize}
+        \item A way to find all dead ends.\pause
+        \item A theoretical study on the core difficulties of a FOND task.\pause
+        \item New benchmark.\pause
+        \item[] \begin{itemize}
+            \item Rescue and Tire-world spiky 2 are our most promising domains.\pause
+            \item Travelling salesman presented modest performance. \pause
+            \item Slippery sokoban and Kitchen presented unsatisfactory results.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}{Future work.}\pause
+    \begin{itemize}
+        \item Adjust our domains to meet the requirements.\pause
+        \item Develop an instance generator.\pause
+        \item Make it available for the FOND community.
+    \end{itemize}
+\end{frame}
+% \begin{frame}{State-Space Task} \pause
+%     \begin{columns}
+%         \begin{column}{.38\textwidth}
+%             \begin{itemize}
+%                 \visible<2->{\item Set of states $\states$}
+%                 \visible<4->{\item Initial state $\initialState$}
+%                 \visible<6->{\item Set of actions $\actions$}
+%                 \visible<8->{\item Set of goal states $\states_*$}
+%             \end{itemize} 
+%         \end{column}%
+%         \hfill%
+%         \begin{column}{.58\textwidth}
+%             \begin{figure}
+%                 \centering
+%                 \scalebox{0.7}
+%                 {
+%                     \only<2-4>{\visible<3-4>{\input{pres-figs/graph-1-1}}}%
+%                     \only<5-6>{\input{pres-figs/graph-1-2}}%
+%                     \only<7-8>{\input{pres-figs/graph-1-3}}%
+%                     \only<9-10>{\input{pres-figs/graph-1-4}}%
+%                     \only<11-12>{\input{pres-figs/graph-1-5}}%
+%                     \only<13>{\input{pres-figs/graph-1-6}}%
+%                 }
+%             \end{figure}
+%         \end{column}%
+%     \end{columns} \pause\pause\pause\pause\pause\pause\pause\pause
+
+%     \bigskip
+
+%     \textbf{Policy / Plan:} Describes what actions to apply in what states. \pause \pause
+
+%     \bigskip
+
+%     \textbf{Solution:} Policy that guides one to the goal from the initial state.
+% \end{frame}
+
+% \begin{frame}{State-Space Task with Non-Determinism}\pause
+%     \begin{figure}
+%         \centering
+%         \only<2>{\input{pres-figs/graph-2-1}}%
+%         \only<3>{\input{pres-figs/graph-2-2}}%
+%         \only<4>{\input{pres-figs/graph-2-3}}%
+%         \only<5>{\input{pres-figs/graph-2-4}}%
+%         \only<6->{\input{pres-figs/graph-2-5}}%
+%     \end{figure}
+
+%     \pause\pause\pause\pause\pause
+    
+%     \bigskip
+
+%     \textbf{FOND} planning \underline{generalizes} \textbf{classical} planning. \pause
+    
+%     \smallskip
+
+%     \textbf{FOND} planning \underline{models} the \underline{core} of \textbf{probabilistic} planning.
+% \end{frame}
+
+% \section{Policy-Space Search}
+
+% \newsavebox\graphThreeA
+% \begin{lrbox}{\graphThreeA}
+%         \input{pres-figs/graph-3-a}
+% \end{lrbox}
+
+% \newsavebox\graphThreeB
+% \begin{lrbox}{\graphThreeB}
+%         \input{pres-figs/graph-3-b}
+% \end{lrbox}
+
+% \newsavebox\graphThreeC
+% \begin{lrbox}{\graphThreeC}
+%         \input{pres-figs/graph-3-c}
+% \end{lrbox}
+
+% \newsavebox\graphThreeD
+% \begin{lrbox}{\graphThreeD}
+%         \input{pres-figs/graph-3-d}
+% \end{lrbox}
+
+% \newsavebox\graphThreeE
+% \begin{lrbox}{\graphThreeE}
+%         \input{pres-figs/graph-3-e}
+% \end{lrbox}
+
+% \newsavebox\graphThreeF
+% \begin{lrbox}{\graphThreeF}
+%         \input{pres-figs/graph-3-f}
+% \end{lrbox}
+
+% \begin{frame}{The Policy Space}
+%     \begin{figure}
+%         \centering
+%         \scalebox{0.48}
+%         {
+%             \only<2>{\input{pres-figs/graph-3-1}}%
+%             \only<3>{\input{pres-figs/graph-3-2}}%
+%             \only<4>{\input{pres-figs/graph-3-3}}%
+%             \only<5>{\input{pres-figs/graph-3-4}}%
+%             \only<6>{\input{pres-figs/graph-3-5}}%
+%         }
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{Proposed: The AND$^*$ Algorithm}
+%     The \textbf{policy space} is usually \textbf{too big}. \pause
+
+%     \bigskip
+
+%     Usually, \underline{even the state space} \textbf{cannot be enumerated}!
+    
+%     {\small(The task is represented compactly.)} \pause
+
+%     \bigskip
+
+%     % \textbf{Therefore:} \alert{BFS} or \alert{DFS} \textbf{will not} find a solution policy. \pause
+
+%     % \bigskip
+
+%     % \bigskip
+
+%     % \textbf{Solution:} \pause Perform a \textbf{heuristic search}!\pause
+
+%     \textbf{Heuristic search} is needed!\pause
+
+%     \bigskip
+
+%     We propose an \textbf{\alert{A$^*$-like}} search \pause \textbf{(the AND$^*$ algorithm)}. \pause
+
+%     \bigskip
+
+%     Previous works \textbf{don't} search the policy space \textbf{explicitly}.
+% \end{frame}
+
+% \section{Heuristics}
+
+% \begin{frame}{Heuristic Search in Classical Planning} \pause
+%     In classical planning, we want to find a solution~$\pi$ with \textbf{minimal cost}. \pause
+    
+%     $$cost(\pi) = \sum\limits_{s \in \domain(\pi)} cost(\pi[s])$$ \pause
+
+%     \smallskip
+    
+%     A$^*$ expands first a policy with least $g(\pi) + h(\pi)$, \pause where:
+%     \begin{itemize}
+%         \item $g(\pi)$ is the \textbf{current} cost of $\pi$. \pause
+%         \item $h(\pi)$ is the estimated \textbf{remaining} cost for becoming a solution. \pause
+%     \end{itemize}
+
+%     \smallskip
+
+%     If the estimations are \textbf{admissible} and \textbf{goal-aware}: \pause \underline{A$^*$ returns} \underline{solutions with \textbf{minimal} cost!}
+%     \pause
+
+%     \smallskip
+
+%     A$^*$ is very \textbf{effective} to \textbf{find} solutions.
+% \end{frame}
+
+% \begin{frame}{Heuristic Search in FOND Planning} \pause
+%     There are \textbf{multiple} possible concepts of \textbf{cost/value} for FOND. \pause
+
+%     \bigskip
+
+%     For instance, we could define $cost(\pi)$ as: \pause
+%     \begin{itemize}
+%         \item The expected cost to reach the goal. \emph{(needs probabilities)} \pause
+%         \item The number of mappings in $\pi$. \pause
+%         \item The size of a compact representation of $\pi$. \pause
+%     \end{itemize}
+
+%     \bigskip
+
+%     \textbf{Regardless of the choice:} \pause
+    
+%     If AND$^*$ uses a heuristic that is \textbf{admissible} and \textbf{goal-aware} for the chosen metric, \pause \underline{AND$^*$ returns a solution \textbf{optimal} for that metric}! \pause
+
+%     \bigskip
+
+%     We focus on heuristics to optimize the \textbf{number of mappings}.
+% \end{frame}
+
+% \begin{frame}{The Current Cost ($g$-value)}
+%     \begin{figure}
+%         \centering
+%         \only<2>{\input{pres-figs/graph-5}}%
+%         \only<3-4>{\input{pres-figs/graph-5-1}}%
+%         \only<5->{\input{pres-figs/graph-5-2}}%
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{The Perfect Heuristic ($h^*$-value)}
+%     \begin{figure}
+%         \centering
+%         \only<2-3>{\input{pres-figs/graph-5-3}}%
+%         \only<4->{\input{pres-figs/graph-5-4}}%
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{The Count Heuristic}
+%     \begin{figure}
+%         \centering
+%         \only<2-3>{\input{pres-figs/graph-5-5}}%
+%         \only<4->{\input{pres-figs/graph-5-6}}%
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{The Strong-Nearest Heuristic}
+%     \begin{figure}
+%         \centering
+%         \only<2-3>{\input{pres-figs/graph-5-7}}%
+%         \only<4->{\input{pres-figs/graph-5-8}}%
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{Other Heuristic Ideas}\pause
+%     \underline{The $\Delta$ insight:} \pause If $k_1$ \textbf{states} have at least $k_2$ \textbf{goal distance}, \pause then at least $k_1 + k_2 - 1$ \textbf{mappings} are needed.\pause
+
+%     \bigskip
+
+%     \underline{Path-max:} \pause We can use the \textbf{already-fixed structure} of the policy to improve the goal distances \textbf{estimates}. \pause
+
+%     \bigskip
+
+%     These two ideas explore \textbf{key aspects} of \textbf{FOND policies}. \pause
+
+%     \bigskip
+
+%     And using \underline{just} these two ideas together, \pause we can have a heuristic that \textbf{theoretically dominates} the Strong-Nearest heuristic!
+% \end{frame}
+
+% \begin{frame}{Empirical Results} \pause
+%     Benchmarks: \textbf{IPC-FOND} and \textbf{NEW-FOND}. \pause
+
+%     Limits: \textbf{8 GB} and \textbf{30 minutes}. \pause
+
+%     \medskip
+
+%     \textbf{BFS} vs. \textbf{Count Heuristic}: \pause
+%     \begin{itemize}
+%         \item Coverage: \alert{29$\%$} vs. \alert{37$\%$}. \pause
+%         \item Generated policies (average): \alert{$5.9$} times fewer. \pause \emph{(intersection!)} \pause
+%     \end{itemize}
+
+%     \smallskip
+
+%     \textbf{Count Heuristic} vs. \textbf{Strong-Nearest Heuristic}:  \pause
+%     \begin{itemize}
+%         \item Coverage: \alert{37$\%$} vs. \alert{46$\%$}. \pause
+%         \item Generated policies (average): up to \alert{$32.5$} times fewer. \pause
+%     \end{itemize}
+
+%     \smallskip
+
+%     \textbf{Strong-Nearest Heuristic} vs. \textbf{$\Delta$Path-Max Heuristic}: \pause
+%     \begin{itemize}
+%         \item Coverage: \alert{basically tied}. \pause
+%         \item Generated policies (average): up to \alert{$12\%$} fewer.
+%     \end{itemize}
+% \end{frame}
+
+% \section{Policy Equivalences}
+
+% \begin{frame}{A$^*$ with Policy-Equivalence Pruning \normalsize (Duplicate Detection)}\pause
+%     In classical planning, \textbf{trajectories} leading to \underline{the same state} are \textbf{equivalent} if they have the same cost. \pause
+
+%     \bigskip
+
+%     A$^*$ \textbf{prunes} a policy $\pi$ if another policy $\pi'$ leading to the same state\break was expanded before. \pause
+
+%     \bigskip
+
+%     This turns A$^*$'s \textbf{policy-space search} into a \textbf{state-space search}, reducing exponentially the search space.
+
+%     % \bigskip
+
+%     % A$^*$ with duplicate detection is \textbf{sound} and \textbf{complete}.
+
+%     % \bigskip
+
+%     % It is \textbf{optimal} if the heuristic is \textbf{consistent} or if \textbf{reopening} is used.
+% \end{frame}
+
+% \begin{frame}{AND$^*$ with Policy-Equivalence Pruning} \pause
+%     In FOND, if we try to prune a policy $\pi$ just because another policy $\pi'$ with \underline{the same frontier states} was previously expanded... \pause
+    
+%     Then we may \textbf{lose} the solution! \pause
+    
+%     \begin{figure}
+%         \centering
+%         \scalebox{0.95}
+%         {
+%             \input{pres-figs/graph-6}
+%         }
+%     \end{figure}
+
+%     \pause\pause\pause\pause\pause
+
+%     Therefore, we explore alternatives.
+% \end{frame}
+
+% \begin{frame}{Lanes Equivalence Pruning}
+%     \begin{figure}
+%         \centering
+%         \only<1>{\input{pres-figs/graph-7-1}}
+%         \only<2>{\input{pres-figs/graph-7-2}}
+%         % \only<3>{\input{pres-figs/graph-7-3}}
+%     \end{figure}
+% \end{frame}
+
+% \newsavebox\graphNineA
+% \begin{lrbox}{\graphNineA}
+%         \input{pres-figs/graph-9-a}
+% \end{lrbox}
+
+% \newsavebox\graphNineB
+% \begin{lrbox}{\graphNineB}
+%         \input{pres-figs/graph-9-b}
+% \end{lrbox}
+
+% \newsavebox\graphNineC
+% \begin{lrbox}{\graphNineC}
+%         \input{pres-figs/graph-9-c}
+% \end{lrbox}
+
+% \begin{frame}{Domain-Frontier Equivalence Pruning} \pause
+%     \begin{figure}
+%         \centering
+%         \input{pres-figs/graph-9}
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{The Concretizer} \pause
+%     If we know \underline{just the states} of the solution, we can compute it in \textbf{polynomial time}! \pause
+    
+%     \begin{figure}
+%         \centering
+%         \only<1-3>{\visible<3>{\input{pres-figs/graph-8}}}%
+%         \only<4>{\input{pres-figs/graph-8-1}}%
+%         \only<5>{\input{pres-figs/graph-8-2}}%
+%         \only<6>{\input{pres-figs/graph-8-3}}%
+%         \only<7>{\input{pres-figs/graph-8-4}}%
+%         \only<8>{\input{pres-figs/graph-8-5}}%
+%         \only<9>{\input{pres-figs/graph-8-6}}%
+%         \only<10>{\input{pres-figs/graph-8-7}}%
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{Domain-Frontier Equivalence Pruning}
+%     \begin{figure}
+%         \centering
+%         \input{pres-figs/graph-9}
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{Frontier Equivalence Pruning}
+%     However, \underline{even with the concretizer}, frontier pruning is \textbf{not} sound... \pause
+
+%     \medskip
+
+%     But it does \textbf{not} return \textbf{false positives}. \pause
+
+%     \bigskip
+
+%     So we can use it \textbf{soundly} if we have a \textbf{backup} search! \pause
+
+%     \bigskip
+
+%     And this is \textbf{very effective} in practice!\; \pause {\small (ps.: we lose optimality here)}
+% \end{frame}
+
+% \begin{frame}{Empirical Results} \pause
+%     \textbf{Coverage:} \pause
+%     \begin{itemize}
+%         \item No equivalence pruning: \alert{$45\%$} \pause
+%         \item Lanes pruning: \alert{$47\%$} \pause
+%         \item Domain-frontier pruning: \alert{$48\%$} \pause
+%         \item Frontier pruning: \alert{$\mathbf{65}$\textbf{\%}} \pause 
+%     \end{itemize}
+
+%     \medskip
+    
+%     \textbf{Generated policies (average):} \pause
+%     \begin{itemize}
+%         \item No equivalence pruning: \alert{$100\%$} {\color{darkgray}\small (\textbf{baseline})} \pause
+%         \item Lanes pruning: \alert{$60.0\%$} \pause
+%         \item Domain-frontier pruning: \alert{$54.7\%$} {\color{darkgray}\small (main gain: \textbf{faster})} \pause
+%         \item Frontier pruning: \alert{$\mathbf{5.7}$\textbf{\%}} \pause
+%     \end{itemize}    
+
+%     \medskip
+
+%     The solution size is kept near optimality (only \alert{0.5\%} larger).
+% \end{frame}
+
+% \section{State Equivalences}
+
+% \begin{frame}{State Symmetries}
+%     \begin{figure}
+%         \centering
+%         \input{pres-figs/graph-10}
+%     \end{figure} \pause
+
+%     We can compute \textbf{state symmetries} by looking at the \textbf{structure} of the task (Pochter et al., 2011).
+% \end{frame}
+
+% \begin{frame}{Empirical Results} \pause
+%     We use state symmetries to detect \textbf{more} policy equivalences. \pause 
+%     \begin{itemize}
+%         \item \textbf{Coverage} increases from \alert{\textbf{65\%}} to \alert{\textbf{73\%}}. \pause
+%         \item \alert{\textbf{4.5}} times fewer \textbf{generated policies (average)}. \pause
+%     \end{itemize}
+
+%     \bigskip
+
+%     Applying recent \underline{group theory} studies: \pause
+%     \begin{itemize}
+%         \item Makes feasible something previously considered intractable! (canonical symmetries). \pause
+%         \item Almost as fast as greedy symmetries. \pause
+%         \item But not much stronger.
+%     \end{itemize}
+
+%     % \underline{With deadlock detection:} 
+% \end{frame}
+
+% % \section{Deadlock Detection}
+
+% % \begin{frame}{Deadlock Detection}
+% %     \begin{figure}
+% %         \centering
+% %         \input{pres-figs/graph-11}
+% %     \end{figure}
+
+% %     Double-edged due to the existence of the concretizer, but worthy testing.
+% % \end{frame}
+
+% % \begin{frame}{Empirical Results}
+% % \end{frame}
+
+% \section{Sub-Optimal Search}
+
+% \begin{frame}{Sub-Optimal Search}
+%     \underline{Satifiscing classical planning:} \textbf{GBFS} and \textbf{Weighted A$^*$}. \pause
+
+%     \bigskip
+
+%     Prioritize policies with lower $h$-values! \pause
+
+%     \begin{itemize}
+%         \item \textbf{GBFS}: \pause least $\alert{h(\pi)}$ first. \pause
+%         \item \textbf{$k$-Weighted A$^*$}: \pause least $\alert{g(\pi) + k \cdot h(\pi)}$ first, \pause with \alert{$k > 1$}. \pause
+%     \end{itemize}
+
+%     \bigskip
+
+%     \underline{Satifiscing FOND planning:} \pause \textbf{GBFSND} and \textbf{Weighted AND$^*$}.
+% \end{frame}
+
+
+% \begin{frame}{Empirical Results} \pause
+%     \textbf{2-WAND$^*$}: \pause
+%     \begin{itemize}
+%         \item \textbf{Coverage} increased from \alert{\textbf{76\%}$^*$} to \alert{\textbf{85\%}}. \pause
+%         \item \alert{\textbf{4.4}} times fewer \textbf{generated policies (average)}. \pause
+%         \item Only \alert{\textbf{1.9\%}} (average) off \textbf{optimality}. \pause
+%     \end{itemize}
+
+%     \bigskip
+
+%     \textbf{GBFSND} is detrimental. Much \textbf{larger solutions} and drops \textbf{coverage}.
+% \end{frame}
+
+% \section{Compression}
+
+% \begin{frame}{Compressing Information}\pause
+%     A \textbf{state} is a \textbf{function} $s : \facts \to \mathbb{B}$. \pause
+
+%     \bigskip
+
+%     A \textbf{\emph{partial} function} $p: \facts \rightharpoonup \mathbb{B}$ agrees with a \textbf{\emph{set} of states}. \pause
+
+%     \medskip
+
+%     We can use them to \textbf{compactly} represent sets of states. \pause
+
+%     \bigskip
+
+%     In the work, we present an \textbf{effective procedure} to find the \textbf{minimal representation} of a solution using this concept. \pause
+
+%     \medskip
+
+%     It \textbf{sub-divides} the representation problem \textbf{per action} and uses \textbf{Integer Programming} to solve the subproblems.
+% \end{frame}
+
+% \begin{frame}{Compressed Solution} \pause
+%     \begin{table}[H]
+%         \centering
+%         \begin{tabular}{ccc}
+%             \begin{tabular}{|ccccc|}
+%                 \hline
+%                 $f_1$ & $f_2$ & $f_3$ & & $\actions$ \\
+%                 \hline
+%                 \alert<3,10>{T} & \alert<3>{T} & \alert<3>{F} & \alert<3>{$\mapsto$} & \alert<3>{$a_1$} \\
+%                 \alert<4,10>{T} & \alert<4>{T} & \alert<4>{T} & \alert<4>{$\mapsto$} & \alert<4>{$a_1$} \\
+%                 \alert<5>{F} & \alert<5,12>{F} & \alert<5>{F} & \alert<5>{$\mapsto$} & \alert<5>{$a_2$} \\
+%                 \hline
+%                 \multicolumn{5}{c}{} \\
+%                 \multicolumn{5}{c}{(reaching)} \\
+%                 \hline
+%                 \alert<7,14>{F} & \alert<7,14>{T} & \alert<7>{T} & \multicolumn{2}{c|}{\alert<7>{goal state}} \\
+%                 \hline
+%             \end{tabular} & 
+%             \visible<9->{\begin{tabular}{c}
+%                 $\Rightarrow$ \\\\\\
+%             \end{tabular}} &
+%             \visible<9->{\begin{tabular}{|ccccc|}
+%                 \hline
+%                 $f_1$ & $f_2$ & $f_3$ & & $\actions$ \\
+%                 \hline
+%                 \alert<10,14>{T} &  &  & $\mapsto$ & $a_1$ \\
+%                  & \alert<12,14>{F} &  & $\mapsto$ & $a_2$ \\
+%                 \hline
+%                 \multicolumn{5}{c}{} \\
+%                 \multicolumn{5}{c}{} \\
+%                 \multicolumn{5}{c}{} \\
+%                 \multicolumn{5}{c}{} \\
+%             \end{tabular}}
+%         \end{tabular}
+%     \end{table}
+% \end{frame}
+
+% \begin{frame}{Empirical Results} \pause
+%     Reduces solution sizes for \textbf{12} out of the \textbf{16} domains. \pause
+
+%     \bigskip
+
+%     \textbf{Strongest compressions:} \pause
+%     \begin{enumerate}
+%         \item \underline{\textit{doors}, \textit{p15}}: from \alert{\textbf{131,070}} to \alert{\textbf{32}}. (\textbf{4,096} times) \pause
+%         \item \underline{\textit{doors}, \textit{p14}}: from \alert{\textbf{65,534}} to \alert{\textbf{30}}. (\textbf{2,184} times) \pause
+%         \item \underline{\textit{doors}, \textit{p13}}: from \alert{\textbf{32,766}} to \alert{\textbf{28}}. (\textbf{1,170} times) \pause
+%     \end{enumerate}
+
+%     \bigskip
+    
+%     \underline{For \textbf{7} domains}: Reduces the \textbf{average} solution size by at least \alert{\textbf{10\%}}.
+% \end{frame}
+
+% \section{State of the Art}
+
+% \begin{frame}{Chosen FOND Planners}
+%     We decide to compare the best version of AND$^*$: \pause
+%     \begin{itemize}
+%         \item 2-WAND$^*$ with frontier pruning, state symmetries, deadlock detection, and compression.
+%     \end{itemize} \pause
+
+%     With: \pause
+%     \begin{itemize}
+%         \item PRP (Muise et al., 2012); \pause
+%         \item FOND-SAT (Geffner and Geffner, 2018); \pause
+%         \item IDFSP (Pereira et al., 2022); and \pause
+%         \item PRP Rebooted (Muise et al., 2024) \pause -- \underline{presented in AAAI 2024}.
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Empirical Results -- Coverage}
+%     \begin{table}[H]
+%         \centering
+%         \begin{tabular}{cccccc}
+%             & F-S & IDFSP & PRP & \alert{AND$^*$} & \visible<2>{PRP\! R} \\
+%             \midrule
+%             IPC-FOND (11) & 29.1\% & 76.5\% & 100\% & \alert{84.6\%} & \visible<2>{100\%} \\
+%             NEW-FOND (5) & 72.4\% & 90.4\% & 39.8\% & \alert{84.5\%} & \visible<2>{100\%} \\
+%             \midrule
+%             \textbf{Total} & 42.6\% & 80.8\% & 81.2\% & \alert{84.6\%} & \visible<2>{100\%} \\
+%         \end{tabular}
+%     \end{table}
+% \end{frame}
+
+% \begin{frame}{Empirical Results -- Scalability}
+%     \begin{figure}
+%         \centering
+%         \includegraphics{plots/evolution-state-of-the-art.pdf}
+%     \end{figure}
+% \end{frame}
+
+% \begin{frame}{Empirical Results -- Solution Size -- vs. FOND-SAT} \pause
+%     Considering \textbf{per-domain averages},  \pause the solutions AND$^*$ returns are: \pause
+%     \begin{itemize}
+%         \item Smaller for \emph{earth-observation} \pause
+%         \item Equal-sized for 8 domains (half) \pause
+%         \item Never more than 10\% larger
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Empirical Results -- Solution Size -- vs. PRP}
+%     Considering \textbf{per-domain averages}, the solutions AND$^*$ returns are: \pause
+%     \begin{itemize}
+%         \item Smaller for 9 domains \pause
+%         \item Up to 42.7\% smaller \pause
+%         \item Equal-sized for the remaining domains
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Empirical Results -- Solution Size -- vs. PRP R}
+%     Considering \textbf{per-domain averages}, the solutions AND$^*$ returns are: \pause
+%     \begin{itemize}
+%         \item Smaller for 7 domains \pause
+%         \item Up to 25.9\% smaller \pause
+%         \item Equal-sized for the remaining domains
+%     \end{itemize}
+% \end{frame}
+
+% \section{Discussion}
+
+% \begin{frame}{Discussion on Work so Far} \pause
+%     AND$^*$ is a \textbf{straightforward} approach for FOND planning. \pause
+
+%     \smallskip
+
+%     It generalizes the fundamental A$^*$ algorithm (Hart et al., 1968). \pause
+
+%     \smallskip
+
+%     Thus, AND$^*$ has \underline{strong theoretical \textbf{guarantees}}. \pause
+
+%     \bigskip
+
+%     We presented several techniques to improve AND$^*$'s performance: \pause
+%     \begin{itemize}
+%         \item FOND Heuristics \pause
+%         \item Policy Equivalences \pause
+%         \item State Equivalences \pause
+%         \item Deadlock Detection {\small (in the work)} \pause
+%         \item Sub-Optimal Search \pause
+%         \item Solution Compression \pause
+%     \end{itemize}
+
+%     \mbox{The resulting algorithm is \underline{competitive with the \textbf{previous} state of the art}.}
+    
+% \end{frame}
+
+% \section{Future}
+
+% \begin{frame}{Calendar}
+%     \begin{table}[H]
+%         \centering
+%         \begin{tabular}{r|l}
+%              \visible<2>{$\blacktriangleright$} November 2021 & IDFSP paper (co-author, later presented in ICAPS) \\
+%              \hline
+%              \visible<3>{$\blacktriangleright$} \textbf{January 2022} & \textbf{Ph.D admission} \\
+%              \visible<4>{$\blacktriangleright$} \alert{2022} & \alert{AND$^*$ development} \\ 
+%              \visible<5>{$\blacktriangleright$} September 2022 & AND$^*$ 1st paper (later presented in ICAPS) \\ 
+%              \visible<6>{$\blacktriangleright$} \alert{2023} & \alert{AND$^*$ improvements} \\
+%              \visible<7>{$\blacktriangleright$} March 2024 & AND$^*$ 2nd paper (submitted to AIJ) \\ 
+%              \hline
+%              \visible<8>{$\blacktriangleright$} \textbf{April 2024} & \textbf{present} \\ 
+%              \hline
+%              \visible<9>{$\blacktriangleright$} June 2024 & {\small \textit{Planned:} IDFSP journal paper (co-author, t.b.s. to JAIR)} \\
+%              \visible<10>{$\blacktriangleright$} \alert{2024} & \alert{\textit{Planned:} ``AND$^*$ Rebooted'' study} \\
+%              \visible<11>{$\blacktriangleright$} 2025 & \textit{Planned:} AND$^*$ 3rd paper \\
+%              \visible<12>{$\blacktriangleright$} \textbf{2025} & \textbf{\textit{Planned: }Ph.D conclusion} \\
+%              \hline
+%         \end{tabular}
+%     \end{table}
+% \end{frame}
+
+% \begin{frame}{Plan for Final Thesis} \pause
+%     \underline{Abstract plan:} \pause
+%     \begin{enumerate}
+%         \item \textbf{Fix} possible errors that exist in the current version. \pause
+%         \item Better \textbf{correlate} this work with other works. \pause
+%         \item Further \textbf{improve} the presented techniques and heuristics. \pause
+%         \item \textbf{Incorporate} other techniques \pause (either novel or from other works). \pause
+%         \item \textbf{Extend} the scope of the work beyond explicit policy-space search. \pause
+%     \end{enumerate}
+
+%     \smallskip
+
+%     \underline{Concrete ideas:} \pause {\footnotesize (somewhat)} \pause
+%     \begin{enumerate}
+%         \item \textbf{Better FOND heuristics} \pause (dynamic-reasoning heuristics,\\ abstraction heuristics, inadmissible heuristics, etc). \pause
+%         \item \textbf{Better detection of deadlocks and dead ends}. \pause
+%         \item \textbf{Alternative search spaces} \pause (controller, backwards search, etc). \pause
+%         \item \textbf{Deep study of the \emph{concretizer}}. \pause
+%         \item \textbf{More challenging benchmarks}.
+%     \end{enumerate}
+% \end{frame}
+
+% % \begin{frame}{Line of Research 1 -- Better FOND Heuristics}
+% % \end{frame}
+
+% % \begin{frame}{Line of Research 2 - Better Detection of DLs and DEs}
+% % \end{frame}
+
+% % \begin{frame}{Line of Research 3 -- Alternative Search Spaces}
+% % \end{frame}
+
+% % \begin{frame}{Line of Research 4 -- Deep Study of the Concretizer}
+% % \end{frame}
+
+% % \begin{frame}{Publications}
+% % \end{frame}
+
+\section[]{Thank You!}
+
+\end{document}

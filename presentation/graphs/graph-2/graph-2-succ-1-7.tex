@@ -1,0 +1,25 @@
+\centering
+\begin{tikzpicture}
+    \node[black_node, fill=lightgray] at ( 0.0,  0.0) (s0) {$s_0$};
+    \node[black_node, fill=blue!70] at ( 1.5,  1.5) (s1) {$s_1$};   
+    \node[black_node] at ( 1.5,  -1.5) (s2) {$s_2$};  
+    \node[black_node, fill=lightgray] at ( 3.0,  0) (s3) {$s_3$}; 
+    \node[black_node, accepting] at ( 3.0,  -3) (s4) {$s_4$}; 
+    
+    \draw[->, thick] ( -0.7, 0.0) -- (s0) ;
+    \draw[->, ultra thick, color=red] (s0.0) to [bend right= 20] (s1) ;
+    \draw[->, thick] (s1) to [bend right= 20] (s0) ;
+    \draw[->, thick] (s0) -- (s2) ;
+    \draw[->, ultra thick, color=red] (s0) -- (s3) ;
+    \draw[->, thick] (s2) -- (s4) ;
+    \draw[->, thick] (s2) -- (s3) ;
+    \draw[->, ultra thick, color=red] (s3) -- (s4) ;
+
+    \node[] at (0.8, -0.50) () {$c$};
+    \node[] at (2.1, -0.60) () {$d$};
+    \node[] at (2.3, -2.00) () {$e$};
+    \node[] at (1.1, 0.35) () {$a$};
+    \node[] at (0.4, 1.20) () {$b$};
+    \node[] at (3.2, -1.50) () {$f$};
+    
+\end{tikzpicture}

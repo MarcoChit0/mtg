@@ -1,0 +1,38 @@
+\label{tab:domain_specifications_kitchen}
+\begin{tabular}{|l|l|} 
+\hline
+\keystyle{Domain} & \namestyle{Kitchen}\\
+\hline
+\keystyle{Type} & \typestyle{recipe}\\
+\keystyle{} & \typestyle{ingredient}\\
+\keystyle{} & \typestyle{customer}\\
+% \keystyle{} & \typestyle{number} : $\{$ \predicatestyle{1}, \predicatestyle{2}, \predicatestyle{3}, \predicatestyle{$\dots$} $\}$\\
+\hline
+% \keystyle{Predicate} & \predicatestyle{next } (\variablestyle{n1}, \variablestyle{ n2 } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{finished } (\variablestyle{isl } : \typestyle{ number})\\
+\keystyle{Constant Predicate} & \predicatestyle{on-recipe } (\variablestyle{ r } : \typestyle{recipe}) : \textbf{set}$\langle$\textbf{pair}$\langle$\typestyle{ingredient}, \typestyle{number}$\rangle$$\rangle$\\
+\hline
+\keystyle{Variable Predicate} & \predicatestyle{on-island } (\variablestyle{i } : \typestyle{ ingredient}) : \typestyle{ number}\\
+% \keystyle{} & \predicatestyle{on-chef-island } (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{ n } : \typestyle{ number}; \variablestyle{ isl } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{not-on-recipe } (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{ r } : \typestyle{ recipe})\\
+\keystyle{} & \predicatestyle{on-stock } (\variablestyle{i } : \typestyle{ ingredient}) : \typestyle{ number}\\
+\keystyle{} & \predicatestyle{prepared } (\variablestyle{r } : \typestyle{ recipe}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{satisfied } (\variablestyle{c } : \typestyle{ customer}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{desired-recipes} (\variablestyle{c } : \typestyle{ customer}) : \textbf{set}$\langle$\typestyle{recipe}$\rangle$\\
+% \keystyle{} & \predicatestyle{num-recipes-to-refuse } (\variablestyle{c } : \typestyle{ customer}; \variablestyle{ n } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{properly-added } (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{ r } : \typestyle{ recipe}; \variablestyle{ isl } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{can-use-chef-island } (\variablestyle{isl } : \typestyle{ number})\\
+\hline
+% \keystyle{Action} & \actionstyle{select-chef-island } (\variablestyle{isl } : \typestyle{ number})\\
+\keystyle{Action} & \actionstyle{move-ingredient-to-island} (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{n } : \typestyle{ number})\\
+\keystyle{} & \actionstyle{move-ingredient-to-stock} (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{n } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{from-stock-to-chef-island } (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{ isl}, \variablestyle{ isl } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{from-chef-island-to-stock } (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{ isl}, \variablestyle{ isl } : \typestyle{ number})\\
+\keystyle{} & \actionstyle{select-recipe } (\variablestyle{r } : \typestyle{ recipe})\\
+% \keystyle{} & \actionstyle{on-recipe-add-to-recipe } (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{ r } : \typestyle{ recipe}; \variablestyle{ isl}, \variablestyle{ n } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{not-on-recipe-add-to-recipe } (\variablestyle{i } : \typestyle{ ingredient}; \variablestyle{ r } : \typestyle{ recipe}; \variablestyle{ isl } : \typestyle{ number})\\
+\keystyle{} & \actionstyle{offer } (\variablestyle{c } : \typestyle{ customer}; \variablestyle{ r } : \typestyle{ recipe})\\
+% \keystyle{} & \actionstyle{offer-not-refusable } (\variablestyle{c } : \typestyle{ customer}; \variablestyle{ r } : \typestyle{ recipe})\\
+% \keystyle{} & \actionstyle{offer-refusable } (\variablestyle{c } : \typestyle{ customer}; \variablestyle{ r } : \typestyle{ recipe}; \variablestyle{ refused } : \typestyle{ number})\\
+\hline
+\end{tabular}

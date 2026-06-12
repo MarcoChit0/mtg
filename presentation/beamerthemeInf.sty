@@ -1,0 +1,215 @@
+%% beamerthemeInf.sty
+%% Copyright 2012 Bruno Menegola
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status ‘maintained’.
+%
+% The Current Maintainer of this work is Bruno Menegola.
+%
+% This work consists of all files listed in MANIFEST
+%
+%
+% Description
+% ===========
+%
+% This file configures a beamer theme for presentation files. The
+% design was based on the style present in the visual identity manual
+% of the Institute of Informatics from Federal University of Rio Grande
+% do Sul.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%               Preamble                %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme{Marburg}
+
+\mode<presentation>
+
+\usepackage{pgf}
+\usepackage{color}
+\usepackage[overload]{textcase}
+\usepackage{ifthen}
+\usepackage[tracking=true]{microtype}
+\usepackage{ifsym}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{url}
+\usepackage{amsthm}
+
+\newlength{\InfOutterTitleWidth}
+\newlength{\InfOutterTitleRightMargin}
+\newlength{\InfOutterTitleBottomMargin}
+\newlength{\InfOutterFrametitleWidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%                Colors                 %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{InfLightRed}{RGB}{255, 172, 172}
+\definecolor{InfRed}{RGB}{255, 0, 0}
+\definecolor{InfDarkRed}{RGB}{127, 0, 0}
+\definecolor{InfLightGray}{RGB}{172, 172, 172}
+\definecolor{InfGray}{RGB}{127, 127, 127}
+\definecolor{InfDarkGray}{RGB}{82, 82, 82}
+\definecolor{InfBlack}{RGB}{0, 0, 0}
+\definecolor{InfWhite}{RGB}{255, 255, 255}
+
+\setbeamercolor{frametitle}{fg = InfBlack}
+\setbeamercolor{title}{fg = InfBlack}
+\setbeamercolor{section in toc}{fg = InfBlack}
+\setbeamercolor{section in toc shaded}{fg = InfBlack}
+\setbeamercolor{item}{fg = InfBlack}
+\setbeamercolor{subitem}{fg = InfBlack}
+\setbeamercolor{subsubitem}{fg = InfBlack}
+\setbeamercolor{description item}{fg = InfBlack}
+\setbeamercolor{caption}{fg = InfBlack}
+\setbeamercolor{caption name}{fg = InfBlack}
+\setbeamercolor{normal text}{fg = InfBlack}
+\setbeamercolor{theorem title}{fg = InfGray}
+\setbeamercolor{theorem body}{fg = InfBlack}
+\setbeamercolor{qed symbol}{fg = InfGray}
+\setbeamercolor{block title}{fg = InfGray, bg = InfWhite}
+\setbeamercolor{block body}{bg = InfWhite}
+\setbeamercolor{block title example}{fg = InfGray, bg = InfWhite}
+\setbeamercolor{block title alerted}{fg = InfDarkRed, bg = InfWhite}
+\setbeamercolor{part title}{fg=InfBlack}
+\setbeamercolor{section name}{fg=InfGray}
+
+\setbeamertemplate{sidebar canvas right}[vertical shading][top=InfBlack,bottom=InfDarkGray]
+\setbeamercolor{structure}{fg=InfWhite}
+\setbeamercolor{palette sidebar secondary}{fg=InfWhite, bg=InfGray}
+\setbeamercolor{section in sidebar shaded}{fg=InfWhite}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%                 Theme                 %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\addtobeamertemplate{sidebar right}{}{
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=south east, xshift=-16pt, yshift=2pt] at (current page.south east) {\includegraphics[width=0.05\paperwidth]{inf-logo-dark.pdf}};
+    \end{tikzpicture}
+}
+
+% \setbeamertemplate{itemize item}{%
+%     \color{InfRed}$\bullet$\hspace{5pt}
+% }
+% \setbeamertemplate{itemize subitem}{%
+%     \color{InfRed}$\bullet$\hspace{4pt}
+% }
+% \setbeamertemplate{itemize subsubitem}{%
+%     \color{InfRed}$\bullet$\hspace{3pt}
+% }
+% \setbeamertemplate{enumerate item}{%
+%     \color{InfRed}\insertenumlabel.\hspace{5pt}
+% }
+% \setbeamertemplate{enumerate subitem}{%
+%     \color{InfRed}\insertsubenumlabel.\hspace{4pt}
+% }
+% \setbeamertemplate{enumerate subsubitem}{%
+%     \color{InfRed}\insertsubsubenumlabel.\hspace{3pt}
+% }
+
+\setbeamertemplate{navigation symbols}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber%
+    \vspace{0.3em}%
+}
+\setbeamerfont{footline}{size=\footnotesize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%              Title Page               %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\InfOutterTitleWidth}{0.35\paperwidth}
+\setlength{\InfOutterTitleRightMargin}{8pt}
+\setlength{\InfOutterTitleBottomMargin}{5pt}
+
+\newcommand{\InfSubtitleSep}{~---~}
+
+\setbeamertemplate{title page}{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=\paperheight,center]{title}%
+    \raisebox{0pt}[0pt][0pt]{%
+            \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\paperheight}
+            \pgfrect[fill]
+                {\pgfpoint{0.00\paperwidth}{0.215\paperheight}}
+                {\pgfpoint{1.00\paperwidth}{0.785\paperheight}}
+            \color{InfRed}
+            \pgfrect[fill]
+                {\pgfpoint{0.3\paperwidth}{0.200\paperheight}}
+                {\pgfpoint{0.55\paperwidth}{0.015\paperheight}}
+            \pgfputat
+                {\pgfpoint{0.3\paperwidth}{0.215\paperheight+2\InfOutterTitleBottomMargin}}
+                {\pgfbox[left,bottom]{%
+                    \begin{minipage}[t][0.785\paperheight][b]{0.6\paperwidth-2\InfOutterTitleRightMargin}%
+                        \vfill
+                        \vspace{2em}\hspace{.06\paperwidth}
+                        \includegraphics[width=0.3\paperwidth]{inf-logo-dark.pdf}
+                        \vfill \raggedright\centering\color{InfLightGray}\normalsize\bfseries{\inserttitle}
+                    \end{minipage}
+                 }}
+            \normalsize
+            \pgfputat
+                {\pgfpoint{0.0\paperwidth}{0.00\paperheight}}
+                {\pgfbox[left,bottom]{
+                    \includegraphics[width=0.14\paperwidth]{ufrgs-logo.png}
+                }}
+            \pgfputat
+                {\pgfpoint{0.3\paperwidth}{0.00\paperheight}}
+                {\pgfbox[left,bottom]{%
+                    \color{InfBlack}
+                    \begin{minipage}[t][0.200\paperheight][c]{0.6\paperwidth-2\InfOutterTitleRightMargin}%
+                        \insertauthor~\\
+                        {
+                            \color{InfGray}\insertinstitute~\\
+                            \scriptsize%
+                            \insertsubtitle%
+                            \ifthenelse{\equal{\insertsubtitle}{}}{}{%
+                                \ifthenelse{\equal{\insertdate}{}}{}{%
+                                    \InfSubtitleSep%
+                                }%
+                            }%
+                            \insertdate%
+                        }
+                    \end{minipage}
+                 }}
+        \end{pgfpicture}
+    }
+    \end{beamercolorbox}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%                Others                 %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\InfTitlePage}[0]{
+    \begin{frame}[noframenumbering, plain]
+        \titlepage
+    \end{frame}
+}
+
+\newcommand{\InfContacts}[0]{
+    \parbox{\textwidth}{%
+        \centering
+        {\bfseries \insertauthor}~\\
+        {\small \insertinstitute}~\\
+        \vspace{30pt}
+        \includegraphics[width=0.2\paperwidth]{inf-logo-white.pdf}
+    }
+}
+
+\mode
+<all>

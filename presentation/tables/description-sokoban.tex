@@ -1,0 +1,31 @@
+\begin{tabular}{|l|l|}
+\hline
+\keystyle{Domain} & \namestyle{Slippery Sokoban}\\
+\hline
+\keystyle{Type} & \typestyle{location}\\
+\keystyle{} & \typestyle{direction}  : $\{$ \variablestyle{up}, \variablestyle{down}, \variablestyle{left}, \variablestyle{right} $\}$\\
+\keystyle{} & \typestyle{box}\\
+\hline
+\keystyle{Constant Predicate} & \predicatestyle{is-slippery } (\variablestyle{loc } : \typestyle{ location}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{is-goal } (\variablestyle{loc } : \typestyle{ location}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{connected} (\variablestyle{from}, \variablestyle{to} : \typestyle{ location}; \variablestyle{dir} : \typestyle{direction}) : \typestyle{bool}\\
+\hline
+\keystyle{Variable Predicate} & \predicatestyle{is-clear } (\variablestyle{loc } : \typestyle{ location}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{box-at } (\variablestyle{b } : \typestyle{ box}) : \typestyle{location}\\
+\keystyle{} & \predicatestyle{at}() : \typestyle{ location}\\
+\keystyle{} & \predicatestyle{boots-at } (\variablestyle{loc } : \typestyle{ location}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{using-boots}() : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{alive}() : \typestyle{bool}\\
+% \keystyle{} & \predicatestyle{move-dir } (\variablestyle{from}, \variablestyle{ to } : \typestyle{ location}; \variablestyle{ dir } : \typestyle{ direction})\\
+\keystyle{} & \predicatestyle{at-goal} (\variablestyle{b} : \typestyle{box}) : \typestyle{bool}\\
+\hline
+\keystyle{Action} & \actionstyle{move } (\variablestyle{from}, \variablestyle{ to } : \typestyle{ location}; \variablestyle{ dir } : \typestyle{ direction})\\
+% \keystyle{Action} & \actionstyle{move-slippery } (\variablestyle{from}, \variablestyle{ to } : \typestyle{ location}; \variablestyle{ dir } : \typestyle{ direction})\\
+% \keystyle{} & \actionstyle{move-non-slippery } (\variablestyle{from}, \variablestyle{ to } : \typestyle{ location}; \variablestyle{ dir } : \typestyle{ direction})\\
+\keystyle{} & \actionstyle{push-box } (\variablestyle{ b } : \typestyle{ box}; \variablestyle{ dir } : \typestyle{ direction})\\
+% \keystyle{} & \actionstyle{push-box-slippery } (\variablestyle{ppos}, \variablestyle{ bpos}, \variablestyle{ dpos}, \variablestyle{ upos } : \typestyle{ location}; \variablestyle{ dir } : \typestyle{ direction}; \variablestyle{ b } : \typestyle{ box})\\
+% \keystyle{} & \actionstyle{push-box-not-slippery } (\variablestyle{ppos}, \variablestyle{ bpos}, \variablestyle{ dpos}, \variablestyle{ upos } : \typestyle{ location}; \variablestyle{ dir } : \typestyle{ direction}; \variablestyle{ b } : \typestyle{ box})\\
+% \keystyle{} & \actionstyle{box-at-goal } (\variablestyle{loc } : \typestyle{ location}; \variablestyle{ b } : \typestyle{ box})\\
+\keystyle{} & \actionstyle{put-boots } ()\\
+\hline
+\end{tabular}

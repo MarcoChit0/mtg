@@ -1,0 +1,82 @@
+\begin{tabular}{|l|l|}
+\hline
+\keystyle{Domain} & \namestyle{Rescue}\\
+\hline
+\keystyle{Type} & \typestyle{location}\\
+\keystyle{} & \typestyle{victim}\\
+% \keystyle{} & \typestyle{fire-unit}\\
+% \keystyle{} & \typestyle{medical-unit}\\
+\keystyle{} & \typestyle{unit} \\
+% \keystyle{} & \typestyle{number} : $\{$ \predicatestyle{1}, \predicatestyle{2}, \predicatestyle{3}, \predicatestyle{$\dots$} $\}$\\
+\keystyle{} & \typestyle{status} : $\{$ \variablestyle{healthy}, \variablestyle{hurt}, \variablestyle{dying}, \variablestyle{deceased} $\}$\\
+\hline
+\keystyle{Constant Predicate} & \predicatestyle{water-supply-at } (\variablestyle{l } : \typestyle{ location}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{hospital-at } (\variablestyle{l } : \typestyle{ location}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{adjacent } (\variablestyle{l1}, \variablestyle{ l2 } : \typestyle{ location}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{critical-time } (\variablestyle{ l } : \typestyle{ location}) : \typestyle{ number}\\
+\keystyle{} & \predicatestyle{is-medical-unit } (\variablestyle{u} : \typestyle{unit}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{is-fire-unit } (\variablestyle{u} : \typestyle{unit}) : \typestyle{bool}\\
+\hline
+\keystyle{Variable Predicate} & \predicatestyle{clock}() : \typestyle{number}\\
+% \keystyle{Predicate} & \predicatestyle{clock } (\variablestyle{t } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{adjusted-clock }()\\
+% \keystyle{} & \predicatestyle{is-greater-or-equal } (\variablestyle{n1}, \variablestyle{ n2 } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{inc } (\variablestyle{op}, \variablestyle{ res } : \typestyle{ number})\\
+\keystyle{} & \predicatestyle{fire-at } (\variablestyle{l } : \typestyle{ location}) : \typestyle{bool} \\
+\keystyle{} & \predicatestyle{victim-at} (\variablestyle{v} : \typestyle{ victim}) : \textbf{either} \typestyle{ location} \textbf{or} \typestyle{ unit}\\
+% \keystyle{} & \predicatestyle{fire-unit-at } (\variablestyle{u } : \typestyle{ fire}; \variablestyle{ unit}, \variablestyle{ l } : \typestyle{ location})\\
+% \keystyle{} & \predicatestyle{medical-unit-at } (\variablestyle{u } : \typestyle{ medical}; \variablestyle{ unit}, \variablestyle{ l } : \typestyle{ location})\\
+\keystyle{} & \predicatestyle{unit-at} (\variablestyle{u} : \typestyle{unit}) : \typestyle{ location}\\
+\keystyle{} & \predicatestyle{loaded} (\variablestyle{u} : \typestyle{unit}) : \textbf{either} \typestyle{bool} \textbf{or} \typestyle{victim}\\
+% \keystyle{} & \predicatestyle{healthy } (\variablestyle{v } : \typestyle{ victim})\\
+% \keystyle{} & \predicatestyle{hurt } (\variablestyle{v } : \typestyle{ victim})\\
+% \keystyle{} & \predicatestyle{dying } (\variablestyle{v } : \typestyle{ victim})\\
+% \keystyle{} & \predicatestyle{deceased } (\variablestyle{v } : \typestyle{ victim})\\
+% \keystyle{} & \predicatestyle{spread-out } (\variablestyle{t } : \typestyle{ number}; \variablestyle{ l } : \typestyle{ location})\\
+%  \keystyle{} & \predicatestyle{adjusted-status } (\variablestyle{t } : \typestyle{ number}; \variablestyle{ v } : \typestyle{ victim})\\
+% \keystyle{} & \predicatestyle{need-to-adjust-clock }()\\
+% \keystyle{} & \predicatestyle{have-water } (\variablestyle{u } : \typestyle{ fire})\\
+% \keystyle{} & \predicatestyle{have-victim-in-unit } (\variablestyle{v } : \typestyle{ victim}; \variablestyle{ u } : \typestyle{ medical})\\
+\keystyle{} & \predicatestyle{in-hospital } (\variablestyle{v } : \typestyle{ victim}) : \typestyle{bool}\\
+\keystyle{} & \predicatestyle{is } (\variablestyle{v } : \typestyle{ victim}) : \typestyle{ status}\\
+% \keystyle{} & \predicatestyle{predecessor-victim } (\variablestyle{v1}, \variablestyle{ v2 } : \typestyle{ victim})\\
+% \keystyle{} & \predicatestyle{predecessor-location } (\variablestyle{l1}, \variablestyle{ l2 } : \typestyle{ location})\\
+% \keystyle{} & \predicatestyle{all-locations-spread-out } (\variablestyle{t } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{all-victims-adjusted } (\variablestyle{t } : \typestyle{ number})\\
+% \keystyle{} & \predicatestyle{first-victim } (\variablestyle{v } : \typestyle{ victim})\\
+% \keystyle{} & \predicatestyle{first-location } (\variablestyle{l } : \typestyle{ location})\\
+\hline
+\keystyle{Action} & \actionstyle{drive} (\variablestyle{u} : \typestyle{unit}; \variablestyle{ from }, \variablestyle{ to } : \typestyle{ location})\\
+% \keystyle{Action} & \actionstyle{drive-fire-unit } (\variablestyle{u } : \typestyle{ fire}; \variablestyle{ unit}, \variablestyle{ from } : \typestyle{ location}; \variablestyle{ to } : \typestyle{ location})\\
+% \keystyle{} & \actionstyle{drive-medical-unit } (\variablestyle{u } : \typestyle{ medical}; \variablestyle{ unit}, \variablestyle{ from } : \typestyle{ location}; \variablestyle{ to } : \typestyle{ location})\\
+\keystyle{} & \actionstyle{load-fire-unit} (\variablestyle{u} : \typestyle{unit})\\
+\keystyle{} & \actionstyle{load-medical-unit} (\variablestyle{u} : \typestyle{unit}; \variablestyle{v} : \typestyle{victim})\\
+% \keystyle{} & \actionstyle{load-fire-unit } (\variablestyle{u } : \typestyle{ fire}; \variablestyle{ unit}, \variablestyle{ l } : \typestyle{ location})\\
+% \keystyle{} & \actionstyle{load-medical-unit } (\variablestyle{u } : \typestyle{ medical}; \variablestyle{ unit}, \variablestyle{ l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim})\\
+\keystyle{} & \actionstyle{unload-fire-unit} (\variablestyle{u} : \typestyle{unit}; \variablestyle{ l} : \typestyle{ location})\\
+\keystyle{} & \actionstyle{unload-medical-unit} (\variablestyle{u} : \typestyle{unit})\\
+% \keystyle{} & \actionstyle{unload-fire-unit } (\variablestyle{u } : \typestyle{ fire}; \variablestyle{ unit}, \variablestyle{ l}, \variablestyle{ l1 } : \typestyle{ location})\\
+% \keystyle{} & \actionstyle{unload-medical-unit } (\variablestyle{u } : \typestyle{ medical}; \variablestyle{ unit}, \variablestyle{ l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim})\\
+% \keystyle{} & \actionstyle{adjust-status-helthy-to-hurt } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim}; \variablestyle{ t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{adjust-status-hurt-to-dying } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim}; \variablestyle{ t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{adjust-status-dying-to-deceased } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim}; \variablestyle{ t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{adjust-status-no-fire-at-location } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim}; \variablestyle{ t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{adjust-status-victim-on-hospital } (\variablestyle{v } : \typestyle{ victim}; \variablestyle{ t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{adjust-status-victim-on-medical-unit } (\variablestyle{v } : \typestyle{ victim}; \variablestyle{ t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{adjust-status-deceased-stays-deceased } (\variablestyle{v } : \typestyle{ victim}; \variablestyle{ t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+\keystyle{} & \actionstyle{enter-hospital } (\variablestyle{v } : \typestyle{ victim})\\
+
+% \keystyle{} & \actionstyle{spread-fire-without-fire-on-location } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ t1}, \variablestyle{ t2}, \variablestyle{ st } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{spread-fire-with-location-on-fire } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ t1}, \variablestyle{ t2}, \variablestyle{ st } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{not-spread-fire } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ t1}, \variablestyle{ t2}, \variablestyle{ st } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{adjust-clock } (\variablestyle{t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{get-all-victims-adjusted } (\variablestyle{t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+% \keystyle{} & \actionstyle{get-all-locations-spread-out } (\variablestyle{t1}, \variablestyle{ t2 } : \typestyle{ number})\\
+\keystyle{} & \actionstyle{treat-victim-hospital } (\variablestyle{ v } : \typestyle{ victim})\\
+% \keystyle{} & \actionstyle{treat-dying-victim-on-hospital } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim})\\
+% \keystyle{} & \actionstyle{treat-hurt-victim-on-hospital } (\variablestyle{l } : \typestyle{ location}; \variablestyle{ v } : \typestyle{ victim})\\
+\keystyle{} & \actionstyle{treat-victim-unit } (\variablestyle{u} : \typestyle{ unit}; \variablestyle{v} : \typestyle{ victim})\\
+% \keystyle{} & \actionstyle{treat-victim-on-fire-unit } (\variablestyle{f } : \typestyle{ fire}; \variablestyle{ unit}, \variablestyle{ v } : \typestyle{ victim}; \variablestyle{ l } : \typestyle{ location})\\
+% \keystyle{} & \actionstyle{treat-victim-on-medical-unit } (\variablestyle{u } : \typestyle{ medical}; \variablestyle{ unit}, \variablestyle{ v } : \typestyle{ victim}; \variablestyle{ l } : \typestyle{ location})\\
+\hline
+\end{tabular}

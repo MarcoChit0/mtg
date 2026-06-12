@@ -1,0 +1,220 @@
+\ProvidesPackage{macros}
+
+\newcommand{\facts}{\mathcal{F}}
+\newcommand{\actions}{\mathcal{A}}
+\newcommand{\states}{\mathcal{S}}
+
+\newcommand{\initialCondition}{\mathcal{I}}
+\newcommand{\goalCondition}{\gamma}
+\newcommand{\initialState}{s_\initialCondition}
+\newcommand{\initialPolicy}{\pi_\initialCondition}
+
+\newcommand{\pre}{\mathtt{pre}}
+\newcommand{\effs}{\mathtt{effs}}
+\newcommand{\eff}{\mathtt{eff}}
+\newcommand{\add}{\mathtt{add}}
+\newcommand{\del}{\mathtt{del}}
+
+\newcommand{\succs}{\mathtt{succs}}
+\renewcommand{\succ}{\mathtt{succ}}
+
+\newcommand{\head}{\mathtt{head}}
+\newcommand{\tail}{\mathtt{tail}}
+
+\newcommand{\true}{\mathrm{True}}
+\newcommand{\false}{\mathrm{False}}
+
+\newcommand{\domain}{\mathtt{dom}}
+\newcommand{\image}{\mathtt{image}}
+\newcommand{\reach}{\mathtt{reach}}
+\newcommand{\front}{\mathtt{front}}
+\newcommand{\open}{\front}
+\newcommand{\escape}{\mathtt{escape}}
+\newcommand{\escapeArrow}{\rotatebox[origin=c]{270}{$\Lsh$}}
+\newcommand{\remain}{\mathtt{remain}}
+\newcommand{\slice}{\mathtt{slice}}
+\newcommand{\decompress}{\mathtt{decompress}}
+\newcommand{\pruned}{\mathtt{pruned}}
+\newcommand{\buggy}{\mathtt{buggy}}
+\newcommand{\match}{\mathtt{match}}
+
+\newcommand{\queue}{\mathtt{Queue}}
+\newcommand{\done}{\mathtt{Done}}
+% \newcommand{\getInitialNode}{\mathtt{get\_initial\_node}}
+% \newcommand{\extractSolution}{\mathtt{extract\_solution}}
+\newcommand{\successors}{\mathtt{successors}}
+% \newcommand{\replace}{\mathtt{replacement}}
+\newcommand{\sign}{\mathtt{sign}}
+\newcommand{\lanes}{\mathtt{lanes}}
+\newcommand{\canon}{\mathtt{canon}}
+
+\newcommand{\concretizer}{\mathtt{concretizer}}
+
+\newcommand{\deltaNearest}{f^{\Delta\mathrm{sn}}}
+\newcommand{\hLMCut}{h^{\mathrm{LM}\text{-}\mathrm{Cut}}}
+
+\newcommand{\pdg}{\text{PDG}}
+
+\newcommand{\Out}{\mathrm{fronteira}}
+\newcommand{\Reach}[1]{\mathrm{\textbf{reach}(#1)}}
+\newcommand{\Remain}[1]{\mathrm{\textbf{remain}(#1)}}
+\newcommand{\Succs}[2]{\mathrm{#1.\textit{succs}}(#2)}
+\newcommand{\IsApp}[2]{\mathrm{#1.\textit{is-applicable}}(#2)}
+\newcommand{\MaxSuccs}[1]{\mathrm{#1.\textit{max-succs}}()}
+\newcommand{\Dom}[1]{\mathrm{\textbf{dom}(#1)}}
+\newcommand{\Front}[1]{\mathrm{\textbf{front}(#1)}}
+\newcommand{\Triple}[3]{\langle #1, #2, #3 \rangle}
+\newcommand{\Pair}[2]{\langle #1, #2 \rangle}
+\newcommand{\Reversed}[0]{\mathrm{\textbf{reversed}}}
+\newcommand{\Reverseds}[1]{\mathrm{\textbf{reversed}(#1)}}
+\newcommand{\Set}[1]{\mathcal{#1}}
+
+\newcommand{\bigo}[1]{\mathcal{O}(#1)}
+
+
+\newcommand{\deadend}{\textit{Dead-End}}
+\newcommand{\weakalive}{\textit{Weak-Alive}}
+\newcommand{\alive}{\textit{Alive}}
+
+\newcommand{\good}{\textit{Good}}
+\newcommand{\bad}{\textit{Bad}}
+
+\newcommand{\salive}{\Set{S}_{alive}}
+\newcommand{\sweak}{\Set{S}_{weak}}
+\newcommand{\sunk}{\Set{S}_{unk}}
+\newcommand{\sdead}{\Set{S}_{dead}}
+\newcommand{\sbadp}{\Set{P}_{bad}}
+\newcommand{\sls}{\Set{L}_{s}}
+\newcommand{\slp}{\Set{L}_{p}}
+
+\definecolor{type_color}{RGB}{8, 194, 3} % 31BF82
+\definecolor{action_color}{RGB}{192, 0, 0}
+\definecolor{predicate_color}{RGB}{192, 0, 0}
+\definecolor{variable_color}{RGB}{30, 80, 230}
+\definecolor{dark_green}{RGB}{0, 120, 0}
+
+% predicate text style
+\newcommand{\pts}[1]{{\fontfamily{ppl}\selectfont {#1}}}
+% action text style
+\newcommand{\ats}[1]{{\fontfamily{qcr}\selectfont{#1}}}
+% object text style
+\newcommand{\ots}[1]{{\fontfamily{put}\selectfont
+{#1}}}
+
+\newcommand{\typestyle}[1]{\textcolor{dark_green}{#1}}
+\newcommand{\predicatestyle}[1]{\textcolor{darkgray}{\textit{\textbf{\pts{#1}}}}}
+\newcommand{\actionstyle}[1]{\textcolor{darkgray}{\textit{\textbf{\ats{#1}}}}}
+\newcommand{\variablestyle}[1]{\textcolor{variable_color}{\ots{#1}}}
+\newcommand{\namestyle}[1]{\textbf{#1}}
+\newcommand{\keystyle}[1]{\textbf{#1}}
+
+
+\newcommand{\cmark}{\ding{51}} % Check mark
+\newcommand{\xmark}{\ding{55}} % X mark
+
+\newcommand{\F}{\Set{F}}
+\newcommand{\BigO}{\mathcal{O}}
+\newcommand{\sets}{\Set{S}} 
+
+\newcommand{\experimentFailStyle}{\xmark}
+\newcommand{\experimentSuccessStyle}{\cmark}
+\newcommand{\experimentHeaderStyle}[1]{\textbf{\textit{#1}}}
+\newcommand{\experimentInstanceStyle}[1]{\textbf{\textit{#1}}}
+\newcommand{\experimentUnknownStyle}{\textbf{\color{darkgray}?}}
+
+\usetikzlibrary{positioning, arrows.meta, patterns, automata}
+\tikzstyle{black_node}=[circle, draw, very thick, minimum height=8mm, minimum width=8mm]
+\tikzstyle{basic_node}=[circle, draw, very thick, minimum height=2mm, minimum width=2mm, fill=black]
+\tikzstyle{black_rec_node}=[draw, very thick, minimum height=8mm, minimum width=8mm]
+\tikzstyle{unk} = [circle, draw, very thick, minimum height=2mm, minimum width=2mm, fill=gray!30]
+\tikzstyle{dead} = [circle, draw, very thick, minimum height=2mm, minimum width=2mm, fill=gray, text=white]
+\tikzstyle{alive} = [circle, draw, very thick, minimum height=2mm, minimum width=2mm, fill=white]
+
+
+\def\graphscale{0.9}
+
+\definecolor{olivegreen}{HTML}{3C8031}
+\colorlet{solutionAction}{olivegreen!70!white}
+\colorlet{solutionState}{green!30!white}
+\colorlet{mappedAction}{blue!50!white}
+\colorlet{mappedState}{blue!60!white}
+\colorlet{toBeMappedState}{blue!15!white}
+\colorlet{badAction}{red}
+\colorlet{detDistColor}{red}
+\colorlet{updatedDetDistColor}{red}
+\colorlet{trickyAction}{olivegreen!70!white}
+\colorlet{ddeState}{lightgray}
+\colorlet{fnddeState}{gray}
+\colorlet{tableColor}{red!45!white}
+
+\tikzset{
+    mappedActionStyle/.style={ ->, ultra thick, color=mappedAction },
+    solutionActionStyle/.style={ ->, ultra thick, color=solutionAction },
+    badActionStyle/.style={ ->, ultra thick, dotted, color=badAction },
+    % use this on the alive part of the non-deterministic effect
+    trickyActionStyle/.style={ ->, ultra thick, dotted, color=trickyAction },
+}
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% \newcommand{\Domain}{\domain}
+% \newcommand{\Reach}{\reach}
+% \newcommand{\Out}{\front}
+
+% \newcommand{\sdownarrow}{{\downarrow}}
+% \newcommand{\suparrow}{{\uparrow}}
+
+% Define the first macro with an optional parameter
+\NewDocumentCommand{\myCurveA}{O{thick}}{
+    \draw[#1] (-2.0, -2.1) .. controls (-1.85, -2.15) and (-1.7, -2.2) .. (-1.5, -2.1);
+}
+
+% Define the second macro with an optional parameter
+\NewDocumentCommand{\myCurveB}{O{thick}}{
+    \draw[#1] (1.65, -2.2) .. controls (1.7, -2.25) and (1.85, -2.25) .. (1.9, -2.2);
+}
+
+% Define the third macro with an optional parameter
+\NewDocumentCommand{\myCurveC}{O{thick}}{
+    \draw[#1] (0.1, -3.6) .. controls (-0.03, -3.6) and (-0.03, -3.7) .. (0.0, -3.7);
+}
+\newcommand\marktopleft[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-a) at (0,1.5ex) {};%
+}
+\newcommand\markbottomright[1]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#1-b) at (0,0) {};%
+    \tikz[overlay,remember picture,thick,dashed,inner sep=3pt]
+        \node[draw,rounded rectangle,fit=(marker-#1-a.center) (marker-#1-b.center)] {};%
+}
+
+
+% Mark top left
+\newcommand\mtl[2][none]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#2-a) at (0,0.9ex) {};%
+}
+
+% Mark bottom right
+\newcommand\mbr[2][none]{%
+    \tikz[overlay,remember picture] 
+        \node (marker-#2-b) at (0.2ex,0.3ex) {};%
+    \tikz[overlay,remember picture,thick,inner sep=5pt]
+        \node[draw,
+              blend mode=darken,
+              rectangle,
+              rounded corners,
+              fill=#1,
+              fit=(marker-#2-a.center) (marker-#2-b.center)] {};%
+    \tikz[overlay,remember picture] 
+    \path 
+        let
+          \p{mtl} = (marker-#2-a), \p{mbr} = (marker-#2-b)
+        in
+          % Tweak xshift and yshift values to change note number position
+          [x=\x{mbr}, y=\y{mtl}, xshift=1em, yshift=0.5em]
+          node[rounded corners,inner sep=2pt,fill=white,opacity=0.8,text opacity=1] at (1, 1) {\footnotesize{\textbf{#2}}};%
+}
