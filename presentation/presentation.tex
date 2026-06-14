@@ -91,45 +91,69 @@
 \section{Introdução.}
 
 % ============================================================
-% SLIDE 2 -- Contexto: MTG, Commander e brackets
+% SLIDE 2 -- O que é MTG e Commander (para quem nunca jogou)
 % ============================================================
-% NOTA: ~50s.
+% NOTA: ~50s. A plateia provavelmente não joga MTG -- explicar do zero, sem
+% jargão, em uma frase por ideia.
 % O QUE FALAR:
-%   - MTG é um card game (1993). Cada jogador monta um deck e joga sob regras
-%     específicas de cada formato.
-%   - Commander é o formato que a gente estuda. É multiplayer (4 jogadores),
-%     casual, cada deck tem 100 cartas e uma lendária no comando.
-%   - O ponto-chave: o formato NÃO tem matchmaking. Equilíbrio vem inteiramente
-%     da conversa pré-jogo entre os jogadores.
-%   - Para padronizar essa conversa, a comunidade adotou o sistema de "brackets"
-%     (1 a 5). Bracket 1 = casual/temático; bracket 5 = competitivo (cEDH);
-%     2-4 = meio casual onde a negociação realmente acontece.
+%   - MTG (1993): jogo de cartas colecionáveis. O jogador monta um "deck"
+%     (baralho) e conjura cartas pagando um recurso chamado "mana" para
+%     derrotar os oponentes. Não precisa entrar em regra nenhuma além disso.
+%   - O jogo tem vários FORMATOS (conjuntos de regras diferentes). A gente
+%     estuda só um: o Commander.
+%   - Commander: multiplayer (4 jogadores numa mesa), cada deck tem 100 cartas
+%     (uma cópia de cada), e é liderado por uma carta "comandante" lendária.
+%   - Ponto-chave que prepara o resto: o formato NÃO tem matchmaking. O
+%     equilíbrio da mesa vem de uma conversa antes do jogo. (Gancho para o
+%     próximo slide, dos brackets.)
 % ============================================================
 \begin{frame}{Magic: The Gathering e Commander.}\pause
     \begin{columns}
-        \begin{column}{.55\textwidth}
+        \begin{column}{.58\textwidth}
             \begin{itemize}
-                \visible<2->{\item \textbf{MTG}: card game (1993). Cada jogador monta um deck e joga sob regras do formato.}
-                \visible<3->{\item \textbf{Commander}: formato \textit{multiplayer} (4 jogadores), decks de 100 cartas, uma comandante lendária.}
-                \visible<4->{\item \textbf{Sem matchmaking}: equilíbrio vem da conversa pré-jogo.}
-                \visible<5->{\item \textbf{Brackets} (1--5): vocabulário oficial dessa conversa.}
+                \visible<2->{\item \textbf{MTG} (1993): jogo de cartas colecionáveis. Cada jogador monta um \textit{deck} e conjura cartas pagando \textit{mana} para derrotar os oponentes.}
+                \visible<3->{\item O jogo tem vários \textbf{formatos} (conjuntos de regras). Estudamos o \textbf{Commander}.}
+                \visible<4->{\item \textbf{Commander}: \textit{multiplayer} (4 jogadores), deck de 100 cartas (uma cópia de cada), liderado por uma \textbf{comandante} lendária.}
+                \visible<5->{\item \textbf{Sem matchmaking}: o equilíbrio da mesa vem de uma conversa \textit{pré-jogo}.}
             \end{itemize}
         \end{column}%
         \hfill%
-        \begin{column}{.4\textwidth}
-            % SUGESTÃO: colocar aqui uma imagem do command zone, de uma carta
-            % lendária famosa (Atraxa, por exemplo), ou um diagrama da mesa de 4
-            % jogadores. Substituir o placeholder abaixo.
+        \begin{column}{.38\textwidth}
+            \visible<2->{
             \begin{center}
-                \fbox{\parbox{0.9\textwidth}{\centering\small placeholder\\\textit{imagem ilustrativa\\(comandante / mesa de 4)}}}
-            \end{center}
+                \includegraphics[width=\textwidth]{figures/mtg-commander-logo.jpg}
+            \end{center}}
         \end{column}
     \end{columns}
 \end{frame}
 
 
 % ============================================================
-% SLIDE 3 -- Bracket comunidade vs calculadora (conceitual)
+% SLIDE 3 -- Os brackets de Commander (com infográfico oficial)
+% ============================================================
+% NOTA: ~45s. Aqui explicamos o que são os brackets, usando a imagem oficial.
+% O QUE FALAR:
+%   - Para padronizar essa conversa pré-jogo, a comunidade adotou os "brackets":
+%     uma escala de 1 a 5 que descreve o nível de poder do deck.
+%   - É uma ferramenta de COMUNICAÇÃO, não uma regra rígida: ao publicar o deck,
+%     o autor escolhe o bracket que acha que melhor descreve seu deck.
+%   - Apontar a imagem: 1 = Exhibition (temático), 2 = Core, 3 = Upgraded,
+%     4 = Optimized, 5 = cEDH (competitivo). Da esquerda (social) para a
+%     direita (metagame).
+%   - Fechar: nosso trabalho foca no meio (brackets 2-4), onde está quase todo
+%     o dado público e onde a negociação de fato acontece.
+% ============================================================
+\begin{frame}{Os brackets de Commander.}
+    {\small \textbf{Brackets} (escala 1--5): o vocabulário oficial dessa conversa. Ao publicar o deck, o autor escolhe o bracket que melhor descreve o poder dele.}
+    \begin{center}
+        \includegraphics[width=0.62\textwidth]{figures/commander-brackets.jpg}
+    \end{center}
+    {\small Focamos no meio --- \textbf{brackets 2--4} --- onde está quase todo o dado público e onde a negociação realmente acontece (1 e 5 são as pontas: temático e cEDH).}
+\end{frame}
+
+
+% ============================================================
+% SLIDE 4 -- Bracket comunidade vs calculadora (conceitual)
 % ============================================================
 % NOTA: ~40s.
 % O QUE FALAR:
@@ -139,7 +163,7 @@
 %   - A segunda: uma calculadora online (EDHPowerLevel). Cola a decklist,
 %     ela aplica regras determinísticas e retorna outro número.
 %   - "E essas duas fontes frequentemente discordam." (Sem números aqui --
-%     só plantar o problema. Os números vêm no slide 7.)
+%     só plantar o problema. Os números vêm no slide 8.)
 % ============================================================
 \begin{frame}{Duas leituras de poder.}\pause
     \begin{columns}
@@ -165,7 +189,7 @@
 
 
 % ============================================================
-% SLIDE 4 -- Pergunta de pesquisa
+% SLIDE 5 -- Pergunta de pesquisa
 % ============================================================
 % NOTA: ~45s.
 % O QUE FALAR:
@@ -197,7 +221,7 @@
 \section{Metodologia.}
 
 % ============================================================
-% SLIDE 5 -- Roadmap metodológico
+% SLIDE 6 -- Roadmap metodológico
 % ============================================================
 % NOTA: ~60s. Este é o slide que dá a planta-baixa do trabalho inteiro.
 % O QUE FALAR:
@@ -246,7 +270,7 @@
 \section{Dados.}
 
 % ============================================================
-% SLIDE 6 -- Coleta de dados
+% SLIDE 7 -- Coleta de dados
 % ============================================================
 % NOTA: ~45s.
 % O QUE FALAR:
@@ -297,7 +321,7 @@
 
 
 % ============================================================
-% SLIDE 7 -- Divergência empírica entre y_arch e y_calc
+% SLIDE 8 -- Divergência empírica entre y_arch e y_calc
 % ============================================================
 % NOTA: ~50s.
 % O QUE FALAR:
@@ -348,7 +372,7 @@
 
 
 % ============================================================
-% SLIDE 8 -- Duas representações (BC vs DF)
+% SLIDE 9 -- Duas representações (BC vs DF)
 % ============================================================
 % NOTA: ~50s.
 % O QUE FALAR:
@@ -397,7 +421,7 @@
 \section{Resultados.}
 
 % ============================================================
-% SLIDE 9 -- Spot-checking
+% SLIDE 10 -- Spot-checking
 % ============================================================
 % NOTA: ~50s.
 % O QUE FALAR:
@@ -435,7 +459,7 @@
 
 
 % ============================================================
-% SLIDE 10 -- Nested CV + DF > BC
+% SLIDE 11 -- Nested CV + DF > BC
 % ============================================================
 % NOTA: ~75s. Slide denso de resultados, mas a mensagem é simples.
 % O QUE FALAR:
@@ -453,6 +477,8 @@
 %     comandantes específicos.
 % ============================================================
 \begin{frame}{Nested CV: DF vence BC para todo algoritmo.}\pause
+    {\footnotesize 5-fold externa $\times$ 3 repetições (15 folds compartilhados) $\cdot$ pré-proc.\ por fold --- imputação, \textit{winsorization} de preço, scaling seletivo --- sem \textit{leakage} ($y_{\text{calc}}$ removido). Critério: \textbf{macro-F1} (bracket 3 $=$ 51\% dos decks).}
+    \medskip
     \scriptsize
     \setlength{\tabcolsep}{4pt}
     \begin{center}
@@ -480,7 +506,7 @@
 
 
 % ============================================================
-% SLIDE 11 -- Comparação com a calculadora
+% SLIDE 12 -- Comparação com a calculadora
 % ============================================================
 % NOTA: ~75s. Este é o slide-payoff. Aqui respondemos à pergunta de pesquisa.
 % O QUE FALAR:
@@ -522,7 +548,7 @@
 
 
 % ============================================================
-% SLIDE 12 -- Interpretabilidade
+% SLIDE 13 -- Interpretabilidade
 % ============================================================
 % NOTA: ~60s.
 % O QUE FALAR:
@@ -561,7 +587,7 @@
         \end{column}%
         \hfill%
         \begin{column}{.48\textwidth}
-            \visible<3->{\textbf{BC Gradient Boosting} \\ {\footnotesize\textit{lift no bracket 4}}}
+            \visible<3->{\textbf{BC Gradient Boosting} \\ {\footnotesize\textit{exemplos de alto lift no bracket 4}}}
             \visible<4->{
             \begin{center}
                 \footnotesize
@@ -587,7 +613,7 @@
 \section{Discussão.}
 
 % ============================================================
-% SLIDE 13 -- Discussão / takeaways
+% SLIDE 14 -- Discussão / takeaways
 % ============================================================
 % NOTA: ~45s.
 % O QUE FALAR:
@@ -615,7 +641,7 @@
 
 
 % ============================================================
-% SLIDE 14 -- Limitações, future work, reprodutibilidade
+% SLIDE 15 -- Limitações, future work, reprodutibilidade
 % ============================================================
 % NOTA: ~60s. Slide obrigatório do enunciado (reprodutibilidade tem que
 % aparecer). Três colunas curtas.
@@ -670,7 +696,7 @@
 
 
 % ============================================================
-% SLIDE 15 -- Agradecimentos / Q&A
+% SLIDE 16 -- Agradecimentos / Q&A
 % ============================================================
 % NOTA: ~15s. Slide final. Fica enquanto perguntas são respondidas.
 % O QUE FALAR:

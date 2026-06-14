@@ -15,6 +15,11 @@
 \newblock \url{https://edhrec.com}.
 \newblock Accessed: 2026-05-23.
 
+\bibitem{anthropic2024claude}
+{Anthropic}.
+\newblock {Claude} (claude-3 version) [large language model].
+\newblock \url{https://claude.ai}, 2024.
+
 \bibitem{commanderbrackets}
 {Commander Rules Committee}.
 \newblock {Commander Brackets}.
@@ -22,6 +27,16 @@
   \url{https://mtgcommander.net/index.php/2024/10/17/october-17-2024-announcement/},
   2024.
 \newblock Accessed: 2026-05-23.
+
+\bibitem{google2023gemini}
+{Google DeepMind}.
+\newblock {Gemini} (2023 version) [large language model].
+\newblock \url{https://gemini.google.com}, 2023.
+
+\bibitem{openai2021codex}
+{OpenAI}.
+\newblock {Codex} (2021 version) [large language model].
+\newblock \url{https://platform.openai.com/docs/models}, 2021.
 
 \bibitem{mtg}
 {Wizards of the Coast}.

@@ -1,50 +1,52 @@
-This is BibTeX, Version 0.99e (TeX Live 2026)
+This is BibTeX, Version 0.99e
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 5 items.
 Database file #1: refs.bib
 Warning--to sort, need author or key in archidekt
 Warning--to sort, need author or key in edhpowerlevel
 Warning--to sort, need author or key in edhrec
-You've used 5 entries,
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            517 strings with 4486 characters,
-and the built_in function-call counts, 958 in all, are:
-= -- 95
-> -- 17
+            531 strings with 4820 characters,
+and the built_in function-call counts, 1582 in all, are:
+= -- 155
+> -- 38
 < -- 0
-+ -- 9
-- -- 4
-* -- 29
-:= -- 140
-add.period$ -- 17
-call.type$ -- 5
-change.case$ -- 17
++ -- 18
+- -- 10
+* -- 47
+:= -- 245
+add.period$ -- 26
+call.type$ -- 8
+change.case$ -- 29
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 35
-empty$ -- 114
-format.name$ -- 4
-if$ -- 223
+cite$ -- 11
+duplicate$ -- 56
+empty$ -- 180
+format.name$ -- 10
+if$ -- 361
 int.to.chr$ -- 0
-int.to.str$ -- 5
+int.to.str$ -- 8
 missing$ -- 0
-newline$ -- 30
-num.names$ -- 4
-pop$ -- 46
+newline$ -- 45
+num.names$ -- 10
+pop$ -- 70
 preamble$ -- 1
-purify$ -- 12
+purify$ -- 21
 quote$ -- 0
-skip$ -- 27
+skip$ -- 48
 stack$ -- 0
-substring$ -- 25
-swap$ -- 5
+substring$ -- 40
+swap$ -- 8
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 20
+type$ -- 32
 warning$ -- 3
-while$ -- 4
-width$ -- 6
-write$ -- 53
+while$ -- 10
+width$ -- 9
+write$ -- 83
 (There were 3 warnings)

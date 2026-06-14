@@ -565,6 +565,12 @@ The headline empirical findings are: structured deck features (DF) predict the c
 
 \paragraph{Future work.} The most informative next experiments are local extensions, not new models. (i)~A circularity ablation that drops the explicit bracket-rule columns from DF and re-runs the calculator-alignment analysis, separating ``DF agrees because it counts the same things'' from ``DF agrees because the community uses the same signals''. (ii)~A second calculator and a second community source (Commander Salt, Moxfield) to test how much of the gap is platform-specific. (iii)~Ordinal-aware modelling and metrics (ordinal logistic regression, MAE on bracket values, quadratic-weighted kappa). (iv)~A BC+DF model that uses card identity and aggregate structure jointly. (v)~A separate experimental design for brackets~1 and~5.
 
+% ============================================================
+\section*{Generative AI Use Disclosure}
+% ============================================================
+
+This project used generative AI tools as writing and implementation assistants at different stages of development. Claude (Anthropic, 2024)\nocite{anthropic2024claude}, Codex (OpenAI, 2021)\nocite{openai2021codex}, and Gemini (Google, 2023)\nocite{google2023gemini} were used for the following purposes: article review and language revision; rewriting assistance; assistance with code generation and autocompletion during pipeline development; and rapid prototyping of a demonstration interface. No tool was used to derive results or produce any claim reported in this paper --- all numbers and findings originate from experiment artifacts executed by the authors. Full responsibility for data collection, code execution, result validation, and paper content rests with the authors.
+
 \bibliographystyle{plain}
 \bibliography{refs}
 
@@ -572,80 +578,40 @@ The headline empirical findings are: structured deck features (DF) predict the c
 \appendix
 % ============================================================
 
-The appendices below collect supplementary material that did not need to live in the main text: MTG and Commander background (Appendix~\ref{app:mtg}), preprocessing rationale (Appendix~\ref{app:preprocessing}), the full Deck Features catalog (Appendix~\ref{app:features}), spot-checking detail (Appendix~\ref{app:spotcheck}), training verification and statistical tests (Appendix~\ref{app:training-verification}), and voting and model-selection detail (Appendix~\ref{app:voting-selection}).
+\smallskip
+The appendices collect supplementary material: MTG background (Appendix~\ref{app:mtg}), preprocessing rationale (Appendix~\ref{app:preprocessing}), the DF catalog (Appendix~\ref{app:features}), spot-checking detail (Appendix~\ref{app:spotcheck}), training verification and statistical tests (Appendix~\ref{app:training-verification}), and voting and model-selection detail (Appendix~\ref{app:voting-selection}).
 
 % ============================================================
 \section{MTG Terminology and Gameplay}
 \label{app:mtg}
 % ============================================================
 
-This appendix pulls together the MTG concepts that appear in the body. Readers already familiar with the game can skip ahead; the main text is self-contained on methodology and results.
+Definitions for MTG concepts referenced in the body. Readers familiar with the game can skip ahead.
 
-\subsection{Game structure}
-\label{app:mtg:structure}
+\paragraph{Game structure.} The \textit{commander} is a legendary creature that begins in the \textit{command zone} and may be cast from there at any time; its \textit{color identity} (mana colors in cost and rules text) constrains the other 99 cards. Commander is a \textit{singleton} format (at most one copy of any non-basic card; basic lands are unrestricted) and is typically played in 4-player pods.
 
-\paragraph{Commander and command zone.} The \textit{commander} is a \textit{legendary creature} that begins the game in a separate zone, the \textit{command zone}, and may be cast from there at any point during the game. The commander's \textit{color identity} --- the set of mana colors appearing in its cost and rules text --- constrains which cards the other 99 cards of the deck may include.
+\paragraph{Cards, mana, curve.} \textit{Mana} is the resource, produced mostly by \textit{lands} (one land per turn). \textit{Converted mana cost} (CMC, or mana value) is the total mana required to cast a card. The \textit{mana curve} is the CMC distribution across the deck. Primary card types: \textit{creatures}, \textit{instants}, \textit{sorceries}, \textit{artifacts}, \textit{enchantments}, \textit{planeswalkers}, and \textit{lands}; non-land cards that stay on the battlefield are \textit{permanents}. Rarity tiers, in increasing order of scarcity: \textit{common}, \textit{uncommon}, \textit{rare}, \textit{mythic rare}. Some cards have multiple faces (\textit{transform}, \textit{modal double-faced}, \textit{split}, \textit{adventure}). The five mana colors are White (W), Blue (U), Black (B), Red (R), Green (G).
 
-\paragraph{Singleton format.} Commander is a \textit{singleton} format: each deck may contain at most one copy of any non-basic land card. \textit{Basic lands} --- generic resource-producing cards with no unique rules text --- may be included in any quantity.
+\paragraph{Power indicators.} A \textit{staple} is a generically efficient card included regardless of strategy (e.g., \textit{Sol Ring}, \textit{Command Tower}). \textit{Game Changers} are cards officially designated by the Commander Rules Committee as capable of dominating tables on their own (e.g., \textit{Thassa's Oracle}, \textit{Rhystic Study}); their count is the primary signal the bracket system uses to distinguish brackets~3 and~4. \textit{Tutors} search the library for a specific card (\textit{Demonic Tutor}). A \textit{combo} is a card combination producing a game-winning effect; \textit{atomic combos} require every piece, \textit{two-card combos} require only two. \textit{Extra-turn effects} (\textit{Time Warp}) and \textit{mass land denial} (\textit{Armageddon}) are high-impact and socially contentious.
 
-\paragraph{Player count.} Commander is typically played in pods of four, though the format admits any number of players from two upward. The four-player pod is the configuration around which the bracket discourse is framed.
+\paragraph{Keywords.} Shorthand labels for recurring rules text; \textit{evergreen} keywords appear across sets (\textit{Flying}, \textit{Trample}, \textit{Haste}, \textit{Hexproof}, \textit{Deathtouch}).
 
-\subsection{Cards, mana, and the curve}
-\label{app:mtg:cards}
-
-\paragraph{Mana and mana cost.} \textit{Mana} is the resource in MTG, produced mostly by \textit{land} cards. Players play at most one land per turn and spend mana to pay the \textit{mana cost} of spells. The \textit{converted mana cost} (CMC), also called \textit{mana value}, is the total amount of mana required to cast a card, regardless of color.
-
-\paragraph{Mana curve.} The distribution of CMC values across a deck is the \textit{mana curve}. Cards with CMC 0--1 are cheap and fast; cards with CMC 5+ are expensive and slow. The shape of the curve reflects the deck's expected speed and consistency.
-
-\paragraph{Card types.} MTG defines several primary \textit{card types}: \textit{creatures} attack and block; \textit{instants} and \textit{sorceries} are one-time spells; \textit{artifacts} are objects with persistent effects; \textit{enchantments} are ongoing magical effects; \textit{planeswalkers} are recurring-ability allies; \textit{lands} produce mana. Cards that remain on the battlefield after being played are collectively called \textit{permanents}.
-
-\paragraph{Rarity tiers.} MTG cards are printed at four rarity levels that broadly correlate with power and availability: \textit{common} (most frequent), \textit{uncommon}, \textit{rare}, and \textit{mythic rare} (least frequent). A deck's rarity distribution is a rough proxy for power ceiling and price.
-
-\paragraph{Multiface layouts.} Some MTG cards have multiple faces. \textit{Transform} cards flip between two faces under specific conditions. \textit{Modal double-faced cards} let the player choose which face to play at cast time. \textit{Split cards} contain two independent spells on one card. \textit{Adventure} cards bundle a creature with an instant or sorcery.
-
-\paragraph{Mana colors.} MTG uses five colors of mana: \textit{White} (W), \textit{Blue} (U), \textit{Black} (B), \textit{Red} (R), and \textit{Green} (G), each associated with a distinct strategic identity.
-
-\subsection{Power indicators}
-\label{app:mtg:power}
-
-\paragraph{Staples.} A \textit{staple} is an informal term for a card so generically efficient that it appears in a large fraction of competitive or semi-competitive decks regardless of strategy. Examples: \textit{Sol Ring} (a cheap mana-producing artifact), \textit{Command Tower} (a land that produces any color in the commander's identity).
-
-\paragraph{Game Changers.} \textit{Game Changers} are cards officially designated by the Commander Rules Committee as capable of ending games or dominating tables on their own. Examples: \textit{Thassa's Oracle}, \textit{Rhystic Study}. Their count in a deck is the primary signal the bracket system uses to distinguish brackets 3 and 4.
-
-\paragraph{Tutors.} A \textit{tutor} is a card that searches the player's library for another specific card and places it in the player's hand or in play, raising deck consistency. Examples: \textit{Demonic Tutor}, \textit{Enlightened Tutor}.
-
-\paragraph{Combos.} A \textit{combo} is a combination of two or more cards that, once assembled, produces a game-winning or overwhelming effect (infinite damage, infinite mana, deck-out). An \textit{atomic combo} is one in which every piece is necessary and sufficient; a \textit{two-card combo} is a particularly efficient variant requiring only two pieces.
-
-\paragraph{Extra-turn effects.} Cards that grant a player additional turns beyond the standard cycle (\textit{Time Warp}, \textit{Temporal Manipulation}) create significant tempo advantages and are considered high-impact.
-
-\paragraph{Mass land denial.} Cards that destroy or otherwise neutralize all players' lands simultaneously (\textit{Armageddon}, \textit{Ravages of War}) are socially contentious in Commander because they can render the game unplayable for the rest of the table.
-
-\subsection{Keywords}
-\label{app:mtg:keywords}
-
-\textit{Keywords} are shorthand labels for recurring rules text. \textit{Evergreen} keywords appear across many sets and are always available; examples include \textit{Flying} (can be blocked only by creatures with Flying or Reach), \textit{Trample} (excess combat damage carries over to the defending player), \textit{Haste} (can attack the turn it enters play), \textit{Hexproof} (cannot be targeted by opponents), and \textit{Deathtouch} (destroys any creature it damages).
-
-\subsection{Community resources}
-\label{app:mtg:community}
-
-\paragraph{EDHREC rank.} EDHREC (\url{https://edhrec.com}) aggregates published Commander decklists and computes per-card popularity statistics. The \textit{EDHREC rank} orders cards by inclusion frequency: rank 1 is the most widely played card, with higher numbers denoting less popular cards.
-
-\paragraph{Salt score.} The \textit{salt score} is a community-sourced metric compiled by EDHREC that measures how much frustration a card is reported to cause opposing players. High-salt cards typically lock opponents out, induce repeated random effects, or end games in ways perceived as unfun.
+\paragraph{Community resources.} EDHREC (\url{https://edhrec.com}) aggregates Commander decklists; the \textit{EDHREC rank} orders cards by inclusion frequency (rank 1 = most popular). The \textit{salt score} is a community-sourced metric of how much frustration a card causes opposing players.
 
 % ============================================================
 \section{Preprocessing --- Extended Rationale}
 \label{app:preprocessing}
 % ============================================================
 
-Section~\ref{sec:training:preprocessing} lists the four transformations used inside nested CV. This appendix is the why behind each one.
+Section~\ref{sec:training:preprocessing} lists the four transformations used inside nested CV; this appendix justifies each.
 
-\paragraph{Imputation.} EDHREC rank and salt score come from an external community service, and they are missing for cards that EDHREC has not yet indexed (mostly rare or newly released ones). The missing rate is small. We fill those values with the training-fold median because the missingness is a property of the card, not the deck. The median is a better default than the mean because both fields have heavy-tailed distributions (a few cards sit at very high ranks or salt scores); it is also better than zero because zero is not neutral on either scale (EDHREC rank 0 would be the single most popular card, salt 0 a card nobody finds frustrating).
+\paragraph{Imputation.} EDHREC rank and salt score are missing for cards EDHREC has not yet indexed (mostly rare or newly released). We fill with the training-fold median: missingness is a card property, both fields are heavy-tailed (median over mean), and zero is not neutral (rank 0 would be the most popular card).
 
-\paragraph{Winsorization.} Total deck price (\texttt{price\_total}) is clipped at the training-fold 99th percentile. Most decks cost a few hundred dollars, but a small collector-grade tail breaks past \$50{,}000 thanks to a handful of reserved-list cards. Without clipping, scale-sensitive linear models would over-weight that tail, and tree splits would lock onto degenerate thresholds set by a single deck. Winsorization keeps the useful signal and trims the leverage. We picked it over a log transform because the unit stays ``dollars,'' which makes coefficients and feature importances easier to read downstream.
+\paragraph{Winsorization.} \texttt{price\_total} is clipped at the training-fold 99th percentile. A small collector-grade tail past \$50{,}000 would otherwise dominate scale-sensitive models and force degenerate tree splits. We prefer winsorization over a log transform so the unit stays in dollars.
 
-\paragraph{Scaling.} \texttt{StandardScaler} centers each DF feature to zero mean and unit variance, fit on the training fold. It is applied to Logistic Regression, Linear SVC, and KNN, where objective functions or distance metrics are scale-dependent and would otherwise be dominated by features like \texttt{price\_total} or \texttt{edhrec\_rank\_mean}. Tree-based models (Decision Tree, Random Forest, Gradient Boosting) and Gaussian Naive Bayes are invariant to monotonic per-feature rescaling, so they get unscaled features and we avoid a transform that would only blur feature-importance interpretation.
+\paragraph{Scaling.} \texttt{StandardScaler} (fit on the training fold) is applied to Logistic Regression, Linear SVC, and KNN, whose objectives are scale-dependent. Tree-based models and Gaussian Naive Bayes are invariant to monotonic rescaling and receive unscaled features.
 
-\paragraph{Leakage prevention.} The supervised target is $y_{\text{arch}}$. Every column the EDHPowerLevel pass produced ($y_{\text{calc}}$, the continuous power score, efficiency, tipping point, anything prefixed \texttt{epl\_}) is stripped from the feature matrix before fitting. The calculator label is only re-joined for the descriptive comparison after training. Without this rule, a trivial classifier that just copied the EDHPowerLevel bracket would score well while explaining nothing about the Archidekt label.
+\paragraph{Leakage prevention.} The target is $y_{\text{arch}}$. All EDHPowerLevel columns ($y_{\text{calc}}$, continuous power score, efficiency, tipping point, \texttt{epl\_}-prefixed fields) are stripped from the feature matrix before fitting; $y_{\text{calc}}$ is only re-joined for the post-hoc descriptive comparison.
 
 % ============================================================
 \section{Deck Features (DF) Catalog}
@@ -655,117 +621,87 @@ Section~\ref{sec:training:preprocessing} lists the four transformations used ins
 \begingroup
 \sloppy
 
-This appendix walks through every feature in the Deck Features representation from Section~\ref{sec:data:df}, grouped into the same families. Each one is computed strictly from data already in the Archidekt raw payload (mainboard rows, oracle card metadata, printing-level rarity and price); nothing external is queried at training or inference time. Per-card quantities are respected everywhere: a feature defined as a count multiplies the per-card boolean by the row's \texttt{quantity}, which matters for basic lands and the handful of cards allowed in multiples.
+Every feature in the DF representation (Section~\ref{sec:data:df}), grouped by family. All are computed from the Archidekt raw payload (mainboard rows, oracle metadata, printing-level rarity/price); nothing external is queried at training or inference time. Counts respect per-card \texttt{quantity}.
 
 \subsection{Basic structure}
 \label{app:features:basic}
-\begin{itemize}
-  \item \texttt{unique\_card\_count}: number of distinct \texttt{oracle\_uid}s in the mainboard.
-  \item \texttt{non\_commander\_card\_count}: total quantity of mainboard cards that are not the commander.
-  \item \texttt{commander\_card\_count}: total quantity of commander cards (1 for single-commander decks, 2 for Partner pairs and Background combinations).
-  \item \texttt{mainboard\_count}: total quantity of mainboard cards. Always 100 in the modeling set (the Commander deck-size rule) and removed by the zero-variance filter; included in the feature payload as a structural sanity check.
-  \item \texttt{has\_companion}: boolean flag indicating whether a Companion card is registered for the deck. Always false in the modeling set because Companions are excluded upstream; removed by the zero-variance filter.
-  \item \texttt{view\_count}: cumulative number of Archidekt page views for the deck snapshot, used as a coarse popularity proxy.
+\begin{itemize}\itemsep0pt
+  \item \texttt{unique\_card\_count}: distinct \texttt{oracle\_uid}s in the mainboard.
+  \item \texttt{non\_commander\_card\_count}, \texttt{commander\_card\_count}: split between commander(s) and other cards (commander count is 1, or 2 for Partner/Background).
+  \item \texttt{mainboard\_count}: total mainboard quantity. Always 100 (deck-size rule); removed by zero-variance filter.
+  \item \texttt{has\_companion}: Companion flag. Always false (Companions excluded upstream); removed by zero-variance filter.
+  \item \texttt{view\_count}: Archidekt page views, coarse popularity proxy.
 \end{itemize}
 
 \subsection{Colors and color identity}
 \label{app:features:colors}
-\begin{itemize}
-  \item \texttt{deck\_color\_count}: cardinality of the union of \texttt{colorIdentity} across all mainboard cards, in $\{0,\dots,5\}$.
-  \item \texttt{has\_W}, \texttt{has\_U}, \texttt{has\_B}, \texttt{has\_R}, \texttt{has\_G}: boolean flags, one per color, true if any card in the mainboard has that color in its identity.
+\begin{itemize}\itemsep0pt
+  \item \texttt{deck\_color\_count}: cardinality of the union of \texttt{colorIdentity} across the mainboard, $\{0,\dots,5\}$.
+  \item \texttt{has\_W}, \texttt{has\_U}, \texttt{has\_B}, \texttt{has\_R}, \texttt{has\_G}: per-color presence flags.
 \end{itemize}
 
 \subsection{Mana base}
 \label{app:features:mana}
-\begin{itemize}
-  \item \texttt{land\_count}, \texttt{nonland\_count}: total quantities of lands and non-lands in the mainboard.
-  \item \texttt{basic\_land\_count}, \texttt{nonbasic\_land\_count}: split of the land count between basic lands (the five color basics plus Wastes, or any card with \texttt{superType=Basic} and \texttt{type=Land}) and non-basics.
-  \item \texttt{land\_mana\_production\_W}, \texttt{\_U}, \texttt{\_B}, \texttt{\_R}, \texttt{\_G}, \texttt{\_C}: for each color (including colorless), the count of mainboard lands whose \texttt{manaProduction} entry includes that color.
-  \item \texttt{lands\_that\_produce\_multiple\_colors\_count}: count of lands that produce more than one colored mana (colorless not counted).
-  \item \texttt{lands\_that\_produce\_colorless\_count}: count of lands whose \texttt{manaProduction} includes the colorless ``C'' symbol.
+\begin{itemize}\itemsep0pt
+  \item \texttt{land\_count}, \texttt{nonland\_count}: total quantities.
+  \item \texttt{basic\_land\_count}, \texttt{nonbasic\_land\_count}: split (basics = five color basics plus Wastes, or \texttt{superType=Basic} and \texttt{type=Land}).
+  \item \texttt{land\_mana\_production\_W}, \texttt{\_U}, \texttt{\_B}, \texttt{\_R}, \texttt{\_G}, \texttt{\_C}: per-color land counts (includes colorless).
+  \item \texttt{lands\_that\_produce\_multiple\_colors\_count}: lands producing $>$1 colored mana.
+  \item \texttt{lands\_that\_produce\_colorless\_count}: lands whose \texttt{manaProduction} includes ``C''.
 \end{itemize}
 
 \subsection{Mana curve (CMC)}
 \label{app:features:curve}
-CMC is taken from the canonical \texttt{oracleCard.cmc} field. Archidekt's user-overridable \texttt{custom\_cmc} is deliberately ignored: an audit showed that about 19\% of decks use it on at least one row, mixing legitimate cases (X-spells) with subjective preference, so using it would inject author-specific noise into a feature that is meant to describe the card.
-\begin{itemize}
-  \item \texttt{cmc\_mean}, \texttt{cmc\_median}, \texttt{cmc\_std}: mean, median, and population standard deviation of CMC across all mainboard cards (lands counted at CMC 0).
-  \item \texttt{nonland\_cmc\_mean}, \texttt{nonland\_cmc\_median}, \texttt{nonland\_cmc\_std}: same statistics restricted to non-land cards.
-  \item \texttt{cmc\_0\_count}, \texttt{cmc\_1\_count}, \dots, \texttt{cmc\_5\_count}, \texttt{cmc\_6\_plus\_count}: histogram of non-land cards by integer CMC bucket, with CMCs of 6 or more collapsed into a single bucket.
+CMC uses \texttt{oracleCard.cmc}. Archidekt's user-overridable \texttt{custom\_cmc} is ignored: an audit showed $\approx$19\% of decks override it, mixing legitimate X-spell cases with subjective preference, which would inject author noise.
+\begin{itemize}\itemsep0pt
+  \item \texttt{cmc\_mean}, \texttt{cmc\_median}, \texttt{cmc\_std}: across all mainboard cards (lands at CMC 0).
+  \item \texttt{nonland\_cmc\_mean}, \texttt{nonland\_cmc\_median}, \texttt{nonland\_cmc\_std}: same, restricted to non-lands.
+  \item \texttt{cmc\_0\_count}, \dots, \texttt{cmc\_5\_count}, \texttt{cmc\_6\_plus\_count}: histogram of non-lands by integer CMC bucket (CMC$\geq$6 collapsed).
 \end{itemize}
 
 \subsection{Card types}
 \label{app:features:types}
-\begin{itemize}
-  \item \texttt{creature\_count}, \texttt{instant\_count}, \texttt{sorcery\_count}, \texttt{artifact\_count}, \texttt{enchantment\_count}, \texttt{planeswalker\_count}: count of mainboard cards (respecting quantity) whose \texttt{types} array contains the corresponding type.
-  \item \texttt{noncreature\_spell\_count}: count of mainboard cards that are neither creatures nor lands.
-  \item \texttt{nonland\_permanent\_count}: count of mainboard cards that are non-land permanents (creature, artifact, enchantment, or planeswalker).
+\begin{itemize}\itemsep0pt
+  \item \texttt{creature\_count}, \texttt{instant\_count}, \texttt{sorcery\_count}, \texttt{artifact\_count}, \texttt{enchantment\_count}, \texttt{planeswalker\_count}: by primary type.
+  \item \texttt{noncreature\_spell\_count}: non-creature, non-land cards.
+  \item \texttt{nonland\_permanent\_count}: creature, artifact, enchantment, planeswalker.
 \end{itemize}
 
 \subsection{Bracket-relevant flags}
 \label{app:features:bracket}
-These count cards flagged by external sources that the bracket system uses to set hard caps (Appendix~\ref{app:mtg:power}). The four boolean flags come directly from the \texttt{oracleCard} payload Archidekt returned at collection time (May 2026); they are not recomputed from Rules Committee documents and not refreshed across folds, so they are a single dataset-wide snapshot. As far as we can tell, Archidekt's curated lists overlap heavily with EDHPowerLevel's because both trace back to the official Commander Rules Committee designation, but we did not audit the two for exact equality. This shared lineage is part of the circularity caveat in Section~\ref{sec:conclusion:discussion}.
-\begin{itemize}
-  \item \texttt{game\_changer\_count}: count of cards with \texttt{oracleCard.gameChanger = true}.
-  \item \texttt{extra\_turns\_count}: count of cards with \texttt{oracleCard.extraTurns = true}.
-  \item \texttt{tutor\_count}: count of cards with \texttt{oracleCard.tutor = true}.
-  \item \texttt{mass\_land\_denial\_count}: count of cards with \texttt{oracleCard.massLandDenial = true}.
-  \item \texttt{two\_card\_combo\_singleton\_count}: count of cards flagged as a singleton piece of a known two-card combo by Archidekt's combo registry. Empirically zero across the entire collected dataset (the underlying \texttt{twoCardComboSingelton} flag is never set on the cards Archidekt returns for our deck pool), so removed by the zero-variance filter.
+Boolean flags from the \texttt{oracleCard} payload at collection time (May 2026); not recomputed from Rules Committee documents and not refreshed across folds (a dataset-wide snapshot). Archidekt's curated lists likely overlap heavily with EDHPowerLevel's via the official Rules Committee designation, but we did not audit equality --- part of the circularity caveat in Section~\ref{sec:conclusion:discussion}.
+\begin{itemize}\itemsep0pt
+  \item \texttt{game\_changer\_count}, \texttt{extra\_turns\_count}, \texttt{tutor\_count}, \texttt{mass\_land\_denial\_count}: counts of cards with the respective \texttt{oracleCard} flag.
+  \item \texttt{two\_card\_combo\_singleton\_count}: empirically zero across the dataset; removed by zero-variance filter.
 \end{itemize}
 
 \subsection{Combo density}
 \label{app:features:combos}
-Combo membership is read from Archidekt's combo registry embedded in the deck payload at collection time (May 2026). We do not re-derive combos against the Commander Spellbook database; we use whatever combo references Archidekt happens to attach to each card. Like the bracket flags above, this is a frozen snapshot for the whole dataset.
-\begin{itemize}
-  \item \texttt{cards\_with\_atomic\_combos\_count}, \texttt{cards\_with\_potential\_combos\_count}: number of mainboard cards that participate, respectively, in at least one atomic combo or at least one potential combo according to Archidekt's combo data.
-  \item \texttt{atomic\_combo\_refs\_total}, \texttt{potential\_combo\_refs\_total}: total references summed across cards (a card that participates in three combos contributes 3).
-  \item \texttt{unique\_atomic\_combo\_refs\_count}, \texttt{unique\_potential\_combo\_refs\_count}: number of distinct combo identifiers referenced by the deck.
-  \item \texttt{two\_card\_combo\_ids\_total}: total references across cards to two-card combos.
-  \item \texttt{unique\_two\_card\_combo\_ids\_count}: number of distinct two-card combo identifiers referenced by the deck.
+Combo membership comes from Archidekt's combo registry in the deck payload at collection time (May 2026); not re-derived against Commander Spellbook. A frozen snapshot like the bracket flags.
+\begin{itemize}\itemsep0pt
+  \item \texttt{cards\_with\_atomic\_combos\_count}, \texttt{cards\_with\_potential\_combos\_count}: cards participating in $\geq$1 atomic / potential combo.
+  \item \texttt{atomic\_combo\_refs\_total}, \texttt{potential\_combo\_refs\_total}: total combo references (a card in three combos contributes 3).
+  \item \texttt{unique\_atomic\_combo\_refs\_count}, \texttt{unique\_potential\_combo\_refs\_count}: distinct combo identifiers.
+  \item \texttt{two\_card\_combo\_ids\_total}, \texttt{unique\_two\_card\_combo\_ids\_count}: total and distinct two-card combo refs.
 \end{itemize}
 
 \subsection{Popularity, salt, and price}
 \label{app:features:popularity}
-All three families drift over time, and we use a single collection-time snapshot (May 2026) for the whole dataset rather than per-deck values from each deck's creation date. Cross-validation does not fix this temporal mismatch; see Section~\ref{sec:conclusion:discussion}.
-\begin{itemize}
-  \item \texttt{edhrec\_rank\_mean}, \texttt{edhrec\_rank\_median}, \texttt{edhrec\_rank\_std}: aggregate statistics of EDHREC rank across mainboard cards. Cards with missing EDHREC rank are excluded from these statistics; the resulting missing value is imputed downstream by the fold-fitted median (Appendix~\ref{app:preprocessing}).
-  \item \texttt{salt\_mean}, \texttt{salt\_median}, \texttt{salt\_std}: aggregate statistics of EDHREC salt score, treated analogously.
-  \item \texttt{price\_total}, \texttt{price\_mean}, \texttt{price\_median}, \texttt{price\_std}: aggregate statistics of paper non-foil price in USD. Vendor preference is TCGPlayer market, falling through Card Kingdom, CardMarket, Star City Games, MagicPlayer, and CardTrader. \texttt{price\_total} is winsorized at the training-fold 99th percentile before modeling.
+All three drift over time; we use a single collection-time snapshot (May 2026), not per-deck values from creation date. CV does not fix this; see Section~\ref{sec:conclusion:discussion}.
+\begin{itemize}\itemsep0pt
+  \item \texttt{edhrec\_rank\_mean}, \texttt{edhrec\_rank\_median}, \texttt{edhrec\_rank\_std}: EDHREC rank aggregates; missing values imputed by fold-median (Appendix~\ref{app:preprocessing}).
+  \item \texttt{salt\_mean}, \texttt{salt\_median}, \texttt{salt\_std}: salt score aggregates, treated analogously.
+  \item \texttt{price\_total}, \texttt{price\_mean}, \texttt{price\_median}, \texttt{price\_std}: USD non-foil price; vendor cascade TCGPlayer $\to$ Card Kingdom $\to$ CardMarket $\to$ Star City $\to$ MagicPlayer $\to$ CardTrader. \texttt{price\_total} is winsorized at the fold 99th percentile.
 \end{itemize}
 
-\subsection{Rarity}
-\label{app:features:rarity}
-\begin{itemize}
-  \item \texttt{common\_count}, \texttt{uncommon\_count}, \texttt{rare\_count}, \texttt{mythic\_count}: counts of mainboard cards by printing-level rarity, taken from the specific printing the deck uses.
-\end{itemize}
-
-\subsection{Keywords}
-\label{app:features:keywords}
-Keywords are extracted from \texttt{oracleCard.keywords}.
-\begin{itemize}
-  \item \texttt{keyword\_total\_count}: total keyword occurrences across the mainboard (a card with two keywords contributes 2).
-  \item \texttt{distinct\_keyword\_count}: number of distinct keyword strings observed in the mainboard.
-  \item \texttt{flying\_count}, \texttt{trample\_count}, \texttt{haste\_count}, \texttt{hexproof\_count}, \texttt{ward\_count}, \texttt{indestructible\_count}, \texttt{lifelink\_count}, \texttt{menace\_count}, \texttt{vigilance\_count}, \texttt{deathtouch\_count}, \texttt{flash\_count}, \texttt{equip\_count}, \texttt{annihilator\_count}, \texttt{cascade\_count}: per-keyword card counts for the tracked evergreen and high-impact keywords.
-  \item \texttt{protection\_keyword\_count}: count of cards whose keyword list contains any \texttt{Protection from \dots} variant.
-\end{itemize}
-
-\subsection{Super- and subtypes}
-\label{app:features:subtypes}
-\begin{itemize}
-  \item \texttt{legendary\_count}, \texttt{snow\_count}: counts of cards with the corresponding supertype.
-  \item \texttt{distinct\_subtype\_count}: number of distinct subtypes observed across the mainboard.
-  \item \texttt{most\_common\_subtype\_count}: total count of cards belonging to the most frequent subtype in the deck (a tribal proxy).
-  \item \texttt{equipment\_subtype\_count}, \texttt{aura\_subtype\_count}, \texttt{vehicle\_subtype\_count}: counts of cards with the corresponding subtype.
-\end{itemize}
-
-\subsection{Multiface layouts}
-\label{app:features:layouts}
-\begin{itemize}
-  \item \texttt{multiface\_card\_count}: count of cards that expose more than one face.
-  \item \texttt{layout\_normal\_count}, \texttt{layout\_transform\_count}, \texttt{layout\_modal\_dfc\_count}, \texttt{layout\_split\_count}, \texttt{layout\_adventure\_count}: per-layout card counts for the tracked layouts.
-  \item \texttt{cards\_with\_faces\_count}: count of cards whose \texttt{faces} array is non-empty.
-  \item \texttt{total\_face\_count}: total number of faces summed across the deck.
-  \item \texttt{max\_faces\_on\_card}: maximum face count observed on any single card.
+\subsection{Rarity, keywords, types, layouts}
+\label{app:features:rest}
+\begin{itemize}\itemsep0pt
+  \item \textbf{Rarity:} \texttt{common\_count}, \texttt{uncommon\_count}, \texttt{rare\_count}, \texttt{mythic\_count} from printing-level rarity.
+  \item \textbf{Keyword aggregates:} \texttt{keyword\_total\_count} (a card with two keywords contributes 2), \texttt{distinct\_keyword\_count}.
+  \item \textbf{Per-keyword counts:} \texttt{flying\_count}, \texttt{trample\_count}, \texttt{haste\_count}, \texttt{hexproof\_count}, \texttt{ward\_count}, \texttt{indestructible\_count}, \texttt{lifelink\_count}, \texttt{menace\_count}, \texttt{vigilance\_count}, \texttt{deathtouch\_count}, \texttt{flash\_count}, \texttt{equip\_count}, \texttt{annihilator\_count}, \texttt{cascade\_count}, plus \texttt{protection\_keyword\_count} (any \texttt{Protection from \dots} variant).
+  \item \textbf{Super/subtypes:} \texttt{legendary\_count}, \texttt{snow\_count}, \texttt{distinct\_subtype\_count}, \texttt{most\_common\_subtype\_count} (tribal proxy), \texttt{equipment\_subtype\_count}, \texttt{aura\_subtype\_count}, \texttt{vehicle\_subtype\_count}.
+  \item \textbf{Multiface layouts:} \texttt{multiface\_card\_count}, \texttt{layout\_normal\_count}, \texttt{layout\_transform\_count}, \texttt{layout\_modal\_dfc\_count}, \texttt{layout\_split\_count}, \texttt{layout\_adventure\_count}, \texttt{cards\_with\_faces\_count}, \texttt{total\_face\_count}, \texttt{max\_faces\_on\_card}.
 \end{itemize}
 
 \endgroup
@@ -775,26 +711,25 @@ Keywords are extracted from \texttt{oracleCard.keywords}.
 \label{app:spotcheck}
 % ============================================================
 
-This appendix carries the full spot-checking results, the software versions used, and the default hyperparameters referenced in Section~\ref{sec:spotcheck}.
+Full spot-checking results, software versions, and default hyperparameters for Section~\ref{sec:spotcheck}.
 
-\paragraph{Software versions.} Python~3.11, \texttt{scikit-learn} 1.5, \texttt{scipy} 1.13, \texttt{numpy} 1.26, \texttt{pandas} 2.2. Hold-out splits use \texttt{StratifiedShuffleSplit} (80/20, 5 seeds) and are reproducible from the seed list $\{1, 2, 3, 4, 5\}$.
+\paragraph{Software.} Python~3.11, \texttt{scikit-learn} 1.5, \texttt{scipy} 1.13, \texttt{numpy} 1.26, \texttt{pandas} 2.2. Hold-out splits: \texttt{StratifiedShuffleSplit} (80/20, seeds $\{1,2,3,4,5\}$).
 
-\paragraph{Default hyperparameters.} Each candidate runs with its scikit-learn 1.5 defaults, except where the default is not viable on this scale. The notable defaults are:
-\begin{itemize}
+\paragraph{Default hyperparameters.} scikit-learn 1.5 defaults except where infeasible at this scale:
+\begin{itemize}\itemsep0pt
   \item \texttt{DecisionTreeClassifier}: \texttt{criterion="gini"}, no depth limit.
   \item \texttt{RandomForestClassifier}: 100 trees, \texttt{max\_features="sqrt"}, \texttt{n\_jobs=-1}.
   \item \texttt{HistGradientBoostingClassifier}: \texttt{max\_iter=100}, \texttt{learning\_rate=0.1}, \texttt{max\_leaf\_nodes=31}.
-  \item \texttt{MultinomialNB}: \texttt{alpha=1.0}, BC representation.
-  \item \texttt{GaussianNB}: \texttt{var\_smoothing=1e-9}, DF representation.
-  \item \texttt{LogisticRegression}: \texttt{C=1.0}, \texttt{penalty="l2"}, \texttt{max\_iter=1000}; solver \texttt{lbfgs} on DF and \texttt{saga} on BC.
+  \item \texttt{MultinomialNB} (BC): \texttt{alpha=1.0}. \texttt{GaussianNB} (DF): \texttt{var\_smoothing=1e-9}.
+  \item \texttt{LogisticRegression}: \texttt{C=1.0}, \texttt{penalty="l2"}, \texttt{max\_iter=1000}; solver \texttt{lbfgs} on DF, \texttt{saga} on BC.
   \item \texttt{LinearSVC}: \texttt{C=1.0}, \texttt{penalty="l2"}, \texttt{loss="squared\_hinge"}, \texttt{max\_iter=5000}.
   \item \texttt{KNeighborsClassifier}: \texttt{n\_neighbors=5}, \texttt{weights="uniform"}.
 \end{itemize}
-\texttt{StandardScaler} is applied to DF for the scale-sensitive algorithms; tree-based models and \texttt{GaussianNB} receive unscaled features.
+\texttt{StandardScaler} applies to DF for scale-sensitive algorithms; tree-based and \texttt{GaussianNB} receive unscaled features.
 
-\paragraph{BC vocabulary threshold.} \texttt{bc\_min\_df} was selected by sweeping $\{5, 10, 20\}$ on the BC representation. \texttt{min\_df = 10} produced the highest mean macro-F1 across seeds and is fixed for all subsequent spot-checking and nested CV runs.
+\paragraph{BC vocabulary threshold.} \texttt{bc\_min\_df} was swept over $\{5,10,20\}$; \texttt{min\_df=10} produced the highest mean macro-F1 and is fixed for all subsequent runs.
 
-\paragraph{Per-algorithm macro-F1.} Table~\ref{tab:spotcheck} reports mean (and standard deviation) of macro-F1 across the five hold-out seeds. The five highest-ranked algorithms per representation are kept; their union $A_{\text{union}}$ defines the algorithm set carried forward to nested CV.
+\paragraph{Per-algorithm macro-F1.} Table~\ref{tab:spotcheck} reports mean$\pm$std macro-F1 over the 5 seeds. The five highest-ranked algorithms per representation are kept; their union $A_{\text{union}}$ defines the algorithm set carried into nested CV.
 
 \begin{table}[h]
 \centering
@@ -820,7 +755,7 @@ KNN                 & 0.4541 & 0.0177 & 0.5241 & 0.0113 & --- \\
 \label{app:training-verification}
 % ============================================================
 
-Before any voting or model selection happens, the pipeline runs a verification phase as a sanity gate. It checks that every expected model is present, every outer fold ran to completion, and every model used the same fold identities. Only after those checks pass do we report paired comparisons.
+Before voting or model selection, the pipeline runs a verification gate: every expected model present, every outer fold complete, same fold identities across models. Paired comparisons are only reported after these pass.
 
 \begin{table}[h]
 \centering
@@ -841,7 +776,7 @@ Training target & \(y_{\text{arch}}\) only; \(y_{\text{calc}}\) excluded from fe
 \end{tabular}
 \end{table}
 
-To check whether models are memorizing commander-specific patterns, a 5-fold \texttt{GroupKFold} grouped by commander identity is also run. Table~\ref{tab:groupkfold} shows the two models we later use for interpretation. The grouped scores stay close to the stratified nested-CV scores, which is consistent with the top models not depending only on the commander.
+A 5-fold \texttt{GroupKFold} grouped by commander identity checks whether models memorize commander-specific patterns. Table~\ref{tab:groupkfold} shows the two models used for interpretation; grouped scores stay close to the stratified nested-CV scores, consistent with the top models not depending only on the commander.
 
 \begin{table}[h]
 \centering
@@ -865,7 +800,7 @@ All paired statistical tests use the same 15 outer scores for every model. The F
 \label{app:voting-selection}
 % ============================================================
 
-Voting reads saved OOF predictions and never retrains a base model. Member lists are fixed by the global macro-F1 ranking over the individual models; hard-vote ties are broken by the summed macro-F1 of the members voting for each class, with the smaller bracket as a deterministic fallback. The full member lists are in Table~\ref{tab:voting-members}; interpretability is performed on the best individual DF and BC models (Section~\ref{sec:training:selection}) rather than on the ensemble.
+Voting reads saved OOF predictions; no base model is retrained. Member lists are fixed by global macro-F1 ranking; hard-vote ties break by summed macro-F1 of voting members, with the smaller bracket as deterministic fallback. Member lists in Table~\ref{tab:voting-members}. Interpretability is performed on the best individual DF and BC models (Section~\ref{sec:training:selection}), not on the ensemble.
 
 \begin{table}[h]
 \centering
