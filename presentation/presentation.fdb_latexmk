@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1781459026.04318 "presentation.tex" "presentation.pdf" "presentation" 1781459034.87604 0
+["pdflatex"] 1781459269.47309 "presentation.tex" "presentation.pdf" "presentation" 1781459278.55158 0
   "../documents/paper/src/figures/df-vs-bc.png" 1779912507 682267 d03e0b09d29da363d314b48f6da33a95 ""
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1781304236 98890 e51cdebebef629975712b75c07c1772e ""
   "C:/Users/henri/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1779549188 13350272 cf93f0291c41cb416a67b2ddd8b6f5a1 ""
@@ -285,10 +285,10 @@
   "figures/mtg-commander-logo.jpg" 1781456664 17443 f07f2d083dcc14c7e67afd4959e23bae ""
   "inf-logo-dark.pdf" 1781302552 5842 addb54ee9b6e260135f78de2db4ae942 ""
   "macros.sty" 1781302552 8011 5fcd5d7397a63eeaf4614d30ad0526a3 ""
-  "presentation.aux" 1781459033 7296 85ff06aac62f3a3578b9f770c294b6c2 "pdflatex"
-  "presentation.nav" 1781459033 2924 2d32d5ac1b1014cb465f8bd35316c8cc "pdflatex"
-  "presentation.out" 1781459033 474 a7054fc4339e8bfb640df355117d2136 "pdflatex"
-  "presentation.tex" 1781459015 33691 6b9221e886136fbbc54fc143f4d9cc3d ""
+  "presentation.aux" 1781459277 7106 aa1d2211a6bb5365e8936a5914a6491f "pdflatex"
+  "presentation.nav" 1781459277 2924 5a7cdbe8c9a7ae9d2592424847fb5ae2 "pdflatex"
+  "presentation.out" 1781459277 474 a7054fc4339e8bfb640df355117d2136 "pdflatex"
+  "presentation.tex" 1781459235 33636 9d61cef9d11d193a40da320795cb8370 ""
   "ufrgs-logo.png" 1781302552 104043 6c425aeee30197404a75f47273afd291 ""
   (generated)
   "presentation.aux"
