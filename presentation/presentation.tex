@@ -178,16 +178,16 @@
 \begin{frame}{Duas leituras de poder.}
     \begin{columns}[t]
         \begin{column}{.45\textwidth}
-            \visible<2->{\textbf{Comunidade ($y_{\text{arch}}$).}}
-            \visible<3->{\begin{itemize}
+            \visible<2->{\textbf{Comunidade ($y_{\text{arch}}$).}
+            \begin{itemize}
                 \item Bracket que o autor escolhe ao publicar o deck no Archidekt.
                 \item \textit{Subjetivo}: varia entre jogadores.
             \end{itemize}}
         \end{column}%
         \hfill%
         \begin{column}{.45\textwidth}
-            \visible<4->{\textbf{Calculadora ($y_{\text{calc}}$).}}
-            \visible<5->{\begin{itemize}
+            \visible<3->{\textbf{Calculadora ($y_{\text{calc}}$).}
+            \begin{itemize}
                 \item Bracket que o EDHPowerLevel retorna para a mesma decklist.
                 \item \textit{Determinístico}: mesma entrada $\Rightarrow$ mesma saída.
             \end{itemize}}
@@ -198,16 +198,16 @@
     \begin{columns}
         \begin{column}{.45\textwidth}
             \centering
-            \visible<3->{\includegraphics[height=\readlogoheight]{figures/archidekt-logo.png}}
+            \visible<2->{\includegraphics[height=\readlogoheight]{figures/archidekt-logo.png}}
         \end{column}%
         \hfill%
         \begin{column}{.45\textwidth}
             \centering
-            \visible<5->{\includegraphics[height=\readlogoheight]{figures/calculator-logo.png}}
+            \visible<3->{\includegraphics[height=\readlogoheight]{figures/calculator-logo.png}}
         \end{column}
     \end{columns}
     \vfill
-    \visible<6->{\begin{center}\Large \textbf{Frequentemente, elas discordam.}\end{center}}
+    \visible<4->{\begin{center}\Large \textbf{Frequentemente, elas discordam.}\end{center}}
 \end{frame}
 
 
@@ -368,6 +368,11 @@
 %     para cima em 23.5% dos casos, para baixo em só 15.6%. Quando elas
 %     discordam, a calculadora tende a ser mais "rígida".
 % ============================================================
+% Slide de transição: só o título no topo.
+\begin{frame}[noframenumbering]{O tamanho da divergência.}
+\end{frame}
+
+% Slide com a tabela e todos os dados (tudo de uma vez, sem incrementos).
 \begin{frame}{O tamanho da divergência.}
     \begin{columns}[c]
         \begin{column}{.52\textwidth}
@@ -390,12 +395,12 @@
         \begin{column}{.42\textwidth}
             \small
             \begin{itemize}
-                \item<2-> \textbf{60,9\%} de concordância exata.
-                \item<3-> \textbf{97,7\%} dentro de $\pm 1$ bracket.
-                \item<4-> Quando discordam, a calculadora classifica:
+                \item \textbf{60,9\%} de concordância exata.
+                \item \textbf{97,7\%} dentro de $\pm 1$ bracket.
+                \item Quando discordam, a calculadora classifica:
                 \begin{itemize}\footnotesize
-                    \item<4-> \textbf{para cima} em 23,5\%
-                    \item<4-> \textbf{para baixo} em 15,6\%
+                    \item \textbf{para cima} em 23,5\%
+                    \item \textbf{para baixo} em 15,6\%
                 \end{itemize}
             \end{itemize}
         \end{column}
@@ -500,7 +505,7 @@
     \end{center}
     \normalsize
     \vfill
-    \visible<2->{\textbf{KNN cai} (último nas duas representações). \pause Sobram \textbf{6 algoritmos $\times$ 2 representações = 12 modelos} para nested CV.}
+    \visible<2->{\textbf{KNN cai} (último nas duas representações). Sobram \textbf{6 algoritmos $\times$ 2 representações = 12 modelos} para nested CV.}
 \end{frame}
 
 
@@ -544,10 +549,10 @@
     \end{center}
     \normalsize
     \vfill
-    \visible<2->{\textbf{DF $>$ BC} em todo algoritmo.\pause \quad Melhor: \textbf{DF Gradient Boosting, F1 = 0{,}6908}.}\pause
+    \visible<2->{\textbf{DF $>$ BC} em todo algoritmo.\quad Melhor: \textbf{DF Gradient Boosting, F1 = 0{,}6908}.}
     \medskip
 
-    \visible<5->{\small Voting (top-3 OOF) sobe marginalmente para 0{,}6941. GroupKFold por comandante: $+0{,}01$ (sem memorização de comandante).}
+    \visible<3->{\small Voting (top-3 OOF) sobe marginalmente para 0{,}6941. GroupKFold por comandante: $+0{,}01$ (sem memorização de comandante).}
 \end{frame}
 
 
@@ -586,10 +591,10 @@
     \end{center}
     \normalsize
     \vfill
-    \visible<2->{\textbf{DF Random Forest} concorda \textbf{69{,}3\%} com a calculadora --- treinado apenas em $y_{\text{arch}}$.} \pause
+    \visible<2->{\textbf{DF Random Forest} concorda \textbf{69{,}3\%} com a calculadora --- treinado apenas em $y_{\text{arch}}$.}
     \medskip
 
-    \visible<4->{Mas o \textbf{melhor preditor da comunidade} (DF GB) \textbf{não é o mais alinhado} com a calculadora. \pause O gap é \textit{exatamente} o sinal comunitário que a calculadora não vê.}
+    \visible<3->{Mas o \textbf{melhor preditor da comunidade} (DF GB) \textbf{não é o mais alinhado} com a calculadora. O gap é \textit{exatamente} o sinal comunitário que a calculadora não vê.}
 \end{frame}
 
 
@@ -615,7 +620,7 @@
 \begin{frame}{Interpretabilidade.}\pause
     \begin{columns}
         \begin{column}{.48\textwidth}
-            \textbf{DF Gradient Boosting} \\ {\footnotesize\textit{permutation importance}} \pause
+            \visible<2->{\textbf{DF Gradient Boosting} \\ {\footnotesize\textit{permutation importance}}
             \begin{center}
                 \footnotesize
                 \begin{tabular}{lr}
@@ -629,12 +634,11 @@
                     \texttt{cmc\_1\_count} & 0{,}006 \\
                     \bottomrule
                 \end{tabular}
-            \end{center}
+            \end{center}}
         \end{column}%
         \hfill%
         \begin{column}{.48\textwidth}
-            \visible<3->{\textbf{BC Gradient Boosting} \\ {\footnotesize\textit{exemplos de alto lift no bracket 4}}}
-            \visible<4->{
+            \visible<3->{\textbf{BC Gradient Boosting} \\ {\footnotesize\textit{exemplos de alto lift no bracket 4}}
             \begin{center}
                 \footnotesize
                 \begin{tabular}{lr}
@@ -652,7 +656,7 @@
         \end{column}
     \end{columns}
     \vfill
-    \visible<5->{\textbf{Mesmo conjunto de sinais subjacentes.} Uma representação vê a forma agregada, a outra vê os exemplares.}
+    \visible<3->{\textbf{Mesmo conjunto de sinais subjacentes.} Uma representação vê a forma agregada, a outra vê os exemplares.}
 \end{frame}
 
 
@@ -675,14 +679,14 @@
 % ============================================================
 \begin{frame}{O que aprendemos.}\pause
     \begin{itemize}
-        \visible<2->{\item Estrutura agregada \textbf{prediz melhor} o bracket comunitário do que identidade de cartas.}
+        \item<2-> Estrutura agregada \textbf{prediz melhor} o bracket comunitário do que identidade de cartas.
         \medskip
-        \visible<3->{\item Comunidade e calculadora reagem a \textbf{sinais sobrepostos}, mas \textbf{não idênticos}.}
+        \item<2-> Comunidade e calculadora reagem a \textbf{sinais sobrepostos}, mas \textbf{não idênticos}.
         \medskip
-        \visible<4->{\item O \textbf{gap} entre o melhor preditor da comunidade e o modelo mais alinhado com a calculadora é onde mora o sinal \textbf{comunitário} que a calculadora não capta.}
+        \item<2-> O \textbf{gap} entre o melhor preditor da comunidade e o modelo mais alinhado com a calculadora é onde mora o sinal \textbf{comunitário} que a calculadora não capta.
     \end{itemize}
     \vfill
-    \visible<5->{\centering\textit{Não decidimos quem está certo. Mostramos por onde vai o desalinhamento.}}
+    \visible<3->{\centering\textit{Não decidimos quem está certo. Mostramos por onde vai o desalinhamento.}}
 \end{frame}
 
 
@@ -715,7 +719,7 @@
             \end{itemize}
         \end{column}%
         \hfill%
-        \begin{column}{.32\textwidth}\pause
+        \begin{column}{.32\textwidth}
             \textbf{Próximos passos}
             \begin{itemize}
                 \footnotesize
@@ -726,7 +730,7 @@
             \end{itemize}
         \end{column}%
         \hfill%
-        \begin{column}{.32\textwidth}\pause
+        \begin{column}{.32\textwidth}
             \textbf{Reprodutibilidade}
             \begin{itemize}
                 \footnotesize
