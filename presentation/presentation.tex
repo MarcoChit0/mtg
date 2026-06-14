@@ -240,7 +240,17 @@
 \section{Metodologia.}
 
 % ============================================================
-% SLIDE 6 -- Roadmap metodológico
+% TRANSIÇÃO -- Título: Roadmap do trabalho
+% ============================================================
+% NOTA: ~5s. Slide de transição, só o título, anunciando a planta-baixa.
+% Sem numeração (noframenumbering).
+% ============================================================
+\begin{frame}[noframenumbering]{Roadmap do trabalho.}
+\end{frame}
+
+
+% ============================================================
+% SLIDE 6 -- Roadmap metodológico (diagrama + texto)
 % ============================================================
 % NOTA: ~60s. Este é o slide que dá a planta-baixa do trabalho inteiro.
 % O QUE FALAR:
@@ -260,29 +270,33 @@
 %   - "Vamos passar pelas etapas em ordem. As três primeiras são a parte de
 %     dados; as quatro últimas são onde a gente responde à pergunta."
 % ============================================================
-\begin{frame}{Roadmap do trabalho.}\pause
+\begin{frame}{Roadmap do trabalho.}
     \begin{center}
-        \begin{tikzpicture}[node distance=4mm and 6mm]
+        % Fluxo em "S": linha 1 esquerda->direita, desce na 4a coluna, linha 2
+        % direita->esquerda. Todas as setas retas (sem cruzamentos).
+        \begin{tikzpicture}[node distance=7mm and 8mm]
+            % Linha 1 (esquerda -> direita)
             \node[pipebox] (col)  {Coleta};
-            \node[pipebox, right=of col] (prep) {Pré-proc.};
-            \node[pipebox, right=of prep] (rep) {BC / DF};
-            \node[pipebox, below=of col] (spot) {Spot-check};
-            \node[pipebox, right=of spot] (cv) {Nested CV};
-            \node[pipebox, right=of cv] (vot) {Voting};
-            \node[pipebox, below=of spot] (cmp) {vs.\ calculadora};
-            \node[pipebox, right=of cmp] (int) {Interpretab.};
+            \node[pipebox, right=of col]  (prep) {Pré-proc.};
+            \node[pipebox, right=of prep] (rep)  {BC / DF};
+            \node[pipebox, right=of rep]  (spot) {Spot-check};
+            % Linha 2 (direita -> esquerda), Nested CV logo abaixo de Spot-check
+            \node[pipebox, below=of spot] (cv)  {Nested CV};
+            \node[pipebox, left=of cv]    (vot) {Voting};
+            \node[pipebox, left=of vot]   (cmp) {vs.\ calculadora};
+            \node[pipebox, left=of cmp]   (int) {Interpretab.};
 
-            \draw[pipearrow] (col) -- (prep);
+            \draw[pipearrow] (col)  -- (prep);
             \draw[pipearrow] (prep) -- (rep);
-            \draw[pipearrow] (rep.south) |- (spot.east);
-            \draw[pipearrow] (spot) -- (cv);
-            \draw[pipearrow] (cv) -- (vot);
-            \draw[pipearrow] (vot.south) |- (int.east);
-            \draw[pipearrow] (int) -- (cmp);
+            \draw[pipearrow] (rep)  -- (spot);
+            \draw[pipearrow] (spot) -- (cv);   % desce para a 2a linha
+            \draw[pipearrow] (cv)   -- (vot);
+            \draw[pipearrow] (vot)  -- (cmp);
+            \draw[pipearrow] (cmp)  -- (int);
         \end{tikzpicture}
     \end{center}
     \vfill
-    \visible<2->{\small \textbf{Pipeline em ordem.} Coleta $\to$ representação $\to$ modelagem $\to$ comparação $\to$ interpretação.}
+    {\small \textbf{Pipeline em ordem.} Coleta $\to$ representação $\to$ modelagem $\to$ comparação $\to$ interpretação.}
 \end{frame}
 
 
