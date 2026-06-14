@@ -420,40 +420,54 @@
 %   - Comparar BC e DF responde diretamente "o que está dirigindo o label
 %     da comunidade?".
 % ============================================================
-\begin{frame}{Duas representações do mesmo deck.}\pause
-    \begin{columns}
+\begin{frame}{Duas representações do mesmo deck.}
+    \begin{columns}[t]
         \begin{column}{.5\textwidth}
             \begin{itemize}
-                \visible<2->{\item \textbf{Bag of Cards (BC).}}
-                \visible<3->{\begin{itemize}
-                    \item Vetor esparso indexado por carta ($\approx$ 11k dim).
-                    \item Hipótese: a comunidade reage a \textit{cartas específicas}.
-                \end{itemize}}
+                \item<2-> \textbf{Bag of Cards (BC).}
+                \begin{itemize}
+                    \item<2-> Vetor esparso indexado por carta ($\approx$ 11k dim).
+                    \item<2-> Hipótese: a comunidade reage a \textit{cartas específicas}.
+                \end{itemize}
                 \medskip
-                \visible<4->{\item \textbf{Deck Features (DF).}}
-                \visible<5->{\begin{itemize}
-                    \item Vetor denso de 102 atributos estruturais.
-                    \item Curva, Game Changers, tutores, combos, preço, etc.
-                    \item Hipótese: a comunidade reage à \textit{estrutura agregada}.
-                \end{itemize}}
+                \item<3-> \textbf{Deck Features (DF).}
+                \begin{itemize}
+                    \item<3-> Vetor denso de 102 atributos estruturais.
+                    \item<3-> Curva, Game Changers, tutores, combos, preço, etc.
+                    \item<3-> Hipótese: a comunidade reage à \textit{estrutura agregada}.
+                \end{itemize}
             \end{itemize}
         \end{column}%
         \hfill%
         \begin{column}{.45\textwidth}
-            % FIGURA: usar a figura df-vs-bc do paper
-            \visible<6->{
-            \begin{center}
-                \includegraphics[width=\textwidth]{../documents/paper/src/figures/df-vs-bc.png}
+            \visible<2->{\begin{center}
+                \includegraphics[width=0.85\linewidth]{figures/mtg-bag-of-cards.png}
+            \end{center}}
+            \visible<3->{\begin{center}
+                \includegraphics[width=0.85\linewidth]{figures/mtg-deck-features.png}
             \end{center}}
         \end{column}
     \end{columns}
 \end{frame}
 
 
+% ============================================================
+% SLIDE 10 -- Duas representações (diagrama completo)
+% ============================================================
+% NOTA: ~20s. Slide de fechamento do conceito: mostra como o MESMO deck vira
+% as duas representações em paralelo. Só o título e a figura grande.
+% ============================================================
+\begin{frame}{Duas representações do mesmo deck.}
+    \begin{center}
+        \includegraphics[width=0.92\textwidth]{figures/mtg-data-structure.png}
+    \end{center}
+\end{frame}
+
+
 \section{Resultados.}
 
 % ============================================================
-% SLIDE 10 -- Spot-checking
+% SLIDE 11 -- Spot-checking
 % ============================================================
 % NOTA: ~50s.
 % O QUE FALAR:
@@ -491,7 +505,7 @@
 
 
 % ============================================================
-% SLIDE 11 -- Nested CV + DF > BC
+% SLIDE 12 -- Nested CV + DF > BC
 % ============================================================
 % NOTA: ~75s. Slide denso de resultados, mas a mensagem é simples.
 % O QUE FALAR:
@@ -538,7 +552,7 @@
 
 
 % ============================================================
-% SLIDE 12 -- Comparação com a calculadora
+% SLIDE 13 -- Comparação com a calculadora
 % ============================================================
 % NOTA: ~75s. Este é o slide-payoff. Aqui respondemos à pergunta de pesquisa.
 % O QUE FALAR:
@@ -580,7 +594,7 @@
 
 
 % ============================================================
-% SLIDE 13 -- Interpretabilidade
+% SLIDE 14 -- Interpretabilidade
 % ============================================================
 % NOTA: ~60s.
 % O QUE FALAR:
@@ -645,7 +659,7 @@
 \section{Discussão.}
 
 % ============================================================
-% SLIDE 14 -- Discussão / takeaways
+% SLIDE 15 -- Discussão / takeaways
 % ============================================================
 % NOTA: ~45s.
 % O QUE FALAR:
@@ -673,7 +687,7 @@
 
 
 % ============================================================
-% SLIDE 15 -- Limitações, future work, reprodutibilidade
+% SLIDE 16 -- Limitações, future work, reprodutibilidade
 % ============================================================
 % NOTA: ~60s. Slide obrigatório do enunciado (reprodutibilidade tem que
 % aparecer). Três colunas curtas.
@@ -728,7 +742,7 @@
 
 
 % ============================================================
-% SLIDE 16 -- Agradecimentos / Q&A
+% SLIDE 17 -- Agradecimentos / Q&A
 % ============================================================
 % NOTA: ~15s. Slide final. Fica enquanto perguntas são respondidas.
 % O QUE FALAR:
