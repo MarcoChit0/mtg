@@ -1,5 +1,5 @@
 \beamer@sectionintoc {1}{Introdução.}{2}{0}{1}
 \beamer@sectionintoc {2}{Metodologia.}{17}{0}{2}
 \beamer@sectionintoc {3}{Dados.}{20}{0}{3}
-\beamer@sectionintoc {4}{Resultados.}{38}{0}{4}
-\beamer@sectionintoc {5}{Discussão.}{56}{0}{5}
+\beamer@sectionintoc {4}{Resultados.}{35}{0}{4}
+\beamer@sectionintoc {5}{Discussão.}{53}{0}{5}

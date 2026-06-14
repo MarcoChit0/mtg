@@ -368,11 +368,11 @@
 %     para cima em 23.5% dos casos, para baixo em só 15.6%. Quando elas
 %     discordam, a calculadora tende a ser mais "rígida".
 % ============================================================
-\begin{frame}{O tamanho da divergência.}\pause
-    \begin{columns}
-        \begin{column}{.50\textwidth}
-            \small
-            \begin{center}
+\begin{frame}{O tamanho da divergência.}
+    \begin{columns}[c]
+        \begin{column}{.52\textwidth}
+            \begin{center}\footnotesize
+            \setlength{\tabcolsep}{4pt}
             \begin{tabular}{lrrr|r}
             \toprule
             $y_{\text{arch}} \backslash y_{\text{calc}}$ & 2 & 3 & 4 & Total \\
@@ -386,19 +386,18 @@
             \end{tabular}
             \end{center}
         \end{column}%
-        \hfill%
-        \begin{column}{.45\textwidth}
-            \visible<2->{\textbf{60{,}9\%} de concordância exata.} \pause
-            \medskip
-
-            \visible<4->{\textbf{97{,}7\%} dentro de $\pm 1$ bracket.}\pause
-            \medskip
-
-            \visible<6->{Quando discordam, calculadora classifica:}
-            \visible<7->{\begin{itemize}
-                \item \textbf{para cima} em 23{,}5\%.
-                \item \textbf{para baixo} em 15{,}6\%.
-            \end{itemize}}
+        \hspace{0.2cm}%
+        \begin{column}{.42\textwidth}
+            \small
+            \begin{itemize}
+                \item<2-> \textbf{60,9\%} de concordância exata.
+                \item<3-> \textbf{97,7\%} dentro de $\pm 1$ bracket.
+                \item<4-> Quando discordam, a calculadora classifica:
+                \begin{itemize}\footnotesize
+                    \item<4-> \textbf{para cima} em 23,5\%
+                    \item<4-> \textbf{para baixo} em 15,6\%
+                \end{itemize}
+            \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
