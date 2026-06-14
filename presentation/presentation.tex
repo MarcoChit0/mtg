@@ -34,6 +34,10 @@
 % ============================================================
 \newcommand{\readlogoheight}{1.1cm}
 
+% Tamanho dos mini-logos (Archidekt / EDHPowerLevel) usados como título no
+% slide "Coleta de dados". Ajuste aqui para deixá-los maiores/menores.
+\newcommand{\sourcelogoheight}{0.75cm}
+
 % ============================================================
 % Title page
 % ============================================================
@@ -315,30 +319,29 @@
 %   - Resultado: 14.421 decks brutos -> 12.135 decks no conjunto modelável
 %     (após remover duplicatas, fingerprints repetidos e y_calc fora de 2-4).
 % ============================================================
-\begin{frame}{Coleta de dados.}\pause
+\begin{frame}{Coleta de dados.}
     \begin{columns}
         \begin{column}{.55\textwidth}
-            \textbf{Archidekt.} \pause
-            \begin{itemize}
+            \visible<2->{\includegraphics[height=\sourcelogoheight]{figures/archidekt-logo.png}}
+            \visible<2->{\begin{itemize}
                 \item API REST pública, paginada.
                 \item Filtros: Commander, $\geq$ 1.000 views, brackets $\in\{2,3,4\}$, 100 cartas.
-            \end{itemize}
+            \end{itemize}}
             \medskip
-            \visible<4->{\textbf{EDHPowerLevel.}}
-            \visible<5->{
-            \begin{itemize}
+            \visible<3->{\includegraphics[height=\sourcelogoheight]{figures/calculator-logo.png}}
+            \visible<3->{\begin{itemize}
                 \item Sem API pública.
                 \item Playwright + Chromium headless: cola a decklist, lê o bracket no DOM.
             \end{itemize}}
         \end{column}%
-        \hfill%
-        \begin{column}{.35\textwidth}
-            \visible<6->{
-            \begin{center}
+        \hspace{0.3cm}%
+        \begin{column}{.32\textwidth}
+            \visible<4->{\begin{center}\footnotesize
+                \setlength{\tabcolsep}{4pt}
                 \begin{tabular}{rl}
                 \toprule
                 14.421 & decks coletados \\
-                $-$1.471 & duplicatas/fingerprint \\
+                $-$1.471 & duplicatas \\
                 $-$815 & $y_{\text{calc}} \in \{1,5\}$ \\
                 \midrule
                 \textbf{12.135} & \textbf{decks no modelo} \\
