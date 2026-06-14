@@ -312,7 +312,6 @@
 %   - EDHPowerLevel: NÃO tem API. Automatizamos com Playwright (browser
 %     headless). Colamos cada decklist e lemos o bracket do DOM.
 %   - Filtros aplicados: Commander, 100 cartas mainboard, brackets 2-4.
-%   - Tudo público, sem credenciais, ritmo conservador (não hammered).
 %   - Resultado: 14.421 decks brutos -> 12.135 decks no conjunto modelável
 %     (após remover duplicatas, fingerprints repetidos e y_calc fora de 2-4).
 % ============================================================
@@ -331,12 +330,10 @@
                 \item Sem API pública.
                 \item Playwright + Chromium headless: cola a decklist, lê o bracket no DOM.
             \end{itemize}}
-            \medskip
-            \visible<6->{\textbf{Endpoints públicos, sem credenciais, pacing conservador.}}
         \end{column}%
         \hfill%
         \begin{column}{.35\textwidth}
-            \visible<7->{
+            \visible<6->{
             \begin{center}
                 \begin{tabular}{rl}
                 \toprule
