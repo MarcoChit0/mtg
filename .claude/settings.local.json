@@ -24,7 +24,13 @@
       "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; $env:PYTHONIOENCODING=\"utf-8\"; uv run --no-sync python -m scripts.phase_j_interpretability 2>&1)",
       "Bash(python3 -c ' *)",
       "Bash(pdflatex -interaction=nonstopmode -halt-on-error presentation.tex)",
-      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; git checkout HEAD -- presentation/presentation.tex; Write-Output \"restaurado\"; \\(Get-Content presentation/presentation.tex | Measure-Object -Line\\).Lines)"
+      "PowerShell(cd \"c:\\\\Users\\\\henri\\\\Downloads\\\\Mestrado\\\\Cadeira ML\\\\mtg\"; git checkout HEAD -- presentation/presentation.tex; Write-Output \"restaurado\"; \\(Get-Content presentation/presentation.tex | Measure-Object -Line\\).Lines)",
+      "Bash(which magick *)",
+      "Bash(./.venv/Scripts/python.exe -c \"import PIL; print\\('Pillow', PIL.__version__\\)\")",
+      "Bash(python -c \"import PIL; print\\('Pillow', PIL.__version__\\)\")",
+      "Bash(\"../../.venv/Scripts/python.exe\" -c \"from PIL import Image; im=Image.open\\('mtg archidekt logo.webp'\\); im.save\\('archidekt-logo.png'\\); print\\('converted', im.size, im.mode\\)\")",
+      "Bash(cp \"mtg calculator logo.png\" \"calculator-logo.png\")",
+      "Bash(\"../../.venv/Scripts/python.exe\" -c \"from PIL import Image; [print\\(f, Image.open\\(f\\).size, 'aspect %.2f'%\\(Image.open\\(f\\).size[0]/Image.open\\(f\\).size[1]\\)\\) for f in ['archidekt-logo.png','calculator-logo.png']]\")"
     ]
   },
   "outputStyle": "default"

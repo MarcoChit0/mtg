@@ -29,6 +29,12 @@
 \usepackage{macros}
 
 % ============================================================
+% Tamanho dos logos do slide "Duas leituras de poder" (Archidekt / calculadora).
+% Ajuste a altura aqui e os DOIS logos mudam juntos, mantendo o mesmo tamanho.
+% ============================================================
+\newcommand{\readlogoheight}{1.1cm}
+
+% ============================================================
 % Title page
 % ============================================================
 \title
@@ -165,22 +171,35 @@
 %   - "E essas duas fontes frequentemente discordam." (Sem números aqui --
 %     só plantar o problema. Os números vêm no slide 8.)
 % ============================================================
-\begin{frame}{Duas leituras de poder.}\pause
-    \begin{columns}
+\begin{frame}{Duas leituras de poder.}
+    \begin{columns}[t]
         \begin{column}{.45\textwidth}
-            \textbf{Comunidade ($y_{\text{arch}}$).} \pause
-            \begin{itemize}
+            \visible<2->{\textbf{Comunidade ($y_{\text{arch}}$).}}
+            \visible<3->{\begin{itemize}
                 \item Bracket que o autor escolhe ao publicar o deck no Archidekt.
                 \item \textit{Subjetivo}: varia entre jogadores.
-            \end{itemize}
+            \end{itemize}}
         \end{column}%
         \hfill%
-        \begin{column}{.45\textwidth}\pause
-            \textbf{Calculadora ($y_{\text{calc}}$).} \pause
-            \begin{itemize}
+        \begin{column}{.45\textwidth}
+            \visible<4->{\textbf{Calculadora ($y_{\text{calc}}$).}}
+            \visible<5->{\begin{itemize}
                 \item Bracket que o EDHPowerLevel retorna para a mesma decklist.
                 \item \textit{Determinístico}: mesma entrada $\Rightarrow$ mesma saída.
-            \end{itemize}
+            \end{itemize}}
+        \end{column}
+    \end{columns}
+    \vspace{0.5cm}
+    % Linha própria para os logos, garantindo o mesmo alinhamento vertical.
+    \begin{columns}
+        \begin{column}{.45\textwidth}
+            \centering
+            \visible<3->{\includegraphics[height=\readlogoheight]{figures/archidekt-logo.png}}
+        \end{column}%
+        \hfill%
+        \begin{column}{.45\textwidth}
+            \centering
+            \visible<5->{\includegraphics[height=\readlogoheight]{figures/calculator-logo.png}}
         \end{column}
     \end{columns}
     \vfill

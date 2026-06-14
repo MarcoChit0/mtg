@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.23)  14 JUN 2026 14:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.23)  14 JUN 2026 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1152,59 +1152,59 @@ File: pgflibraryshapes.multipart.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 ))))
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 49.
+(hyperref)                removing `\<let>-command' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 49.
+(hyperref)                removing `\\' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@centercr' on input line 49.
+(hyperref)                removing `\@centercr' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\rightskip' on input line 49.
+(hyperref)                removing `\rightskip' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 49.
+(hyperref)                removing `\@flushglue' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leftskip' on input line 49.
+(hyperref)                removing `\leftskip' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@flushglue' on input line 49.
+(hyperref)                removing `\@flushglue' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\finalhyphendemerits' on input line 49.
+(hyperref)                removing `\finalhyphendemerits' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 49.
+(hyperref)                removing `\z@' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parindent' on input line 49.
+(hyperref)                removing `\parindent' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 49.
+(hyperref)                removing `\z@' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\parfillskip' on input line 49.
+(hyperref)                removing `\parfillskip' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@skip' on input line 49.
+(hyperref)                removing `\z@skip' on input line 55.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 49.
+(hyperref)                removing `\\' on input line 55.
 
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/nfssext-cfr\nfssext-cfr
@@ -1227,31 +1227,31 @@ Package nfssext-cfr Warning: Patching font initialisation macro for typewriter.
  on input line 723.
 
 )
-LaTeX Font Info:    Trying to load font information for T1+yv1 on input line 77
+LaTeX Font Info:    Trying to load font information for T1+yv1 on input line 83
 .
  (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/venturisadf\t1yv1.fd
 File: t1yv1.fd 2024/08/17 Fontinst v1.933 font definitions for T1/yv1.
 ) (presentation.aux)
 \openout1 = `presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 77.
-LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1313,57 +1313,57 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 77.
+Package hyperref Info: Link coloring OFF on input line 83.
  (presentation.out) (presentation.out)
 \@outlinefile=\write5
 \openout5 = `presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 77.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 83.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 77.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/b/n on input line 83.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/yv1/m/n on input line 77.
+(Font)                  OT1/cmss/m/n --> OT1/yv1/m/n on input line 83.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/yv1/b/n on input line 77.
+(Font)                  OT1/cmss/b/n --> OT1/yv1/b/n on input line 83.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/yv1/m/n --> T1/yvtj/m/n on input line 77.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 77.
+(Font)                  OT1/yv1/m/n --> T1/yvtj/m/n on input line 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T1/yv1/b/n on input line 77.
+(Font)                  OT1/lmr/bx/n --> T1/yv1/b/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T1/yv1/b/n on input line 77.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 77.
+(Font)                  OT1/lmr/bx/n --> T1/yv1/b/n on input line 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/yv1/m/n on input line 77.
+(Font)                  OT1/lmss/m/n --> T1/yv1/m/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/yv1/m/n on input line 77.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 77.
+(Font)                  OT1/lmss/bx/n --> T1/yv1/m/n on input line 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/yv1/m/it on input line 77.
+(Font)                  OT1/lmr/m/it --> T1/yv1/m/it on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/yv1/m/it on input line 77.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 77.
+(Font)                  OT1/lmr/bx/it --> T1/yv1/m/it on input line 83.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 77.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 77.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 83.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/yv1/m/n --> T1/yv1/b/n on input line 77.
+(Font)                  T1/yv1/m/n --> T1/yv1/b/n on input line 83.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/yv1/m/it --> T1/yv1/b/it on input line 77.
+(Font)                  T1/yv1/m/it --> T1/yv1/b/it on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/yv1/b/n --> T1/yvtj/b/n on input line 77.
+(Font)                  OT1/yv1/b/n --> T1/yvtj/b/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/yv1/b/n --> T1/yv1/b/n on input line 77.
+(Font)                  T1/yv1/b/n --> T1/yv1/b/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/yv1/m/n --> T1/yv1/b/n on input line 77.
+(Font)                  T1/yv1/m/n --> T1/yv1/b/n on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/yv1/m/it --> T1/yv1/b/it on input line 77.
+(Font)                  T1/yv1/m/it --> T1/yv1/b/it on input line 83.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 77.
+(Font)                  T1/lmtt/m/n --> T1/lmtt/b/n on input line 83.
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/translator\translator-b
 asic-dictionary-English.dict
@@ -1389,13 +1389,13 @@ Dictionary: translator-numbers-dictionary, Language: English
 heorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \microtypecontext on input line 77.
-Package microtype Info: Applying patch `item' on input line 77.
-Package microtype Info: Applying patch `toc' on input line 77.
-Package microtype Info: Applying patch `eqnum' on input line 77.
-Package microtype Info: Applying patch `footnote' on input line 77.
-Package microtype Info: Applying patch `verbatim' on input line 77.
-LaTeX Info: Redefining \microtypesetup on input line 77.
+LaTeX Info: Redefining \microtypecontext on input line 83.
+Package microtype Info: Applying patch `item' on input line 83.
+Package microtype Info: Applying patch `toc' on input line 83.
+Package microtype Info: Applying patch `eqnum' on input line 83.
+Package microtype Info: Applying patch `footnote' on input line 83.
+Package microtype Info: Applying patch `verbatim' on input line 83.
+LaTeX Info: Redefining \microtypesetup on input line 83.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1411,34 +1411,34 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `yv1' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Info: Redefining \swshape on input line 77.
+LaTeX Info: Redefining \swshape on input line 83.
 
 
 Package nfssext-cfr Warning: Overwriting kernel definition of \swshape  (new) o
-n input line 77.
+n input line 83.
 
 (presentation.nav)
 
 Package nfssext-cfr Warning: Overwriting the format's definition of \DeclareEnc
-odingSubset{} on input line 77.
+odingSubset{} on input line 83.
 
 <inf-logo-dark.pdf, id=36, 701.84395pt x 389.02475pt>
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 87.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 93.
 (pdftex.def)             Requested size: 119.50278pt x 66.23424pt.
 <ufrgs-logo.png, id=37, 2055.68pt x 2055.68pt>
 File: ufrgs-logo.png Graphic file (type png)
 <use ufrgs-logo.png>
-Package pdftex.def Info: ufrgs-logo.png  used on input line 87.
+Package pdftex.def Info: ufrgs-logo.png  used on input line 93.
 (pdftex.def)             Requested size: 55.76715pt x 55.73935pt.
 
-Overfull \hbox (3.55875pt too wide) in paragraph at lines 87--87
+Overfull \hbox (3.55875pt too wide) in paragraph at lines 93--93
  [][]  
  []
 
 
-Overfull \hbox (56.9055pt too wide) detected at line 87
+Overfull \hbox (56.9055pt too wide) detected at line 93
  [] 
  []
 
@@ -1449,18 +1449,18 @@ i/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/venturisadf/t1-f_f-yv.enc} <./i
 nf-logo-dark.pdf> <./ufrgs-logo.png>]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 91.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 97.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [2
 
 ]
 LaTeX Font Info:    Trying to load font information for OT1+yv1 on input line 1
-28.
-LaTeX Font Info:    No file OT1yv1.fd. on input line 128.
+34.
+LaTeX Font Info:    No file OT1yv1.fd. on input line 134.
 
 
 LaTeX Font Warning: Font shape `OT1/yv1/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 128.
+(Font)              using `OT1/cmr/m/n' instead on input line 134.
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
@@ -1471,30 +1471,30 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-28.
+34.
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-128.
+134.
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-128.
+134.
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 128.
+(Font)              <10.95> on input line 134.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 128.
+(Font)              <8> on input line 134.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 128.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 128
+(Font)              <6> on input line 134.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 134
 .
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1503,7 +1503,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 128
+LaTeX Font Info:    Trying to load font information for U+msb on input line 134
 .
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1515,12 +1515,12 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 <figures/mtg-commander-logo.jpg, id=66, 680.5425pt x 295.1025pt>
 File: figures/mtg-commander-logo.jpg Graphic file (type jpg)
 <use figures/mtg-commander-logo.jpg>
-Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 128
+Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 134
 .
 (pdftex.def)             Requested size: 118.93405pt x 51.57166pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 128.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 134.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 
 [3
@@ -1528,48 +1528,48 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 128.
  <./figures/mtg-commander-logo.jpg>]
 File: figures/mtg-commander-logo.jpg Graphic file (type jpg)
 <use figures/mtg-commander-logo.jpg>
-Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 128
+Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 134
 .
 (pdftex.def)             Requested size: 118.93405pt x 51.57166pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 128.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 134.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [4
 
 ]
 File: figures/mtg-commander-logo.jpg Graphic file (type jpg)
 <use figures/mtg-commander-logo.jpg>
-Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 128
+Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 134
 .
 (pdftex.def)             Requested size: 118.93405pt x 51.57166pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 128.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 134.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [5
 
 ]
 File: figures/mtg-commander-logo.jpg Graphic file (type jpg)
 <use figures/mtg-commander-logo.jpg>
-Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 128
+Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 134
 .
 (pdftex.def)             Requested size: 118.93405pt x 51.57166pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 128.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 134.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [6
 
 ]
 File: figures/mtg-commander-logo.jpg Graphic file (type jpg)
 <use figures/mtg-commander-logo.jpg>
-Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 128
+Package pdftex.def Info: figures/mtg-commander-logo.jpg  used on input line 134
 .
 (pdftex.def)             Requested size: 118.93405pt x 51.57166pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 128.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 134.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [7
 
@@ -1577,307 +1577,386 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 128.
 <figures/commander-brackets.jpg, id=125, 1927.2pt x 1084.05pt>
 File: figures/commander-brackets.jpg Graphic file (type jpg)
 <use figures/commander-brackets.jpg>
-Package pdftex.def Info: figures/commander-brackets.jpg  used on input line 152
+Package pdftex.def Info: figures/commander-brackets.jpg  used on input line 158
 .
 (pdftex.def)             Requested size: 194.04628pt x 109.13916pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 152.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 158.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [8
 
  <./figures/commander-brackets.jpg>]
+<figures/archidekt-logo.png, id=137, 320.69812pt x 70.01157pt>
+File: figures/archidekt-logo.png Graphic file (type png)
+<use figures/archidekt-logo.png>
+Package pdftex.def Info: figures/archidekt-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 143.36838pt x 31.2982pt.
+
+Overfull \hbox (2.52818pt too wide) in paragraph at lines 207--207
+ [][][][] 
+ []
+
+<figures/calculator-logo.png, id=138, 813.0375pt x 186.6975pt>
+File: figures/calculator-logo.png Graphic file (type png)
+<use figures/calculator-logo.png>
+Package pdftex.def Info: figures/calculator-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 136.29163pt x 31.2982pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 188.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 207.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
- [9
+[9
 
 {C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}
-]
+ <./figures/archidekt-logo.png> <./figures/calculator-logo.png>]
+File: figures/archidekt-logo.png Graphic file (type png)
+<use figures/archidekt-logo.png>
+Package pdftex.def Info: figures/archidekt-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 143.36838pt x 31.2982pt.
+
+Overfull \hbox (2.52818pt too wide) in paragraph at lines 207--207
+ [][][][] 
+ []
+
+File: figures/calculator-logo.png Graphic file (type png)
+<use figures/calculator-logo.png>
+Package pdftex.def Info: figures/calculator-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 136.29163pt x 31.2982pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 188.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 207.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
- [10
+[10
+
+]
+File: figures/archidekt-logo.png Graphic file (type png)
+<use figures/archidekt-logo.png>
+Package pdftex.def Info: figures/archidekt-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 143.36838pt x 31.2982pt.
+
+Overfull \hbox (2.52818pt too wide) in paragraph at lines 207--207
+ [][][][][][] 
+ []
+
+File: figures/calculator-logo.png Graphic file (type png)
+<use figures/calculator-logo.png>
+Package pdftex.def Info: figures/calculator-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 136.29163pt x 31.2982pt.
+File: inf-logo-dark.pdf Graphic file (type pdf)
+<use inf-logo-dark.pdf>
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 207.
+(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
+[11
+
+]
+File: figures/archidekt-logo.png Graphic file (type png)
+<use figures/archidekt-logo.png>
+Package pdftex.def Info: figures/archidekt-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 143.36838pt x 31.2982pt.
+
+Overfull \hbox (2.52818pt too wide) in paragraph at lines 207--207
+ [][][][][][] 
+ []
+
+File: figures/calculator-logo.png Graphic file (type png)
+<use figures/calculator-logo.png>
+Package pdftex.def Info: figures/calculator-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 136.29163pt x 31.2982pt.
+File: inf-logo-dark.pdf Graphic file (type pdf)
+<use inf-logo-dark.pdf>
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 207.
+(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
+[12
+
+]
+File: figures/archidekt-logo.png Graphic file (type png)
+<use figures/archidekt-logo.png>
+Package pdftex.def Info: figures/archidekt-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 143.36838pt x 31.2982pt.
+
+Overfull \hbox (2.52818pt too wide) in paragraph at lines 207--207
+ [][][][][][] 
+ []
+
+File: figures/calculator-logo.png Graphic file (type png)
+<use figures/calculator-logo.png>
+Package pdftex.def Info: figures/calculator-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 136.29163pt x 31.2982pt.
+File: inf-logo-dark.pdf Graphic file (type pdf)
+<use inf-logo-dark.pdf>
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 207.
+(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
+[13
+
+]
+File: figures/archidekt-logo.png Graphic file (type png)
+<use figures/archidekt-logo.png>
+Package pdftex.def Info: figures/archidekt-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 143.36838pt x 31.2982pt.
+
+Overfull \hbox (2.52818pt too wide) in paragraph at lines 207--207
+ [][][][][][] 
+ []
+
+File: figures/calculator-logo.png Graphic file (type png)
+<use figures/calculator-logo.png>
+Package pdftex.def Info: figures/calculator-logo.png  used on input line 207.
+(pdftex.def)             Requested size: 136.29163pt x 31.2982pt.
+File: inf-logo-dark.pdf Graphic file (type pdf)
+<use inf-logo-dark.pdf>
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 207.
+(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
+[14
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 188.
-(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
- [11
-
-]
-File: inf-logo-dark.pdf Graphic file (type pdf)
-<use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 188.
-(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
- [12
-
-]
-File: inf-logo-dark.pdf Graphic file (type pdf)
-<use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 188.
-(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
- [13
-
-]
-File: inf-logo-dark.pdf Graphic file (type pdf)
-<use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 188.
-(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
- [14
-
-]
-File: inf-logo-dark.pdf Graphic file (type pdf)
-<use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 218.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 237.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [15
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 218.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 237.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [16
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 218.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 237.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [17
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 218.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 237.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [18
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 218.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 237.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [19
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 218.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 237.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [20
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 218.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 237.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
-
-[21
+ [21
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 221.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 240.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [22
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 267.
+(Font)              <10> on input line 286.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 267.
+(Font)              <7> on input line 286.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 267.
+(Font)              <5> on input line 286.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 267.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 286.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [23
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 267.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 286.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [24
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 270.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 289.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [25
 
 ]
-Overfull \hbox (33.4131pt too wide) in paragraph at lines 320--320
+Overfull \hbox (33.4131pt too wide) in paragraph at lines 339--339
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 320.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 339.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [26
 
 {C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}
 ]
-Overfull \hbox (33.4131pt too wide) in paragraph at lines 320--320
+Overfull \hbox (33.4131pt too wide) in paragraph at lines 339--339
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 320.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 339.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [27
 
 ]
-Overfull \hbox (33.4131pt too wide) in paragraph at lines 320--320
+Overfull \hbox (33.4131pt too wide) in paragraph at lines 339--339
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 320.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 339.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [28
 
 ]
-Overfull \hbox (33.4131pt too wide) in paragraph at lines 320--320
+Overfull \hbox (33.4131pt too wide) in paragraph at lines 339--339
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 320.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 339.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [29
 
 ]
-Overfull \hbox (33.4131pt too wide) in paragraph at lines 320--320
+Overfull \hbox (33.4131pt too wide) in paragraph at lines 339--339
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 320.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 339.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [30
 
 ]
-Overfull \hbox (33.4131pt too wide) in paragraph at lines 320--320
+Overfull \hbox (33.4131pt too wide) in paragraph at lines 339--339
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 320.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 339.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [31
 
 ]
-Overfull \hbox (33.4131pt too wide) in paragraph at lines 320--320
+Overfull \hbox (33.4131pt too wide) in paragraph at lines 339--339
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 320.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 339.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [32
 
 ]
-Overfull \hbox (18.12567pt too wide) in paragraph at lines 371--371
+Overfull \hbox (18.12567pt too wide) in paragraph at lines 390--390
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 371.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 390.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [33
 
 ]
-Overfull \hbox (18.12567pt too wide) in paragraph at lines 371--371
+Overfull \hbox (18.12567pt too wide) in paragraph at lines 390--390
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 371.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 390.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [34
 
 ]
-Overfull \hbox (18.12567pt too wide) in paragraph at lines 371--371
+Overfull \hbox (18.12567pt too wide) in paragraph at lines 390--390
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 371.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 390.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [35
 
 ]
-Overfull \hbox (18.12567pt too wide) in paragraph at lines 371--371
+Overfull \hbox (18.12567pt too wide) in paragraph at lines 390--390
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 371.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 390.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [36
 
 ]
-Overfull \hbox (18.12567pt too wide) in paragraph at lines 371--371
+Overfull \hbox (18.12567pt too wide) in paragraph at lines 390--390
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 371.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 390.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [37
 
 ]
-Overfull \hbox (18.12567pt too wide) in paragraph at lines 371--371
+Overfull \hbox (18.12567pt too wide) in paragraph at lines 390--390
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 371.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 390.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [38
 
 ]
-Overfull \hbox (18.12567pt too wide) in paragraph at lines 371--371
+Overfull \hbox (18.12567pt too wide) in paragraph at lines 390--390
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 371.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 390.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [39
 
 ]
-<../documents/paper/src/figures/df-vs-bc.png, id=485, 2296.58pt x 1324.95pt>
+<../documents/paper/src/figures/df-vs-bc.png, id=489, 2296.58pt x 1324.95pt>
 File: ../documents/paper/src/figures/df-vs-bc.png Graphic file (type png)
 <use ../documents/paper/src/figures/df-vs-bc.png>
 Package pdftex.def Info: ../documents/paper/src/figures/df-vs-bc.png  used on i
-nput line 418.
+nput line 437.
 (pdftex.def)             Requested size: 140.8402pt x 81.25246pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 437.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [40
 
@@ -1885,11 +1964,11 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
 File: ../documents/paper/src/figures/df-vs-bc.png Graphic file (type png)
 <use ../documents/paper/src/figures/df-vs-bc.png>
 Package pdftex.def Info: ../documents/paper/src/figures/df-vs-bc.png  used on i
-nput line 418.
+nput line 437.
 (pdftex.def)             Requested size: 140.8402pt x 81.25246pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 437.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [41
 
@@ -1897,11 +1976,11 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
 File: ../documents/paper/src/figures/df-vs-bc.png Graphic file (type png)
 <use ../documents/paper/src/figures/df-vs-bc.png>
 Package pdftex.def Info: ../documents/paper/src/figures/df-vs-bc.png  used on i
-nput line 418.
+nput line 437.
 (pdftex.def)             Requested size: 140.8402pt x 81.25246pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 437.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [42
 
@@ -1909,11 +1988,11 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
 File: ../documents/paper/src/figures/df-vs-bc.png Graphic file (type png)
 <use ../documents/paper/src/figures/df-vs-bc.png>
 Package pdftex.def Info: ../documents/paper/src/figures/df-vs-bc.png  used on i
-nput line 418.
+nput line 437.
 (pdftex.def)             Requested size: 140.8402pt x 81.25246pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 437.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [43
 
@@ -1921,11 +2000,11 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
 File: ../documents/paper/src/figures/df-vs-bc.png Graphic file (type png)
 <use ../documents/paper/src/figures/df-vs-bc.png>
 Package pdftex.def Info: ../documents/paper/src/figures/df-vs-bc.png  used on i
-nput line 418.
+nput line 437.
 (pdftex.def)             Requested size: 140.8402pt x 81.25246pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 437.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [44
 
@@ -1933,11 +2012,11 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
 File: ../documents/paper/src/figures/df-vs-bc.png Graphic file (type png)
 <use ../documents/paper/src/figures/df-vs-bc.png>
 Package pdftex.def Info: ../documents/paper/src/figures/df-vs-bc.png  used on i
-nput line 418.
+nput line 437.
 (pdftex.def)             Requested size: 140.8402pt x 81.25246pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 437.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 
 [45
@@ -1945,101 +2024,101 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 418.
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 421.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 440.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [46
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 458.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 477.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [47
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 458.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 477.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [48
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 458.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 477.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [49
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 505.
+(Font)              <9> on input line 524.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 505.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 524.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [50
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 505.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 524.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [51
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 505.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 524.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [52
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 505.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 524.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [53
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 505.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 524.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [54
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 547.
+(Font)              <14.4> on input line 566.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 547.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 566.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [55
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 547.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 566.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [56
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 547.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 566.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [57
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 547.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 566.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [58
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-10.
+29.
 
 (C:\Users\henri\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -2049,134 +2128,134 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (7.69055pt too wide) in paragraph at lines 610--610
+Overfull \hbox (7.69055pt too wide) in paragraph at lines 629--629
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 610.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 629.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [59
 
 {C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
-Overfull \hbox (7.69055pt too wide) in paragraph at lines 610--610
+Overfull \hbox (7.69055pt too wide) in paragraph at lines 629--629
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 610.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 629.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [60
 
 ]
-Overfull \hbox (7.69055pt too wide) in paragraph at lines 610--610
+Overfull \hbox (7.69055pt too wide) in paragraph at lines 629--629
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 610.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 629.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [61
 
 ]
-Overfull \hbox (7.69055pt too wide) in paragraph at lines 610--610
+Overfull \hbox (7.69055pt too wide) in paragraph at lines 629--629
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 610.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 629.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [62
 
 ]
-Overfull \hbox (7.69055pt too wide) in paragraph at lines 610--610
+Overfull \hbox (7.69055pt too wide) in paragraph at lines 629--629
  [] 
  []
 
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 610.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 629.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
 [63
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 613.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 632.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [64
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 640.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 659.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [65
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 640.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 659.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [66
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 640.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 659.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [67
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 640.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 659.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [68
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 640.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 659.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [69
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 695.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 714.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [70
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 695.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 714.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [71
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 695.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 714.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [72
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 695.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 714.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [73
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 714.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 733.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [74
 
@@ -2203,10 +2282,10 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: A7054FC4339E8BFB640DF355117D2136;474.
  ) 
 Here is how much of TeX's memory you used:
- 31453 strings out of 467691
- 630980 string characters out of 5414987
- 1055876 words of memory out of 5000000
- 59426 multiletter control sequences out of 15000+600000
+ 31468 strings out of 467691
+ 631461 string characters out of 5414987
+ 1056883 words of memory out of 5000000
+ 59441 multiletter control sequences out of 15000+600000
  787836 words of font info for 261 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,1253b,875s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2223,9 +2302,9 @@ msfonts/symbols/msam10.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/venturisadf/yv1b8a.pfb><C:/Users/henri/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/venturisadf/yv1r8a.pfb><C:/Users/henri/AppData/Local/Prog
 rams/MiKTeX/fonts/type1/public/venturisadf/yv1ri8a.pfb>
-Output written on presentation.pdf (74 pages, 2524035 bytes).
+Output written on presentation.pdf (74 pages, 2971024 bytes).
 PDF statistics:
- 975 PDF objects out of 1000 (max. 8388607)
+ 979 PDF objects out of 1000 (max. 8388607)
  154 named destinations out of 1000 (max. 500000)
- 109176 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 109186 words of extra memory for PDF output out of 128383 (max. 10000000)
 
