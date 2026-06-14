@@ -695,10 +695,9 @@
 
 
 % ============================================================
-% SLIDE 16 -- Limitações, future work, reprodutibilidade
+% SLIDE 16 -- Limitações e próximos passos
 % ============================================================
-% NOTA: ~60s. Slide obrigatório do enunciado (reprodutibilidade tem que
-% aparecer). Três colunas curtas.
+% NOTA: ~45s. Duas colunas curtas.
 % O QUE FALAR:
 %   - LIMITAÇÕES: uma calculadora só (EDHPowerLevel); uma plataforma só
 %     (Archidekt); circularidade -- DF conta sinais que a calculadora
@@ -706,13 +705,10 @@
 %   - FUTURE WORK: ablation removendo features bracket-rule; segunda
 %     calculadora; segunda plataforma comunidade; classificação ordinal;
 %     modelo combinando BC+DF.
-%   - REPRODUTIBILIDADE (critério explícito de avaliação): código no
-%     repositório, seeds fixos, folds salvos, snapshot dos dados na
-%     coleta. Tudo regerável com `uv run`.
 % ============================================================
-\begin{frame}{Limitações, próximos passos e reprodutibilidade.}\pause
+\begin{frame}{Limitações e próximos passos.}\pause
     \begin{columns}[t]
-        \begin{column}{.32\textwidth}
+        \begin{column}{.47\textwidth}
             \textbf{Limitações}
             \begin{itemize}
                 \footnotesize
@@ -723,7 +719,7 @@
             \end{itemize}
         \end{column}%
         \hfill%
-        \begin{column}{.32\textwidth}
+        \begin{column}{.47\textwidth}
             \textbf{Próximos passos}
             \begin{itemize}
                 \footnotesize
@@ -732,25 +728,36 @@
                 \item Modelos ordinais (MAE, QWK).
                 \item Combinar BC e DF.
             \end{itemize}
-        \end{column}%
-        \hfill%
-        \begin{column}{.32\textwidth}
-            \textbf{Reprodutibilidade}
-            \begin{itemize}
-                \footnotesize
-                \item Código + seeds + folds salvos.
-                \item \textit{Snapshot} dos dados de coleta.
-                \item Pipeline regerável (\texttt{uv run}).
-                % NOTA: colocar URL do repositório aqui antes da apresentação.
-                \item Repositório: \texttt{...}
-            \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
 
 
 % ============================================================
-% SLIDE 17 -- Agradecimentos / Q&A
+% SLIDE 17 -- Reprodutibilidade (repositório + demo)
+% ============================================================
+% NOTA: ~40s. Critério explícito de avaliação do enunciado.
+% O QUE FALAR:
+%   - Tudo regerável: código, seeds fixos, folds salvos e snapshot dos dados.
+%   - Repositório público no GitHub.
+%   - Temos uma demo interativa para ver o projeto funcionando.
+% IMAGEM: trocar o placeholder por um screenshot/GIF da demo antes da apresentação.
+% ============================================================
+\begin{frame}{Reprodutibilidade.}\pause
+    {\scriptsize Pipeline regerável --- código, seeds fixos, folds salvos e \textit{snapshot} dos dados (\texttt{uv run}). \quad Repositório: \url{https://github.com/MarcoChit0/Machine-Learning-MTG}}
+    \smallskip
+
+    \vspace{-0.1cm}
+    \begin{center}
+        {\scriptsize \textbf{Demo} --- interface interativa para ver o projeto em funcionamento:}\\[3pt]
+        \includegraphics[width=0.66\textwidth]{figures/mtg-demo-1.png}\\[1pt]
+        \includegraphics[width=0.66\textwidth]{figures/mtg-demo-2.png}
+    \end{center}
+\end{frame}
+
+
+% ============================================================
+% SLIDE 18 -- Agradecimentos / Q&A
 % ============================================================
 % NOTA: ~15s. Slide final. Fica enquanto perguntas são respondidas.
 % O QUE FALAR:

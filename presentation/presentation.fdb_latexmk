@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1781464463.93797 "presentation.tex" "presentation.pdf" "presentation" 1781464471.0918 0
+["pdflatex"] 1781465497.51065 "presentation.tex" "presentation.pdf" "presentation" 1781465505.87512 0
   "C:/Users/henri/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1781304236 98890 e51cdebebef629975712b75c07c1772e ""
   "C:/Users/henri/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1779549188 13350272 cf93f0291c41cb416a67b2ddd8b6f5a1 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc" 1256929440 2375 baa924870cfb487815765f9094cf3728 ""
@@ -22,6 +22,7 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmss10.tfm" 1136765053 1316 b636689f1933f24d1294acdf6041daaa ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmss12.tfm" 1136765053 1324 37b971caf729d7edd9cbb9f9b0ea76eb ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmss10.tfm" 1256929440 11176 53ebf7a171df1f9447b387b178768bb5 ""
+  "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmtt8.tfm" 1256929440 1380 64228d979098ac090aa3f98d5aa8ad3e ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/ec-lmtt9.tfm" 1256929440 1372 a2ff2d4391a2d6bba15b518acb79e80f ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/lmex10.tfm" 1256929440 992 ce925c9346c7613270a79afbee98c070 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/tfm/public/lm/lmmi10.tfm" 1256929440 1528 6d36b2385e0ca062a654de6ac59cb34f ""
@@ -52,6 +53,7 @@
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb" 1256929440 27863 09ce3735688ffde955e72da27c95b61a ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb" 1256929440 27802 5c876bb2c4040caaf035d60bd74a86bd ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb" 1256929440 27835 e135c98a7736a509f536880c6a6e3bd9 ""
+  "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb" 1256929440 115291 8eef1191953586767e75b29670028b8c ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb" 1256929440 108480 ee1de99df36ee0a16b36023b9c9d8a58 ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/venturisadf/yv1b8a.pfb" 1748082916 43386 b46775d1e648d9a71ad8548af8b23dbb ""
   "C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/venturisadf/yv1r8a.pfb" 1748082916 41804 db5c3bf40f1590c8b123a31ed82e7ee1 ""
@@ -286,12 +288,14 @@
   "figures/mtg-commander-logo.jpg" 1781456664 17443 f07f2d083dcc14c7e67afd4959e23bae ""
   "figures/mtg-data-structure.png" 1781462928 193239 28b5622d777c6c135b4b3d7e1fbc0ba3 ""
   "figures/mtg-deck-features.png" 1781462743 123117 142eb74d58aa2ba81f6c444b056c6790 ""
+  "figures/mtg-demo-1.png" 1781465023 176466 83b903b01fea69561a0e5c6970462bcd ""
+  "figures/mtg-demo-2.png" 1781465039 151464 23a26aca80961222dcbfc0547bfc65d2 ""
   "inf-logo-dark.pdf" 1781302552 5842 addb54ee9b6e260135f78de2db4ae942 ""
   "macros.sty" 1781302552 8011 5fcd5d7397a63eeaf4614d30ad0526a3 ""
-  "presentation.aux" 1781464470 6654 cf5f862036251bbe2d8c0170161eecc6 "pdflatex"
-  "presentation.nav" 1781464470 3200 a25f03fb2de9a1145f1c606842a710fc "pdflatex"
-  "presentation.out" 1781464470 474 a7054fc4339e8bfb640df355117d2136 "pdflatex"
-  "presentation.tex" 1781464450 35705 ea73c4690c9262b92871f340170d234c ""
+  "presentation.aux" 1781465504 6858 464ca46bc5d621b7144a9dfb79f9eb25 "pdflatex"
+  "presentation.nav" 1781465504 3292 46fd70933e1ccf4d2b190de2a84573d2 "pdflatex"
+  "presentation.out" 1781465504 474 a7054fc4339e8bfb640df355117d2136 "pdflatex"
+  "presentation.tex" 1781465483 36088 3c618fa1125a4c5490d304ef34a3add5 ""
   "ufrgs-logo.png" 1781302552 104043 6c425aeee30197404a75f47273afd291 ""
   (generated)
   "presentation.aux"

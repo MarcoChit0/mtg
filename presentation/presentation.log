@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.23)  14 JUN 2026 16:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.23)  14 JUN 2026 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2018,23 +2018,55 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 694.
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 749.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 733.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [45
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 749.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 733.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [46
 
 ]
+<figures/mtg-demo-1.png, id=581, 1160.83687pt x 459.21562pt>
+File: figures/mtg-demo-1.png Graphic file (type png)
+<use figures/mtg-demo-1.png>
+Package pdftex.def Info: figures/mtg-demo-1.png  used on input line 756.
+(pdftex.def)             Requested size: 206.56816pt x 81.7163pt.
+<figures/mtg-demo-2.png, id=582, 1236.11812pt x 523.9575pt>
+File: figures/mtg-demo-2.png Graphic file (type png)
+<use figures/mtg-demo-2.png>
+Package pdftex.def Info: figures/mtg-demo-2.png  used on input line 756.
+(pdftex.def)             Requested size: 206.56816pt x 87.55255pt.
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 768.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 756.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [47
+
+ <./figures/mtg-demo-1.png> <./figures/mtg-demo-2.png>]
+File: figures/mtg-demo-1.png Graphic file (type png)
+<use figures/mtg-demo-1.png>
+Package pdftex.def Info: figures/mtg-demo-1.png  used on input line 756.
+(pdftex.def)             Requested size: 206.56816pt x 81.7163pt.
+File: figures/mtg-demo-2.png Graphic file (type png)
+<use figures/mtg-demo-2.png>
+Package pdftex.def Info: figures/mtg-demo-2.png  used on input line 756.
+(pdftex.def)             Requested size: 206.56816pt x 87.55255pt.
+File: inf-logo-dark.pdf Graphic file (type pdf)
+<use inf-logo-dark.pdf>
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 756.
+(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
+ [48
+
+]
+File: inf-logo-dark.pdf Graphic file (type pdf)
+<use inf-logo-dark.pdf>
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 775.
+(pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
+ [49
 
 ]
 \tf@nav=\write6
@@ -2059,11 +2091,11 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: A7054FC4339E8BFB640DF355117D2136;474.
  ) 
 Here is how much of TeX's memory you used:
- 31380 strings out of 467691
- 630256 string characters out of 5414987
+ 31407 strings out of 467691
+ 630843 string characters out of 5414987
  1056891 words of memory out of 5000000
- 59410 multiletter control sequences out of 15000+600000
- 787442 words of font info for 259 fonts, out of 8000000 for 9000
+ 59432 multiletter control sequences out of 15000+600000
+ 787763 words of font info for 260 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,1253b,875s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -2075,14 +2107,15 @@ c/lm/lmmi9.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /lm/lmsy10.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /lm/lmsy8.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 lm/lmsy9.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/l
-m/lmtt9.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/symbols/msam10.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/venturisadf/yv1b8a.pfb><C:/Users/henri/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/venturisadf/yv1r8a.pfb><C:/Users/henri/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/venturisadf/yv1ri8a.pfb>
-Output written on presentation.pdf (47 pages, 2679353 bytes).
+m/lmtt8.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmtt9.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/symbols/msam10.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/venturisadf/yv1b8a.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/venturisadf/yv1r8a.pfb><C:/Users/henri/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/venturisadf/yv1ri8a.pfb>
+Output written on presentation.pdf (49 pages, 2971879 bytes).
 PDF statistics:
- 674 PDF objects out of 1000 (max. 8388607)
- 100 named destinations out of 1000 (max. 500000)
- 107148 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 709 PDF objects out of 1000 (max. 8388607)
+ 104 named destinations out of 1000 (max. 500000)
+ 107670 words of extra memory for PDF output out of 128383 (max. 10000000)
 
