@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.23)  14 JUN 2026 16:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.5.23)  14 JUN 2026 16:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1997,42 +1997,42 @@ Package pdftex.def Info: inf-logo-dark.pdf  used on input line 663.
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 690.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 693.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [42
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 690.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 693.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [43
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 690.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 693.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [44
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 745.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 748.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [45
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 745.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 748.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [46
 
 ]
 File: inf-logo-dark.pdf Graphic file (type pdf)
 <use inf-logo-dark.pdf>
-Package pdftex.def Info: inf-logo-dark.pdf  used on input line 764.
+Package pdftex.def Info: inf-logo-dark.pdf  used on input line 767.
 (pdftex.def)             Requested size: 19.91814pt x 11.03508pt.
  [47
 
@@ -2059,11 +2059,11 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: A7054FC4339E8BFB640DF355117D2136;474.
  ) 
 Here is how much of TeX's memory you used:
- 31376 strings out of 467691
- 630213 string characters out of 5414987
+ 31380 strings out of 467691
+ 630256 string characters out of 5414987
  1056891 words of memory out of 5000000
- 59409 multiletter control sequences out of 15000+600000
- 787061 words of font info for 257 fonts, out of 8000000 for 9000
+ 59410 multiletter control sequences out of 15000+600000
+ 787442 words of font info for 259 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,1253b,875s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -2080,7 +2080,7 @@ sfonts/symbols/msam10.pfb><C:/Users/henri/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/venturisadf/yv1b8a.pfb><C:/Users/henri/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/venturisadf/yv1r8a.pfb><C:/Users/henri/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/venturisadf/yv1ri8a.pfb>
-Output written on presentation.pdf (47 pages, 2678008 bytes).
+Output written on presentation.pdf (47 pages, 2678829 bytes).
 PDF statistics:
  674 PDF objects out of 1000 (max. 8388607)
  100 named destinations out of 1000 (max. 500000)
