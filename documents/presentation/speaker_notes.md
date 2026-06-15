@@ -316,3 +316,109 @@ BC enxerga as cartas-exemplo. As duas sondas apontam para o mesmo lugar.
   concordam, onde divergem e o que explica.
 - **"Por que só brackets 2–4?"** → É onde está quase todo o dado público e onde a
   negociação ocorre; 1 e 5 são casos de borda qualitativamente distintos.
+- **"Tá, mas onde mora a divergência? O que a explica?"** → Resposta detalhada no
+  Aprofundamento abaixo. Resumo: a divergência **não é uniforme** — concentra-se nos decks
+  cujo poder depende de **contexto, sinergia e interpretação do autor**, não dos sinais
+  explícitos do bracket. Onde há sinais óbvios (Game Changers, combos, tutores), os dois
+  concordam; o desacordo mora nas cartas **dependentes de contexto** (efeitos de turno
+  extra, negação de recursos), que a calculadora conta pelo texto e o autor pondera pelo
+  seu playgroup. E é **direcional**: a comunidade fica abaixo da calculadora.
+
+---
+
+## Aprofundamento (para Q&A e domínio do conteúdo)
+
+### Onde mora a divergência? O que a explica?
+Esta é a pergunta-síntese do trabalho. A resposta tem três camadas — vá da mais simples
+para a mais profunda conforme a plateia.
+
+**1. A divergência não é uniforme — ela se concentra.** Os dois rótulos concordam quando o
+deck tem **sinais óbvios de poder**. A evidência está na própria interpretabilidade: nas
+linhas onde o modelo concorda com a calculadora, o `game_changer_count` médio é **2,165**;
+nas linhas onde discordam, cai para **0,939**. Ou seja, quando há Game Changers, combos e
+tutores claros, todo mundo concorda. **A divergência mora nos decks sem esses sinais
+explícitos** — aqueles cujo poder depende de **contexto, sinergia e interpretação do autor**.
+
+**2. As duas leituras pesam o contexto de forma diferente.** A evidência vem do lado BC:
+as linhas onde o **modelo prevê abaixo da calculadora** estão enriquecidas em cartas de
+**turno extra e negação de recursos** — *Vorinclex, Voice of Hunger*, *Expropriate*,
+*Time Stretch*, *Time Sieve*. A calculadora conta essas cartas como **sinais explícitos de
+alto impacto** (estão em listas curadas, basta a carta estar presente). O autor, muitas
+vezes, **não** — porque avalia o deck contra o **playgroup específico** dele, não contra o
+texto puro da regra. Uma carta "teoricamente forte" pode ser fraca naquela mesa.
+
+**3. A explicação de fundo (o "porquê").** A calculadora é **livre de contexto**: reage à
+*presença* de cartas sinalizadas, a preço e a popularidade — e nada mais (não enxerga
+intenção do jogador, normas da mesa ou habilidade de pilotar). A comunidade é
+**contextual**: pondera consistência, densidade de combo, ameaça real e normas locais. Os
+dois **se sobrepõem nos sinais óbvios** (Game Changers, combos, fast mana) e **divergem nas
+cartas dependentes de contexto**. E a divergência é **direcional**: a comunidade
+sistematicamente se coloca **abaixo** da calculadora (23,5% acima vs 15,6% abaixo).
+
+**Frase de fechamento (se quiser uma só):** *"A divergência mora exatamente onde o poder do
+deck deixa de ser óbvio. A calculadora vê a carta; a comunidade vê o jogo. Onde os dois
+coincidem (sinais explícitos), eles concordam; onde o poder é contextual, a comunidade puxa
+para baixo."*
+
+---
+
+### Métodos de interpretabilidade: como funcionam e por que foram escolhidos
+Usamos **dois métodos diferentes**, um por representação. Isso é proposital: as duas
+representações são tão diferentes que pedem ferramentas diferentes — e cada método é o que
+é **viável e interpretável** naquela representação.
+
+#### DF → Permutation Importance (importância por permutação)
+**Como funciona (intuição):** "se eu embaralhar esta coluna até ela não carregar mais
+informação real, quanto o modelo piora?"
+1. Treina o modelo e mede o desempenho-base (macro-F1) num conjunto de validação.
+2. Para **uma feature por vez**, embaralha aleatoriamente os valores daquela coluna entre
+   as linhas — isso **quebra a relação** entre a feature e o rótulo, mas mantém a
+   distribuição da coluna.
+3. Re-avalia o macro-F1. A **queda** em relação ao base é a importância daquela feature.
+4. Repete o embaralhamento **10 vezes** por feature e tira a média (o embaralhamento é
+   aleatório, então precisamos estabilizar). Feito num hold-out estratificado de 20%.
+- **Leitura:** queda grande = o modelo **depende muito** daquela feature. Foi o caso do
+  `game_changer_count` (queda de 0,228 no macro-F1), quase 10× a segunda colocada.
+
+**Por que escolhemos:**
+- O melhor modelo DF é o **HistGradientBoosting**, que **não expõe** importância baseada em
+  impureza (o "feature\_importances\_" de árvores/RF). Permutation importance é
+  **agnóstica ao modelo** — só usa as predições, funciona em qualquer estimador treinado.
+- Mede importância na **métrica que realmente importa** (macro-F1) e em **dados não vistos**,
+  não numa heurística interna de split.
+
+**O que saber sobre o comportamento dela (caveats, caso perguntem):**
+- **Features correlacionadas diluem a importância.** Se duas colunas carregam a mesma
+  informação, embaralhar só uma quase não piora o modelo (a outra compensa) → ambas parecem
+  menos importantes do que são. Importância "compartilhada".
+- Mede importância **para este modelo**, não causalidade. Não diz "Game Changer causa
+  bracket alto", diz "este modelo se apoia muito nesta coluna para acertar".
+
+#### BC → Card Lift (lift de cartas)
+**Como funciona (intuição):** "quais cartas são desproporcionalmente comuns nos decks que o
+modelo chamou de bracket 4?"
+- Fórmula: `lift(k, c) = P(carta c presente | ŷ = k) / P(carta c presente)`.
+- Numerador: fração dos decks **previstos como bracket k** que contêm a carta c.
+- Denominador: fração de **todos** os decks que contêm c.
+- **Leitura:** lift > 1 = a carta está **super-representada** naquele bracket previsto. Lift
+  ≈ 3 significa que a carta aparece ~3× mais naquele bracket do que no dataset inteiro.
+
+**Por que escolhemos:**
+- BC tem **~11k features de carta**. Permutation importance ali exigiria embaralhar, coluna
+  por coluna, uma matriz esparsa gigante → **computacionalmente inviável**.
+- Lift é **barato** (é só contagem) e **naturalmente interpretável em identidade de carta**
+  — que é exatamente o que o BC codifica. Pergunta certa para a representação certa.
+
+**O que saber sobre o comportamento dela (caveats, caso perguntem):**
+- Lift é uma **associação descritiva sobre as predições**, não uma medida da dependência
+  interna do modelo (diferente da permutation importance). Diz o que **coocorre** com um
+  bracket previsto, não necessariamente o que **causou** a predição.
+- Cartas **raras** geram lift ruidoso/alto. Por isso filtramos cartas presentes em menos de
+  10 decks.
+
+#### Por que dois métodos diferentes (a justificativa de uma frase)
+As representações respondem a perguntas diferentes, então merecem lentes diferentes:
+**DF** pergunta *"de qual atributo estrutural o modelo depende?"* (permutation importance);
+**BC** pergunta *"quais cartas marcam cada bracket?"* (lift). São **sondas complementares**
+— e o resultado bonito é que **as duas apontam para os mesmos sinais** (Game Changers,
+combos, tutores, fast mana), por caminhos independentes.
