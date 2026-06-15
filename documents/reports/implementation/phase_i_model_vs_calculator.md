@@ -57,9 +57,11 @@ Filtra as predições em dois grupos:
 
 Para cada grupo, calcula a concordância exata entre `ŷ1` e `y2`. Isso permite ver: nos decks onde a comunidade já concordava com a calculadora, o modelo acerta mais? E nos discordantes, qual fonte o modelo "prefere" imitar?
 
-### Gap absoluto desempenho(y1) vs concordância(y2)
+### Contingência triádica y1 × y2 × ŷ1
 
-Métrica derivada: `gap_abs = abs(macro_f1_y1 − exact_agreement_y2)`. Quanto maior o gap absoluto, maior a distância entre o desempenho do modelo no alvo comunitário (`y1`) e sua concordância exata com a calculadora (`y2`). O relatório também mostra a diferença assinada apenas como contexto.
+A análise triádica cruza três rótulos: `y1` (comunidade), `y2` (calculadora) e `ŷ1` (predição do modelo treinado em `y1`). Dentro de cada célula em que `y1 != y2`, o relatório conta se `ŷ1` segue a comunidade, segue a calculadora ou escolhe outro bracket.
+
+**Atualização metodológica (2026-06-15):** a análise por gap absoluto foi substituída pela contingência triádica. A definição anterior tentava resumir a separação entre comunidade e calculadora em um único escalar; a nova leitura é mais direta, pois mostra para onde a predição vai em cada célula de discordância.
 
 ### Destaques automáticos globais
 
@@ -67,8 +69,8 @@ Considerando todos os modelos e ensembles juntos, o relatório identifica:
 
 1. **Maior concordância com y2** — modelo mais alinhado à calculadora.
 2. **Menor concordância com y2** — modelo mais distante da calculadora.
-3. **Maior gap absoluto** — maior distância entre macro-F1 em `y1` e concordância com `y2`.
-4. **Menor gap absoluto** — menor distância entre macro-F1 em `y1` e concordância com `y2`.
+3. **Melhor preditor comunitário individual** — modelo individual com maior macro-F1 em `y1`, usado como caso principal para a contingência triádica.
+4. **Melhor BC / melhor ensemble** — referências adicionais para o texto do artigo.
 
 Cada escolha aparece com justificativa explícita e, quando o modelo ainda não apareceu no bloco, com matriz `ŷ1 × y2`. Os destaques são globais, isto é, independem de a origem ser `BC`, `DF` ou `BC+DF`.
 
@@ -76,14 +78,14 @@ Cada escolha aparece com justificativa explícita e, quando o modelo ainda não 
 
 O relatório agora recalcula a concordância direta `y1` vs `y2` na mesma base OOF usada para os modelos, em vez de apenas citar a Fase B. Essa referência serve como linha de base natural.
 
-## Resultados principais (2026-05-24)
+## Resultados principais (2026-05-24; análise triádica adicionada em 2026-06-15)
 
 | Destaque | Modelo | Métrica |
 |---|---|---|
 | Maior concordância global | `df_random_forest` | 69,3% exata |
 | Menor concordância global | `bc_decision_tree` | 54,2% exata |
-| Maior gap absoluto global | `df_gradient_boosting` | gap = 0,0508 |
-| Menor gap absoluto global | `bc_naive_bayes` | gap = 0,0010 |
+| Melhor preditor comunitário individual | `df_gradient_boosting` | macro-F1(y1) = 0,6908 |
+| Contingência triádica (`df_gradient_boosting`, discordantes) | — | segue y1: 53,8%; segue y2: 39,0%; outro: 7,2% |
 
 Os destaques são escolhidos em um ranking único global.
 

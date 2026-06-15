@@ -714,12 +714,16 @@ macro-F1 tratando y2 como rótulo de referência
 matriz de confusão ŷ1 × y2
 |Δ| médio entre ŷ1 e y2
 distribuição de ŷ1 - y2
+contingência triádica y1 × y2 × ŷ1
 ```
+
+**Atualização metodológica (2026-06-15):** a análise por gap absoluto foi substituída por uma contingência triádica `y1 × y2 × ŷ1`. A tabela pergunta, dentro de cada célula de discordância entre comunidade e calculadora, se a predição segue `y1`, segue `y2` ou escolhe outro bracket. Essa leitura é preferida porque localiza a discordância diretamente, sem comprimir métricas diferentes em um único escalar.
 
 Interpretação:
 
 * modelos cujas predições têm **alta concordância com y2** capturam padrões estruturais similares aos que a calculadora usa, mesmo sem terem sido treinados nela — sugerem que parte do sinal comunitário é "explicável" pelos mesmos critérios objetivos da calculadora;
-* modelos com **alta performance contra y1 mas baixa concordância com y2** estão aprendendo particularidades da percepção comunitária que a calculadora não capta;
+* modelos com **alta performance contra y1 mas menor macro-F1 contra y2** estão aprendendo particularidades da percepção comunitária que a calculadora não capta;
+* a contingência triádica mostra se, nos casos em que `y1 != y2`, o modelo acompanha a comunidade, acompanha a calculadora ou evita ambos os rótulos;
 * a comparação BC vs DF informa quais sinais (cartas específicas vs propriedades agregadas) cada modelo aproveita para "imitar" a calculadora indiretamente.
 
 Essa análise é **descritiva**: não há retreino, não há novos folds, não há novo target de treinamento. O custo computacional é desprezível.

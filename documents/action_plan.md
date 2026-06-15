@@ -285,8 +285,9 @@ Relatório inclui: ranking completo, tabela BC vs DF por algoritmo, ganho/perda 
 **Resultados principais:**
 - Maior concordância global: `df_random_forest` (69,3%).
 - Menor concordância global: `bc_decision_tree` (54,2%).
-- Maior gap absoluto global: `df_gradient_boosting` (0,0508).
-- Menor gap absoluto global: `bc_naive_bayes` (0,0010).
+- **Atualização metodológica (2026-06-15):** a análise por gap absoluto foi substituída por uma contingência triádica `y1 × y2 × ŷ1`, pois ela localiza diretamente se a predição segue a comunidade, a calculadora ou outro bracket dentro de cada célula de discordância.
+- Para `df_gradient_boosting`, nos casos discordantes, `ŷ1` segue `y1` em 53,8%, segue `y2` em 39,0% e escolhe outro bracket em 7,2%.
+- A direção importa: quando `y2 > y1`, `df_gradient_boosting` segue `y1` em 71,0%; quando `y2 < y1`, segue `y2` em 63,8%.
 
 ## Fase J — Interpretabilidade ✓ concluída (2026-05-24)
 
@@ -396,7 +397,7 @@ Hoje **2026-05-20** — 8 dias até o prazo de 2026-05-28 23:59.
 | ~~F~~ | — | ✓ concluída (2026-05-24) — 12/12 modelos, F.1+F.2+F.3 completos com `--all --group-kfold` |
 | ~~G~~ | — | ✓ concluída (2026-05-24) — 3 ensembles top-N globais por macro-F1, melhor: `voting_top3` F1=0.6941, com `--all --force-recompute` |
 | ~~H~~ | — | ✓ concluída (2026-05-24) — melhor_BC=bc_gradient_boosting (F1=0.6433), melhor_DF=df_gradient_boosting (F1=0.6908) |
-| ~~I~~ | — | ✓ concluída (2026-05-24) — destaques globais com maior/menor concordância e maior/menor gap absoluto |
+| ~~I~~ | — | ✓ concluída (2026-05-24; análise triádica adicionada em 2026-06-15) — destaques globais de concordância e contingência `y1 × y2 × ŷ1` |
 | ~~J~~ | — | ✓ concluída (2026-05-24) — PI: game_changer_count domina DF; BC: Blood Moon, Mana Vault em bracket 4 |
 | K (artigo) | 3 | escrita do artigo (seções extras se L/M rodarem) |
 | L (opcional) | 0,5 | OOD — vira seção extra do artigo se feito |

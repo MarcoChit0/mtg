@@ -346,11 +346,10 @@ Tabelas principais:
 - Tabela de modelos relevantes:
   - maior concordância: `df_random_forest`
   - menor concordância: `bc_decision_tree`
-  - maior gap absoluto: `df_gradient_boosting`
-  - menor gap absoluto: `bc_naive_bayes`
   - melhor DF para `y_arch`: `df_gradient_boosting`
   - melhor BC para `y_arch`: `bc_gradient_boosting`
   - melhor ensemble: `voting_top3`
+- Tabela de contingência triádica para o melhor preditor comunitário (`df_gradient_boosting`): em cada célula discordante `y_arch × y_calc`, reportar se `ŷ_arch` segue a comunidade, segue a calculadora ou escolhe outro bracket.
 - Uma matriz de confusão exemplar de modelo apenas se houver espaço. Caso contrário, mover todas para o apêndice.
 
 Não incluir:
@@ -362,7 +361,7 @@ Não incluir:
 Mover para apêndice:
 
 - Todas as matrizes de confusão.
-- Tabelas completas ordenadas por concordância, gap e macro-F1.
+- Tabelas completas ordenadas por concordância e macro-F1, além das matrizes/contingências completas.
 
 ### 8. Interpretability
 

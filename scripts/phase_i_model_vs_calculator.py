@@ -154,6 +154,51 @@ def compute_subset_metrics(rows: List[Dict]) -> Dict:
     }
 
 
+def compute_triadic_contingency(rows: List[Dict]) -> Dict:
+    """Route y_pred inside each (y_true, y2) cell."""
+    cells: Dict[str, Dict[str, int]] = {}
+    totals = {"discordant": {"n": 0, "arch": 0, "calc": 0, "other": 0},
+              "concordant": {"n": 0, "both": 0, "other": 0}}
+
+    for row in rows:
+        y_arch = row["y_true"]
+        y_calc = row["y2"]
+        y_pred = row["y_pred"]
+        key = f"{y_arch}-{y_calc}"
+        cell = cells.setdefault(key, {
+            "y_arch": y_arch,
+            "y_calc": y_calc,
+            "n": 0,
+            "arch": 0,
+            "calc": 0,
+            "both": 0,
+            "other": 0,
+        })
+        cell["n"] += 1
+
+        if y_arch == y_calc:
+            totals["concordant"]["n"] += 1
+            if y_pred == y_arch:
+                cell["both"] += 1
+                totals["concordant"]["both"] += 1
+            else:
+                cell["other"] += 1
+                totals["concordant"]["other"] += 1
+        else:
+            totals["discordant"]["n"] += 1
+            if y_pred == y_arch:
+                cell["arch"] += 1
+                totals["discordant"]["arch"] += 1
+            elif y_pred == y_calc:
+                cell["calc"] += 1
+                totals["discordant"]["calc"] += 1
+            else:
+                cell["other"] += 1
+                totals["discordant"]["other"] += 1
+
+    return {"cells": cells, "totals": totals}
+
+
 def selected_algorithms_from_spot_check(summary: object) -> List[str]:
     """Read A_union from both current and legacy spot-check summary formats."""
     if not isinstance(summary, dict):
@@ -290,36 +335,14 @@ def _fmt(v: Optional[float], d: int = 4) -> str:
     return f"{v:.{d}f}" if v is not None else "—"
 
 
-def _delta_str(v: Optional[float]) -> str:
-    if v is None:
-        return "—"
-    return f"+{v:.4f}" if v >= 0 else f"{v:.4f}"
-
-
-def _signed_gap(row: Dict) -> Optional[float]:
-    f1 = row.get("macro_f1_y1")
-    ea = row["metrics"].get("exact_agreement")
-    if f1 is None or ea is None:
-        return None
-    return f1 - ea
-
-
-def _abs_gap(row: Dict) -> float:
-    gap = _signed_gap(row)
-    return abs(gap) if gap is not None else -1.0
-
-
 def _global_highlight_justification(kind: str, row: Dict) -> str:
     exact = _pct(row["metrics"]["exact_agreement"])
-    gap = _fmt(_abs_gap(row))
     if kind == "maior concordância":
         return f"maior concordância exata com y2 entre todos os modelos ({exact})"
     if kind == "menor concordância":
         return f"menor concordância exata com y2 entre todos os modelos ({exact})"
-    if kind == "maior gap absoluto":
-        return f"maior distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos ({gap})"
-    if kind == "menor gap absoluto":
-        return f"menor distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos ({gap})"
+    if kind == "melhor preditor comunitário individual":
+        return f"maior macro-F1 contra y1 entre os modelos individuais ({_fmt(row['macro_f1_y1'])})"
     return ""
 
 
@@ -433,33 +456,46 @@ def render_report(
         )
 
     # ------------------------------------------------------------------
-    # 3. Absolute gap: macro-F1(y1) vs exact agreement with y2
+    # 3. Triadic contingency for the best community predictor
     # ------------------------------------------------------------------
-    lines.append("\n## 3. Gap absoluto entre desempenho em y1 e concordância com y2\n")
-    lines.append(
-        "> Aqui o gap é uma distância absoluta: "
-        "`abs(macro-F1 em y1 − concordância exata entre ŷ1 e y2)`. "
-        "Quanto maior o valor, maior o desalinhamento entre o desempenho do modelo "
-        "no alvo comunitário e sua concordância com a calculadora. "
-        "A tabela está ordenada por esse gap absoluto.\n"
+    individual_results = [r for r in results if r["type"] == "individual"]
+    best_community = max(
+        individual_results or results,
+        key=lambda r: r["macro_f1_y1"] if r["macro_f1_y1"] is not None else -1.0,
     )
-    lines.append("| Modelo | Tipo | Repr. | Macro-F1 (y1) | Concord. exata (y2) | Gap absoluto | Diferença assinada |")
-    lines.append("|---|---|---|---:|---:|---:|---:|")
+    triadic = best_community["triadic"]
 
-    gap_sorted = sorted(
-        results,
-        key=_abs_gap,
-        reverse=True,
+    lines.append("\n## 3. Contingência triádica: y1 × y2 × ŷ1\n")
+    lines.append(
+        "A análise triádica localiza a discordância diretamente. Para o melhor "
+        f"preditor comunitário individual (`{best_community['model_id']}`), cada célula "
+        "`y1 != y2` mostra se a predição segue a comunidade (`y1`), segue a "
+        "calculadora (`y2`) ou escolhe outro bracket.\n"
     )
-    for r in gap_sorted:
-        f1 = r["macro_f1_y1"]
-        ea = r["metrics"]["exact_agreement"]
-        signed_gap = _signed_gap(r)
-        abs_gap = abs(signed_gap) if signed_gap is not None else None
+    lines.append("| y1 | y2 | n | Segue y1 | Segue y2 | Outro |")
+    lines.append("|---:|---:|---:|---:|---:|---:|")
+    for key in ("2-3", "2-4", "3-2", "3-4", "4-2", "4-3"):
+        cell = triadic["cells"][key]
+        n = cell["n"]
         lines.append(
-            f"| `{r['model_id']}` | {r['type']} | {r['representation']} "
-            f"| {_fmt(f1)} | {_pct(ea)} | {_fmt(abs_gap)} | {_delta_str(signed_gap)} |"
+            f"| {cell['y_arch']} | {cell['y_calc']} | {n} "
+            f"| {_pct(cell['arch'] / n)} "
+            f"| {_pct(cell['calc'] / n)} "
+            f"| {_pct(cell['other'] / n)} |"
         )
+    total = triadic["totals"]["discordant"]
+    n_total = total["n"]
+    lines.append(
+        f"| **Todos** | **discordantes** | **{n_total}** "
+        f"| **{_pct(total['arch'] / n_total)}** "
+        f"| **{_pct(total['calc'] / n_total)}** "
+        f"| **{_pct(total['other'] / n_total)}** |"
+    )
+    conc = triadic["totals"]["concordant"]
+    lines.append(
+        f"\nNas células concordantes (`y1 == y2`), `{best_community['model_id']}` "
+        f"prediz o rótulo compartilhado em {_pct(conc['both'] / conc['n'])} das linhas OOF.\n"
+    )
 
     # ------------------------------------------------------------------
     # 4. Análise por subconjunto: y1==y2 vs y1!=y2
@@ -499,35 +535,29 @@ def render_report(
     # ------------------------------------------------------------------
     best_agree = sorted_results[0]
     worst_agree = sorted_results[-1]
-    largest_gap = gap_sorted[0]
-    smallest_gap = gap_sorted[-1]
     highlight_rows = [
         ("maior concordância", best_agree),
         ("menor concordância", worst_agree),
-        ("maior gap absoluto", largest_gap),
-        ("menor gap absoluto", smallest_gap),
+        ("melhor preditor comunitário individual", best_community),
     ]
 
     lines.append("\n## 5. Destaques globais\n")
     lines.append(
-        "Considerando todos os modelos e ensembles juntos, seleciono apenas quatro casos: "
-        "maior concordância, menor concordância, maior gap absoluto e menor gap absoluto. "
+        "Considerando todos os modelos e ensembles juntos, seleciono apenas três casos: "
+        "maior concordância, menor concordância e melhor preditor comunitário individual. "
         "Isso mantém a seção focada nos extremos realmente informativos, independente de "
         "a origem ser `BC`, `DF` ou `BC+DF`.\n"
     )
     lines.append(
-        "| Caso | Modelo | Tipo | Repr. | Concord. exata | Macro-F1 (y1) | "
-        "Gap absoluto | Diferença assinada | Justificativa |"
+        "| Caso | Modelo | Tipo | Repr. | Concord. exata | Macro-F1 (y1) | Macro-F1 vs y2 | Justificativa |"
     )
-    lines.append("|---|---|---|---|---:|---:|---:|---:|---|")
+    lines.append("|---|---|---|---|---:|---:|---:|---|")
     for case, row in highlight_rows:
-        signed_gap = _signed_gap(row)
         lines.append(
             f"| {case} | `{row['model_id']}` | {row['type']} | {row['representation']} "
             f"| {_pct(row['metrics']['exact_agreement'])} "
             f"| {_fmt(row['macro_f1_y1'])} "
-            f"| {_fmt(_abs_gap(row))} "
-            f"| {_delta_str(signed_gap)} "
+            f"| {_fmt(row['metrics']['macro_f1_vs_y2'])} "
             f"| {_global_highlight_justification(case, row)} |"
         )
     lines.append("")
@@ -579,11 +609,10 @@ def render_report(
     # ------------------------------------------------------------------
     lines.append("## 7. Discussão comparativa\n")
     lines.append(
-        "A leitura global destaca apenas os extremos relevantes. Maior concordância "
-        "identifica o modelo mais próximo da calculadora; menor concordância identifica "
-        "o mais distante; maior gap absoluto mostra onde desempenho em `y1` e concordância "
-        "com `y2` mais se separam; menor gap absoluto mostra o caso em que essas duas "
-        "medidas ficam mais próximas.\n"
+        "A leitura global destaca os extremos relevantes. Maior concordância identifica "
+        "o modelo mais próximo da calculadora; menor concordância identifica o mais "
+        "distante; a contingência triádica mostra, para o melhor preditor comunitário individual, "
+        "para qual fonte as predições caminham quando `y1` e `y2` discordam.\n"
     )
 
     # ------------------------------------------------------------------
@@ -678,6 +707,7 @@ def main() -> None:
             matrix_key="cm_pred_vs_y2",
         )
         subset  = compute_subset_metrics(valid)
+        triadic = compute_triadic_contingency(valid)
 
         results.append({
             "model_id":       mid,
@@ -687,6 +717,7 @@ def main() -> None:
             "macro_f1_y1":    model["macro_f1_y1"],
             "metrics":        metrics,
             "subset":         subset,
+            "triadic":        triadic,
         })
 
     baseline_rows = comparable_rows(

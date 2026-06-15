@@ -6,17 +6,17 @@
 \newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
 \citation{mtg}
 \citation{commanderbrackets}
-\citation{archidekt}
 \@writefile{toc}{\contentsline {paragraph}{Research question.}{2}{section*.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Contributions.}{2}{section*.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
 \newlabel{sec:background}{{2}{2}{Background}{section.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}MTG and Commander}{2}{subsection.2.1}\protected@file@percent }
 \newlabel{sec:bg:mtg-commander}{{2.1}{2}{MTG and Commander}{subsection.2.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Commander Brackets (community label \(y_{\text  {arch}}\))}{2}{subsection.2.2}\protected@file@percent }
-\newlabel{sec:bg:brackets}{{2.2}{2}{Commander Brackets (community label \texorpdfstring {\(y_{\text {arch}}\)}{y\_arch})}{subsection.2.2}{}}
+\citation{archidekt}
 \citation{edhpowerlevel}
 \citation{edhrec}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Commander Brackets (community label \(y_{\text  {arch}}\))}{3}{subsection.2.2}\protected@file@percent }
+\newlabel{sec:bg:brackets}{{2.2}{3}{Commander Brackets (community label \texorpdfstring {\(y_{\text {arch}}\)}{y\_arch})}{subsection.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Automated calculators (calculator label \(y_{\text  {calc}}\))}{3}{subsection.2.3}\protected@file@percent }
 \newlabel{sec:bg:calculator}{{2.3}{3}{Automated calculators (calculator label \texorpdfstring {\(y_{\text {calc}}\)}{y\_calc})}{subsection.2.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Dataset Construction}{3}{section.3}\protected@file@percent }
@@ -30,73 +30,74 @@
 \newlabel{sec:data:labels}{{3.3}{4}{Labels}{subsection.3.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Exploratory analysis of the divergence}{4}{subsection.3.4}\protected@file@percent }
 \newlabel{sec:data:eda}{{3.4}{4}{Exploratory analysis of the divergence}{subsection.3.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Joint counts \(y_{\text  {arch}} \times y_{\text  {calc}}\) on the modeling set.}}{4}{table.1}\protected@file@percent }
-\newlabel{tab:yarch-ycalc-matrix}{{1}{4}{Joint counts \(y_{\text {arch}} \times y_{\text {calc}}\) on the modeling set}{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Bag of Cards (BC)}{4}{subsection.3.5}\protected@file@percent }
-\newlabel{sec:data:bc}{{3.5}{4}{Bag of Cards (BC)}{subsection.3.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The two representations built from the same deck: Bag of Cards (sparse vector of card counts, \(\approx \)11k dimensions) and Deck Features (dense vector of 102 structural attributes).}}{5}{figure.1}\protected@file@percent }
-\newlabel{fig:representations}{{1}{5}{The two representations built from the same deck: Bag of Cards (sparse vector of card counts, \(\approx \)11k dimensions) and Deck Features (dense vector of 102 structural attributes)}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Agreement matrix between the community label \(y_{\text  {arch}}\) and the calculator label \(y_{\text  {calc}}\) on the 12{,}135-deck modeling set. Rows are ordered from bracket~4 to bracket~2. Each cell reports a count and its percentage of the full dataset. The diagonal contains exact matches; off-diagonal cells show disagreement direction. The calculator assigns a higher bracket than the author in 2{,}846 decks (23.5\%) and a lower bracket in 1{,}894 decks (15.6\%).}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:yarch-ycalc-matrix}{{1}{4}{Agreement matrix between the community label \(y_{\text {arch}}\) and the calculator label \(y_{\text {calc}}\) on the 12{,}135-deck modeling set. Rows are ordered from bracket~4 to bracket~2. Each cell reports a count and its percentage of the full dataset. The diagonal contains exact matches; off-diagonal cells show disagreement direction. The calculator assigns a higher bracket than the author in 2{,}846 decks (23.5\%) and a lower bracket in 1{,}894 decks (15.6\%)}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The two representations built from the same deck: Bag of Cards (sparse vector of card counts, \(\approx \)11k dimensions) and Deck Features (dense vector of 102 structural attributes).}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:representations}{{2}{5}{The two representations built from the same deck: Bag of Cards (sparse vector of card counts, \(\approx \)11k dimensions) and Deck Features (dense vector of 102 structural attributes)}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Bag of Cards (BC)}{5}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:data:bc}{{3.5}{5}{Bag of Cards (BC)}{subsection.3.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Deck Features (DF)}{5}{subsection.3.6}\protected@file@percent }
 \newlabel{sec:data:df}{{3.6}{5}{Deck Features (DF)}{subsection.3.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Spot-Checking}{6}{section.4}\protected@file@percent }
 \newlabel{sec:spotcheck}{{4}{6}{Spot-Checking}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Algorithm pool}{6}{subsection.4.1}\protected@file@percent }
 \newlabel{sec:spotcheck:pool}{{4.1}{6}{Algorithm pool}{subsection.4.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Candidate algorithms and their inductive biases.}}{6}{table.2}\protected@file@percent }
-\newlabel{tab:algorithms}{{2}{6}{Candidate algorithms and their inductive biases}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Candidate algorithms and their inductive biases.}}{6}{table.1}\protected@file@percent }
+\newlabel{tab:algorithms}{{1}{6}{Candidate algorithms and their inductive biases}{table.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Hold-out protocol}{6}{subsection.4.2}\protected@file@percent }
 \newlabel{sec:spotcheck:protocol}{{4.2}{6}{Hold-out protocol}{subsection.4.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Results and selection}{6}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:spotcheck:results}{{4.3}{6}{Results and selection}{subsection.4.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Spot-checking macro-F1 (mean over 5 hold-out seeds) per algorithm and representation, with per-representation ranks. \textbf  {\text  {$\mathsurround \z@ \mathchar "458$}} marks membership in $A_{\text  {union}}$ used by nested CV.}}{6}{table.3}\protected@file@percent }
-\newlabel{tab:spotcheck-main}{{3}{6}{Spot-checking macro-F1 (mean over 5 hold-out seeds) per algorithm and representation, with per-representation ranks. \textbf {\checkmark } marks membership in $A_{\text {union}}$ used by nested CV}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Results and selection}{7}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:spotcheck:results}{{4.3}{7}{Results and selection}{subsection.4.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Spot-checking macro-F1 (mean over 5 hold-out seeds) per algorithm and representation, with per-representation ranks. \textbf  {\text  {$\mathsurround \z@ \mathchar "458$}} marks membership in $A_{\text  {union}}$ used by nested CV.}}{7}{table.2}\protected@file@percent }
+\newlabel{tab:spotcheck-main}{{2}{7}{Spot-checking macro-F1 (mean over 5 hold-out seeds) per algorithm and representation, with per-representation ranks. \textbf {\checkmark } marks membership in $A_{\text {union}}$ used by nested CV}{table.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Training and Model Selection}{7}{section.5}\protected@file@percent }
 \newlabel{sec:training}{{5}{7}{Training and Model Selection}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Nested cross-validation}{7}{subsection.5.1}\protected@file@percent }
 \newlabel{sec:training:nestedcv}{{5.1}{7}{Nested cross-validation}{subsection.5.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Per-fold preprocessing}{7}{subsection.5.2}\protected@file@percent }
 \newlabel{sec:training:preprocessing}{{5.2}{7}{Per-fold preprocessing}{subsection.5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Hyperparameter grids}{7}{subsection.5.3}\protected@file@percent }
-\newlabel{sec:training:grids}{{5.3}{7}{Hyperparameter grids}{subsection.5.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Evaluation metrics}{7}{subsection.5.4}\protected@file@percent }
-\newlabel{sec:training:metrics}{{5.4}{7}{Evaluation metrics}{subsection.5.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Hyperparameter grids for nested CV (24 configurations per algorithm).}}{8}{table.4}\protected@file@percent }
-\newlabel{tab:grids}{{4}{8}{Hyperparameter grids for nested CV (24 configurations per algorithm)}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Hyperparameter grids}{8}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:training:grids}{{5.3}{8}{Hyperparameter grids}{subsection.5.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Hyperparameter grids for nested CV (24 configurations per algorithm).}}{8}{table.3}\protected@file@percent }
+\newlabel{tab:grids}{{3}{8}{Hyperparameter grids for nested CV (24 configurations per algorithm)}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Evaluation metrics}{8}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:training:metrics}{{5.4}{8}{Evaluation metrics}{subsection.5.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Results}{8}{subsection.5.5}\protected@file@percent }
 \newlabel{sec:training:results}{{5.5}{8}{Results}{subsection.5.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Nested-CV results for DF and BC models side by side. Macro-F1 is mean $\pm $ std over 15 outer folds; ranks are within each representation. Bracket-relevant flags and curated lists in DF (Game Changers, tutors, mass land denial, combos) overlap with the calculator's inputs; this is discussed as a circularity caveat in Section~\ref {sec:conclusion:discussion}.}}{8}{table.5}\protected@file@percent }
-\newlabel{tab:nested-results}{{5}{8}{Nested-CV results for DF and BC models side by side. Macro-F1 is mean $\pm $ std over 15 outer folds; ranks are within each representation. Bracket-relevant flags and curated lists in DF (Game Changers, tutors, mass land denial, combos) overlap with the calculator's inputs; this is discussed as a circularity caveat in Section~\ref {sec:conclusion:discussion}}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Nested-CV results for DF and BC models side by side. Macro-F1 is mean $\pm $ std over 15 outer folds; ranks are within each representation. Bracket-relevant flags and curated lists in DF (Game Changers, tutors, mass land denial, combos) overlap with the calculator's inputs; this is discussed as a circularity caveat in Section~\ref {sec:conclusion:discussion}.}}{9}{table.4}\protected@file@percent }
+\newlabel{tab:nested-results}{{4}{9}{Nested-CV results for DF and BC models side by side. Macro-F1 is mean $\pm $ std over 15 outer folds; ranks are within each representation. Bracket-relevant flags and curated lists in DF (Game Changers, tutors, mass land denial, combos) overlap with the calculator's inputs; this is discussed as a circularity caveat in Section~\ref {sec:conclusion:discussion}}{table.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Voting ensembles}{9}{subsection.5.6}\protected@file@percent }
 \newlabel{sec:training:voting}{{5.6}{9}{Voting ensembles}{subsection.5.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Hard-voting ensembles built from OOF predictions. $\Delta $ vs best is the macro-F1 gain over the strongest individual model (DF Gradient Boosting at 0.6908).}}{9}{table.6}\protected@file@percent }
-\newlabel{tab:voting-results}{{6}{9}{Hard-voting ensembles built from OOF predictions. $\Delta $ vs best is the macro-F1 gain over the strongest individual model (DF Gradient Boosting at 0.6908)}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Hard-voting ensembles built from OOF predictions. $\Delta $ vs best is the macro-F1 gain over the strongest individual model (DF Gradient Boosting at 0.6908).}}{9}{table.5}\protected@file@percent }
+\newlabel{tab:voting-results}{{5}{9}{Hard-voting ensembles built from OOF predictions. $\Delta $ vs best is the macro-F1 gain over the strongest individual model (DF Gradient Boosting at 0.6908)}{table.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Selected models}{9}{subsection.5.7}\protected@file@percent }
 \newlabel{sec:training:selection}{{5.7}{9}{Selected models}{subsection.5.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Model selections used after training. The asterisk marks DF Gradient Boosting as the best individual model overall.}}{9}{table.7}\protected@file@percent }
-\newlabel{tab:selected-models}{{7}{9}{Model selections used after training. The asterisk marks DF Gradient Boosting as the best individual model overall}{table.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Model-Calculator Comparison}{9}{section.6}\protected@file@percent }
-\newlabel{sec:modelcalc}{{6}{9}{Model-Calculator Comparison}{section.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Calculator-alignment highlights. The raw-label row compares \(y_{\text  {arch}}\) directly with \(y_{\text  {calc}}\); all other rows compare a model's out-of-fold predictions \(\hat  {y}_{\text  {arch}}\) with \(y_{\text  {calc}}\). In the Source column, GB is Gradient Boosting, RF is Random Forest, DT is Decision Tree, and NB is Naive Bayes. Columns: \textit  {Exact} --- fraction of rows where \(\hat  {y}_{\text  {arch}} = y_{\text  {calc}}\); \(\pm 1\) --- fraction within one bracket; \textit  {Mean $|\Delta |$} --- mean absolute difference; \textit  {F1 calc} --- macro-F1 of the predictions when scored against \(y_{\text  {calc}}\); \textit  {F1 arch} --- macro-F1 against \(y_{\text  {arch}}\) (the supervised target, taken from Table~\ref {tab:nested-results}); \textit  {Gap} --- $|\,\text  {F1 arch} - \text  {Exact}\,|$, measuring how far performance on the community target sits from raw calculator agreement.}}{10}{table.8}\protected@file@percent }
-\newlabel{tab:calc-alignment}{{8}{10}{Calculator-alignment highlights. The raw-label row compares \(y_{\text {arch}}\) directly with \(y_{\text {calc}}\); all other rows compare a model's out-of-fold predictions \(\hat {y}_{\text {arch}}\) with \(y_{\text {calc}}\). In the Source column, GB is Gradient Boosting, RF is Random Forest, DT is Decision Tree, and NB is Naive Bayes. Columns: \textit {Exact} --- fraction of rows where \(\hat {y}_{\text {arch}} = y_{\text {calc}}\); \(\pm 1\) --- fraction within one bracket; \textit {Mean $|\Delta |$} --- mean absolute difference; \textit {F1 calc} --- macro-F1 of the predictions when scored against \(y_{\text {calc}}\); \textit {F1 arch} --- macro-F1 against \(y_{\text {arch}}\) (the supervised target, taken from Table~\ref {tab:nested-results}); \textit {Gap} --- $|\,\text {F1 arch} - \text {Exact}\,|$, measuring how far performance on the community target sits from raw calculator agreement}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Model selections used after training. The asterisk marks DF Gradient Boosting as the best individual model overall.}}{10}{table.6}\protected@file@percent }
+\newlabel{tab:selected-models}{{6}{10}{Model selections used after training. The asterisk marks DF Gradient Boosting as the best individual model overall}{table.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Model-Calculator Comparison}{10}{section.6}\protected@file@percent }
+\newlabel{sec:modelcalc}{{6}{10}{Model-Calculator Comparison}{section.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Calculator-alignment highlights. The raw-label row compares \(y_{\text  {arch}}\) directly with \(y_{\text  {calc}}\); all other rows compare a model's out-of-fold predictions \(\hat  {y}_{\text  {arch}}\) with \(y_{\text  {calc}}\). In the Source column, GB is Gradient Boosting, RF is Random Forest, and DT is Decision Tree. Columns: \textit  {Exact} --- fraction of rows where \(\hat  {y}_{\text  {arch}} = y_{\text  {calc}}\); \(\pm 1\) --- fraction within one bracket; \textit  {Mean $|\Delta |$} --- mean absolute difference; \textit  {F1 calc} --- macro-F1 of the predictions when scored against \(y_{\text  {calc}}\); \textit  {F1 arch} --- macro-F1 against \(y_{\text  {arch}}\) (the supervised target, taken from Table~\ref {tab:nested-results}).}}{10}{table.7}\protected@file@percent }
+\newlabel{tab:calc-alignment}{{7}{10}{Calculator-alignment highlights. The raw-label row compares \(y_{\text {arch}}\) directly with \(y_{\text {calc}}\); all other rows compare a model's out-of-fold predictions \(\hat {y}_{\text {arch}}\) with \(y_{\text {calc}}\). In the Source column, GB is Gradient Boosting, RF is Random Forest, and DT is Decision Tree. Columns: \textit {Exact} --- fraction of rows where \(\hat {y}_{\text {arch}} = y_{\text {calc}}\); \(\pm 1\) --- fraction within one bracket; \textit {Mean $|\Delta |$} --- mean absolute difference; \textit {F1 calc} --- macro-F1 of the predictions when scored against \(y_{\text {calc}}\); \textit {F1 arch} --- macro-F1 against \(y_{\text {arch}}\) (the supervised target, taken from Table~\ref {tab:nested-results})}{table.7}{}}
 \@writefile{toc}{\contentsline {paragraph}{Q1. Which representation gets closer to the community?}{10}{section*.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Q2. Which representation gets closer to the calculator?}{10}{section*.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Q3. Which algorithm aligns most with the community vs the calculator?}{10}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Q4. What does the gap mean?}{10}{section*.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Agreement matrices between out-of-fold predictions \(\hat  {y}_{\text  {arch}}\) and the calculator label \(y_{\text  {calc}}\) for the models highlighted in Table~\ref {tab:calc-alignment}. Each cell reports a count and its percentage of all 36{,}405 OOF predictions. DF Gradient Boosting is the best individual community predictor and matches the calculator on 23{,}297 predictions (64.0\%); its off-diagonal mass is 9{,}986 below the calculator (27.4\%) and 3{,}122 above it (8.6\%). DF Random Forest is the closest individual model to the calculator, with 25{,}217 exact matches (69.3\%), 8{,}000 below-calculator errors (22.0\%), and 3{,}188 above-calculator errors (8.8\%). The top-3 voting ensemble is the best overall community predictor, with 24{,}264 exact matches (66.7\%), 9{,}788 below-calculator errors (26.9\%), and 2{,}353 above-calculator errors (6.5\%).}}{11}{figure.3}\protected@file@percent }
+\newlabel{fig:df-models-ycalc-matrix}{{3}{11}{Agreement matrices between out-of-fold predictions \(\hat {y}_{\text {arch}}\) and the calculator label \(y_{\text {calc}}\) for the models highlighted in Table~\ref {tab:calc-alignment}. Each cell reports a count and its percentage of all 36{,}405 OOF predictions. DF Gradient Boosting is the best individual community predictor and matches the calculator on 23{,}297 predictions (64.0\%); its off-diagonal mass is 9{,}986 below the calculator (27.4\%) and 3{,}122 above it (8.6\%). DF Random Forest is the closest individual model to the calculator, with 25{,}217 exact matches (69.3\%), 8{,}000 below-calculator errors (22.0\%), and 3{,}188 above-calculator errors (8.8\%). The top-3 voting ensemble is the best overall community predictor, with 24{,}264 exact matches (66.7\%), 9{,}788 below-calculator errors (26.9\%), and 2{,}353 above-calculator errors (6.5\%)}{figure.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}Interpretability}{11}{section.7}\protected@file@percent }
 \newlabel{sec:interpretability}{{7}{11}{Interpretability}{section.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Deck Features}{11}{subsection.7.1}\protected@file@percent }
 \newlabel{sec:interpretability:df}{{7.1}{11}{Deck Features}{subsection.7.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Top DF permutation importances for \texttt  {df\_gradient\_boosting}.}}{11}{table.9}\protected@file@percent }
-\newlabel{tab:df-interpretability}{{9}{11}{Top DF permutation importances for \texttt {df\_gradient\_boosting}}{table.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Bag of Cards}{11}{subsection.7.2}\protected@file@percent }
-\newlabel{sec:interpretability:bc}{{7.2}{11}{Bag of Cards}{subsection.7.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Top bracket~4 card lifts for \texttt  {bc\_gradient\_boosting}.}}{12}{table.10}\protected@file@percent }
-\newlabel{tab:bc-interpretability}{{10}{12}{Top bracket~4 card lifts for \texttt {bc\_gradient\_boosting}}{table.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{12}{section.8}\protected@file@percent }
-\newlabel{sec:conclusion}{{8}{12}{Conclusion}{section.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Discussion, Limitations, and Future Work}{12}{subsection.8.1}\protected@file@percent }
-\newlabel{sec:conclusion:discussion}{{8.1}{12}{Discussion, Limitations, and Future Work}{subsection.8.1}{}}
-\@writefile{toc}{\contentsline {paragraph}{Limitations.}{12}{section*.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Top DF permutation importances for \texttt  {df\_gradient\_boosting}.}}{12}{table.8}\protected@file@percent }
+\newlabel{tab:df-interpretability}{{8}{12}{Top DF permutation importances for \texttt {df\_gradient\_boosting}}{table.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Bag of Cards}{12}{subsection.7.2}\protected@file@percent }
+\newlabel{sec:interpretability:bc}{{7.2}{12}{Bag of Cards}{subsection.7.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Top bracket~4 card lifts for \texttt  {bc\_gradient\_boosting}.}}{12}{table.9}\protected@file@percent }
+\newlabel{tab:bc-interpretability}{{9}{12}{Top bracket~4 card lifts for \texttt {bc\_gradient\_boosting}}{table.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{13}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{13}{Conclusion}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Discussion, Limitations, and Future Work}{13}{subsection.8.1}\protected@file@percent }
+\newlabel{sec:conclusion:discussion}{{8.1}{13}{Discussion, Limitations, and Future Work}{subsection.8.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Limitations.}{13}{section*.7}\protected@file@percent }
 \citation{anthropic2024claude}
 \citation{openai2021codex}
 \citation{google2023gemini}
@@ -110,56 +111,56 @@
 \bibcite{google2023gemini}{6}
 \bibcite{openai2021codex}{7}
 \bibcite{mtg}{8}
-\@writefile{toc}{\contentsline {paragraph}{Future work.}{13}{section*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A}MTG Terminology and Gameplay}{14}{section.A}\protected@file@percent }
-\newlabel{app:mtg}{{A}{14}{MTG Terminology and Gameplay}{section.A}{}}
-\@writefile{toc}{\contentsline {paragraph}{Game structure.}{14}{section*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Cards, mana, curve.}{14}{section*.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Power indicators.}{14}{section*.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Keywords.}{14}{section*.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Community resources.}{14}{section*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B}Preprocessing --- Extended Rationale}{14}{section.B}\protected@file@percent }
-\newlabel{app:preprocessing}{{B}{14}{Preprocessing --- Extended Rationale}{section.B}{}}
-\@writefile{toc}{\contentsline {paragraph}{Imputation.}{14}{section*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Winsorization.}{14}{section*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Scaling.}{14}{section*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Leakage prevention.}{14}{section*.20}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {C}Deck Features (DF) Catalog}{15}{section.C}\protected@file@percent }
-\newlabel{app:features}{{C}{15}{Deck Features (DF) Catalog}{section.C}{}}
+\@writefile{toc}{\contentsline {paragraph}{Future work.}{14}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}MTG Terminology and Gameplay}{14}{appendix.A}\protected@file@percent }
+\newlabel{app:mtg}{{A}{14}{MTG Terminology and Gameplay}{appendix.A}{}}
+\@writefile{toc}{\contentsline {paragraph}{Game structure.}{14}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cards, mana, curve.}{15}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Power indicators.}{15}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Keywords.}{15}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Community resources.}{15}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Preprocessing --- Extended Rationale}{15}{appendix.B}\protected@file@percent }
+\newlabel{app:preprocessing}{{B}{15}{Preprocessing --- Extended Rationale}{appendix.B}{}}
+\@writefile{toc}{\contentsline {paragraph}{Imputation.}{15}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Winsorization.}{15}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Scaling.}{15}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Leakage prevention.}{15}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Deck Features (DF) Catalog}{15}{appendix.C}\protected@file@percent }
+\newlabel{app:features}{{C}{15}{Deck Features (DF) Catalog}{appendix.C}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Basic structure}{15}{subsection.C.1}\protected@file@percent }
 \newlabel{app:features:basic}{{C.1}{15}{Basic structure}{subsection.C.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Colors and color identity}{15}{subsection.C.2}\protected@file@percent }
-\newlabel{app:features:colors}{{C.2}{15}{Colors and color identity}{subsection.C.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Mana base}{15}{subsection.C.3}\protected@file@percent }
-\newlabel{app:features:mana}{{C.3}{15}{Mana base}{subsection.C.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.4}Mana curve (CMC)}{15}{subsection.C.4}\protected@file@percent }
-\newlabel{app:features:curve}{{C.4}{15}{Mana curve (CMC)}{subsection.C.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.5}Card types}{15}{subsection.C.5}\protected@file@percent }
-\newlabel{app:features:types}{{C.5}{15}{Card types}{subsection.C.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Colors and color identity}{16}{subsection.C.2}\protected@file@percent }
+\newlabel{app:features:colors}{{C.2}{16}{Colors and color identity}{subsection.C.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}Mana base}{16}{subsection.C.3}\protected@file@percent }
+\newlabel{app:features:mana}{{C.3}{16}{Mana base}{subsection.C.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.4}Mana curve (CMC)}{16}{subsection.C.4}\protected@file@percent }
+\newlabel{app:features:curve}{{C.4}{16}{Mana curve (CMC)}{subsection.C.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.5}Card types}{16}{subsection.C.5}\protected@file@percent }
+\newlabel{app:features:types}{{C.5}{16}{Card types}{subsection.C.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C.6}Bracket-relevant flags}{16}{subsection.C.6}\protected@file@percent }
 \newlabel{app:features:bracket}{{C.6}{16}{Bracket-relevant flags}{subsection.C.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C.7}Combo density}{16}{subsection.C.7}\protected@file@percent }
 \newlabel{app:features:combos}{{C.7}{16}{Combo density}{subsection.C.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.8}Popularity, salt, and price}{16}{subsection.C.8}\protected@file@percent }
-\newlabel{app:features:popularity}{{C.8}{16}{Popularity, salt, and price}{subsection.C.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.9}Rarity, keywords, types, layouts}{16}{subsection.C.9}\protected@file@percent }
-\newlabel{app:features:rest}{{C.9}{16}{Rarity, keywords, types, layouts}{subsection.C.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {D}Spot-Checking --- Full Results}{16}{section.D}\protected@file@percent }
-\newlabel{app:spotcheck}{{D}{16}{Spot-Checking --- Full Results}{section.D}{}}
-\@writefile{toc}{\contentsline {paragraph}{Software.}{17}{section*.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Default hyperparameters.}{17}{section*.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{BC vocabulary threshold.}{17}{section*.23}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Per-algorithm macro-F1.}{17}{section*.24}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Spot-checking macro-F1 (mean $\pm $ std over 5 stratified 80/20 hold-outs) per algorithm and representation, with the top-5-per-representation selection. \textbf  {\text  {$\mathsurround \z@ \mathchar "458$}} marks membership in $A_{\text  {union}}$.}}{17}{table.11}\protected@file@percent }
-\newlabel{tab:spotcheck}{{11}{17}{Spot-checking macro-F1 (mean $\pm $ std over 5 stratified 80/20 hold-outs) per algorithm and representation, with the top-5-per-representation selection. \textbf {\checkmark } marks membership in $A_{\text {union}}$}{table.11}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {E}Training Verification and Statistical Tests}{17}{section.E}\protected@file@percent }
-\newlabel{app:training-verification}{{E}{17}{Training Verification and Statistical Tests}{section.E}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Model verification checks.}}{17}{table.12}\protected@file@percent }
-\newlabel{tab:verification-checks}{{12}{17}{Model verification checks}{table.12}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Commander-grouped robustness check for selected models.}}{18}{table.13}\protected@file@percent }
-\newlabel{tab:groupkfold}{{13}{18}{Commander-grouped robustness check for selected models}{table.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {F}Voting and Model Selection Details}{18}{section.F}\protected@file@percent }
-\newlabel{app:voting-selection}{{F}{18}{Voting and Model Selection Details}{section.F}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Voting ensemble members.}}{18}{table.14}\protected@file@percent }
-\newlabel{tab:voting-members}{{14}{18}{Voting ensemble members}{table.14}{}}
-\gdef \@abspage@last{18}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.8}Popularity, salt, and price}{17}{subsection.C.8}\protected@file@percent }
+\newlabel{app:features:popularity}{{C.8}{17}{Popularity, salt, and price}{subsection.C.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.9}Rarity, keywords, types, layouts}{17}{subsection.C.9}\protected@file@percent }
+\newlabel{app:features:rest}{{C.9}{17}{Rarity, keywords, types, layouts}{subsection.C.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Spot-Checking --- Full Results}{17}{appendix.D}\protected@file@percent }
+\newlabel{app:spotcheck}{{D}{17}{Spot-Checking --- Full Results}{appendix.D}{}}
+\@writefile{toc}{\contentsline {paragraph}{Software.}{17}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Default hyperparameters.}{17}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{BC vocabulary threshold.}{17}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Per-algorithm macro-F1.}{18}{section*.23}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Spot-checking macro-F1 (mean $\pm $ std over 5 stratified 80/20 hold-outs) per algorithm and representation, with the top-5-per-representation selection. \textbf  {\text  {$\mathsurround \z@ \mathchar "458$}} marks membership in $A_{\text  {union}}$.}}{18}{table.10}\protected@file@percent }
+\newlabel{tab:spotcheck}{{10}{18}{Spot-checking macro-F1 (mean $\pm $ std over 5 stratified 80/20 hold-outs) per algorithm and representation, with the top-5-per-representation selection. \textbf {\checkmark } marks membership in $A_{\text {union}}$}{table.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Training Verification and Statistical Tests}{18}{appendix.E}\protected@file@percent }
+\newlabel{app:training-verification}{{E}{18}{Training Verification and Statistical Tests}{appendix.E}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Model verification checks.}}{18}{table.11}\protected@file@percent }
+\newlabel{tab:verification-checks}{{11}{18}{Model verification checks}{table.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Commander-grouped robustness check for selected models.}}{18}{table.12}\protected@file@percent }
+\newlabel{tab:groupkfold}{{12}{18}{Commander-grouped robustness check for selected models}{table.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {F}Voting and Model Selection Details}{18}{appendix.F}\protected@file@percent }
+\newlabel{app:voting-selection}{{F}{18}{Voting and Model Selection Details}{appendix.F}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Voting ensemble members.}}{19}{table.13}\protected@file@percent }
+\newlabel{tab:voting-members}{{13}{19}{Voting ensemble members}{table.13}{}}
+\gdef \@abspage@last{19}

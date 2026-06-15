@@ -44,27 +44,22 @@ Aqui `ŷ1` é o label predito por cada modelo treinado em `y1`. A tabela usa exa
 | `df_naive_bayes` | individual | DF | 0.5905 | 54.5% | 97.3% | 0.481 | 0.5490 |
 | `bc_decision_tree` | individual | BC | 0.5475 | 54.2% | 96.6% | 0.492 | 0.5328 |
 
-## 3. Gap absoluto entre desempenho em y1 e concordância com y2
+## 3. Contingência triádica: y1 × y2 × ŷ1
 
-> Aqui o gap é uma distância absoluta: `abs(macro-F1 em y1 − concordância exata entre ŷ1 e y2)`. Quanto maior o valor, maior o desalinhamento entre o desempenho do modelo no alvo comunitário e sua concordância com a calculadora. A tabela está ordenada por esse gap absoluto.
+A análise triádica localiza a discordância diretamente. Para o melhor preditor comunitário individual (`df_gradient_boosting`), cada célula `y1 != y2` mostra se a predição segue a comunidade (`y1`), segue a calculadora (`y2`) ou escolhe outro bracket.
 
-| Modelo | Tipo | Repr. | Macro-F1 (y1) | Concord. exata (y2) | Gap absoluto | Diferença assinada |
-|---|---|---|---:|---:|---:|---:|
-| `df_gradient_boosting` | individual | DF | 0.6908 | 64.0% | 0.0508 | +0.0508 |
-| `df_naive_bayes` | individual | DF | 0.5905 | 54.5% | 0.0450 | +0.0450 |
-| `bc_gradient_boosting` | individual | BC | 0.6433 | 60.3% | 0.0402 | +0.0402 |
-| `bc_logistic_regression` | individual | BC | 0.6236 | 58.6% | 0.0380 | +0.0380 |
-| `bc_random_forest` | individual | BC | 0.6326 | 66.9% | 0.0367 | -0.0367 |
-| `voting_top3` | ensemble | DF | 0.6941 | 66.7% | 0.0276 | +0.0276 |
-| `df_decision_tree` | individual | DF | 0.6727 | 64.8% | 0.0251 | +0.0251 |
-| `bc_linear_svc` | individual | BC | 0.6147 | 59.2% | 0.0231 | +0.0231 |
-| `df_random_forest` | individual | DF | 0.6733 | 69.3% | 0.0194 | -0.0194 |
-| `df_logistic_regression` | individual | DF | 0.6707 | 68.8% | 0.0177 | -0.0177 |
-| `voting_top5` | ensemble | DF | 0.6932 | 68.2% | 0.0110 | +0.0110 |
-| `voting_top7` | ensemble | BC+DF | 0.6936 | 68.4% | 0.0100 | +0.0100 |
-| `df_linear_svc` | individual | DF | 0.6557 | 65.0% | 0.0059 | +0.0059 |
-| `bc_decision_tree` | individual | BC | 0.5475 | 54.2% | 0.0057 | +0.0057 |
-| `bc_naive_bayes` | individual | BC | 0.5535 | 55.5% | 0.0010 | -0.0010 |
+| y1 | y2 | n | Segue y1 | Segue y2 | Outro |
+|---:|---:|---:|---:|---:|---:|
+| 2 | 3 | 3459 | 68.5% | 29.3% | 2.3% |
+| 2 | 4 | 462 | 44.6% | 9.3% | 46.1% |
+| 3 | 2 | 2307 | 25.9% | 70.6% | 3.5% |
+| 3 | 4 | 4617 | 75.5% | 18.8% | 5.6% |
+| 4 | 2 | 384 | 18.8% | 40.1% | 41.1% |
+| 4 | 3 | 2991 | 30.8% | 61.6% | 7.6% |
+| **Todos** | **discordantes** | **14220** | **53.8%** | **39.0%** | **7.2%** |
+
+Nas células concordantes (`y1 == y2`), `df_gradient_boosting` prediz o rótulo compartilhado em 80.0% das linhas OOF.
+
 
 ## 4. Análise por subconjunto: decks concordantes vs discordantes
 
@@ -92,14 +87,13 @@ Aqui `ŷ1` é o label predito por cada modelo treinado em `y1`. A tabela usa exa
 
 ## 5. Destaques globais
 
-Considerando todos os modelos e ensembles juntos, seleciono apenas quatro casos: maior concordância, menor concordância, maior gap absoluto e menor gap absoluto. Isso mantém a seção focada nos extremos realmente informativos, independente de a origem ser `BC`, `DF` ou `BC+DF`.
+Considerando todos os modelos e ensembles juntos, seleciono apenas três casos: maior concordância, menor concordância e melhor preditor comunitário individual. Isso mantém a seção focada nos extremos realmente informativos, independente de a origem ser `BC`, `DF` ou `BC+DF`.
 
-| Caso | Modelo | Tipo | Repr. | Concord. exata | Macro-F1 (y1) | Gap absoluto | Diferença assinada | Justificativa |
-|---|---|---|---|---:|---:|---:|---:|---|
-| maior concordância | `df_random_forest` | individual | DF | 69.3% | 0.6733 | 0.0194 | -0.0194 | maior concordância exata com y2 entre todos os modelos (69.3%) |
-| menor concordância | `bc_decision_tree` | individual | BC | 54.2% | 0.5475 | 0.0057 | +0.0057 | menor concordância exata com y2 entre todos os modelos (54.2%) |
-| maior gap absoluto | `df_gradient_boosting` | individual | DF | 64.0% | 0.6908 | 0.0508 | +0.0508 | maior distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos (0.0508) |
-| menor gap absoluto | `bc_naive_bayes` | individual | BC | 55.5% | 0.5535 | 0.0010 | -0.0010 | menor distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos (0.0010) |
+| Caso | Modelo | Tipo | Repr. | Concord. exata | Macro-F1 (y1) | Macro-F1 vs y2 | Justificativa |
+|---|---|---|---|---:|---:|---:|---|
+| maior concordância | `df_random_forest` | individual | DF | 69.3% | 0.6733 | 0.6674 | maior concordância exata com y2 entre todos os modelos (69.3%) |
+| menor concordância | `bc_decision_tree` | individual | BC | 54.2% | 0.5475 | 0.5328 | menor concordância exata com y2 entre todos os modelos (54.2%) |
+| melhor preditor comunitário individual | `df_gradient_boosting` | individual | DF | 64.0% | 0.6908 | 0.6323 | maior macro-F1 contra y1 entre os modelos individuais (0.6908) |
 
 ## 6. Matrizes de confusão ŷ1 × y2 — destaques globais
 
@@ -131,9 +125,9 @@ Justificativa: menor concordância exata com y2 entre todos os modelos (54.2%).
 | **3** | 1811 | 9511 | 4976 | *(n=16298)*
 | **4** | 406 | 4178 | 6699 | *(n=11283)*
 
-### `df_gradient_boosting` (maior gap absoluto)
+### `df_gradient_boosting` (melhor preditor comunitário individual)
 
-Justificativa: maior distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos (0.0508).
+Justificativa: maior macro-F1 contra y1 entre os modelos individuais (0.6908).
 
 **df_gradient_boosting** — linhas = ŷ1 (previsto pelo modelo), colunas = y2 (calculadora)
 
@@ -143,21 +137,9 @@ Justificativa: maior distância absoluta entre macro-F1(y1) e concordância com 
 | **3** | 1061 | 11483 | 4668 | *(n=17212)*
 | **4** | 161 | 1900 | 7303 | *(n=9364)*
 
-### `bc_naive_bayes` (menor gap absoluto)
-
-Justificativa: menor distância absoluta entre macro-F1(y1) e concordância com y2 entre todos os modelos (0.0010).
-
-**bc_naive_bayes** — linhas = ŷ1 (previsto pelo modelo), colunas = y2 (calculadora)
-
-| ŷ1 \ y2 | 2 | 3 | 4 |
-|---|---|---|---|
-| **2** | 3508 | 4435 | 472 | *(n=8415)*
-| **3** | 1645 | 9432 | 4775 | *(n=15852)*
-| **4** | 580 | 4310 | 7248 | *(n=12138)*
-
 ## 7. Discussão comparativa
 
-A leitura global destaca apenas os extremos relevantes. Maior concordância identifica o modelo mais próximo da calculadora; menor concordância identifica o mais distante; maior gap absoluto mostra onde desempenho em `y1` e concordância com `y2` mais se separam; menor gap absoluto mostra o caso em que essas duas medidas ficam mais próximas.
+A leitura global destaca os extremos relevantes. Maior concordância identifica o modelo mais próximo da calculadora; menor concordância identifica o mais distante; a contingência triádica mostra, para o melhor preditor comunitário individual, para qual fonte as predições caminham quando `y1` e `y2` discordam.
 
 ## 8. Comparação compacta: `y1` vs `y2` e melhor `ŷ1` vs `y2`
 

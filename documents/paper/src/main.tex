@@ -47,7 +47,7 @@
 % ============================================================
 \begin{abstract}
 % ============================================================
-In \textit{Magic: The Gathering} (MTG) Commander, players assign each deck a power-level ``bracket'' on a five-point ordinal scale, intended as a coordination signal for casual play. Community calculators produce a parallel rule-based estimate of the same quantity from the decklist alone, and the two readings frequently disagree. Our goal is to understand that disagreement: where it lives, how large it is, and which deck-level signals drive it. To do so, we train predictive models on the community label and use them as probes --- a model that learns to imitate community judgements lets us isolate which deck features the community implicitly reacts to. We use two complementary representations of the same decks as parallel probes. Bag of Cards (BC), a sparse count vector indexed by card identity, asks whether the community label is driven by specific cards. Deck Features (DF), a dense vector of 102 hand-engineered structural attributes, asks whether it is driven by aggregate deck structure. On a dataset of 12{,}135 public Archidekt decks with both an author-assigned bracket \(y_{\text{arch}}\) and an EDHPowerLevel bracket \(y_{\text{calc}}\) in \(\{2,3,4\}\), six classifiers per representation are tuned and evaluated under 3-repeat, 5-fold nested cross-validation, using only \(y_{\text{arch}}\) as the supervised target. DF outperforms BC for every tuned algorithm: the strongest individual model is DF Gradient Boosting at macro-F1 \(0.6908 \pm 0.0093\), and a top-3 hard-voting ensemble reaches \(0.6941 \pm 0.0096\). When we compare the resulting predictions against the calculator (never used at training time), DF Random Forest aligns with \(y_{\text{calc}}\) on 69.3\% of decks, exceeding the 60.9\% agreement between the raw labels. Permutation importance on DF and lift analysis on BC implicate the same signals on both sides --- Game Changer count, mass land denial, combo references, tutors, and a small set of recognisable high-power cards. We do not adjudicate between the community and the calculator; we describe where the two readings agree, where they diverge, and what explains the gap.
+In \textit{Magic: The Gathering} (MTG) Commander, players assign each deck a power-level ``bracket'' on a five-point ordinal scale, intended as a coordination signal for casual play. Community calculators produce a parallel rule-based estimate of the same quantity from the decklist alone, and the two readings frequently disagree. Our goal is to understand that disagreement: where it lives, how large it is, and which deck-level signals drive it. To do so, we train predictive models on the community label and use them as probes --- a model that learns to imitate community judgements lets us isolate which deck features the community implicitly reacts to. We use two complementary representations of the same decks as parallel probes. Bag of Cards (BC), a sparse count vector indexed by card identity, asks whether the community label is driven by specific cards. Deck Features (DF), a dense vector of 102 hand-engineered structural attributes, asks whether it is driven by aggregate deck structure. On a dataset of 12{,}135 public Archidekt decks with both an author-assigned bracket \(y_{\text{arch}}\) and an EDHPowerLevel bracket \(y_{\text{calc}}\) in \(\{2,3,4\}\), six classifiers per representation are tuned and evaluated under 3-repeat, 5-fold nested cross-validation, using only \(y_{\text{arch}}\) as the supervised target. DF outperforms BC for every tuned algorithm: the strongest individual model is DF Gradient Boosting at macro-F1 \(0.6908 \pm 0.0093\), and a top-3 hard-voting ensemble reaches \(0.6941 \pm 0.0096\). When we compare the resulting predictions against the calculator (never used at training time), DF Random Forest aligns with \(y_{\text{calc}}\) on 69.3\% of decks, exceeding the 60.9\% agreement between the raw labels. Agreement matrices show that both the raw community labels and the highlighted community predictors disagree with the calculator asymmetrically, most often sitting below it. Permutation importance on DF and lift analysis on BC implicate the same signals on both sides --- Game Changer count, mass land denial, combo references, tutors, and a small set of recognisable high-power cards. We do not adjudicate between the community and the calculator; we describe where the two readings agree, where they diverge, and what explains their disagreement.
 
 \end{abstract}
 
@@ -60,7 +60,7 @@ In \textit{Magic: The Gathering} (MTG) Commander, players assign each deck a pow
 
 Commander Brackets are the official five-level vocabulary used for that discussion. Bracket~1 corresponds to thematic, low-power decks; bracket~5 to competitive EDH (cEDH); brackets~2--4 cover the casual middle where the bulk of negotiation occurs. Authors assign brackets to their own decks, combining explicit rule-based constraints with subjective judgement. Several community calculators offer an alternative: they parse the same decklist and produce a rule-based estimate from card identities, lists of cards flagged as high-impact (Game Changers, tutors, combo pieces), prices, and popularity. The two readings frequently disagree.
 
-The central question is empirical: \textit{how far apart are the two readings, and which deck-level signals account for the gap?} The first half is answered by direct counting (Section~\ref{sec:data:eda}). The second is harder, because the community label is subjective and we have no closed-form description of what the community reacts to. To probe it, we train predictive models on the community label and use them as instruments: a classifier that learns to imitate the author's bracket from observable deck content tells us what the community label is correlated with, and the features the model relies on most heavily are candidates for explaining the gap.
+The central question is empirical: \textit{how far apart are the two readings, and which deck-level signals account for the disagreement?} The first half is answered by direct counting (Section~\ref{sec:data:eda}). The second is harder, because the community label is subjective and we have no closed-form description of what the community reacts to. To probe it, we train predictive models on the community label and use them as instruments: a classifier that learns to imitate the author's bracket from observable deck content tells us what the community label is correlated with, and the features the model relies on most heavily are candidates for explaining the disagreement.
 
 To separate two natural hypotheses about what drives the community label --- specific cards versus aggregate deck structure --- we deliberately use two representations of the same decks in parallel. Bag of Cards (BC) is a sparse count vector indexed by card identity (\(\approx\)11k dimensions); DF is a dense vector of 102 hand-engineered structural attributes (mana curve, card-type balance, Game Changer count, tutor count, combo density). Under BC the model can latch onto staples, combo pieces, and high-impact singletons by name; under DF it sees only aggregated properties of the deck and has no access to card identity. Comparing the two answers a methodologically clean question and feeds directly into the interpretability stage, where the best DF model and the best BC model are inspected separately.
 
@@ -140,26 +140,16 @@ Each deck carries two labels. The community label \(y_{\text{arch}}\) is the bra
 \subsection{Exploratory analysis of the divergence}
 \label{sec:data:eda}
 
-Before fitting any model, it is informative to characterise how the two labels relate. Table~\ref{tab:yarch-ycalc-matrix} is the descriptive backbone for the dataset, reporting both the joint distribution of \(y_{\text{arch}}\) and \(y_{\text{calc}}\) and their marginals. Bracket~3 dominates both label sources, yet the off-diagonal mass is large enough to motivate the rest of this work.
+Before fitting any model, it is informative to characterise how the two labels relate. Figure~\ref{fig:yarch-ycalc-matrix} is the descriptive backbone for the dataset, showing the joint distribution of \(y_{\text{arch}}\) and \(y_{\text{calc}}\). Bracket~3 dominates both label sources, yet the off-diagonal mass is large enough to motivate the rest of this work.
 
-\begin{table}[h]
-\centering
-\caption{Joint counts \(y_{\text{arch}} \times y_{\text{calc}}\) on the modeling set.}
-\label{tab:yarch-ycalc-matrix}
-\begin{tabular}{lrrr|r}
-\toprule
-$y_{\text{arch}}$ \textbackslash{} $y_{\text{calc}}$ & 2 & 3 & 4 & Total \\
-\midrule
-2 & 1{,}014 & 1{,}153 & 154 & 2{,}321 \\
-3 & 769 & 3{,}909 & 1{,}539 & 6{,}217 \\
-4 & 128 & 997 & 2{,}472 & 3{,}597 \\
-\midrule
-Total & 1{,}911 & 6{,}059 & 4{,}165 & 12{,}135 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.65\linewidth]{figures/agreement_matrix_y1_y2.pdf}
+  \caption{Agreement matrix between the community label \(y_{\text{arch}}\) and the calculator label \(y_{\text{calc}}\) on the 12{,}135-deck modeling set. Rows are ordered from bracket~4 to bracket~2. Each cell reports a count and its percentage of the full dataset. The diagonal contains exact matches; off-diagonal cells show disagreement direction. The calculator assigns a higher bracket than the author in 2{,}846 decks (23.5\%) and a lower bracket in 1{,}894 decks (15.6\%).}
+  \label{fig:yarch-ycalc-matrix}
+\end{figure}
 
-The diagonal of Table~\ref{tab:yarch-ycalc-matrix} contains 7{,}395 decks, so the two labels match exactly on 60.9\% of the modeling set. Allowing a one-bracket tolerance brings agreement to 97.7\%; disagreements larger than one bracket occur in only 282 decks (2.3\%). The disagreement is also directional. Defining \(\Delta = y_{\text{calc}} - y_{\text{arch}}\), the calculator assigns a higher bracket than the author in 23.5\% of decks and a lower bracket in 15.6\%, with a mean absolute difference of 0.414. When the two readings disagree, the calculator is therefore more likely to push the bracket upward than downward.
+The diagonal of Figure~\ref{fig:yarch-ycalc-matrix} contains 7{,}395 decks, so the two labels match exactly on 60.9\% of the modeling set. Allowing a one-bracket tolerance brings agreement to 97.7\%; disagreements larger than one bracket occur in only 282 decks (2.3\%). The disagreement is also directional. Defining \(\Delta = y_{\text{calc}} - y_{\text{arch}}\), the calculator assigns a higher bracket than the author in 23.5\% of decks and a lower bracket in 15.6\%, with a mean absolute difference of 0.414. When the two readings disagree, the calculator is therefore more likely to push the bracket upward than downward.
 
 Only after this descriptive comparison do we move to the supervised setup. The community label \(y_{\text{arch}}\) serves as the supervised target throughout; the calculator label \(y_{\text{calc}}\) is retained as an external reference. To investigate whether deck power is better captured by individual card identities or by aggregate structural summaries, two representations of the same decks are built in parallel. Figure~\ref{fig:representations} illustrates both: Bag of Cards encodes the decklist as a sparse count vector over the card vocabulary, while Deck Features encodes the same deck as a dense vector of structural attributes.
 
@@ -347,7 +337,7 @@ The primary metric is macro-F1, which averages per-class F1 with equal weight ac
 \subsection{Results}
 \label{sec:training:results}
 
-All 12 models completed the full 15 outer folds. Table~\ref{tab:nested-results} reports the nested-CV results side by side for DF and BC, with per-representation ranks. The strongest individual model is DF Gradient Boosting, with macro-F1 \(0.6908 \pm 0.0093\); the strongest BC model is BC Gradient Boosting, with macro-F1 \(0.6433 \pm 0.0121\). DF outperforms BC for every algorithm in the tuned comparison: the DF--BC gap in macro-F1 ranges from +0.0370 for Naive Bayes to +0.1251 for Decision Tree. On this dataset, the dense handpicked representation yields a more useful signal than sparse card identity alone for every algorithm we tried.
+All 12 models completed the full 15 outer folds. Table~\ref{tab:nested-results} reports the nested-CV results side by side for DF and BC, with per-representation ranks. The strongest individual model is DF Gradient Boosting, with macro-F1 \(0.6908 \pm 0.0093\); the strongest BC model is BC Gradient Boosting, with macro-F1 \(0.6433 \pm 0.0121\). DF outperforms BC for every algorithm in the tuned comparison: the DF advantage in macro-F1 ranges from +0.0370 for Naive Bayes to +0.1251 for Decision Tree. On this dataset, the dense handpicked representation yields a more useful signal than sparse card identity alone for every algorithm we tried.
 
 \begin{table}[h]
 \centering
@@ -426,40 +416,48 @@ Best ensemble & \texttt{voting\_top3} & DF & \(0.6941 \pm 0.0096\) \\
 
 This section is purely descriptive: no model is trained or retrained, and \(y_{\text{calc}}\) is never used as a target. The analysis reads the out-of-fold predictions saved by nested CV and voting, and compares them to the calculator label on the same deck rows.
 
-Since the outer evaluation uses 3 repeats over the 12{,}135-deck modeling set, the OOF comparison contains 36{,}405 rows. Each deck has a stable \(y_{\text{calc}}\) but contributes one prediction per repeat; for this reason, the OOF confusion matrices in the appendix sum to 36{,}405 rather than 12{,}135.
+Since the outer evaluation uses 3 repeats over the 12{,}135-deck modeling set, the OOF comparison contains 36{,}405 rows. Each deck has a stable \(y_{\text{calc}}\) but contributes one prediction per repeat; for this reason, the model--calculator matrices sum to 36{,}405 rather than 12{,}135.
 
-Two baselines are used. The first is the direct label comparison \(y_{\text{arch}}\) versus \(y_{\text{calc}}\), already shown in Table~\ref{tab:yarch-ycalc-matrix}. The second is the model comparison \(\hat{y}_{\text{arch}}\) versus \(y_{\text{calc}}\). We report exact agreement, within-one-bracket agreement, mean absolute difference, and macro-F1 against \(y_{\text{calc}}\). Exact agreement answers the question of how often each source matches the calculator; macro-F1 against \(y_{\text{calc}}\) answers the same question while accounting for class imbalance. The gap column has a different interpretation: it is defined as \(|\mathrm{macro\text{-}F1}(y_{\text{arch}}) - \mathrm{exact\ agreement}(\hat{y}_{\text{arch}}, y_{\text{calc}})|\), and quantifies how far a model's performance on the Archidekt target sits from its raw agreement with the calculator. A large gap indicates that a model is a strong predictor of \(y_{\text{arch}}\) without being the one closest to \(y_{\text{calc}}\).
+Two baselines are used. The first is the direct label comparison \(y_{\text{arch}}\) versus \(y_{\text{calc}}\), already shown in Figure~\ref{fig:yarch-ycalc-matrix}. The second is the model comparison \(\hat{y}_{\text{arch}}\) versus \(y_{\text{calc}}\). We report exact agreement, within-one-bracket agreement, mean absolute difference, and macro-F1 against \(y_{\text{calc}}\). Exact agreement answers the question of how often each source matches the calculator; macro-F1 against \(y_{\text{calc}}\) answers the same question while accounting for class imbalance. To localise disagreement directly, we also inspect agreement matrices whose off-diagonal cells show whether a source sits below or above the calculator.
 
 \begin{table}[h]
 \centering
-\caption{Calculator-alignment highlights. The raw-label row compares \(y_{\text{arch}}\) directly with \(y_{\text{calc}}\); all other rows compare a model's out-of-fold predictions \(\hat{y}_{\text{arch}}\) with \(y_{\text{calc}}\). In the Source column, GB is Gradient Boosting, RF is Random Forest, DT is Decision Tree, and NB is Naive Bayes. Columns: \textit{Exact} --- fraction of rows where \(\hat{y}_{\text{arch}} = y_{\text{calc}}\); \(\pm 1\) --- fraction within one bracket; \textit{Mean $|\Delta|$} --- mean absolute difference; \textit{F1 calc} --- macro-F1 of the predictions when scored against \(y_{\text{calc}}\); \textit{F1 arch} --- macro-F1 against \(y_{\text{arch}}\) (the supervised target, taken from Table~\ref{tab:nested-results}); \textit{Gap} --- $|\,\text{F1 arch} - \text{Exact}\,|$, measuring how far performance on the community target sits from raw calculator agreement.}
+\caption{Calculator-alignment highlights. The raw-label row compares \(y_{\text{arch}}\) directly with \(y_{\text{calc}}\); all other rows compare a model's out-of-fold predictions \(\hat{y}_{\text{arch}}\) with \(y_{\text{calc}}\). In the Source column, GB is Gradient Boosting, RF is Random Forest, and DT is Decision Tree. Columns: \textit{Exact} --- fraction of rows where \(\hat{y}_{\text{arch}} = y_{\text{calc}}\); \(\pm 1\) --- fraction within one bracket; \textit{Mean $|\Delta|$} --- mean absolute difference; \textit{F1 calc} --- macro-F1 of the predictions when scored against \(y_{\text{calc}}\); \textit{F1 arch} --- macro-F1 against \(y_{\text{arch}}\) (the supervised target, taken from Table~\ref{tab:nested-results}).}
 \label{tab:calc-alignment}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrrrr@{}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrrr@{}}
 \toprule
-Case & Source & Exact & $\pm 1$ & Mean $|\Delta|$ & F1 calc & F1 arch & Gap \\
+Case & Source & Exact & $\pm 1$ & Mean $|\Delta|$ & F1 calc & F1 arch \\
 \midrule
-Raw labels & \(y_{\text{arch}}\) & 60.9\% & 97.7\% & 0.414 & 0.5843 & --- & --- \\
-Max agreement & DF RF & 69.3\% & 99.5\% & 0.312 & 0.6674 & 0.6733 & 0.0194 \\
-Min agreement & BC DT & 54.2\% & 96.6\% & 0.492 & 0.5328 & 0.5475 & 0.0057 \\
-Max gap & DF GB & 64.0\% & 98.1\% & 0.379 & 0.6323 & 0.6908 & 0.0508 \\
-Min gap & BC NB & 55.5\% & 97.1\% & 0.474 & 0.5462 & 0.5535 & 0.0010 \\
-Best BC & BC GB & 60.3\% & 97.3\% & 0.424 & 0.5984 & 0.6433 & 0.0402 \\
-Best ensemble & Top-3 vote & 66.7\% & 98.7\% & 0.346 & 0.6499 & 0.6941 & 0.0276 \\
+Raw labels & \(y_{\text{arch}}\) & 60.9\% & 97.7\% & 0.414 & 0.5843 & --- \\
+Max agreement & DF RF & 69.3\% & 99.5\% & 0.312 & 0.6674 & 0.6733 \\
+Min agreement & BC DT & 54.2\% & 96.6\% & 0.492 & 0.5328 & 0.5475 \\
+Best individual predictor & DF GB & 64.0\% & 98.1\% & 0.379 & 0.6323 & 0.6908 \\
+Best BC & BC GB & 60.3\% & 97.3\% & 0.424 & 0.5984 & 0.6433 \\
+Best ensemble & Top-3 vote & 66.7\% & 98.7\% & 0.346 & 0.6499 & 0.6941 \\
 \bottomrule
 \end{tabular*}
 \end{table}
 
-The table is dense; we read it through four questions.
+The table is dense; we read it through three questions.
 
 \paragraph{Q1. Which representation gets closer to the community?} DF, by a wide margin. Table~\ref{tab:nested-results} shows DF outperforming BC on \(y_{\text{arch}}\) for every algorithm; the strongest DF model beats the strongest BC model by +0.0475 macro-F1. The community label is more about \textit{what kind of deck this is} than about \textit{which specific cards are in it}.
 
 \paragraph{Q2. Which representation gets closer to the calculator?} Also DF. Every model that exceeds the raw 60.9\% baseline in the Exact column of Table~\ref{tab:calc-alignment} is a DF model (DF Random Forest at 69.3\%, top-3 vote at 66.7\%, DF Gradient Boosting at 64.0\%); BC Gradient Boosting nearly matches the raw labels (60.3\%) and other BC models sit below. This is partially circular --- DF counts the same kinds of cards EDHPowerLevel counts (Section~\ref{sec:conclusion:discussion}) --- but informative: DF has no feature for which specific Game Changer is present, so the alignment is driven by aggregates, not identity.
 
-\paragraph{Q3. Which algorithm aligns most with the community vs the calculator?} Not the same one. The best community predictor is DF Gradient Boosting (macro-F1 0.6908 on \(y_{\text{arch}}\), but only 64.0\% agreement with the calculator --- the largest gap in the table). The best calculator-aligned model is DF Random Forest (69.3\% agreement, macro-F1 0.6733 on \(y_{\text{arch}}\) --- 0.0175 below the best). Gradient Boosting is willing to over- or under-shoot the calculator when that improves community-label accuracy; Random Forest's bagged majority vote lands closer to the calculator's rule-driven behaviour even though both were trained on \(y_{\text{arch}}\).
+\paragraph{Q3. Which algorithm aligns most with the community vs the calculator?} Not the same one. The best individual community predictor is DF Gradient Boosting (macro-F1 0.6908 on \(y_{\text{arch}}\), but macro-F1 0.6323 against the calculator). The best calculator-aligned model by exact agreement is DF Random Forest (69.3\% agreement, macro-F1 0.6733 on \(y_{\text{arch}}\) --- 0.0175 below the best individual model). Gradient Boosting is willing to over- or under-shoot the calculator when that improves community-label accuracy; Random Forest's bagged majority vote lands closer to the calculator's rule-driven behaviour even though both were trained on \(y_{\text{arch}}\).
 
-\paragraph{Q4. What does the gap mean?} A high gap (DF Gradient Boosting, 0.0508) marks a model that captures community-specific structure not aligned with the calculator's rules. A low gap (BC Naive Bayes, 0.0010) marks a weak classifier roughly equally bad at both targets --- not one that has learned the calculator. Closeness to the calculator is informative only conditional on first being good at \(y_{\text{arch}}\). Together: the community label and the calculator react to overlapping but not identical structure; deck-level aggregates explain most of the overlap, and the residual --- where DF Gradient Boosting's gap lives --- is what the community sees and the calculator does not.
+The scalar metrics above say which model is closer to which label source, but not \textit{where} the disagreement goes. Figure~\ref{fig:df-models-ycalc-matrix} therefore compares three agreement matrices against \(y_{\text{calc}}\): DF Gradient Boosting, the best individual community predictor; DF Random Forest, the model with the highest exact agreement with the calculator; and the top-3 hard-voting ensemble, the best overall predictor of \(y_{\text{arch}}\). Rows are ordered from bracket~4 to bracket~2 so that higher model predictions appear higher in the plot and lower model predictions appear lower, making the direction of off-diagonal errors easier to read.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{figures/agreement_matrix_df_models_pred_y2.pdf}
+  \caption{Agreement matrices between out-of-fold predictions \(\hat{y}_{\text{arch}}\) and the calculator label \(y_{\text{calc}}\) for the models highlighted in Table~\ref{tab:calc-alignment}. Each cell reports a count and its percentage of all 36{,}405 OOF predictions. DF Gradient Boosting is the best individual community predictor and matches the calculator on 23{,}297 predictions (64.0\%); its off-diagonal mass is 9{,}986 below the calculator (27.4\%) and 3{,}122 above it (8.6\%). DF Random Forest is the closest individual model to the calculator, with 25{,}217 exact matches (69.3\%), 8{,}000 below-calculator errors (22.0\%), and 3{,}188 above-calculator errors (8.8\%). The top-3 voting ensemble is the best overall community predictor, with 24{,}264 exact matches (66.7\%), 9{,}788 below-calculator errors (26.9\%), and 2{,}353 above-calculator errors (6.5\%).}
+  \label{fig:df-models-ycalc-matrix}
+\end{figure}
+
+The side-by-side view gives a more direct reading than a dense table. All three predictors disagree with the calculator asymmetrically, predicting below it much more often than above it. Random Forest is closest to the calculator mainly because it moves more predictions into the diagonal, especially in bracket~3. The voting ensemble sits between Random Forest and Gradient Boosting in exact calculator agreement, while retaining the strongest macro-F1 on \(y_{\text{arch}}\). This mirrors the raw-label asymmetry in Figure~\ref{fig:yarch-ycalc-matrix}: the calculator is more likely than the community source, and more likely than models trained on that source, to place decks into a higher bracket.
 
 % ============================================================
 \section{Interpretability}
@@ -538,7 +536,7 @@ A separate lift analysis distinguishes concordant from divergent OOF rows. Conco
 
 This paper has set up a reproducible pipeline for studying the divergence between community-assigned and automatically calculated Commander brackets. On 12{,}135 Archidekt decks with both labels in brackets 2--4, raw agreement between \(y_{\text{arch}}\) and \(y_{\text{calc}}\) is 60.9\%, and the calculator assigns higher brackets more often than authors do when the two disagree. Across six algorithms and two representations, DF outperforms BC under nested cross-validation; the strongest individual model is DF Gradient Boosting at macro-F1 \(0.6908 \pm 0.0093\), and the best voting ensemble improves this only marginally to 0.6941.
 
-Interpretability supports a coherent reading of the results. The DF model is dominated by aggregate structure --- Game Changer count, mass land denial, combo references, and tutors --- while BC lift surfaces the cards that a Commander player would already recognise as bracket-4 indicators: \textit{Blood Moon}, \textit{Chrome Mox}, \textit{Imperial Seal}, and \textit{Mana Vault}. The models do not adjudicate between the community and the calculator; they expose where the two readings overlap and where they diverge.
+Interpretability supports a coherent reading of the results. The DF model is dominated by aggregate structure --- Game Changer count, mass land denial, combo references, and tutors --- while BC lift surfaces the cards that a Commander player would already recognise as bracket-4 indicators: \textit{Blood Moon}, \textit{Chrome Mox}, \textit{Imperial Seal}, and \textit{Grim Monolith}. The models do not adjudicate between the community and the calculator; they expose where the two readings overlap and where they diverge.
 
 \subsection{Discussion, Limitations, and Future Work}
 \label{sec:conclusion:discussion}
@@ -563,7 +561,7 @@ The headline empirical findings are: structured deck features (DF) predict the c
 
 \textit{Bracket prediction is not win-rate prediction.} The models learn labels attached to decklists, not the strength of those decks in actual play.
 
-\paragraph{Future work.} The most informative next experiments are local extensions, not new models. (i)~A circularity ablation that drops the explicit bracket-rule columns from DF and re-runs the calculator-alignment analysis, separating ``DF agrees because it counts the same things'' from ``DF agrees because the community uses the same signals''. (ii)~A second calculator and a second community source (Commander Salt, Moxfield) to test how much of the gap is platform-specific. (iii)~Ordinal-aware modelling and metrics (ordinal logistic regression, MAE on bracket values, quadratic-weighted kappa). (iv)~A BC+DF model that uses card identity and aggregate structure jointly. (v)~A separate experimental design for brackets~1 and~5.
+\paragraph{Future work.} The most informative next experiments are local extensions, not new models. (i)~A circularity ablation that drops the explicit bracket-rule columns from DF and re-runs the calculator-alignment analysis, separating ``DF agrees because it counts the same things'' from ``DF agrees because the community uses the same signals''. (ii)~A second calculator and a second community source (Commander Salt, Moxfield) to test how much of the disagreement is platform-specific. (iii)~Ordinal-aware modelling and metrics (ordinal logistic regression, MAE on bracket values, quadratic-weighted kappa). (iv)~A BC+DF model that uses card identity and aggregate structure jointly. (v)~A separate experimental design for brackets~1 and~5.
 
 % ============================================================
 \section*{Generative AI Use Disclosure}
